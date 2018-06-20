@@ -14,6 +14,9 @@ var nunjucksRender = require('gulp-nunjucks-render')
 var imagemin = require('gulp-imagemin')
 var pngquant = require('imagemin-pngquant')
 var fs = require('fs')
+var bourbon = require('bourbon').includePaths
+// var breakpoint = require('breakpoint-sass').includePaths
+// var breakpointSlicer = require('breakpoint-slicer').includePaths
 
 // Testing Webpack
 var vinylPaths = require('vinyl-paths')
@@ -31,7 +34,7 @@ var inputData = input + 'data/data.json'
 var inputTemplates = input + 'templates/**/*.njk'
 var inputTemplateMain = input + 'templates/'
 var inputPages = input + 'pages/*.njk'
-var inputStyles = input + 'styles/**/*.scss'
+var inputStyles = input + '**/*.scss'
 var inputStylesMain = input + 'styles/main.scss'
 var inputImages = input + 'images/**/*'
 var inputFonts = input + 'fonts/**/*'
@@ -45,7 +48,11 @@ var outputImages = output + 'images'
 var outputFonts = output + 'fonts'
 var outputScripts = output + 'scripts'
 
-var sassOptions = { outputStyle: 'expanded' }
+var sassOptions = {
+  outputStyle: 'expanded',
+  sourcemaps: true,
+  includePaths: [bourbon]
+}
 var autoprefixerOptions = { browsers: ['last 2 versions', '> 5%', 'Firefox ESR'] }
 var sassdocOptions = { dest: output + 'sassdoc' }
 

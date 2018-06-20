@@ -1,7 +1,8 @@
 {
   "site": {
-    "description": "Website for the Connected Demtia Research project.",
-    "title": "Connected Dementia Research",
+    "description": "Website for the Connect Dementia Research project.",
+    "title": "Connect Dementia Research",
+    "sponsor" : "University of Exeter",
     "navigation" : {
       "links" : [
         "About us",
@@ -9,7 +10,7 @@
         "FAQs",
         "News & info"
       ],
-      "user" : [
+      "userLinks" : [
         "Login",
         "Join"
       ]
