@@ -5,6 +5,6 @@
 node_modules
 bower_components
 
-# Compiled
+# Compiled - comment out to share distribution folder
 dist
 dist/**/*
