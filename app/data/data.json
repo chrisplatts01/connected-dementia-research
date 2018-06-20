@@ -1,7 +1,19 @@
 {
   "site": {
     "description": "Website for the Connected Demtia Research project.",
-    "title": "Connected Dementia Research"
+    "title": "Connected Dementia Research",
+    "navigation" : {
+      "links" : [
+        "About us",
+        "Why sign up",
+        "FAQs",
+        "News & info"
+      ],
+      "user" : [
+        "Login",
+        "Join"
+      ]
+    }
   },
   "content": {
     "message" : "Hello world!"
