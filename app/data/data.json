@@ -1,0 +1,9 @@
+{
+  "site": {
+    "description": "Website for the Connected Demtia Research project.",
+    "title": "Connected Dementia Research"
+  },
+  "content": {
+    "message" : "Hello world!"
+  }
+}

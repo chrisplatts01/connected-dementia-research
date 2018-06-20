@@ -1,29 +1,39 @@
 {
-  "name": "svmic",
+  "name": "connected-dementia-research",
   "version": "1.0.0",
-  "description": "svmic",
+  "description": "Connected Dementia Research projet website for Exeter University",
   "main": "index.html",
   "scripts": {
-    "test": "ok"
+    "test": "standard"
   },
   "repository": {
     "type": "git",
-    "url": "nope"
+    "url": "https://github.com/chrisplatts01/connected-dementia-research"
   },
   "keywords": [
-    "insurance"
+    "dementia"
   ],
-  "author": "eric motil",
+  "author": "Chris Platts",
   "license": "MIT",
   "devDependencies": {
     "browser-sync": "^2.9.11",
+    "del": "^3.0.0",
+    "fs": "^0.0.1-security",
     "gulp": "^3.9.0",
     "gulp-autoprefixer": "^3.1.0",
     "gulp-concat": "^2.6.0",
+    "gulp-data": "^1.3.1",
     "gulp-imagemin": "^2.3.0",
     "gulp-nunjucks-render": "^1.0.0",
+    "gulp-print": "^5.0.0",
     "gulp-sass": "^2.1.0",
+    "gulp-util": "^3.0.8",
     "imagemin-pngquant": "^4.2.0",
-    "sassdoc": "^2.1.15"
-  }
+    "jquery": "^3.3.1",
+    "sassdoc": "^2.1.15",
+    "standard": "^11.0.1",
+    "vinyl-paths": "^2.1.0",
+    "webpack-stream": "^4.0.3"
+  },
+  "dependencies": {}
 }
