@@ -1,10 +1,10 @@
-var path = require('path');
-var webpack = require('webpack');
+var path = require('path')
+var webpack = require('webpack')
 
 module.exports = {
-  entry: './scripts/main.js',
+  entry: './app/scripts/main.js',
   output: {
-    path: path.resolve(__dirname, 'dist/scripts'),
+    path: path.resolve(__dirname, './dist/scripts'),
     filename: 'main.js'
   }
-};
+}
