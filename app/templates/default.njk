@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 
-{% include "partials/head.njk" %}
+{% include "partials/_head.njk" %}
 
 <body>
   <div class="page-header">
     <div class="page-header__wrapper wrapper">
-      {% include "modules/site-masthead/site-masthead.njk" %}
+      {% include "modules/site-masthead/_site-masthead.njk" %}
+      {% include "modules/site-navigation/_site-navigation.njk" %}
     </div>
   </div>
 
@@ -18,10 +19,10 @@
 
   <div class="page-footer">
     <div class="page-footer__wrapper wrapper">
-      {% include "modules/site-footer/site-footer.njk" %}
+      {% include "modules/site-footer/_site-footer.njk" %}
     </div>
   </div>
 
-  {% include "partials/page-scripts.njk" %}
+  {% include "partials/_scripts.njk" %}
 </body>
 </html>

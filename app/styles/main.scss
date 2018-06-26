@@ -1,4 +1,16 @@
 // main.scss
 
-// Imports
+// Libraries
+@import 'bourbon';
+@import 'node_modules/breakpoint-sass/stylesheets/breakpoint';
+@import 'node_modules/breakpoint-slicer/stylesheets/breakpoint-slicer';
+
+// Partials
 @import 'partials/base';
+
+// Modules
+@import 'app/templates/modules/site-masthead/site-masthead';
+@import 'app/templates/modules/site-navigation/site-navigation';
+
+// Breakpoints
+$slicer-breakpoints: 0 600px 800px;

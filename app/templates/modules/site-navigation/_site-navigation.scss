@@ -1,0 +1,36 @@
+.site-navigation {
+  @include clearfix;
+  background-color: #eee;
+}
+
+.menu {
+  display: inline-block;
+  margin: 0;
+  padding: 0;
+}
+
+.menu__link {
+  display: inline-block;
+
+  a {
+    display: block;
+    color: black;
+    text-decoration: none;
+    padding: 0.5rem 2rem;
+    // border-right: 1px solid #fff;
+
+    &:hover,
+    &:focus {
+      text-decoration: underline;
+    }
+  }
+}
+
+.menu--user {
+  background-color: #b71f77;
+  float: right;
+
+  a {
+    color: white;
+  }
+}
