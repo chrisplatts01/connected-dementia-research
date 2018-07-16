@@ -5,7 +5,7 @@
     {% endfor %}
   </ul>
   <ul class="menu menu--user">
-    {% for link in site.navigation.userLinks %}
+    {% for link in site.navigation.user %}
       <li class="menu__link"><a href="{{ link | lower | replace(' ', '-') }}">{{ link }}</a></li>
     {% endfor %}
   </ul>

@@ -6,11 +6,12 @@
 @import 'node_modules/breakpoint-slicer/stylesheets/breakpoint-slicer';
 
 // Partials
+@import 'partials/colours';
+@import 'partials/breakpoints';
 @import 'partials/base';
+@import 'partials/navigation';
 
 // Modules
 @import 'app/templates/modules/site-masthead/site-masthead';
 @import 'app/templates/modules/site-navigation/site-navigation';
-
-// Breakpoints
-$slicer-breakpoints: 0 600px 800px;
+@import 'app/templates/modules/site-footer/site-footer';

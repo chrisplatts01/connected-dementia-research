@@ -10,9 +10,22 @@
         "FAQs",
         "News & info"
       ],
-      "userLinks" : [
+      "user" : [
         "Login",
         "Join"
+      ],
+      "info" : [
+        "About us",
+        "Your stories",
+        "Why join",
+        "How to join",
+        "Contact"
+      ],
+      "smallPrint" : [
+        "Privacy and cookies",
+        "Accessibility",
+        "Policies and Procedures",
+        "Acknowledgements"
       ]
     }
   },

@@ -1,0 +1,13 @@
+.site-sponsors {
+  width: 100%;
+  background-color: $white;
+}
+
+.site-sponsor {
+  float: left;
+  width: 50%;
+
+  &:last-child {
+    text-align: right;
+  }
+}
