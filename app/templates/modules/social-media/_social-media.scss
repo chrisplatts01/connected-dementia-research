@@ -1,0 +1,32 @@
+.social-media {
+  width: 100%;
+  background-color: $dark-grey;
+  text-align: center;
+}
+
+.social-media__button {
+  display: inline-block;
+  width: 128px;
+  height: 40px;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin: 1rem;
+  background-color: red;
+}
+
+.social-media__button--facebook {
+  background-image: url('/images/button_fb.png');
+}
+
+.social-media__button--twitter {
+  background-image: url('/images/button_tw.png');
+}
+
+.social-media__button--youtube {
+  background-image: url('/images/button_yt.png');
+}
+
+.social-media__button--googleplus {
+  background-image: url('/images/button_gp.png');
+}

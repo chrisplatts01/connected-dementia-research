@@ -1,0 +1,21 @@
+<footer class="footer" role="contentinfo">
+  <nav class="footer__navigation" role="navigation">
+    <ul class="menu menu--info">
+      {% for link in site.navigation.info %}
+        <li class="menu__link"><a href="{{ link | lower | replace(' ', '-') }}">{{ link }}</a></li>
+      {% endfor %}
+    </ul>
+    <ul class="menu menu--smallprint">
+      {% for link in site.navigation.smallPrint %}
+        <li class="menu__link"><a href="{{ link | lower | replace(' ', '-') }}">{{ link }}</a></li>
+      {% endfor %}
+    </ul>
+  </nav>
+  <form class="footer__signup">
+    <label>
+      Sign up for our newsletter<br />
+      <input placeholder="Your email address" type="text" />
+      <button type="submit">></button>
+    </label>
+  </form>
+</footer>
