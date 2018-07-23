@@ -10,18 +10,12 @@ var autoprefixer = require('gulp-autoprefixer')
 var sassdoc = require('sassdoc')
 var browserSync = require('browser-sync').create()
 var nunjucksRender = require('gulp-nunjucks-render')
-// var concat = require('gulp-concat')
 var imagemin = require('gulp-imagemin')
+// var uglify = require('gulp-uglify')
 var pngquant = require('imagemin-pngquant')
 var fs = require('fs')
 var bourbon = require('bourbon').includePaths
-// var breakpoint = require('breakpoint-sass').includePaths
-// var breakpointSlicer = require('breakpoint-slicer').includePaths
-
-// Testing Webpack
 var vinylPaths = require('vinyl-paths')
-// var gutil = require('gulp-util')
-// var gprint = require('gulp-print')
 var del = require('del')
 var webpackStream = require('webpack-stream')
 var webpackConfig = require('./webpack.config.js')

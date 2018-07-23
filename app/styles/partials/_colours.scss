@@ -1,10 +1,44 @@
+// Neutrals
 $white: #fff;
 $light-grey: #eee;
 $mid-grey: #999;
 $dark-grey: #666;
 $black: #333;
 
+// Colours
 $magenta: #b52577;
 
+$light-red: #fff0eb;
+$mid-red: #d43a17;
+$dark-red: #972a0d;
 
+$light-purple: #f3e6f6;
+$mid-purple: #8417aa;
+$dark-purple: #8417aa;
+
+// Brand colours
 $brand-primary: $magenta;
+
+// Form elements
+$unselected: $mid-red;
+$unselected-bg: $white;
+$unselected-hover: $dark-red;
+$unselected-hover-bg: $light-red;
+
+$selected: $white;
+$selected-bg: $mid-red;
+$selected-hover: $white;
+$selected-hover-bg: $dark-red;
+
+$error: $mid-purple;
+$error-bg: $white;
+$error-hover: $mid-purple;
+$error-hover-bg: $light-purple;
+
+$disabled: $mid-grey;
+$disabled-bg: $light-grey;
+
+$placeholder: $mid-grey;
+
+$border: $mid-grey;
+$border-hover: $dark-grey;

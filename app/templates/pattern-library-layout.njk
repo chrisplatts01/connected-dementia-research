@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1.0, maximum-scale=1.0">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+
+  <title>Pattern Library : {{ site.title }}</title>
+
+  <!-- Favicons -->
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicons/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicons/favicon-16x16.png">
+  <link rel="mask-icon" href="/images/favicons/safari-pinned-tab.svg" color="#5bbad5">
+  <link rel="shortcut icon" href="/images/favicons/favicon.ico">
+
+  <!-- Stylesheets -->
+  <style>
+    #pl-body { width: 1024px; max-width: 960px; margin: 0; padding: 0 }
+    .pl-header { box-sizing: border-box; width: 100%; padding: 1em; color: #fff; background-color: #666; clear: both; }
+    .pl-footer { box-sizing: border-box; width: 100%; padding: 1em; color: #333; background-color: #999; clear: both }
+    .pl-wrapper { box-sizing: border-box; width: 100%; clear: both; }
+    .pl-nav { box-sizing: border-box; float: left; width: 25%; border-right: 1px solid #999; padding: 1em; }
+    .pl-main { box-sizing: border-box; float: right; width: 75%; border-left: 1px solid #999; padding: 1em; position: relative; left: -1px;}
+    .pl-code { width: 100%; height: 100px; font-family: "Courier", monospace; white-space: pre-line; font-size: 16px; padding: 1em 0; }
+    .pl-heading { color: #999; font-size: 1rem; border-bottom: 1px solid #ccc; }
+    .component-list { list-style: none; padding: 0; margin: 0 0 1rem 0; }
+  </style>
+  <link rel="stylesheet" href="/styles/main.css">
+
+</head>
+
+<body id="pl-body">
+  <header class="pl-header" role="masthead">
+    <h1>Connect Dementia Research<br />
+      <small>Pattern Library</small></h1>
+  </header>
+  <div class="pl-wrapper">
+    <nav class="pl-nav" role="navigation">
+      <p><b>Components:</b></p>
+      <ul class="component-list">
+        <li><a href="pl-heading.html">Heading</a></li>
+        <li><a href="pl-question.html">Question</a></li>
+        <li><a href="pl-paragraph.html">Paragraph</a></li>
+        <li><a href="pl-bulletpoints.html">Bullet points</a></li>
+        <li><a href="pl-prompt.html">Prompt/Descriptor</a></li>
+        <li><a href="pl-segmented-controls.html">Segmented controls</a></li>
+        <li><a href="pl-checkboxes.html">Checkboxes</a></li>
+      </ul>
+      <p><b>Modules:</b></p>
+      <ul class="component-list">
+        <li><a href="pl-example.html">Example module</a></li>
+      </ul>
+    </nav>
+    <main class="pl-main" role="main">
+      {% block content %}{% endblock %}
+    </main>
+  </div>
+  <footer class="pl-footer">
+    <p><a href="/">CDR home page</a></p>
+  </footer>
+</body>
+</html>

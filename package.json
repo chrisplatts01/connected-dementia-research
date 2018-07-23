@@ -19,6 +19,7 @@
     "@frctl/fractal": "^1.1.7",
     "autoprefixer": "^8.6.5",
     "bourbon": "^5.0.1",
+    "bourbon-neat": "^3.0.0",
     "breakpoint-sass": "^2.7.1",
     "breakpoint-slicer": "^2.0.0",
     "browser-sync": "^2.9.11",
@@ -33,13 +34,17 @@
     "gulp-print": "^5.0.0",
     "gulp-sass": "^2.1.0",
     "gulp-sass-glob": "^1.0.9",
+    "gulp-uglify": "^3.0.0",
     "gulp-util": "^3.0.8",
     "imagemin-pngquant": "^4.2.0",
-    "jquery": "^3.3.1",
     "sassdoc": "^2.1.15",
     "standard": "^11.0.1",
     "vinyl-paths": "^2.1.0",
     "webpack-stream": "^4.0.3"
   },
-  "dependencies": {}
+  "dependencies": {
+    "jquery": "^3.3.1",
+    "jquery-ui": "^1.12.1",
+    "webpack-jquery-ui": "^1.0.0"
+  }
 }
