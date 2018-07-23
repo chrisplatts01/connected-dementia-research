@@ -1,0 +1,12 @@
+.prompt {
+  font-weight: 400;
+  font-size: $small-font-size;
+  color: $dark-grey;
+
+  &:before {
+    content: url('/images/icon-info.svg');
+    position: relative;
+    top: 2px;
+    padding-right: 0.5rem;
+  }
+}

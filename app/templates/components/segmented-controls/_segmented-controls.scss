@@ -1,0 +1,83 @@
+.segmented-controls {
+  padding: 12px;
+  text-align: center;
+
+  input[type=radio] {
+    display: none;
+  }
+
+  label {
+    font-size: $base-font-size;;
+    display: inline-block;
+    box-sizing: border-box;
+    width: 50%;
+    border: 1px solid $mid-grey;
+    // border-bottom-width: 3px;
+    padding: 0.5rem;
+    color: $mid-red;
+    background-color: $white;
+    cursor: pointer;
+    margin-left: -4px;
+    box-shadow: 0 4px 0 0 $light-grey;
+
+    &:hover, &.hover {
+      color: $dark-red;
+      background-color: $light-red;
+    }
+
+    &.error {
+      color: $mid-purple;
+
+      &:hover, &.hover {
+        background-color: $light-purple;
+      }
+    }
+
+    &:first-of-type {
+      @include border-left-radius(3px)
+    }
+
+    &:last-of-type {
+      @include border-right-radius(3px)
+    }
+
+  }
+
+  input:checked + label, .checked {
+    color: $white;
+    background-color: $mid-red;
+    border-color: $mid-red;
+    border-bottom-color: $mid-grey;
+
+    &:hover, &.hover {
+      color: white;
+      background-color: $dark-red;
+    }
+  }
+}
+
+.segmented-controls-2 label {
+  width: 50%;
+}
+
+.segmented-controls-3 label {
+  width: 33.3%;
+}
+
+.segmented-controls-4 label {
+  width: 25%;
+}
+
+.msg-error {
+  padding-top: 5px;
+  color: $dark-purple;
+  text-align: left;
+  font-weight: 600;
+
+  &:before {
+    content: url('/images/icon-error.svg');
+    position: relative;
+    top: 2px;
+    padding-right: 0.5rem;
+  }
+}

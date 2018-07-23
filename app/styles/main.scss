@@ -7,6 +7,7 @@
 
 // Partials
 @import 'partials/colours';
+@import 'partials/typography';
 @import 'partials/breakpoints';
 @import 'partials/base';
 @import 'partials/navigation';
@@ -17,3 +18,12 @@
 @import 'app/templates/modules/footer/footer';
 @import 'app/templates/modules/social-media/social-media';
 @import 'app/templates/modules/sponsors/sponsors';
+
+// Components
+@import 'app/templates/components/heading/heading';
+@import 'app/templates/components/question/question';
+@import 'app/templates/components/paragraph/paragraph';
+@import 'app/templates/components/bulletpoints/bulletpoints';
+@import 'app/templates/components/prompt/prompt';
+@import 'app/templates/components/segmented-controls/segmented-controls';
+@import 'app/templates/components/checkboxes/checkboxes';

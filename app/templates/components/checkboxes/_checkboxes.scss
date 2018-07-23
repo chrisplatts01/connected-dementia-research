@@ -1,0 +1,89 @@
+.checkbox {
+  display: block;
+  position: relative;
+  margin-bottom: 1rem;;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+
+  label {
+    padding-left: 2rem;
+    cursor: pointer;
+  }
+
+  [type="checkbox"] {
+    position: absolute;
+    left: 0;
+    opacity: 0;
+    cursor: pointer;
+
+    &:checked ~ .checkmark {
+      background-color: $mid-red;
+      border-color: $mid-red;
+
+      &:hover {
+        background-color: $dark-red;
+        border-color: $dark-red;
+      }
+
+      &:after {
+        display: block;
+      }
+    }
+  }
+
+  &:hover [type="checkbox"] ~ .checkmark,
+  &.hover [type="checkbox"] ~ .checkmark {
+    background-color: $light-red;
+  }
+
+  &.error [type="checkbox"] ~ .checkmark {
+    border-color: $dark-purple;
+  }
+
+  &.error.hover [type="checkbox"] ~ .checkmark {
+    background-color: $light-purple;
+  }
+
+  &.checked [type="checkbox"] ~ .checkmark {
+    background-color: $mid-red;
+    border-color: $mid-red;
+
+    &:after {
+      display: block;
+    }
+  }
+
+  &:hover [type="checkbox"]:checked ~ .checkmark,
+  &.hover.checked [type="checkbox"] ~ .checkmark {
+    background-color: $dark-red;
+    border-color: $dark-red;
+  }
+
+  .checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 16px;
+    width: 16px;
+    border: 2px solid $mid-grey;
+    border-radius: 3px;
+    background-color: $white;
+
+    &:after {
+      content: "";
+      position: absolute;
+      display: none;
+      left: 5px;
+      top: 1px;
+      width: 4px;
+      height: 10px;
+      border: solid white;
+      border-width: 0 2px 2px 0;
+      -webkit-transform: rotate(45deg);
+      -ms-transform: rotate(45deg);
+      transform: rotate(45deg);
+    }
+  }
+}
