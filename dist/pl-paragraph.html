@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1.0, maximum-scale=1.0">
   <meta name="apple-mobile-web-app-capable" content="yes">
 
-  <title>Pattern Library : {{ site.title }}</title>
+  <title>Pattern Library : Connect Dementia Research</title>
 
   <!-- Favicons -->
   <link rel="apple-touch-icon" sizes="180x180" href="/images/favicons/apple-touch-icon.png">
@@ -60,7 +60,25 @@
       </ul>
     </nav>
     <main class="pl-main" role="main">
-      {% block content %}{% endblock %}
+      
+  <h4 class="pl-heading">Paragraph</h4>
+  <p class="paragraph">Thank you for registering. The first step is to create an account. Please begin by telling us who you are.</p>
+
+  <h4 class="pl-heading">HTML</h4>
+  <textarea class="pl-code">
+    <p class="paragraph">Thank you for registering. The first step is to create an account. Please begin by telling us who you are.</p>
+
+  </textarea>
+  <h4 class="pl-heading">SCSS</h4>
+  <textarea class="pl-code">
+    p, .paragraph {
+  font-weight: 500;
+  font-size: 1rem;
+  color: $black;
+}
+
+  </textarea>
+
     </main>
   </div>
   <footer class="pl-footer">

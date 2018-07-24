@@ -6,5 +6,5 @@ node_modules
 bower_components
 
 # Compiled - uncomment this later to share build folder
-dist
-dist/**/*
+# dist
+# dist/**/*

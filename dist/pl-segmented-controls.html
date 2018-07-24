@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1.0, maximum-scale=1.0">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+
+  <title>Pattern Library : Connect Dementia Research</title>
+
+  <!-- Favicons -->
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicons/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicons/favicon-16x16.png">
+  <link rel="mask-icon" href="/images/favicons/safari-pinned-tab.svg" color="#5bbad5">
+  <link rel="shortcut icon" href="/images/favicons/favicon.ico">
+
+  <!-- Stylesheets -->
+  <style>
+    #pl-body { width: 1024px; max-width: 960px; margin: 0; padding: 0 }
+    .pl-header { box-sizing: border-box; width: 100%; padding: 1em 1em 0.5em; color: #fff; background-color: #b52577; clear: both; }
+    .pl-header h1, .pl-header p {color: #fff; margin: 0; }
+    .pl-footer { box-sizing: border-box; width: 100%; padding: 1em; color: #333; background-color: #999; clear: both }
+    .pl-wrapper { box-sizing: border-box; width: 100%; clear: both; }
+    .pl-nav { box-sizing: border-box; float: left; width: 25%; border-right: 1px solid #999; padding: 1em; }
+    .pl-main { box-sizing: border-box; float: right; width: 75%; border-left: 1px solid #999; padding: 1em; position: relative; left: -1px;}
+    .pl-code { width: 100%; height: 100px; font-family: "Courier", monospace; white-space: pre-line; font-size: 16px; padding: 1em 0; }
+    .pl-heading { color: #999; font-size: 1rem; border-bottom: 1px solid #ccc; }
+    .component-list { list-style: none; padding: 0; margin: 0 0 1rem 0; }
+  </style>
+  <link rel="stylesheet" href="/styles/main.css">
+
+</head>
+
+<body id="pl-body">
+  <header class="pl-header" role="masthead">
+    <h1>Connect Dementia Research</h4>
+    <h2>Pattern Library</h2>
+  </header>
+  <div class="pl-wrapper">
+    <nav class="pl-nav" role="navigation">
+      <ul class="component-list">
+        <li>
+          <a href="pl.html">Pattern library home</a>
+        </li>
+      </ul>
+      <p><b>Components:</b></p>
+      <ul class="component-list">
+        <li><a href="pl-heading.html">Heading</a></li>
+        <li><a href="pl-question.html">Question</a></li>
+        <li><a href="pl-paragraph.html">Paragraph</a></li>
+        <li><a href="pl-bulletpoints.html">Bullet points</a></li>
+        <li><a href="pl-prompt.html">Prompt/Descriptor</a></li>
+        <li><a href="pl-segmented-controls.html">Segmented controls</a></li>
+        <li><a href="pl-checkboxes.html">Checkboxes</a></li>
+      </ul>
+      <p><b>Modules:</b></p>
+      <ul class="component-list">
+        <li><a href="pl-example.html">Example module</a></li>
+      </ul>
+    </nav>
+    <main class="pl-main" role="main">
+      
+  <h4 class="pl-heading">Segmented controls</h4>
+  <p>Used instead of radio buttons when there are a limited number of mutually-exclusive choices.</p>
+  <p><small>To illustrate the styling of <em>checked</em> and <em>hover</em> states, <code>.hover</code> and <code>.checked</code> classes have been added to simulate these states. These classes are not required in production where the <code>:hover</code> and <code>:checked</code> pseudo-classes are used.</small></p>
+  <div class="segmented-controls">
+  <label>
+    <input id="option-A1" name="option-A" type="radio" />
+    Option 1
+  </label>
+  <label>
+    <input id="option-A2" name="option-A" type="radio" />
+    Option 2
+  </label>
+</div>
+
+<div class="segmented-controls">
+  <label class="checked">
+    <input id="option-B1" name="option-B" type="radio" />
+    Option 1 (Checked)
+  </label>
+  <label>
+    <input id="option-B2" name="option-B" type="radio" />
+    Option 2
+  </label>
+</div>
+
+<div class="segmented-controls">
+  <label class="checked hover">
+    <input id="option-C1" name="option-C" type="radio" />
+    Option 1 (Checked, Hover)
+  </label>
+  <label class="hover">
+    <input id="option-C2" name="option-C" type="radio" />
+    Option 2 (Hover)
+  </label>
+</div>
+
+<div class="segmented-controls">
+  <label class="error">
+    <input id="option-D1" name="option-D" type="radio" />
+    Option 1 (Error)
+  </label>
+  <label class="error">
+    <input id="option-D2" name="option-D" type="radio" />
+    Option 2 (Error)
+  </label>
+  <div class="msg-error">Error text</div>
+</div>
+
+<div class="segmented-controls">
+  <label class="error hover">
+    <input id="option-E1" name="option-E" type="radio" />
+    Option 1 (Error, Hover)
+  </label>
+  <label class="error">
+    <input id="option-E2" name="option-E" type="radio" />
+    Option 2 (Error)
+  </label>
+  <div class="msg-error">Error text</div>
+</div>
+
+<div class="segmented-controls segmented-controls-3">
+  <label>
+    <input id="option-F1" name="option-F" type="radio" />
+    Option 1
+  </label>
+  <label>
+    <input id="option-F2" name="option-F" type="radio" />
+    Option 2
+  </label>
+  <label>
+    <input id="option-F3" name="option-F" type="radio" />
+    Option 3
+  </label>
+</div>
+
+<div class="segmented-controls segmented-controls-4">
+  <label>
+    <input id="option-G1" name="option-G" type="radio" />
+    Option 1
+  </label>
+  <label>
+    <input id="option-G2" name="option-G" type="radio" />
+    Option 2
+  </label>
+  <label>
+    <input id="option-G3" name="option-G" type="radio" />
+    Option 3
+  </label>
+  <label>
+    <input id="option-G4" name="option-G" type="radio" />
+    Option 4
+  </label>
+</div>
+
+  <h4 class="pl-heading">HTML</h4>
+  <textarea class="pl-code">
+    <div class="segmented-controls">
+  <label>
+    <input id="option-A1" name="option-A" type="radio" />
+    Option 1
+  </label>
+  <label>
+    <input id="option-A2" name="option-A" type="radio" />
+    Option 2
+  </label>
+</div>
+
+<div class="segmented-controls">
+  <label class="checked">
+    <input id="option-B1" name="option-B" type="radio" />
+    Option 1 (Checked)
+  </label>
+  <label>
+    <input id="option-B2" name="option-B" type="radio" />
+    Option 2
+  </label>
+</div>
+
+<div class="segmented-controls">
+  <label class="checked hover">
+    <input id="option-C1" name="option-C" type="radio" />
+    Option 1 (Checked, Hover)
+  </label>
+  <label class="hover">
+    <input id="option-C2" name="option-C" type="radio" />
+    Option 2 (Hover)
+  </label>
+</div>
+
+<div class="segmented-controls">
+  <label class="error">
+    <input id="option-D1" name="option-D" type="radio" />
+    Option 1 (Error)
+  </label>
+  <label class="error">
+    <input id="option-D2" name="option-D" type="radio" />
+    Option 2 (Error)
+  </label>
+  <div class="msg-error">Error text</div>
+</div>
+
+<div class="segmented-controls">
+  <label class="error hover">
+    <input id="option-E1" name="option-E" type="radio" />
+    Option 1 (Error, Hover)
+  </label>
+  <label class="error">
+    <input id="option-E2" name="option-E" type="radio" />
+    Option 2 (Error)
+  </label>
+  <div class="msg-error">Error text</div>
+</div>
+
+<div class="segmented-controls segmented-controls-3">
+  <label>
+    <input id="option-F1" name="option-F" type="radio" />
+    Option 1
+  </label>
+  <label>
+    <input id="option-F2" name="option-F" type="radio" />
+    Option 2
+  </label>
+  <label>
+    <input id="option-F3" name="option-F" type="radio" />
+    Option 3
+  </label>
+</div>
+
+<div class="segmented-controls segmented-controls-4">
+  <label>
+    <input id="option-G1" name="option-G" type="radio" />
+    Option 1
+  </label>
+  <label>
+    <input id="option-G2" name="option-G" type="radio" />
+    Option 2
+  </label>
+  <label>
+    <input id="option-G3" name="option-G" type="radio" />
+    Option 3
+  </label>
+  <label>
+    <input id="option-G4" name="option-G" type="radio" />
+    Option 4
+  </label>
+</div>
+
+  </textarea>
+  <h4 class="pl-heading">SCSS</h4>
+  <textarea class="pl-code">
+    .segmented-controls {
+  padding: 12px;
+  text-align: center;
+
+  input[type=radio] {
+    display: none;
+  }
+
+  label {
+    font-size: $base-font-size;;
+    display: inline-block;
+    box-sizing: border-box;
+    width: 50%;
+    border: 1px solid $mid-grey;
+    // border-bottom-width: 3px;
+    padding: 0.5rem;
+    color: $mid-red;
+    background-color: $white;
+    cursor: pointer;
+    margin-left: -4px;
+    box-shadow: 0 4px 0 0 $light-grey;
+
+    &:hover, &.hover {
+      color: $dark-red;
+      background-color: $light-red;
+    }
+
+    &.error {
+      color: $mid-purple;
+
+      &:hover, &.hover {
+        background-color: $light-purple;
+      }
+    }
+
+    &:first-of-type {
+      @include border-left-radius(3px)
+    }
+
+    &:last-of-type {
+      @include border-right-radius(3px)
+    }
+
+  }
+
+  input:checked + label, .checked {
+    color: $white;
+    background-color: $mid-red;
+    border-color: $mid-red;
+    border-bottom-color: $mid-grey;
+
+    &:hover, &.hover {
+      color: white;
+      background-color: $dark-red;
+    }
+  }
+}
+
+.segmented-controls-2 label {
+  width: 50%;
+}
+
+.segmented-controls-3 label {
+  width: 33.3%;
+}
+
+.segmented-controls-4 label {
+  width: 25%;
+}
+
+.msg-error {
+  padding-top: 5px;
+  color: $dark-purple;
+  text-align: left;
+  font-weight: 600;
+
+  &:before {
+    content: url('/images/icon-error.svg');
+    position: relative;
+    top: 2px;
+    padding-right: 0.5rem;
+  }
+}
+
+  </textarea>
+
+    </main>
+  </div>
+  <footer class="pl-footer">
+    <p><a href="http://cdr.virelai.co.uk/index.html">CDR home page</a></p>
+  </footer>
+</body>
+</html>
