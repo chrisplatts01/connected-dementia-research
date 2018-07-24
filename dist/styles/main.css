@@ -358,6 +358,7 @@ p, .paragraph {
 }
 
 .checkbox label {
+  display: block;
   padding-left: 2rem;
   cursor: pointer;
 }
@@ -371,12 +372,12 @@ p, .paragraph {
 
 .checkbox [type="checkbox"]:checked ~ .checkmark {
   background-color: #d43a17;
-  border-color: #d43a17;
+  border-color: #d43a17 !important;
 }
 
 .checkbox [type="checkbox"]:checked ~ .checkmark:hover {
   background-color: #972a0d;
-  border-color: #972a0d;
+  border-color: #972a0d !important;
 }
 
 .checkbox [type="checkbox"]:checked ~ .checkmark:after {

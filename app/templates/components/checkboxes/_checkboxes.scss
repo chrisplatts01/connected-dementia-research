@@ -8,6 +8,7 @@
   user-select: none;
 
   label {
+    display: block;
     padding-left: 2rem;
     cursor: pointer;
   }
@@ -20,11 +21,11 @@
 
     &:checked ~ .checkmark {
       background-color: $mid-red;
-      border-color: $mid-red;
+      border-color: $mid-red !important;
 
       &:hover {
         background-color: $dark-red;
-        border-color: $dark-red;
+        border-color: $dark-red !important;
       }
 
       &:after {

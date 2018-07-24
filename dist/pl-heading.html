@@ -18,7 +18,8 @@
   <!-- Stylesheets -->
   <style>
     #pl-body { width: 1024px; max-width: 960px; margin: 0; padding: 0 }
-    .pl-header { box-sizing: border-box; width: 100%; padding: 1em; color: #fff; background-color: #666; clear: both; }
+    .pl-header { box-sizing: border-box; width: 100%; padding: 1em 1em 0.5em; color: #fff; background-color: #b52577; clear: both; }
+    .pl-header h1, .pl-header p {color: #fff; margin: 0; }
     .pl-footer { box-sizing: border-box; width: 100%; padding: 1em; color: #333; background-color: #999; clear: both }
     .pl-wrapper { box-sizing: border-box; width: 100%; clear: both; }
     .pl-nav { box-sizing: border-box; float: left; width: 25%; border-right: 1px solid #999; padding: 1em; }
@@ -33,11 +34,16 @@
 
 <body id="pl-body">
   <header class="pl-header" role="masthead">
-    <h1>Connect Dementia Research<br />
-      <small>Pattern Library</small></h1>
+    <h1>Connect Dementia Research</h4>
+    <h2>Pattern Library</h2>
   </header>
   <div class="pl-wrapper">
     <nav class="pl-nav" role="navigation">
+      <ul class="component-list">
+        <li>
+          <a href="pl.html">Pattern library home</a>
+        </li>
+      </ul>
       <p><b>Components:</b></p>
       <ul class="component-list">
         <li><a href="pl-heading.html">Heading</a></li>
@@ -77,7 +83,7 @@
     </main>
   </div>
   <footer class="pl-footer">
-    <p><a href="/">CDR home page</a></p>
+    <p><a href="http://cdr.virelai.co.uk/index.html">CDR home page</a></p>
   </footer>
 </body>
 </html>
