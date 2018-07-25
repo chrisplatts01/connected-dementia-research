@@ -24,8 +24,10 @@
     .pl-wrapper { box-sizing: border-box; width: 100%; clear: both; }
     .pl-nav { box-sizing: border-box; float: left; width: 25%; border-right: 1px solid #999; padding: 1em; }
     .pl-main { box-sizing: border-box; float: right; width: 75%; border-left: 1px solid #999; padding: 1em; position: relative; left: -1px;}
-    .pl-code { width: 100%; height: 100px; font-family: "Courier", monospace; white-space: pre-line; font-size: 16px; padding: 1em 0; }
-    .pl-heading { color: #999; font-size: 1rem; border-bottom: 1px solid #ccc; }
+    .pl-code { width: 100%; height: 100px; font-family: "Courier", monospace; white-space: pre-line; font-size: 16px; padding: 1em 0.5em; }
+    .pl-heading { color: #999; }
+    h1.pl-heading { font-size: 1.5rem; border-bottom: 1px solid #ccc; }
+    h2.pl-heading { font-size: 1.0rem; margin-top: 3rem; }
     .component-list { list-style: none; padding: 0; margin: 0 0 1rem 0; }
   </style>
   <link rel="stylesheet" href="/styles/main.css">
@@ -53,6 +55,7 @@
         <li><a href="pl-prompt.html">Prompt/Descriptor</a></li>
         <li><a href="pl-segmented-controls.html">Segmented controls</a></li>
         <li><a href="pl-checkboxes.html">Checkboxes</a></li>
+        <li><a href="pl-radio-buttons.html">Radio buttons</a></li>
       </ul>
       <p><b>Modules:</b></p>
       <ul class="component-list">
@@ -61,7 +64,7 @@
     </nav>
     <main class="pl-main" role="main">
       
-  <h4 class="pl-heading">Segmented controls</h4>
+  <h1 class="pl-heading">Segmented controls</h1>
   <p>Used instead of radio buttons when there are a limited number of mutually-exclusive choices.</p>
   <p><small>To illustrate the styling of <em>checked</em> and <em>hover</em> states, <code>.hover</code> and <code>.checked</code> classes have been added to simulate these states. These classes are not required in production where the <code>:hover</code> and <code>:checked</code> pseudo-classes are used.</small></p>
   <div class="segmented-controls">
@@ -155,7 +158,7 @@
   </label>
 </div>
 
-  <h4 class="pl-heading">HTML</h4>
+  <h2 class="pl-heading">HTML</h2>
   <textarea class="pl-code">
     <div class="segmented-controls">
   <label>
@@ -249,7 +252,7 @@
 </div>
 
   </textarea>
-  <h4 class="pl-heading">SCSS</h4>
+  <h2 class="pl-heading">SCSS</h2>
   <textarea class="pl-code">
     .segmented-controls {
   padding: 12px;
@@ -260,29 +263,28 @@
   }
 
   label {
-    font-size: $base-font-size;;
+    @include small-font;
     display: inline-block;
     box-sizing: border-box;
     width: 50%;
-    border: 1px solid $mid-grey;
-    // border-bottom-width: 3px;
+    border: 1px solid $border-color;
     padding: 0.5rem;
-    color: $mid-red;
+    color: $orange;
     background-color: $white;
     cursor: pointer;
     margin-left: -4px;
-    box-shadow: 0 4px 0 0 $light-grey;
+    box-shadow: 0 4px 0 0 $border-shadow-color;
 
     &:hover, &.hover {
-      color: $dark-red;
-      background-color: $light-red;
+      color: $orange-dark;
+      background-color: $orange-light;
     }
 
     &.error {
-      color: $mid-purple;
+      color: $purple;
 
       &:hover, &.hover {
-        background-color: $light-purple;
+        background-color: $purple-light;
       }
     }
 
@@ -298,13 +300,13 @@
 
   input:checked + label, .checked {
     color: $white;
-    background-color: $mid-red;
-    border-color: $mid-red;
-    border-bottom-color: $mid-grey;
+    background-color: $orange;
+    border-color: $orange;
+    border-bottom-color: $border-color;
 
     &:hover, &.hover {
       color: white;
-      background-color: $dark-red;
+      background-color: $orange;
     }
   }
 }
@@ -322,8 +324,9 @@
 }
 
 .msg-error {
+  @include small-font
   padding-top: 5px;
-  color: $dark-purple;
+  color: $purple;
   text-align: left;
   font-weight: 600;
 
@@ -340,7 +343,7 @@
     </main>
   </div>
   <footer class="pl-footer">
-    <p><a href="http://cdr.virelai.co.uk/index.html">CDR home page</a></p>
+    <p><small><a href="http://cdr.virelai.co.uk/index.html">CDR home page</a></small></p>
   </footer>
 </body>
 </html>

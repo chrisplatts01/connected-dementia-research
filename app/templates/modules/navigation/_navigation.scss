@@ -1,13 +1,13 @@
 .main-navigation {
   @include clearfix;
-  background-color: $light-grey;
+  background-color: $grey-60;
 }
 
 .menu--site {
-  background-color: $light-grey;
+  background-color: $grey-60;
 
   a {
-    color: $black;
+    color: $grey;
   }
 }
 
