@@ -1,4 +1,4 @@
-.checkbox {
+.radio {
   display: block;
   position: relative;
   margin-bottom: 1rem;;
@@ -13,7 +13,7 @@
     cursor: pointer;
   }
 
-  [type="checkbox"] {
+  [type="radio"] {
     position: absolute;
     left: 0;
     opacity: 0;
@@ -34,21 +34,21 @@
     }
   }
 
-  &:hover [type="checkbox"] ~ .checkmark,
-  &.hover [type="checkbox"] ~ .checkmark {
+  &:hover [type="radio"] ~ .checkmark,
+  &.hover [type="radio"] ~ .checkmark {
     background-color: $orange-light;
   }
 
-  &.error [type="checkbox"] ~ .checkmark {
+  &.error [type="radio"] ~ .checkmark {
     border-color: $purple;
   }
 
-  &:error.hover [type="checkbox"] ~ .checkmark,
-  &.error.hover [type="checkbox"] ~ .checkmark {
+  &.error:hover [type="radio"] ~ .checkmark,
+  &.error.hover [type="radio"] ~ .checkmark {
     background-color: $purple-light;
   }
 
-  &.checked [type="checkbox"] ~ .checkmark {
+  &.checked [type="radio"] ~ .checkmark {
     background-color: $orange;
     border-color: $orange;
 
@@ -57,8 +57,8 @@
     }
   }
 
-  &:hover [type="checkbox"]:checked ~ .checkmark,
-  &.hover.checked [type="checkbox"] ~ .checkmark {
+  &:hover [type="radio"]:checked ~ .checkmark,
+  &.hover.checked [type="radio"] ~ .checkmark {
     background-color: $orange-dark;
     border-color: $orange-dark;
   }
@@ -72,6 +72,7 @@
     border: 2px solid $grey-20;
     border-radius: 3px;
     background-color: $white;
+    border-radius: 50%;
 
     &:after {
       content: "";

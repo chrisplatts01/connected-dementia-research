@@ -24,8 +24,10 @@
     .pl-wrapper { box-sizing: border-box; width: 100%; clear: both; }
     .pl-nav { box-sizing: border-box; float: left; width: 25%; border-right: 1px solid #999; padding: 1em; }
     .pl-main { box-sizing: border-box; float: right; width: 75%; border-left: 1px solid #999; padding: 1em; position: relative; left: -1px;}
-    .pl-code { width: 100%; height: 100px; font-family: "Courier", monospace; white-space: pre-line; font-size: 16px; padding: 1em 0; }
-    .pl-heading { color: #999; font-size: 1rem; border-bottom: 1px solid #ccc; }
+    .pl-code { width: 100%; height: 100px; font-family: "Courier", monospace; white-space: pre-line; font-size: 16px; padding: 1em 0.5em; }
+    .pl-heading { color: #999; }
+    h1.pl-heading { font-size: 1.5rem; border-bottom: 1px solid #ccc; }
+    h2.pl-heading { font-size: 1.0rem; margin-top: 3rem; }
     .component-list { list-style: none; padding: 0; margin: 0 0 1rem 0; }
   </style>
   <link rel="stylesheet" href="/styles/main.css">
@@ -53,6 +55,7 @@
         <li><a href="pl-prompt.html">Prompt/Descriptor</a></li>
         <li><a href="pl-segmented-controls.html">Segmented controls</a></li>
         <li><a href="pl-checkboxes.html">Checkboxes</a></li>
+        <li><a href="pl-radio-buttons.html">Radio buttons</a></li>
       </ul>
       <p><b>Modules:</b></p>
       <ul class="component-list">
@@ -61,20 +64,20 @@
     </nav>
     <main class="pl-main" role="main">
       
-  <h4 class="pl-heading">Prompt</h4>
+  <h1 class="pl-heading">Prompt</h1>
   <p class="prompt">Some studies may be looking for people with specific other health conditions, or may not be able to include people with them.</p>
 
-  <h4 class="pl-heading">HTML</h4>
-  <textarea class="pl-code">
+  <h2 class="pl-heading">HTML</h2>
+  <textarea class="pl-code" disabled>
     <p class="prompt">Some studies may be looking for people with specific other health conditions, or may not be able to include people with them.</p>
 
   </textarea>
-  <h4 class="pl-heading">SCSS</h4>
-  <textarea class="pl-code">
+  <h2 class="pl-heading">SCSS</h2>
+  <textarea class="pl-code" disabled>
     .prompt {
   font-weight: 400;
   font-size: $small-font-size;
-  color: $dark-grey;
+  color: $grey;
 
   &:before {
     content: url('/images/icon-info.svg');
@@ -89,7 +92,7 @@
     </main>
   </div>
   <footer class="pl-footer">
-    <p><a href="http://cdr.virelai.co.uk/index.html">CDR home page</a></p>
+    <p><small><a href="http://cdr.virelai.co.uk/index.html">CDR home page</a></small></p>
   </footer>
 </body>
 </html>

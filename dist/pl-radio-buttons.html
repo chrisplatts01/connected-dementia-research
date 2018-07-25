@@ -64,51 +64,51 @@
     </nav>
     <main class="pl-main" role="main">
       
-  <h1 class="pl-heading">Checkboxes</h1>
+  <h1 class="pl-heading">Radio buttons</h1>
   <p><small>To illustrate the styling of <em>checked</em> and <em>hover</em> states, <code>.hover</code> and <code>.checked</code> classes have been added to simulate these states. These classes are not required in production where the <code>:hover</code> and <code>:checked</code> pseudo-classes are used.</small></p>
-  <div class="checkbox">
+  <div class="radio">
   <label>
-    <input id="option-1" name="option" type="checkbox" />
+    <input id="option-1" name="option" type="radio" />
     Option 1
     <span class="checkmark"></span>
   </label>
 </div>
-<div class="checkbox hover">
+<div class="radio hover">
   <label>
-    <input id="option-2" name="option" type="checkbox" />
+    <input id="option-2" name="option" type="radio" />
     Option 2 (Hover)
     <span class="checkmark"></span>
   </label>
 </div>
 
-<div class="checkbox checked">
+<div class="radio checked">
   <label>
-    <input id="option-3" name="option" type="checkbox" />
+    <input id="option-3" name="option" type="radio" />
     Option 3 (Checked)
     <span class="checkmark"></span>
   </label>
 </div>
 
-<div class="checkbox checked hover">
+<div class="radio checked hover">
   <label>
-    <input id="option-4" name="option" type="checkbox" />
+    <input id="option-4" name="option" type="radio" />
     Option 4 (Checked, Hover)
     <span class="checkmark"></span>
   </label>
 </div>
 
-<div class="checkbox error">
+<div class="radio error">
   <label>
-    <input id="option-5" name="option" type="checkbox" />
+    <input id="option-5" name="option" type="radio" />
     Option 5 (Error)
     <span class="checkmark"></span>
   </label>
   <div class="msg-error">Error text</div>
 </div>
 
-<div class="checkbox error hover">
+<div class="radio error hover">
   <label>
-    <input id="option-6" name="option" type="checkbox" />
+    <input id="option-6" name="option" type="radio" />
     Option 6 (Error, Hover)
     <span class="checkmark"></span>
   </label>
@@ -117,49 +117,49 @@
 
   <h2 class="pl-heading">HTML</h2>
   <textarea class="pl-code" disabled>
-    <div class="checkbox">
+    <div class="radio">
   <label>
-    <input id="option-1" name="option" type="checkbox" />
+    <input id="option-1" name="option" type="radio" />
     Option 1
     <span class="checkmark"></span>
   </label>
 </div>
-<div class="checkbox hover">
+<div class="radio hover">
   <label>
-    <input id="option-2" name="option" type="checkbox" />
+    <input id="option-2" name="option" type="radio" />
     Option 2 (Hover)
     <span class="checkmark"></span>
   </label>
 </div>
 
-<div class="checkbox checked">
+<div class="radio checked">
   <label>
-    <input id="option-3" name="option" type="checkbox" />
+    <input id="option-3" name="option" type="radio" />
     Option 3 (Checked)
     <span class="checkmark"></span>
   </label>
 </div>
 
-<div class="checkbox checked hover">
+<div class="radio checked hover">
   <label>
-    <input id="option-4" name="option" type="checkbox" />
+    <input id="option-4" name="option" type="radio" />
     Option 4 (Checked, Hover)
     <span class="checkmark"></span>
   </label>
 </div>
 
-<div class="checkbox error">
+<div class="radio error">
   <label>
-    <input id="option-5" name="option" type="checkbox" />
+    <input id="option-5" name="option" type="radio" />
     Option 5 (Error)
     <span class="checkmark"></span>
   </label>
   <div class="msg-error">Error text</div>
 </div>
 
-<div class="checkbox error hover">
+<div class="radio error hover">
   <label>
-    <input id="option-6" name="option" type="checkbox" />
+    <input id="option-6" name="option" type="radio" />
     Option 6 (Error, Hover)
     <span class="checkmark"></span>
   </label>
@@ -169,7 +169,7 @@
   </textarea>
   <h2 class="pl-heading">SCSS</h2>
   <textarea class="pl-code" disabled>
-    .checkbox {
+    .radio {
   display: block;
   position: relative;
   margin-bottom: 1rem;;
@@ -184,19 +184,19 @@
     cursor: pointer;
   }
 
-  [type="checkbox"] {
+  [type="radio"] {
     position: absolute;
     left: 0;
     opacity: 0;
     cursor: pointer;
 
     &:checked ~ .checkmark {
-      background-color: $mid-red;
-      border-color: $mid-red !important;
+      background-color: $orange;
+      border-color: $orange !important;
 
       &:hover {
-        background-color: $dark-red;
-        border-color: $dark-red !important;
+        background-color: $orange-dark;
+        border-color: $orange-dark !important;
       }
 
       &:after {
@@ -205,32 +205,32 @@
     }
   }
 
-  &:hover [type="checkbox"] ~ .checkmark,
-  &.hover [type="checkbox"] ~ .checkmark {
-    background-color: $light-red;
+  &:hover [type="radio"] ~ .checkmark,
+  &.hover [type="radio"] ~ .checkmark {
+    background-color: $orange-light;
   }
 
-  &.error [type="checkbox"] ~ .checkmark {
-    border-color: $dark-purple;
+  &.error [type="radio"] ~ .checkmark {
+    border-color: $purple;
   }
 
-  &.error.hover [type="checkbox"] ~ .checkmark {
-    background-color: $light-purple;
+  &.error.hover [type="radio"] ~ .checkmark {
+    background-color: $purple-light;
   }
 
-  &.checked [type="checkbox"] ~ .checkmark {
-    background-color: $mid-red;
-    border-color: $mid-red;
+  &.checked [type="radio"] ~ .checkmark {
+    background-color: $orange;
+    border-color: $orange;
 
     &:after {
       display: block;
     }
   }
 
-  &:hover [type="checkbox"]:checked ~ .checkmark,
-  &.hover.checked [type="checkbox"] ~ .checkmark {
-    background-color: $dark-red;
-    border-color: $dark-red;
+  &:hover [type="radio"]:checked ~ .checkmark,
+  &.hover.checked [type="radio"] ~ .checkmark {
+    background-color: $orange-dark;
+    border-color: $orange-dark;
   }
 
   .checkmark {
@@ -239,7 +239,7 @@
     left: 0;
     height: 16px;
     width: 16px;
-    border: 2px solid $mid-grey;
+    border: 2px solid $grey-20;
     border-radius: 3px;
     background-color: $white;
 

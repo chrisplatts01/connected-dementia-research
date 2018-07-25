@@ -5,6 +5,8 @@ body {
   padding: 0;
   max-width: 800px;
   font-family: "Source Sans Pro", "Helvetica", "Arial", sans-serif;
+  font-size: base-font-size;
+  line-height: 32px;
 }
 
 .menu {
@@ -43,8 +45,8 @@ body {
   height: 40px;
   padding: 20px 0;
   float: left;
-  color: #b52577;
-  font-size: 28px;
+  color: #b32a77;
+  font-size: 30px;
   font-weight: bold;
   background: url("/images/logo_cdr.png") left center no-repeat;
   background-size: 120px 80px;
@@ -61,7 +63,7 @@ body {
 }
 
 .main-navigation {
-  background-color: #eee;
+  background-color: #d0d7dd;
 }
 
 .main-navigation::after {
@@ -71,15 +73,15 @@ body {
 }
 
 .menu--site {
-  background-color: #eee;
+  background-color: #d0d7dd;
 }
 
 .menu--site a {
-  color: #333;
+  color: #333f48;
 }
 
 .menu--user {
-  background-color: #b52577;
+  background-color: #b32a77;
   float: right;
 }
 
@@ -90,7 +92,7 @@ body {
 }
 
 .footer {
-  background-color: #999;
+  background-color: #5d7384;
   padding: 2rem;
 }
 
@@ -132,7 +134,7 @@ body {
   margin-top: 0.5rem;
   height: 2rem;
   width: 2rem;
-  background-color: #b52577;
+  background-color: #b32a77;
   font-weight: 700;
   color: #fff;
   border: 0;
@@ -169,13 +171,13 @@ body {
 .menu--smallprint a {
   padding: 0 0 0 0.5rem;
   font-weight: 400;
-  font-size: 0.75rem;
+  font-size: 19px;
   color: #fff;
 }
 
 .social-media {
   width: 100%;
-  background-color: #666;
+  background-color: #333f48;
   text-align: center;
 }
 
@@ -187,7 +189,6 @@ body {
   background-repeat: no-repeat;
   background-size: cover;
   margin: 1rem;
-  background-color: red;
 }
 
 .social-media__button--facebook {
@@ -221,29 +222,35 @@ body {
 }
 
 .heading {
-  color: #666;
+  color: #333f48;
   font-family: "Source Sans Pro", "Helvetica", "Arial", sans-serif;
-  font-size: 1.5rem;
-  line-height: 1.2;
+  font-size: 30px;
+  line-height: 40px;
 }
 
 .question {
+  font-family: "Source Sans Pro", "Helvetica", "Arial", sans-serif;
+  font-size: 23px;
+  line-height: 32px;
   font-weight: 700;
-  font-size: 1rem;
-  color: #666;
+  color: #333f48;
 }
 
 p, .paragraph {
+  font-family: "Source Sans Pro", "Helvetica", "Arial", sans-serif;
+  font-size: 23px;
+  line-height: 32px;
   font-weight: 500;
-  font-size: 1rem;
-  color: #333;
+  color: #000;
 }
 
 .bulletpoints {
+  font-family: "Source Sans Pro", "Helvetica", "Arial", sans-serif;
+  font-size: 23px;
+  line-height: 32px;
   list-style-image: url(/images/bullet-grey.svg);
   list-style-position: inside;
   padding: 0;
-  font-size: 1rem;
 }
 
 .bulletpoints li {
@@ -252,8 +259,8 @@ p, .paragraph {
 
 .prompt {
   font-weight: 400;
-  font-size: 0.9rem;
-  color: #666;
+  font-size: 19px;
+  color: #333f48;
 }
 
 .prompt:before {
@@ -273,30 +280,32 @@ p, .paragraph {
 }
 
 .segmented-controls label {
-  font-size: 16px;
+  font-family: "Source Sans Pro", "Helvetica", "Arial", sans-serif;
+  font-size: 19px;
+  line-height: 24px;
   display: inline-block;
   box-sizing: border-box;
   width: 50%;
-  border: 1px solid #999;
+  border: 1px solid #b8c4cc;
   padding: 0.5rem;
-  color: #d43a17;
+  color: #d63900;
   background-color: #fff;
   cursor: pointer;
   margin-left: -4px;
-  box-shadow: 0 4px 0 0 #eee;
+  box-shadow: 0 4px 0 0 #d0d7dd;
 }
 
 .segmented-controls label:hover, .segmented-controls label.hover {
-  color: #972a0d;
-  background-color: #fff0eb;
+  color: #701e00;
+  background-color: #fff0ea;
 }
 
 .segmented-controls label.error {
-  color: #8417aa;
+  color: #8500ad;
 }
 
 .segmented-controls label.error:hover, .segmented-controls label.error.hover {
-  background-color: #f3e6f6;
+  background-color: #f3e6f7;
 }
 
 .segmented-controls label:first-of-type {
@@ -311,14 +320,14 @@ p, .paragraph {
 
 .segmented-controls input:checked + label, .segmented-controls .checked {
   color: #fff;
-  background-color: #d43a17;
-  border-color: #d43a17;
-  border-bottom-color: #999;
+  background-color: #d63900;
+  border-color: #d63900;
+  border-bottom-color: #b8c4cc;
 }
 
 .segmented-controls input:checked + label:hover, .segmented-controls input:checked + label.hover, .segmented-controls .checked:hover, .segmented-controls .checked.hover {
   color: white;
-  background-color: #972a0d;
+  background-color: #d63900;
 }
 
 .segmented-controls-2 label {
@@ -334,8 +343,11 @@ p, .paragraph {
 }
 
 .msg-error {
+  font-family: "Source Sans Pro", "Helvetica", "Arial", sans-serif;
+  font-size: 19px;
+  line-height: 24px;
   padding-top: 5px;
-  color: #8417aa;
+  color: #8500ad;
   text-align: left;
   font-weight: 600;
 }
@@ -371,13 +383,13 @@ p, .paragraph {
 }
 
 .checkbox [type="checkbox"]:checked ~ .checkmark {
-  background-color: #d43a17;
-  border-color: #d43a17 !important;
+  background-color: #d63900;
+  border-color: #d63900;
 }
 
 .checkbox [type="checkbox"]:checked ~ .checkmark:hover {
-  background-color: #972a0d;
-  border-color: #972a0d !important;
+  background-color: #701e00;
+  border-color: #701e00;
 }
 
 .checkbox [type="checkbox"]:checked ~ .checkmark:after {
@@ -386,20 +398,21 @@ p, .paragraph {
 
 .checkbox:hover [type="checkbox"] ~ .checkmark,
 .checkbox.hover [type="checkbox"] ~ .checkmark {
-  background-color: #fff0eb;
+  background-color: #fff0ea;
 }
 
 .checkbox.error [type="checkbox"] ~ .checkmark {
-  border-color: #8417aa;
+  border-color: #8500ad;
 }
 
+.checkbox:error.hover [type="checkbox"] ~ .checkmark,
 .checkbox.error.hover [type="checkbox"] ~ .checkmark {
-  background-color: #f3e6f6;
+  background-color: #f3e6f7;
 }
 
 .checkbox.checked [type="checkbox"] ~ .checkmark {
-  background-color: #d43a17;
-  border-color: #d43a17;
+  background-color: #d63900;
+  border-color: #d63900;
 }
 
 .checkbox.checked [type="checkbox"] ~ .checkmark:after {
@@ -408,17 +421,17 @@ p, .paragraph {
 
 .checkbox:hover [type="checkbox"]:checked ~ .checkmark,
 .checkbox.hover.checked [type="checkbox"] ~ .checkmark {
-  background-color: #972a0d;
-  border-color: #972a0d;
+  background-color: #701e00;
+  border-color: #701e00;
 }
 
 .checkbox .checkmark {
   position: absolute;
-  top: 0;
+  top: 6px;
   left: 0;
   height: 16px;
   width: 16px;
-  border: 2px solid #999;
+  border: 2px solid #5d7384;
   border-radius: 3px;
   background-color: #fff;
 }
@@ -431,7 +444,98 @@ p, .paragraph {
   top: 1px;
   width: 4px;
   height: 10px;
-  border: solid white;
+  border: 1px solid #fff;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+
+.radio {
+  display: block;
+  position: relative;
+  margin-bottom: 1rem;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.radio label {
+  display: block;
+  padding-left: 2rem;
+  cursor: pointer;
+}
+
+.radio [type="radio"] {
+  position: absolute;
+  left: 0;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.radio [type="radio"]:checked ~ .checkmark {
+  background-color: #d63900;
+  border-color: #d63900;
+}
+
+.radio [type="radio"]:checked ~ .checkmark:hover {
+  background-color: #701e00;
+  border-color: #701e00;
+}
+
+.radio [type="radio"]:checked ~ .checkmark:after {
+  display: block;
+}
+
+.radio:hover [type="radio"] ~ .checkmark,
+.radio.hover [type="radio"] ~ .checkmark {
+  background-color: #fff0ea;
+}
+
+.radio.error [type="radio"] ~ .checkmark {
+  border-color: #8500ad;
+}
+
+.radio.error:hover [type="radio"] ~ .checkmark,
+.radio.error.hover [type="radio"] ~ .checkmark {
+  background-color: #f3e6f7;
+}
+
+.radio.checked [type="radio"] ~ .checkmark {
+  background-color: #d63900;
+  border-color: #d63900;
+}
+
+.radio.checked [type="radio"] ~ .checkmark:after {
+  display: block;
+}
+
+.radio:hover [type="radio"]:checked ~ .checkmark,
+.radio.hover.checked [type="radio"] ~ .checkmark {
+  background-color: #701e00;
+  border-color: #701e00;
+}
+
+.radio .checkmark {
+  position: absolute;
+  top: 6px;
+  left: 0;
+  height: 16px;
+  width: 16px;
+  border: 2px solid #5d7384;
+  border-radius: 3px;
+  background-color: #fff;
+  border-radius: 50%;
+}
+
+.radio .checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+  left: 5px;
+  top: 1px;
+  width: 4px;
+  height: 10px;
+  border: 1px solid #fff;
   border-width: 0 2px 2px 0;
   transform: rotate(45deg);
 }

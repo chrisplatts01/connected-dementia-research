@@ -1,6 +1,6 @@
 .footer {
   @include clearfix;
-  background-color: $mid-grey;
+  background-color: $grey-20;
   padding: 2rem;
 }
 
@@ -71,7 +71,7 @@
   a {
     padding: 0 0 0 0.5rem;
     font-weight: 400;
-    font-size: 0.75rem;
+    font-size: $small-font-size;
     color: $white;
   }
 }

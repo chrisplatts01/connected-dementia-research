@@ -1,5 +1,5 @@
 .question {
+  @include base-font();
   font-weight: 700;
-  font-size: 1rem;
-  color: $dark-grey;
+  color: $grey;
 }

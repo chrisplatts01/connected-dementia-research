@@ -1,14 +1,14 @@
 {% extends "pattern-library-layout.njk" %}
 
 {% block content %}
-  <h4 class="pl-heading">Question</h4>
+  <h1 class="pl-heading">Question</h1>
   {% include 'components/question/_question.njk' %}
-  <h4 class="pl-heading">HTML</h4>
-  <textarea class="pl-code">
+  <h2 class="pl-heading">HTML</h2>
+  <textarea class="pl-code" disabled>
     {% include 'components/question/_question.njk' %}
   </textarea>
-  <h4 class="pl-heading">SCSS</h4>
-  <textarea class="pl-code">
+  <h2 class="pl-heading">SCSS</h2>
+  <textarea class="pl-code" disabled>
     {% include 'components/question/_question.scss' ignore missing %}
   </textarea>
 {% endblock %}
