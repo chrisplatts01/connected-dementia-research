@@ -20,12 +20,12 @@
     cursor: pointer;
 
     &:checked ~ .checkmark {
-      background-color: $mid-red;
-      border-color: $mid-red !important;
+      background-color: $orange;
+      border-color: $orange;
 
       &:hover {
-        background-color: $dark-red;
-        border-color: $dark-red !important;
+        background-color: $orange-dark;
+        border-color: $orange-dark;
       }
 
       &:after {
@@ -36,20 +36,21 @@
 
   &:hover [type="checkbox"] ~ .checkmark,
   &.hover [type="checkbox"] ~ .checkmark {
-    background-color: $light-red;
+    background-color: $orange-light;
   }
 
   &.error [type="checkbox"] ~ .checkmark {
-    border-color: $dark-purple;
+    border-color: $purple;
   }
 
+  &:error.hover [type="checkbox"] ~ .checkmark,
   &.error.hover [type="checkbox"] ~ .checkmark {
-    background-color: $light-purple;
+    background-color: $purple-light;
   }
 
   &.checked [type="checkbox"] ~ .checkmark {
-    background-color: $mid-red;
-    border-color: $mid-red;
+    background-color: $orange;
+    border-color: $orange;
 
     &:after {
       display: block;
@@ -58,17 +59,17 @@
 
   &:hover [type="checkbox"]:checked ~ .checkmark,
   &.hover.checked [type="checkbox"] ~ .checkmark {
-    background-color: $dark-red;
-    border-color: $dark-red;
+    background-color: $orange-dark;
+    border-color: $orange-dark;
   }
 
   .checkmark {
     position: absolute;
-    top: 0;
+    top: 6px;
     left: 0;
     height: 16px;
     width: 16px;
-    border: 2px solid $mid-grey;
+    border: 2px solid $grey-20;
     border-radius: 3px;
     background-color: $white;
 
@@ -80,7 +81,7 @@
       top: 1px;
       width: 4px;
       height: 10px;
-      border: solid white;
+      border: 1px solid $white;
       border-width: 0 2px 2px 0;
       -webkit-transform: rotate(45deg);
       -ms-transform: rotate(45deg);

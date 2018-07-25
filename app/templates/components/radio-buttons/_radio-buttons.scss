@@ -21,11 +21,11 @@
 
     &:checked ~ .checkmark {
       background-color: $orange;
-      border-color: $orange !important;
+      border-color: $orange;
 
       &:hover {
         background-color: $orange-dark;
-        border-color: $orange-dark !important;
+        border-color: $orange-dark;
       }
 
       &:after {
@@ -43,6 +43,7 @@
     border-color: $purple;
   }
 
+  &.error:hover [type="radio"] ~ .checkmark,
   &.error.hover [type="radio"] ~ .checkmark {
     background-color: $purple-light;
   }
@@ -64,13 +65,14 @@
 
   .checkmark {
     position: absolute;
-    top: 0;
+    top: 6px;
     left: 0;
     height: 16px;
     width: 16px;
     border: 2px solid $grey-20;
     border-radius: 3px;
     background-color: $white;
+    border-radius: 50%;
 
     &:after {
       content: "";
@@ -80,7 +82,7 @@
       top: 1px;
       width: 4px;
       height: 10px;
-      border: solid white;
+      border: 1px solid $white;
       border-width: 0 2px 2px 0;
       -webkit-transform: rotate(45deg);
       -ms-transform: rotate(45deg);

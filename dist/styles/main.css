@@ -359,7 +359,7 @@ p, .paragraph {
   padding-right: 0.5rem;
 }
 
-.radio {
+.checkbox {
   display: block;
   position: relative;
   margin-bottom: 1rem;
@@ -369,64 +369,65 @@ p, .paragraph {
   user-select: none;
 }
 
-.radio label {
+.checkbox label {
   display: block;
   padding-left: 2rem;
   cursor: pointer;
 }
 
-.radio [type="radio"] {
+.checkbox [type="checkbox"] {
   position: absolute;
   left: 0;
   opacity: 0;
   cursor: pointer;
 }
 
-.radio [type="radio"]:checked ~ .checkmark {
-  background-color: #d63900;
-  border-color: #d63900 !important;
-}
-
-.radio [type="radio"]:checked ~ .checkmark:hover {
-  background-color: #701e00;
-  border-color: #701e00 !important;
-}
-
-.radio [type="radio"]:checked ~ .checkmark:after {
-  display: block;
-}
-
-.radio:hover [type="radio"] ~ .checkmark,
-.radio.hover [type="radio"] ~ .checkmark {
-  background-color: #fff0ea;
-}
-
-.radio.error [type="radio"] ~ .checkmark {
-  border-color: #8500ad;
-}
-
-.radio.error.hover [type="radio"] ~ .checkmark {
-  background-color: #f3e6f7;
-}
-
-.radio.checked [type="radio"] ~ .checkmark {
+.checkbox [type="checkbox"]:checked ~ .checkmark {
   background-color: #d63900;
   border-color: #d63900;
 }
 
-.radio.checked [type="radio"] ~ .checkmark:after {
-  display: block;
-}
-
-.radio:hover [type="radio"]:checked ~ .checkmark,
-.radio.hover.checked [type="radio"] ~ .checkmark {
+.checkbox [type="checkbox"]:checked ~ .checkmark:hover {
   background-color: #701e00;
   border-color: #701e00;
 }
 
-.radio .checkmark {
+.checkbox [type="checkbox"]:checked ~ .checkmark:after {
+  display: block;
+}
+
+.checkbox:hover [type="checkbox"] ~ .checkmark,
+.checkbox.hover [type="checkbox"] ~ .checkmark {
+  background-color: #fff0ea;
+}
+
+.checkbox.error [type="checkbox"] ~ .checkmark {
+  border-color: #8500ad;
+}
+
+.checkbox:error.hover [type="checkbox"] ~ .checkmark,
+.checkbox.error.hover [type="checkbox"] ~ .checkmark {
+  background-color: #f3e6f7;
+}
+
+.checkbox.checked [type="checkbox"] ~ .checkmark {
+  background-color: #d63900;
+  border-color: #d63900;
+}
+
+.checkbox.checked [type="checkbox"] ~ .checkmark:after {
+  display: block;
+}
+
+.checkbox:hover [type="checkbox"]:checked ~ .checkmark,
+.checkbox.hover.checked [type="checkbox"] ~ .checkmark {
+  background-color: #701e00;
+  border-color: #701e00;
+}
+
+.checkbox .checkmark {
   position: absolute;
-  top: 0;
+  top: 6px;
   left: 0;
   height: 16px;
   width: 16px;
@@ -435,7 +436,7 @@ p, .paragraph {
   background-color: #fff;
 }
 
-.radio .checkmark:after {
+.checkbox .checkmark:after {
   content: "";
   position: absolute;
   display: none;
@@ -443,7 +444,7 @@ p, .paragraph {
   top: 1px;
   width: 4px;
   height: 10px;
-  border: solid white;
+  border: 1px solid #fff;
   border-width: 0 2px 2px 0;
   transform: rotate(45deg);
 }
@@ -473,12 +474,12 @@ p, .paragraph {
 
 .radio [type="radio"]:checked ~ .checkmark {
   background-color: #d63900;
-  border-color: #d63900 !important;
+  border-color: #d63900;
 }
 
 .radio [type="radio"]:checked ~ .checkmark:hover {
   background-color: #701e00;
-  border-color: #701e00 !important;
+  border-color: #701e00;
 }
 
 .radio [type="radio"]:checked ~ .checkmark:after {
@@ -494,6 +495,7 @@ p, .paragraph {
   border-color: #8500ad;
 }
 
+.radio.error:hover [type="radio"] ~ .checkmark,
 .radio.error.hover [type="radio"] ~ .checkmark {
   background-color: #f3e6f7;
 }
@@ -515,13 +517,14 @@ p, .paragraph {
 
 .radio .checkmark {
   position: absolute;
-  top: 0;
+  top: 6px;
   left: 0;
   height: 16px;
   width: 16px;
   border: 2px solid #5d7384;
   border-radius: 3px;
   background-color: #fff;
+  border-radius: 50%;
 }
 
 .radio .checkmark:after {
@@ -532,7 +535,7 @@ p, .paragraph {
   top: 1px;
   width: 4px;
   height: 10px;
-  border: solid white;
+  border: 1px solid #fff;
   border-width: 0 2px 2px 0;
   transform: rotate(45deg);
 }
