@@ -43,7 +43,7 @@
     border-color: $purple;
   }
 
-  &:error.hover [type="checkbox"] ~ .checkmark,
+  &.error:hover [type="checkbox"] ~ .checkmark,
   &.error.hover [type="checkbox"] ~ .checkmark {
     background-color: $purple-light;
   }

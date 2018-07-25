@@ -405,7 +405,7 @@ p, .paragraph {
   border-color: #8500ad;
 }
 
-.checkbox:error.hover [type="checkbox"] ~ .checkmark,
+.checkbox.error:hover [type="checkbox"] ~ .checkmark,
 .checkbox.error.hover [type="checkbox"] ~ .checkmark {
   background-color: #f3e6f7;
 }
