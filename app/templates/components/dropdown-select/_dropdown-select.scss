@@ -1,0 +1,41 @@
+.dropdown-select {
+  label {
+    padding-right: 1rem
+  }
+
+  select {
+    display: none;
+  }
+
+  .dropdown {
+    display: block;
+    margin: 0 1em;
+    box-sizing: border-box;
+    border: 1px solid $border-color;
+    border-radius: 3px;
+    box-shadow: 0 4px 0 0 $border-shadow-color;
+
+    &:hover {
+      border-color: $border-hover-color;
+    }
+
+    .dropdown__option {
+      display: none;
+      width: 100%;
+      font-size: $small-font-size;
+      font-weight: 400;
+      color: $grey-20;
+      box-sizing: border-box;
+      padding: 4px 0.5em;
+      border-top: 1px solid $border-color;
+
+      &:first-child {
+        border-top: 0;
+      }
+
+      &.selected {
+        display: block;
+      }
+    }
+  }
+}

@@ -286,7 +286,7 @@ p, .paragraph {
   display: inline-block;
   box-sizing: border-box;
   width: 50%;
-  border: 1px solid #b8c4cc;
+  border: 1px solid #8599a9;
   padding: 0.5rem;
   color: #d63900;
   background-color: #fff;
@@ -322,7 +322,7 @@ p, .paragraph {
   color: #fff;
   background-color: #d63900;
   border-color: #d63900;
-  border-bottom-color: #b8c4cc;
+  border-bottom-color: #8599a9;
 }
 
 .segmented-controls input:checked + label:hover, .segmented-controls input:checked + label.hover, .segmented-controls .checked:hover, .segmented-controls .checked.hover {
@@ -431,7 +431,7 @@ p, .paragraph {
   left: 0;
   height: 16px;
   width: 16px;
-  border: 2px solid #5d7384;
+  border: 2px solid #8599a9;
   border-radius: 3px;
   background-color: #fff;
 }
@@ -521,7 +521,7 @@ p, .paragraph {
   left: 0;
   height: 16px;
   width: 16px;
-  border: 2px solid #5d7384;
+  border: 2px solid #8599a9;
   border-radius: 3px;
   background-color: #fff;
   border-radius: 50%;
@@ -538,4 +538,44 @@ p, .paragraph {
   border: 1px solid #fff;
   border-width: 0 2px 2px 0;
   transform: rotate(45deg);
+}
+
+.dropdown-select label {
+  padding-right: 1rem;
+}
+
+.dropdown-select select {
+  display: none;
+}
+
+.dropdown-select .dropdown {
+  display: block;
+  margin: 0 1em;
+  box-sizing: border-box;
+  border: 1px solid #8599a9;
+  border-radius: 3px;
+  box-shadow: 0 4px 0 0 #d0d7dd;
+}
+
+.dropdown-select .dropdown:hover {
+  border-color: #5d7384;
+}
+
+.dropdown-select .dropdown .dropdown__option {
+  display: none;
+  width: 100%;
+  font-size: 19px;
+  font-weight: 400;
+  color: #5d7384;
+  box-sizing: border-box;
+  padding: 4px 0.5em;
+  border-top: 1px solid #8599a9;
+}
+
+.dropdown-select .dropdown .dropdown__option:first-child {
+  border-top: 0;
+}
+
+.dropdown-select .dropdown .dropdown__option.selected {
+  display: block;
 }

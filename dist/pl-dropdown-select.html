@@ -65,10 +65,82 @@
     </nav>
     <main class="pl-main" role="main">
       
-  <h4 class="pl-heading">Connect Dementia Research<br><small>Pattern Library</small></h4>
-  <p>Component and module library for the Connect Dementia Research project website.</p>
-  <p>Reusable components and modules, linked in the menu on the left, are illustrated with a description, one or more examples, the HTML code used for the example and the SCSS code used to generate the CSS styling for that example.</p>
-  <p>Where dynamic styling needs to be illustrated, for instance <em>hover</em> and <em>checked</em> states, they are simulated using classes. These classes are not required in production code.</p>
+  <h1 class="pl-heading">Dropdown select</h1>
+  <p><small>To illustrate the styling of <em>checked</em> and <em>hover</em> states, <code>.hover</code> and <code>.checked</code> classes have been added to simulate these states. These classes are not required in production where the <code>:hover</code> and <code>:checked</code> pseudo-classes are used.</small></p>
+  <div class="dropdown-select">
+  <label>Choose an option:
+    <select id="options" name="options">
+      <option selected>Select&hellip;</option>
+      <option value="option-1">Option 1</option>
+      <option value="option-2">Option 2</option>
+      <option value="option-3">Option 3</option>
+      <option value="option-4">Option 4</option>
+      <option value="option-5">Option 5</option>
+    </select>
+  </label>
+</div>
+
+  <h2 class="pl-heading">HTML</h2>
+  <textarea class="pl-code" disabled>
+    <div class="dropdown-select">
+  <label>Choose an option:
+    <select id="options" name="options">
+      <option selected>Select&hellip;</option>
+      <option value="option-1">Option 1</option>
+      <option value="option-2">Option 2</option>
+      <option value="option-3">Option 3</option>
+      <option value="option-4">Option 4</option>
+      <option value="option-5">Option 5</option>
+    </select>
+  </label>
+</div>
+
+  </textarea>
+  <h2 class="pl-heading">SCSS</h2>
+  <textarea class="pl-code" disabled>
+    .dropdown-select {
+  label {
+    padding-right: 1rem
+  }
+
+  select {
+    display: none;
+  }
+
+  .dropdown {
+    display: block;
+    margin: 0 1em;
+    box-sizing: border-box;
+    border: 1px solid $border-color;
+    border-radius: 3px;
+    box-shadow: 0 4px 0 0 $border-shadow-color;
+
+    &:hover {
+      border-color: $border-hover-color;
+    }
+
+    .dropdown__option {
+      display: none;
+      width: 100%;
+      font-size: $small-font-size;
+      font-weight: 400;
+      color: $grey-20;
+      box-sizing: border-box;
+      padding: 4px 0.5em;
+      border-top: 1px solid $border-color;
+
+      &:first-child {
+        border-top: 0;
+      }
+
+      &.selected {
+        display: block;
+      }
+    }
+  }
+}
+
+  </textarea>
 
     </main>
   </div>

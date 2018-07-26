@@ -71,12 +71,37 @@
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_jquery__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_jquery___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_jquery__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__foo__ = __webpack_require__(2);
 
 
+__WEBPACK_IMPORTED_MODULE_0_jquery___default()(function () {
+  /**
+    * Function to handle custom select elements
+    */
+  (function () {
+    var $dropdown
+    var $dropdownOption
+    var $dropdownSelect
+    var $label
+    var $select
+    var $selectOption
+    var selectOptionText
 
-__WEBPACK_IMPORTED_MODULE_0_jquery___default()(function () {})
-Object(__WEBPACK_IMPORTED_MODULE_1__foo__["a" /* default */])()
+    $dropdownSelect = __WEBPACK_IMPORTED_MODULE_0_jquery___default()('.dropdown-select')
+    $dropdownSelect.each(function () {
+      $label = __WEBPACK_IMPORTED_MODULE_0_jquery___default()(this).find('label')
+      $select = __WEBPACK_IMPORTED_MODULE_0_jquery___default()(this).find('select')
+      $label.after('<div class="dropdown"></div>')
+      $dropdown = $label.next('.dropdown')
+      $selectOption = $select.find('option')
+      $selectOption.each(function (index) {
+        selectOptionText = __WEBPACK_IMPORTED_MODULE_0_jquery___default()(this).text()
+        $dropdownOption = __WEBPACK_IMPORTED_MODULE_0_jquery___default()('<div class="dropdown__option">').text(selectOptionText)
+        if (index === 0) { $dropdownOption.addClass('selected') }
+        $dropdown.append($dropdownOption)
+      })
+    })
+  })()
+})
 
 
 /***/ }),
@@ -10448,17 +10473,6 @@ if ( !noGlobal ) {
 
 return jQuery;
 } );
-
-
-/***/ }),
-/* 2 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (immutable) */ __webpack_exports__["a"] = foo;
-function foo () {
-  console.log('SCRIPT LOADED')
-}
 
 
 /***/ })
