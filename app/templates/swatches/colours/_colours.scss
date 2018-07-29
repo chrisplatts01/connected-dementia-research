@@ -1,0 +1,46 @@
+.colour-swatches th, .colour-swatches td {
+  text-align: left;
+  padding: 0 5px;
+}
+
+.colour-swatch__name {
+  font-weight: 700
+}
+
+.colour-swatch__rgb {
+  font-family: "Courier", monospace;
+}
+
+.colour-swatch__swatch span {
+  display: block;
+  width: 50px;
+  height: 25px;
+  border: 1px solid black;
+}
+
+.colour-swatch__swatch-black span { background-color: #000; }
+.colour-swatch__swatch-grey10 span { background-color: darken($grey, 10%); }
+.colour-swatch__swatch-grey span { background-color: rgb(51, 63, 72); }
+.colour-swatch__swatch-grey-20 span { background-color: lighten($grey, 20%); }
+.colour-swatch__swatch-grey-35 span { background-color: lighten($grey, 35%); }
+.colour-swatch__swatch-grey-52 span { background-color: lighten($grey, 52%); }
+.colour-swatch__swatch-grey-60 span { background-color: lighten($grey, 60%); }
+.colour-swatch__swatch-grey-66 span { background-color: lighten($grey, 66%); }
+.colour-swatch__swatch-grey-74 span { background-color: lighten($grey, 74%); }
+.colour-swatch__swatch-white span { background-color: #fff; }
+
+// Colours
+.colour-swatch__swatch-orange-darker span { background-color: darken($orange, 20%); }
+.colour-swatch__swatch-orange-dark span { background-color: darken($orange, 12%); }
+.colour-swatch__swatch-orange span { background-color: rgb(214,57,0); }
+.colour-swatch__swatch-orange-light span { background-color: lighten($orange, 54%); }
+
+.colour-swatch__swatch-purple-dark span { background-color: darken($purple, 8%); }
+.colour-swatch__swatch-purple span { background-color: rgb(133, 0, 173); }
+.colour-swatch__swatch-purple-light span { background-color: rgb(243, 230, 247); }
+
+.colour-swatch__swatch-emerald-darker span { background-color: darken($emerald, 20%); }
+.colour-swatch__swatch-emerald-dark span { background-color: darken($emerald, 12%); }
+.colour-swatch__swatch-emerald span { background-color: rgb(0, 133, 113); }
+
+.colour-swatch__swatch-magenta span { background-color: rgb(179, 42, 119); }

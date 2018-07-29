@@ -7,6 +7,7 @@ body {
   font-family: "Source Sans Pro", "Helvetica", "Arial", sans-serif;
   font-size: base-font-size;
   line-height: 32px;
+  background-color: #f9fafb;
 }
 
 .menu {
@@ -86,9 +87,9 @@ body {
 }
 
 .menu--user a {
-  color: #fff;
+  color: white;
   font-weight: 400;
-  border-right: 1px solid #fff;
+  border-right: 1px solid white;
 }
 
 .footer {
@@ -111,7 +112,7 @@ body {
   float: left;
   width: 30%;
   font-weight: 700;
-  color: #fff;
+  color: white;
 }
 
 .footer__signup input {
@@ -136,7 +137,7 @@ body {
   width: 2rem;
   background-color: #b32a77;
   font-weight: 700;
-  color: #fff;
+  color: white;
   border: 0;
 }
 
@@ -146,7 +147,7 @@ body {
 }
 
 .menu--info .menu__link {
-  border-right: 1px solid #fff;
+  border-right: 1px solid white;
 }
 
 .menu--info .menu__link:last-child {
@@ -155,7 +156,7 @@ body {
 
 .menu--info a {
   padding: 0 0.5rem;
-  color: #fff;
+  color: white;
 }
 
 .menu--smallprint {
@@ -172,7 +173,7 @@ body {
   padding: 0 0 0 0.5rem;
   font-weight: 400;
   font-size: 19px;
-  color: #fff;
+  color: white;
 }
 
 .social-media {
@@ -209,7 +210,7 @@ body {
 
 .site-sponsors {
   width: 100%;
-  background-color: #fff;
+  background-color: white;
 }
 
 .site-sponsor {
@@ -241,7 +242,7 @@ p, .paragraph {
   font-size: 23px;
   line-height: 32px;
   font-weight: 500;
-  color: #000;
+  color: black;
 }
 
 .bulletpoints {
@@ -289,14 +290,14 @@ p, .paragraph {
   border: 1px solid #8599a9;
   padding: 0.5rem;
   color: #d63900;
-  background-color: #fff;
+  background-color: white;
   cursor: pointer;
   margin-left: -4px;
   box-shadow: 0 4px 0 0 #d0d7dd;
 }
 
 .segmented-controls label:hover, .segmented-controls label.hover {
-  color: #701e00;
+  color: #992900;
   background-color: #fff0ea;
 }
 
@@ -319,7 +320,7 @@ p, .paragraph {
 }
 
 .segmented-controls input:checked + label, .segmented-controls .checked {
-  color: #fff;
+  color: white;
   background-color: #d63900;
   border-color: #d63900;
   border-bottom-color: #8599a9;
@@ -388,8 +389,8 @@ p, .paragraph {
 }
 
 .checkbox [type="checkbox"]:checked ~ .checkmark:hover {
-  background-color: #701e00;
-  border-color: #701e00;
+  background-color: #992900;
+  border-color: #992900;
 }
 
 .checkbox [type="checkbox"]:checked ~ .checkmark:after {
@@ -421,8 +422,8 @@ p, .paragraph {
 
 .checkbox:hover [type="checkbox"]:checked ~ .checkmark,
 .checkbox.hover.checked [type="checkbox"] ~ .checkmark {
-  background-color: #701e00;
-  border-color: #701e00;
+  background-color: #992900;
+  border-color: #992900;
 }
 
 .checkbox .checkmark {
@@ -433,7 +434,7 @@ p, .paragraph {
   width: 16px;
   border: 2px solid #8599a9;
   border-radius: 3px;
-  background-color: #fff;
+  background-color: white;
 }
 
 .checkbox .checkmark:after {
@@ -444,7 +445,7 @@ p, .paragraph {
   top: 1px;
   width: 4px;
   height: 10px;
-  border: 1px solid #fff;
+  border: 1px solid white;
   border-width: 0 2px 2px 0;
   transform: rotate(45deg);
 }
@@ -478,8 +479,8 @@ p, .paragraph {
 }
 
 .radio [type="radio"]:checked ~ .checkmark:hover {
-  background-color: #701e00;
-  border-color: #701e00;
+  background-color: #992900;
+  border-color: #992900;
 }
 
 .radio [type="radio"]:checked ~ .checkmark:after {
@@ -511,8 +512,8 @@ p, .paragraph {
 
 .radio:hover [type="radio"]:checked ~ .checkmark,
 .radio.hover.checked [type="radio"] ~ .checkmark {
-  background-color: #701e00;
-  border-color: #701e00;
+  background-color: #992900;
+  border-color: #992900;
 }
 
 .radio .checkmark {
@@ -523,7 +524,7 @@ p, .paragraph {
   width: 16px;
   border: 2px solid #8599a9;
   border-radius: 3px;
-  background-color: #fff;
+  background-color: white;
   border-radius: 50%;
 }
 
@@ -531,13 +532,12 @@ p, .paragraph {
   content: "";
   position: absolute;
   display: none;
-  left: 5px;
-  top: 1px;
-  width: 4px;
-  height: 10px;
-  border: 1px solid #fff;
-  border-width: 0 2px 2px 0;
-  transform: rotate(45deg);
+  top: 9px;
+  left: 9px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: white;
 }
 
 .dropdown-select label {
@@ -578,4 +578,158 @@ p, .paragraph {
 
 .dropdown-select .dropdown .dropdown__option.selected {
   display: block;
+}
+
+.colour-swatches th, .colour-swatches td {
+  text-align: left;
+  padding: 0 5px;
+}
+
+.colour-swatch__name {
+  font-weight: 700;
+}
+
+.colour-swatch__rgb {
+  font-family: "Courier", monospace;
+}
+
+.colour-swatch__swatch span {
+  display: block;
+  width: 50px;
+  height: 25px;
+  border: 1px solid black;
+}
+
+.colour-swatch__swatch-black span {
+  background-color: #000;
+}
+
+.colour-swatch__swatch-grey10 span {
+  background-color: #1e252a;
+}
+
+.colour-swatch__swatch-grey span {
+  background-color: #333f48;
+}
+
+.colour-swatch__swatch-grey-20 span {
+  background-color: #5d7384;
+}
+
+.colour-swatch__swatch-grey-35 span {
+  background-color: #8599a9;
+}
+
+.colour-swatch__swatch-grey-52 span {
+  background-color: #b8c4cc;
+}
+
+.colour-swatch__swatch-grey-60 span {
+  background-color: #d0d7dd;
+}
+
+.colour-swatch__swatch-grey-66 span {
+  background-color: #e1e6ea;
+}
+
+.colour-swatch__swatch-grey-74 span {
+  background-color: #f9fafb;
+}
+
+.colour-swatch__swatch-white span {
+  background-color: #fff;
+}
+
+.colour-swatch__swatch-orange-darker span {
+  background-color: #701e00;
+}
+
+.colour-swatch__swatch-orange-dark span {
+  background-color: #992900;
+}
+
+.colour-swatch__swatch-orange span {
+  background-color: #d63900;
+}
+
+.colour-swatch__swatch-orange-light span {
+  background-color: #fff0ea;
+}
+
+.colour-swatch__swatch-purple-dark span {
+  background-color: #660084;
+}
+
+.colour-swatch__swatch-purple span {
+  background-color: #8500ad;
+}
+
+.colour-swatch__swatch-purple-light span {
+  background-color: #f3e6f7;
+}
+
+.colour-swatch__swatch-emerald-darker span {
+  background-color: #001f1a;
+}
+
+.colour-swatch__swatch-emerald-dark span {
+  background-color: #00483d;
+}
+
+.colour-swatch__swatch-emerald span {
+  background-color: #008571;
+}
+
+.colour-swatch__swatch-magenta span {
+  background-color: #b32a77;
+}
+
+.font-swatches th, .font-swatches td {
+  text-align: left;
+  padding: 0 20px;
+  vertical-align: top;
+  border-bottom: 1px solid #d0d7dd;
+  line-height: 1.5;
+}
+
+.font-swatch__name {
+  font-weight: 600;
+  width: 90px;
+}
+
+.font-swatch__usage {
+  font-weight: 600;
+  width: 80px;
+}
+
+.font-swatch__swatch-large-text span {
+  font-family: "Source Sans Pro", "Helvetica", "Arial", sans-serif;
+  font-size: 30px;
+  line-height: 40px;
+  font-weight: 600;
+  color: #333f48;
+}
+
+.font-swatch__swatch-bold-text span {
+  font-family: "Source Sans Pro", "Helvetica", "Arial", sans-serif;
+  font-size: 23px;
+  line-height: 32px;
+  font-weight: 600;
+  color: #333f48;
+}
+
+.font-swatch__swatch-normal-text span {
+  font-family: "Source Sans Pro", "Helvetica", "Arial", sans-serif;
+  font-size: 23px;
+  line-height: 32px;
+  font-weight: 400;
+  color: #333f48;
+}
+
+.font-swatch__swatch-small-text span {
+  font-family: "Source Sans Pro", "Helvetica", "Arial", sans-serif;
+  font-size: 19px;
+  line-height: 24px;
+  font-weight: 400;
+  color: #5d7384;
 }

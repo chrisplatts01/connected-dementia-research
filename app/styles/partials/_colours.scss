@@ -1,31 +1,58 @@
-
 // Neutrals
-$white: #fff;
-$black: #000;
-
+$black: rgb(0,0,0);
 $grey: rgb(51, 63, 72);
-$grey10: darken($grey, 10%);
-$grey-20: lighten($grey, 20%);
-$grey-35: lighten($grey, 35%);
-$grey-52: lighten($grey, 52%);
-$grey-60: lighten($grey, 60%);
-$grey-66: lighten($grey, 66%);
-$grey-74: lighten($grey, 74%);
+$grey10: rgb(30,37,42);
+$grey-20: rgb(93,115,132);
+$grey-35: rgb(133,153,169);
+$grey-52: rgb(184,196,204);
+$grey-60: rgb(208,215,221);
+$grey-66: rgb(225,230,234);
+$grey-74: rgb(249,250,251);
+$white: rgb(255,255,255);
 
 // Colours
 $orange: rgb(214,57,0);
-$orange-dark: darken($orange, 20%);
-$orange-light: lighten($orange, 54%);
+$orange-dark: rgb(153,41,0);
+$orange-darker: rgb(112,30,0);
+$orange-light: rgb(255,240,234);
 
-$purple: rgb(133, 0, 173);
-$purple-dark: darken($purple, 8%);
-$purple-light: rgb(243, 230, 247);
+$purple: rgb(133,0,173);
+$purple-dark: rgb(102,0,132);
+$purple-light: rgb(243,230,247);
 
-$emerald: rgb(0, 133, 113);
-$emerald-dark: darken($emerald, 12%);
-$emerald-darker: darken($emerald, 20%);
+$emerald: rgb(0,133,113);
+$emerald-dark: rgb(0,72,61);
+$emerald-darker: rgb(0,31,26);
 
-$magenta: rgb(179, 42, 119);
+$magenta: rgb(179,42,119); // MEASURED
+
+// $white: #fff;
+// $black: #000;
+
+// $grey: rgb(51, 63, 72);
+// $grey10: darken($grey, 10%);
+// $grey-20: lighten($grey, 20%);
+// $grey-35: lighten($grey, 35%);
+// $grey-52: lighten($grey, 52%);
+// $grey-60: lighten($grey, 60%);
+// $grey-66: lighten($grey, 66%);
+// $grey-74: lighten($grey, 74%);
+
+// Colours
+// $orange: rgb(214,57,0);
+// $orange-dark: darken($orange, 12%);
+// $orange-darker: darken($orange, 20%);
+// $orange-light: lighten($orange, 54%);
+
+// $purple: rgb(133, 0, 173);
+// $purple-dark: darken($purple, 8%);
+// $purple-light: rgb(243, 230, 247);
+
+// $emerald: rgb(0, 133, 113);
+// $emerald-dark: darken($emerald, 12%);
+// $emerald-darker: darken($emerald, 20%);
+
+// $magenta: rgb(179, 42, 119);
 
 // Brand colours
 $brand-primary: $magenta;
