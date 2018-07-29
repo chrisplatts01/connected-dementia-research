@@ -75,9 +75,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 __WEBPACK_IMPORTED_MODULE_0_jquery___default()(function () {
   /**
-    * Function to handle custom select elements
+    * IIFE to handle custom select elements
     */
-  (function () {
+  var dropdownOption = (function () {
     var $dropdown
     var $dropdownOption
     var $dropdownSelect
@@ -99,6 +99,20 @@ __WEBPACK_IMPORTED_MODULE_0_jquery___default()(function () {
         if (index === 0) { $dropdownOption.addClass('selected') }
         $dropdown.append($dropdownOption)
       })
+    })
+  })()
+
+  /**
+    * IIFE to handle segmented control elements
+    */
+  var segmentedControl = (function () {
+    var $segmentedControl
+
+    $segmentedControl = __WEBPACK_IMPORTED_MODULE_0_jquery___default()('.segmented-control')
+    $segmentedControl.click(function () {
+      __WEBPACK_IMPORTED_MODULE_0_jquery___default()(this).parent('.segmented-controls').find('label').removeClass('checked')
+      __WEBPACK_IMPORTED_MODULE_0_jquery___default()(this).addClass('checked')
+      __WEBPACK_IMPORTED_MODULE_0_jquery___default()(this).find('[type=radio]').attr('checked', 'checked')
     })
   })()
 })

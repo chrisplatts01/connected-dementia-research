@@ -1,5 +1,3 @@
 p, .paragraph {
   @include base-font();
-  font-weight: 500;
-  color: $black;
 }

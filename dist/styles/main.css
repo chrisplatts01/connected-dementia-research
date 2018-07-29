@@ -3,11 +3,16 @@ body {
   height: 100%;
   margin: 0 auto;
   padding: 0;
-  max-width: 800px;
-  font-family: "Source Sans Pro", "Helvetica", "Arial", sans-serif;
-  font-size: base-font-size;
-  line-height: 32px;
+  width: 1024px;
+  max-width: 1024px;
+  font-family: 'Helvetica', sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
   background-color: #f9fafb;
+}
+
+* {
+  box-sizing: border-box;
 }
 
 .menu {
@@ -223,32 +228,35 @@ body {
 }
 
 .heading {
-  color: #333f48;
   font-family: "Source Sans Pro", "Helvetica", "Arial", sans-serif;
   font-size: 30px;
+  font-weight: 600;
   line-height: 40px;
+  color: #333f48;
 }
 
 .question {
   font-family: "Source Sans Pro", "Helvetica", "Arial", sans-serif;
   font-size: 23px;
+  font-weight: 600;
   line-height: 32px;
-  font-weight: 700;
   color: #333f48;
 }
 
 p, .paragraph {
   font-family: "Source Sans Pro", "Helvetica", "Arial", sans-serif;
   font-size: 23px;
+  font-weight: 400;
   line-height: 32px;
-  font-weight: 500;
-  color: black;
+  color: #333f48;
 }
 
 .bulletpoints {
   font-family: "Source Sans Pro", "Helvetica", "Arial", sans-serif;
   font-size: 23px;
+  font-weight: 400;
   line-height: 32px;
+  color: #333f48;
   list-style-image: url(/images/bullet-grey.svg);
   list-style-position: inside;
   padding: 0;
@@ -259,15 +267,17 @@ p, .paragraph {
 }
 
 .prompt {
-  font-weight: 400;
+  font-family: "Source Sans Pro", "Helvetica", "Arial", sans-serif;
   font-size: 19px;
-  color: #333f48;
+  font-weight: 400;
+  line-height: 24px;
+  color: #5d7384;
 }
 
 .prompt:before {
   content: url("/images/icon-info.svg");
   position: relative;
-  top: 2px;
+  top: 3px;
   padding-right: 0.5rem;
 }
 
@@ -283,30 +293,20 @@ p, .paragraph {
 .segmented-controls label {
   font-family: "Source Sans Pro", "Helvetica", "Arial", sans-serif;
   font-size: 19px;
+  font-weight: 400;
   line-height: 24px;
+  color: #5d7384;
   display: inline-block;
   box-sizing: border-box;
-  width: 50%;
-  border: 1px solid #8599a9;
+  width: 48%;
+  border: 1px solid #b8c4cc;
+  border-right-color: transparent;
   padding: 0.5rem;
   color: #d63900;
   background-color: white;
   cursor: pointer;
-  margin-left: -4px;
+  margin-left: -6px;
   box-shadow: 0 4px 0 0 #d0d7dd;
-}
-
-.segmented-controls label:hover, .segmented-controls label.hover {
-  color: #992900;
-  background-color: #fff0ea;
-}
-
-.segmented-controls label.error {
-  color: #8500ad;
-}
-
-.segmented-controls label.error:hover, .segmented-controls label.error.hover {
-  background-color: #f3e6f7;
 }
 
 .segmented-controls label:first-of-type {
@@ -317,18 +317,44 @@ p, .paragraph {
 .segmented-controls label:last-of-type {
   border-bottom-right-radius: 3px;
   border-top-right-radius: 3px;
+  border-right-color: #b8c4cc;
+}
+
+.segmented-controls label:hover, .segmented-controls label.hover {
+  color: #992900;
+  background-color: #fff0ea;
+}
+
+.segmented-controls label.error {
+  color: #8500ad;
+  border: 2px solid #8500ad;
+  border-right-color: transparent;
+}
+
+.segmented-controls label.error:first-of-type {
+  border-bottom-left-radius: 3px;
+  border-top-left-radius: 3px;
+}
+
+.segmented-controls label.error:last-of-type {
+  border-bottom-right-radius: 3px;
+  border-top-right-radius: 3px;
+  border-right-color: #8500ad;
+}
+
+.segmented-controls label.error:hover, .segmented-controls label.error.hover {
+  background-color: #f3e6f7;
 }
 
 .segmented-controls input:checked + label, .segmented-controls .checked {
   color: white;
   background-color: #d63900;
-  border-color: #d63900;
-  border-bottom-color: #8599a9;
+  border-bottom-color: #b8c4cc;
 }
 
 .segmented-controls input:checked + label:hover, .segmented-controls input:checked + label.hover, .segmented-controls .checked:hover, .segmented-controls .checked.hover {
   color: white;
-  background-color: #d63900;
+  background-color: #992900;
 }
 
 .segmented-controls-2 label {
@@ -343,23 +369,6 @@ p, .paragraph {
   width: 25%;
 }
 
-.msg-error {
-  font-family: "Source Sans Pro", "Helvetica", "Arial", sans-serif;
-  font-size: 19px;
-  line-height: 24px;
-  padding-top: 5px;
-  color: #8500ad;
-  text-align: left;
-  font-weight: 600;
-}
-
-.msg-error:before {
-  content: url("/images/icon-error.svg");
-  position: relative;
-  top: 2px;
-  padding-right: 0.5rem;
-}
-
 .checkbox {
   display: block;
   position: relative;
@@ -372,8 +381,33 @@ p, .paragraph {
 
 .checkbox label {
   display: block;
-  padding-left: 2rem;
+  padding-left: 2.5em;
   cursor: pointer;
+}
+
+.checkbox .checkmark {
+  position: absolute;
+  top: -2px;
+  left: 0;
+  height: 24px;
+  width: 24px;
+  border: 2px solid #8599a9;
+  border-radius: 3px;
+  background-color: white;
+  box-shadow: inset 0 3px 0 0 #e1e6ea;
+}
+
+.checkbox .checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+  left: 6px;
+  top: 0;
+  width: 6px;
+  height: 12px;
+  border: 1px solid white;
+  border-width: 0 3px 3px 0;
+  transform: rotate(45deg);
 }
 
 .checkbox [type="checkbox"] {
@@ -386,6 +420,7 @@ p, .paragraph {
 .checkbox [type="checkbox"]:checked ~ .checkmark {
   background-color: #d63900;
   border-color: #d63900;
+  box-shadow: none;
 }
 
 .checkbox [type="checkbox"]:checked ~ .checkmark:hover {
@@ -402,52 +437,20 @@ p, .paragraph {
   background-color: #fff0ea;
 }
 
+.checkbox:hover [type="checkbox"]:checked ~ .checkmark,
+.checkbox.hover [type="checkbox"]:checked ~ .checkmark {
+  background-color: #992900;
+  border-color: #992900;
+}
+
 .checkbox.error [type="checkbox"] ~ .checkmark {
   border-color: #8500ad;
+  border-width: 3px;
 }
 
 .checkbox.error:hover [type="checkbox"] ~ .checkmark,
 .checkbox.error.hover [type="checkbox"] ~ .checkmark {
   background-color: #f3e6f7;
-}
-
-.checkbox.checked [type="checkbox"] ~ .checkmark {
-  background-color: #d63900;
-  border-color: #d63900;
-}
-
-.checkbox.checked [type="checkbox"] ~ .checkmark:after {
-  display: block;
-}
-
-.checkbox:hover [type="checkbox"]:checked ~ .checkmark,
-.checkbox.hover.checked [type="checkbox"] ~ .checkmark {
-  background-color: #992900;
-  border-color: #992900;
-}
-
-.checkbox .checkmark {
-  position: absolute;
-  top: 6px;
-  left: 0;
-  height: 16px;
-  width: 16px;
-  border: 2px solid #8599a9;
-  border-radius: 3px;
-  background-color: white;
-}
-
-.checkbox .checkmark:after {
-  content: "";
-  position: absolute;
-  display: none;
-  left: 5px;
-  top: 1px;
-  width: 4px;
-  height: 10px;
-  border: 1px solid white;
-  border-width: 0 2px 2px 0;
-  transform: rotate(45deg);
 }
 
 .radio {
@@ -462,8 +465,33 @@ p, .paragraph {
 
 .radio label {
   display: block;
-  padding-left: 2rem;
+  padding-left: 2.5em;
   cursor: pointer;
+}
+
+.radio .checkmark {
+  position: absolute;
+  top: -2px;
+  left: 0;
+  height: 24px;
+  width: 24px;
+  border: 2px solid #8599a9;
+  border-radius: 50%;
+  background-color: white;
+  box-shadow: inset 0 3px 0 0 #e1e6ea;
+}
+
+.radio .checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+  top: 4px;
+  left: 4px;
+  width: 12px;
+  height: 12px;
+  border: none;
+  border-radius: 50%;
+  background-color: #d63900;
 }
 
 .radio [type="radio"] {
@@ -474,12 +502,13 @@ p, .paragraph {
 }
 
 .radio [type="radio"]:checked ~ .checkmark {
-  background-color: #d63900;
+  background-color: white;
   border-color: #d63900;
+  box-shadow: none;
 }
 
 .radio [type="radio"]:checked ~ .checkmark:hover {
-  background-color: #992900;
+  background-color: white;
   border-color: #992900;
 }
 
@@ -492,52 +521,25 @@ p, .paragraph {
   background-color: #fff0ea;
 }
 
+.radio:hover [type="radio"]:checked ~ .checkmark,
+.radio.hover [type="radio"]:checked ~ .checkmark {
+  background-color: white;
+  border-color: #992900;
+}
+
+.radio:hover [type="radio"]:checked ~ .checkmark:after,
+.radio.hover [type="radio"]:checked ~ .checkmark:after {
+  background-color: #992900;
+}
+
 .radio.error [type="radio"] ~ .checkmark {
   border-color: #8500ad;
+  border-width: 3px;
 }
 
 .radio.error:hover [type="radio"] ~ .checkmark,
 .radio.error.hover [type="radio"] ~ .checkmark {
   background-color: #f3e6f7;
-}
-
-.radio.checked [type="radio"] ~ .checkmark {
-  background-color: #d63900;
-  border-color: #d63900;
-}
-
-.radio.checked [type="radio"] ~ .checkmark:after {
-  display: block;
-}
-
-.radio:hover [type="radio"]:checked ~ .checkmark,
-.radio.hover.checked [type="radio"] ~ .checkmark {
-  background-color: #992900;
-  border-color: #992900;
-}
-
-.radio .checkmark {
-  position: absolute;
-  top: 6px;
-  left: 0;
-  height: 16px;
-  width: 16px;
-  border: 2px solid #8599a9;
-  border-radius: 3px;
-  background-color: white;
-  border-radius: 50%;
-}
-
-.radio .checkmark:after {
-  content: "";
-  position: absolute;
-  display: none;
-  top: 9px;
-  left: 9px;
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: white;
 }
 
 .dropdown-select label {
@@ -552,7 +554,7 @@ p, .paragraph {
   display: block;
   margin: 0 1em;
   box-sizing: border-box;
-  border: 1px solid #8599a9;
+  border: 1px solid #b8c4cc;
   border-radius: 3px;
   box-shadow: 0 4px 0 0 #d0d7dd;
 }
@@ -569,7 +571,7 @@ p, .paragraph {
   color: #5d7384;
   box-sizing: border-box;
   padding: 4px 0.5em;
-  border-top: 1px solid #8599a9;
+  border-top: 1px solid #b8c4cc;
 }
 
 .dropdown-select .dropdown .dropdown__option:first-child {
@@ -578,6 +580,27 @@ p, .paragraph {
 
 .dropdown-select .dropdown .dropdown__option.selected {
   display: block;
+}
+
+.msg-error {
+  font-family: "Source Sans Pro", "Helvetica", "Arial", sans-serif;
+  font-size: 19px;
+  font-weight: 600;
+  line-height: 24px;
+  color: #8500ad;
+  padding-top: 14px;
+  text-align: left;
+}
+
+.msg-error:before {
+  content: url("/images/icon-error.svg");
+  position: relative;
+  top: 2px;
+  padding-right: 0.5rem;
+}
+
+.segmented-control ~ .msg-error {
+  padding-top: 20px;
 }
 
 .colour-swatches th, .colour-swatches td {
@@ -706,6 +729,7 @@ p, .paragraph {
   font-family: "Source Sans Pro", "Helvetica", "Arial", sans-serif;
   font-size: 30px;
   line-height: 40px;
+  color: #333f48;
   font-weight: 600;
   color: #333f48;
 }
@@ -713,7 +737,9 @@ p, .paragraph {
 .font-swatch__swatch-bold-text span {
   font-family: "Source Sans Pro", "Helvetica", "Arial", sans-serif;
   font-size: 23px;
+  font-weight: 400;
   line-height: 32px;
+  color: #333f48;
   font-weight: 600;
   color: #333f48;
 }
@@ -721,7 +747,9 @@ p, .paragraph {
 .font-swatch__swatch-normal-text span {
   font-family: "Source Sans Pro", "Helvetica", "Arial", sans-serif;
   font-size: 23px;
+  font-weight: 400;
   line-height: 32px;
+  color: #333f48;
   font-weight: 400;
   color: #333f48;
 }
@@ -729,7 +757,9 @@ p, .paragraph {
 .font-swatch__swatch-small-text span {
   font-family: "Source Sans Pro", "Helvetica", "Arial", sans-serif;
   font-size: 19px;
+  font-weight: 400;
   line-height: 24px;
+  color: #5d7384;
   font-weight: 400;
   color: #5d7384;
 }

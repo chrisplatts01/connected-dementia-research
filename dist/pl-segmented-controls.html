@@ -17,9 +17,10 @@
 
   <!-- Stylesheets -->
   <style>
-    #pl-body { width: 1024px; max-width: 960px; margin: 0; padding: 0 }
+    #pl-body { width: 1024px; max-width: 1024px; margin: 0; padding: 0 }
     .pl-header { box-sizing: border-box; width: 100%; padding: 1em 1em 0.5em; color: #fff; background-color: #b52577; clear: both; }
-    .pl-header h1, .pl-header p {color: #fff; margin: 0; }
+    .pl-header h1 { color: #fff; font-size: 24px; }
+    .pl-header h2 {color: #fff; font-size: 20px; }
     .pl-footer { box-sizing: border-box; width: 100%; padding: 1em; color: #333; background-color: #999; clear: both }
     .pl-wrapper { box-sizing: border-box; width: 100%; clear: both; }
     .pl-nav { box-sizing: border-box; float: left; width: 25%; border-right: 1px solid #999; padding: 1em; }
@@ -53,10 +54,11 @@
         <li><a href="pl-paragraph.html">Paragraph</a></li>
         <li><a href="pl-bulletpoints.html">Bullet points</a></li>
         <li><a href="pl-prompt.html">Prompt/Descriptor</a></li>
-        <li><a href="pl-segmented-controls.html">Segmented controls</a></li>
+        <li><a href="pl-segmented-controls.html">Segmented controls (WIP)</a></li>
         <li><a href="pl-checkboxes.html">Checkboxes</a></li>
-        <li><a href="pl-radio-buttons.html">Radio buttons (WIP)</a></li>
+        <li><a href="pl-radio-buttons.html">Radio buttons</a></li>
         <li><a href="pl-dropdown-select.html">Dropdown select (WIP)</a></li>
+        <li><a href="pl-messages.html">Messages</a></li>
       </ul>
       <p><b>Modules:</b></p>
       <ul class="component-list">
@@ -73,57 +75,56 @@
   <h1 class="pl-heading">Segmented controls</h1>
   <p>Used instead of radio buttons when there are a limited number of mutually-exclusive choices.</p>
   <p><small>To illustrate the styling of <em>checked</em> and <em>hover</em> states, <code>.hover</code> and <code>.checked</code> classes have been added to simulate these states. These classes are not required in production where the <code>:hover</code> and <code>:checked</code> pseudo-classes are used.</small></p>
-  <div class="segmented-controls">
-  <label>
+  <div class="segmented-controls segmented-controls-2">
+  <label class="segmented-control">
     <input id="option-A1" name="option-A" type="radio" />
     Option 1
   </label>
-  <label>
+  <label class="segmented-control">
     <input id="option-A2" name="option-A" type="radio" />
     Option 2
   </label>
 </div>
 
-<div class="segmented-controls">
-  <label class="checked">
-    <input id="option-B1" name="option-B" type="radio" />
+<div class="segmented-controls segmented-controls-2">
+  <label class="segmented-control checked">
+    <input id="option-B1" name="option-B" type="radio" checked />
     Option 1 (Checked)
   </label>
-  <label>
+  <label class="segmented-control">
     <input id="option-B2" name="option-B" type="radio" />
     Option 2
   </label>
 </div>
 
-<div class="segmented-controls">
-  <label class="checked hover">
-    <input id="option-C1" name="option-C" type="radio" />
+<div class="segmented-controls segmented-controls-2">
+  <label class="segmented-control hover checked">
+    <input id="option-C1" name="option-C" type="radio" checked />
     Option 1 (Checked, Hover)
   </label>
-  <label class="hover">
+  <label class="segmented-control hover">
     <input id="option-C2" name="option-C" type="radio" />
     Option 2 (Hover)
   </label>
 </div>
 
-<div class="segmented-controls">
-  <label class="error">
+<div class="segmented-controls segmented-controls-2">
+  <label class="segmented-control error">
     <input id="option-D1" name="option-D" type="radio" />
     Option 1 (Error)
   </label>
-  <label class="error">
+  <label class="segmented-control error">
     <input id="option-D2" name="option-D" type="radio" />
     Option 2 (Error)
   </label>
-  <div class="msg-error">Error text</div>
 </div>
 
-<div class="segmented-controls">
-  <label class="error hover">
+<div class="segmented-controls segmented-controls-2">
+  <label class="segmented-control error hover">
     <input id="option-E1" name="option-E" type="radio" />
     Option 1 (Error, Hover)
   </label>
-  <label class="error">
+  <label class="segmented-control error">
     <input id="option-E2" name="option-E" type="radio" />
     Option 2 (Error)
   </label>
@@ -131,34 +132,34 @@
 </div>
 
 <div class="segmented-controls segmented-controls-3">
-  <label>
+  <label class="segmented-control">
     <input id="option-F1" name="option-F" type="radio" />
     Option 1
   </label>
-  <label>
+  <label class="segmented-control">
     <input id="option-F2" name="option-F" type="radio" />
     Option 2
   </label>
-  <label>
+  <label class="segmented-control">
     <input id="option-F3" name="option-F" type="radio" />
     Option 3
   </label>
 </div>
 
 <div class="segmented-controls segmented-controls-4">
-  <label>
+  <label class="segmented-control">
     <input id="option-G1" name="option-G" type="radio" />
     Option 1
   </label>
-  <label>
+  <label class="segmented-control">
     <input id="option-G2" name="option-G" type="radio" />
     Option 2
   </label>
-  <label>
+  <label class="segmented-control">
     <input id="option-G3" name="option-G" type="radio" />
     Option 3
   </label>
-  <label>
+  <label class="segmented-control">
     <input id="option-G4" name="option-G" type="radio" />
     Option 4
   </label>
@@ -166,57 +167,56 @@
 
   <h2 class="pl-heading">HTML</h2>
   <textarea class="pl-code" disabled>
-    <div class="segmented-controls">
-  <label>
+    <div class="segmented-controls segmented-controls-2">
+  <label class="segmented-control">
     <input id="option-A1" name="option-A" type="radio" />
     Option 1
   </label>
-  <label>
+  <label class="segmented-control">
     <input id="option-A2" name="option-A" type="radio" />
     Option 2
   </label>
 </div>
 
-<div class="segmented-controls">
-  <label class="checked">
-    <input id="option-B1" name="option-B" type="radio" />
+<div class="segmented-controls segmented-controls-2">
+  <label class="segmented-control checked">
+    <input id="option-B1" name="option-B" type="radio" checked />
     Option 1 (Checked)
   </label>
-  <label>
+  <label class="segmented-control">
     <input id="option-B2" name="option-B" type="radio" />
     Option 2
   </label>
 </div>
 
-<div class="segmented-controls">
-  <label class="checked hover">
-    <input id="option-C1" name="option-C" type="radio" />
+<div class="segmented-controls segmented-controls-2">
+  <label class="segmented-control hover checked">
+    <input id="option-C1" name="option-C" type="radio" checked />
     Option 1 (Checked, Hover)
   </label>
-  <label class="hover">
+  <label class="segmented-control hover">
     <input id="option-C2" name="option-C" type="radio" />
     Option 2 (Hover)
   </label>
 </div>
 
-<div class="segmented-controls">
-  <label class="error">
+<div class="segmented-controls segmented-controls-2">
+  <label class="segmented-control error">
     <input id="option-D1" name="option-D" type="radio" />
     Option 1 (Error)
   </label>
-  <label class="error">
+  <label class="segmented-control error">
     <input id="option-D2" name="option-D" type="radio" />
     Option 2 (Error)
   </label>
-  <div class="msg-error">Error text</div>
 </div>
 
-<div class="segmented-controls">
-  <label class="error hover">
+<div class="segmented-controls segmented-controls-2">
+  <label class="segmented-control error hover">
     <input id="option-E1" name="option-E" type="radio" />
     Option 1 (Error, Hover)
   </label>
-  <label class="error">
+  <label class="segmented-control error">
     <input id="option-E2" name="option-E" type="radio" />
     Option 2 (Error)
   </label>
@@ -224,34 +224,34 @@
 </div>
 
 <div class="segmented-controls segmented-controls-3">
-  <label>
+  <label class="segmented-control">
     <input id="option-F1" name="option-F" type="radio" />
     Option 1
   </label>
-  <label>
+  <label class="segmented-control">
     <input id="option-F2" name="option-F" type="radio" />
     Option 2
   </label>
-  <label>
+  <label class="segmented-control">
     <input id="option-F3" name="option-F" type="radio" />
     Option 3
   </label>
 </div>
 
 <div class="segmented-controls segmented-controls-4">
-  <label>
+  <label class="segmented-control">
     <input id="option-G1" name="option-G" type="radio" />
     Option 1
   </label>
-  <label>
+  <label class="segmented-control">
     <input id="option-G2" name="option-G" type="radio" />
     Option 2
   </label>
-  <label>
+  <label class="segmented-control">
     <input id="option-G3" name="option-G" type="radio" />
     Option 3
   </label>
-  <label>
+  <label class="segmented-control">
     <input id="option-G4" name="option-G" type="radio" />
     Option 4
   </label>
@@ -272,14 +272,24 @@
     @include small-font;
     display: inline-block;
     box-sizing: border-box;
-    width: 50%;
+    width: 48%;
     border: 1px solid $border-color;
+    border-right-color: transparent;
     padding: 0.5rem;
     color: $orange;
     background-color: $white;
     cursor: pointer;
-    margin-left: -4px;
+    margin-left: -6px;
     box-shadow: 0 4px 0 0 $border-shadow-color;
+
+    &:first-of-type {
+      @include border-left-radius(3px)
+    }
+
+    &:last-of-type {
+      @include border-right-radius(3px);
+      border-right-color: $border-color;
+    }
 
     &:hover, &.hover {
       color: $orange-dark;
@@ -288,31 +298,33 @@
 
     &.error {
       color: $purple;
+      border: 2px solid $purple;
+      border-right-color: transparent;
+
+      &:first-of-type {
+        @include border-left-radius(3px)
+      }
+
+      &:last-of-type {
+        @include border-right-radius(3px);
+        border-right-color: $purple;
+      }
 
       &:hover, &.hover {
         background-color: $purple-light;
       }
     }
-
-    &:first-of-type {
-      @include border-left-radius(3px)
-    }
-
-    &:last-of-type {
-      @include border-right-radius(3px)
-    }
-
   }
 
   input:checked + label, .checked {
     color: $white;
     background-color: $orange;
-    border-color: $orange;
+    // border-color: $orange;
     border-bottom-color: $border-color;
 
     &:hover, &.hover {
       color: white;
-      background-color: $orange;
+      background-color: $orange-dark;
     }
   }
 }
@@ -327,21 +339,6 @@
 
 .segmented-controls-4 label {
   width: 25%;
-}
-
-.msg-error {
-  @include small-font
-  padding-top: 5px;
-  color: $purple;
-  text-align: left;
-  font-weight: 600;
-
-  &:before {
-    content: url('/images/icon-error.svg');
-    position: relative;
-    top: 2px;
-    padding-right: 0.5rem;
-  }
 }
 
   </textarea>

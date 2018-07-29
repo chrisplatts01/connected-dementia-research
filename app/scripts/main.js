@@ -2,9 +2,9 @@ import $ from 'jquery'
 
 $(function () {
   /**
-    * Function to handle custom select elements
+    * IIFE to handle custom select elements
     */
-  (function () {
+  var dropdownOption = (function () {
     var $dropdown
     var $dropdownOption
     var $dropdownSelect
@@ -26,6 +26,20 @@ $(function () {
         if (index === 0) { $dropdownOption.addClass('selected') }
         $dropdown.append($dropdownOption)
       })
+    })
+  })()
+
+  /**
+    * IIFE to handle segmented control elements
+    */
+  var segmentedControl = (function () {
+    var $segmentedControl
+
+    $segmentedControl = $('.segmented-control')
+    $segmentedControl.click(function () {
+      $(this).parent('.segmented-controls').find('label').removeClass('checked')
+      $(this).addClass('checked')
+      $(this).find('[type=radio]').attr('checked', 'checked')
     })
   })()
 })

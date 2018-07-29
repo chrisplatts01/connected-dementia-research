@@ -9,8 +9,35 @@
 
   label {
     display: block;
-    padding-left: 2rem;
+    padding-left: 2.5em;
     cursor: pointer;
+  }
+
+  .checkmark {
+    position: absolute;
+    top: -2px;
+    left: 0;
+    height: 24px;
+    width: 24px;
+    border: 2px solid $grey-35;
+    border-radius: 3px;
+    background-color: $white;
+    box-shadow: inset 0 3px 0 0 $grey-66;
+
+    &:after {
+      content: "";
+      position: absolute;
+      display: none;
+      left: 6px;
+      top: 0;
+      width: 6px;
+      height: 12px;
+      border: 1px solid $white;
+      border-width: 0 3px 3px 0;
+      -webkit-transform: rotate(45deg);
+      -ms-transform: rotate(45deg);
+      transform: rotate(45deg);
+    }
   }
 
   [type="checkbox"] {
@@ -22,6 +49,7 @@
     &:checked ~ .checkmark {
       background-color: $orange;
       border-color: $orange;
+      box-shadow: none;
 
       &:hover {
         background-color: $orange-dark;
@@ -39,53 +67,19 @@
     background-color: $orange-light;
   }
 
+  &:hover [type="checkbox"]:checked ~ .checkmark,
+  &.hover [type="checkbox"]:checked ~ .checkmark {
+    background-color: $orange-dark;
+    border-color: $orange-dark;
+  }
+
   &.error [type="checkbox"] ~ .checkmark {
     border-color: $purple;
+    border-width: 3px;
   }
 
   &.error:hover [type="checkbox"] ~ .checkmark,
   &.error.hover [type="checkbox"] ~ .checkmark {
     background-color: $purple-light;
-  }
-
-  &.checked [type="checkbox"] ~ .checkmark {
-    background-color: $orange;
-    border-color: $orange;
-
-    &:after {
-      display: block;
-    }
-  }
-
-  &:hover [type="checkbox"]:checked ~ .checkmark,
-  &.hover.checked [type="checkbox"] ~ .checkmark {
-    background-color: $orange-dark;
-    border-color: $orange-dark;
-  }
-
-  .checkmark {
-    position: absolute;
-    top: 6px;
-    left: 0;
-    height: 16px;
-    width: 16px;
-    border: 2px solid $grey-35;
-    border-radius: 3px;
-    background-color: $white;
-
-    &:after {
-      content: "";
-      position: absolute;
-      display: none;
-      left: 5px;
-      top: 1px;
-      width: 4px;
-      height: 10px;
-      border: 1px solid $white;
-      border-width: 0 2px 2px 0;
-      -webkit-transform: rotate(45deg);
-      -ms-transform: rotate(45deg);
-      transform: rotate(45deg);
-    }
   }
 }

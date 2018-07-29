@@ -9,8 +9,33 @@
 
   label {
     display: block;
-    padding-left: 2rem;
+    padding-left: 2.5em;
     cursor: pointer;
+  }
+
+  .checkmark {
+    position: absolute;
+    top: -2px;
+    left: 0;
+    height: 24px;
+    width: 24px;
+    border: 2px solid $grey-35;
+    border-radius: 50%;
+    background-color: $white;
+    box-shadow: inset 0 3px 0 0 $grey-66;
+
+    &:after {
+      content: "";
+      position: absolute;
+      display: none;
+      top: 4px;
+      left: 4px;
+      width: 12px;
+      height: 12px;
+      border: none;
+      border-radius: 50%;
+      background-color: $orange;
+    }
   }
 
   [type="radio"] {
@@ -20,11 +45,12 @@
     cursor: pointer;
 
     &:checked ~ .checkmark {
-      background-color: $orange;
+      background-color: $white;
       border-color: $orange;
+      box-shadow: none;
 
       &:hover {
-        background-color: $orange-dark;
+        background-color: $white;
         border-color: $orange-dark;
       }
 
@@ -39,51 +65,23 @@
     background-color: $orange-light;
   }
 
+  &:hover [type="radio"]:checked ~ .checkmark,
+  &.hover [type="radio"]:checked ~ .checkmark {
+    background-color: $white;
+    border-color: $orange-dark;
+
+    &:after {
+      background-color: $orange-dark;
+    }
+  }
+
   &.error [type="radio"] ~ .checkmark {
     border-color: $purple;
+    border-width: 3px;
   }
 
   &.error:hover [type="radio"] ~ .checkmark,
   &.error.hover [type="radio"] ~ .checkmark {
     background-color: $purple-light;
-  }
-
-  &.checked [type="radio"] ~ .checkmark {
-    background-color: $orange;
-    border-color: $orange;
-
-    &:after {
-      display: block;
-    }
-  }
-
-  &:hover [type="radio"]:checked ~ .checkmark,
-  &.hover.checked [type="radio"] ~ .checkmark {
-    background-color: $orange-dark;
-    border-color: $orange-dark;
-  }
-
-  .checkmark {
-    position: absolute;
-    top: 6px;
-    left: 0;
-    height: 16px;
-    width: 16px;
-    border: 2px solid $grey-35;
-    border-radius: 3px;
-    background-color: $white;
-    border-radius: 50%;
-
-    &:after {
-      content: "";
-      position: absolute;
-      display: none;
-      top: 9px;
-      left: 9px;
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: white;
-    }
   }
 }

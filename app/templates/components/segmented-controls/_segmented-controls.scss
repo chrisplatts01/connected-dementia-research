@@ -10,14 +10,24 @@
     @include small-font;
     display: inline-block;
     box-sizing: border-box;
-    width: 50%;
+    width: 48%;
     border: 1px solid $border-color;
+    border-right-color: transparent;
     padding: 0.5rem;
     color: $orange;
     background-color: $white;
     cursor: pointer;
-    margin-left: -4px;
+    margin-left: -6px;
     box-shadow: 0 4px 0 0 $border-shadow-color;
+
+    &:first-of-type {
+      @include border-left-radius(3px)
+    }
+
+    &:last-of-type {
+      @include border-right-radius(3px);
+      border-right-color: $border-color;
+    }
 
     &:hover, &.hover {
       color: $orange-dark;
@@ -26,31 +36,33 @@
 
     &.error {
       color: $purple;
+      border: 2px solid $purple;
+      border-right-color: transparent;
+
+      &:first-of-type {
+        @include border-left-radius(3px)
+      }
+
+      &:last-of-type {
+        @include border-right-radius(3px);
+        border-right-color: $purple;
+      }
 
       &:hover, &.hover {
         background-color: $purple-light;
       }
     }
-
-    &:first-of-type {
-      @include border-left-radius(3px)
-    }
-
-    &:last-of-type {
-      @include border-right-radius(3px)
-    }
-
   }
 
   input:checked + label, .checked {
     color: $white;
     background-color: $orange;
-    border-color: $orange;
+    // border-color: $orange;
     border-bottom-color: $border-color;
 
     &:hover, &.hover {
       color: white;
-      background-color: $orange;
+      background-color: $orange-dark;
     }
   }
 }
@@ -65,19 +77,4 @@
 
 .segmented-controls-4 label {
   width: 25%;
-}
-
-.msg-error {
-  @include small-font
-  padding-top: 5px;
-  color: $purple;
-  text-align: left;
-  font-weight: 600;
-
-  &:before {
-    content: url('/images/icon-error.svg');
-    position: relative;
-    top: 2px;
-    padding-right: 0.5rem;
-  }
 }

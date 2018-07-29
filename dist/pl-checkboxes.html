@@ -17,9 +17,10 @@
 
   <!-- Stylesheets -->
   <style>
-    #pl-body { width: 1024px; max-width: 960px; margin: 0; padding: 0 }
+    #pl-body { width: 1024px; max-width: 1024px; margin: 0; padding: 0 }
     .pl-header { box-sizing: border-box; width: 100%; padding: 1em 1em 0.5em; color: #fff; background-color: #b52577; clear: both; }
-    .pl-header h1, .pl-header p {color: #fff; margin: 0; }
+    .pl-header h1 { color: #fff; font-size: 24px; }
+    .pl-header h2 {color: #fff; font-size: 20px; }
     .pl-footer { box-sizing: border-box; width: 100%; padding: 1em; color: #333; background-color: #999; clear: both }
     .pl-wrapper { box-sizing: border-box; width: 100%; clear: both; }
     .pl-nav { box-sizing: border-box; float: left; width: 25%; border-right: 1px solid #999; padding: 1em; }
@@ -53,10 +54,11 @@
         <li><a href="pl-paragraph.html">Paragraph</a></li>
         <li><a href="pl-bulletpoints.html">Bullet points</a></li>
         <li><a href="pl-prompt.html">Prompt/Descriptor</a></li>
-        <li><a href="pl-segmented-controls.html">Segmented controls</a></li>
+        <li><a href="pl-segmented-controls.html">Segmented controls (WIP)</a></li>
         <li><a href="pl-checkboxes.html">Checkboxes</a></li>
-        <li><a href="pl-radio-buttons.html">Radio buttons (WIP)</a></li>
+        <li><a href="pl-radio-buttons.html">Radio buttons</a></li>
         <li><a href="pl-dropdown-select.html">Dropdown select (WIP)</a></li>
+        <li><a href="pl-messages.html">Messages</a></li>
       </ul>
       <p><b>Modules:</b></p>
       <ul class="component-list">
@@ -75,30 +77,30 @@
   <div class="checkbox">
   <label>
     <input id="option-1" name="option" type="checkbox" />
-    Option 1
+    Unselected
     <span class="checkmark"></span>
   </label>
 </div>
 <div class="checkbox hover">
   <label>
     <input id="option-2" name="option" type="checkbox" />
-    Option 2 (Hover)
+    Unselected (Hover)
     <span class="checkmark"></span>
   </label>
 </div>
 
-<div class="checkbox checked">
+<div class="checkbox">
   <label>
-    <input id="option-3" name="option" type="checkbox" />
-    Option 3 (Checked)
+    <input id="option-3" name="option" type="checkbox" checked />
+    Selected (Checked)
     <span class="checkmark"></span>
   </label>
 </div>
 
-<div class="checkbox checked hover">
+<div class="checkbox hover">
   <label>
-    <input id="option-4" name="option" type="checkbox" />
-    Option 4 (Checked, Hover)
+    <input id="option-4" name="option" type="checkbox" checked />
+    Selected (Checked, Hover)
     <span class="checkmark"></span>
   </label>
 </div>
@@ -106,16 +108,15 @@
 <div class="checkbox error">
   <label>
     <input id="option-5" name="option" type="checkbox" />
-    Option 5 (Error)
+    Unselected (Error)
     <span class="checkmark"></span>
   </label>
-  <div class="msg-error">Error text</div>
 </div>
 
 <div class="checkbox error hover">
   <label>
     <input id="option-6" name="option" type="checkbox" />
-    Option 6 (Error, Hover)
+    Unselected (Error, Hover)
     <span class="checkmark"></span>
   </label>
   <div class="msg-error">Error text</div>
@@ -126,30 +127,30 @@
     <div class="checkbox">
   <label>
     <input id="option-1" name="option" type="checkbox" />
-    Option 1
+    Unselected
     <span class="checkmark"></span>
   </label>
 </div>
 <div class="checkbox hover">
   <label>
     <input id="option-2" name="option" type="checkbox" />
-    Option 2 (Hover)
+    Unselected (Hover)
     <span class="checkmark"></span>
   </label>
 </div>
 
-<div class="checkbox checked">
+<div class="checkbox">
   <label>
-    <input id="option-3" name="option" type="checkbox" />
-    Option 3 (Checked)
+    <input id="option-3" name="option" type="checkbox" checked />
+    Selected (Checked)
     <span class="checkmark"></span>
   </label>
 </div>
 
-<div class="checkbox checked hover">
+<div class="checkbox hover">
   <label>
-    <input id="option-4" name="option" type="checkbox" />
-    Option 4 (Checked, Hover)
+    <input id="option-4" name="option" type="checkbox" checked />
+    Selected (Checked, Hover)
     <span class="checkmark"></span>
   </label>
 </div>
@@ -157,16 +158,15 @@
 <div class="checkbox error">
   <label>
     <input id="option-5" name="option" type="checkbox" />
-    Option 5 (Error)
+    Unselected (Error)
     <span class="checkmark"></span>
   </label>
-  <div class="msg-error">Error text</div>
 </div>
 
 <div class="checkbox error hover">
   <label>
     <input id="option-6" name="option" type="checkbox" />
-    Option 6 (Error, Hover)
+    Unselected (Error, Hover)
     <span class="checkmark"></span>
   </label>
   <div class="msg-error">Error text</div>
@@ -186,8 +186,35 @@
 
   label {
     display: block;
-    padding-left: 2rem;
+    padding-left: 2.5em;
     cursor: pointer;
+  }
+
+  .checkmark {
+    position: absolute;
+    top: -2px;
+    left: 0;
+    height: 24px;
+    width: 24px;
+    border: 2px solid $grey-35;
+    border-radius: 3px;
+    background-color: $white;
+    box-shadow: inset 0 3px 0 0 $grey-66;
+
+    &:after {
+      content: "";
+      position: absolute;
+      display: none;
+      left: 6px;
+      top: 0;
+      width: 6px;
+      height: 12px;
+      border: 1px solid $white;
+      border-width: 0 3px 3px 0;
+      -webkit-transform: rotate(45deg);
+      -ms-transform: rotate(45deg);
+      transform: rotate(45deg);
+    }
   }
 
   [type="checkbox"] {
@@ -199,6 +226,7 @@
     &:checked ~ .checkmark {
       background-color: $orange;
       border-color: $orange;
+      box-shadow: none;
 
       &:hover {
         background-color: $orange-dark;
@@ -216,54 +244,20 @@
     background-color: $orange-light;
   }
 
+  &:hover [type="checkbox"]:checked ~ .checkmark,
+  &.hover [type="checkbox"]:checked ~ .checkmark {
+    background-color: $orange-dark;
+    border-color: $orange-dark;
+  }
+
   &.error [type="checkbox"] ~ .checkmark {
     border-color: $purple;
+    border-width: 3px;
   }
 
   &.error:hover [type="checkbox"] ~ .checkmark,
   &.error.hover [type="checkbox"] ~ .checkmark {
     background-color: $purple-light;
-  }
-
-  &.checked [type="checkbox"] ~ .checkmark {
-    background-color: $orange;
-    border-color: $orange;
-
-    &:after {
-      display: block;
-    }
-  }
-
-  &:hover [type="checkbox"]:checked ~ .checkmark,
-  &.hover.checked [type="checkbox"] ~ .checkmark {
-    background-color: $orange-dark;
-    border-color: $orange-dark;
-  }
-
-  .checkmark {
-    position: absolute;
-    top: 6px;
-    left: 0;
-    height: 16px;
-    width: 16px;
-    border: 2px solid $grey-35;
-    border-radius: 3px;
-    background-color: $white;
-
-    &:after {
-      content: "";
-      position: absolute;
-      display: none;
-      left: 5px;
-      top: 1px;
-      width: 4px;
-      height: 10px;
-      border: 1px solid $white;
-      border-width: 0 2px 2px 0;
-      -webkit-transform: rotate(45deg);
-      -ms-transform: rotate(45deg);
-      transform: rotate(45deg);
-    }
   }
 }
 

@@ -1,0 +1,17 @@
+
+.msg-error {
+  @include error-font();
+  padding-top: 14px;
+  text-align: left;
+
+  &:before {
+    content: url('/images/icon-error.svg');
+    position: relative;
+    top: 2px;
+    padding-right: 0.5rem;
+  }
+}
+
+.segmented-control ~ .msg-error {
+  padding-top: 20px;
+}

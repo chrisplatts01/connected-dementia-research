@@ -2,19 +2,39 @@
 
 $base-font-family: "Source Sans Pro", "Helvetica", "Arial", sans-serif;
 $base-font-size: 23px;
+$base-font-weight: 400;
 $base-line-height: 32px;
+$base-font-color: $grey;
+
+$bold-font-family: "Source Sans Pro", "Helvetica", "Arial", sans-serif;
+$bold-font-size: 23px;
+$bold-font-weight: 600;
+$bold-line-height: 32px;
+$bold-font-color: $grey;
 
 $small-font-family: $base-font-family;
 $small-font-size: 19px;
+$small-font-weight: 400;
 $small-line-height: 24px;
+$small-font-color: $grey-20;
 
 $large-font-family: $base-font-family;
 $large-font-size: 30px;
+$large-font-weight: 400;
 $large-line-height: 40px;
+$large-font-color: $grey;
 
 $heading-font-family: $large-font-family;
 $heading-font-size: $large-font-size;;
+$heading-font-weight: 600;
 $heading-line-height: $large-line-height;
+$heading-font-color: $grey;
+
+$error-font-family: "Source Sans Pro", "Helvetica", "Arial", sans-serif;
+$error-font-size: 19px;
+$error-font-weight: 600;
+$error-line-height: 24px;
+$error-font-color: $grey;
 
 $base-font-color: $grey;
 $light-font-color: $grey-20;
@@ -23,17 +43,47 @@ $error-font-color: $purple;
 @mixin base-font {
   font-family: $base-font-family;
   font-size: $base-font-size;
+  font-weight: $base-font-weight;
   line-height: $base-line-height;
+  color: $base-font-color;
+}
+
+@mixin bold-font {
+  font-family: $bold-font-family;
+  font-size: $bold-font-size;
+  font-weight: $bold-font-weight;
+  line-height: $bold-line-height;
+  color: $bold-font-color;
 }
 
 @mixin small-font {
   font-family: $small-font-family;
   font-size: $small-font-size;
+  font-weight: $small-font-weight;;
   line-height: $small-line-height;
+  color: $small-font-color;
 }
 
 @mixin large-font {
   font-family: $large-font-family;
   font-size: $large-font-size;
   line-height: $large-line-height;
+  color: $large-font-color;
+}
+
+
+@mixin heading-font {
+  font-family: $heading-font-family;
+  font-size: $heading-font-size;
+  font-weight: $heading-font-weight;
+  line-height: $heading-line-height;
+  color: $heading-font-color;
+}
+
+@mixin error-font {
+  font-family: $error-font-family;
+  font-size: $error-font-size;
+  font-weight: $error-font-weight;
+  line-height: $error-line-height;
+  color: $error-font-color;
 }
