@@ -77,42 +77,133 @@ __WEBPACK_IMPORTED_MODULE_0_jquery___default()(function () {
   /**
     * IIFE to handle custom select elements
     */
-  var dropdownOption = (function () {
-    var $dropdown
-    var $dropdownOption
+  var dropdownSelect = (function () {
     var $dropdownSelect
-    var $label
-    var $select
-    var $selectOption
-    var selectOptionText
+    var $dropdown
+    var $dropdownSelected
+    var $dropdownOptions
+    var $dropdownOption
 
     $dropdownSelect = __WEBPACK_IMPORTED_MODULE_0_jquery___default()('.dropdown-select')
-    $dropdownSelect.each(function () {
-      $label = __WEBPACK_IMPORTED_MODULE_0_jquery___default()(this).find('label')
-      $select = __WEBPACK_IMPORTED_MODULE_0_jquery___default()(this).find('select')
-      $label.after('<div class="dropdown"></div>')
-      $dropdown = $label.next('.dropdown')
-      $selectOption = $select.find('option')
-      $selectOption.each(function (index) {
-        selectOptionText = __WEBPACK_IMPORTED_MODULE_0_jquery___default()(this).text()
-        $dropdownOption = __WEBPACK_IMPORTED_MODULE_0_jquery___default()('<div class="dropdown__option">').text(selectOptionText)
-        if (index === 0) { $dropdownOption.addClass('selected') }
-        $dropdown.append($dropdownOption)
-      })
+
+    var dropdownState = (function () {
+      return {
+        init: function () {
+          // Set initial state of dropdown-select controls
+          var dropdown = '<div class="dropdown"></div>'
+          var selected = '<div class="dropdown__selected"></div>'
+          var options = '<div class="dropdown__options"></div>'
+          var option = '<div class="dropdown__option"></div>'
+          var $dropdown = __WEBPACK_IMPORTED_MODULE_0_jquery___default()(dropdown).appendTo($dropdownSelect)
+          var $dropdownSelected = __WEBPACK_IMPORTED_MODULE_0_jquery___default()(selected).appendTo($dropdown)
+          var $dropdownOptions = __WEBPACK_IMPORTED_MODULE_0_jquery___default()(options).appendTo($dropdown)
+          var $dropdownOption
+
+          $dropdownSelected.text($dropdownSelect.find('option:selected').text())
+          $dropdownSelect.find('option').not(':selected').each(function () {
+            var text = __WEBPACK_IMPORTED_MODULE_0_jquery___default()(this).text()
+            $dropdownOption = __WEBPACK_IMPORTED_MODULE_0_jquery___default()(option).appendTo($dropdownOptions)
+            $dropdownOption.text(text)
+          })
+          console.log('INIT: ', $dropdownSelect)
+        },
+        get: function () {
+          // Get current state of select element
+          console.log('GET')
+        },
+        set: function () {
+          // Set state of select element
+          console.log('SET')
+        }
+      }
+    }())
+
+    // Initialise dropdown
+    dropdownState.init()
+
+    $dropdown = __WEBPACK_IMPORTED_MODULE_0_jquery___default()('.dropdown')
+    $dropdown.click(function () {
+      var $this = __WEBPACK_IMPORTED_MODULE_0_jquery___default()(this)
+      $this.toggleClass('open')
+      $this.find('.dropdown__option').toggle()
     })
+
+    // dropdownState.get()
+    // dropdownState.set()
+
+    // Set up initial state - selected container
+    // $dropdownSelected.text($dropdownSelect.find('option:selected').text())
+    // $dropdownSelect.find('option').not(':selected').each(function () {
+    //   var text = $(this).text()
+    //   $dropdownOption = $(option).appendTo($dropdownOptions)
+    //   $dropdownOption.text(text)
+    // })
+    //
+    // console.log($dropdownSelect)
   })()
+
+  // var dropdownOption = (function () {
+  //   var $dropdown
+  //   var $dropdownOption
+  //   var $dropdownSelect
+  //   var $label
+  //   var $select
+  //   var $selectOption
+  //   var selectOptionText
+  //
+  //   // Create and populate fake, stylable select control
+  //   $dropdownSelect = $('.dropdown-select')
+  //   $dropdownSelect.each(function () {
+  //     var $this = $(this)
+  //     $label = $this.find('label')
+  //     $select = $this.find('select')
+  //     $label.after('<div class="dropdown"></div>')
+  //     $dropdown = $label.next('.dropdown')
+  //     $selectOption = $select.find('option')
+  //     $selectOption.each(function (index) {
+  //       var $this = $(this)
+  //       selectOptionText = $this.text()
+  //       $dropdownOption = $('<div class="dropdown__option">').text(selectOptionText)
+  //       if (index === 0) {
+  //         $dropdownOption.addClass('selected').addClass('disabled')
+  //       }
+  //       $dropdown.append($dropdownOption)
+  //     })
+  //
+  //     $this.click(function () {
+  //       var $dropdown = $this.children('.dropdown')
+  //       var $option = $dropdown.children('.dropdown__option')
+  //
+  //       $dropdown.toggleClass('open')
+  //       $option.click(function () {
+  //         var $clicked = $(this)
+  //         $option.removeClass('selected').removeClass('chosen')
+  //         $clicked.addClass('selected').addClass('chosen')
+  //         $dropdown.addClass('chosen')
+  //       })
+  //
+  //       // if ($dropdown.hasClass('open')) {
+  //       //   $option.click(function () {
+  //       //     $this = $(this)
+  //       //     $option.removeClass('selected')
+  //       //     $this.addClass('selected')
+  //       //   })
+  //       // }
+  //     })
+  // })()
 
   /**
     * IIFE to handle segmented control elements
     */
   var segmentedControl = (function () {
-    var $segmentedControl
-
-    $segmentedControl = __WEBPACK_IMPORTED_MODULE_0_jquery___default()('.segmented-control')
+    var $segmentedControl = __WEBPACK_IMPORTED_MODULE_0_jquery___default()('.segmented-control')
     $segmentedControl.click(function () {
-      __WEBPACK_IMPORTED_MODULE_0_jquery___default()(this).parent('.segmented-controls').find('label').removeClass('checked')
-      __WEBPACK_IMPORTED_MODULE_0_jquery___default()(this).addClass('checked')
-      __WEBPACK_IMPORTED_MODULE_0_jquery___default()(this).find('[type=radio]').attr('checked', 'checked')
+      var $this = __WEBPACK_IMPORTED_MODULE_0_jquery___default()(this)
+      var $parent = $this.parent('.segmented-controls')
+      var $input = $this.find('[type=radio]')
+      $parent.find('label').removeClass('checked').removeClass('error')
+      $this.addClass('checked')
+      $input.attr('checked', 'checked')
     })
   })()
 })

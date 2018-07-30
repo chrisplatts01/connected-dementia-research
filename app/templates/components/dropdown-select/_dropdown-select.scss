@@ -1,40 +1,84 @@
 .dropdown-select {
   label {
-    padding-right: 1rem
+    padding-right: 16px;
   }
 
   select {
-    display: none;
+    // display: none;
   }
 
   .dropdown {
     display: block;
-    margin: 0 1em;
+    margin: 1em 0;
     box-sizing: border-box;
-    border: 1px solid $border-color;
+    border: 2px solid $border-color;
     border-radius: 3px;
     box-shadow: 0 4px 0 0 $border-shadow-color;
+
+    .dropdown__selected,
+    .dropdown__option {
+      @include small-font;
+      width: 100%;
+      height: 41px;
+      font-weight: 400;
+      color: $grey-20;
+      box-sizing: border-box;
+      padding: 8px 0.5em 0;
+    }
+
+    .dropdown__selected {
+      position: relative;
+
+      &:after {
+        position: absolute;
+        top: 18px;
+        right: 18px;
+        color: black;
+        width: 12px;
+        height: 6px;
+        content: '\00a0';
+        background: url('/images/arrow-down-grey.svg') center center no-repeat;
+      }
+    }
+
+    .dropdown__option {
+      display: none;
+    }
 
     &:hover {
       border-color: $border-hover-color;
     }
 
-    .dropdown__option {
-      display: none;
-      width: 100%;
-      font-size: $small-font-size;
-      font-weight: 400;
-      color: $grey-20;
-      box-sizing: border-box;
-      padding: 4px 0.5em;
-      border-top: 1px solid $border-color;
+    &.error {
+      border: 3px solid $purple;
 
-      &:first-child {
-        border-top: 0;
+      .dropdown__selected:after {
+        background-image: url('/images/arrow-down-purple.svg')
+      }
+    }
+
+    &.open,
+    &.open.error {
+      border-color: $orange;
+
+      .dropdown__selected {
+        border-bottom: 2px solid $orange;
+
+        &:after {
+          background-image: url('/images/arrow-down-orange.svg');
+        }
       }
 
-      &.selected {
-        display: block;
+      .dropdown__option {
+        border-bottom: 1px solid $orange;
+
+        &:last-child {
+          border: 0;
+        }
+
+        &:hover {
+          background-color: $orange-light;
+        }
       }
     }
   }
