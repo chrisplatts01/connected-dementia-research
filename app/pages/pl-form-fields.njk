@@ -1,0 +1,14 @@
+{% extends "pattern-library-layout.njk" %}
+
+{% block content %}
+  <h1 class="pl-heading">Form fields</h1>
+  {% include 'components/form-fields/_form-fields.njk' %}
+  <h2 class="pl-heading">HTML</h2>
+  <textarea class="pl-code" disabled>
+    {% include 'components/form-fields/_form-fields.njk' %}
+  </textarea>
+  <h2 class="pl-heading">SCSS</h2>
+  <textarea class="pl-code" disabled>
+    {% include 'components/form-fields/_form-fields.scss' ignore missing %}
+  </textarea>
+{% endblock %}
