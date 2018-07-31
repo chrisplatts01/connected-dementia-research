@@ -73,192 +73,133 @@
     </nav>
     <main class="pl-main" role="main">
       
-  <h1 class="pl-heading">Checkboxes</h1>
-  <p><small>To illustrate the styling of <em>checked</em> and <em>hover</em> states, <code>.hover</code> and <code>.checked</code> classes have been added to simulate these states. These classes are not required in production where the <code>:hover</code> and <code>:checked</code> pseudo-classes are used.</small></p>
-  <div class="checkbox">
-  <label>
-    <input id="option-1" name="option" type="checkbox" />
-    Unselected
-    <span class="checkmark"></span>
+  <h1 class="pl-heading">Form fields</h1>
+  <h2 class="pl-heading">Long form fields</h2>
+
+<div class="form-field form-field--text">
+  <label>Label text
+    <input id="field-1" name="field-1" type="text" placeholder="Placeholder text" />
   </label>
 </div>
-<div class="checkbox hover">
-  <label>
-    <input id="option-2" name="option" type="checkbox" />
-    Unselected (Hover)
-    <span class="checkmark"></span>
-  </label>
+<br />
+<div class="form-field form-field--text hover">
+  <input id="field-2" name="field-2" type="text" placeholder="Placeholder text" value="Sample input" />
+</div>
+<br />
+<div class="form-field form-field--text focus">
+  <input id="field-3" name="field-3" type="text" placeholder="Placeholder text"  value="Active input"/>
+</div>
+<br />
+<div class="form-field form-field--text error">
+  <input id="field-4" name="field-4" type="text" placeholder="Placeholder text"  value="Incorrect input"/>
+  <div class="msg-error">Error text</div>
 </div>
 
-<div class="checkbox">
-  <label>
-    <input id="option-3" name="option" type="checkbox" checked />
-    Selected (Checked)
-    <span class="checkmark"></span>
+<h2 class="pl-heading">Short form fields</h2>
+
+<div class="form-field form-field--text form-field--short">
+  <label>Label text
+    <input id="field-1" name="field-1" type="text" placeholder="Placeholder text" />
   </label>
 </div>
-
-<div class="checkbox hover">
-  <label>
-    <input id="option-4" name="option" type="checkbox" checked />
-    Selected (Checked, Hover)
-    <span class="checkmark"></span>
-  </label>
+<br />
+<div class="form-field form-field--text form-field--short hover">
+  <input id="field-2" name="field-2" type="text" placeholder="Placeholder text" value="Sample input" />
 </div>
-
-<div class="checkbox error">
-  <label>
-    <input id="option-5" name="option" type="checkbox" />
-    Unselected (Error)
-    <span class="checkmark"></span>
-  </label>
+<br />
+<div class="form-field form-field--text form-field--short focus">
+  <input id="field-3" name="field-3" type="text" placeholder="Placeholder text"  value="Active input"/>
 </div>
-
-<div class="checkbox error hover">
-  <label>
-    <input id="option-6" name="option" type="checkbox" />
-    Unselected (Error, Hover)
-    <span class="checkmark"></span>
-  </label>
+<br />
+<div class="form-field form-field--text form-field--short error">
+  <input id="field-4" name="field-4" type="text" placeholder="Placeholder text"  value="Incorrect input"/>
   <div class="msg-error">Error text</div>
 </div>
 
   <h2 class="pl-heading">HTML</h2>
   <textarea class="pl-code" disabled>
-    <div class="checkbox">
-  <label>
-    <input id="option-1" name="option" type="checkbox" />
-    Unselected
-    <span class="checkmark"></span>
+    <h2 class="pl-heading">Long form fields</h2>
+
+<div class="form-field form-field--text">
+  <label>Label text
+    <input id="field-1" name="field-1" type="text" placeholder="Placeholder text" />
   </label>
 </div>
-<div class="checkbox hover">
-  <label>
-    <input id="option-2" name="option" type="checkbox" />
-    Unselected (Hover)
-    <span class="checkmark"></span>
-  </label>
+<br />
+<div class="form-field form-field--text hover">
+  <input id="field-2" name="field-2" type="text" placeholder="Placeholder text" value="Sample input" />
+</div>
+<br />
+<div class="form-field form-field--text focus">
+  <input id="field-3" name="field-3" type="text" placeholder="Placeholder text"  value="Active input"/>
+</div>
+<br />
+<div class="form-field form-field--text error">
+  <input id="field-4" name="field-4" type="text" placeholder="Placeholder text"  value="Incorrect input"/>
+  <div class="msg-error">Error text</div>
 </div>
 
-<div class="checkbox">
-  <label>
-    <input id="option-3" name="option" type="checkbox" checked />
-    Selected (Checked)
-    <span class="checkmark"></span>
+<h2 class="pl-heading">Short form fields</h2>
+
+<div class="form-field form-field--text form-field--short">
+  <label>Label text
+    <input id="field-1" name="field-1" type="text" placeholder="Placeholder text" />
   </label>
 </div>
-
-<div class="checkbox hover">
-  <label>
-    <input id="option-4" name="option" type="checkbox" checked />
-    Selected (Checked, Hover)
-    <span class="checkmark"></span>
-  </label>
+<br />
+<div class="form-field form-field--text form-field--short hover">
+  <input id="field-2" name="field-2" type="text" placeholder="Placeholder text" value="Sample input" />
 </div>
-
-<div class="checkbox error">
-  <label>
-    <input id="option-5" name="option" type="checkbox" />
-    Unselected (Error)
-    <span class="checkmark"></span>
-  </label>
+<br />
+<div class="form-field form-field--text form-field--short focus">
+  <input id="field-3" name="field-3" type="text" placeholder="Placeholder text"  value="Active input"/>
 </div>
-
-<div class="checkbox error hover">
-  <label>
-    <input id="option-6" name="option" type="checkbox" />
-    Unselected (Error, Hover)
-    <span class="checkmark"></span>
-  </label>
+<br />
+<div class="form-field form-field--text form-field--short error">
+  <input id="field-4" name="field-4" type="text" placeholder="Placeholder text"  value="Incorrect input"/>
   <div class="msg-error">Error text</div>
 </div>
 
   </textarea>
   <h2 class="pl-heading">SCSS</h2>
   <textarea class="pl-code" disabled>
-    .checkbox {
-  display: block;
-  position: relative;
-  margin-bottom: 16px;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
+    .form-field {
+  &.form-field--short {
+    width: 150px;
+  }
 
   label {
-    display: block;
-    padding-left: 2.5em;
-    cursor: pointer;
+    @include small-font
   }
 
-  .checkmark {
-    position: absolute;
-    top: -2px;
-    left: 0;
-    height: 24px;
-    width: 24px;
-    border: 2px solid $grey-35;
+  input {
+    @include small-font
+    display: block;
+    width: 100%;
+    height: 40px;
+    border: 1px solid $border-color;
     border-radius: 3px;
-    background-color: $white;
+    padding: 0 10px;
     box-shadow: inset 0 3px 0 0 $grey-66;
 
-    &:after {
-      content: "";
-      position: absolute;
-      display: none;
-      left: 6px;
-      top: 0;
-      width: 6px;
-      height: 12px;
-      border: 1px solid $white;
-      border-width: 0 3px 3px 0;
-      -webkit-transform: rotate(45deg);
-      -ms-transform: rotate(45deg);
-      transform: rotate(45deg);
+    &:hover {
+      border-color: $border-hover-color;
     }
-  }
-
-  [type="checkbox"] {
-    position: absolute;
-    left: 0;
-    opacity: 0;
-    cursor: pointer;
-
-    &:checked ~ .checkmark {
-      background-color: $orange;
+    &:focus, &:active {
       border-color: $orange;
-      box-shadow: none;
-
-      &:hover {
-        background-color: $orange-dark;
-        border-color: $orange-dark;
-      }
-
-      &:after {
-        display: block;
-      }
     }
   }
 
-  &:hover [type="checkbox"] ~ .checkmark,
-  &.hover [type="checkbox"] ~ .checkmark {
-    background-color: $orange-light;
+  &.hover input {
+    border-color: $border-hover-color;
   }
 
-  &:hover [type="checkbox"]:checked ~ .checkmark,
-  &.hover [type="checkbox"]:checked ~ .checkmark {
-    background-color: $orange-dark;
-    border-color: $orange-dark;
+  &.focus input {
+    border-color: $orange;
   }
 
-  &.error [type="checkbox"] ~ .checkmark {
-    border-color: $purple;
-    border-width: 3px;
-  }
-
-  &.error:hover [type="checkbox"] ~ .checkmark,
-  &.error.hover [type="checkbox"] ~ .checkmark {
-    background-color: $purple-light;
+  &.error input {
+    border: 3px solid $purple;
   }
 }
 
