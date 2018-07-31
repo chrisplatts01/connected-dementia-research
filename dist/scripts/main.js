@@ -118,6 +118,7 @@ __WEBPACK_IMPORTED_MODULE_0_jquery___default()(function () {
         set: function ($select) {
           // Set state of select element
           var value = $select.find('.dropdown__option.selected').attr('data-value')
+          $select.removeClass('error')
           $select.find('option').first().removeAttr('selected')
           $select.find('option[value="' + value + '"]').prop('selected', true)
           $select.find('select').val(value)
