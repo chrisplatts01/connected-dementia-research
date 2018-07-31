@@ -15,7 +15,7 @@ $(function () {
 
     var dropdownState = (function () {
       return {
-        init: function () {
+        init: function ($dropdownSelect) {
           // Set initial state of dropdown-select controls
           var dropdown = '<div class="dropdown"></div>'
           var selected = '<div class="dropdown__selected"></div>'
@@ -32,7 +32,8 @@ $(function () {
             $dropdownOption = $(option).appendTo($dropdownOptions)
             $dropdownOption.text(text)
           })
-          console.log('INIT: ', $dropdownSelect)
+
+          $dropdownSelect.find('.msg-error').detach().appendTo($dropdownSelect)
         },
         get: function () {
           // Get current state of select element
@@ -45,14 +46,30 @@ $(function () {
       }
     }())
 
-    // Initialise dropdown
-    dropdownState.init()
+    // Initialise dropdowns
+    $dropdownSelect.each(function () {
+      dropdownState.init($(this))
+    })
 
     $dropdown = $('.dropdown')
     $dropdown.click(function () {
+      console.log('DROPDOWN CLICKED')
       var $this = $(this)
       $this.toggleClass('open')
       $this.find('.dropdown__option').toggle()
+    })
+
+    $dropdownOption = $dropdown.find('.dropdown__option')
+    $dropdownOption.click(function () {
+      console.log('OPTION CLICKED')
+      var $this = $(this)
+      var $dropdown = $this.parents('.dropdown') // .children('.dropdown__selected')
+      var $options = $this.parent('.dropdown__options').children('.dropdown__option')
+      var $selected = $this.parents('.dropdown').children('.dropdown__selected')
+      $options.removeClass('selected')
+      $this.addClass('selected')
+      $dropdown.addClass('selected')
+      $selected.text($this.text())
     })
 
     // dropdownState.get()

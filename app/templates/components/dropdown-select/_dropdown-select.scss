@@ -39,6 +39,32 @@
         content: '\00a0';
         background: url('/images/arrow-down-grey.svg') center center no-repeat;
       }
+
+      // &.selected {
+      //   color: $white;
+      //   background-color: $orange;
+      //
+      //   &:after {
+      //     background-image: url('/images/arrow-down-white.svg');
+      //   }
+      // }
+    }
+
+    &.selected {
+      border-color: $orange;
+
+      .dropdown__selected {
+        color: $white;
+        background-color: $orange;
+
+        &:after {
+          background-image: url('/images/arrow-down-white.svg');
+        }
+      }
+
+      &:hover {
+        border-color: $orange;
+      }
     }
 
     .dropdown__option {
@@ -57,8 +83,7 @@
       }
     }
 
-    &.open,
-    &.open.error {
+    &.open {
       border-color: $orange;
 
       .dropdown__selected {
@@ -78,6 +103,43 @@
 
         &:hover {
           background-color: $orange-light;
+        }
+
+        &.selected {
+          color: $white;
+          background-color: $orange;
+        }
+      }
+    }
+
+    &.open.selected {
+      .dropdown__selected {
+        border-bottom: 2px solid $orange;
+
+        &:after {
+          background-image: url('/images/arrow-down-white.svg');
+        }
+      }
+    }
+  }
+
+  &.error {
+    .dropdown {
+      border: 3px solid $purple;
+
+      .dropdown__selected:after {
+        background-image: url('/images/arrow-down-purple.svg')
+      }
+
+      &.open {
+        border-color: $orange;
+
+        .dropdown__selected {
+          border-bottom: 2px solid $orange;
+
+          &:after {
+            background-image: url('/images/arrow-down-orange.svg');
+          }
         }
       }
     }

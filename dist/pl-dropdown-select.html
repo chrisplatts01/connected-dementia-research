@@ -72,7 +72,7 @@
     </nav>
     <main class="pl-main" role="main">
       
-  <h1 class="pl-heading">Dropdown select</h1>
+  <h1 class="pl-heading">Dropdown select (WIP)</h1>
   <p><small>To illustrate the styling of <em>checked</em> and <em>hover</em> states, <code>.hover</code> and <code>.checked</code> classes have been added to simulate these states. These classes are not required in production where the <code>:hover</code> and <code>:checked</code> pseudo-classes are used.</small></p>
   <div class="dropdown-select">
   <label>Choose an option:
@@ -85,6 +85,15 @@
       <option value="option-5">Option 5</option>
     </select>
   </label>
+</div>
+
+<div class="dropdown-select error">
+  <label>Choose an option:
+    <select id="options" name="options">
+      <option selected disabled>Select&hellip;</option>
+    </select>
+  </label>
+  <p class="msg-error">Error message</p>
 </div>
 
   <h2 class="pl-heading">HTML</h2>
@@ -100,6 +109,15 @@
       <option value="option-5">Option 5</option>
     </select>
   </label>
+</div>
+
+<div class="dropdown-select error">
+  <label>Choose an option:
+    <select id="options" name="options">
+      <option selected disabled>Select&hellip;</option>
+    </select>
+  </label>
+  <p class="msg-error">Error message</p>
 </div>
 
   </textarea>
@@ -146,6 +164,32 @@
         content: '\00a0';
         background: url('/images/arrow-down-grey.svg') center center no-repeat;
       }
+
+      // &.selected {
+      //   color: $white;
+      //   background-color: $orange;
+      //
+      //   &:after {
+      //     background-image: url('/images/arrow-down-white.svg');
+      //   }
+      // }
+    }
+
+    &.selected {
+      border-color: $orange;
+
+      .dropdown__selected {
+        color: $white;
+        background-color: $orange;
+
+        &:after {
+          background-image: url('/images/arrow-down-white.svg');
+        }
+      }
+
+      &:hover {
+        border-color: $orange;
+      }
     }
 
     .dropdown__option {
@@ -164,8 +208,7 @@
       }
     }
 
-    &.open,
-    &.open.error {
+    &.open {
       border-color: $orange;
 
       .dropdown__selected {
@@ -185,6 +228,43 @@
 
         &:hover {
           background-color: $orange-light;
+        }
+
+        &.selected {
+          color: $white;
+          background-color: $orange;
+        }
+      }
+    }
+
+    &.open.selected {
+      .dropdown__selected {
+        border-bottom: 2px solid $orange;
+
+        &:after {
+          background-image: url('/images/arrow-down-white.svg');
+        }
+      }
+    }
+  }
+
+  &.error {
+    .dropdown {
+      border: 3px solid $purple;
+
+      .dropdown__selected:after {
+        background-image: url('/images/arrow-down-purple.svg')
+      }
+
+      &.open {
+        border-color: $orange;
+
+        .dropdown__selected {
+          border-bottom: 2px solid $orange;
+
+          &:after {
+            background-image: url('/images/arrow-down-orange.svg');
+          }
         }
       }
     }
