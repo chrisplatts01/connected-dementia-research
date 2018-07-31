@@ -1,7 +1,7 @@
 
 .msg-error {
   @include error-font();
-  padding-top: 14px;
+  padding-top: 16px;
   text-align: left;
 
   &:before {
@@ -14,4 +14,8 @@
 
 .segmented-control ~ .msg-error {
   padding-top: 20px;
+}
+
+.dropdown-select .msg-error {
+  padding-top: 0;
 }
