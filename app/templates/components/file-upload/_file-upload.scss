@@ -1,0 +1,39 @@
+.file-upload {
+  position: relative;
+  width: 360px;
+  height: 180px;
+  margin: 0 auto;
+  background: $white url('/images/icon-file-upload.svg') center 30% no-repeat;
+  border: 2px dashed $border-color;
+  border-radius: 4px;
+
+  label {
+    @include small-font;
+    display: block;
+    position: relative;
+    top: 100px;
+    text-align: center;
+  }
+
+  .file-upload__browse {
+    color: $orange;
+    text-decoration: underline;
+    cursor: pointer;
+  }
+
+  &:hover {
+    border: 2px solid $border-hover-color;
+  }
+
+  .file-upload__button,
+  .file-upload__file {
+    @include hide-visually();
+  }
+
+  .file-upload__dragndrop,
+  .file-upload__uploading,
+  .file-upload__success,
+  .file-upload__error {
+    display: none;
+  }
+}

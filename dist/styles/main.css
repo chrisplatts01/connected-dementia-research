@@ -751,6 +751,59 @@ p, .paragraph {
   border: 3px solid #8500ad;
 }
 
+.file-upload {
+  position: relative;
+  width: 360px;
+  height: 180px;
+  margin: 0 auto;
+  background: white url("/images/icon-file-upload.svg") center 30% no-repeat;
+  border: 2px dashed #b8c4cc;
+  border-radius: 4px;
+}
+
+.file-upload label {
+  font-family: "Source Sans Pro", "Helvetica", "Arial", sans-serif;
+  font-size: 19px;
+  font-weight: 400;
+  line-height: 24px;
+  color: #5d7384;
+  display: block;
+  position: relative;
+  top: 100px;
+  text-align: center;
+}
+
+.file-upload .file-upload__browse {
+  color: #d63900;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.file-upload:hover {
+  border: 2px solid #5d7384;
+}
+
+.file-upload .file-upload__button,
+.file-upload .file-upload__file {
+  border: 0;
+  clip: rect(1px, 1px, 1px, 1px);
+  -webkit-clip-path: inset(100%);
+          clip-path: inset(100%);
+  height: 1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
+
+.file-upload .file-upload__dragndrop,
+.file-upload .file-upload__uploading,
+.file-upload .file-upload__success,
+.file-upload .file-upload__error {
+  display: none;
+}
+
 .colour-swatches th, .colour-swatches td {
   text-align: left;
   padding: 0 5px;
