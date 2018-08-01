@@ -2,7 +2,7 @@ import $ from 'jquery'
 
 $(function () {
   /**
-    * IIFE to handle custom select elements
+    * IIFE to handle custom select components
     */
   var dropdownSelect = (function () {
     var $dropdownSelect
@@ -83,18 +83,35 @@ $(function () {
     })
   })()
 
-  /**
-    * IIFE to handle segmented control elements
-    */
-  var segmentedControl = (function () {
-    var $segmentedControl = $('.segmented-control')
-    $segmentedControl.click(function () {
-      var $this = $(this)
-      var $parent = $this.parent('.segmented-controls')
-      var $input = $this.find('[type=radio]')
-      $parent.find('label').removeClass('checked').removeClass('error')
-      $this.addClass('checked')
-      $input.attr('checked', 'checked')
-    })
-  })()
+    /**
+      * IIFE to handle segmented control components
+      */
+    var segmentedControl = (function () {
+      var $segmentedControl = $('.segmented-control')
+      $segmentedControl.click(function () {
+        var $this = $(this)
+        var $parent = $this.parent('.segmented-controls')
+        var $input = $this.find('[type=radio]')
+        $parent.find('label').removeClass('checked').removeClass('error')
+        $this.addClass('checked')
+        $input.attr('checked', 'checked')
+      })
+    })()
+
+      /**
+        * IIFE to handle file upload components
+        */
+      var fileUpload = (function () {
+        // Check if browser supports advanced file upload features
+        var isAdvancedUpload = (function () {
+          var div = document.createElement('div')
+          return (('draggable' in div) || ('ondragstart' in div && 'ondrop' in div)) && 'FormData' in window && 'FileReader' in window
+        })()
+
+        if (isAdvancedUpload) {
+          $('.file-upload__button, .file-upload__input').addClass('hide')
+        } else {
+          $('.file-upload__button, .file-upload__input').removeClass('hide')
+        };
+      })()
 })

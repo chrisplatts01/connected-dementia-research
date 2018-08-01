@@ -75,14 +75,39 @@
     <main class="pl-main" role="main">
       
   <h1 class="pl-heading">[WIP] File upload</h1>
-  <div class="file-upload">
-  <div class="file-upload__input">
-    <label>
-      Drag file here or <span class="file-upload__browse">browse</span>
-      <input class="file-upload__file" type="file" name="files[]" id="file" data-multiple-caption="{count} files selected" multiple />
-    </label>
-    <button class="file-upload__button" type="submit">Upload</button>
-  </div>
+  <h2 class="pl-heading">No files uploaded</h2>
+<div class="file-upload">
+  <label>
+    Drag file here or <span class="file-upload__browse">browse</span>
+    <input class="file-upload__input" type="file" name="files[]" id="file" data-multiple-caption="{count} files selected" multiple />
+  </label>
+  <button class="file-upload__button" type="submit">Upload</button>
+  <div class="file-upload__uploading">Uploading&hellip;</div>
+  <div class="file-upload__success">Done!</div>
+  <div class="file-upload__error">Error! <span></span>.</div>
+</div>
+<h2 class="pl-heading">No files uploaded (hover)</h2>
+<div class="file-upload hover">
+  <label>
+    Drag file here or <span class="file-upload__browse">browse</span>
+    <input class="file-upload__input" type="file" name="files[]" id="file" data-multiple-caption="{count} files selected" multiple />
+  </label>
+  <button class="file-upload__button" type="submit">Upload</button>
+  <div class="file-upload__uploading">Uploading&hellip;</div>
+  <div class="file-upload__success">Done!</div>
+  <div class="file-upload__error">Error! <span></span>.</div>
+</div>
+<h2 class="pl-heading">Files uploaded</h2>
+<ul class="files-uploaded">
+  <li>filename.pdf</li>
+  <li>another_filename.doc</li>
+</ul>
+<div class="file-upload">
+  <label>
+    Drag file here or <span class="file-upload__browse">browse</span>
+    <input class="file-upload__input" type="file" name="files[]" id="file" data-multiple-caption="{count} files selected" multiple />
+  </label>
+  <button class="file-upload__button" type="submit">Upload</button>
   <div class="file-upload__uploading">Uploading&hellip;</div>
   <div class="file-upload__success">Done!</div>
   <div class="file-upload__error">Error! <span></span>.</div>
@@ -90,14 +115,39 @@
 
   <h2 class="pl-heading">HTML</h2>
   <textarea class="pl-code" disabled>
-    <div class="file-upload">
-  <div class="file-upload__input">
-    <label>
-      Drag file here or <span class="file-upload__browse">browse</span>
-      <input class="file-upload__file" type="file" name="files[]" id="file" data-multiple-caption="{count} files selected" multiple />
-    </label>
-    <button class="file-upload__button" type="submit">Upload</button>
-  </div>
+    <h2 class="pl-heading">No files uploaded</h2>
+<div class="file-upload">
+  <label>
+    Drag file here or <span class="file-upload__browse">browse</span>
+    <input class="file-upload__input" type="file" name="files[]" id="file" data-multiple-caption="{count} files selected" multiple />
+  </label>
+  <button class="file-upload__button" type="submit">Upload</button>
+  <div class="file-upload__uploading">Uploading&hellip;</div>
+  <div class="file-upload__success">Done!</div>
+  <div class="file-upload__error">Error! <span></span>.</div>
+</div>
+<h2 class="pl-heading">No files uploaded (hover)</h2>
+<div class="file-upload hover">
+  <label>
+    Drag file here or <span class="file-upload__browse">browse</span>
+    <input class="file-upload__input" type="file" name="files[]" id="file" data-multiple-caption="{count} files selected" multiple />
+  </label>
+  <button class="file-upload__button" type="submit">Upload</button>
+  <div class="file-upload__uploading">Uploading&hellip;</div>
+  <div class="file-upload__success">Done!</div>
+  <div class="file-upload__error">Error! <span></span>.</div>
+</div>
+<h2 class="pl-heading">Files uploaded</h2>
+<ul class="files-uploaded">
+  <li>filename.pdf</li>
+  <li>another_filename.doc</li>
+</ul>
+<div class="file-upload">
+  <label>
+    Drag file here or <span class="file-upload__browse">browse</span>
+    <input class="file-upload__input" type="file" name="files[]" id="file" data-multiple-caption="{count} files selected" multiple />
+  </label>
+  <button class="file-upload__button" type="submit">Upload</button>
   <div class="file-upload__uploading">Uploading&hellip;</div>
   <div class="file-upload__success">Done!</div>
   <div class="file-upload__error">Error! <span></span>.</div>
@@ -112,38 +162,67 @@
   height: 180px;
   margin: 0 auto;
   background: $white url('/images/icon-file-upload.svg') center 30% no-repeat;
-  border: 2px dashed $border-color;
+  border: 1px dashed $border-color;
   border-radius: 4px;
 
-  & label {
-    @include small-font
+  &:hover,
+  &.hover {
+    border: 1px solid $border-hover-color;
+  }
+
+  label {
+    @include small-font;
     display: block;
     position: relative;
     top: 100px;
     text-align: center;
   }
 
-  & .file-upload__browse {
+  .file-upload__browse {
     color: $orange;
     text-decoration: underline;
+    cursor: pointer;
   }
 
-  & .file-upload__file {
-    display: none;
+  .file-upload__button,
+  .file-upload__input {
+    &.hide {
+      @include hide-visually();
+    }
   }
-
-  &:hover {
-    border: 2px solid $border-hover-color;
-  }
-
-
-
 
   .file-upload__dragndrop,
   .file-upload__uploading,
   .file-upload__success,
   .file-upload__error {
     display: none;
+  }
+}
+
+.files-uploaded {
+  @include small-font;
+  width: 360px;
+  margin: 0 auto 10px;
+  padding: 0;
+  list-style: none;
+
+  li {
+    position: relative;
+    padding: 10px 0;
+    margin: 0;
+    border-bottom: 1px solid $border-color;
+
+    &:last-child {
+      border: 0;
+    }
+
+    &:after {
+      width: 24px;
+      position: absolute;
+      right: 0;
+      content: "\00a0";
+      background: url('/images/icon-trash.svg') top center no-repeat;
+    }
   }
 }
 

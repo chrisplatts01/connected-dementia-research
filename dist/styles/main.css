@@ -757,8 +757,12 @@ p, .paragraph {
   height: 180px;
   margin: 0 auto;
   background: white url("/images/icon-file-upload.svg") center 30% no-repeat;
-  border: 2px dashed #b8c4cc;
+  border: 1px dashed #b8c4cc;
   border-radius: 4px;
+}
+
+.file-upload:hover, .file-upload.hover {
+  border: 1px solid #5d7384;
 }
 
 .file-upload label {
@@ -779,12 +783,8 @@ p, .paragraph {
   cursor: pointer;
 }
 
-.file-upload:hover {
-  border: 2px solid #5d7384;
-}
-
-.file-upload .file-upload__button,
-.file-upload .file-upload__file {
+.file-upload .file-upload__button.hide,
+.file-upload .file-upload__input.hide {
   border: 0;
   clip: rect(1px, 1px, 1px, 1px);
   -webkit-clip-path: inset(100%);
@@ -802,6 +802,37 @@ p, .paragraph {
 .file-upload .file-upload__success,
 .file-upload .file-upload__error {
   display: none;
+}
+
+.files-uploaded {
+  font-family: "Source Sans Pro", "Helvetica", "Arial", sans-serif;
+  font-size: 19px;
+  font-weight: 400;
+  line-height: 24px;
+  color: #5d7384;
+  width: 360px;
+  margin: 0 auto 10px;
+  padding: 0;
+  list-style: none;
+}
+
+.files-uploaded li {
+  position: relative;
+  padding: 10px 0;
+  margin: 0;
+  border-bottom: 1px solid #b8c4cc;
+}
+
+.files-uploaded li:last-child {
+  border: 0;
+}
+
+.files-uploaded li:after {
+  width: 24px;
+  position: absolute;
+  right: 0;
+  content: "\00a0";
+  background: url("/images/icon-trash.svg") top center no-repeat;
 }
 
 .colour-swatches th, .colour-swatches td {

@@ -4,8 +4,13 @@
   height: 180px;
   margin: 0 auto;
   background: $white url('/images/icon-file-upload.svg') center 30% no-repeat;
-  border: 2px dashed $border-color;
+  border: 1px dashed $border-color;
   border-radius: 4px;
+
+  &:hover,
+  &.hover {
+    border: 1px solid $border-hover-color;
+  }
 
   label {
     @include small-font;
@@ -21,13 +26,11 @@
     cursor: pointer;
   }
 
-  &:hover {
-    border: 2px solid $border-hover-color;
-  }
-
   .file-upload__button,
-  .file-upload__file {
-    @include hide-visually();
+  .file-upload__input {
+    &.hide {
+      @include hide-visually();
+    }
   }
 
   .file-upload__dragndrop,
@@ -35,5 +38,32 @@
   .file-upload__success,
   .file-upload__error {
     display: none;
+  }
+}
+
+.files-uploaded {
+  @include small-font;
+  width: 360px;
+  margin: 0 auto 10px;
+  padding: 0;
+  list-style: none;
+
+  li {
+    position: relative;
+    padding: 10px 0;
+    margin: 0;
+    border-bottom: 1px solid $border-color;
+
+    &:last-child {
+      border: 0;
+    }
+
+    &:after {
+      width: 24px;
+      position: absolute;
+      right: 0;
+      content: "\00a0";
+      background: url('/images/icon-trash.svg') top center no-repeat;
+    }
   }
 }
