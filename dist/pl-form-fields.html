@@ -116,6 +116,26 @@
   <div class="msg-error">Error text</div>
 </div>
 
+<h2 class="pl-heading">Date field group</h2>
+<fieldset class="form-field-group form-field-dob">
+  <legend>Date of birth</legend>
+  <div class="form-field form-field--text form-field--short">
+    <label>Day
+      <input id="dob-day" name="dob-day" type="text" placeholder="DD" />
+    </label>
+  </div>
+  <div class="form-field form-field--text form-field--short">
+    <label>Month
+      <input id="dob-month" name="month" type="text" placeholder="MM" />
+    </label>
+  </div>
+  <div class="form-field form-field--text form-field--short">
+    <label>Year
+      <input id="dob-year" name="dob-year" type="number" placeholder="YYYY" />
+    </label>
+  </div>
+</fieldset
+
   <h2 class="pl-heading">HTML</h2>
   <textarea class="pl-code" disabled>
     <h2 class="pl-heading">Long form fields</h2>
@@ -160,6 +180,26 @@
   <div class="msg-error">Error text</div>
 </div>
 
+<h2 class="pl-heading">Date field group</h2>
+<fieldset class="form-field-group form-field-dob">
+  <legend>Date of birth</legend>
+  <div class="form-field form-field--text form-field--short">
+    <label>Day
+      <input id="dob-day" name="dob-day" type="text" placeholder="DD" />
+    </label>
+  </div>
+  <div class="form-field form-field--text form-field--short">
+    <label>Month
+      <input id="dob-month" name="month" type="text" placeholder="MM" />
+    </label>
+  </div>
+  <div class="form-field form-field--text form-field--short">
+    <label>Year
+      <input id="dob-year" name="dob-year" type="number" placeholder="YYYY" />
+    </label>
+  </div>
+</fieldset
+
   </textarea>
   <h2 class="pl-heading">SCSS</h2>
   <textarea class="pl-code" disabled>
@@ -173,12 +213,12 @@
   }
 
   input {
-    @include small-font
+    @include small-font;
     display: block;
     width: 100%;
     height: 40px;
     border: 1px solid $border-color;
-    border-radius: 3px;
+    border-radius: 4px;
     padding: 0 10px;
     box-shadow: inset 0 3px 0 0 $grey-66;
 
@@ -200,6 +240,27 @@
 
   &.error input {
     border: 3px solid $purple;
+  }
+}
+
+.form-field-dob {
+  @include clearfix();
+  border: none;
+  padding: 0;
+
+  legend {
+    @include bold-font();
+    font-size: $small-font-size;
+    margin: 0;
+  }
+
+  .form-field {
+    width: 33%;
+    float: left;
+    padding: 0 10px;
+
+    &:first-child { padding-left: 0 }
+    &:last-child { padding-right: 0 }
   }
 }
 

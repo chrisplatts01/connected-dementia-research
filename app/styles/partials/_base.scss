@@ -1,4 +1,7 @@
 // base.scss
+* {
+	box-sizing: border-box;
+}
 
 body {
 	height: 100%;
@@ -12,6 +15,8 @@ body {
 	background-color: $grey-74;
 }
 
-* {
-	box-sizing: border-box;
+@mixin clearfixx() {
+	clear: both;
+	display: block;
+	content: '\0a00';
 }

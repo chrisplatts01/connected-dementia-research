@@ -1,4 +1,8 @@
 @import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,400i,600,600i,700,700i");
+* {
+  box-sizing: border-box;
+}
+
 body {
   height: 100%;
   margin: 0 auto;
@@ -9,10 +13,6 @@ body {
   font-size: 16px;
   line-height: 1.5;
   background-color: #f9fafb;
-}
-
-* {
-  box-sizing: border-box;
 }
 
 .menu {
@@ -417,7 +417,7 @@ p, .paragraph {
   height: 24px;
   width: 24px;
   border: 2px solid #8599a9;
-  border-radius: 3px;
+  border-radius: 4px;
   background-color: white;
   box-shadow: inset 0 3px 0 0 #e1e6ea;
 }
@@ -580,7 +580,7 @@ p, .paragraph {
   margin: 1em 0;
   box-sizing: border-box;
   border: 2px solid #b8c4cc;
-  border-radius: 3px;
+  border-radius: 4px;
   box-shadow: 0 4px 0 0 #d0d7dd;
 }
 
@@ -726,7 +726,7 @@ p, .paragraph {
   width: 100%;
   height: 40px;
   border: 1px solid #b8c4cc;
-  border-radius: 3px;
+  border-radius: 4px;
   padding: 0 10px;
   box-shadow: inset 0 3px 0 0 #e1e6ea;
 }
@@ -749,6 +749,41 @@ p, .paragraph {
 
 .form-field.error input {
   border: 3px solid #8500ad;
+}
+
+.form-field-dob {
+  border: none;
+  padding: 0;
+}
+
+.form-field-dob::after {
+  clear: both;
+  content: "";
+  display: block;
+}
+
+.form-field-dob legend {
+  font-family: "Source Sans Pro", "Helvetica", "Arial", sans-serif;
+  font-size: 23px;
+  font-weight: 600;
+  line-height: 32px;
+  color: #333f48;
+  font-size: 19px;
+  margin: 0;
+}
+
+.form-field-dob .form-field {
+  width: 33%;
+  float: left;
+  padding: 0 10px;
+}
+
+.form-field-dob .form-field:first-child {
+  padding-left: 0;
+}
+
+.form-field-dob .form-field:last-child {
+  padding-right: 0;
 }
 
 .colour-swatches th, .colour-swatches td {
