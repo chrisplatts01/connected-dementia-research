@@ -208,66 +208,68 @@ __WEBPACK_IMPORTED_MODULE_0_jquery___default()(function () {
 
         $fileList.on('click', fileDelete, function (e) {
           __WEBPACK_IMPORTED_MODULE_0_jquery___default()(this).parent().remove()
+          // CODE TO ACTUALLY DELETE THE FILE GOES HERE - PROBABLY NEEDS TO UPDATE 
         })
 
-        $form.on('submit', function (e) {
-          if ($form.hasClass('is-uploading')) return false
-
-          $form.addClass('is-uploading').removeClass('is-error')
-
-          if (isAdvancedUpload) {
-            console.log('Uploading file using AJAX for modern browsers')
-            // CODE FOR MDERN BROWSERS - WILL NEED CHECKING!!!
-            // e.preventDefault();
-            //
-            // var ajaxData = new FormData($form.get(0))
-            //
-            // if (droppedFiles) {
-            //   $.each( droppedFiles, function(i, file) {
-            //     ajaxData.append( $input.attr('name'), file );
-            //   })
-            // }
-            //
-            // $.ajax({
-            //   url: $form.attr('action'),
-            //   type: $form.attr('method'),
-            //   data: ajaxData,
-            //   dataType: 'json',
-            //   cache: false,
-            //   contentType: false,
-            //   processData: false,
-            //   complete: function() {
-            //     $form.removeClass('is-uploading');
-            //   },
-            //   success: function(data) {
-            //     $form.addClass( data.success == true ? 'is-success' : 'is-error' );
-            //     if (!data.success) $errorMsg.text(data.error);
-            //   },
-            //   error: function() {
-            //     // Log the error, show an alert, whatever works for you
-            //   }
-            // })
-          } else {
-            console.log('Uploading file using AJAX for legacy browsers')
-            // CODE FOR LEGACY BROWSERS - WILL NEED CHECKING!!!
-            // var iframeName = 'uploadiframe' + new Date().getTime()
-            // var $iframe = $('<iframe name="' + iframeName + '" style="display: none;"></iframe>')
-            //
-            // $('body').append($iframe)
-            // $form.attr('target', iframeName)
-            //
-            // $iframe.one('load', function () {
-            //   var data = JSON.parse($iframe.contents().find('body').text())
-            //   $form
-            //     .removeClass('is-uploading')
-            //     .addClass(data.success === true ? 'is-success' : 'is-error')
-            //     .removeAttr('target')
-            //   if (!data.success) $errorMsg.text(data.error);
-            //   $form.removeAttr('target')
-            //   $iframe.remove()
-            // })
-          }
-        })
+        // CODE TO ACTUALLY UPLOAD THE FILES GOES HERE!!!
+        // $form.on('submit', function (e) {
+        //   if ($form.hasClass('is-uploading')) return false
+        //
+        //   $form.addClass('is-uploading').removeClass('is-error')
+        //
+        //   if (isAdvancedUpload) {
+        //     console.log('Uploading file using AJAX for modern browsers')
+        //     // CODE FOR MDERN BROWSERS - WILL NEED CHECKING!!!
+        //     // e.preventDefault();
+        //     //
+        //     // var ajaxData = new FormData($form.get(0))
+        //     //
+        //     // if (droppedFiles) {
+        //     //   $.each( droppedFiles, function(i, file) {
+        //     //     ajaxData.append( $input.attr('name'), file );
+        //     //   })
+        //     // }
+        //     //
+        //     // $.ajax({
+        //     //   url: $form.attr('action'),
+        //     //   type: $form.attr('method'),
+        //     //   data: ajaxData,
+        //     //   dataType: 'json',
+        //     //   cache: false,
+        //     //   contentType: false,
+        //     //   processData: false,
+        //     //   complete: function() {
+        //     //     $form.removeClass('is-uploading');
+        //     //   },
+        //     //   success: function(data) {
+        //     //     $form.addClass( data.success == true ? 'is-success' : 'is-error' );
+        //     //     if (!data.success) $errorMsg.text(data.error);
+        //     //   },
+        //     //   error: function() {
+        //     //     // Log the error, show an alert, whatever works for you
+        //     //   }
+        //     // })
+        //   } else {
+        //     console.log('Uploading file using AJAX for legacy browsers')
+        //     // CODE FOR LEGACY BROWSERS - WILL NEED CHECKING!!!
+        //     // var iframeName = 'uploadiframe' + new Date().getTime()
+        //     // var $iframe = $('<iframe name="' + iframeName + '" style="display: none;"></iframe>')
+        //     //
+        //     // $('body').append($iframe)
+        //     // $form.attr('target', iframeName)
+        //     //
+        //     // $iframe.one('load', function () {
+        //     //   var data = JSON.parse($iframe.contents().find('body').text())
+        //     //   $form
+        //     //     .removeClass('is-uploading')
+        //     //     .addClass(data.success === true ? 'is-success' : 'is-error')
+        //     //     .removeAttr('target')
+        //     //   if (!data.success) $errorMsg.text(data.error);
+        //     //   $form.removeAttr('target')
+        //     //   $iframe.remove()
+        //     // })
+        //   }
+        // })
       })()
 })
 
