@@ -752,20 +752,28 @@ p, .paragraph {
 }
 
 .file-upload {
-  position: relative;
   width: 360px;
-  height: 180px;
   margin: 0 auto;
+}
+
+.file-upload__uploader {
+  position: relative;
+  height: 180px;
   background: white url("/images/icon-file-upload.svg") center 30% no-repeat;
   border: 1px dashed #b8c4cc;
   border-radius: 4px;
 }
 
-.file-upload:hover, .file-upload.hover {
+.file-upload__uploader:hover, .file-upload__uploader.hover {
   border: 1px solid #5d7384;
 }
 
-.file-upload label {
+.file-upload__uploader.is-dragover {
+  border: 1px solid #d63900;
+  background-color: #fff0ea;
+}
+
+.file-upload__uploader label {
   font-family: "Source Sans Pro", "Helvetica", "Arial", sans-serif;
   font-size: 19px;
   font-weight: 400;
@@ -777,14 +785,14 @@ p, .paragraph {
   text-align: center;
 }
 
-.file-upload .file-upload__browse {
+.file-upload__browse {
   color: #d63900;
   text-decoration: underline;
   cursor: pointer;
 }
 
-.file-upload .file-upload__button.hide,
-.file-upload .file-upload__input.hide {
+.file-upload__button.hide,
+.file-upload__input.hide {
   border: 0;
   clip: rect(1px, 1px, 1px, 1px);
   -webkit-clip-path: inset(100%);
@@ -797,14 +805,14 @@ p, .paragraph {
   width: 1px;
 }
 
-.file-upload .file-upload__dragndrop,
-.file-upload .file-upload__uploading,
-.file-upload .file-upload__success,
-.file-upload .file-upload__error {
+.file-upload__dragndrop,
+.file-upload__uploading,
+.file-upload__success,
+.file-upload__error {
   display: none;
 }
 
-.files-uploaded {
+.file-upload__file-list {
   font-family: "Source Sans Pro", "Helvetica", "Arial", sans-serif;
   font-size: 19px;
   font-weight: 400;
@@ -816,23 +824,25 @@ p, .paragraph {
   list-style: none;
 }
 
-.files-uploaded li {
+.file-upload__file-added {
   position: relative;
   padding: 10px 0;
   margin: 0;
   border-bottom: 1px solid #b8c4cc;
 }
 
-.files-uploaded li:last-child {
+.file-upload__file-added:last-child {
   border: 0;
 }
 
-.files-uploaded li:after {
+.file-upload__delete-file {
   width: 24px;
+  height: 32px;
   position: absolute;
   right: 0;
-  content: "\00a0";
+  display: inline-block;
   background: url("/images/icon-trash.svg") top center no-repeat;
+  cursor: pointer;
 }
 
 .colour-swatches th, .colour-swatches td {
