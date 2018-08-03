@@ -203,12 +203,12 @@ __WEBPACK_IMPORTED_MODULE_0_jquery___default()(function () {
             __WEBPACK_IMPORTED_MODULE_0_jquery___default()(this).prev('.file-upload__file-list').append('<li class="file-upload__file-added">' + droppedFiles[0].name + '  <span class="file-upload__delete-file"></span></li>')
           })
         } else {
-          __WEBPACK_IMPORTED_MODULE_0_jquery___default()('.file-upload__button, .file-upload__input').removeClass('hide')
+          // $('.file-upload__button, .file-upload__input').removeClass('hide')
         };
 
         $fileList.on('click', fileDelete, function (e) {
           __WEBPACK_IMPORTED_MODULE_0_jquery___default()(this).parent().remove()
-          // CODE TO ACTUALLY DELETE THE FILE GOES HERE - PROBABLY NEEDS TO UPDATE 
+          // CODE TO ACTUALLY DELETE THE FILE GOES HERE - PROBABLY NEEDS TO UPDATE
         })
 
         // CODE TO ACTUALLY UPLOAD THE FILES GOES HERE!!!

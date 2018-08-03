@@ -130,12 +130,12 @@ $(function () {
             $(this).prev('.file-upload__file-list').append('<li class="file-upload__file-added">' + droppedFiles[0].name + '  <span class="file-upload__delete-file"></span></li>')
           })
         } else {
-          $('.file-upload__button, .file-upload__input').removeClass('hide')
+          // $('.file-upload__button, .file-upload__input').removeClass('hide')
         };
 
         $fileList.on('click', fileDelete, function (e) {
           $(this).parent().remove()
-          // CODE TO ACTUALLY DELETE THE FILE GOES HERE - PROBABLY NEEDS TO UPDATE 
+          // CODE TO ACTUALLY DELETE THE FILE GOES HERE - PROBABLY NEEDS TO UPDATE
         })
 
         // CODE TO ACTUALLY UPLOAD THE FILES GOES HERE!!!
