@@ -1,0 +1,14 @@
+{% extends "pattern-library-layout.njk" %}
+
+{% block content %}
+  <h1 class="pl-heading">Activity buttons</h1>
+  {% include 'components/activity-buttons/_activity-buttons.njk' %}
+  <h2 class="pl-heading">HTML</h2>
+  <textarea class="pl-code" disabled>
+    {% include 'components/activity-buttons/_activity-buttons.njk' %}
+  </textarea>
+  <h2 class="pl-heading">SCSS</h2>
+  <textarea class="pl-code" disabled>
+    {% include 'components/activity-buttons/_activity-buttons.scss' ignore missing %}
+  </textarea>
+{% endblock %}

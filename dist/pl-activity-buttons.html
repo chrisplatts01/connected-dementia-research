@@ -76,44 +76,43 @@
     </nav>
     <main class="pl-main" role="main">
       
-  <h1 class="pl-heading">Messages</h1>
-  <div class="message message--error">Error message</div>
-<div class="message message--success">Success message</div>
+  <h1 class="pl-heading">Activity buttons</h1>
+  <div class="button button--activity button--primary">Register someone else as a volunteer</div>
+<br /><br />
+<div class="button button--activity button--primary hover">Register someone else as a volunteer (hover)</div>
+<br /><br />
+<div class="button button--activity button--primary active">Register someone else as a volunteer (active)</div>
 
   <h2 class="pl-heading">HTML</h2>
   <textarea class="pl-code" disabled>
-    <div class="message message--error">Error message</div>
-<div class="message message--success">Success message</div>
+    <div class="button button--activity button--primary">Register someone else as a volunteer</div>
+<br /><br />
+<div class="button button--activity button--primary hover">Register someone else as a volunteer (hover)</div>
+<br /><br />
+<div class="button button--activity button--primary active">Register someone else as a volunteer (active)</div>
 
   </textarea>
   <h2 class="pl-heading">SCSS</h2>
   <textarea class="pl-code" disabled>
-    
-.message {
-  @include message-font();
-  padding-top: 16px;
+    .button--activity {
+  @include bold-font;
+  display: inline-block;
+  padding: 20px;
+  color: $white;
+  width: 348px;
+  height: 136px;
   text-align: left;
+  vertical-align: top;
 
-  &:before {
-    position: relative;
-    top: 2px;
-    padding-right: 0.5rem;
-  }
-}
-
-.message--success {
-  color: $turquoise;
-
-  &:before {
-    content: url('/images/icon-success.svg');
-  }
-}
-
-.message--error {
-  color: $ruby;
-
-  &:before {
-    content: url('/images/icon-error.svg');
+  &::after {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    width: 18px;
+    height: 20px;
+    content: '\00a0';
+    background: transparent url('/images/icon-avatar.svg') top left no-repeat;
+    opacity: 0.6;
   }
 }
 
