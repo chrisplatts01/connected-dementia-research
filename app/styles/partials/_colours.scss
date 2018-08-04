@@ -1,81 +1,84 @@
-// Neutrals
-// $black: rgb(0,0,0);
-// $grey: rgb(51, 63, 72);
-// $grey10: rgb(30,37,42);
-// $grey-20: rgb(93,115,132);
-// $grey-35: rgb(133,153,169);
-// $grey-52: rgb(184,196,204);
-// $grey-60: rgb(208,215,221);
-// $grey-66: rgb(225,230,234);
-// $grey-74: rgb(249,250,251);
-// $white: rgb(255,255,255);
-//
-// // Colours
-// $orange: rgb(214,57,0);
-// $orange-dark: rgb(153,41,0);
-// $orange-darker: rgb(112,30,0);
-// $orange-light: rgb(255,240,234);
-//
-// $purple: rgb(133,0,173);
-// $purple-dark: rgb(102,0,132);
-// $purple-light: rgb(243,230,247);
-//
-// $emerald: rgb(0,133,113);
-// $emerald-dark: rgb(0,72,61);
-// $emerald-darker: rgb(0,31,26);
-//
-// $magenta: rgb(179,42,119); // MEASURED
-
-// Neutrals
+// Basic colours
 $black:	rgb(0, 0, 0);
 $grey:	rgb(51, 63, 72);
-$grey-D10:	rgb(30, 37, 42);
-$grey-L20:	rgb(93, 115, 132);
-$grey-L35:	rgb(133, 153, 169);
-$grey-L52:	rgb(184, 196, 204);
-$grey-L60:	rgb(208, 215, 221);
-$grey-L66:	rgb(225, 230, 234);
-$grey-L74:	rgb(249, 250, 251);
 $white:	rgb(255, 255, 255);
-
-// Colours
 $coral:	rgb(241, 91, 91);
-$coral-D20:	rgb(212, 18, 18);
-$coral-D28:	rgb(174, 15, 15);
-$coral-L32:	rgb(254, 241, 241);
 $ruby:	rgb(166, 9,61);
-$ruby-D8:	rgb(127, 7, 47);
-$ruby-L60:	rgb(254, 237, 243);
 $turquoise:	rgb(0, 129, 148);
-$turquoise-D12:	rgb(0, 76, 87);
-$turquoise-D20:	rgb(0, 40, 46);
 
+// Light variants
+$grey-L20: lighten($grey, 20%);
+$grey-L35: lighten($grey, 35%);
+$grey-L52: lighten($grey, 52%);
+$grey-L60: lighten($grey, 60%);
+$grey-L66: lighten($grey, 66%);
+$grey-L74: lighten($grey, 74%);
+$coral-L32: lighten($coral, 32%);
+// $ruby-L60: lighten($ruby, 60%); // SASS functio not matching the InDesign
+$ruby-L60:	rgb(254, 237, 243);    // colour, so using InDesign RGB value.
 
+// Dark variants
+$grey-D10: darken($grey, 10%);
+$coral-D20: darken($coral, 20%);
+$coral-D28: darken($coral, 28%);
+$ruby-D8: darken($ruby, 8%);
+$turquoise-D12: darken($turquoise, 12%);
+$turquoise-D20: darken($turquoise, 20%);
 
 // Brand colours
 $brand-primary: $coral;
 
-// Form elements
-$unselected: $coral;
-$unselected-bg: $white;
-$unselected-hover: $coral-D20;
-$unselected-hover-bg: $coral-L32;
+$border-color: $grey-L52;
+$border-hover-color: $grey-L20;
+$border-shadow-color: $grey-L60;
 
-$selected: $white;
-$selected-bg: $coral;
-$selected-hover: $white;
-$selected-hover-bg: $coral-D20k;
+// Colours using RGB values instead of SASS functions
+// $black:	rgb(0, 0, 0);
+// $grey:	rgb(51, 63, 72);
+// $grey-D10:	rgb(30, 37, 42);
+// $grey-L20:	rgb(93, 115, 132);
+// $grey-L35:	rgb(133, 153, 169);
+// $grey-L52:	rgb(184, 196, 204);
+// $grey-L60:	rgb(208, 215, 221);
+// $grey-L66:	rgb(225, 230, 234);
+// $grey-L74:	rgb(249, 250, 251);
+// $white:	rgb(255, 255, 255);
+// $coral:	rgb(241, 91, 91);
+// $coral-D20:	rgb(212, 18, 18);
+// $coral-D28:	rgb(174, 15, 15);
+// $coral-L32:	rgb(254, 241, 241);
+// $ruby:	rgb(166, 9,61);
+// $ruby-D8:	rgb(127, 7, 47);
+// $ruby-L60:	rgb(254, 237, 243);
+// $turquoise:	rgb(0, 129, 148);
+// $turquoise-D12:	rgb(0, 76, 87);
+// $turquoise-D20:	rgb(0, 40, 46);
 
-$error: $purple;
-$error-bg: $white;
-$error-hover: $purple;
-$error-hover-bg: $purple-light;
+// Brand colours
+// $brand-primary: $coral;
 
-$disabled: $grey-35;
-$disabled-bg: $grey-60;
+// Form controls (buttons, select options, etc)
+// $control-unselected: $coral;
+// $control-unselected-bg: $white;
+// $control-unselected-hover: $coral-D20;
+// $control-unselected-hover-bg: $coral-L32;
 
-$placeholder: $grey-20;
+// $control-selected: $white;
+// $control-selected-bg: $coral;
+// $control-selected-hover: $white;
+// $control-selected-hover-bg: $coral-D20;
 
-$border-color: $grey-52;
-$border-hover-color: $grey-20;
-$border-shadow-color: $grey-60;
+// $control-error: $ruby;
+// $control-error-bg: $white;
+// $control-error-hover: $ruby;
+// $control-error-hover-bg: $ruby-L60;
+
+// $control-disabled: $grey-L35;
+// $control-disabled-bg: $grey-L60;
+
+// Form inputs
+// $input-placeholder: $grey-L20;
+
+// $border-color: $grey-L52;
+// $border-hover-color: $grey-L20;
+// $border-shadow-color: $grey-L60;

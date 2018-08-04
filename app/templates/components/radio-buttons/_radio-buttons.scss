@@ -19,10 +19,10 @@
     left: 0;
     height: 24px;
     width: 24px;
-    border: 2px solid $grey-35;
+    border: 2px solid $grey-L35;
     border-radius: 50%;
     background-color: $white;
-    box-shadow: inset 0 3px 0 0 $grey-66;
+    box-shadow: inset 0 3px 0 0 $grey-L66;
 
     &:after {
       content: "";
@@ -34,7 +34,7 @@
       height: 12px;
       border: none;
       border-radius: 50%;
-      background-color: $orange;
+      background-color: $coral;
     }
   }
 
@@ -46,12 +46,12 @@
 
     &:checked ~ .checkmark {
       background-color: $white;
-      border-color: $orange;
+      border-color: $coral;
       box-shadow: none;
 
       &:hover {
         background-color: $white;
-        border-color: $orange-dark;
+        border-color: $coral-D20;
       }
 
       &:after {
@@ -62,26 +62,26 @@
 
   &:hover [type="radio"] ~ .checkmark,
   &.hover [type="radio"] ~ .checkmark {
-    background-color: $orange-light;
+    background-color: $coral-L32;
   }
 
   &:hover [type="radio"]:checked ~ .checkmark,
   &.hover [type="radio"]:checked ~ .checkmark {
     background-color: $white;
-    border-color: $orange-dark;
+    border-color: $coral-D20;
 
     &:after {
-      background-color: $orange-dark;
+      background-color: $coral-D20;
     }
   }
 
   &.error [type="radio"] ~ .checkmark {
-    border-color: $purple;
+    border-color: $ruby;
     border-width: 3px;
   }
 
   &.error:hover [type="radio"] ~ .checkmark,
   &.error.hover [type="radio"] ~ .checkmark {
-    background-color: $purple-light;
+    background-color: $ruby-L60;
   }
 }

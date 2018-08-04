@@ -61,6 +61,7 @@
         <li><a href="pl-dropdown-select.html">Dropdown select</a></li>
         <li><a href="pl-form-fields.html">Form fields</a></li>
         <li><a href="pl-file-upload.html">File upload</a></li>
+        <li><a href="pl-buttons.html">Buttons</a></li>
       </ul>
       <p><b>Modules:</b></p>
       <ul class="component-list">
@@ -75,35 +76,44 @@
     <main class="pl-main" role="main">
       
   <h1 class="pl-heading">Messages</h1>
-  <div class="msg-error">Error message</div>
+  <div class="message message--error">Error message</div>
+<div class="message message--success">Success message</div>
 
   <h2 class="pl-heading">HTML</h2>
   <textarea class="pl-code" disabled>
-    <div class="msg-error">Error message</div>
+    <div class="message message--error">Error message</div>
+<div class="message message--success">Success message</div>
 
   </textarea>
   <h2 class="pl-heading">SCSS</h2>
   <textarea class="pl-code" disabled>
     
-.msg-error {
-  @include error-font();
+.message {
+  @include message-font();
   padding-top: 16px;
   text-align: left;
 
   &:before {
-    content: url('/images/icon-error.svg');
     position: relative;
     top: 2px;
     padding-right: 0.5rem;
   }
 }
 
-.segmented-control ~ .msg-error {
-  padding-top: 20px;
+.message--success {
+  color: $turquoise;
+
+  &:before {
+    content: url('/images/icon-success.svg');
+  }
 }
 
-.dropdown-select .msg-error {
-  padding-top: 0;
+.message--error {
+  color: $ruby;
+
+  &:before {
+    content: url('/images/icon-error.svg');
+  }
 }
 
   </textarea>

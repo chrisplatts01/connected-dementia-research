@@ -61,6 +61,7 @@
         <li><a href="pl-dropdown-select.html">Dropdown select</a></li>
         <li><a href="pl-form-fields.html">Form fields</a></li>
         <li><a href="pl-file-upload.html">File upload</a></li>
+        <li><a href="pl-buttons.html">Buttons</a></li>
       </ul>
       <p><b>Modules:</b></p>
       <ul class="component-list">
@@ -107,11 +108,29 @@
     <div class="file-upload__error">Error! <span></span>.</div>
   </div>
 </div>
-<h2 class="pl-heading">Files uploaded</h2>
+<h2 class="pl-heading">File uploaded (success)</h2>
+<div class="file-upload">
+  <ul class="file-upload__file-list">
+    <li class='file-upload__file-added'>filename.pdf <span class="file-upload__delete-file"></span></li>
+    <li class='file-upload__file-added success'>another_filename.doc <span class="file-upload__delete-file"></span> <span class="message message--success">Success message</span></li>
+  </ul>
+  <div class="file-upload__uploader">
+    <label>
+      Drag file here or <span class="file-upload__browse">browse</span>
+      <input class="file-upload__input" type="file" name="files[]" id="file" data-multiple-caption="{count} files selected" multiple />
+    </label>
+    <button class="file-upload__button" type="submit">Upload</button>
+    <div class="file-upload__uploading">Uploading&hellip;</div>
+    <div class="file-upload__success">Done!</div>
+    <div class="file-upload__error">Error!</div>
+  </div>
+</div>
+<h2 class="pl-heading">File uploaded (error)</h2>
 <div class="file-upload">
   <ul class="file-upload__file-list">
     <li class='file-upload__file-added'>filename.pdf <span class="file-upload__delete-file"></span></li>
     <li class='file-upload__file-added'>another_filename.doc <span class="file-upload__delete-file"></span></li>
+    <li class='file-upload__file-added error'>a_third_filename.doc <span class="file-upload__delete-file"></span> <span class="message message--error">Error message</span></li>
   </ul>
   <div class="file-upload__uploader">
     <label>
@@ -157,11 +176,29 @@
     <div class="file-upload__error">Error! <span></span>.</div>
   </div>
 </div>
-<h2 class="pl-heading">Files uploaded</h2>
+<h2 class="pl-heading">File uploaded (success)</h2>
+<div class="file-upload">
+  <ul class="file-upload__file-list">
+    <li class='file-upload__file-added'>filename.pdf <span class="file-upload__delete-file"></span></li>
+    <li class='file-upload__file-added success'>another_filename.doc <span class="file-upload__delete-file"></span> <span class="message message--success">Success message</span></li>
+  </ul>
+  <div class="file-upload__uploader">
+    <label>
+      Drag file here or <span class="file-upload__browse">browse</span>
+      <input class="file-upload__input" type="file" name="files[]" id="file" data-multiple-caption="{count} files selected" multiple />
+    </label>
+    <button class="file-upload__button" type="submit">Upload</button>
+    <div class="file-upload__uploading">Uploading&hellip;</div>
+    <div class="file-upload__success">Done!</div>
+    <div class="file-upload__error">Error!</div>
+  </div>
+</div>
+<h2 class="pl-heading">File uploaded (error)</h2>
 <div class="file-upload">
   <ul class="file-upload__file-list">
     <li class='file-upload__file-added'>filename.pdf <span class="file-upload__delete-file"></span></li>
     <li class='file-upload__file-added'>another_filename.doc <span class="file-upload__delete-file"></span></li>
+    <li class='file-upload__file-added error'>a_third_filename.doc <span class="file-upload__delete-file"></span> <span class="message message--error">Error message</span></li>
   </ul>
   <div class="file-upload__uploader">
     <label>
@@ -196,8 +233,8 @@
   }
 
   &.is-dragover {
-    border: 1px solid $orange;
-    background-color: $orange-light;
+    border: 1px solid $coral;
+    // background-color: $coral-L32;
   }
 
   label {
@@ -210,7 +247,7 @@
 }
 
 .file-upload__browse {
-  color: $orange;
+  color: $coral;
   text-decoration: underline;
   cursor: pointer;
 }
@@ -243,8 +280,17 @@
   margin: 0;
   border-bottom: 1px solid $border-color;
 
+  &.error {
+    color: $ruby;
+  }
+
   &:last-child {
     border: 0;
+  }
+
+  span.message {
+    display: block;
+    padding-top: 10px;
   }
 }
 
@@ -252,10 +298,15 @@
   width: 24px;
   height: 32px;
   position: absolute;
+  top: 12px;
   right: 0;
   display: inline-block;
   background: url('/images/icon-trash.svg') top center no-repeat;
   cursor: pointer;
+}
+
+.error .file-upload__delete-file {
+  background: url('/images/icon-delete.svg') top center no-repeat;
 }
 
   </textarea>

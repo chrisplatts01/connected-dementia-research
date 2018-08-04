@@ -12,6 +12,9 @@
 @import 'partials/base';
 @import 'partials/navigation';
 
+// Mixins
+@import 'mixins/forms/_segmented-control.scss';
+
 // Modules
 @import 'app/templates/modules/masthead/masthead';
 @import 'app/templates/modules/navigation/navigation';
@@ -32,6 +35,7 @@
 @import 'app/templates/components/dropdown-select/dropdown-select';
 @import 'app/templates/components/form-fields/form-fields';
 @import 'app/templates/components/file-upload/file-upload';
+@import 'app/templates/components/buttons/buttons';
 
 // Swatches
 @import 'app/templates/swatches/colours/colours';

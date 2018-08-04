@@ -1,21 +1,28 @@
 
-.msg-error {
-  @include error-font();
+.message {
+  @include message-font();
   padding-top: 16px;
   text-align: left;
 
   &:before {
-    content: url('/images/icon-error.svg');
     position: relative;
     top: 2px;
     padding-right: 0.5rem;
   }
 }
 
-.segmented-control ~ .msg-error {
-  padding-top: 20px;
+.message--success {
+  color: $turquoise;
+
+  &:before {
+    content: url('/images/icon-success.svg');
+  }
 }
 
-.dropdown-select .msg-error {
-  padding-top: 0;
+.message--error {
+  color: $ruby;
+
+  &:before {
+    content: url('/images/icon-error.svg');
+  }
 }

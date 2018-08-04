@@ -7,74 +7,32 @@
   }
 
   label {
-    @include small-font;
-    display: inline-block;
-    box-sizing: border-box;
-    width: 48%;
-    border: 1px solid $border-color;
-    border-right-color: transparent;
-    padding: 0.5rem;
-    color: $orange;
-    background-color: $white;
-    cursor: pointer;
-    margin-left: -6px;
-    box-shadow: 0 4px 0 0 $border-shadow-color;
-
-    &:first-of-type {
-      @include border-left-radius(3px)
-    }
-
-    &:last-of-type {
-      @include border-right-radius(3px);
-      border-right-color: $border-color;
-    }
-
-    &:hover, &.hover {
-      color: $orange-dark;
-      background-color: $orange-light;
-    }
+    @include form-segmented-control(unselected);
+    width: 50%;
 
     &.error {
-      color: $purple;
-      border: 2px solid $purple;
-      border-right-color: transparent;
-
-      &:first-of-type {
-        @include border-left-radius(3px)
-      }
-
-      &:last-of-type {
-        @include border-right-radius(3px);
-        border-right-color: $purple;
-      }
-
-      &:hover, &.hover {
-        background-color: $purple-light;
-      }
+      @include form-segmented-control(error);
     }
   }
 
   input:checked + label, .checked {
-    color: $white;
-    background-color: $orange;
-    // border-color: $orange;
-    border-bottom-color: $border-color;
-
-    &:hover, &.hover {
-      color: white;
-      background-color: $orange-dark;
-    }
+    @include form-segmented-control(selected);
   }
 }
 
-.segmented-controls-2 label {
+.segmented-control ~ .message--error {
+  padding-top: 20px;
+}
+
+
+.segmented-controls-2-across label {
   width: 50%;
 }
 
-.segmented-controls-3 label {
-  width: 33.3%;
+.segmented-controls-3-across label {
+  width: 33%;
 }
 
-.segmented-controls-4 label {
+.segmented-controls-4-across label {
   width: 25%;
 }

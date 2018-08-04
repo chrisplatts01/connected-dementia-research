@@ -19,10 +19,9 @@
     left: 0;
     height: 24px;
     width: 24px;
-    border: 2px solid $grey-35;
-    border-radius: 4px;
+    border: 2px solid $grey-L35;
     background-color: $white;
-    box-shadow: inset 0 3px 0 0 $grey-66;
+    box-shadow: inset 0 3px 0 0 $grey-L66;
 
     &:after {
       content: "";
@@ -47,13 +46,13 @@
     cursor: pointer;
 
     &:checked ~ .checkmark {
-      background-color: $orange;
-      border-color: $orange;
+      background-color: $coral;
+      border-color: $coral;
       box-shadow: none;
 
       &:hover {
-        background-color: $orange-dark;
-        border-color: $orange-dark;
+        background-color: $coral-D20;
+        border-color: $coral-D20;
       }
 
       &:after {
@@ -64,22 +63,22 @@
 
   &:hover [type="checkbox"] ~ .checkmark,
   &.hover [type="checkbox"] ~ .checkmark {
-    background-color: $orange-light;
+    background-color: $coral-L32;
   }
 
   &:hover [type="checkbox"]:checked ~ .checkmark,
   &.hover [type="checkbox"]:checked ~ .checkmark {
-    background-color: $orange-dark;
-    border-color: $orange-dark;
+    background-color: $coral-D20;
+    border-color: $coral-D20;
   }
 
   &.error [type="checkbox"] ~ .checkmark {
-    border-color: $purple;
+    border-color: $ruby;
     border-width: 3px;
   }
 
   &.error:hover [type="checkbox"] ~ .checkmark,
   &.error.hover [type="checkbox"] ~ .checkmark {
-    background-color: $purple-light;
+    background-color: $ruby-L60;
   }
 }

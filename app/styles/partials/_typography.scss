@@ -18,7 +18,7 @@ $small-font-family: "Calibri", "Helvetica", "Arial", sans-serif;
 $small-font-size: 19px;
 $small-font-weight: 400;
 $small-line-height: 24px;
-$small-font-color: $grey-20;
+$small-font-color: $grey-L20;
 
 $large-font-family: $base-font-family;
 $large-font-size: 28px;
@@ -32,15 +32,11 @@ $heading-font-weight: 700;
 $heading-line-height: $large-line-height;
 $heading-font-color: $grey;
 
-$error-font-family: $base-font-family;
-$error-font-size: 19px;
-$error-font-weight: 600;
-$error-line-height: 24px;
-$error-font-color: $grey;
-
-$base-font-color: $grey;
-$light-font-color: $grey-20;
-$error-font-color: $purple;
+$message-font-family: $small-font-family;
+$message-font-size: $small-font-size;
+$message-font-weight: 700;
+$message-line-height: 24px;
+$message-font-color: $grey;
 
 @mixin base-font {
   font-family: $base-font-family;
@@ -82,10 +78,10 @@ $error-font-color: $purple;
   color: $heading-font-color;
 }
 
-@mixin error-font {
-  font-family: $error-font-family;
-  font-size: $error-font-size;
-  font-weight: $error-font-weight;
-  line-height: $error-line-height;
-  color: $error-font-color;
+@mixin message-font {
+  font-family: $message-font-family;
+  font-size: $message-font-size;
+  font-weight: $message-font-weight;
+  line-height: $message-line-height;
+  color: $message-font-color;
 }

@@ -36,7 +36,7 @@ $(function () {
             $option.attr('data-value', value)
           })
 
-          $select.find('.msg-error').detach().appendTo($select)
+          $select.find('.message--error').detach().appendTo($select)
         },
         get: function ($select) {
           // Get current state of select element

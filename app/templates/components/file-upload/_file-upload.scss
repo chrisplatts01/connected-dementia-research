@@ -16,8 +16,8 @@
   }
 
   &.is-dragover {
-    border: 1px solid $orange;
-    background-color: $orange-light;
+    border: 1px solid $coral;
+    // background-color: $coral-L32;
   }
 
   label {
@@ -30,7 +30,7 @@
 }
 
 .file-upload__browse {
-  color: $orange;
+  color: $coral;
   text-decoration: underline;
   cursor: pointer;
 }
@@ -63,8 +63,17 @@
   margin: 0;
   border-bottom: 1px solid $border-color;
 
+  &.error {
+    color: $ruby;
+  }
+
   &:last-child {
     border: 0;
+  }
+
+  span.message {
+    display: block;
+    padding-top: 10px;
   }
 }
 
@@ -72,8 +81,13 @@
   width: 24px;
   height: 32px;
   position: absolute;
+  top: 12px;
   right: 0;
   display: inline-block;
   background: url('/images/icon-trash.svg') top center no-repeat;
   cursor: pointer;
+}
+
+.error .file-upload__delete-file {
+  background: url('/images/icon-delete.svg') top center no-repeat;
 }

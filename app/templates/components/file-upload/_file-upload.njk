@@ -28,11 +28,29 @@
     <div class="file-upload__error">Error! <span></span>.</div>
   </div>
 </div>
-<h2 class="pl-heading">Files uploaded</h2>
+<h2 class="pl-heading">File uploaded (success)</h2>
+<div class="file-upload">
+  <ul class="file-upload__file-list">
+    <li class='file-upload__file-added'>filename.pdf <span class="file-upload__delete-file"></span></li>
+    <li class='file-upload__file-added success'>another_filename.doc <span class="file-upload__delete-file"></span> <span class="message message--success">Success message</span></li>
+  </ul>
+  <div class="file-upload__uploader">
+    <label>
+      Drag file here or <span class="file-upload__browse">browse</span>
+      <input class="file-upload__input" type="file" name="files[]" id="file" data-multiple-caption="{count} files selected" multiple />
+    </label>
+    <button class="file-upload__button" type="submit">Upload</button>
+    <div class="file-upload__uploading">Uploading&hellip;</div>
+    <div class="file-upload__success">Done!</div>
+    <div class="file-upload__error">Error!</div>
+  </div>
+</div>
+<h2 class="pl-heading">File uploaded (error)</h2>
 <div class="file-upload">
   <ul class="file-upload__file-list">
     <li class='file-upload__file-added'>filename.pdf <span class="file-upload__delete-file"></span></li>
     <li class='file-upload__file-added'>another_filename.doc <span class="file-upload__delete-file"></span></li>
+    <li class='file-upload__file-added error'>a_third_filename.doc <span class="file-upload__delete-file"></span> <span class="message message--error">Error message</span></li>
   </ul>
   <div class="file-upload__uploader">
     <label>

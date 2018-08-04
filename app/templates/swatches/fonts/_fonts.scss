@@ -1,8 +1,8 @@
 .font-swatches th, .font-swatches td {
   text-align: left;
   padding: 0 20px;
-  vertical-align: top;
-  border-bottom: 1px solid $grey-60;
+  vertical-align: middle;
+  border-bottom: 1px solid $grey-L60;
   line-height: 1.5;
 }
 
@@ -16,7 +16,7 @@
   width: 80px;
 }
 
-.font-swatch__swatch-large-text span  { @include large-font; font-weight: 600; color: $grey; }
-.font-swatch__swatch-bold-text span   { @include base-font;  font-weight: 600; color: $grey; }
-.font-swatch__swatch-normal-text span { @include base-font;  font-weight: 400; color: $grey; }
-.font-swatch__swatch-small-text span  { @include small-font; font-weight: 400; color: $grey-20; }
+.font-swatch__swatch-large-text span  { @include heading-font; }
+.font-swatch__swatch-bold-text span   { @include bold-font; }
+.font-swatch__swatch-normal-text span { @include base-font; }
+.font-swatch__swatch-small-text span  { @include small-font; }
