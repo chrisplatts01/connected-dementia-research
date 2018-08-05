@@ -1,17 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1.0, maximum-scale=1.0">
   <meta name="apple-mobile-web-app-capable" content="yes">
 
-  <title>Connect Dementia Research</title>
-
-  <meta name="description" content="Website for the Connect Dementia Research project.">
-  <meta itemprop="name" content="Connect Dementia Research">
-  <meta itemprop="description" content="Website for the Connect Dementia Research project.">
+  <title>Pattern Library : Connect Dementia Research</title>
 
   <!-- Favicons -->
   <link rel="apple-touch-icon" sizes="180x180" href="/images/favicons/apple-touch-icon.png">
@@ -20,113 +15,81 @@
   <link rel="mask-icon" href="/images/favicons/safari-pinned-tab.svg" color="#5bbad5">
   <link rel="shortcut icon" href="/images/favicons/favicon.ico">
 
-  <!-- Stylesheet -->
+  <!-- Stylesheets -->
+  <style>
+    #pl-body { width: 960px; max-width: 960px; margin: 0; padding: 0 }
+    .pl-header { box-sizing: border-box; width: 100%; padding: 1em 1em 0.5em; color: #fff; background-color: #b52577; clear: both; }
+    .pl-header h1 { color: #fff; font-size: 24px; }
+    .pl-header h2 {color: #fff; font-size: 20px; }
+    .pl-footer { box-sizing: border-box; width: 100%; padding: 1em; color: #333; background-color: #999; clear: both }
+    .pl-wrapper { box-sizing: border-box; width: 100%; clear: both; }
+    .pl-nav { box-sizing: border-box; float: left; width: 25%; border-right: 1px solid #999; padding: 1em; }
+    .pl-main { box-sizing: border-box; float: right; width: 75%; border-left: 1px solid #999; padding: 1em; position: relative; left: -1px;}
+    .pl-code { width: 100%; height: 100px; font-family: "Courier", monospace; white-space: pre-line; font-size: 16px; padding: 1em 0.5em; }
+    .pl-heading { color: #999; }
+    h1.pl-heading { font-size: 1.5rem; border-bottom: 1px solid #ccc; }
+    h2.pl-heading { font-size: 1.0rem; margin-top: 3rem; }
+    .component-list { list-style: none; padding: 0; margin: 0 0 1rem 0; }
+  </style>
   <link rel="stylesheet" href="/styles/main.css">
+
 </head>
 
+<body id="pl-body">
+  <header class="pl-header" role="masthead">
+    <h1>Connect Dementia Research</h4>
+    <h2>Pattern Library</h2>
+  </header>
+  <div class="pl-wrapper">
+    <nav class="pl-nav" role="navigation">
+      <ul class="component-list">
+        <li>
+          <a href="index.html">Pattern library home</a>
+        </li>
+      </ul>
+      <p><b>Components:</b></p>
+      <ul class="component-list">
+        <li><a href="pl-heading.html">Heading</a></li>
+        <li><a href="pl-question.html">Question</a></li>
+        <li><a href="pl-paragraph.html">Paragraph</a></li>
+        <li><a href="pl-bullet-point.html">Bullet point</a></li>
+        <li><a href="pl-prompt.html">Prompt/Descriptor</a></li>
+        <li><a href="pl-message.html">Message</a></li>
+        <li><a href="pl-segmented-control.html">Segmented control</a></li>
+        <li><a href="pl-checkbox.html">Checkbox</a></li>
+        <li><a href="pl-radio-button.html">Radio button</a></li>
+        <li><a href="pl-dropdown-select.html">Dropdown select</a></li>
+        <li><a href="pl-form-field.html">Form field</a></li>
+        <li><a href="pl-file-upload.html">File upload</a></li>
+        <li><a href="pl-button.html">Button</a></li>
+        <li><a href="pl-activity-button.html">Activity button</a></li>
+        <li><a href="pl-progress-indicator.html">Progress indicator</a></li>
+      </ul>
+      <p><b>Modules:</b></p>
+      <ul class="component-list">
+        <!-- li><a href="pl-example.html">Example module</a></li -->
+        <li><a href="pl-page-header.html">Page header</a></li>
+        <li><a href="pl-user-bar.html">User bar</a></li>
+      </ul>
+      <p><b>Swatches:</b></p>
+      <ul class="component-list">
+        <li><a href="pl-colours.html">Colours</a></li>
+        <li><a href="pl-fonts.html">Fonts</a></li>
+      </ul>
+    </nav>
+    <main class="pl-main" role="main">
+      
+  <h4 class="pl-heading">Connect Dementia Research<br><small>Pattern Library</small></h4>
+  <p>Component and module library for the Connect Dementia Research project website.</p>
+  <p>Reusable components and modules, linked in the menu on the left, are illustrated with a description, one or more examples, the HTML code used for the example and the SCSS code used to generate the CSS styling for that example.</p>
+  <p>Where dynamic styling needs to be illustrated, for instance <em>hover</em> and <em>checked</em> states, they are simulated using classes. These classes are not required in production code.</p>
 
-<body>
-  <div class="page-header">
-    <div class="page-header__wrapper wrapper">
-      <header class="masthead" role="banner">
-  <div class="masthead__site-id">Connect Dementia Research</div>
-  <div class="masthead__main-sponsor"></div>
-</header>
-
-      <nav class="main-navigation" role="navigation">
-  <ul class="menu menu--site">
-    
-      <li class="menu__link"><a href="about-us">About us</a></li>
-    
-      <li class="menu__link"><a href="why-sign-up">Why sign up</a></li>
-    
-      <li class="menu__link"><a href="faqs">FAQs</a></li>
-    
-      <li class="menu__link"><a href="news-&amp;-info">News &amp; info</a></li>
-    
-  </ul>
-  <ul class="menu menu--user">
-    
-      <li class="menu__link"><a href="login">Login</a></li>
-    
-      <li class="menu__link"><a href="join">Join</a></li>
-    
-  </ul>
-</nav>
-
-    </div>
+    </main>
   </div>
+  <footer class="pl-footer">
+    <p><small><a href="http://cdr.virelai.co.uk/index.html">CDR home page</a></small></p>
+  </footer>
 
-  <div class="page-content">
-    <div class="page-content__wrapper wrapper">
-      
-<main class="main">
-  <h1>Home page</h1>
-  <p id="message">Hello world!</p>
-</main>
-
-    </div>
-  </div>
-
-  <div class="page-footer">
-    <div class="page-footer__wrapper wrapper">
-      <footer class="footer" role="contentinfo">
-  <nav class="footer__navigation" role="navigation">
-    <ul class="menu menu--info">
-      
-        <li class="menu__link"><a href="about-us">About us</a></li>
-      
-        <li class="menu__link"><a href="your-stories">Your stories</a></li>
-      
-        <li class="menu__link"><a href="why-join">Why join</a></li>
-      
-        <li class="menu__link"><a href="how-to-join">How to join</a></li>
-      
-        <li class="menu__link"><a href="contact">Contact</a></li>
-      
-    </ul>
-    <ul class="menu menu--smallprint">
-      
-        <li class="menu__link"><a href="privacy-and-cookies">Privacy and cookies</a></li>
-      
-        <li class="menu__link"><a href="accessibility">Accessibility</a></li>
-      
-        <li class="menu__link"><a href="policies-and-procedures">Policies and Procedures</a></li>
-      
-        <li class="menu__link"><a href="acknowledgements">Acknowledgements</a></li>
-      
-    </ul>
-  </nav>
-  <form class="footer__signup">
-    <label>
-      Sign up for our newsletter<br />
-      <input placeholder="Your email address" type="text" />
-      <button type="submit">></button>
-    </label>
-  </form>
-</footer>
-
-      <div class="social-media">
-  <a href="#" class="social-media__button social-media__button--facebook"></a>
-  <a href="#" class="social-media__button social-media__button--twitter"></a>
-  <a href="#" class="social-media__button social-media__button--youtube"></a>
-  <a href="#" class="social-media__button social-media__button--googleplus"></a>
-</div>
-
-      <div class="sponsors">
-  <div class="sponsor">
-    <span>dementia australia</span>
-  </div>
-  <div class="sponsor">
-    <span>Australian Government<br />Department of Health</span>
-  </div>
-</div>
-
-    </div>
-  </div>
-
-  <!-- script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script -->
-<script type="text/javascript" src="/scripts/main.js"></script>
-
+  <script type="text/javascript"  src="/scripts/main.js"></script>
 </body>
 </html>
