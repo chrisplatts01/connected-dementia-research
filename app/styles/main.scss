@@ -22,7 +22,7 @@
 @import 'app/templates/modules/social-media/social-media';
 @import 'app/templates/modules/sponsors/sponsors';
 
-// Components
+// Pattern library cmponents
 @import 'app/templates/components/heading/heading';
 @import 'app/templates/components/question/question';
 @import 'app/templates/components/paragraph/paragraph';
@@ -38,6 +38,10 @@
 @import 'app/templates/components/button/button';
 @import 'app/templates/components/activity-button/activity-button';
 @import 'app/templates/components/progress-indicator/progress-indicator';
+
+// Pattern library modules
+@import 'app/templates/components/page-header/page-header';
+@import 'app/templates/components/user-bar/user-bar';
 
 // Swatches
 @import 'app/templates/swatches/colours/colours';

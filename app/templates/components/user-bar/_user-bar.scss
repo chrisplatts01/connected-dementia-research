@@ -1,0 +1,7 @@
+.user-bar {
+  @include bold-font;
+  height: 78px;
+  color: $white;
+  background: $grey;
+  padding: 24px;
+}
