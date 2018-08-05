@@ -13,7 +13,6 @@ body {
   font-family: 'Helvetica', sans-serif;
   font-size: 16px;
   line-height: 1.5;
-  background-color: #f9fafb;
 }
 
 .menu {
@@ -937,7 +936,8 @@ p, .paragraph {
   color: #5d7384;
   position: relative;
   height: 42px;
-  width: 140px;
+  min-width: 140px;
+  padding: 0 16px;
   border: 0;
   color: #333f48;
   background-color: #b8c4cc;
@@ -1001,6 +1001,7 @@ p, .paragraph {
 }
 
 .button--next {
+  width: 140px;
   color: white;
   background-color: #008194;
   box-shadow: 0 4px 0 0 #004c57;
@@ -1015,7 +1016,6 @@ p, .paragraph {
   height: 46px;
   content: '\00a0';
   background: url("/images/button-arrow-turquoise.svg") top right no-repeat;
-  z-index: -10;
 }
 
 .button--next:hover, .button--next:focus, .button--next.hover {
@@ -1048,6 +1048,7 @@ p, .paragraph {
 }
 
 .button--previous {
+  width: 140px;
   left: 21px;
   color: #333f48;
   background-color: #b8c4cc;
@@ -1063,7 +1064,6 @@ p, .paragraph {
   height: 46px;
   content: '\00a0';
   background: url("/images/button-arrow-grey.svg") top left no-repeat;
-  z-index: -10;
 }
 
 .button--previous:hover, .button--previous:focus, .button--previous.hover {
@@ -1166,15 +1166,55 @@ p, .paragraph {
 }
 
 .user-bar {
+  background: #333f48;
+  padding: 24px;
+}
+
+.user-bar .user-bar__role {
+  font-family: "Montserrat", "Helvetica", "Arial", sans-serif;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 32px;
+  color: #333f48;
+  color: white;
+}
+
+.user-bar .user-bar__name {
   font-family: "Montserrat", "Helvetica", "Arial", sans-serif;
   font-size: 20px;
   font-weight: 700;
   line-height: 32px;
   color: #333f48;
-  height: 78px;
   color: white;
-  background: #333f48;
-  padding: 24px;
+}
+
+.user-bar .user-bar__surname {
+  font-family: "Montserrat", "Helvetica", "Arial", sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 32px;
+  color: #333f48;
+  color: white;
+}
+
+.user-bar .user-bar__info {
+  font-family: "Calibri", "Helvetica", "Arial", sans-serif;
+  font-size: 19px;
+  font-weight: 400;
+  line-height: 24px;
+  color: #5d7384;
+  display: block;
+  padding-top: 8px;
+  color: white;
+}
+
+.user-bar .user-bar__info em {
+  font-style: normal;
+  color: #f15b5b;
+}
+
+.user-bar button {
+  float: right;
 }
 
 .colour-swatches th, .colour-swatches td {
