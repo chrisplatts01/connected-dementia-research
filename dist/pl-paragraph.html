@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1.0, maximum-scale=1.0">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+
+  <title>Pattern Library : Connect Dementia Research</title>
+
+  <!-- Favicons -->
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicons/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicons/favicon-16x16.png">
+  <link rel="mask-icon" href="/images/favicons/safari-pinned-tab.svg" color="#5bbad5">
+  <link rel="shortcut icon" href="/images/favicons/favicon.ico">
+
+  <!-- Stylesheets -->
+  <style>
+    #pl-body { width: 960px; max-width: 960px; margin: 0; padding: 0 }
+    .pl-header { box-sizing: border-box; width: 100%; padding: 1em 1em 0.5em; color: #fff; background-color: #b52577; clear: both; }
+    .pl-header h1 { color: #fff; font-size: 24px; }
+    .pl-header h2 {color: #fff; font-size: 20px; }
+    .pl-footer { box-sizing: border-box; width: 100%; padding: 1em; color: #333; background-color: #999; clear: both }
+    .pl-wrapper { box-sizing: border-box; width: 100%; clear: both; }
+    .pl-nav { box-sizing: border-box; float: left; width: 25%; border-right: 1px solid #999; padding: 1em; }
+    .pl-main { box-sizing: border-box; float: right; width: 75%; border-left: 1px solid #999; padding: 1em; position: relative; left: -1px;}
+    .pl-code { width: 100%; height: 100px; font-family: "Courier", monospace; white-space: pre-line; font-size: 16px; padding: 1em 0.5em; }
+    .pl-heading { color: #999; }
+    h1.pl-heading { font-size: 1.5rem; border-bottom: 1px solid #ccc; }
+    h2.pl-heading { font-size: 1.0rem; margin-top: 3rem; }
+    .component-list { list-style: none; padding: 0; margin: 0 0 1rem 0; }
+  </style>
+  <link rel="stylesheet" href="/styles/main.css">
+
+</head>
+
+<body id="pl-body">
+  <header class="pl-header" role="masthead">
+    <h1>Connect Dementia Research</h4>
+    <h2>Pattern Library</h2>
+  </header>
+  <div class="pl-wrapper">
+    <nav class="pl-nav" role="navigation">
+      <ul class="component-list">
+        <li>
+          <a href="pl.html">Pattern library home</a>
+        </li>
+      </ul>
+      <p><b>Components:</b></p>
+      <ul class="component-list">
+        <li><a href="pl-heading.html">Heading</a></li>
+        <li><a href="pl-question.html">Question</a></li>
+        <li><a href="pl-paragraph.html">Paragraph</a></li>
+        <li><a href="pl-bullet-point.html">Bullet point</a></li>
+        <li><a href="pl-prompt.html">Prompt/Descriptor</a></li>
+        <li><a href="pl-message.html">Message</a></li>
+        <li><a href="pl-segmented-control.html">Segmented control</a></li>
+        <li><a href="pl-checkbox.html">Checkbox</a></li>
+        <li><a href="pl-radio-button.html">Radio button</a></li>
+        <li><a href="pl-dropdown-select.html">Dropdown select</a></li>
+        <li><a href="pl-form-field.html">Form field</a></li>
+        <li><a href="pl-file-upload.html">File upload</a></li>
+        <li><a href="pl-button.html">Button</a></li>
+        <li><a href="pl-activity-button.html">Activity button</a></li>
+        <li><a href="pl-progres-indicators.html">Progress indicator</a></li>
+      </ul>
+      <p><b>Modules:</b></p>
+      <ul class="component-list">
+        <!-- li><a href="pl-example.html">Example module</a></li -->
+      </ul>
+      <p><b>Swatches:</b></p>
+      <ul class="component-list">
+        <li><a href="pl-colours.html">Colours</a></li>
+        <li><a href="pl-fonts.html">Fonts</a></li>
+      </ul>
+    </nav>
+    <main class="pl-main" role="main">
+      
+  <h1 class="pl-heading">Paragraph</h1>
+  <p class="paragraph">Thank you for registering. The first step is to create an account. Please begin by telling us who you are.</p>
+
+  <h2 class="pl-heading">HTML</h2>
+  <textarea class="pl-code" disabled>
+    <p class="paragraph">Thank you for registering. The first step is to create an account. Please begin by telling us who you are.</p>
+
+  </textarea>
+  <h2 class="pl-heading">SCSS</h2>
+  <textarea class="pl-code" disabled>
+    p, .paragraph {
+  @include base-font();
+}
+
+  </textarea>
+
+    </main>
+  </div>
+  <footer class="pl-footer">
+    <p><small><a href="http://cdr.virelai.co.uk/index.html">CDR home page</a></small></p>
+  </footer>
+
+  <script type="text/javascript"  src="/scripts/main.js"></script>
+</body>
+</html>
