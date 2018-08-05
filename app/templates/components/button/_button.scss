@@ -2,7 +2,8 @@
   @include small-font;
   position: relative;
   height: 42px;
-  width: 140px;
+  min-width: 140px;
+  padding: 0 16px;
   border: 0;
   color: $grey;
   background-color: $grey-L52;
@@ -78,6 +79,7 @@
 }
 
 .button--next {
+  width: 140px;
   color: $white;
   background-color: $turquoise;
   box-shadow: 0 4px 0 0 $turquoise-D12;
@@ -91,7 +93,7 @@
     height: 46px;
     content: '\00a0';
     background: url('/images/button-arrow-turquoise.svg') top right no-repeat;
-    z-index: -10;
+    // z-index: -10;
   }
 
   &:hover,
@@ -130,6 +132,7 @@
 }
 
 .button--previous {
+  width: 140px;
   left: 21px;
   color: $grey;
   background-color: $grey-L52;
@@ -144,7 +147,7 @@
     height: 46px;
     content: '\00a0';
     background: url('/images/button-arrow-grey.svg') top left no-repeat;
-    z-index: -10;
+    // z-index: -10;
   }
 
   &:hover,
