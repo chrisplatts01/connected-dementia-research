@@ -63,7 +63,7 @@
         <li><a href="pl-file-upload.html">File upload</a></li>
         <li><a href="pl-button.html">Button</a></li>
         <li><a href="pl-activity-button.html">Activity button</a></li>
-        <li><a href="pl-progres-indicators.html">Progress indicator</a></li>
+        <li><a href="pl-progress-indicator.html">Progress indicator</a></li>
       </ul>
       <p><b>Modules:</b></p>
       <ul class="component-list">
@@ -249,6 +249,10 @@
     &::after {
       background-image: url('/images/button-arrow-disabled.svg')
     }
+
+    &:active::after {
+      top: 0;
+    }
   }
 }
 
@@ -297,6 +301,10 @@
   &:disabled {
     &::before {
       background-image: url('/images/button-arrow-disabled.svg')
+    }
+
+    &:active::before {
+      top: 0;
     }
   }
 }
