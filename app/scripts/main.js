@@ -2,6 +2,23 @@ import $ from 'jquery'
 
 $(function () {
   /**
+    * IIFE to handle progress indicators
+    */
+  var progressIndicator = (function () {
+    var $progressIndicator = $('.progress-indicator')
+    $progressIndicator.each(function () {
+      var $this = $(this)
+      var step = $this.attr('data-step')
+      var steps = $this.attr('data-steps')
+      var width = step / steps * 100
+      console.log('STEP: ' + step)
+      console.log('STEPS: ' + steps)
+      $this.prepend('<span class="progress-indicator__steps">&nbsp;</span>')
+      $this.append('<span class="progress-indicator__step" style="width:' + width + '%">&nbsp;</span>')
+    })
+  }())
+
+  /**
     * IIFE to handle custom select components
     */
   var dropdownSelect = (function () {

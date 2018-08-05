@@ -1,1 +1,28 @@
-.progress-indicator {}
+.progress-indicator {
+  @include small-font;
+  position: relative;
+  margin-bottom: 16px;
+
+  em {
+    font-style: normal;
+    font-weight: 700;
+    color: $turquoise;
+  }
+
+  .progress-indicator__steps {
+    display: block;
+    margin-bottom: 6px;
+    height: 16px;
+    width: 100%;
+    background-color: $grey-L66;
+  }
+
+  .progress-indicator__step {
+    position: absolute;
+    top: 0;
+    display: block;
+    height: 16px;
+    width: attr(data-width);
+    background-color: $turquoise;
+  }
+}

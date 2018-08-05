@@ -122,6 +122,10 @@
     &::after {
       background-image: url('/images/button-arrow-disabled.svg')
     }
+
+    &:active::after {
+      top: 0;
+    }
   }
 }
 
@@ -170,6 +174,10 @@
   &:disabled {
     &::before {
       background-image: url('/images/button-arrow-disabled.svg')
+    }
+
+    &:active::before {
+      top: 0;
     }
   }
 }

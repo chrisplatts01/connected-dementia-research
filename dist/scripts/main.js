@@ -75,6 +75,23 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 __WEBPACK_IMPORTED_MODULE_0_jquery___default()(function () {
   /**
+    * IIFE to handle progress indicators
+    */
+  var progressIndicator = (function () {
+    var $progressIndicator = __WEBPACK_IMPORTED_MODULE_0_jquery___default()('.progress-indicator')
+    $progressIndicator.each(function () {
+      var $this = __WEBPACK_IMPORTED_MODULE_0_jquery___default()(this)
+      var step = $this.attr('data-step')
+      var steps = $this.attr('data-steps')
+      var width = step / steps * 100
+      console.log('STEP: ' + step)
+      console.log('STEPS: ' + steps)
+      $this.prepend('<span class="progress-indicator__steps">&nbsp;</span>')
+      $this.append('<span class="progress-indicator__step" style="width:' + width + '%">&nbsp;</span>')
+    })
+  }())
+
+  /**
     * IIFE to handle custom select components
     */
   var dropdownSelect = (function () {
