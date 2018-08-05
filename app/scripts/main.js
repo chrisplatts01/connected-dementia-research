@@ -87,7 +87,7 @@ $(function () {
       var $segmentedControl = $('.segmented-control')
       $segmentedControl.click(function () {
         var $this = $(this)
-        var $parent = $this.parent('.segmented-controls')
+        var $parent = $this.parent('.segmented-control')
         var $input = $this.find('[type=radio]')
         $parent.find('label').removeClass('checked').removeClass('error')
         $this.addClass('checked')

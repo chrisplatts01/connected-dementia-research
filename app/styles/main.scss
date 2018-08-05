@@ -26,17 +26,18 @@
 @import 'app/templates/components/heading/heading';
 @import 'app/templates/components/question/question';
 @import 'app/templates/components/paragraph/paragraph';
-@import 'app/templates/components/bulletpoints/bulletpoints';
-@import 'app/templates/components/messages/messages';
+@import 'app/templates/components/bullet-point/bullet-point';
+@import 'app/templates/components/message/message';
 @import 'app/templates/components/prompt/prompt';
-@import 'app/templates/components/segmented-controls/segmented-controls';
-@import 'app/templates/components/checkboxes/checkboxes';
-@import 'app/templates/components/radio-buttons/radio-buttons';
+@import 'app/templates/components/segmented-control/segmented-control';
+@import 'app/templates/components/checkbox/checkbox';
+@import 'app/templates/components/radio-button/radio-button';
 @import 'app/templates/components/dropdown-select/dropdown-select';
-@import 'app/templates/components/form-fields/form-fields';
+@import 'app/templates/components/form-field/form-field';
 @import 'app/templates/components/file-upload/file-upload';
-@import 'app/templates/components/buttons/buttons';
-@import 'app/templates/components/activity-buttons/activity-buttons';
+@import 'app/templates/components/button/button';
+@import 'app/templates/components/activity-button/activity-button';
+@import 'app/templates/components/progress-indicator/progress-indicator';
 
 // Swatches
 @import 'app/templates/swatches/colours/colours';

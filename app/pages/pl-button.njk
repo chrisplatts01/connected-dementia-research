@@ -1,14 +1,14 @@
 {% extends "pattern-library-layout.njk" %}
 
 {% block content %}
-  <h1 class="pl-heading">Bullet points</h1>
-  {% include 'components/bulletpoints/_bulletpoints.njk' %}
+  <h1 class="pl-heading">Button</h1>
+  {% include 'components/button/_button.njk' %}
   <h2 class="pl-heading">HTML</h2>
   <textarea class="pl-code" disabled>
-    {% include 'components/bulletpoints/_bulletpoints.njk' %}
+    {% include 'components/button/_button.njk' %}
   </textarea>
   <h2 class="pl-heading">SCSS</h2>
   <textarea class="pl-code" disabled>
-    {% include 'components/bulletpoints/_bulletpoints.scss' ignore missing %}
+    {% include 'components/button/_button.scss' ignore missing %}
   </textarea>
 {% endblock %}
