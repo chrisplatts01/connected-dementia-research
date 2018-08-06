@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+{% include "partials/_head.njk" %}
+
+<body>
+  <div class="page-header">
+    <div class="page-header__wrapper wrapper">
+      {% include "modules/volunteer-page-header/_volunteer-page-header.njk" %}
+    </div>
+  </div>
+
+  <div class="page-content">
+    <div class="page-content__wrapper wrapper">
+      {% block content %}{% endblock %}
+    </div>
+  </div>
+
+  <div class="page-footer">
+    <div class="page-footer__wrapper wrapper">
+      {% include "modules/volunteer-page-footer/_volunteer-page-footer.njk" %}
+    </div>
+  </div>
+
+  {% include "partials/_scripts.njk" %}
+</body>
+</html>
