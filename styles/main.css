@@ -1154,17 +1154,6 @@ p, .paragraph {
   background-color: #008194;
 }
 
-.page-header {
-  background-color: white;
-  height: 120px;
-  padding: 10px 0;
-}
-
-.page-header .site-logo img {
-  height: 100px;
-  vertical-align: middle;
-}
-
 .user-bar {
   background: #333f48;
   padding: 24px;
@@ -1215,6 +1204,17 @@ p, .paragraph {
 
 .user-bar button {
   float: right;
+}
+
+.page-header {
+  background-color: white;
+  height: 120px;
+  padding: 10px 0;
+}
+
+.page-header .site-logo img {
+  height: 100px;
+  vertical-align: middle;
 }
 
 .colour-swatches th, .colour-swatches td {
