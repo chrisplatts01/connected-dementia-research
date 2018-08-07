@@ -67,6 +67,7 @@
         <li><a href="/pattern-library/activity-button.html">Activity button</a></li>
         <li><a href="/pattern-library/progress-indicator.html">Progress indicator</a></li>
         <li><a href="/pattern-library/user-bar.html">User bar</a></li>
+        <li><a href="/pattern-library/postcode-lookup.html">Postcode lookup</a></li>
       </ul>
       <h4>Modules:</h4>
       <ul class="component-list">
@@ -77,11 +78,15 @@
         <li><a href="/pattern-library/colours.html">Colours</a></li>
         <li><a href="/pattern-library/fonts.html">Fonts</a></li>
       </ul>
+      <h4>Pages:</h4>
+      <ul class="component-list">
+        <li><a href="/volunteer/your-details.html">Volunteer: Your details</a></li>
+      </ul>
     </nav>
     <main class="pl-main" role="main">
       
   <h1 class="pl-heading">Page header</h1>
-  <header class="page-header" role="banner">
+  <header class="masthead" role="banner">
   <div class="site-logo">
     <img src="/images/logo-step-up.png" alt="Step up for Dementia" />
   </div>
@@ -89,7 +94,7 @@
 
   <h2 class="pl-heading">HTML</h2>
   <textarea class="pl-code" disabled>
-    <header class="page-header" role="banner">
+    <header class="masthead" role="banner">
   <div class="site-logo">
     <img src="/images/logo-step-up.png" alt="Step up for Dementia" />
   </div>
@@ -98,14 +103,21 @@
   </textarea>
   <h2 class="pl-heading">SCSS</h2>
   <textarea class="pl-code" disabled>
-    .page-header {
+    .masthead {
   background-color: $white;
-  height: 120px;
   padding: 10px 0;
+  height: 100px;
+
+  @include from(2) {
+    height: 120px;
+  }
 
   .site-logo img {
-    height: 100px;
-    vertical-align: middle;
+    height: 80px;
+
+    @include from(2) {
+      height: 100px;
+    }
   }
 }
 
