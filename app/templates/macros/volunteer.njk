@@ -3,7 +3,7 @@
 #}
 
 {% macro progressIndicator(step, steps) %}
-<div class="progress-indicator" data-step="{{ step }}" data-steps="{{ steps }}"><em>{{ step }}</em>/{{ steps }}</div>
+{% include 'components/progress-indicator/_progress-indicator.njk' %}
 {% endmacro %}
 
 {% macro heading(text) %}
@@ -89,12 +89,7 @@
 {% endmacro %}
 
 {% macro postcode(id='postcoode') %}
-<div class="form-field form-field--text form-field--postcode-lookup form-field--short">
-  <label>Postcode
-    <input id="{{ id }}" type="text" />
-  </label>
-  <button class="button button--secondary button--postcode-find" type="button">Find address</button> <a href="#">or enter manually</a>
-</div>
+{% include 'components/postcode-lookup/_postcode-lookup.njk' %}
 {% endmacro %}
 
 {% macro pageNavigation(previous={ label: 'Previous', url: '#' }, next={ label: 'Previous', url: '#' }) %}
