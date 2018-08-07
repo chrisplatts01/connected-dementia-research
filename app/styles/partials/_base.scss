@@ -28,6 +28,7 @@ body {
 .page-header__wrapper,
 .page-content__wrapper,
 .page-footer__wrapper {
+	@include clearfix();
 	max-width: 800px;
 	margin: 0 auto;
 	padding: 0 8px;
@@ -40,6 +41,7 @@ body {
 .page-content__inner-wrapper {
 	max-width: 500px;
 	margin: 0 auto;
+	padding-bottom: 16px;
 }
 
 // -----------------------------------------------------------------------------
@@ -52,7 +54,7 @@ a {
 	&:visited {
 		color: $coral;
 	}
-	
+
 	&:hover,
 	&:focus,
 	&:active {

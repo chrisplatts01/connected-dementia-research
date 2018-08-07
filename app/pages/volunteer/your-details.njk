@@ -18,6 +18,8 @@
   {{ volunteer.postcode() }}
   {{ volunteer.input('Telephone number', 'telephone') }}
   {{ volunteer.select('How did you hear about us? (optional)', 'how-heard', ['Option 1', 'Option 2']) }}
+  {{ volunteer.checkbox('Please keep me up to date with the Joint Dementia Research newsletter', 'contact')}}
+  {{ volunteer.pageNavigation() }}
   {% endcall %}
 </div>
 {% endblock %}

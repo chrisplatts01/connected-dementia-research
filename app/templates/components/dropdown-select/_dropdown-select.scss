@@ -1,5 +1,8 @@
 .dropdown-select {
+  margin-bottom: 32px;
+
   label {
+    @include small-font;
     padding-right: 16px;
   }
 
