@@ -67,6 +67,7 @@
         <li><a href="/pattern-library/activity-button.html">Activity button</a></li>
         <li><a href="/pattern-library/progress-indicator.html">Progress indicator</a></li>
         <li><a href="/pattern-library/user-bar.html">User bar</a></li>
+        <li><a href="/pattern-library/postcode-lookup.html">Postcode lookup</a></li>
       </ul>
       <h4>Modules:</h4>
       <ul class="component-list">
@@ -76,6 +77,10 @@
       <ul class="component-list">
         <li><a href="/pattern-library/colours.html">Colours</a></li>
         <li><a href="/pattern-library/fonts.html">Fonts</a></li>
+      </ul>
+      <h4>Pages:</h4>
+      <ul class="component-list">
+        <li><a href="/volunteer/your-details.html">Volunteer: Your details</a></li>
       </ul>
     </nav>
     <main class="pl-main" role="main">
@@ -124,7 +129,7 @@
 </div>
 
 <h2 class="pl-heading">Date field group</h2>
-<fieldset class="form-field-group form-field-dob">
+<fieldset class="form-field-group form-field-group--dob">
   <legend>Date of birth</legend>
   <div class="form-field form-field--text form-field--short">
     <label>Day
@@ -188,7 +193,7 @@
 </div>
 
 <h2 class="pl-heading">Date field group</h2>
-<fieldset class="form-field-group form-field-dob">
+<fieldset class="form-field-group form-field-group--dob">
   <legend>Date of birth</legend>
   <div class="form-field form-field--text form-field--short">
     <label>Day
@@ -211,12 +216,17 @@
   <h2 class="pl-heading">SCSS</h2>
   <textarea class="pl-code" disabled>
     .form-field {
+  margin-bottom: 24px;
+
   &.form-field--short {
-    width: 150px;
+    input {
+      width: 150px;
+    }
   }
 
   label {
-    @include small-font
+    @include small-font;
+    padding-bottom: 28px;
   }
 
   input {
@@ -225,6 +235,7 @@
     width: 100%;
     height: 40px;
     color: $grey;
+    margin-top: 8px;
     border: 1px solid $border-color;
     padding: 0 10px;
     box-shadow: inset 0 3px 0 0 $grey-L66;
@@ -255,15 +266,18 @@
   }
 }
 
-.form-field-dob {
+.form-field-group--dob {
   @include clearfix();
   border: none;
   padding: 0;
+  margin: 0 -6px 0 -10px;
 
   legend {
-    @include bold-font();
-    font-size: $small-font-size;
-    margin: 0;
+    @include small-font();
+    display: block;
+    font-weight: bold;
+    color: $grey;
+    margin: 0 0 4px 8px;
   }
 
   .form-field {

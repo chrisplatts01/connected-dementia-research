@@ -6,13 +6,77 @@
 
 body {
   height: 100%;
-  margin: 0 auto;
   padding: 0;
-  width: 1024px;
-  max-width: 1024px;
+  margin: 0;
   font-family: 'Helvetica', sans-serif;
   font-size: 16px;
   line-height: 1.5;
+}
+
+.page-header {
+  background-color: white;
+}
+
+.page-header::after {
+  clear: both;
+  content: "";
+  display: block;
+}
+
+.page-content {
+  background-color: #f9fafb;
+}
+
+.page-content::after {
+  clear: both;
+  content: "";
+  display: block;
+}
+
+.page-footer {
+  background-color: white;
+}
+
+.page-footer::after {
+  clear: both;
+  content: "";
+  display: block;
+}
+
+.page-header__wrapper,
+.page-content__wrapper,
+.page-footer__wrapper {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 8px;
+}
+
+.page-content__wrapper {
+  padding: 24px;
+}
+
+.page-content__inner-wrapper {
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+a:link, a:visited {
+  color: #f15b5b;
+}
+
+a:hover, a:focus, a:active {
+  color: #d41212;
+}
+
+p.label {
+  font-family: "Calibri", "Helvetica", "Arial", sans-serif;
+  font-size: 19px;
+  font-weight: 400;
+  line-height: 24px;
+  color: #5d7384;
+  margin: 0;
+  padding-bottom: 8px;
+  text-align: left;
 }
 
 .menu {
@@ -377,7 +441,7 @@ p, .paragraph {
   background-color: #feedf3;
 }
 
-.segmented-control input:checked + label, .segmented-control .checked {
+.segmented-control input[type=radio]:checked + label, .segmented-control .checked {
   font-family: "Calibri", "Helvetica", "Arial", sans-serif;
   font-size: 19px;
   font-weight: 400;
@@ -395,11 +459,11 @@ p, .paragraph {
   cursor: pointer;
 }
 
-.segmented-control input:checked + label:last-of-type, .segmented-control .checked:last-of-type {
+.segmented-control input[type=radio]:checked + label:last-of-type, .segmented-control .checked:last-of-type {
   border-right-color: #d0d7dd;
 }
 
-.segmented-control input:checked + label:hover, .segmented-control input:checked + label.hover, .segmented-control .checked:hover, .segmented-control .checked.hover {
+.segmented-control input[type=radio]:checked + label:hover, .segmented-control input[type=radio]:checked + label.hover, .segmented-control .checked:hover, .segmented-control .checked.hover {
   color: white;
   background-color: #d41212;
 }
@@ -408,15 +472,15 @@ p, .paragraph {
   padding-top: 20px;
 }
 
-.segmented-control-2-across label {
+.segmented-control--2-across label {
   width: 50%;
 }
 
-.segmented-control-3-across label {
+.segmented-control--3-across label {
   width: 33%;
 }
 
-.segmented-control-4-across label {
+.segmented-control--4-across label {
   width: 25%;
 }
 
@@ -729,7 +793,11 @@ p, .paragraph {
   padding-top: 0;
 }
 
-.form-field.form-field--short {
+.form-field {
+  margin-bottom: 24px;
+}
+
+.form-field.form-field--short input {
   width: 150px;
 }
 
@@ -739,6 +807,7 @@ p, .paragraph {
   font-weight: 400;
   line-height: 24px;
   color: #5d7384;
+  padding-bottom: 28px;
 }
 
 .form-field input {
@@ -751,6 +820,7 @@ p, .paragraph {
   width: 100%;
   height: 40px;
   color: #333f48;
+  margin-top: 8px;
   border: 1px solid #b8c4cc;
   padding: 0 10px;
   box-shadow: inset 0 3px 0 0 #e1e6ea;
@@ -786,38 +856,41 @@ p, .paragraph {
   border: 3px solid #a6093d;
 }
 
-.form-field-dob {
+.form-field-group--dob {
   border: none;
   padding: 0;
+  margin: 0 -6px 0 -10px;
 }
 
-.form-field-dob::after {
+.form-field-group--dob::after {
   clear: both;
   content: "";
   display: block;
 }
 
-.form-field-dob legend {
-  font-family: "Montserrat", "Helvetica", "Arial", sans-serif;
-  font-size: 20px;
-  font-weight: 700;
-  line-height: 32px;
-  color: #333f48;
+.form-field-group--dob legend {
+  font-family: "Calibri", "Helvetica", "Arial", sans-serif;
   font-size: 19px;
-  margin: 0;
+  font-weight: 400;
+  line-height: 24px;
+  color: #5d7384;
+  display: block;
+  font-weight: bold;
+  color: #333f48;
+  margin: 0 0 4px 8px;
 }
 
-.form-field-dob .form-field {
+.form-field-group--dob .form-field {
   width: 33%;
   float: left;
   padding: 0 10px;
 }
 
-.form-field-dob .form-field:first-child {
+.form-field-group--dob .form-field:first-child {
   padding-left: 0;
 }
 
-.form-field-dob .form-field:last-child {
+.form-field-group--dob .form-field:last-child {
   padding-right: 0;
 }
 
@@ -1206,15 +1279,40 @@ p, .paragraph {
   float: right;
 }
 
-.page-header {
-  background-color: white;
-  height: 120px;
-  padding: 10px 0;
+.form-field--postcode-lookup {
+  font-family: "Calibri", "Helvetica", "Arial", sans-serif;
+  font-size: 19px;
+  font-weight: 400;
+  line-height: 24px;
+  color: #5d7384;
 }
 
-.page-header .site-logo img {
+.form-field--postcode-lookup .button--postcode-find,
+.form-field--postcode-lookup .link--enter-manually {
+  display: inline-block;
+  margin: 8px 16px 0 0;
+}
+
+.masthead {
+  background-color: white;
+  padding: 10px 0;
   height: 100px;
-  vertical-align: middle;
+}
+
+@media (min-width: 601px) {
+  .masthead {
+    height: 120px;
+  }
+}
+
+.masthead .site-logo img {
+  height: 80px;
+}
+
+@media (min-width: 601px) {
+  .masthead .site-logo img {
+    height: 100px;
+  }
 }
 
 .colour-swatches th, .colour-swatches td {

@@ -1,10 +1,17 @@
-.page-header {
+.masthead {
   background-color: $white;
-  height: 120px;
   padding: 10px 0;
+  height: 100px;
+
+  @include from(2) {
+    height: 120px;
+  }
 
   .site-logo img {
-    height: 100px;
-    vertical-align: middle;
+    height: 80px;
+
+    @include from(2) {
+      height: 100px;
+    }
   }
 }

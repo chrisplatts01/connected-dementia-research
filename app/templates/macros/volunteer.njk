@@ -1,0 +1,98 @@
+{#
+  Volunteer macros
+#}
+
+{% macro progressIndicator(step, steps) %}
+<div class="progress-indicator" data-step="{{ step }}" data-steps="{{ steps }}"><em>{{ step }}</em>/{{ steps }}</div>
+{% endmacro %}
+
+{% macro heading(text) %}
+<h1 class="heading">{{ text }}</h1>
+{% endmacro %}
+
+{% macro subheading(text) %}
+<h2 class="subheading">{{ text }}</h2>
+{% endmacro %}
+
+{% macro paragraph(text) %}
+<p class="paragraph">{{ text }}</p>
+{% endmacro %}
+
+{% macro form(id, action, method='get') %}
+<form id="{{ id }}" action="{{ action }}" method="{{ method }}">
+  {{ caller() }}
+</form>
+{% endmacro %}
+
+{% macro input(label, id, name, type='text', placeholder='', disabled='', validation='') %}
+<div class="form-field form-field--text">
+  <label>{{ label }}
+    <input id="{{ id }}" name="{{ name }}" type="{{ type }}" placeholder="{{ placeholder }}" {{ disabled }} {{ validation }} />
+  </label>
+</div>
+{% endmacro %}
+
+{% macro shortInput(label, id, type='text', placeholder='', disabled='', validation='') %}
+<div class="form-field form-field--text form-field--short">
+  <label>{{ label }}
+    <input id="{{ id }}" type="{{ type }}" placeholder="{{ placeholder }}" {{ disabled }} {{ validation }} />
+  </label>
+</div>
+{% endmacro %}
+
+{% macro select(label, id, options) %}
+<div class="dropdown-select">
+  <label>{{ label }}
+    <select id="{{ id }}">
+      <option selected disabled>Select&hellip;</option>
+      {% for option in options %}
+      <option value="{{ option | lower | replace(' ', '_') }}">{{ option }}</option>
+      {% endfor %}
+    </select>
+  </label>
+</div>
+{% endmacro %}
+
+{% macro dobInput(legend='Date of birth', id="dob")%}
+<fieldset class="form-field-group form-field-group--dob">
+  <legend>{{ legend }}</legend>
+  <div class="form-field form-field--text form-field--short">
+    <label>Day (DD)
+      <input id="{{ id }}-day" type="number" />
+    </label>
+  </div>
+  <div class="form-field form-field--text form-field--short">
+    <label>Month (MM)
+      <input id="{{ id }}-month" type="number" />
+    </label>
+  </div>
+  <div class="form-field form-field--text form-field--short">
+    <label>Year (YYYY)
+      <input id="{{ id }}-year" type="number" />
+    </label>
+  </div>
+</fieldset>
+{% endmacro %}
+
+{% macro segmentedControl(label='Sex', id='sex', options=['Male', 'Female']) %}
+<div class="segmented-control segmented-control--{{ options | length }}-across">
+  <p class="label">{{ label }}</p>
+  {% for option in options %}
+  <input id="{{ id }}-{{ option | lower | replace(' ', '_') }}" name="{{ id }}" type="radio" />
+  <label for="{{ id }}-{{ option | lower | replace(' ', '_') }}">{{ option }}</label>
+  {% endfor %}
+</div>
+{% endmacro %}
+
+{% macro button(label='Submit', type='button', order='primary') %}
+<button class="button button--{{ order }}" type="{{ type }}">{{ label }}</button>
+{% endmacro %}
+
+{% macro postcode(id='postcoode') %}
+<div class="form-field form-field--text form-field--postcode-lookup form-field--short">
+  <label>Postcode
+    <input id="{{ id }}" type="text" />
+  </label>
+  <button class="button button--secondary button--postcode-find" type="button">Find</button> <a href="#">or enter manually</a>
+</div>
+{% endmacro %}

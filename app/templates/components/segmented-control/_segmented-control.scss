@@ -15,7 +15,7 @@
     }
   }
 
-  input:checked + label, .checked {
+  input[type=radio]:checked + label, .checked {
     @include form-segmented-control(selected);
   }
 }
@@ -25,14 +25,14 @@
 }
 
 
-.segmented-control-2-across label {
+.segmented-control--2-across label {
   width: 50%;
 }
 
-.segmented-control-3-across label {
+.segmented-control--3-across label {
   width: 33%;
 }
 
-.segmented-control-4-across label {
+.segmented-control--4-across label {
   width: 25%;
 }
