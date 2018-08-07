@@ -683,6 +683,7 @@ p, .paragraph {
   height: 41px;
   font-weight: 400;
   color: #5d7384;
+  background-color: white;
   box-sizing: border-box;
   padding: 8px 0.5em 0;
 }
