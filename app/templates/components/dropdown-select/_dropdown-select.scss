@@ -21,6 +21,7 @@
       height: 41px;
       font-weight: 400;
       color: $grey-L20;
+      background-color: $white;
       box-sizing: border-box;
       padding: 8px 0.5em 0;
     }
@@ -145,7 +146,7 @@
       }
     }
   }
-  
+
   .message--error {
     padding-top: 0;
   }
