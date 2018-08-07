@@ -1,7 +1,7 @@
-.form-field {
+.input-field {
   margin-bottom: 28px;
 
-  &.form-field--short {
+  &.input-field--short {
     input {
       width: 150px;
     }
@@ -49,7 +49,7 @@
   }
 }
 
-.form-field-group--dob {
+.input-field-group--dob {
   @include clearfix();
   border: none;
   padding: 0;
@@ -63,7 +63,7 @@
     margin: 0 0 4px 8px;
   }
 
-  .form-field {
+  .input-field {
     width: 33%;
     float: left;
     padding: 0 10px;

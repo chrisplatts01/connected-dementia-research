@@ -61,9 +61,10 @@
         <li><a href="/pattern-library/checkbox.html">Checkbox</a></li>
         <li><a href="/pattern-library/dropdown-select.html">Dropdown select</a></li>
         <li><a href="/pattern-library/file-upload.html">File upload</a></li>
-        <li><a href="/pattern-library/form-field.html">Form field</a></li>
+        <li><a href="/pattern-library/input-field.html">Form field</a></li>
         <li><a href="/pattern-library/heading.html">Heading</a></li>
         <li><a href="/pattern-library/message.html">Message</a></li>
+        <!-- li><a href="/pattern-library/page-navigation.html">Page navigation</a></li -->
         <li><a href="/pattern-library/paragraph.html">Paragraph</a></li>
         <li><a href="/pattern-library/postcode-lookup.html">Postcode lookup</a></li>
         <li><a href="/pattern-library/progress-indicator.html">Progress indicator</a></li>
@@ -87,103 +88,27 @@
       
   <h1 class="pl-heading">Checkbox</h1>
   <p><small>To illustrate the styling of <em>checked</em> and <em>hover</em> states, <code>.hover</code> and <code>.checked</code> classes have been added to simulate these states. These classes are not required in production where the <code>:hover</code> and <code>:checked</code> pseudo-classes are used.</small></p>
-  <div class="checkbox">
-  <label>
-    <input id="option-1" name="option" type="checkbox" />
-    Unselected
-    <span class="checkmark"></span>
-  </label>
-</div>
-<div class="checkbox hover">
-  <label>
-    <input id="option-2" name="option" type="checkbox" />
-    Unselected (Hover)
-    <span class="checkmark"></span>
-  </label>
-</div>
-
+  
 <div class="checkbox">
   <label>
-    <input id="option-3" name="option" type="checkbox" checked />
-    Selected (Checked)
+    <input id="checkbox-id" name="checkbox-id" type="checkbox" />
+    Label for checkbox
     <span class="checkmark"></span>
   </label>
 </div>
 
-<div class="checkbox hover">
-  <label>
-    <input id="option-4" name="option" type="checkbox" checked />
-    Selected (Checked, Hover)
-    <span class="checkmark"></span>
-  </label>
-</div>
-
-<div class="checkbox error">
-  <label>
-    <input id="option-5" name="option" type="checkbox" />
-    Unselected (Error)
-    <span class="checkmark"></span>
-  </label>
-</div>
-
-<div class="checkbox error hover">
-  <label>
-    <input id="option-6" name="option" type="checkbox" />
-    Unselected (Error, Hover)
-    <span class="checkmark"></span>
-  </label>
-  <div class="message message--error">Error message</div>
-</div>
 
   <h2 class="pl-heading">HTML</h2>
   <textarea class="pl-code" disabled>
-    <div class="checkbox">
-  <label>
-    <input id="option-1" name="option" type="checkbox" />
-    Unselected
-    <span class="checkmark"></span>
-  </label>
-</div>
-<div class="checkbox hover">
-  <label>
-    <input id="option-2" name="option" type="checkbox" />
-    Unselected (Hover)
-    <span class="checkmark"></span>
-  </label>
-</div>
-
+    
 <div class="checkbox">
   <label>
-    <input id="option-3" name="option" type="checkbox" checked />
-    Selected (Checked)
+    <input id="checkbox-id" name="checkbox-id" type="checkbox" />
+    Label for checkbox
     <span class="checkmark"></span>
   </label>
 </div>
 
-<div class="checkbox hover">
-  <label>
-    <input id="option-4" name="option" type="checkbox" checked />
-    Selected (Checked, Hover)
-    <span class="checkmark"></span>
-  </label>
-</div>
-
-<div class="checkbox error">
-  <label>
-    <input id="option-5" name="option" type="checkbox" />
-    Unselected (Error)
-    <span class="checkmark"></span>
-  </label>
-</div>
-
-<div class="checkbox error hover">
-  <label>
-    <input id="option-6" name="option" type="checkbox" />
-    Unselected (Error, Hover)
-    <span class="checkmark"></span>
-  </label>
-  <div class="message message--error">Error message</div>
-</div>
 
   </textarea>
   <h2 class="pl-heading">SCSS</h2>

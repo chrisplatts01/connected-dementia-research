@@ -61,9 +61,10 @@
         <li><a href="/pattern-library/checkbox.html">Checkbox</a></li>
         <li><a href="/pattern-library/dropdown-select.html">Dropdown select</a></li>
         <li><a href="/pattern-library/file-upload.html">File upload</a></li>
-        <li><a href="/pattern-library/form-field.html">Form field</a></li>
+        <li><a href="/pattern-library/input-field.html">Form field</a></li>
         <li><a href="/pattern-library/heading.html">Heading</a></li>
         <li><a href="/pattern-library/message.html">Message</a></li>
+        <!-- li><a href="/pattern-library/page-navigation.html">Page navigation</a></li -->
         <li><a href="/pattern-library/paragraph.html">Paragraph</a></li>
         <li><a href="/pattern-library/postcode-lookup.html">Postcode lookup</a></li>
         <li><a href="/pattern-library/progress-indicator.html">Progress indicator</a></li>
@@ -88,8 +89,7 @@
   <h1 class="pl-heading">File upload</h1>
   <p><small>Drag and  drop file upload using <i>XMLHttpRequest</i> requires support for the <code>draggable</code> method, the <code>FormData</code> XHR method and the <code>FileReader</code> API. These are not supported in IE9,  so a fallback solution is needed for this browser.</small></p>
   <p><small><i><b>NOTE:</b> Uploading the chosen file(s) will depend on the component's parent form submission. The actual method for uplaoding the file will depend on the implementation - front/back end, AJAX/legacy (IFRAME?), etc.</i></small></p>
-  <h2 class="pl-heading">No files uploaded</h2>
-<div class="file-upload">
+  <div class="file-upload">
   <ul class="file-upload__file-list">
   </ul>
   <div class="file-upload__uploader">
@@ -101,62 +101,29 @@
     <div class="file-upload__uploading">Uploading&hellip;</div>
     <div class="file-upload__success">Done!</div>
     <div class="file-upload__error">Error! <span></span>.</div>
-  </div>
-</div>
-<h2 class="pl-heading">No files uploaded (hover)</h2>
-<div class="file-upload">
-  <ul class="file-upload__file-list">
-  </ul>
-  <div class="file-upload__uploader hover">
-    <label>
-      Drag file here or <span class="file-upload__browse">browse</span>
-      <input class="file-upload__input" type="file" name="files[]" id="file" data-multiple-caption="{count} files selected" multiple />
-    </label>
-    <button class="file-upload__button" type="submit">Upload</button>
-    <div class="file-upload__uploading">Uploading&hellip;</div>
-    <div class="file-upload__success">Done!</div>
-    <div class="file-upload__error">Error! <span></span>.</div>
-  </div>
-</div>
-<h2 class="pl-heading">File uploaded (success)</h2>
-<div class="file-upload">
-  <ul class="file-upload__file-list">
-    <li class='file-upload__file-added'>filename.pdf <span class="file-upload__delete-file"></span></li>
-    <li class='file-upload__file-added success'>another_filename.doc <span class="file-upload__delete-file"></span> <span class="message message--success">Success message</span></li>
-  </ul>
-  <div class="file-upload__uploader">
-    <label>
-      Drag file here or <span class="file-upload__browse">browse</span>
-      <input class="file-upload__input" type="file" name="files[]" id="file" data-multiple-caption="{count} files selected" multiple />
-    </label>
-    <button class="file-upload__button" type="submit">Upload</button>
-    <div class="file-upload__uploading">Uploading&hellip;</div>
-    <div class="file-upload__success">Done!</div>
-    <div class="file-upload__error">Error!</div>
-  </div>
-</div>
-<h2 class="pl-heading">File uploaded (error)</h2>
-<div class="file-upload">
-  <ul class="file-upload__file-list">
-    <li class='file-upload__file-added'>filename.pdf <span class="file-upload__delete-file"></span></li>
-    <li class='file-upload__file-added'>another_filename.doc <span class="file-upload__delete-file"></span></li>
-    <li class='file-upload__file-added error'>a_third_filename.doc <span class="file-upload__delete-file"></span> <span class="message message--error">Error message</span></li>
-  </ul>
-  <div class="file-upload__uploader">
-    <label>
-      Drag file here or <span class="file-upload__browse">browse</span>
-      <input class="file-upload__input" type="file" name="files[]" id="file" data-multiple-caption="{count} files selected" multiple />
-    </label>
-    <button class="file-upload__button" type="submit">Upload</button>
-    <div class="file-upload__uploading">Uploading&hellip;</div>
-    <div class="file-upload__success">Done!</div>
-    <div class="file-upload__error">Error!</div>
   </div>
 </div>
 
+  
+<div class="file-upload">
+  <ul class="file-upload__file-list">
+  </ul>
+  <div class="file-upload__uploader">
+    <label>
+      Drag file here or <span class="file-upload__browse">browse</span>
+      <input class="file-upload__input" type="file" name="files[]" id="file" data-multiple-caption="{count} files selected" multiple />
+    </label>
+    <button class="file-upload__button" type="submit">Upload</button>
+    <div class="file-upload__uploading">Uploading&hellip;</div>
+    <div class="file-upload__success">Done!</div>
+    <div class="file-upload__error">Error! <span></span>.</div>
+  </div>
+</div>
+
+
   <h2 class="pl-heading">HTML</h2>
   <textarea class="pl-code" disabled>
-    <h2 class="pl-heading">No files uploaded</h2>
+    
 <div class="file-upload">
   <ul class="file-upload__file-list">
   </ul>
@@ -171,56 +138,7 @@
     <div class="file-upload__error">Error! <span></span>.</div>
   </div>
 </div>
-<h2 class="pl-heading">No files uploaded (hover)</h2>
-<div class="file-upload">
-  <ul class="file-upload__file-list">
-  </ul>
-  <div class="file-upload__uploader hover">
-    <label>
-      Drag file here or <span class="file-upload__browse">browse</span>
-      <input class="file-upload__input" type="file" name="files[]" id="file" data-multiple-caption="{count} files selected" multiple />
-    </label>
-    <button class="file-upload__button" type="submit">Upload</button>
-    <div class="file-upload__uploading">Uploading&hellip;</div>
-    <div class="file-upload__success">Done!</div>
-    <div class="file-upload__error">Error! <span></span>.</div>
-  </div>
-</div>
-<h2 class="pl-heading">File uploaded (success)</h2>
-<div class="file-upload">
-  <ul class="file-upload__file-list">
-    <li class='file-upload__file-added'>filename.pdf <span class="file-upload__delete-file"></span></li>
-    <li class='file-upload__file-added success'>another_filename.doc <span class="file-upload__delete-file"></span> <span class="message message--success">Success message</span></li>
-  </ul>
-  <div class="file-upload__uploader">
-    <label>
-      Drag file here or <span class="file-upload__browse">browse</span>
-      <input class="file-upload__input" type="file" name="files[]" id="file" data-multiple-caption="{count} files selected" multiple />
-    </label>
-    <button class="file-upload__button" type="submit">Upload</button>
-    <div class="file-upload__uploading">Uploading&hellip;</div>
-    <div class="file-upload__success">Done!</div>
-    <div class="file-upload__error">Error!</div>
-  </div>
-</div>
-<h2 class="pl-heading">File uploaded (error)</h2>
-<div class="file-upload">
-  <ul class="file-upload__file-list">
-    <li class='file-upload__file-added'>filename.pdf <span class="file-upload__delete-file"></span></li>
-    <li class='file-upload__file-added'>another_filename.doc <span class="file-upload__delete-file"></span></li>
-    <li class='file-upload__file-added error'>a_third_filename.doc <span class="file-upload__delete-file"></span> <span class="message message--error">Error message</span></li>
-  </ul>
-  <div class="file-upload__uploader">
-    <label>
-      Drag file here or <span class="file-upload__browse">browse</span>
-      <input class="file-upload__input" type="file" name="files[]" id="file" data-multiple-caption="{count} files selected" multiple />
-    </label>
-    <button class="file-upload__button" type="submit">Upload</button>
-    <div class="file-upload__uploading">Uploading&hellip;</div>
-    <div class="file-upload__success">Done!</div>
-    <div class="file-upload__error">Error!</div>
-  </div>
-</div>
+
 
   </textarea>
   <h2 class="pl-heading">SCSS</h2>
