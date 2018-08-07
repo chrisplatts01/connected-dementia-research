@@ -51,6 +51,14 @@ body {
   padding: 0 8px;
 }
 
+.page-header__wrapper::after,
+.page-content__wrapper::after,
+.page-footer__wrapper::after {
+  clear: both;
+  content: "";
+  display: block;
+}
+
 .page-content__wrapper {
   padding: 24px;
 }
@@ -58,6 +66,7 @@ body {
 .page-content__inner-wrapper {
   max-width: 500px;
   margin: 0 auto;
+  padding-bottom: 16px;
 }
 
 a:link, a:visited {
@@ -297,6 +306,7 @@ p.label {
   font-weight: 700;
   line-height: 40px;
   color: #333f48;
+  margin: 0 0 28px 0;
 }
 
 .question {
@@ -313,6 +323,7 @@ p, .paragraph {
   font-weight: 400;
   line-height: 32px;
   color: #333f48;
+  margin: 0 0 28px 0;
 }
 
 .bullet-point {
@@ -495,6 +506,11 @@ p, .paragraph {
 }
 
 .checkbox label {
+  font-family: "Calibri", "Helvetica", "Arial", sans-serif;
+  font-size: 19px;
+  font-weight: 400;
+  line-height: 24px;
+  color: #5d7384;
   display: block;
   padding-left: 2.5em;
   cursor: pointer;
@@ -578,6 +594,11 @@ p, .paragraph {
 }
 
 .radio label {
+  font-family: "Calibri", "Helvetica", "Arial", sans-serif;
+  font-size: 19px;
+  font-weight: 400;
+  line-height: 24px;
+  color: #5d7384;
   display: block;
   padding-left: 2.5em;
   cursor: pointer;
@@ -656,7 +677,16 @@ p, .paragraph {
   background-color: #feedf3;
 }
 
+.dropdown-select {
+  margin-bottom: 32px;
+}
+
 .dropdown-select label {
+  font-family: "Calibri", "Helvetica", "Arial", sans-serif;
+  font-size: 19px;
+  font-weight: 400;
+  line-height: 24px;
+  color: #5d7384;
   padding-right: 16px;
 }
 
@@ -795,7 +825,7 @@ p, .paragraph {
 }
 
 .form-field {
-  margin-bottom: 24px;
+  margin-bottom: 28px;
 }
 
 .form-field.form-field--short input {
@@ -1010,7 +1040,7 @@ p, .paragraph {
   color: #5d7384;
   position: relative;
   height: 42px;
-  min-width: 140px;
+  min-width: 150px;
   padding: 0 16px;
   border: 0;
   color: #333f48;
@@ -1076,6 +1106,7 @@ p, .paragraph {
 
 .button--next {
   width: 140px;
+  right: 21px;
   color: white;
   background-color: #008194;
   box-shadow: 0 4px 0 0 #004c57;
