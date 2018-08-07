@@ -61,9 +61,10 @@
         <li><a href="/pattern-library/checkbox.html">Checkbox</a></li>
         <li><a href="/pattern-library/dropdown-select.html">Dropdown select</a></li>
         <li><a href="/pattern-library/file-upload.html">File upload</a></li>
-        <li><a href="/pattern-library/form-field.html">Form field</a></li>
+        <li><a href="/pattern-library/input-field.html">Form field</a></li>
         <li><a href="/pattern-library/heading.html">Heading</a></li>
         <li><a href="/pattern-library/message.html">Message</a></li>
+        <!-- li><a href="/pattern-library/page-navigation.html">Page navigation</a></li -->
         <li><a href="/pattern-library/paragraph.html">Paragraph</a></li>
         <li><a href="/pattern-library/postcode-lookup.html">Postcode lookup</a></li>
         <li><a href="/pattern-library/progress-indicator.html">Progress indicator</a></li>
@@ -87,55 +88,60 @@
       
   <h1 class="pl-heading">Dropdown select</h1>
   <p><small>To illustrate the styling of <em>checked</em> and <em>hover</em> states, <code>.hover</code> and <code>.checked</code> classes have been added to simulate these states. These classes are not required in production where the <code>:hover</code> and <code>:checked</code> pseudo-classes are used.</small></p>
-  <div class="dropdown-select">
-  <label>Choose an option:
-    <select id="options" name="options">
+  
+<div class="dropdown-select">
+  <label>Please choose from the following options:
+    <select id="select-id">
       <option selected disabled>Select&hellip;</option>
-      <option value="option-1">Option 1</option>
-      <option value="option-2">Option 2</option>
-      <option value="option-3">Option 3</option>
-      <option value="option-4">Option 4</option>
-      <option value="option-5">Option 5</option>
+      
+      <option value="option_1">Option 1</option>
+      
+      <option value="option_2">Option 2</option>
+      
+      <option value="option3">Option3</option>
+      
     </select>
   </label>
 </div>
 
-<div class="dropdown-select error">
-  <label>Choose an option:
-    <select id="options-1" name="options-1">
+
+  <div class="error">
+    
+<div class="dropdown-select">
+  <label>Please choose from the following options: (Error)
+    <select id="select-id">
       <option selected disabled>Select&hellip;</option>
-      <option value="option-1">Option 1</option>
-      </option>
+      
+      <option value="option_1">Option 1</option>
+      
+      <option value="option_2">Option 2</option>
+      
+      <option value="option3">Option3</option>
+      
     </select>
   </label>
-  <div class="message message--error">Error message</div>
 </div>
 
+
+  </div>
   <h2 class="pl-heading">HTML</h2>
   <textarea class="pl-code" disabled>
-    <div class="dropdown-select">
-  <label>Choose an option:
-    <select id="options" name="options">
+    
+<div class="dropdown-select">
+  <label>Please choose from the following options:
+    <select id="select-id">
       <option selected disabled>Select&hellip;</option>
-      <option value="option-1">Option 1</option>
-      <option value="option-2">Option 2</option>
-      <option value="option-3">Option 3</option>
-      <option value="option-4">Option 4</option>
-      <option value="option-5">Option 5</option>
+      
+      <option value="option_1">Option 1</option>
+      
+      <option value="option_2">Option 2</option>
+      
+      <option value="option3">Option3</option>
+      
     </select>
   </label>
 </div>
 
-<div class="dropdown-select error">
-  <label>Choose an option:
-    <select id="options-1" name="options-1">
-      <option selected disabled>Select&hellip;</option>
-      <option value="option-1">Option 1</option>
-      </option>
-    </select>
-  </label>
-  <div class="message message--error">Error message</div>
-</div>
 
   </textarea>
   <h2 class="pl-heading">SCSS</h2>
@@ -270,6 +276,7 @@
     }
   }
 
+  .error &,
   &.error {
     .dropdown {
       border: 3px solid $ruby;
