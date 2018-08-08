@@ -1,23 +1,10 @@
 <div class="dropdown-select">
-  <label>Choose an option:
-    <select id="options" name="options">
+  <label>{{ label }}
+    <select id="{{ id }}">
       <option selected disabled>Select&hellip;</option>
-      <option value="option-1">Option 1</option>
-      <option value="option-2">Option 2</option>
-      <option value="option-3">Option 3</option>
-      <option value="option-4">Option 4</option>
-      <option value="option-5">Option 5</option>
+      {% for option in options %}
+      <option value="{{ option | lower | replace(' ', '_') }}">{{ option }}</option>
+      {% endfor %}
     </select>
   </label>
-</div>
-
-<div class="dropdown-select error">
-  <label>Choose an option:
-    <select id="options-1" name="options-1">
-      <option selected disabled>Select&hellip;</option>
-      <option value="option-1">Option 1</option>
-      </option>
-    </select>
-  </label>
-  <div class="message message--error">Error message</div>
 </div>

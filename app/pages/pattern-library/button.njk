@@ -1,11 +1,15 @@
 {% extends "pattern-library-layout.njk" %}
 
+{% import 'macros/volunteer.njk' as volunteer %}
+
 {% block content %}
   <h1 class="pl-heading">Button</h1>
-  {% include 'components/button/_button.njk' %}
+  {{ volunteer.button('Submit', 'button', 'primary', formaction='http://cdr.virelai.co.uk') }}
+  {{ volunteer.button('Continue', 'button', 'secondary') }}
   <h2 class="pl-heading">HTML</h2>
   <textarea class="pl-code" disabled>
-    {% include 'components/button/_button.njk' %}
+  {{ volunteer.button('Submit', 'submit', 'primary', formaction='http://cdr.virelai.co.uk') }}
+  {{ volunteer.button('Continue', 'button', 'secondary') }}
   </textarea>
   <h2 class="pl-heading">SCSS</h2>
   <textarea class="pl-code" disabled>

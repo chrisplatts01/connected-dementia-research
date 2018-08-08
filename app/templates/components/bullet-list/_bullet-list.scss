@@ -1,10 +1,10 @@
-.bullet-point {
+.bullet-list {
   @include base-font();
   list-style-image: url(/images/bullet-grey.svg);
   list-style-position: inside;
   padding: 0;
 
   li {
-    margin-bottom: 0.5rem
+    margin-bottom: 8px;
   }
 }

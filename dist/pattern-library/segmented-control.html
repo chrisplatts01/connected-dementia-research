@@ -56,14 +56,16 @@
       <h4>Components:</h4>
       <ul class="component-list">
         <li><a href="/pattern-library/activity-button.html">Activity button</a></li>
-        <li><a href="/pattern-library/bullet-point.html">Bullet point</a></li>
+        <li><a href="/pattern-library/bullet-list.html">Bullet list</a></li>
         <li><a href="/pattern-library/button.html">Button</a></li>
         <li><a href="/pattern-library/checkbox.html">Checkbox</a></li>
+        <li><a href="/pattern-library/date-field-group.html">Date field group</a></li>
         <li><a href="/pattern-library/dropdown-select.html">Dropdown select</a></li>
         <li><a href="/pattern-library/file-upload.html">File upload</a></li>
-        <li><a href="/pattern-library/form-field.html">Form field</a></li>
         <li><a href="/pattern-library/heading.html">Heading</a></li>
+        <li><a href="/pattern-library/input-field.html">Input field</a></li>
         <li><a href="/pattern-library/message.html">Message</a></li>
+        <li><a href="/pattern-library/page-navigation.html">Page navigation</a></li>
         <li><a href="/pattern-library/paragraph.html">Paragraph</a></li>
         <li><a href="/pattern-library/postcode-lookup.html">Postcode lookup</a></li>
         <li><a href="/pattern-library/progress-indicator.html">Progress indicator</a></li>
@@ -71,11 +73,11 @@
         <li><a href="/pattern-library/question.html">Question</a></li>
         <li><a href="/pattern-library/radio-button.html">Radio button</a></li>
         <li><a href="/pattern-library/segmented-control.html">Segmented control</a></li>
-        <li><a href="/pattern-library/user-bar.html">User bar</a></li>
       </ul>
       <h4>Modules:</h4>
       <ul class="component-list">
         <li><a href="/pattern-library/page-header.html">Page header</a></li>
+        <li><a href="/pattern-library/user-bar.html">User bar</a></li>
       </ul>
       <h4>Swatches:</h4>
       <ul class="component-list">
@@ -88,99 +90,49 @@
   <h1 class="pl-heading">Segmented control</h1>
   <p>Used instead of radio button when there are a limited number of mutually-exclusive choices.</p>
   <p><small>To illustrate the styling of <em>checked</em> and <em>hover</em> states, <code>.hover</code> and <code>.checked</code> classes have been added to simulate these states. These classes are not required in production where the <code>:hover</code> and <code>:checked</code> pseudo-classes are used.</small></p>
-  <div class="segmented-control segmented-control--2-across">
-  <input id="option-A1" name="option-A" type="radio" />
-  <label for="option-A1">Unselected 1</label>
-  <input id="option-A2" name="option-A" type="radio" />
-  <label for="option-A2">Unselected 2</label>
-</div>
-
+  
 <div class="segmented-control segmented-control--2-across">
-  <input id="option-B1" name="option-B" type="radio" checked />
-  <label for="option-B1" class="segmented-control__label checked">Selected</label>
-  <input id="option-B2" name="option-B" type="radio" />
-  <label for="option-B2">Unselected</label>
+  <p class="label">Sex</p>
+  
+  <input id="sex-male" name="sex" type="radio" />
+  <label for="sex-male">Male</label>
+  
+  <input id="sex-female" name="sex" type="radio" />
+  <label for="sex-female">Female</label>
+  
 </div>
 
-<div class="segmented-control segmented-control--2-across">
-  <input id="option-C1" name="option-C" type="radio" checked />
-  <label for="option-C1" class="segmented-control__label hover checked">Hover</label>
-  <input id="option-C2" name="option-C" type="radio" />
-  <label for="option-C2" class="segmented-control__label hover">Hover</label>
-</div>
 
+  
 <div class="segmented-control segmented-control--3-across">
-  <input id="option-F1" name="option-F" type="radio" />
-  <label for="option-F1" class="segmented-control__label checked">Selected</label>
-  <input id="option-F2" name="option-F" type="radio" />
-  <label for="option-F2">Unselected</label>
-  <input id="option-F3" name="option-F" type="radio" />
-  <label for-"option-F3">Unselected</label>
+  <p class="label">Your options</p>
+  
+  <input id="options-option_1" name="options" type="radio" />
+  <label for="options-option_1">Option 1</label>
+  
+  <input id="options-option_2" name="options" type="radio" />
+  <label for="options-option_2">Option 2</label>
+  
+  <input id="options-option_3" name="options" type="radio" />
+  <label for="options-option_3">Option 3</label>
+  
 </div>
 
-<div class="segmented-control segmented-control--2-across">
-  <input id="option-D1" name="option-D" type="radio" />
-  <label for="option-D1" class="segmented-control__label error">Unselected</label>
-  <input id="option-D2" name="option-D" type="radio" />
-  <label for="option-D2" class="segmented-control__label error">Unselected</label>
-  <div class="message message--error">Error message</div>
-</div>
-
-<div class="segmented-control segmented-control--2-across">
-  <input id="option-E1" name="option-E" type="radio" />
-  <label for="option-E1" class="segmented-control__label error hover">Hover</label>
-  <input id="option-E2" name="option-E" type="radio" />
-  <label for="option-E2" class="segmented-control__label error">Unselected</label>
-  <div class="message message--error">Error message</div>
-</div>
 
   <h2 class="pl-heading">HTML</h2>
   <textarea class="pl-code" disabled>
-    <div class="segmented-control segmented-control--2-across">
-  <input id="option-A1" name="option-A" type="radio" />
-  <label for="option-A1">Unselected 1</label>
-  <input id="option-A2" name="option-A" type="radio" />
-  <label for="option-A2">Unselected 2</label>
-</div>
-
+    
 <div class="segmented-control segmented-control--2-across">
-  <input id="option-B1" name="option-B" type="radio" checked />
-  <label for="option-B1" class="segmented-control__label checked">Selected</label>
-  <input id="option-B2" name="option-B" type="radio" />
-  <label for="option-B2">Unselected</label>
+  <p class="label">Sex</p>
+  
+  <input id="sex-male" name="sex" type="radio" />
+  <label for="sex-male">Male</label>
+  
+  <input id="sex-female" name="sex" type="radio" />
+  <label for="sex-female">Female</label>
+  
 </div>
 
-<div class="segmented-control segmented-control--2-across">
-  <input id="option-C1" name="option-C" type="radio" checked />
-  <label for="option-C1" class="segmented-control__label hover checked">Hover</label>
-  <input id="option-C2" name="option-C" type="radio" />
-  <label for="option-C2" class="segmented-control__label hover">Hover</label>
-</div>
-
-<div class="segmented-control segmented-control--3-across">
-  <input id="option-F1" name="option-F" type="radio" />
-  <label for="option-F1" class="segmented-control__label checked">Selected</label>
-  <input id="option-F2" name="option-F" type="radio" />
-  <label for="option-F2">Unselected</label>
-  <input id="option-F3" name="option-F" type="radio" />
-  <label for-"option-F3">Unselected</label>
-</div>
-
-<div class="segmented-control segmented-control--2-across">
-  <input id="option-D1" name="option-D" type="radio" />
-  <label for="option-D1" class="segmented-control__label error">Unselected</label>
-  <input id="option-D2" name="option-D" type="radio" />
-  <label for="option-D2" class="segmented-control__label error">Unselected</label>
-  <div class="message message--error">Error message</div>
-</div>
-
-<div class="segmented-control segmented-control--2-across">
-  <input id="option-E1" name="option-E" type="radio" />
-  <label for="option-E1" class="segmented-control__label error hover">Hover</label>
-  <input id="option-E2" name="option-E" type="radio" />
-  <label for="option-E2" class="segmented-control__label error">Unselected</label>
-  <div class="message message--error">Error message</div>
-</div>
 
   </textarea>
   <h2 class="pl-heading">SCSS</h2>

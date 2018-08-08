@@ -2,113 +2,96 @@
   Volunteer macros
 #}
 
+{# Text components #}
+{% macro heading(text) %}
+{% include 'components/heading/_heading.njk' %}
+{% endmacro %}
+
+{% macro subheading(text) %}
+{% include 'components/subheading/_subheading.njk' %}
+{% endmacro %}
+
+{% macro question(text) %}
+{% include 'components/question/_question.njk' %}
+{% endmacro %}
+
+{% macro paragraph(text) %}
+{% include 'components/paragraph/_paragraph.njk' %}
+{% endmacro %}
+
+{% macro bulletList(items=['Item 1', 'Item 2']) %}
+{% include 'components/bullet-list/_bullet-list.njk' %}
+{% endmacro %}
+
+{% macro message(type='info', text) %}
+{% include 'components/message/_message.njk' %}
+{% endmacro %}
+
+{% macro prompt(text) %}
+{% include 'components/prompt/_prompt.njk' %}
+{% endmacro %}
+
+{# Form components #}
+{% macro form(id, action, method='get') %}
+{% include 'components/form/_form.njk' %}
+{% endmacro %}
+
+{% macro inputField(label, id, name, type='text', size='long', placeholder='', disabled='', validation='') %}
+{% include 'components/input-field/_input-field.njk' %}
+{% endmacro %}
+
+{% macro shortInputField(label, id, type='text', size='short', placeholder='', disabled='', validation='') %}
+{% include 'components/input-field/_input-field.njk' %}
+{% endmacro %}
+
+{% macro checkbox(label, id) %}
+{% include 'components/checkbox/_checkbox.njk' %}
+{% endmacro %}
+
+{% macro radioButton(label, id) %}
+{% include 'components/radio-button/_radio-button.njk' %}
+{% endmacro %}
+
+{# Checkbox group #}
+
+{# Radio button group #}
+
+{# Conditional checkbox group #}
+
+{% macro dropdownSelect(label, id, options) %}
+{% include 'components/dropdown-select/_dropdown-select.njk' %}
+{% endmacro %}
+
+{% macro segmentedControl(label='Sex', id='sex', options=['Male', 'Female']) %}
+{% include 'components/segmented-control/_segmented-control.njk' %}
+{% endmacro %}
+
+{% macro button(label='Submit', type='button', order='primary', formaction='') %}
+{% include 'components/button/_button.njk' %}
+{% endmacro %}
+
+{% macro dateFieldGroup(legend='Date of birth', id="date")%}
+{% include 'components/date-field-group/_date-field-group.njk' %}
+{% endmacro %}
+
+{% macro fileUpload() %}
+{% include 'components/file-upload/_file-upload.njk' %}
+{% endmacro %}
+
+{% macro postcodeLookup(id='postcoode') %}
+{% include 'components/postcode-lookup/_postcode-lookup.njk' %}
+{% endmacro %}
+
+{# Navigation components #}
 {% macro progressIndicator(step, steps) %}
 {% include 'components/progress-indicator/_progress-indicator.njk' %}
 {% endmacro %}
 
-{% macro heading(text) %}
-<h1 class="heading">{{ text }}</h1>
-{% endmacro %}
-
-{% macro subheading(text) %}
-<h2 class="subheading">{{ text }}</h2>
-{% endmacro %}
-
-{% macro paragraph(text) %}
-<p class="paragraph">{{ text }}</p>
-{% endmacro %}
-
-{% macro form(id, action, method='get') %}
-<form id="{{ id }}" action="{{ action }}" method="{{ method }}">
-  {{ caller() }}
-</form>
-{% endmacro %}
-
-{% macro input(label, id, name, type='text', placeholder='', disabled='', validation='') %}
-<div class="form-field form-field--text">
-  <label>{{ label }}
-    <input id="{{ id }}" name="{{ name }}" type="{{ type }}" placeholder="{{ placeholder }}" {{ disabled }} {{ validation }} />
-  </label>
-</div>
-{% endmacro %}
-
-{% macro shortInput(label, id, type='text', placeholder='', disabled='', validation='') %}
-<div class="form-field form-field--text form-field--short">
-  <label>{{ label }}
-    <input id="{{ id }}" type="{{ type }}" placeholder="{{ placeholder }}" {{ disabled }} {{ validation }} />
-  </label>
-</div>
-{% endmacro %}
-
-{% macro select(label, id, options) %}
-<div class="dropdown-select">
-  <label>{{ label }}
-    <select id="{{ id }}">
-      <option selected disabled>Select&hellip;</option>
-      {% for option in options %}
-      <option value="{{ option | lower | replace(' ', '_') }}">{{ option }}</option>
-      {% endfor %}
-    </select>
-  </label>
-</div>
-{% endmacro %}
-
-{% macro dobInput(legend='Date of birth', id="dob")%}
-<fieldset class="form-field-group form-field-group--dob">
-  <legend>{{ legend }}</legend>
-  <div class="form-field form-field--text form-field--short">
-    <label>Day (DD)
-      <input id="{{ id }}-day" type="number" />
-    </label>
-  </div>
-  <div class="form-field form-field--text form-field--short">
-    <label>Month (MM)
-      <input id="{{ id }}-month" type="number" />
-    </label>
-  </div>
-  <div class="form-field form-field--text form-field--short">
-    <label>Year (YYYY)
-      <input id="{{ id }}-year" type="number" />
-    </label>
-  </div>
-</fieldset>
-{% endmacro %}
-
-{% macro segmentedControl(label='Sex', id='sex', options=['Male', 'Female']) %}
-<div class="segmented-control segmented-control--{{ options | length }}-across">
-  <p class="label">{{ label }}</p>
-  {% for option in options %}
-  <input id="{{ id }}-{{ option | lower | replace(' ', '_') }}" name="{{ id }}" type="radio" />
-  <label for="{{ id }}-{{ option | lower | replace(' ', '_') }}">{{ option }}</label>
-  {% endfor %}
-</div>
-{% endmacro %}
-
-{% macro button(label='Submit', type='button', order='primary') %}
-<button class="button button--{{ order }}" type="{{ type }}">{{ label }}</button>
-{% endmacro %}
-
-{% macro postcode(id='postcoode') %}
-{% include 'components/postcode-lookup/_postcode-lookup.njk' %}
-{% endmacro %}
-
 {% macro pageNavigation(previous={ label: 'Previous', url: '#' }, next={ label: 'Previous', url: '#' }) %}
-<div class="page-navigation" style="margin-top: 28px;">
-  <div class="float-left" style="width: 50%; float: left">
-    <button class="float-left button button--previous" type="button">{{ previous.label }}</button>
-  </div>
-  <div class="float-left" style="width: 50%; float: right; text-align: right;">
-    <button style="display: inline-block;" class="float-right button button--next" type="submit" formaction="{{ next.url }}">{{ next.label }}</button>
-  </div>
-</div>
+{% include 'components/page-navigation/_page-navigation.njk' %}
 {% endmacro %}
 
-{% macro checkbox(label, id) %}
-<div class="checkbox">
-  <label>
-    <input id="{{ id }}" name="{{ id }}" type="checkbox" />
-    {{ label }}
-    <span class="checkmark"></span>
-  </label>
-</div>
+{# Other psge compoents #}
+{% macro activityButton( text ) %}
+{% include 'components/activity-button/_activity-button.njk' %}
 {% endmacro %}

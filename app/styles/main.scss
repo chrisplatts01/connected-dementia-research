@@ -23,23 +23,25 @@
 @import 'app/templates/modules/sponsors/sponsors';
 
 // Pattern library cmponents
-@import 'app/templates/components/heading/heading';
-@import 'app/templates/components/question/question';
-@import 'app/templates/components/paragraph/paragraph';
-@import 'app/templates/components/bullet-point/bullet-point';
-@import 'app/templates/components/message/message';
-@import 'app/templates/components/prompt/prompt';
-@import 'app/templates/components/segmented-control/segmented-control';
-@import 'app/templates/components/checkbox/checkbox';
-@import 'app/templates/components/radio-button/radio-button';
-@import 'app/templates/components/dropdown-select/dropdown-select';
-@import 'app/templates/components/form-field/form-field';
-@import 'app/templates/components/file-upload/file-upload';
-@import 'app/templates/components/button/button';
 @import 'app/templates/components/activity-button/activity-button';
-@import 'app/templates/components/progress-indicator/progress-indicator';
-@import 'app/templates/components/user-bar/user-bar';
+@import 'app/templates/components/bullet-list/bullet-list';
+@import 'app/templates/components/button/button';
+@import 'app/templates/components/checkbox/checkbox';
+@import 'app/templates/components/date-field-group/date-field-group';
+@import 'app/templates/components/dropdown-select/dropdown-select';
+@import 'app/templates/components/file-upload/file-upload';
+@import 'app/templates/components/heading/heading';
+@import 'app/templates/components/input-field/input-field';
+@import 'app/templates/components/message/message';
+@import 'app/templates/components/page-navigation/page-navigation';
+@import 'app/templates/components/paragraph/paragraph';
 @import 'app/templates/components/postcode-lookup/postcode-lookup';
+@import 'app/templates/components/progress-indicator/progress-indicator';
+@import 'app/templates/components/prompt/prompt';
+@import 'app/templates/components/question/question';
+@import 'app/templates/components/radio-button/radio-button';
+@import 'app/templates/components/segmented-control/segmented-control';
+@import 'app/templates/components/user-bar/user-bar';
 
 // Pattern library modules
 @import 'app/templates/modules/volunteer-page-header/volunteer-page-header';

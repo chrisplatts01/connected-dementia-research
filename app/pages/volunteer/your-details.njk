@@ -7,17 +7,16 @@
 {{ volunteer.progressIndicator(1, 3) }}
 <div class="page-content__inner-wrapper">
   {{ volunteer.heading('Your details') }}
-  {{ volunteer.paragraph('Thank you for registering. The first step is to create
-  an account. Please begin by telling us who you are.') }}
+  {{ volunteer.paragraph('Thank you for registering. The first step is to create an account. Please begin by telling us who you are.') }}
   {% call volunteer.form('your-details', '#', 'get' ) %}
-  {{ volunteer.shortInput('Title', 'name') }}
-  {{ volunteer.input('First name(s)', 'first-name') }}
-  {{ volunteer.input('Surname', 'surname') }}
-  {{ volunteer.dobInput() }}
+  {{ volunteer.shortInputField('Title', 'name') }}
+  {{ volunteer.inputField('First name(s)', 'first-name') }}
+  {{ volunteer.inputField('Surname', 'surname') }}
+  {{ volunteer.dateFieldGroup() }}
   {{ volunteer.segmentedControl() }}
-  {{ volunteer.postcode() }}
-  {{ volunteer.input('Telephone number', 'telephone') }}
-  {{ volunteer.select('How did you hear about us? (optional)', 'how-heard', ['Option 1', 'Option 2']) }}
+  {{ volunteer.postcodeLookup() }}
+  {{ volunteer.inputField('Telephone number', 'telephone') }}
+  {{ volunteer.dropdownSelect('How did you hear about us? (optional)', 'how-heard', ['Option 1', 'Option 2']) }}
   {{ volunteer.checkbox('Please keep me up to date with the Joint Dementia Research newsletter', 'contact')}}
   {{ volunteer.pageNavigation() }}
   {% endcall %}

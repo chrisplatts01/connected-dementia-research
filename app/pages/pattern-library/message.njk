@@ -1,11 +1,15 @@
 {% extends "pattern-library-layout.njk" %}
 
+{% import 'macros/volunteer.njk' as volunteer %}
+
 {% block content %}
   <h1 class="pl-heading">Message</h1>
-  {% include 'components/message/_message.njk' %}
+  {{ volunteer.message('Success: Everything went well!', 'success') }}
+  {{ volunteer.message('Error: Something is wrong!.', 'error') }}
   <h2 class="pl-heading">HTML</h2>
   <textarea class="pl-code" disabled>
-    {% include 'components/message/_message.njk' %}
+    {{ volunteer.message('Success: Everything went well!', 'success') }}
+    {{ volunteer.message('Error: Something is wrong!.', 'error') }}
   </textarea>
   <h2 class="pl-heading">SCSS</h2>
   <textarea class="pl-code" disabled>

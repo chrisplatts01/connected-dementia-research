@@ -56,14 +56,15 @@
       <h4>Components:</h4>
       <ul class="component-list">
         <li><a href="/pattern-library/activity-button.html">Activity button</a></li>
-        <li><a href="/pattern-library/bullet-point.html">Bullet point</a></li>
+        <li><a href="/pattern-library/bullet-list.html">Bullet list</a></li>
         <li><a href="/pattern-library/button.html">Button</a></li>
         <li><a href="/pattern-library/checkbox.html">Checkbox</a></li>
         <li><a href="/pattern-library/dropdown-select.html">Dropdown select</a></li>
         <li><a href="/pattern-library/file-upload.html">File upload</a></li>
-        <li><a href="/pattern-library/form-field.html">Form field</a></li>
+        <li><a href="/pattern-library/input-field.html">Form field</a></li>
         <li><a href="/pattern-library/heading.html">Heading</a></li>
         <li><a href="/pattern-library/message.html">Message</a></li>
+        <!-- li><a href="/pattern-library/page-navigation.html">Page navigation</a></li -->
         <li><a href="/pattern-library/paragraph.html">Paragraph</a></li>
         <li><a href="/pattern-library/postcode-lookup.html">Postcode lookup</a></li>
         <li><a href="/pattern-library/progress-indicator.html">Progress indicator</a></li>
@@ -86,29 +87,27 @@
     <main class="pl-main" role="main">
       
   <h1 class="pl-heading">Bullet point</h1>
-  <ul class="bullet-point">
-  <li>I understand that my personal details will be stored securely and that I am free to withdraw at any time without giving a reason.</li>
-  <li>Another bullet point</li>
+  <ul class="bullet-list">
+  
 </ul>
 
   <h2 class="pl-heading">HTML</h2>
   <textarea class="pl-code" disabled>
-    <ul class="bullet-point">
-  <li>I understand that my personal details will be stored securely and that I am free to withdraw at any time without giving a reason.</li>
-  <li>Another bullet point</li>
+    <ul class="bullet-list">
+  
 </ul>
 
   </textarea>
   <h2 class="pl-heading">SCSS</h2>
   <textarea class="pl-code" disabled>
-    .bullet-point {
+    .bullet-list {
   @include base-font();
   list-style-image: url(/images/bullet-grey.svg);
   list-style-position: inside;
   padding: 0;
 
   li {
-    margin-bottom: 0.5rem
+    margin-bottom: 8px;
   }
 }
 

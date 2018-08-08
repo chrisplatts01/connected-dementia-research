@@ -56,14 +56,16 @@
       <h4>Components:</h4>
       <ul class="component-list">
         <li><a href="/pattern-library/activity-button.html">Activity button</a></li>
-        <li><a href="/pattern-library/bullet-point.html">Bullet point</a></li>
+        <li><a href="/pattern-library/bullet-list.html">Bullet list</a></li>
         <li><a href="/pattern-library/button.html">Button</a></li>
         <li><a href="/pattern-library/checkbox.html">Checkbox</a></li>
+        <li><a href="/pattern-library/date-field-group.html">Date field group</a></li>
         <li><a href="/pattern-library/dropdown-select.html">Dropdown select</a></li>
         <li><a href="/pattern-library/file-upload.html">File upload</a></li>
-        <li><a href="/pattern-library/form-field.html">Form field</a></li>
         <li><a href="/pattern-library/heading.html">Heading</a></li>
+        <li><a href="/pattern-library/input-field.html">Input field</a></li>
         <li><a href="/pattern-library/message.html">Message</a></li>
+        <li><a href="/pattern-library/page-navigation.html">Page navigation</a></li>
         <li><a href="/pattern-library/paragraph.html">Paragraph</a></li>
         <li><a href="/pattern-library/postcode-lookup.html">Postcode lookup</a></li>
         <li><a href="/pattern-library/progress-indicator.html">Progress indicator</a></li>
@@ -71,11 +73,11 @@
         <li><a href="/pattern-library/question.html">Question</a></li>
         <li><a href="/pattern-library/radio-button.html">Radio button</a></li>
         <li><a href="/pattern-library/segmented-control.html">Segmented control</a></li>
-        <li><a href="/pattern-library/user-bar.html">User bar</a></li>
       </ul>
       <h4>Modules:</h4>
       <ul class="component-list">
         <li><a href="/pattern-library/page-header.html">Page header</a></li>
+        <li><a href="/pattern-library/user-bar.html">User bar</a></li>
       </ul>
       <h4>Swatches:</h4>
       <ul class="component-list">
@@ -86,42 +88,40 @@
     <main class="pl-main" role="main">
       
   <h1 class="pl-heading">Activity button</h1>
-  <div class="button button--activity button--primary">Register someone else as a volunteer</div>
-<br /><br />
-<div class="button button--activity button--primary hover">Register someone else as a volunteer (hover)</div>
-<br /><br />
-<div class="button button--activity button--primary active">Register someone else as a volunteer (active)</div>
+  
+<div class="button button--activity button--primary">Register someone else as a volunteer</div>
+
 
   <h2 class="pl-heading">HTML</h2>
   <textarea class="pl-code" disabled>
-    <div class="button button--activity button--primary">Register someone else as a volunteer</div>
-<br /><br />
-<div class="button button--activity button--primary hover">Register someone else as a volunteer (hover)</div>
-<br /><br />
-<div class="button button--activity button--primary active">Register someone else as a volunteer (active)</div>
+    
+<div class="button button--activity button--primary">Register someone else as a volunteer</div>
+
 
   </textarea>
   <h2 class="pl-heading">SCSS</h2>
   <textarea class="pl-code" disabled>
-    .button--activity {
-  @include bold-font;
-  display: inline-block;
-  padding: 20px;
-  color: $white;
-  width: 348px;
-  height: 136px;
-  text-align: left;
-  vertical-align: top;
+    .button {
+  &.button--activity {
+    @include bold-font;
+    display: inline-block;
+    padding: 20px;
+    color: $white;
+    width: 348px;
+    height: 136px;
+    text-align: left;
+    vertical-align: top;
 
-  &::after {
-    position: absolute;
-    bottom: 20px;
-    left: 20px;
-    width: 18px;
-    height: 20px;
-    content: '\00a0';
-    background: transparent url('/images/icon-avatar.svg') top left no-repeat;
-    opacity: 0.6;
+    &::after {
+      position: absolute;
+      bottom: 20px;
+      left: 20px;
+      width: 18px;
+      height: 20px;
+      content: '\00a0';
+      background: transparent url('/images/icon-avatar.svg') top left no-repeat;
+      opacity: 0.6;
+    }
   }
 }
 

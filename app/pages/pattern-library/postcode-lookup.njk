@@ -1,11 +1,13 @@
 {% extends "pattern-library-layout.njk" %}
 
+{% import 'macros/volunteer.njk' as volunteer %}
+
 {% block content %}
   <h1 class="pl-heading">Postcode lookup</h1>
-  {% include 'components/postcode-lookup/_postcode-lookup.njk' %}
+  {{ volunteer.postcodeLookup() }}
   <h2 class="pl-heading">HTML</h2>
   <textarea class="pl-code" disabled>
-    {% include 'components/postcode-lookup/_postcode-lookup.njk' %}
+    {{ volunteer.postcodeLookup() }}
   </textarea>
   <h2 class="pl-heading">SCSS</h2>
   <textarea class="pl-code" disabled>
