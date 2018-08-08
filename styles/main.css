@@ -88,6 +88,46 @@ p.label {
   text-align: left;
 }
 
+.grid-row::after {
+  clear: both;
+  content: "";
+  display: block;
+}
+
+.grid-cell {
+  float: left;
+  padding: 0;
+  margin: 0;
+}
+
+.grid-cell--1-of-1 {
+  width: 100%;
+}
+
+.grid-cell--1-of-2 {
+  width: 50%;
+}
+
+.grid-cell--1-of-3 {
+  width: 33.3%;
+}
+
+.grid-cell--2-of-3 {
+  width: 66.6%;
+}
+
+.grid-cell--1-of-4 {
+  width: 25%;
+}
+
+.grid-cell--1-of-5 {
+  width: 20%;
+}
+
+.grid-cell__wrapper {
+  margin: 8px;
+}
+
 .menu {
   display: inline-block;
   font-weight: 700;
@@ -306,24 +346,58 @@ p.label {
   font-weight: 700;
   line-height: 32px;
   color: #333f48;
-  display: inline-block;
+  display: block;
   padding: 20px;
   color: white;
-  width: 348px;
+  width: 360px;
   height: 136px;
+  margin: 0 auto;
   text-align: left;
   vertical-align: top;
 }
 
-.button.button--activity::after {
+.button.button--activity--icon-avatar::after {
   position: absolute;
   bottom: 20px;
   left: 20px;
-  width: 18px;
+  width: 20px;
   height: 20px;
   content: '\00a0';
-  background: transparent url("/images/icon-avatar.svg") top left no-repeat;
   opacity: 0.6;
+  background: transparent url("/images/icon-avatar.svg") top left no-repeat;
+}
+
+.button.button--activity--icon-note::after {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  width: 20px;
+  height: 20px;
+  content: '\00a0';
+  opacity: 0.6;
+  background: transparent url("/images/icon-note.svg") top left no-repeat;
+}
+
+.button.button--activity--icon-pencil::after {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  width: 20px;
+  height: 20px;
+  content: '\00a0';
+  opacity: 0.6;
+  background: transparent url("/images/icon-pencil.svg") top left no-repeat;
+}
+
+.button.button--activity--icon-smiley::after {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  width: 20px;
+  height: 20px;
+  content: '\00a0';
+  opacity: 0.6;
+  background: transparent url("/images/icon-smiley.svg") top left no-repeat;
 }
 
 .bullet-list {
@@ -895,7 +969,7 @@ p.label {
   font-weight: 700;
   line-height: 40px;
   color: #333f48;
-  margin: 0 0 28px 0;
+  margin: 28px 0;
 }
 
 .input-field {
@@ -1310,6 +1384,7 @@ p, .paragraph {
 .user-bar {
   background: #333f48;
   padding: 24px;
+  margin: 0 -24px;
 }
 
 .user-bar .user-bar__role {
