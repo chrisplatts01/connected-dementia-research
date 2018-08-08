@@ -7,8 +7,7 @@
 {{ volunteer.progressIndicator(2, 4) }}
 <div class="page-content__inner-wrapper">
   {{ volunteer.heading('Create login details') }}
-  {{ volunteer.paragraph('Thank you. The next step is to tell us how
-to contact you and create an account so that you can log back in, see your study matches and manage your account. Your email address will be your username.') }}
+  {{ volunteer.paragraph('Thank you. The next step is to tell us how to contact you and create an account so that you can log back in, see your study matches and manage your account. Your email address will be your username.') }}
   {% call volunteer.form('create-login-details', '#', 'get') %}
   {{ volunteer.inputField('Email address', 'email', 'email') }}
   {{ volunteer.passwordField('Password', 'password') }}
@@ -18,7 +17,7 @@ to contact you and create an account so that you can log back in, see your study
   {{ volunteer.inputField('Security answer', 'security-answer') }}
   {{ volunteer.prompt('We use your security question to help verify your identity if you forget your password.') }}
   {{ volunteer.checkbox('I agree to the <a href="#">Terms &amp; Conditions</a>.' | safe, 'terms')}}
-  {{ volunteer.pageNavigation() }}
+  {{ volunteer.pageNavigation(next={label: 'Create login', url: '#'}) }}
   {% endcall %}
 </div>
 {% endblock %}
