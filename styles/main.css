@@ -1384,7 +1384,7 @@ p, .paragraph {
 .user-bar {
   background: #333f48;
   padding: 24px;
-  margin: 0 -24px;
+  margin: -24px -24px 28px;
 }
 
 .user-bar .user-bar__role {
@@ -1436,7 +1436,7 @@ p, .paragraph {
 
 .masthead {
   background-color: white;
-  padding: 10px 0;
+  padding: 20px 0;
   height: 100px;
 }
 
@@ -1447,12 +1447,12 @@ p, .paragraph {
 }
 
 .masthead .site-logo img {
-  height: 80px;
+  height: 60px;
 }
 
 @media (min-width: 601px) {
   .masthead .site-logo img {
-    height: 100px;
+    height: 80px;
   }
 }
 
