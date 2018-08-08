@@ -300,7 +300,7 @@ p.label {
   text-align: right;
 }
 
-.button--activity {
+.button.button--activity {
   font-family: "Montserrat", "Helvetica", "Arial", sans-serif;
   font-size: 20px;
   font-weight: 700;
@@ -315,7 +315,7 @@ p.label {
   vertical-align: top;
 }
 
-.button--activity::after {
+.button.button--activity::after {
   position: absolute;
   bottom: 20px;
   left: 20px;
@@ -326,7 +326,7 @@ p.label {
   opacity: 0.6;
 }
 
-.bullet-point {
+.bullet-list {
   font-family: "Montserrat", "Helvetica", "Arial", sans-serif;
   font-size: 20px;
   font-weight: 400;
@@ -337,8 +337,8 @@ p.label {
   padding: 0;
 }
 
-.bullet-point li {
-  margin-bottom: 0.5rem;
+.bullet-list li {
+  margin-bottom: 8px;
 }
 
 .button {
@@ -532,7 +532,7 @@ p.label {
 
 .checkbox .checkmark {
   position: absolute;
-  top: -2px;
+  top: 0;
   left: 0;
   height: 24px;
   width: 24px;
@@ -597,19 +597,19 @@ p.label {
   background-color: #feedf3;
 }
 
-.dob-field-group {
+.date-field-group {
   border: none;
   padding: 0;
   margin: 0 -6px 0 -10px;
 }
 
-.dob-field-group::after {
+.date-field-group::after {
   clear: both;
   content: "";
   display: block;
 }
 
-.dob-field-group legend {
+.date-field-group legend {
   font-family: "Calibri", "Helvetica", "Arial", sans-serif;
   font-size: 19px;
   font-weight: 400;
@@ -621,17 +621,17 @@ p.label {
   margin: 0 0 4px 8px;
 }
 
-.dob-field-group .input-field {
+.date-field-group .input-field {
   width: 33%;
   float: left;
   padding: 0 10px;
 }
 
-.dob-field-group .input-field:first-child {
+.date-field-group .input-field:first-child {
   padding-left: 0;
 }
 
-.dob-field-group .input-field:last-child {
+.date-field-group .input-field:last-child {
   padding-right: 0;
 }
 
@@ -1031,6 +1031,27 @@ p.label {
   content: url("/images/icon-error.svg");
 }
 
+.page-navigation {
+  margin: 28px 0;
+}
+
+.page-navigation::after {
+  clear: both;
+  content: "";
+  display: block;
+}
+
+.page-navigation--previous {
+  width: 40%;
+  float: left;
+}
+
+.page-navigation--next {
+  width: 40%;
+  float: right;
+  text-align: right;
+}
+
 p, .paragraph {
   font-family: "Montserrat", "Helvetica", "Arial", sans-serif;
   font-size: 20px;
@@ -1110,7 +1131,7 @@ p, .paragraph {
   color: #333f48;
 }
 
-.radio {
+.radio-button {
   display: block;
   position: relative;
   margin-bottom: 16px;
@@ -1120,7 +1141,7 @@ p, .paragraph {
   user-select: none;
 }
 
-.radio label {
+.radio-button label {
   font-family: "Calibri", "Helvetica", "Arial", sans-serif;
   font-size: 19px;
   font-weight: 400;
@@ -1131,9 +1152,9 @@ p, .paragraph {
   cursor: pointer;
 }
 
-.radio .checkmark {
+.radio-button .checkmark {
   position: absolute;
-  top: -2px;
+  top: 0;
   left: 0;
   height: 24px;
   width: 24px;
@@ -1143,7 +1164,7 @@ p, .paragraph {
   box-shadow: inset 0 3px 0 0 #e1e6ea;
 }
 
-.radio .checkmark:after {
+.radio-button .checkmark:after {
   content: "";
   position: absolute;
   display: none;
@@ -1156,51 +1177,51 @@ p, .paragraph {
   background-color: #f15b5b;
 }
 
-.radio [type="radio"] {
+.radio-button [type="radio"] {
   position: absolute;
   left: 0;
   opacity: 0;
   cursor: pointer;
 }
 
-.radio [type="radio"]:checked ~ .checkmark {
+.radio-button [type="radio"]:checked ~ .checkmark {
   background-color: white;
   border-color: #f15b5b;
   box-shadow: none;
 }
 
-.radio [type="radio"]:checked ~ .checkmark:hover {
+.radio-button [type="radio"]:checked ~ .checkmark:hover {
   background-color: white;
   border-color: #d41212;
 }
 
-.radio [type="radio"]:checked ~ .checkmark:after {
+.radio-button [type="radio"]:checked ~ .checkmark:after {
   display: block;
 }
 
-.radio:hover [type="radio"] ~ .checkmark,
-.radio.hover [type="radio"] ~ .checkmark {
+.radio-button:hover [type="radio"] ~ .checkmark,
+.radio-button.hover [type="radio"] ~ .checkmark {
   background-color: #fef1f1;
 }
 
-.radio:hover [type="radio"]:checked ~ .checkmark,
-.radio.hover [type="radio"]:checked ~ .checkmark {
+.radio-button:hover [type="radio"]:checked ~ .checkmark,
+.radio-button.hover [type="radio"]:checked ~ .checkmark {
   background-color: white;
   border-color: #d41212;
 }
 
-.radio:hover [type="radio"]:checked ~ .checkmark:after,
-.radio.hover [type="radio"]:checked ~ .checkmark:after {
+.radio-button:hover [type="radio"]:checked ~ .checkmark:after,
+.radio-button.hover [type="radio"]:checked ~ .checkmark:after {
   background-color: #d41212;
 }
 
-.radio.error [type="radio"] ~ .checkmark {
+.radio-button.error [type="radio"] ~ .checkmark {
   border-color: #a6093d;
   border-width: 3px;
 }
 
-.radio.error:hover [type="radio"] ~ .checkmark,
-.radio.error.hover [type="radio"] ~ .checkmark {
+.radio-button.error:hover [type="radio"] ~ .checkmark,
+.radio-button.error.hover [type="radio"] ~ .checkmark {
   background-color: #feedf3;
 }
 
