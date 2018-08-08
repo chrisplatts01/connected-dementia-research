@@ -56,15 +56,16 @@
       <h4>Components:</h4>
       <ul class="component-list">
         <li><a href="/pattern-library/activity-button.html">Activity button</a></li>
-        <li><a href="/pattern-library/bullet-point.html">Bullet point</a></li>
+        <li><a href="/pattern-library/bullet-list.html">Bullet list</a></li>
         <li><a href="/pattern-library/button.html">Button</a></li>
         <li><a href="/pattern-library/checkbox.html">Checkbox</a></li>
+        <li><a href="/pattern-library/date-field-group.html">Date field group</a></li>
         <li><a href="/pattern-library/dropdown-select.html">Dropdown select</a></li>
         <li><a href="/pattern-library/file-upload.html">File upload</a></li>
-        <li><a href="/pattern-library/input-field.html">Form field</a></li>
         <li><a href="/pattern-library/heading.html">Heading</a></li>
+        <li><a href="/pattern-library/input-field.html">Input field</a></li>
         <li><a href="/pattern-library/message.html">Message</a></li>
-        <!-- li><a href="/pattern-library/page-navigation.html">Page navigation</a></li -->
+        <li><a href="/pattern-library/page-navigation.html">Page navigation</a></li>
         <li><a href="/pattern-library/paragraph.html">Paragraph</a></li>
         <li><a href="/pattern-library/postcode-lookup.html">Postcode lookup</a></li>
         <li><a href="/pattern-library/progress-indicator.html">Progress indicator</a></li>
@@ -72,11 +73,11 @@
         <li><a href="/pattern-library/question.html">Question</a></li>
         <li><a href="/pattern-library/radio-button.html">Radio button</a></li>
         <li><a href="/pattern-library/segmented-control.html">Segmented control</a></li>
-        <li><a href="/pattern-library/user-bar.html">User bar</a></li>
       </ul>
       <h4>Modules:</h4>
       <ul class="component-list">
         <li><a href="/pattern-library/page-header.html">Page header</a></li>
+        <li><a href="/pattern-library/user-bar.html">User bar</a></li>
       </ul>
       <h4>Swatches:</h4>
       <ul class="component-list">
@@ -89,17 +90,49 @@
   <h1 class="pl-heading">Segmented control</h1>
   <p>Used instead of radio button when there are a limited number of mutually-exclusive choices.</p>
   <p><small>To illustrate the styling of <em>checked</em> and <em>hover</em> states, <code>.hover</code> and <code>.checked</code> classes have been added to simulate these states. These classes are not required in production where the <code>:hover</code> and <code>:checked</code> pseudo-classes are used.</small></p>
-  <div class="segmented-control segmented-control--0-across">
-  <p class="label"></p>
+  
+<div class="segmented-control segmented-control--2-across">
+  <p class="label">Sex</p>
+  
+  <input id="sex-male" name="sex" type="radio" />
+  <label for="sex-male">Male</label>
+  
+  <input id="sex-female" name="sex" type="radio" />
+  <label for="sex-female">Female</label>
   
 </div>
 
-  <h2 class="pl-heading">HTML</h2>
-  <textarea class="pl-code" disabled>
-    <div class="segmented-control segmented-control--0-across">
-  <p class="label"></p>
+
+  
+<div class="segmented-control segmented-control--3-across">
+  <p class="label">Your options</p>
+  
+  <input id="options-option_1" name="options" type="radio" />
+  <label for="options-option_1">Option 1</label>
+  
+  <input id="options-option_2" name="options" type="radio" />
+  <label for="options-option_2">Option 2</label>
+  
+  <input id="options-option_3" name="options" type="radio" />
+  <label for="options-option_3">Option 3</label>
   
 </div>
+
+
+  <h2 class="pl-heading">HTML</h2>
+  <textarea class="pl-code" disabled>
+    
+<div class="segmented-control segmented-control--2-across">
+  <p class="label">Sex</p>
+  
+  <input id="sex-male" name="sex" type="radio" />
+  <label for="sex-male">Male</label>
+  
+  <input id="sex-female" name="sex" type="radio" />
+  <label for="sex-female">Female</label>
+  
+</div>
+
 
   </textarea>
   <h2 class="pl-heading">SCSS</h2>

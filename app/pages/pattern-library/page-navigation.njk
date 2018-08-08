@@ -3,14 +3,14 @@
 {% import 'macros/volunteer.njk' as volunteer %}
 
 {% block content %}
-  <h1 class="pl-heading">Bullet point</h1>
-  {% include 'components/bullet-point/_bullet-point.njk' %}
+  <h1 class="pl-heading">Page navigation</h1>
+  {{ volunteer.pageNavigation({label: 'Previous', url: '#'}, {label: 'Next', url: '#'}) }}
   <h2 class="pl-heading">HTML</h2>
   <textarea class="pl-code" disabled>
-    {% include 'components/bullet-point/_bullet-point.njk' %}
+    {{ volunteer.pageNavigation(['Previous', '#'], ['Next', '#']) }}
   </textarea>
   <h2 class="pl-heading">SCSS</h2>
   <textarea class="pl-code" disabled>
-    {% include 'components/bullet-point/_bullet-point.scss' ignore missing %}
+    {% include 'modules/volunteer-page-header/_volunteer-page-header.scss' ignore missing %}
   </textarea>
 {% endblock %}

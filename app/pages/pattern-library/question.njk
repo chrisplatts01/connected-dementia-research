@@ -4,10 +4,10 @@
 
 {% block content %}
   <h1 class="pl-heading">Question</h1>
-  {% include 'components/question/_question.njk' %}
+  {{ volunteer.question('Are you registering for yourself or on behalf of someone else?') }}
   <h2 class="pl-heading">HTML</h2>
   <textarea class="pl-code" disabled>
-    {% include 'components/question/_question.njk' %}
+    {{ volunteer.question('Are you registering for yourself or on behalf of someone else?') }}
   </textarea>
   <h2 class="pl-heading">SCSS</h2>
   <textarea class="pl-code" disabled>

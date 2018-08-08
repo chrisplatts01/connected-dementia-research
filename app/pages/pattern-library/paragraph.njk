@@ -4,10 +4,10 @@
 
 {% block content %}
   <h1 class="pl-heading">Paragraph</h1>
-  {% include 'components/paragraph/_paragraph.njk' %}
+  {{ volunteer.paragraph('Cras mattis consectetur purus sit amet fermentum. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec sed odio dui. Sed posuere consectetur est at lobortis. Maecenas faucibus mollis interdum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Aenean lacinia bibendum nulla sed consectetur.') }}
   <h2 class="pl-heading">HTML</h2>
   <textarea class="pl-code" disabled>
-    {% include 'components/paragraph/_paragraph.njk' %}
+    {{ volunteer.paragraph('Cras mattis consectetur purus sit amet fermentum. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec sed odio dui. Sed posuere consectetur est at lobortis. Maecenas faucibus mollis interdum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Aenean lacinia bibendum nulla sed consectetur.') }}
   </textarea>
   <h2 class="pl-heading">SCSS</h2>
   <textarea class="pl-code" disabled>

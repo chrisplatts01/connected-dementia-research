@@ -87,41 +87,100 @@
     </nav>
     <main class="pl-main" role="main">
       
-  <h1 class="pl-heading">Activity button</h1>
+  <h1 class="pl-heading">Input field</h1>
   
-<div class="button button--activity button--primary">Register someone else as a volunteer</div>
+<div class="input-field input-field--text input-field--long">
+  <label>Field label
+    <input id="input-field" type="text" placeholder=""   />
+  </label>
+</div>
 
 
   <h2 class="pl-heading">HTML</h2>
   <textarea class="pl-code" disabled>
     
-<div class="button button--activity button--primary">Register someone else as a volunteer</div>
+<div class="input-field input-field--text input-field--long">
+  <label>Field label
+    <input id="input-field" type="text" placeholder=""   />
+  </label>
+</div>
 
 
   </textarea>
   <h2 class="pl-heading">SCSS</h2>
   <textarea class="pl-code" disabled>
-    .button {
-  &.button--activity {
-    @include bold-font;
-    display: inline-block;
-    padding: 20px;
-    color: $white;
-    width: 348px;
-    height: 136px;
-    text-align: left;
-    vertical-align: top;
+    .input-field {
+  margin-bottom: 28px;
 
-    &::after {
-      position: absolute;
-      bottom: 20px;
-      left: 20px;
-      width: 18px;
-      height: 20px;
-      content: '\00a0';
-      background: transparent url('/images/icon-avatar.svg') top left no-repeat;
-      opacity: 0.6;
+  &.input-field--short {
+    input {
+      width: 150px;
     }
+  }
+
+  label {
+    @include small-font;
+    padding-bottom: 28px;
+  }
+
+  input {
+    @include small-font;
+    display: block;
+    width: 100%;
+    height: 40px;
+    color: $grey;
+    margin-top: 8px;
+    border: 1px solid $border-color;
+    padding: 0 10px;
+    box-shadow: inset 0 3px 0 0 $grey-L66;
+
+    &::placeholder {
+      color: $grey-L20;
+      opacity: 1;
+    }
+
+    &:hover {
+      border-color: $border-hover-color;
+    }
+    &:focus, &:active {
+      border-color: $coral;
+    }
+  }
+
+  &.hover input {
+    border-color: $border-hover-color;
+  }
+
+  &.focus input {
+    border-color: $coral;
+  }
+
+  &.error input {
+    border: 3px solid $ruby;
+  }
+}
+
+.input-field-group--dob {
+  @include clearfix();
+  border: none;
+  padding: 0;
+  margin: 0 -6px 0 -10px;
+
+  legend {
+    @include small-font();
+    display: block;
+    font-weight: bold;
+    color: $grey;
+    margin: 0 0 4px 8px;
+  }
+
+  .input-field {
+    width: 33%;
+    float: left;
+    padding: 0 10px;
+
+    &:first-child { padding-left: 0 }
+    &:last-child { padding-right: 0 }
   }
 }
 

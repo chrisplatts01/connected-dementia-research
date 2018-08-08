@@ -87,41 +87,76 @@
     </nav>
     <main class="pl-main" role="main">
       
-  <h1 class="pl-heading">Activity button</h1>
+  <h1 class="pl-heading">Date field group</h1>
+  <p><small>To illustrate the styling of <em>checked</em> and <em>hover</em> states, <code>.hover</code> and <code>.checked</code> classes have been added to simulate these states. These classes are not required in production where the <code>:hover</code> and <code>:checked</code> pseudo-classes are used.</small></p>
   
-<div class="button button--activity button--primary">Register someone else as a volunteer</div>
+<fieldset class="date-field-group">
+  <legend>Date of birth</legend>
+  <div class="input-field input-field--text input-field--short">
+    <label>Day (DD)
+      <input id="date-day" type="number" />
+    </label>
+  </div>
+  <div class="input-field input-field--text input-field--short">
+    <label>Month (MM)
+      <input id="date-month" type="number" />
+    </label>
+  </div>
+  <div class="input-field input-field--text input-field--short">
+    <label>Year (YYYY)
+      <input id="date-year" type="number" />
+    </label>
+  </div>
+</fieldset>
 
 
   <h2 class="pl-heading">HTML</h2>
   <textarea class="pl-code" disabled>
     
-<div class="button button--activity button--primary">Register someone else as a volunteer</div>
+<fieldset class="date-field-group">
+  <legend>Date of birth</legend>
+  <div class="input-field input-field--text input-field--short">
+    <label>Day (DD)
+      <input id="date-day" type="number" />
+    </label>
+  </div>
+  <div class="input-field input-field--text input-field--short">
+    <label>Month (MM)
+      <input id="date-month" type="number" />
+    </label>
+  </div>
+  <div class="input-field input-field--text input-field--short">
+    <label>Year (YYYY)
+      <input id="date-year" type="number" />
+    </label>
+  </div>
+</fieldset>
 
 
   </textarea>
   <h2 class="pl-heading">SCSS</h2>
   <textarea class="pl-code" disabled>
-    .button {
-  &.button--activity {
-    @include bold-font;
-    display: inline-block;
-    padding: 20px;
-    color: $white;
-    width: 348px;
-    height: 136px;
-    text-align: left;
-    vertical-align: top;
+    .date-field-group {
+  @include clearfix();
+  border: none;
+  padding: 0;
+  margin: 0 -6px 0 -10px;
 
-    &::after {
-      position: absolute;
-      bottom: 20px;
-      left: 20px;
-      width: 18px;
-      height: 20px;
-      content: '\00a0';
-      background: transparent url('/images/icon-avatar.svg') top left no-repeat;
-      opacity: 0.6;
-    }
+  legend {
+    @include small-font();
+    display: block;
+    font-weight: bold;
+    color: $grey;
+    margin: 0 0 4px 8px;
+  }
+
+  .input-field {
+    width: 33%;
+    float: left;
+    padding: 0 10px;
+
+    &:first-child { padding-left: 0 }
+    &:last-child { padding-right: 0 }
   }
 }
 

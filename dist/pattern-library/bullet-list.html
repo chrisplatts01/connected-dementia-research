@@ -87,41 +87,44 @@
     </nav>
     <main class="pl-main" role="main">
       
-  <h1 class="pl-heading">Activity button</h1>
+  <h1 class="pl-heading">Bullet point</h1>
   
-<div class="button button--activity button--primary">Register someone else as a volunteer</div>
+<ul class="bullet-list">
+  
+  <li>First item</li>
+  
+  <li>Second item: Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Fusce dapibus, tellus ac cursus commodo.</li>
+  
+  <li>Third item</li>
+  
+</ul>
 
 
   <h2 class="pl-heading">HTML</h2>
   <textarea class="pl-code" disabled>
     
-<div class="button button--activity button--primary">Register someone else as a volunteer</div>
+<ul class="bullet-list">
+  
+  <li>First item</li>
+  
+  <li>Second item</li>
+  
+  <li>Third item</li>
+  
+</ul>
 
 
   </textarea>
   <h2 class="pl-heading">SCSS</h2>
   <textarea class="pl-code" disabled>
-    .button {
-  &.button--activity {
-    @include bold-font;
-    display: inline-block;
-    padding: 20px;
-    color: $white;
-    width: 348px;
-    height: 136px;
-    text-align: left;
-    vertical-align: top;
+    .bullet-list {
+  @include base-font();
+  list-style-image: url(/images/bullet-grey.svg);
+  list-style-position: inside;
+  padding: 0;
 
-    &::after {
-      position: absolute;
-      bottom: 20px;
-      left: 20px;
-      width: 18px;
-      height: 20px;
-      content: '\00a0';
-      background: transparent url('/images/icon-avatar.svg') top left no-repeat;
-      opacity: 0.6;
-    }
+  li {
+    margin-bottom: 8px;
   }
 }
 
