@@ -41,118 +41,78 @@
     <div class="page-content__wrapper wrapper">
       
 
-<div class="progress-indicator" data-step="1" data-steps="4"><em>1</em>/4</div>
+<div class="progress-indicator" data-step="2" data-steps="4"><em>2</em>/4</div>
 
 
 <div class="page-content__inner-wrapper">
   
-<h1 class="heading">Your details</h1>
+<h1 class="heading">Create login details</h1>
 
 
   
-<p class="paragraph">Thank you for registering. The first step is to create an account. Please begin by telling us who you are.</p>
+<p class="paragraph">Thank you. The next step is to tell us how
+to contact you and create an account so that you can log back in, see your study matches and manage your account. Your email address will be your username.</p>
 
 
 
   
-<form id="your-details" action="#" method="get">
+<form id="create-login-details" action="#" method="get">
   
   
-<div class="input-field input-field--text input-field--short">
-  <label>Title
-    <input id="name" type="text" placeholder=""   />
+<div class="input-field input-field--text input-field--long">
+  <label>Email address
+    <input id="email" type="text" placeholder=""   />
+  </label>
+</div>
+
+
+  
+<div class="input-field input-field--password input-field--long">
+  <label>Password
+    <input id="password" type="password" placeholder=""   />
+  </label>
+  <div class="show">Show</div>
+</div>
+
+
+  
+<p class="prompt">Your password must be at least 8 characters, and contain at least one uppercase, lowercase and numeric character.</p>
+
+
+  
+<div class="input-field input-field--password input-field--long">
+  <label>Confirm password
+    <input id="confirm-password" type="password" placeholder=""   />
+  </label>
+  <div class="show">Show</div>
+</div>
+
+
+  
+<div class="input-field input-field--text input-field--long">
+  <label>Security question
+    <input id="security-question" type="text" placeholder=""   />
   </label>
 </div>
 
 
   
 <div class="input-field input-field--text input-field--long">
-  <label>First name(s)
-    <input id="first-name" type="text" placeholder=""   />
+  <label>Security answer
+    <input id="security-answer" type="text" placeholder=""   />
   </label>
 </div>
 
 
   
-<div class="input-field input-field--text input-field--long">
-  <label>Surname
-    <input id="surname" type="text" placeholder=""   />
-  </label>
-</div>
-
-
-  
-<fieldset class="date-field-group">
-  <legend>Date of birth</legend>
-  <div class="input-field input-field--text input-field--short">
-    <label>Day (DD)
-      <input id="date-day" type="number" />
-    </label>
-  </div>
-  <div class="input-field input-field--text input-field--short">
-    <label>Month (MM)
-      <input id="date-month" type="number" />
-    </label>
-  </div>
-  <div class="input-field input-field--text input-field--short">
-    <label>Year (YYYY)
-      <input id="date-year" type="number" />
-    </label>
-  </div>
-</fieldset>
-
-
-  
-<div class="segmented-control segmented-control--2-across">
-  <p class="label">Sex</p>
-  
-  <input id="sex-male" name="sex" type="radio" />
-  <label for="sex-male">Male</label>
-  
-  <input id="sex-female" name="sex" type="radio" />
-  <label for="sex-female">Female</label>
-  
-</div>
-
-
-  
-<div class="input-field input-field--text input-field--postcode-lookup input-field--short">
-  <label>Postcode
-    <input id="postcoode" type="text" />
-  </label>
-  <button class="button button--secondary button--postcode-find" type="button">Find</button>
-  <a class="link link--enter-manually" href="#">or enter manually</a>
-</div>
-
-
-  
-<div class="input-field input-field--text input-field--long">
-  <label>Telephone number
-    <input id="telephone" type="text" placeholder=""   />
-  </label>
-</div>
-
-
-  
-<div class="dropdown-select">
-  <label>How did you hear about us? (optional)
-    <select id="how-heard">
-      <option selected disabled>Select&hellip;</option>
-      
-      <option value="option_1">Option 1</option>
-      
-      <option value="option_2">Option 2</option>
-      
-    </select>
-  </label>
-</div>
+<p class="prompt">We use your security question to help verify your identity if you forget your password.</p>
 
 
   
 <div class="checkbox">
   <label>
-    <input id="contact" name="contact" type="checkbox" />
-    Please keep me up to date with the Joint Dementia Research newsletter
+    <input id="terms" name="terms" type="checkbox" />
+    I agree to the <a href="#">Terms &amp; Conditions</a>.
     <span class="checkmark"></span>
   </label>
 </div>

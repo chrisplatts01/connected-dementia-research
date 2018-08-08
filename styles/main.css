@@ -961,44 +961,6 @@ p.label {
   border: 3px solid #a6093d;
 }
 
-.input-field-group--dob {
-  border: none;
-  padding: 0;
-  margin: 0 -6px 0 -10px;
-}
-
-.input-field-group--dob::after {
-  clear: both;
-  content: "";
-  display: block;
-}
-
-.input-field-group--dob legend {
-  font-family: "Calibri", "Helvetica", "Arial", sans-serif;
-  font-size: 19px;
-  font-weight: 400;
-  line-height: 24px;
-  color: #5d7384;
-  display: block;
-  font-weight: bold;
-  color: #333f48;
-  margin: 0 0 4px 8px;
-}
-
-.input-field-group--dob .input-field {
-  width: 33%;
-  float: left;
-  padding: 0 10px;
-}
-
-.input-field-group--dob .input-field:first-child {
-  padding-left: 0;
-}
-
-.input-field-group--dob .input-field:last-child {
-  padding-right: 0;
-}
-
 .message {
   font-family: "Calibri", "Helvetica", "Arial", sans-serif;
   font-size: 19px;
@@ -1059,6 +1021,18 @@ p, .paragraph {
   line-height: 32px;
   color: #333f48;
   margin: 0 0 28px 0;
+}
+
+.input-field--password {
+  position: relative;
+}
+
+.input-field--password .show {
+  position: absolute;
+  top: 45px;
+  right: 20px;
+  font-size: 13px;
+  color: #f15b5b;
 }
 
 .input-field--postcode-lookup {
