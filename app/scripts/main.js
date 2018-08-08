@@ -2,8 +2,30 @@ import $ from 'jquery'
 
 $(function () {
   /**
-    * IIFE to handle progress indicators
+    * IIFE to handle password show/hide
     */
+  var passwordField = (function () {
+    var $passwordField = $('.input-field--password')
+    var $passwordShow = $passwordField.children('.show')
+
+    $passwordShow.click(function () {
+      var $this = $(this)
+      var $passwordInput = $this.prev('label').children('input')
+
+
+      if ($passwordInput.attr('type') === 'password') {
+        $passwordInput.attr('type', 'text')
+        $this.text('Hide')
+      } else {
+        $passwordInput.attr('type', 'password')
+        $this.text('Show')
+      }
+    })
+  }())
+
+    /**
+      * IIFE to handle progress indicators
+      */
   var progressIndicator = (function () {
     var $progressIndicator = $('.progress-indicator')
     $progressIndicator.each(function () {
@@ -11,8 +33,7 @@ $(function () {
       var step = $this.attr('data-step')
       var steps = $this.attr('data-steps')
       var width = step / steps * 100
-      console.log('STEP: ' + step)
-      console.log('STEPS: ' + steps)
+
       $this.prepend('<span class="progress-indicator__steps">&nbsp;</span>')
       $this.append('<span class="progress-indicator__step" style="width:' + width + '%">&nbsp;</span>')
     })
@@ -97,122 +118,122 @@ $(function () {
     })
   })()
 
-    /**
-      * IIFE to handle segmented control components
-      */
-    var segmentedControl = (function () {
-      var $segmentedControl = $('.segmented-control')
-      $segmentedControl.click(function () {
-        var $this = $(this)
-        var $parent = $this.parent('.segmented-control')
-        var $input = $this.find('[type=radio]')
-        $parent.find('label').removeClass('checked').removeClass('error')
-        $this.addClass('checked')
-        $input.attr('checked', 'checked')
-      })
+  /**
+    * IIFE to handle segmented control components
+    */
+  var segmentedControl = (function () {
+    var $segmentedControl = $('.segmented-control')
+    $segmentedControl.click(function () {
+      var $this = $(this)
+      var $parent = $this.parent('.segmented-control')
+      var $input = $this.find('[type=radio]')
+      $parent.find('label').removeClass('checked').removeClass('error')
+      $this.addClass('checked')
+      $input.attr('checked', 'checked')
+    })
+  })()
+
+  /**
+    * IIFE to handle file upload components
+    */
+  var fileUpload = (function () {
+    // Check if browser supports advanced file upload features
+    var isAdvancedUpload = (function () {
+      var div = document.createElement('div')
+      return (('draggable' in div) || ('ondragstart' in div && 'ondrop' in div)) && 'FormData' in window && 'FileReader' in window
     })()
 
-      /**
-        * IIFE to handle file upload components
-        */
-      var fileUpload = (function () {
-        // Check if browser supports advanced file upload features
-        var isAdvancedUpload = (function () {
-          var div = document.createElement('div')
-          return (('draggable' in div) || ('ondragstart' in div && 'ondrop' in div)) && 'FormData' in window && 'FileReader' in window
-        })()
+    if (isAdvancedUpload) {
+      var droppedFiles = false
+      var $fileUpload = $('.file-upload')
+      var $fileUploader = $('.file-upload__uploader')
+      var $fileList = $('.file-upload__file-list')
+      var $form = $fileUpload.closest('form')
+      var fileDelete = '.file-upload__delete-file'
 
-        if (isAdvancedUpload) {
-          var droppedFiles = false
-          var $fileUpload = $('.file-upload')
-          var $fileUploader = $('.file-upload__uploader')
-          var $fileList = $('.file-upload__file-list')
-          var $form = $fileUpload.closest('form')
-          var fileDelete = '.file-upload__delete-file'
+      $('.file-upload__button, .file-upload__input').addClass('hide')
 
-          $('.file-upload__button, .file-upload__input').addClass('hide')
+      $fileUploader.on('drag dragstart dragend dragover dragenter dragleave drop', function (e) {
+        e.preventDefault()
+        e.stopPropagation()
+      })
+      .on('dragover dragenter', function () {
+        $(this).addClass('is-dragover')
+      })
+      .on('dragleave dragend drop', function () {
+        $(this).removeClass('is-dragover')
+      })
+      .on('drop', function (e) {
+        droppedFiles = e.originalEvent.dataTransfer.files
+        $(this).prev('.file-upload__file-list').append('<li class="file-upload__file-added">' + droppedFiles[0].name + '  <span class="file-upload__delete-file"></span></li>')
+      })
+    } else {
+      // $('.file-upload__button, .file-upload__input').removeClass('hide')
+    };
 
-          $fileUploader.on('drag dragstart dragend dragover dragenter dragleave drop', function (e) {
-            e.preventDefault()
-            e.stopPropagation()
-          })
-          .on('dragover dragenter', function () {
-            $(this).addClass('is-dragover')
-          })
-          .on('dragleave dragend drop', function () {
-            $(this).removeClass('is-dragover')
-          })
-          .on('drop', function (e) {
-            droppedFiles = e.originalEvent.dataTransfer.files
-            $(this).prev('.file-upload__file-list').append('<li class="file-upload__file-added">' + droppedFiles[0].name + '  <span class="file-upload__delete-file"></span></li>')
-          })
-        } else {
-          // $('.file-upload__button, .file-upload__input').removeClass('hide')
-        };
+    $fileList.on('click', fileDelete, function (e) {
+      $(this).parent().remove()
+      // CODE TO ACTUALLY DELETE THE FILE GOES HERE - PROBABLY NEEDS TO UPDATE
+    })
 
-        $fileList.on('click', fileDelete, function (e) {
-          $(this).parent().remove()
-          // CODE TO ACTUALLY DELETE THE FILE GOES HERE - PROBABLY NEEDS TO UPDATE
-        })
-
-        // CODE TO ACTUALLY UPLOAD THE FILES GOES HERE!!!
-        // $form.on('submit', function (e) {
-        //   if ($form.hasClass('is-uploading')) return false
-        //
-        //   $form.addClass('is-uploading').removeClass('is-error')
-        //
-        //   if (isAdvancedUpload) {
-        //     console.log('Uploading file using AJAX for modern browsers')
-        //     // CODE FOR MDERN BROWSERS - WILL NEED CHECKING!!!
-        //     // e.preventDefault();
-        //     //
-        //     // var ajaxData = new FormData($form.get(0))
-        //     //
-        //     // if (droppedFiles) {
-        //     //   $.each( droppedFiles, function(i, file) {
-        //     //     ajaxData.append( $input.attr('name'), file );
-        //     //   })
-        //     // }
-        //     //
-        //     // $.ajax({
-        //     //   url: $form.attr('action'),
-        //     //   type: $form.attr('method'),
-        //     //   data: ajaxData,
-        //     //   dataType: 'json',
-        //     //   cache: false,
-        //     //   contentType: false,
-        //     //   processData: false,
-        //     //   complete: function() {
-        //     //     $form.removeClass('is-uploading');
-        //     //   },
-        //     //   success: function(data) {
-        //     //     $form.addClass( data.success == true ? 'is-success' : 'is-error' );
-        //     //     if (!data.success) $errorMsg.text(data.error);
-        //     //   },
-        //     //   error: function() {
-        //     //     // Log the error, show an alert, whatever works for you
-        //     //   }
-        //     // })
-        //   } else {
-        //     console.log('Uploading file using AJAX for legacy browsers')
-        //     // CODE FOR LEGACY BROWSERS - WILL NEED CHECKING!!!
-        //     // var iframeName = 'uploadiframe' + new Date().getTime()
-        //     // var $iframe = $('<iframe name="' + iframeName + '" style="display: none;"></iframe>')
-        //     //
-        //     // $('body').append($iframe)
-        //     // $form.attr('target', iframeName)
-        //     //
-        //     // $iframe.one('load', function () {
-        //     //   var data = JSON.parse($iframe.contents().find('body').text())
-        //     //   $form
-        //     //     .removeClass('is-uploading')
-        //     //     .addClass(data.success === true ? 'is-success' : 'is-error')
-        //     //     .removeAttr('target')
-        //     //   if (!data.success) $errorMsg.text(data.error);
-        //     //   $form.removeAttr('target')
-        //     //   $iframe.remove()
-        //     // })
-        //   }
-        // })
-      })()
+    // CODE TO ACTUALLY UPLOAD THE FILES GOES HERE!!!
+    // $form.on('submit', function (e) {
+    //   if ($form.hasClass('is-uploading')) return false
+    //
+    //   $form.addClass('is-uploading').removeClass('is-error')
+    //
+    //   if (isAdvancedUpload) {
+    //     console.log('Uploading file using AJAX for modern browsers')
+    //     // CODE FOR MDERN BROWSERS - WILL NEED CHECKING!!!
+    //     // e.preventDefault();
+    //     //
+    //     // var ajaxData = new FormData($form.get(0))
+    //     //
+    //     // if (droppedFiles) {
+    //     //   $.each( droppedFiles, function(i, file) {
+    //     //     ajaxData.append( $input.attr('name'), file );
+    //     //   })
+    //     // }
+    //     //
+    //     // $.ajax({
+    //     //   url: $form.attr('action'),
+    //     //   type: $form.attr('method'),
+    //     //   data: ajaxData,
+    //     //   dataType: 'json',
+    //     //   cache: false,
+    //     //   contentType: false,
+    //     //   processData: false,
+    //     //   complete: function() {
+    //     //     $form.removeClass('is-uploading');
+    //     //   },
+    //     //   success: function(data) {
+    //     //     $form.addClass( data.success == true ? 'is-success' : 'is-error' );
+    //     //     if (!data.success) $errorMsg.text(data.error);
+    //     //   },
+    //     //   error: function() {
+    //     //     // Log the error, show an alert, whatever works for you
+    //     //   }
+    //     // })
+    //   } else {
+    //     console.log('Uploading file using AJAX for legacy browsers')
+    //     // CODE FOR LEGACY BROWSERS - WILL NEED CHECKING!!!
+    //     // var iframeName = 'uploadiframe' + new Date().getTime()
+    //     // var $iframe = $('<iframe name="' + iframeName + '" style="display: none;"></iframe>')
+    //     //
+    //     // $('body').append($iframe)
+    //     // $form.attr('target', iframeName)
+    //     //
+    //     // $iframe.one('load', function () {
+    //     //   var data = JSON.parse($iframe.contents().find('body').text())
+    //     //   $form
+    //     //     .removeClass('is-uploading')
+    //     //     .addClass(data.success === true ? 'is-success' : 'is-error')
+    //     //     .removeAttr('target')
+    //     //   if (!data.success) $errorMsg.text(data.error);
+    //     //   $form.removeAttr('target')
+    //     //   $iframe.remove()
+    //     // })
+    //   }
+    // })
+  })()
 })

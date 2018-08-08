@@ -1030,9 +1030,10 @@ p, .paragraph {
 .input-field--password .show {
   position: absolute;
   top: 45px;
-  right: 20px;
+  right: 32px;
   font-size: 13px;
   color: #f15b5b;
+  cursor: pointer;
 }
 
 .input-field--postcode-lookup {
