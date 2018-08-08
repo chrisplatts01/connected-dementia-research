@@ -44,6 +44,10 @@
 {% include 'components/input-field/_input-field.njk' %}
 {% endmacro %}
 
+{% macro passwordField(label, id, name, size='long', placeholder='', disabled='', validation='') %}
+{% include 'components/password-field/_password-field.njk' %}
+{% endmacro %}
+
 {% macro checkbox(label, id) %}
 {% include 'components/checkbox/_checkbox.njk' %}
 {% endmacro %}
