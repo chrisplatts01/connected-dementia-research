@@ -1,6 +1,6 @@
 .masthead {
   background-color: $white;
-  padding: 10px 0;
+  padding: 20px 0;
   height: 100px;
 
   @include from(2) {
@@ -8,10 +8,10 @@
   }
 
   .site-logo img {
-    height: 80px;
+    height: 60px;
 
     @include from(2) {
-      height: 100px;
+      height: 80px;
     }
   }
 }

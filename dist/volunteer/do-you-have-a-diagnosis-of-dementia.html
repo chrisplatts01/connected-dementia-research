@@ -40,56 +40,37 @@
   <div class="page-content">
     <div class="page-content__wrapper wrapper">
       
+<div class="user-bar">
+  <span class="user-bar__name">Username</span>
+  <span class="user-bar__surname">Surname</span>
+</div>
 
-<div class="progress-indicator" data-step="3" data-steps="4"><em>3</em>/4</div>
+<div class="progress-indicator" data-step="1" data-steps="8"><em>1</em>/8</div>
 
 
 <div class="page-content__inner-wrapper">
   
-<h1 class="heading">Create login details</h1>
+<h1 class="heading">Do you have a diagnosis of dementia?</h1>
 
 
   
-<p class="paragraph">As a Volunteer you are only expressing your wish to be contacted for research (at this stage of the registration you are not consenting to participating in any studies).</p>
-
-
-
-  
-<p class="paragraph">You are consenting to sharing of your personal data provided. Please carefully read the statement. You are required to provide your consent before you can continue registration as Volunteer.</p>
-
-
-
-  
-<ul class="bullet-list">
-  
-  <li>I confirm that I have read and understand the information within this form and can access a full version of the Volunteer Information Sheet on the XXX website or via the Helpline.</li>
-  
-  <li>I understand that my personal details will be stored securely and that I am free to withdraw at any time without giving a reason.</li>
-  
-  <li>I understand that only approved researchers, XXX staff at the University of Sydney and Helpline staff can look at my information on XXX.</li>
-  
-  <li>I agree that by providing my information I am not committing myself to participate in any research studies. However, I will be contacted about studies to which I am matched, based on the information I provide.</li>
-  
-  <li>I give permission to those researchers to view my information to see if I am suitable for their ethically approved dementia research studies, and for them to contact me to discuss those studies.</li>
-  
-  <li>I understand that by providing this information I am not committing to participate in any studies.</li>
-  
-  <li>I understand that the information held in XXX will linked to the Australian Institute of Health and Welfare, National Death Index and will be used to inform XXX in case of my death.</li>
-  
-</ul>
-
-
-  
-<form id="consent" action="#" method="get">
+<form id="diagnosis" action="#" method="get">
   
   
-<div class="checkbox">
-  <label>
-    <input id="agree" name="agree" type="checkbox" />
-    Please tick this box to confirm that you consent for us to contact you to participate in research.
-    <span class="checkmark"></span>
-  </label>
+<div class="segmented-control segmented-control--2-across">
+  <p class="label"></p>
+  
+  <input id="dementia-diagnosis-yes" name="dementia-diagnosis" type="radio" />
+  <label for="dementia-diagnosis-yes">Yes</label>
+  
+  <input id="dementia-diagnosis-no" name="dementia-diagnosis" type="radio" />
+  <label for="dementia-diagnosis-no">No</label>
+  
 </div>
+
+
+  
+<p class="prompt">You can register whether you have a diagnosis or not, but what we ask you will depend on whether you do or not.</p>
 
 
   
