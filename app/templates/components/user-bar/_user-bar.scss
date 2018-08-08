@@ -1,6 +1,7 @@
 .user-bar {
   background: $grey;
   padding: 24px;
+  margin: 0 -24px;
 
   .user-bar__role {
       @include base-font;
