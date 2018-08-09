@@ -45,32 +45,81 @@
   <span class="user-bar__surname">Surname</span>
 </div>
 
-<div class="progress-indicator" data-step="1" data-steps="8"><em>1</em>/8</div>
+<div class="progress-indicator" data-step="2" data-steps="8"><em>2</em>/8</div>
 
 
 <div class="page-content__inner-wrapper">
   
-<h2 class="subheading">Do you have a diagnosis of dementia?</h2>
+<h2 class="subheading">Do you know what your diagnosis is?</h2>
 
 
   
-<form id="diagnosis" action="#" method="get">
+<form id="what-diagnosis" action="#" method="get">
   
   
-<div class="segmented-control segmented-control--2-across">
-  <p class="label"></p>
-  
-  <input id="dementia-diagnosis-yes" name="dementia-diagnosis" type="radio" />
-  <label for="dementia-diagnosis-yes">Yes</label>
-  
-  <input id="dementia-diagnosis-no" name="dementia-diagnosis" type="radio" />
-  <label for="dementia-diagnosis-no">No</label>
-  
-</div>
+<fieldset class="conditional-checkbox-group">
+  <div class="radio-button">
+    <label>
+      <input id="diagnosis-no" name="diagnosis-yesno" value="no" type="radio" />
+      No
+      <span class="checkmark"></span>
+    </label>
+  </div>
+  <div class="radio-button">
+    <label>
+      <input id="diagnosis-yes" name="diagnosis-yesno" value="yes" type="radio" />
+      Yes
+      <span class="checkmark"></span>
+    </label>
+  </div>
+  <div class="checkbox-group">
+    
+    <div class="checkbox">
+      <label>
+        <input id="diagnosis-blindness" name="diagnosis" value="blindness" type="checkbox" />
+        Blindness
+        <span class="checkmark"></span>
+      </label>
+    </div>
+    
+    <div class="checkbox">
+      <label>
+        <input id="diagnosis-communication_difficulties" name="diagnosis" value="communication_difficulties" type="checkbox" />
+        Communication difficulties
+        <span class="checkmark"></span>
+      </label>
+    </div>
+    
+    <div class="checkbox">
+      <label>
+        <input id="diagnosis-deafness" name="diagnosis" value="deafness" type="checkbox" />
+        Deafness
+        <span class="checkmark"></span>
+      </label>
+    </div>
+    
+    <div class="checkbox">
+      <label>
+        <input id="diagnosis-learnng_difficulties" name="diagnosis" value="learnng_difficulties" type="checkbox" />
+        Learnng difficulties
+        <span class="checkmark"></span>
+      </label>
+    </div>
+    
+    <div class="checkbox">
+      <label>
+        <input id="diagnosis-mobility_problems" name="diagnosis" value="mobility_problems" type="checkbox" />
+        Mobility problems
+        <span class="checkmark"></span>
+      </label>
+    </div>
+    
+  </div>
+</fieldset>
 
 
   
-<p class="prompt">You can register whether you have a diagnosis or not, but what we ask you will depend on whether you do or not.</p>
+<p class="prompt">If you know the specific type of dementia you have been diagnosed with it will help us find the most appropriate study. If you have been given more than one diagnosis, tick more than one box.</p>
 
 
   

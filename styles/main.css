@@ -671,6 +671,14 @@ p.label {
   background-color: #feedf3;
 }
 
+.conditional-checkbox-group {
+  border: 0;
+}
+
+.conditional-checkbox-group .checkbox-group {
+  padding-left: 16px;
+}
+
 .date-field-group {
   border: none;
   padding: 0;
