@@ -1,0 +1,9 @@
+.input-field--postcode-lookup {
+  @include small-font();
+
+  .button--postcode-find,
+  .link--enter-manually {
+    display: inline-block;
+    margin: 8px 16px 0 0;
+  }
+}

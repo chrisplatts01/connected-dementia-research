@@ -1,0 +1,54 @@
+// Form element - segmented controls
+@mixin form-segmented-control($state: unselected) {
+  @include small-font;
+  display: inline-block;
+  height: 42px;
+  margin: 0 0 0 -6px;
+  padding: 7px;
+  @if $state == unselected {
+    color: $coral;
+    background-color: $white;
+    border: 1px solid $grey-L52;
+  }
+  @else if $state == selected {
+    color: $white;
+    background-color: $coral;
+    border: 1px solid $grey-L52;
+  }
+  @else if $state == error {
+    color: $ruby;
+    background-color: $white;
+    border: 2px solid $ruby;
+  }
+  box-shadow: 0 4px 0 0 $grey-L60;
+  border-right-color: transparent;
+  cursor: pointer;
+
+  &:last-of-type {
+    @if $state == unselected {
+      border-right-color: $grey-L60;
+    }
+    @else if $state == selected {
+      border-right-color: $grey-L60;
+    }
+    @else if $state == error {
+      border-right-color: $ruby;
+    }
+  }
+
+  &:hover,
+  &.hover {
+    @if $state == unselected {
+      color: $coral;
+      background-color: $coral-L32;
+    }
+    @else if $state == selected {
+      color: $white;
+      background-color: $coral-D20;
+    }
+    @else if $state == error{
+      color: $ruby-D8;
+      background-color: $ruby-L60;
+    }
+  }
+}

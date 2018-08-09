@@ -18,29 +18,45 @@
   border: 1px solid black;
 }
 
-.colour-swatch__swatch-black span { background-color: #000; }
-.colour-swatch__swatch-grey10 span { background-color: darken($grey, 10%); }
-.colour-swatch__swatch-grey span { background-color: rgb(51, 63, 72); }
-.colour-swatch__swatch-grey-20 span { background-color: lighten($grey, 20%); }
-.colour-swatch__swatch-grey-35 span { background-color: lighten($grey, 35%); }
-.colour-swatch__swatch-grey-52 span { background-color: lighten($grey, 52%); }
-.colour-swatch__swatch-grey-60 span { background-color: lighten($grey, 60%); }
-.colour-swatch__swatch-grey-66 span { background-color: lighten($grey, 66%); }
-.colour-swatch__swatch-grey-74 span { background-color: lighten($grey, 74%); }
-.colour-swatch__swatch-white span { background-color: #fff; }
 
-// Colours
-.colour-swatch__swatch-orange-darker span { background-color: darken($orange, 20%); }
-.colour-swatch__swatch-orange-dark span { background-color: darken($orange, 12%); }
-.colour-swatch__swatch-orange span { background-color: rgb(214,57,0); }
-.colour-swatch__swatch-orange-light span { background-color: lighten($orange, 54%); }
+// .black { background-color:$black; }
+// .grey { background-color:$grey; }
+// .grey-D10 { background-color:$grey-D10; }
+// .grey-L20 { background-color:$grey-L20; }
+// .grey-L35 { background-color:$grey-L35; }
+// .grey-L52 { background-color:$grey-L52; }
+// .grey-L60 { background-color:$grey-L60; }
+// .grey-L66 { background-color:$grey-L66; }
+// .grey-L74 { background-color:$grey-L74; }
+// .white { background-color:$white; }
+// .coral { background-color:$coral; }
+// .coral-D20 { background-color:$coral-D20; }
+// .coral-D28 { background-color:$coral-D28; }
+// .coral-L32 { background-color:$coral-L32; }
+// .ruby { background-color:$ruby; }
+// .ruby-D8 { background-color:$ruby-D8; }
+.ruby-L60 { background-color:$ruby-L60; }
+// .turquoise { background-color:$turquoise; }
+// .turquoise-D12 { background-color:$turquoise-D12; }
+// .turquoise-D20 { background-color:$turquoise-D20; }
 
-.colour-swatch__swatch-purple-dark span { background-color: darken($purple, 8%); }
-.colour-swatch__swatch-purple span { background-color: rgb(133, 0, 173); }
-.colour-swatch__swatch-purple-light span { background-color: rgb(243, 230, 247); }
-
-.colour-swatch__swatch-emerald-darker span { background-color: darken($emerald, 20%); }
-.colour-swatch__swatch-emerald-dark span { background-color: darken($emerald, 12%); }
-.colour-swatch__swatch-emerald span { background-color: rgb(0, 133, 113); }
-
-.colour-swatch__swatch-magenta span { background-color: rgb(179, 42, 119); }
+.black { background-color:$black; }
+.grey { background-color:$grey; }
+.grey-D10 { background-color: darken($grey, 10%); }
+.grey-L20 { background-color: lighten($grey, 20%); }
+.grey-L35 { background-color: lighten($grey, 35%); }
+.grey-L52 { background-color: lighten($grey, 52%); }
+.grey-L60 { background-color: lighten($grey, 60%); }
+.grey-L66 { background-color: lighten($grey, 66%); }
+.grey-L74 { background-color: lighten($grey, 74%); }
+.white { background-color:$white; }
+.coral { background-color:$coral; }
+.coral-D20 { background-color: darken($coral, 20%); }
+.coral-D28 { background-color: darken($coral, 28%); }
+.coral-L32 { background-color: lighten($coral, 32%); }
+.ruby { background-color:$ruby; }
+.ruby-D8 { background-color: darken($ruby, 8%); }
+// .ruby-L60 { background-color: lighten($ruby, 60%); }
+.turquoise { background-color:$turquoise; }
+.turquoise-D12 { background-color: darken($turquoise, 12%); }
+.turquoise-D20 { background-color: darken($turquoise, 20%); }

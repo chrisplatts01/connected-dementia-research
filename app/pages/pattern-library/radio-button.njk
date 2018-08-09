@@ -1,0 +1,16 @@
+{% extends "pattern-library-layout.njk" %}
+
+{% import 'macros/volunteer.njk' as volunteer %}
+
+{% block content %}
+  <h1 class="pl-heading">Radio button</h1>
+  {{ volunteer.radioButton('Label for radio button', 'radio') }}
+  <h2 class="pl-heading">HTML</h2>
+  <textarea class="pl-code" disabled>
+    {{ volunteer.radioButton('Label for radio button', 'radio') }}
+  </textarea>
+  <h2 class="pl-heading">SCSS</h2>
+  <textarea class="pl-code" disabled>
+    {% include 'components/radio-button/_radio-button.scss' ignore missing %}
+  </textarea>
+{% endblock %}

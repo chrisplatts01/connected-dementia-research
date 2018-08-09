@@ -1,0 +1,16 @@
+{% extends "pattern-library-layout.njk" %}
+
+{% import 'macros/volunteer.njk' as volunteer %}
+
+{% block content %}
+  <h1 class="pl-heading">Input field</h1>
+  {{ volunteer.inputField('Field label', 'input-field', type='text', size='long', placeholder='', disabled='', validation='') }}
+  <h2 class="pl-heading">HTML</h2>
+  <textarea class="pl-code" disabled>
+    {{ volunteer.inputField('Field label', 'input-field', type='text', size='long', placeholder='', disabled='', validation='') }}
+  </textarea>
+  <h2 class="pl-heading">SCSS</h2>
+  <textarea class="pl-code" disabled>
+    {% include 'components/input-field/_input-field.scss' ignore missing %}
+  </textarea>
+{% endblock %}

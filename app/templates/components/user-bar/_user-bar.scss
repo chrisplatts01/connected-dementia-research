@@ -1,0 +1,33 @@
+.user-bar {
+  background: $grey;
+  padding: 24px;
+  margin: -24px -24px 28px;
+
+  .user-bar__role {
+      @include base-font;
+      color: $white;
+  }
+  .user-bar__name {
+    @include bold-font
+    color: $white;
+  }
+  .user-bar__surname {
+    @include bold-font
+    color: $white;
+  }
+  .user-bar__info {
+    @include small-font;
+    display: block;
+    padding-top: 8px;
+    color: $white;
+
+    em {
+      font-style: normal;
+      color: $coral;
+    }
+  }
+
+  button {
+    float: right;
+  }
+}

@@ -1,0 +1,16 @@
+{% extends "pattern-library-layout.njk" %}
+
+{% import 'macros/volunteer.njk' as volunteer %}
+
+{% block content %}
+  <h1 class="pl-heading">Prompt</h1>
+  {{ volunteer.prompt('Information relevant to this context.') }}
+  <h2 class="pl-heading">HTML</h2>
+  <textarea class="pl-code" disabled>
+    {{ volunteer.prompt('Information relevant to this context.') }}
+  </textarea>
+  <h2 class="pl-heading">SCSS</h2>
+  <textarea class="pl-code" disabled>
+    {% include 'components/prompt/_prompt.scss' ignore missing %}
+  </textarea>
+{% endblock %}

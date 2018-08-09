@@ -1,0 +1,16 @@
+{% extends "pattern-library-layout.njk" %}
+
+{% import 'macros/volunteer.njk' as volunteer %}
+
+{% block content %}
+  <h1 class="pl-heading">Page header</h1>
+  {% include 'modules/volunteer-page-header/_volunteer-page-header.njk' %}
+  <h2 class="pl-heading">HTML</h2>
+  <textarea class="pl-code" disabled>
+    {% include 'modules/volunteer-page-header/_volunteer-page-header.njk' %}
+  </textarea>
+  <h2 class="pl-heading">SCSS</h2>
+  <textarea class="pl-code" disabled>
+    {% include 'modules/volunteer-page-header/_volunteer-page-header.scss' ignore missing %}
+  </textarea>
+{% endblock %}

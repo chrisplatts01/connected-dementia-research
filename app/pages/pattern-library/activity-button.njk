@@ -1,0 +1,16 @@
+{% extends "pattern-library-layout.njk" %}
+
+{% import 'macros/volunteer.njk' as volunteer %}
+
+{% block content %}
+  <h1 class="pl-heading">Activity button</h1>
+  {{ volunteer.activityButton('Register someone else as a volunteer') }}
+  <h2 class="pl-heading">HTML</h2>
+  <textarea class="pl-code" disabled>
+    {{ volunteer.activityButton('Register someone else as a volunteer') }}
+  </textarea>
+  <h2 class="pl-heading">SCSS</h2>
+  <textarea class="pl-code" disabled>
+    {% include 'components/activity-button/_activity-button.scss' ignore missing %}
+  </textarea>
+{% endblock %}

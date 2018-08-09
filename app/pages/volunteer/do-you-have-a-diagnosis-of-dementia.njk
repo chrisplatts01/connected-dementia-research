@@ -1,0 +1,20 @@
+{% extends "volunteer-layout.njk" %}
+
+{% import 'macros/volunteer.njk' as volunteer %}
+
+
+{% block content %}
+<div class="user-bar">
+  <span class="user-bar__name">Username</span>
+  <span class="user-bar__surname">Surname</span>
+</div>
+{{ volunteer.progressIndicator(1, 8) }}
+<div class="page-content__inner-wrapper">
+  {{ volunteer.subheading('Do you have a diagnosis of dementia?') }}
+  {% call volunteer.form('diagnosis', '#', 'get') %}
+  {{ volunteer.segmentedControl('', 'dementia-diagnosis', ['Yes', 'No']) }}
+  {{ volunteer.prompt('You can register whether you have a diagnosis or not, but what we ask you will depend on whether you do or not.') }}
+  {{ volunteer.pageNavigation(next={label: 'Continue', url: '#'}) }}
+  {% endcall %}
+</div>
+{% endblock %}

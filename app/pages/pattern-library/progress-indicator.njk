@@ -1,0 +1,16 @@
+{% extends "pattern-library-layout.njk" %}
+
+{% import 'macros/volunteer.njk' as volunteer %}
+
+{% block content %}
+  <h1 class="pl-heading">Progress indicator</h1>
+  {{ volunteer.progressIndicator(1, 3) }}
+  <h2 class="pl-heading">HTML</h2>
+  <textarea class="pl-code" disabled>
+    {{ volunteer.progressIndicator(1, 3) }}
+  </textarea>
+  <h2 class="pl-heading">SCSS</h2>
+  <textarea class="pl-code" disabled>
+    {% include 'components/progress-indicator/_progress-indicator.scss' ignore missing %}
+  </textarea>
+{% endblock %}

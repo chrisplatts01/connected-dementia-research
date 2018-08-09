@@ -1,0 +1,17 @@
+.masthead {
+  background-color: $white;
+  padding: 20px 0;
+  height: 100px;
+
+  @include from(2) {
+    height: 120px;
+  }
+
+  .site-logo img {
+    height: 60px;
+
+    @include from(2) {
+      height: 80px;
+    }
+  }
+}

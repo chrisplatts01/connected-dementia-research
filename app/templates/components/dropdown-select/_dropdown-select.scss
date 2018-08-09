@@ -1,5 +1,8 @@
 .dropdown-select {
+  margin-bottom: 32px;
+
   label {
+    @include small-font;
     padding-right: 16px;
   }
 
@@ -12,7 +15,6 @@
     margin: 1em 0;
     box-sizing: border-box;
     border: 2px solid $border-color;
-    border-radius: 3px;
     box-shadow: 0 4px 0 0 $border-shadow-color;
 
     .dropdown__selected,
@@ -21,7 +23,8 @@
       width: 100%;
       height: 41px;
       font-weight: 400;
-      color: $grey-20;
+      color: $grey-L20;
+      background-color: $white;
       box-sizing: border-box;
       padding: 8px 0.5em 0;
     }
@@ -42,7 +45,7 @@
 
       // &.selected {
       //   color: $white;
-      //   background-color: $orange;
+      //   background-color: $coral;
       //
       //   &:after {
       //     background-image: url('/images/arrow-down-white.svg');
@@ -51,11 +54,11 @@
     }
 
     &.selected {
-      border-color: $orange;
+      border-color: $coral;
 
       .dropdown__selected {
         color: $white;
-        background-color: $orange;
+        background-color: $coral;
 
         &:after {
           background-image: url('/images/arrow-down-white.svg');
@@ -63,7 +66,7 @@
       }
 
       &:hover {
-        border-color: $orange;
+        border-color: $coral;
       }
     }
 
@@ -76,7 +79,7 @@
     }
 
     &.error {
-      border: 3px solid $purple;
+      border: 3px solid $ruby;
 
       .dropdown__selected:after {
         background-image: url('/images/arrow-down-purple.svg')
@@ -84,10 +87,10 @@
     }
 
     &.open {
-      border-color: $orange;
+      border-color: $coral;
 
       .dropdown__selected {
-        border-bottom: 2px solid $orange;
+        border-bottom: 2px solid $coral;
 
         &:after {
           background-image: url('/images/arrow-down-orange.svg');
@@ -95,26 +98,28 @@
       }
 
       .dropdown__option {
-        border-bottom: 1px solid $orange;
+        color: $coral;
+        border-bottom: 1px solid $coral;
 
         &:last-child {
           border: 0;
         }
 
         &:hover {
-          background-color: $orange-light;
+          color: $coral-D20;
+          background-color: $coral-L32;
         }
 
-        &.selected {
-          color: $white;
-          background-color: $orange;
-        }
+        // &.selected {
+        //   color: $white;
+        //   background-color: $coral;
+        // }
       }
     }
 
     &.open.selected {
       .dropdown__selected {
-        border-bottom: 2px solid $orange;
+        border-bottom: 2px solid $coral;
 
         &:after {
           background-image: url('/images/arrow-down-white.svg');
@@ -123,19 +128,20 @@
     }
   }
 
+  .error &,
   &.error {
     .dropdown {
-      border: 3px solid $purple;
+      border: 3px solid $ruby;
 
       .dropdown__selected:after {
         background-image: url('/images/arrow-down-purple.svg')
       }
 
       &.open {
-        border-color: $orange;
+        border-color: $coral;
 
         .dropdown__selected {
-          border-bottom: 2px solid $orange;
+          border-bottom: 2px solid $coral;
 
           &:after {
             background-image: url('/images/arrow-down-orange.svg');
@@ -144,4 +150,9 @@
       }
     }
   }
+
+  .message--error {
+    padding-top: 0;
+  }
+
 }

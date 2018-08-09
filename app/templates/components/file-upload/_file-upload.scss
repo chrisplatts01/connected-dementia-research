@@ -1,0 +1,93 @@
+.file-upload {
+  width: 360px;
+  margin: 0 auto;
+}
+
+.file-upload__uploader {
+  position: relative;
+  height: 180px;
+  background: $white url('/images/icon-file-upload.svg') center 30% no-repeat;
+  border: 1px dashed $border-color;
+  border-radius: 4px;
+
+  &:hover,
+  &.hover {
+    border: 1px solid $border-hover-color;
+  }
+
+  &.is-dragover {
+    border: 1px solid $coral;
+    // background-color: $coral-L32;
+  }
+
+  label {
+    @include small-font;
+    display: block;
+    position: relative;
+    top: 100px;
+    text-align: center;
+  }
+}
+
+.file-upload__browse {
+  color: $coral;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.file-upload__button,
+.file-upload__input {
+  &.hide {
+    @include hide-visually();
+  }
+}
+
+.file-upload__dragndrop,
+.file-upload__uploading,
+.file-upload__success,
+.file-upload__error {
+  display: none;
+}
+
+.file-upload__file-list {
+  @include small-font;
+  width: 360px;
+  margin: 0 auto 10px;
+  padding: 0;
+  list-style: none;
+}
+
+.file-upload__file-added {
+  position: relative;
+  padding: 10px 0;
+  margin: 0;
+  border-bottom: 1px solid $border-color;
+
+  &.error {
+    color: $ruby;
+  }
+
+  &:last-child {
+    border: 0;
+  }
+
+  span.message {
+    display: block;
+    padding-top: 10px;
+  }
+}
+
+.file-upload__delete-file {
+  width: 24px;
+  height: 32px;
+  position: absolute;
+  top: 12px;
+  right: 0;
+  display: inline-block;
+  background: url('/images/icon-trash.svg') top center no-repeat;
+  cursor: pointer;
+}
+
+.error .file-upload__delete-file {
+  background: url('/images/icon-delete.svg') top center no-repeat;
+}
