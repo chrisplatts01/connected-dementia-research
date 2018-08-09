@@ -57,6 +57,9 @@
 {% endmacro %}
 
 {# Checkbox group #}
+{% macro conditionalCheckboxGroup(id, options=[{ label: 'Label', id: 'id' }] ) %}
+{% include 'components/conditional-checkbox-group/_conditional-checkbox-group.njk' %}
+{% endmacro %}
 
 {# Radio button group #}
 

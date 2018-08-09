@@ -10,7 +10,7 @@
 </div>
 {{ volunteer.progressIndicator(1, 8) }}
 <div class="page-content__inner-wrapper">
-  {{ volunteer.heading('Do you have a diagnosis of dementia?') }}
+  {{ volunteer.subheading('Do you have a diagnosis of dementia?') }}
   {% call volunteer.form('diagnosis', '#', 'get') %}
   {{ volunteer.segmentedControl('', 'dementia-diagnosis', ['Yes', 'No']) }}
   {{ volunteer.prompt('You can register whether you have a diagnosis or not, but what we ask you will depend on whether you do or not.') }}
