@@ -73,76 +73,36 @@
     </nav>
     <main class="pl-main" role="main">
       
-  <h1 class="pl-heading">Activity button</h1>
-  
-<div class="button button--activity button--activity--icon-none button--primary">Register someone else as a volunteer</div>
-
+  <h1 class="pl-heading">Messages</h1>
+  <div class="msg-error">Error message</div>
 
   <h2 class="pl-heading">HTML</h2>
   <textarea class="pl-code" disabled>
-    
-<div class="button button--activity button--activity--icon-none button--primary">Register someone else as a volunteer</div>
-
+    <div class="msg-error">Error message</div>
 
   </textarea>
   <h2 class="pl-heading">SCSS</h2>
   <textarea class="pl-code" disabled>
-    .button {
-  &.button--activity {
-    @include bold-font;
-    display: block;
-    padding: 20px;
-    color: $white;
-    width: 360px;
-    height: 136px;
-    margin: 0 auto;
-    text-align: left;
-    vertical-align: top;
+    
+.msg-error {
+  @include error-font();
+  padding-top: 16px;
+  text-align: left;
 
-    &--icon-avatar::after {
-      position: absolute;
-      bottom: 20px;
-      left: 20px;
-      width: 20px;
-      height: 20px;
-      content: '\00a0';
-      opacity: 0.6;
-      background: transparent url('/images/icon-avatar.svg') top left no-repeat;
-    }
-
-    &--icon-note::after {
-      position: absolute;
-      bottom: 20px;
-      left: 20px;
-      width: 20px;
-      height: 20px;
-      content: '\00a0';
-      opacity: 0.6;
-      background: transparent url('/images/icon-note.svg') top left no-repeat;
-    }
-
-    &--icon-pencil::after {
-      position: absolute;
-      bottom: 20px;
-      left: 20px;
-      width: 20px;
-      height: 20px;
-      content: '\00a0';
-      opacity: 0.6;
-      background: transparent url('/images/icon-pencil.svg') top left no-repeat;
-    }
-
-    &--icon-smiley::after {
-      position: absolute;
-      bottom: 20px;
-      left: 20px;
-      width: 20px;
-      height: 20px;
-      content: '\00a0';
-      opacity: 0.6;
-      background: transparent url('/images/icon-smiley.svg') top left no-repeat;
-    }
+  &:before {
+    content: url('/images/icon-error.svg');
+    position: relative;
+    top: 2px;
+    padding-right: 0.5rem;
   }
+}
+
+.segmented-control ~ .msg-error {
+  padding-top: 20px;
+}
+
+.dropdown-select .msg-error {
+  padding-top: 0;
 }
 
   </textarea>

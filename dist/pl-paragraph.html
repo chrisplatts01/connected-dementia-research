@@ -73,76 +73,18 @@
     </nav>
     <main class="pl-main" role="main">
       
-  <h1 class="pl-heading">Activity button</h1>
-  
-<div class="button button--activity button--activity--icon-none button--primary">Register someone else as a volunteer</div>
-
+  <h1 class="pl-heading">Paragraph</h1>
+  <p class="paragraph">Thank you for registering. The first step is to create an account. Please begin by telling us who you are.</p>
 
   <h2 class="pl-heading">HTML</h2>
   <textarea class="pl-code" disabled>
-    
-<div class="button button--activity button--activity--icon-none button--primary">Register someone else as a volunteer</div>
-
+    <p class="paragraph">Thank you for registering. The first step is to create an account. Please begin by telling us who you are.</p>
 
   </textarea>
   <h2 class="pl-heading">SCSS</h2>
   <textarea class="pl-code" disabled>
-    .button {
-  &.button--activity {
-    @include bold-font;
-    display: block;
-    padding: 20px;
-    color: $white;
-    width: 360px;
-    height: 136px;
-    margin: 0 auto;
-    text-align: left;
-    vertical-align: top;
-
-    &--icon-avatar::after {
-      position: absolute;
-      bottom: 20px;
-      left: 20px;
-      width: 20px;
-      height: 20px;
-      content: '\00a0';
-      opacity: 0.6;
-      background: transparent url('/images/icon-avatar.svg') top left no-repeat;
-    }
-
-    &--icon-note::after {
-      position: absolute;
-      bottom: 20px;
-      left: 20px;
-      width: 20px;
-      height: 20px;
-      content: '\00a0';
-      opacity: 0.6;
-      background: transparent url('/images/icon-note.svg') top left no-repeat;
-    }
-
-    &--icon-pencil::after {
-      position: absolute;
-      bottom: 20px;
-      left: 20px;
-      width: 20px;
-      height: 20px;
-      content: '\00a0';
-      opacity: 0.6;
-      background: transparent url('/images/icon-pencil.svg') top left no-repeat;
-    }
-
-    &--icon-smiley::after {
-      position: absolute;
-      bottom: 20px;
-      left: 20px;
-      width: 20px;
-      height: 20px;
-      content: '\00a0';
-      opacity: 0.6;
-      background: transparent url('/images/icon-smiley.svg') top left no-repeat;
-    }
-  }
+    p, .paragraph {
+  @include base-font();
 }
 
   </textarea>
