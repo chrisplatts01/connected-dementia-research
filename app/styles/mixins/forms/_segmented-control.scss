@@ -39,7 +39,7 @@
   &:hover,
   &.hover {
     @if $state == unselected {
-      color: $coral;
+      color: $coral-D20;
       background-color: $coral-L32;
     }
     @else if $state == selected {
