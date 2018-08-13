@@ -84,7 +84,7 @@ p.label {
   font-size: 19px;
   font-weight: 400;
   line-height: 24px;
-  color: #5d7384;
+  color: #333f48;
   margin: 0;
   padding-bottom: 8px;
   text-align: left;
@@ -422,13 +422,12 @@ p.label {
   font-size: 19px;
   font-weight: 400;
   line-height: 24px;
-  color: #5d7384;
+  color: #333f48;
   position: relative;
   height: 42px;
   min-width: 150px;
   padding: 0 16px;
   border: 0;
-  color: #333f48;
   background-color: #b8c4cc;
   box-shadow: 0 4px 0 0 #8599a9;
   cursor: pointer;
@@ -600,7 +599,7 @@ p.label {
   font-size: 19px;
   font-weight: 400;
   line-height: 24px;
-  color: #5d7384;
+  color: #333f48;
   display: block;
   padding-left: 2.5em;
   cursor: pointer;
@@ -698,10 +697,9 @@ p.label {
   font-size: 19px;
   font-weight: 400;
   line-height: 24px;
-  color: #5d7384;
+  color: #333f48;
   display: block;
   font-weight: bold;
-  color: #333f48;
   margin: 0 0 4px 8px;
 }
 
@@ -728,7 +726,7 @@ p.label {
   font-size: 19px;
   font-weight: 400;
   line-height: 24px;
-  color: #5d7384;
+  color: #333f48;
   padding-right: 16px;
 }
 
@@ -750,7 +748,7 @@ p.label {
   font-size: 19px;
   font-weight: 400;
   line-height: 24px;
-  color: #5d7384;
+  color: #333f48;
   width: 100%;
   height: 41px;
   font-weight: 400;
@@ -892,7 +890,7 @@ p.label {
   font-size: 19px;
   font-weight: 400;
   line-height: 24px;
-  color: #5d7384;
+  color: #333f48;
   display: block;
   position: relative;
   top: 100px;
@@ -931,7 +929,7 @@ p.label {
   font-size: 19px;
   font-weight: 400;
   line-height: 24px;
-  color: #5d7384;
+  color: #333f48;
   width: 360px;
   margin: 0 auto 10px;
   padding: 0;
@@ -995,7 +993,7 @@ p.label {
   font-size: 19px;
   font-weight: 400;
   line-height: 24px;
-  color: #5d7384;
+  color: #333f48;
   padding-bottom: 28px;
 }
 
@@ -1004,11 +1002,10 @@ p.label {
   font-size: 19px;
   font-weight: 400;
   line-height: 24px;
-  color: #5d7384;
+  color: #333f48;
   display: block;
   width: 100%;
   height: 40px;
-  color: #333f48;
   margin-top: 8px;
   border: 1px solid #b8c4cc;
   padding: 0 10px;
@@ -1125,7 +1122,7 @@ p, .paragraph {
   font-size: 19px;
   font-weight: 400;
   line-height: 24px;
-  color: #5d7384;
+  color: #333f48;
 }
 
 .input-field--postcode-lookup .button--postcode-find,
@@ -1139,6 +1136,7 @@ p, .paragraph {
   font-size: 19px;
   font-weight: 400;
   line-height: 24px;
+  color: #333f48;
   color: #5d7384;
   position: relative;
   margin-bottom: 16px;
@@ -1172,6 +1170,7 @@ p, .paragraph {
   font-size: 19px;
   font-weight: 400;
   line-height: 24px;
+  color: #333f48;
   color: #5d7384;
 }
 
@@ -1205,7 +1204,7 @@ p, .paragraph {
   font-size: 19px;
   font-weight: 400;
   line-height: 24px;
-  color: #5d7384;
+  color: #333f48;
   display: block;
   padding-left: 2.5em;
   cursor: pointer;
@@ -1298,7 +1297,7 @@ p, .paragraph {
   font-size: 19px;
   font-weight: 400;
   line-height: 24px;
-  color: #5d7384;
+  color: #333f48;
   display: inline-block;
   height: 42px;
   margin: 0 0 0 -6px;
@@ -1326,7 +1325,7 @@ p, .paragraph {
   font-size: 19px;
   font-weight: 400;
   line-height: 24px;
-  color: #5d7384;
+  color: #333f48;
   display: inline-block;
   height: 42px;
   margin: 0 0 0 -6px;
@@ -1353,7 +1352,7 @@ p, .paragraph {
   font-size: 19px;
   font-weight: 400;
   line-height: 24px;
-  color: #5d7384;
+  color: #333f48;
   display: inline-block;
   height: 42px;
   margin: 0 0 0 -6px;
@@ -1429,7 +1428,7 @@ p, .paragraph {
   font-size: 19px;
   font-weight: 400;
   line-height: 24px;
-  color: #5d7384;
+  color: #333f48;
   display: block;
   padding-top: 8px;
   color: white;
@@ -1464,10 +1463,10 @@ p, .paragraph {
 }
 
 .tab-bar li {
-  font-family: "Montserrat", "Helvetica", "Arial", sans-serif;
-  font-size: 20px;
+  font-family: "Calibri", "Helvetica", "Arial", sans-serif;
+  font-size: 19px;
   font-weight: 400;
-  line-height: 32px;
+  line-height: 24px;
   color: #333f48;
   width: 25%;
   float: left;
@@ -1481,7 +1480,7 @@ p, .paragraph {
   color: white;
   background-color: #f15b5b;
   border-right: 1px solid #f15b5b;
-  padding-top: 4px;
+  padding-top: 6px;
   text-align: center;
 }
 
@@ -1665,5 +1664,5 @@ p, .paragraph {
   font-size: 19px;
   font-weight: 400;
   line-height: 24px;
-  color: #5d7384;
+  color: #333f48;
 }
