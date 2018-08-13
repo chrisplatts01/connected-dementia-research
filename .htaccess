@@ -1,6 +1,0 @@
-
-RewriteEngine on
-RewriteCond %{HTTP_HOST} ^cdr\.virelai\.co\.uk$ [OR]
-RewriteCond %{HTTP_HOST} ^www\.cdr\.virelai\.co\.uk$
-RewriteRule ^/?$ "http\:\/\/cdr\.virelai\.co\.uk\/dist\/" [R=301,L]
-
