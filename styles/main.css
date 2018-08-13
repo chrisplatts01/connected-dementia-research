@@ -1442,6 +1442,58 @@ p, .paragraph {
   float: right;
 }
 
+.tab-bar {
+  margin: -28px -24px 24px;
+  padding: 0 16px;
+  background-color: white;
+}
+
+.tab-bar::after {
+  clear: both;
+  content: "";
+  display: block;
+}
+
+.tab-bar ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  background-color: white;
+}
+
+.tab-bar li {
+  font-family: "Montserrat", "Helvetica", "Arial", sans-serif;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 32px;
+  color: #333f48;
+  width: 25%;
+  float: left;
+  margin: 0;
+  padding: 0;
+}
+
+.tab-bar li a, .tab-bar li span {
+  display: block;
+  height: 40px;
+  color: white;
+  background-color: #f15b5b;
+  border-right: 1px solid #f15b5b;
+  padding-top: 4px;
+  text-align: center;
+}
+
+.tab-bar li a {
+  color: #b8c4cc;
+  background-color: white;
+  border-right-color: #b8c4cc;
+  text-decoration: none;
+}
+
+.tab-bar li:last-child a, .tab-bar li:last-child span {
+  border-right: none;
+}
+
 .masthead {
   background-color: white;
   padding: 20px 0;
