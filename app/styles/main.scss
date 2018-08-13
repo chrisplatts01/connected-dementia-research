@@ -23,11 +23,12 @@
 @import 'app/templates/modules/social-media/social-media';
 @import 'app/templates/modules/sponsors/sponsors';
 
-// Pattern library cmponents
+// Pattern library components
 @import 'app/templates/components/activity-button/activity-button';
 @import 'app/templates/components/bullet-list/bullet-list';
 @import 'app/templates/components/button/button';
 @import 'app/templates/components/checkbox/checkbox';
+@import 'app/templates/components/checkbox-group/checkbox-group';
 @import 'app/templates/components/conditional-checkbox-group/conditional-checkbox-group';
 @import 'app/templates/components/date-field-group/date-field-group';
 @import 'app/templates/components/dropdown-select/dropdown-select';
@@ -43,6 +44,7 @@
 @import 'app/templates/components/prompt/prompt';
 @import 'app/templates/components/question/question';
 @import 'app/templates/components/radio-button/radio-button';
+@import 'app/templates/components/radio-button-group/radio-button-group';
 @import 'app/templates/components/segmented-control/segmented-control';
 @import 'app/templates/components/user-bar/user-bar';
 @import 'app/templates/components/tab-bar/tab-bar';

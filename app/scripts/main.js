@@ -118,20 +118,50 @@ $(function () {
     })
   })()
 
-  /**
-    * IIFE to handle segmented control components
-    */
-  var segmentedControl = (function () {
-    var $segmentedControl = $('.segmented-control')
-    $segmentedControl.click(function () {
-      var $this = $(this)
-      var $parent = $this.parent('.segmented-control')
-      var $input = $this.find('[type=radio]')
-      $parent.find('label').removeClass('checked').removeClass('error')
-      $this.addClass('checked')
-      $input.attr('checked', 'checked')
-    })
-  })()
+    /**
+      * IIFE to handle conditional checkbox groups
+      */
+    var conditionalCheckboxGroup = (function () {
+      var $conditionalCheckboxGroup = $('.conditional-checkbox-group')
+      var $radioButtons = $conditionalCheckboxGroup.find('input:radio')
+
+      var setCheckboxes = function ( state ) {
+        var $checkboxes = $conditionalCheckboxGroup.find('.checkbox')
+        var $inputs = $checkboxes.find('[type=checkbox]')
+
+        if (state) {
+          console.log('Enabling checkboxes')
+          $checkboxes.removeClass('disabled')
+          $inputs.prop('disabled', false)
+        } else {
+          console.log('Disabling checkboxes')
+          $checkboxes.addClass('disabled')
+          $inputs.prop('disabled', true)
+        }
+      }
+
+      setCheckboxes(false)
+
+      $radioButtons.click(function () {
+        var value = $(this).val()
+        setCheckboxes(value === 'yes')
+      })
+    })()
+
+      /**
+        * IIFE to handle segmented control components
+        */
+      var segmentedControl = (function () {
+        var $segmentedControl = $('.segmented-control')
+        $segmentedControl.click(function () {
+          var $this = $(this)
+          var $parent = $this.parent('.segmented-control')
+          var $input = $this.find('[type=radio]')
+          $parent.find('label').removeClass('checked').removeClass('error')
+          $this.addClass('checked')
+          $input.attr('checked', 'checked')
+        })
+      })()
 
   /**
     * IIFE to handle file upload components
