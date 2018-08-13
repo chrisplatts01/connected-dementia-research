@@ -1,0 +1,13 @@
+<div class="tab-bar">
+  <ul>
+    {% for tab in tabs %}
+    <li>
+      {% if tab.url == '' %}
+      <span data-href="{{ tab.url }}">{{ tab.label }}</span>
+      {% else %}
+      <a href='{{ tab.url }}'>{{ tab.label }}</a>
+      {% endif %}
+    </li>
+    {% endfor %}
+  </ul>
+</div>
