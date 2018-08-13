@@ -358,6 +358,15 @@ p.label {
   vertical-align: top;
 }
 
+.button.button--activity a:link,
+.button.button--activity a:visited,
+.button.button--activity a:hover,
+.button.button--activity a:focus,
+.button.button--activity a:active {
+  color: white;
+  text-decoration: none;
+}
+
 .button.button--activity--icon-avatar::after {
   position: absolute;
   bottom: 20px;
@@ -672,11 +681,30 @@ p.label {
   background-color: #feedf3;
 }
 
+.checkbox.disabled [type=checkbox] ~ .checkmark,
+.checkbox.disabled:hover [type=checkbox] ~ .checkmark {
+  border-color: #b8c4cc;
+  background-color: white;
+  cursor: default;
+}
+
+.checkbox.disabled label,
+.checkbox.disabled:hover label {
+  color: #b8c4cc;
+  cursor: default;
+}
+
+.checkbox-group {
+  border: none;
+  padding: 0;
+  margin: 0;
+}
+
 .conditional-checkbox-group {
   border: 0;
 }
 
-.conditional-checkbox-group .checkbox-group {
+.conditional-checkbox-group .checkboxes {
   padding-left: 16px;
 }
 
@@ -1281,6 +1309,12 @@ p, .paragraph {
 .radio-button.error:hover [type="radio"] ~ .checkmark,
 .radio-button.error.hover [type="radio"] ~ .checkmark {
   background-color: #feedf3;
+}
+
+.radio-button-group {
+  border: none;
+  padding: 0;
+  margin: 0;
 }
 
 .segmented-control {
