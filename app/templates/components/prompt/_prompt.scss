@@ -1,5 +1,6 @@
 .prompt {
   @include small-font();
+  color: $grey-L20;
 
   &:before {
     content: url('/images/icon-info.svg');
