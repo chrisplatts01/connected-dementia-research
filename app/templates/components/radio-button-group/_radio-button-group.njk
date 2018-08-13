@@ -1,0 +1,11 @@
+<fieldset class="radio-button-group">
+  {% for option in options %}
+  <div class="radio-button">
+    <label>
+      <input id="{{ id }}-{{ option | lower | replace(' ', '_') }}" name="{{ id }}" value="{{ option | lower | replace(' ', '_') }}" type="radio" />
+      {{ option }}
+      <span class="checkmark"></span>
+    </label>
+  </div>
+  {% endfor %}
+</fieldset>

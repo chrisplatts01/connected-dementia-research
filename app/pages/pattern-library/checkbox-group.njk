@@ -1,0 +1,16 @@
+{% extends "pattern-library-layout.njk" %}
+
+{% import 'macros/volunteer.njk' as volunteer %}
+
+{% block content %}
+  <h1 class="pl-heading">Checkbox group</h1>
+  {{ volunteer.checkboxGroup('checkboxes', ['Checkbox 1', 'Checkbox 2', 'Checkbox 3']) }}
+  <h2 class="pl-heading">HTML</h2>
+  <textarea class="pl-code" disabled>
+    {{ volunteer.checkboxGroup('checkboxes', ['Checkbox 1', 'Checkbox 2', 'Checkbox 3']) }}
+  </textarea>
+  <h2 class="pl-heading">SCSS</h2>
+  <textarea class="pl-code" disabled>
+    {% include 'components/checkbox-group/_checkbox-group.scss' ignore missing %}
+  </textarea>
+{% endblock %}

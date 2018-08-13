@@ -56,8 +56,15 @@
 {% include 'components/radio-button/_radio-button.njk' %}
 {% endmacro %}
 
-{# Checkbox group #}
-{% macro conditionalCheckboxGroup(id, options=[{ label: 'Label', id: 'id' }] ) %}
+{% macro checkboxGroup(id, options=['Checkbox label']) %}
+{% include 'components/checkbox-group/_checkbox-group.njk' %}
+{% endmacro %}
+
+{% macro radioButtonGroup(id, options=['Radio button label']) %}
+{% include 'components/radio-button-group/_radio-button-group.njk' %}
+{% endmacro %}
+
+{% macro conditionalCheckboxGroup(id, options=[{ label: 'Label', id: 'id' }]) %}
 {% include 'components/conditional-checkbox-group/_conditional-checkbox-group.njk' %}
 {% endmacro %}
 
@@ -103,6 +110,6 @@
 {% endmacro %}
 
 {# Other page compoents #}
-{% macro activityButton( text, icon='none' ) %}
+{% macro activityButton( text, icon='none', url='' ) %}
 {% include 'components/activity-button/_activity-button.njk' %}
 {% endmacro %}

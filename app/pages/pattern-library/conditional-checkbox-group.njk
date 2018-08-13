@@ -1,0 +1,16 @@
+{% extends "pattern-library-layout.njk" %}
+
+{% import 'macros/volunteer.njk' as volunteer %}
+
+{% block content %}
+  <h1 class="pl-heading">Conditional checkbox group</h1>
+  {{ volunteer.conditionalCheckboxGroup('ccg-id', options=[{label: 'Option 1', id: 'option-1'}, {label: 'Option 2', id: 'option-2'}, {label: 'Option 3', id: 'option-3'}]) }}
+  <h2 class="pl-heading">HTML</h2>
+  <textarea class="pl-code" disabled>
+    {{ volunteer.conditionalCheckboxGroup('ccg-id', options=[{label: 'Option 1', id: 'option-1', label: 'Option 2', id: 'option-2', label: 'Option 3', id: 'option-3'}]) }}
+  </textarea>
+  <h2 class="pl-heading">SCSS</h2>
+  <textarea class="pl-code" disabled>
+    {% include 'components/checkbox-group/_checkbox-group.scss' ignore missing %}
+  </textarea>
+{% endblock %}

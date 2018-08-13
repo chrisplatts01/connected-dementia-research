@@ -98,217 +98,76 @@
     </nav>
     <main class="pl-main" role="main">
       
-  <h1 class="pl-heading">Button</h1>
+  <h1 class="pl-heading">Checkbox group</h1>
   
-<button class="button button--primary" type="button" formaction="http://cdr.virelai.co.uk">Submit</button>
-
-
-
+<fieldset class="checkbox-group">
   
-<button class="button button--secondary" type="button">Continue</button>
-
+  <div class="checkbox">
+    <label>
+      <input id="checkboxes-checkbox_1" name="checkboxes" value="checkbox_1" type="checkbox" />
+      Checkbox 1
+      <span class="checkmark"></span>
+    </label>
+  </div>
+  
+  <div class="checkbox">
+    <label>
+      <input id="checkboxes-checkbox_2" name="checkboxes" value="checkbox_2" type="checkbox" />
+      Checkbox 2
+      <span class="checkmark"></span>
+    </label>
+  </div>
+  
+  <div class="checkbox">
+    <label>
+      <input id="checkboxes-checkbox_3" name="checkboxes" value="checkbox_3" type="checkbox" />
+      Checkbox 3
+      <span class="checkmark"></span>
+    </label>
+  </div>
+  
+</fieldset>
 
 
   <h2 class="pl-heading">HTML</h2>
   <textarea class="pl-code" disabled>
+    
+<fieldset class="checkbox-group">
   
-<button class="button button--primary" type="submit" formaction="http://cdr.virelai.co.uk">Submit</button>
-
-
-
+  <div class="checkbox">
+    <label>
+      <input id="checkboxes-checkbox_1" name="checkboxes" value="checkbox_1" type="checkbox" />
+      Checkbox 1
+      <span class="checkmark"></span>
+    </label>
+  </div>
   
-<button class="button button--secondary" type="button">Continue</button>
-
+  <div class="checkbox">
+    <label>
+      <input id="checkboxes-checkbox_2" name="checkboxes" value="checkbox_2" type="checkbox" />
+      Checkbox 2
+      <span class="checkmark"></span>
+    </label>
+  </div>
+  
+  <div class="checkbox">
+    <label>
+      <input id="checkboxes-checkbox_3" name="checkboxes" value="checkbox_3" type="checkbox" />
+      Checkbox 3
+      <span class="checkmark"></span>
+    </label>
+  </div>
+  
+</fieldset>
 
 
   </textarea>
   <h2 class="pl-heading">SCSS</h2>
   <textarea class="pl-code" disabled>
-    .button {
-  @include small-font;
-  position: relative;
-  height: 42px;
-  min-width: 150px;
-  padding: 0 16px;
-  border: 0;
-  background-color: $grey-L52;
-  box-shadow: 0 4px 0 0 $grey-L35;
-  cursor: pointer;
-
-  &:hover,
-  &:focus,
-  &:active,
-  &.hover {
-    color: $grey-D10;
-    background-color: $grey-L35;
-    box-shadow: 0 4px 0 0 $grey-L20;
-  }
-
-  &:active,
-  &.active {
-    top: 4px;
-    box-shadow: 0 -4px 0 0 $grey-L20;
-  }
-
-  &:disabled,
-  &:disabled.hover,
-  &:disabled.active {
-    top: 0 !important;
-    color: $grey-L35 !important;
-    background-color: $grey-L66 !important;
-    box-shadow: 0 4px 0 0 $grey-L60 !important;
-    cursor: default;
-  }
-}
-
-.button--primary {
-  color: $white;
-  background-color: $coral;
-  box-shadow: 0 4px 0 0 $coral-D20;
-
-  &:hover,
-  &:focus,
-  &.hover {
-    color: $white;
-    background-color: $coral-D20;
-    box-shadow: 0 4px 0 0 $coral-D28;
-  }
-
-  &:active,
-  &.active {
-    color: $white;
-    background-color: $coral-D20;
-    box-shadow: 0 -4px 0 0 $coral-D28;
-  }
-}
-
-.button--secondary {
-  color: $grey;
-  background-color: $grey-L52;
-  box-shadow: 0 4px 0 0 $grey-L35;
-
-  &:hover,
-  &:focus,
-  &.hover {
-    color: $grey-D10;
-    background-color: $grey-L35;
-    box-shadow: 0 4px 0 0 $grey-L20;
-  }
-
-  &:active,
-  &.active {
-    color: $grey-D10;
-    background-color: $grey-L35;
-    box-shadow: 0 -4px 0 0 $grey-L20;
-  }
-}
-
-.button--next {
-  width: 140px;
-  right: 21px;
-  color: $white;
-  background-color: $turquoise;
-  box-shadow: 0 4px 0 0 $turquoise-D12;
-
-  &::after {
-    position: absolute;
-    top: 0px;
-    right: -21px;
-    display: block;
-    width: 21px;
-    height: 46px;
-    content: '\00a0';
-    background: url('/images/button-arrow-turquoise.svg') top right no-repeat;
-    // z-index: -10;
-  }
-
-  &:hover,
-  &:focus,
-  &.hover {
-    color: $white;
-    background-color: $turquoise-D12;
-    box-shadow: 0 4px 0 0 $turquoise-D20;
-
-    &::after {
-      background-image: url('/images/button-arrow-turquoise-hover.svg')
-    }
-  }
-
-  &:active,
-  &.active {
-    color: $white;
-    background-color: $turquoise-D12;
-    box-shadow: 0 -4px 0 0 $turquoise-D20;
-
-    &::after {
-      top: -4px;
-      background-image: url('/images/button-arrow-turquoise-active.svg')
-    }
-  }
-
-  &:disabled {
-    &::after {
-      background-image: url('/images/button-arrow-disabled.svg')
-    }
-
-    &:active::after {
-      top: 0;
-    }
-  }
-}
-
-.button--previous {
-  width: 140px;
-  left: 21px;
-  color: $grey;
-  background-color: $grey-L52;
-  box-shadow: 0 4px 0 0 $grey-L35;
-
-  &::before {
-    position: absolute;
-    top: 0px;
-    left: -21px;
-    display: block;
-    width: 21px;
-    height: 46px;
-    content: '\00a0';
-    background: url('/images/button-arrow-grey.svg') top left no-repeat;
-    // z-index: -10;
-  }
-
-  &:hover,
-  &:focus,
-  &.hover {
-    color: $grey-D10;
-    background-color: $grey-L35;
-    box-shadow: 0 4px 0 0 $grey-L20;
-
-    &::before {
-      background-image: url('/images/button-arrow-grey-hover.svg')
-    }
-  }
-
-  &:active,
-  &.active {
-    color: $grey-D10;
-    background-color: $grey-L35;
-    box-shadow: 0 -4px 0 0 $grey-L20;
-
-    &::before {
-      top: -4px;
-      background-image: url('/images/button-arrow-grey-active.svg')
-    }
-  }
-
-  &:disabled {
-    &::before {
-      background-image: url('/images/button-arrow-disabled.svg')
-    }
-
-    &:active::before {
-      top: 0;
-    }
-  }
+    .checkbox-group {
+  border: none;
+  padding: 0;
+  margin: 0;
 }
 
   </textarea>

@@ -1,0 +1,11 @@
+<fieldset class="checkbox-group">
+  {% for option in options %}
+  <div class="checkbox">
+    <label>
+      <input id="{{ id }}-{{ option | lower | replace(' ', '_') }}" name="{{ id }}" value="{{ option | lower | replace(' ', '_') }}" type="checkbox" />
+      {{ option }}
+      <span class="checkmark"></span>
+    </label>
+  </div>
+  {% endfor %}
+</fieldset>

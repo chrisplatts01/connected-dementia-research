@@ -1,1 +1,9 @@
-<div class="button button--activity button--activity--icon-{{ icon }} button--primary">{{ text }}</div>
+<div class="button button--activity button--activity--icon-{{ icon }} button--primary">
+  {%- if (url | length > 0) -%}
+  <a href="#">
+    {%- endif -%}
+    {{ text }}
+    {%- if (url | length > 0) -%}
+    </a>
+    {%- endif -%}
+</div>
