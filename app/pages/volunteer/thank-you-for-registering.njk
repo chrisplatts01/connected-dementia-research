@@ -1,0 +1,25 @@
+{% extends "volunteer-layout.njk" %}
+
+{% import 'macros/volunteer.njk' as volunteer %}
+
+
+{% block content %}
+<div class="user-bar">
+  <span class="user-bar__role">Volunteer</span>
+  <span class="user-bar__name">Username</span>
+  <span class="user-bar__surname">Surname</span>
+  <button class="button button--secondary">Add volunteer</button>
+  <span class="user-bar__info">Represented by <em>Proxy Name</em></span>
+</div>
+{{ volunteer.tabBar(tabs=[
+  {label: 'Profile', url: ''},
+  {label: 'Studies', url: '#'},
+  {label: 'Notifications', url: '#'},
+  {label: 'Audit trail', url: '#'}
+  ]) }}
+<div class="page-content__inner-wrapper">
+  {{ volunteer.heading('Thank you for registering') }}
+  {{ volunteer.paragraph('Come back soon for studies to take part in lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec fringilla, neque eget accumsan tempor, odio ex maximus purus, eget convallis nulla ipsum nec tortor.') }}
+  {{ volunteer.paragraph('Vivamus vitae tempus dui, non sollicitudin quam. Praesent eget ultricies mi, et facilisis nunc. Phasellus sit amet dui justo. Proin venenatis in odio ac tempus. Maecenas sollicitudin urna eu lorem elementum dictum. Maecenas fringilla consectetur finibus.') }}
+</div>
+{% endblock %}

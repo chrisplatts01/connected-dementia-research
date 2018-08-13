@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1.0, maximum-scale=1.0">
   <meta name="apple-mobile-web-app-capable" content="yes">
 
-  <title>Pattern Library : {{ site.title }}</title>
+  <title>Pattern Library : Connect Dementia Research</title>
 
   <!-- Favicons -->
   <link rel="apple-touch-icon" sizes="180x180" href="/images/favicons/apple-touch-icon.png">
@@ -94,7 +94,98 @@
       </ul>
     </nav>
     <main class="pl-main" role="main">
-      {% block content %}{% endblock %}
+      
+  <h1 class="pl-heading">Segmented control</h1>
+  <p>Used instead of radio button when there are a limited number of mutually-exclusive choices.</p>
+  <p><small>To illustrate the styling of <em>checked</em> and <em>hover</em> states, <code>.hover</code> and <code>.checked</code> classes have been added to simulate these states. These classes are not required in production where the <code>:hover</code> and <code>:checked</code> pseudo-classes are used.</small></p>
+  
+<div class="segmented-control segmented-control--2-across">
+  <p class="label">Sex</p>
+  
+  <input id="sex-male" name="sex" type="radio" />
+  <label for="sex-male">Male</label>
+  
+  <input id="sex-female" name="sex" type="radio" />
+  <label for="sex-female">Female</label>
+  
+</div>
+
+
+  
+<div class="segmented-control segmented-control--3-across">
+  <p class="label">Your options</p>
+  
+  <input id="options-option_1" name="options" type="radio" />
+  <label for="options-option_1">Option 1</label>
+  
+  <input id="options-option_2" name="options" type="radio" />
+  <label for="options-option_2">Option 2</label>
+  
+  <input id="options-option_3" name="options" type="radio" />
+  <label for="options-option_3">Option 3</label>
+  
+</div>
+
+
+  <h2 class="pl-heading">HTML</h2>
+  <textarea class="pl-code" disabled>
+    
+<div class="segmented-control segmented-control--2-across">
+  <p class="label">Sex</p>
+  
+  <input id="sex-male" name="sex" type="radio" />
+  <label for="sex-male">Male</label>
+  
+  <input id="sex-female" name="sex" type="radio" />
+  <label for="sex-female">Female</label>
+  
+</div>
+
+
+  </textarea>
+  <h2 class="pl-heading">SCSS</h2>
+  <textarea class="pl-code" disabled>
+    .segmented-control {
+  padding-bottom: 29px;
+  text-align: center;
+
+  input[type=radio] {
+    display: none;
+  }
+
+  label {
+    @include form-segmented-control(unselected);
+    width: 50%;
+
+    &.error {
+      @include form-segmented-control(error);
+    }
+  }
+
+  input[type=radio]:checked + label, .checked {
+    @include form-segmented-control(selected);
+  }
+}
+
+.segmented-control ~ .message--error {
+  padding-top: 20px;
+}
+
+
+.segmented-control--2-across label {
+  width: 50%;
+}
+
+.segmented-control--3-across label {
+  width: 33%;
+}
+
+.segmented-control--4-across label {
+  width: 25%;
+}
+
+  </textarea>
+
     </main>
   </div>
   <footer class="pl-footer"></footer>

@@ -12,17 +12,8 @@
 <div class="page-content__inner-wrapper">
   {{ volunteer.subheading('How would you describe your symptoms?') }}
   {% call volunteer.form('describe-symptoms', '#', 'get') %}
-  {{ volunteer.conditionalCheckboxGroup(
-    'diagnosis',
-    options = [
-      {id: 'diagnosis', label: 'Blindness'},
-      {id: 'diagnosis', label: 'Communication difficulties'},
-      {id: 'diagnosis', label: 'Deafness'),
-      {id: 'diagnosis', label: 'Learnng difficulties'),
-      {id: 'diagnosis', label: 'Mobility problems')
-    ]
-  ) }}
-  {{ volunteer.prompt('If you know the specific type of dementia you have been diagnosed with it will help us find the most appropriate study. If you have been given more than one diagnosis, tick more than one box.') }}
+  {{ volunteer.segmentedControl('', 'symptoms', options=['Mild', 'Moderate', 'Severe']) }}
+  {{ volunteer.prompt('Many studies are very specific about the symptoms&hellip;' | safe) }}
   {{ volunteer.pageNavigation(next={label: 'Continue', url: '#'}) }}
   {% endcall %}
 </div>

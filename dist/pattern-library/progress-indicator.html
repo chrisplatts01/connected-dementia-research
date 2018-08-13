@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1.0, maximum-scale=1.0">
   <meta name="apple-mobile-web-app-capable" content="yes">
 
-  <title>Pattern Library : {{ site.title }}</title>
+  <title>Pattern Library : Connect Dementia Research</title>
 
   <!-- Favicons -->
   <link rel="apple-touch-icon" sizes="180x180" href="/images/favicons/apple-touch-icon.png">
@@ -94,7 +94,52 @@
       </ul>
     </nav>
     <main class="pl-main" role="main">
-      {% block content %}{% endblock %}
+      
+  <h1 class="pl-heading">Progress indicator</h1>
+  
+<div class="progress-indicator" data-step="1" data-steps="3"><em>1</em>/3</div>
+
+
+  <h2 class="pl-heading">HTML</h2>
+  <textarea class="pl-code" disabled>
+    
+<div class="progress-indicator" data-step="1" data-steps="3"><em>1</em>/3</div>
+
+
+  </textarea>
+  <h2 class="pl-heading">SCSS</h2>
+  <textarea class="pl-code" disabled>
+    .progress-indicator {
+  @include small-font;
+  position: relative;
+  margin-bottom: 16px;
+
+  em {
+    font-style: normal;
+    font-weight: 700;
+    color: $turquoise;
+  }
+
+  .progress-indicator__steps {
+    display: block;
+    margin-bottom: 6px;
+    height: 16px;
+    width: 100%;
+    background-color: $grey-L66;
+  }
+
+  .progress-indicator__step {
+    position: absolute;
+    top: 0;
+    display: block;
+    height: 16px;
+    width: attr(data-width);
+    background-color: $turquoise;
+  }
+}
+
+  </textarea>
+
     </main>
   </div>
   <footer class="pl-footer"></footer>

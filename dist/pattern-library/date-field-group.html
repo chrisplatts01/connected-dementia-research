@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1.0, maximum-scale=1.0">
   <meta name="apple-mobile-web-app-capable" content="yes">
 
-  <title>Pattern Library : {{ site.title }}</title>
+  <title>Pattern Library : Connect Dementia Research</title>
 
   <!-- Favicons -->
   <link rel="apple-touch-icon" sizes="180x180" href="/images/favicons/apple-touch-icon.png">
@@ -94,7 +94,82 @@
       </ul>
     </nav>
     <main class="pl-main" role="main">
-      {% block content %}{% endblock %}
+      
+  <h1 class="pl-heading">Date field group</h1>
+  <p><small>To illustrate the styling of <em>checked</em> and <em>hover</em> states, <code>.hover</code> and <code>.checked</code> classes have been added to simulate these states. These classes are not required in production where the <code>:hover</code> and <code>:checked</code> pseudo-classes are used.</small></p>
+  
+<fieldset class="date-field-group">
+  <legend>Date of birth</legend>
+  <div class="input-field input-field--text input-field--short">
+    <label>Day (DD)
+      <input id="date-day" type="number" />
+    </label>
+  </div>
+  <div class="input-field input-field--text input-field--short">
+    <label>Month (MM)
+      <input id="date-month" type="number" />
+    </label>
+  </div>
+  <div class="input-field input-field--text input-field--short">
+    <label>Year (YYYY)
+      <input id="date-year" type="number" />
+    </label>
+  </div>
+</fieldset>
+
+
+  <h2 class="pl-heading">HTML</h2>
+  <textarea class="pl-code" disabled>
+    
+<fieldset class="date-field-group">
+  <legend>Date of birth</legend>
+  <div class="input-field input-field--text input-field--short">
+    <label>Day (DD)
+      <input id="date-day" type="number" />
+    </label>
+  </div>
+  <div class="input-field input-field--text input-field--short">
+    <label>Month (MM)
+      <input id="date-month" type="number" />
+    </label>
+  </div>
+  <div class="input-field input-field--text input-field--short">
+    <label>Year (YYYY)
+      <input id="date-year" type="number" />
+    </label>
+  </div>
+</fieldset>
+
+
+  </textarea>
+  <h2 class="pl-heading">SCSS</h2>
+  <textarea class="pl-code" disabled>
+    .date-field-group {
+  @include clearfix();
+  border: none;
+  padding: 0;
+  margin: 0 -6px 0 -10px;
+
+  legend {
+    @include small-font();
+    display: block;
+    font-weight: bold;
+    color: $grey;
+    margin: 0 0 4px 8px;
+  }
+
+  .input-field {
+    width: 33%;
+    float: left;
+    padding: 0 10px;
+
+    &:first-child { padding-left: 0 }
+    &:last-child { padding-right: 0 }
+  }
+}
+
+  </textarea>
+
     </main>
   </div>
   <footer class="pl-footer"></footer>

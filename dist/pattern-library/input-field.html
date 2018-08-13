@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1.0, maximum-scale=1.0">
   <meta name="apple-mobile-web-app-capable" content="yes">
 
-  <title>Pattern Library : {{ site.title }}</title>
+  <title>Pattern Library : Connect Dementia Research</title>
 
   <!-- Favicons -->
   <link rel="apple-touch-icon" sizes="180x180" href="/images/favicons/apple-touch-icon.png">
@@ -94,7 +94,82 @@
       </ul>
     </nav>
     <main class="pl-main" role="main">
-      {% block content %}{% endblock %}
+      
+  <h1 class="pl-heading">Input field</h1>
+  
+<div class="input-field input-field--text input-field--long">
+  <label>Field label
+    <input id="input-field" type="text" placeholder=""   />
+  </label>
+</div>
+
+
+  <h2 class="pl-heading">HTML</h2>
+  <textarea class="pl-code" disabled>
+    
+<div class="input-field input-field--text input-field--long">
+  <label>Field label
+    <input id="input-field" type="text" placeholder=""   />
+  </label>
+</div>
+
+
+  </textarea>
+  <h2 class="pl-heading">SCSS</h2>
+  <textarea class="pl-code" disabled>
+    .input-field {
+  margin-bottom: 28px;
+
+  &.input-field--short {
+    input {
+      width: 150px;
+    }
+  }
+
+  label {
+    @include small-font;
+    padding-bottom: 28px;
+  }
+
+  input {
+    @include small-font;
+    display: block;
+    width: 100%;
+    height: 40px;
+    color: $grey;
+    margin-top: 8px;
+    border: 1px solid $border-color;
+    padding: 0 10px;
+    box-shadow: inset 0 3px 0 0 $grey-L66;
+
+    &::placeholder {
+      color: $grey-L20;
+      opacity: 1;
+    }
+
+    &:hover {
+      border-color: $border-hover-color;
+    }
+    &:focus, &:active {
+      border-color: $coral;
+    }
+  }
+
+  &.hover input {
+    border-color: $border-hover-color;
+  }
+
+  &.focus input {
+    border-color: $coral;
+  }
+
+  &.error input {
+    border: 3px solid $ruby;
+  }
+}
+
+  </textarea>
+
     </main>
   </div>
   <footer class="pl-footer"></footer>

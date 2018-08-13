@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1.0, maximum-scale=1.0">
   <meta name="apple-mobile-web-app-capable" content="yes">
 
-  <title>Pattern Library : {{ site.title }}</title>
+  <title>Pattern Library : Connect Dementia Research</title>
 
   <!-- Favicons -->
   <link rel="apple-touch-icon" sizes="180x180" href="/images/favicons/apple-touch-icon.png">
@@ -94,7 +94,45 @@
       </ul>
     </nav>
     <main class="pl-main" role="main">
-      {% block content %}{% endblock %}
+      
+  <h1 class="pl-heading">Page header</h1>
+  <header class="masthead" role="banner">
+  <div class="site-logo">
+    <img src="/images/logo-step-up.png" alt="Step up for Dementia" />
+  </div>
+</header>
+
+  <h2 class="pl-heading">HTML</h2>
+  <textarea class="pl-code" disabled>
+    <header class="masthead" role="banner">
+  <div class="site-logo">
+    <img src="/images/logo-step-up.png" alt="Step up for Dementia" />
+  </div>
+</header>
+
+  </textarea>
+  <h2 class="pl-heading">SCSS</h2>
+  <textarea class="pl-code" disabled>
+    .masthead {
+  background-color: $white;
+  padding: 20px 0;
+  height: 100px;
+
+  @include from(2) {
+    height: 120px;
+  }
+
+  .site-logo img {
+    height: 60px;
+
+    @include from(2) {
+      height: 80px;
+    }
+  }
+}
+
+  </textarea>
+
     </main>
   </div>
   <footer class="pl-footer"></footer>

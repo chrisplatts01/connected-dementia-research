@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1.0, maximum-scale=1.0">
   <meta name="apple-mobile-web-app-capable" content="yes">
 
-  <title>Pattern Library : {{ site.title }}</title>
+  <title>Pattern Library : Connect Dementia Research</title>
 
   <!-- Favicons -->
   <link rel="apple-touch-icon" sizes="180x180" href="/images/favicons/apple-touch-icon.png">
@@ -94,7 +94,55 @@
       </ul>
     </nav>
     <main class="pl-main" role="main">
-      {% block content %}{% endblock %}
+      
+  <h1 class="pl-heading">Page navigation</h1>
+  
+<div class="page-navigation">
+  <div class="page-navigation--previous">
+    <button class="float-left button button--previous" type="button">Previous</button>
+  </div>
+  <div class="page-navigation--next">
+    <button class="button button--next" type="submit" formaction="#">Next</button>
+  </div>
+</div>
+
+
+  <h2 class="pl-heading">HTML</h2>
+  <textarea class="pl-code" disabled>
+    
+<div class="page-navigation">
+  <div class="page-navigation--previous">
+    <button class="float-left button button--previous" type="button"></button>
+  </div>
+  <div class="page-navigation--next">
+    <button class="button button--next" type="submit" formaction=""></button>
+  </div>
+</div>
+
+
+  </textarea>
+  <h2 class="pl-heading">SCSS</h2>
+  <textarea class="pl-code" disabled>
+    .masthead {
+  background-color: $white;
+  padding: 20px 0;
+  height: 100px;
+
+  @include from(2) {
+    height: 120px;
+  }
+
+  .site-logo img {
+    height: 60px;
+
+    @include from(2) {
+      height: 80px;
+    }
+  }
+}
+
+  </textarea>
+
     </main>
   </div>
   <footer class="pl-footer"></footer>

@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1.0, maximum-scale=1.0">
   <meta name="apple-mobile-web-app-capable" content="yes">
 
-  <title>Pattern Library : {{ site.title }}</title>
+  <title>Pattern Library : Connect Dementia Research</title>
 
   <!-- Favicons -->
   <link rel="apple-touch-icon" sizes="180x180" href="/images/favicons/apple-touch-icon.png">
@@ -94,7 +94,228 @@
       </ul>
     </nav>
     <main class="pl-main" role="main">
-      {% block content %}{% endblock %}
+      
+  <h1 class="pl-heading">Dropdown select</h1>
+  <p><small>To illustrate the styling of <em>checked</em> and <em>hover</em> states, <code>.hover</code> and <code>.checked</code> classes have been added to simulate these states. These classes are not required in production where the <code>:hover</code> and <code>:checked</code> pseudo-classes are used.</small></p>
+  
+<div class="dropdown-select">
+  <label>Please choose from the following options:
+    <select id="select-id">
+      <option selected disabled>Select&hellip;</option>
+      
+      <option value="option_1">Option 1</option>
+      
+      <option value="option_2">Option 2</option>
+      
+      <option value="option3">Option3</option>
+      
+    </select>
+  </label>
+</div>
+
+
+  <div class="error">
+    
+<div class="dropdown-select">
+  <label>Please choose from the following options: (Error)
+    <select id="select-id">
+      <option selected disabled>Select&hellip;</option>
+      
+      <option value="option_1">Option 1</option>
+      
+      <option value="option_2">Option 2</option>
+      
+      <option value="option3">Option3</option>
+      
+    </select>
+  </label>
+</div>
+
+
+  </div>
+  <h2 class="pl-heading">HTML</h2>
+  <textarea class="pl-code" disabled>
+    
+<div class="dropdown-select">
+  <label>Please choose from the following options:
+    <select id="select-id">
+      <option selected disabled>Select&hellip;</option>
+      
+      <option value="option_1">Option 1</option>
+      
+      <option value="option_2">Option 2</option>
+      
+      <option value="option3">Option3</option>
+      
+    </select>
+  </label>
+</div>
+
+
+  </textarea>
+  <h2 class="pl-heading">SCSS</h2>
+  <textarea class="pl-code" disabled>
+    .dropdown-select {
+  margin-bottom: 32px;
+
+  label {
+    @include small-font;
+    padding-right: 16px;
+  }
+
+  select {
+    display: none;
+  }
+
+  .dropdown {
+    display: block;
+    margin: 1em 0;
+    box-sizing: border-box;
+    border: 2px solid $border-color;
+    box-shadow: 0 4px 0 0 $border-shadow-color;
+
+    .dropdown__selected,
+    .dropdown__option {
+      @include small-font;
+      width: 100%;
+      height: 41px;
+      font-weight: 400;
+      color: $grey-L20;
+      background-color: $white;
+      box-sizing: border-box;
+      padding: 8px 0.5em 0;
+    }
+
+    .dropdown__selected {
+      position: relative;
+
+      &:after {
+        position: absolute;
+        top: 18px;
+        right: 18px;
+        color: black;
+        width: 12px;
+        height: 6px;
+        content: '\00a0';
+        background: url('/images/arrow-down-grey.svg') center center no-repeat;
+      }
+
+      // &.selected {
+      //   color: $white;
+      //   background-color: $coral;
+      //
+      //   &:after {
+      //     background-image: url('/images/arrow-down-white.svg');
+      //   }
+      // }
+    }
+
+    &.selected {
+      border-color: $coral;
+
+      .dropdown__selected {
+        color: $white;
+        background-color: $coral;
+
+        &:after {
+          background-image: url('/images/arrow-down-white.svg');
+        }
+      }
+
+      &:hover {
+        border-color: $coral;
+      }
+    }
+
+    .dropdown__option {
+      display: none;
+    }
+
+    &:hover {
+      border-color: $border-hover-color;
+    }
+
+    &.error {
+      border: 3px solid $ruby;
+
+      .dropdown__selected:after {
+        background-image: url('/images/arrow-down-purple.svg')
+      }
+    }
+
+    &.open {
+      border-color: $coral;
+
+      .dropdown__selected {
+        border-bottom: 2px solid $coral;
+
+        &:after {
+          background-image: url('/images/arrow-down-orange.svg');
+        }
+      }
+
+      .dropdown__option {
+        color: $coral;
+        border-bottom: 1px solid $coral;
+
+        &:last-child {
+          border: 0;
+        }
+
+        &:hover {
+          color: $coral-D20;
+          background-color: $coral-L32;
+        }
+
+        // &.selected {
+        //   color: $white;
+        //   background-color: $coral;
+        // }
+      }
+    }
+
+    &.open.selected {
+      .dropdown__selected {
+        border-bottom: 2px solid $coral;
+
+        &:after {
+          background-image: url('/images/arrow-down-white.svg');
+        }
+      }
+    }
+  }
+
+  .error &,
+  &.error {
+    .dropdown {
+      border: 3px solid $ruby;
+
+      .dropdown__selected:after {
+        background-image: url('/images/arrow-down-purple.svg')
+      }
+
+      &.open {
+        border-color: $coral;
+
+        .dropdown__selected {
+          border-bottom: 2px solid $coral;
+
+          &:after {
+            background-image: url('/images/arrow-down-orange.svg');
+          }
+        }
+      }
+    }
+  }
+
+  .message--error {
+    padding-top: 0;
+  }
+
+}
+
+  </textarea>
+
     </main>
   </div>
   <footer class="pl-footer"></footer>
