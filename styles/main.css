@@ -1538,6 +1538,11 @@ p, .paragraph {
   }
 }
 
+.masthead .site-logo {
+  width: 50%;
+  float: left;
+}
+
 .masthead .site-logo img {
   height: 60px;
 }
@@ -1546,6 +1551,23 @@ p, .paragraph {
   .masthead .site-logo img {
     height: 80px;
   }
+}
+
+.masthead .user-admin {
+  float: right;
+}
+
+.masthead .user-admin__links {
+  display: inline-block;
+  list-style: none;
+  padding: 32px 0;
+  margin: 0;
+  text-align: right;
+}
+
+.masthead .user-admin__link {
+  display: inline-block;
+  margin-left: 16px;
 }
 
 .colour-swatches th, .colour-swatches td {
