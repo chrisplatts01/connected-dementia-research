@@ -1,6 +1,6 @@
 <div class="page-navigation">
   <div class="page-navigation--previous">
-    <button class="float-left button button--previous" type="button">{{ previous.label }}</button>
+    <a href="{{ previous.url }}"><button class="float-left button button--previous" type="button">{{ previous.label }}</button></a>
   </div>
   <div class="page-navigation--next">
     <button class="button button--next" type="submit" formaction="{{ next.url }}">{{ next.label }}</button>
