@@ -18,7 +18,7 @@
   {{ volunteer.inputField('Telephone number', 'telephone') }}
   {{ volunteer.dropdownSelect('How did you hear about us? (optional)', 'how-heard', ['Option 1', 'Option 2']) }}
   {{ volunteer.checkbox('Please keep me up to date with the Joint Dementia Research newsletter', 'contact')}}
-  {{ volunteer.pageNavigation() }}
+  {{ volunteer.pageNavigation({label: 'Back', url: '/'},{label: 'Submit details', url: '/volunteer/create-login-details.html'}) }}
   {% endcall %}
 </div>
 {% endblock %}
