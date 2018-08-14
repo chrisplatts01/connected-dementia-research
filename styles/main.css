@@ -2,8 +2,7 @@
 @import url("https://fonts.googleapis.com/css?family=Montserrat:400,400i,700,700i");
 * {
   box-sizing: border-box;
-  font-smoothing: antialised;
-  -webkit-font-smoothing: none;
+  -webkit-font-smoothing: antialiased;
 }
 
 body {
@@ -355,16 +354,6 @@ p.label {
   height: 136px;
   margin: 0 auto;
   text-align: left;
-  vertical-align: top;
-}
-
-.button.button--activity a:link,
-.button.button--activity a:visited,
-.button.button--activity a:hover,
-.button.button--activity a:focus,
-.button.button--activity a:active {
-  color: white;
-  text-decoration: none;
 }
 
 .button.button--activity--icon-avatar::after {
@@ -591,6 +580,14 @@ p.label {
 
 .button--previous:disabled:active::before {
   top: 0;
+}
+
+a.button-link:link,
+a.button-link:visited,
+a.button-link:hover,
+a.button-link:focus,
+a.button-link:active {
+  text-decoration: none;
 }
 
 .checkbox {
