@@ -129,7 +129,7 @@
   position: relative;
   height: 42px;
   min-width: 150px;
-  padding: 0 16px;
+  padding: 0 8px;
   border: 0;
   background-color: $grey-L52;
   box-shadow: 0 4px 0 0 $grey-L35;
@@ -158,6 +158,21 @@
     background-color: $grey-L66 !important;
     box-shadow: 0 4px 0 0 $grey-L60 !important;
     cursor: default;
+  }
+
+  a {
+    display: block;
+    color: $grey;
+    background-color: transparent;
+    text-decoration: none;
+
+    &:hover,
+    &:focus,
+    &:active,
+    &.hover {
+      color: $grey-D10;
+      background-color: $grey-L35;
+    }
   }
 }
 

@@ -209,6 +209,19 @@
   &.error.hover [type="checkbox"] ~ .checkmark {
     background-color: $ruby-L60;
   }
+
+    &.disabled [type=checkbox] ~ .checkmark,
+    &.disabled:hover [type=checkbox] ~ .checkmark {
+      border-color: $grey-L52;
+      background-color: $white;
+      cursor: default;
+    }
+
+      &.disabled label,
+      &.disabled:hover label {
+        color: $grey-L52;
+        cursor: default;
+      }
 }
 
   </textarea>
