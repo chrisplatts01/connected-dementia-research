@@ -7,11 +7,34 @@
     height: 120px;
   }
 
-  .site-logo img {
-    height: 60px;
+  .site-logo{
+    width: 50%;
+    float: left;
 
-    @include from(2) {
-      height: 80px;
+    img {
+      height: 60px;
+
+      @include from(2) {
+        height: 80px;
+      }
     }
+  }
+
+  .user-admin {
+    // width: 50%;
+    float: right;
+  }
+
+  .user-admin__links {
+    display: inline-block;
+    list-style: none;
+    padding: 32px 0;
+    margin: 0;
+    text-align: right;
+  }
+
+  .user-admin__link {
+    display: inline-block;
+    margin-left: 16px;
   }
 }
