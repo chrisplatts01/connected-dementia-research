@@ -203,11 +203,9 @@ __WEBPACK_IMPORTED_MODULE_0_jquery___default()(function () {
         var $inputs = $checkboxes.find('[type=checkbox]')
 
         if (state) {
-          console.log('Enabling checkboxes')
           $checkboxes.removeClass('disabled')
           $inputs.prop('disabled', false)
         } else {
-          console.log('Disabling checkboxes')
           $checkboxes.addClass('disabled')
           $inputs.prop('disabled', true)
         }
@@ -246,16 +244,30 @@ __WEBPACK_IMPORTED_MODULE_0_jquery___default()(function () {
       return (('draggable' in div) || ('ondragstart' in div && 'ondrop' in div)) && 'FormData' in window && 'FileReader' in window
     })()
 
-    if (isAdvancedUpload) {
+    if (isAdvancedUpload) { // Handle advanced file upload
       var droppedFiles = false
       var $fileUpload = __WEBPACK_IMPORTED_MODULE_0_jquery___default()('.file-upload')
       var $fileUploader = __WEBPACK_IMPORTED_MODULE_0_jquery___default()('.file-upload__uploader')
+      var $fileUploadInput = __WEBPACK_IMPORTED_MODULE_0_jquery___default()('.file-upload__input')
       var $fileList = __WEBPACK_IMPORTED_MODULE_0_jquery___default()('.file-upload__file-list')
       var $form = $fileUpload.closest('form')
       var fileDelete = '.file-upload__delete-file'
 
+      // Visually hide file input element
       __WEBPACK_IMPORTED_MODULE_0_jquery___default()('.file-upload__button, .file-upload__input').addClass('hide')
 
+      // Handle non-drag and drop file selection
+      $fileUploadInput.change(function () {
+        var $this = __WEBPACK_IMPORTED_MODULE_0_jquery___default()(this)
+        // var filename = $this.val().replace('C:\\fakepath\\', '')
+        var files = $this.prop('files')
+        __WEBPACK_IMPORTED_MODULE_0_jquery___default.a.each(files, function (index, value) {
+          var file = value.name
+          $this.closest('.file-upload').children('.file-upload__file-list').append('<li class="file-upload__file-added">' + file + '  <span class="file-upload__delete-file"></span></li>')
+        })
+      })
+
+      // Handle darg and drop file selection
       $fileUploader.on('drag dragstart dragend dragover dragenter dragleave drop', function (e) {
         e.preventDefault()
         e.stopPropagation()
@@ -270,16 +282,17 @@ __WEBPACK_IMPORTED_MODULE_0_jquery___default()(function () {
         droppedFiles = e.originalEvent.dataTransfer.files
         __WEBPACK_IMPORTED_MODULE_0_jquery___default()(this).prev('.file-upload__file-list').append('<li class="file-upload__file-added">' + droppedFiles[0].name + '  <span class="file-upload__delete-file"></span></li>')
       })
-    } else {
-      // $('.file-upload__button, .file-upload__input').removeClass('hide')
+    } else { // Handle basic file upload
+      __WEBPACK_IMPORTED_MODULE_0_jquery___default()('.file-upload__button, .file-upload__input').removeClass('hide')
     };
 
+    // Delete file from file list
     $fileList.on('click', fileDelete, function (e) {
       __WEBPACK_IMPORTED_MODULE_0_jquery___default()(this).parent().remove()
-      // CODE TO ACTUALLY DELETE THE FILE GOES HERE - PROBABLY NEEDS TO UPDATE
+      // CODE TO ACTUALLY DELETE THE FILE GOES HERE!!!
     })
 
-    // CODE TO ACTUALLY UPLOAD THE FILES GOES HERE!!!
+    // // CODE TO ACTUALLY UPLOAD THE FILES GOES HERE!!!
     // $form.on('submit', function (e) {
     //   if ($form.hasClass('is-uploading')) return false
     //
@@ -288,54 +301,54 @@ __WEBPACK_IMPORTED_MODULE_0_jquery___default()(function () {
     //   if (isAdvancedUpload) {
     //     console.log('Uploading file using AJAX for modern browsers')
     //     // CODE FOR MDERN BROWSERS - WILL NEED CHECKING!!!
-    //     // e.preventDefault();
-    //     //
-    //     // var ajaxData = new FormData($form.get(0))
-    //     //
-    //     // if (droppedFiles) {
-    //     //   $.each( droppedFiles, function(i, file) {
-    //     //     ajaxData.append( $input.attr('name'), file );
-    //     //   })
-    //     // }
-    //     //
-    //     // $.ajax({
-    //     //   url: $form.attr('action'),
-    //     //   type: $form.attr('method'),
-    //     //   data: ajaxData,
-    //     //   dataType: 'json',
-    //     //   cache: false,
-    //     //   contentType: false,
-    //     //   processData: false,
-    //     //   complete: function() {
-    //     //     $form.removeClass('is-uploading');
-    //     //   },
-    //     //   success: function(data) {
-    //     //     $form.addClass( data.success == true ? 'is-success' : 'is-error' );
-    //     //     if (!data.success) $errorMsg.text(data.error);
-    //     //   },
-    //     //   error: function() {
-    //     //     // Log the error, show an alert, whatever works for you
-    //     //   }
-    //     // })
+    //     e.preventDefault();
+    //
+    //     var ajaxData = new FormData($form.get(0))
+    //
+    //     if (droppedFiles) {
+    //       $.each( droppedFiles, function(i, file) {
+    //         ajaxData.append( $input.attr('name'), file );
+    //       })
+    //     }
+    //
+    //     $.ajax({
+    //       url: $form.attr('action'),
+    //       type: $form.attr('method'),
+    //       data: ajaxData,
+    //       dataType: 'json',
+    //       cache: false,
+    //       contentType: false,
+    //       processData: false,
+    //       complete: function() {
+    //         $form.removeClass('is-uploading');
+    //       },
+    //       success: function(data) {
+    //         $form.addClass( data.success == true ? 'is-success' : 'is-error' );
+    //         if (!data.success) $errorMsg.text(data.error);
+    //       },
+    //       error: function() {
+    //         // Log the error, show an alert, whatever works for you
+    //       }
+    //     })
     //   } else {
     //     console.log('Uploading file using AJAX for legacy browsers')
     //     // CODE FOR LEGACY BROWSERS - WILL NEED CHECKING!!!
-    //     // var iframeName = 'uploadiframe' + new Date().getTime()
-    //     // var $iframe = $('<iframe name="' + iframeName + '" style="display: none;"></iframe>')
-    //     //
-    //     // $('body').append($iframe)
-    //     // $form.attr('target', iframeName)
-    //     //
-    //     // $iframe.one('load', function () {
-    //     //   var data = JSON.parse($iframe.contents().find('body').text())
-    //     //   $form
-    //     //     .removeClass('is-uploading')
-    //     //     .addClass(data.success === true ? 'is-success' : 'is-error')
-    //     //     .removeAttr('target')
-    //     //   if (!data.success) $errorMsg.text(data.error);
-    //     //   $form.removeAttr('target')
-    //     //   $iframe.remove()
-    //     // })
+    //     var iframeName = 'uploadiframe' + new Date().getTime()
+    //     var $iframe = $('<iframe name="' + iframeName + '" style="display: none;"></iframe>')
+    //
+    //     $('body').append($iframe)
+    //     $form.attr('target', iframeName)
+    //
+    //     $iframe.one('load', function () {
+    //       var data = JSON.parse($iframe.contents().find('body').text())
+    //       $form
+    //         .removeClass('is-uploading')
+    //         .addClass(data.success === true ? 'is-success' : 'is-error')
+    //         .removeAttr('target')
+    //       if (!data.success) $errorMsg.text(data.error);
+    //       $form.removeAttr('target')
+    //       $iframe.remove()
+    //     })
     //   }
     // })
   })()
