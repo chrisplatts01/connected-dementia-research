@@ -1,4 +1,4 @@
-<div class="input-field input-field--text input-field--{{ size }}">
+<div class="input-field input-field--text{% if size | length > 0 %} input-field--{{ size }}{% endif %}">
   <label>{{ label }}
     <input id="{{ id }}" type="{{ type }}" placeholder="{{ placeholder }}" {{ disabled }} {{ validation }} />
   </label>

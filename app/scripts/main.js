@@ -125,7 +125,7 @@ $(function () {
       var $conditionalCheckboxGroup = $('.conditional-checkbox-group')
       var $radioButtons = $conditionalCheckboxGroup.find('input:radio')
 
-      var setCheckboxes = function ( state ) {
+      var setCheckboxes = function (state) {
         var $checkboxes = $conditionalCheckboxGroup.find('.checkbox')
         var $inputs = $checkboxes.find('[type=checkbox]')
 
@@ -171,27 +171,51 @@ $(function () {
       return (('draggable' in div) || ('ondragstart' in div && 'ondrop' in div)) && 'FormData' in window && 'FileReader' in window
     })()
 
+    // Handle list of files to be displayed/uploaded
+    var fileList = (function ($list, files) {
+      return {
+        init: function () {
+          if (typeof fileList.files === 'undefined') {
+            fileList.files = []
+          }
+        },
+        add: function (files) {
+          $.each(files, function (index, file) {
+            fileList.files.push(file)
+          })
+        },
+        delete: function (index) {
+          fileList.files.splice(index, 1)
+        },
+        show: function ($list) {
+          $list.empty()
+          $.each(fileList.files, function (index, file) {
+            $list.append('<li class="file-upload__file-added" data-index="' + index + '">' + file.name + '  <span class="file-upload__delete-file"></span></li>')
+          })
+        }
+      }
+    }())
+
     if (isAdvancedUpload) { // Handle advanced file upload
-      var droppedFiles = false
-      var $fileUpload = $('.file-upload')
+      // var $fileUpload = $('.file-upload')
       var $fileUploader = $('.file-upload__uploader')
-      var $fileUploadInput = $('.file-upload__input')
+      var $fileInputUploader = $('.file-upload__input')
       var $fileList = $('.file-upload__file-list')
-      var $form = $fileUpload.closest('form')
       var fileDelete = '.file-upload__delete-file'
+
+      // Initialise file list array
+      fileList.init()
 
       // Visually hide file input element
       $('.file-upload__button, .file-upload__input').addClass('hide')
 
       // Handle non-drag and drop file selection
-      $fileUploadInput.change(function () {
+      $fileInputUploader.change(function () {
         var $this = $(this)
-        // var filename = $this.val().replace('C:\\fakepath\\', '')
+        var $list = $this.closest('.file-upload').children('.file-upload__file-list')
         var files = $this.prop('files')
-        $.each(files, function (index, value) {
-          var file = value.name
-          $this.closest('.file-upload').children('.file-upload__file-list').append('<li class="file-upload__file-added">' + file + '  <span class="file-upload__delete-file"></span></li>')
-        })
+        fileList.add(files)
+        fileList.show($list)
       })
 
       // Handle darg and drop file selection
@@ -206,8 +230,11 @@ $(function () {
         $(this).removeClass('is-dragover')
       })
       .on('drop', function (e) {
-        droppedFiles = e.originalEvent.dataTransfer.files
-        $(this).prev('.file-upload__file-list').append('<li class="file-upload__file-added">' + droppedFiles[0].name + '  <span class="file-upload__delete-file"></span></li>')
+        var $this = $(this)
+        var $list = $this.closest('.file-upload').children('.file-upload__file-list')
+        var files = e.originalEvent.dataTransfer.files
+        fileList.add(files)
+        fileList.show($list)
       })
     } else { // Handle basic file upload
       $('.file-upload__button, .file-upload__input').removeClass('hide')
@@ -215,68 +242,11 @@ $(function () {
 
     // Delete file from file list
     $fileList.on('click', fileDelete, function (e) {
-      $(this).parent().remove()
-      // CODE TO ACTUALLY DELETE THE FILE GOES HERE!!!
+      var $this = $(this)
+      var $list = $this.closest('.file-upload').children('.file-upload__file-list')
+      var index = $this.parent('.file-upload__file-added').attr('data-index')
+      fileList.delete(index)
+      fileList.show($list)
     })
-
-    // // CODE TO ACTUALLY UPLOAD THE FILES GOES HERE!!!
-    // $form.on('submit', function (e) {
-    //   if ($form.hasClass('is-uploading')) return false
-    //
-    //   $form.addClass('is-uploading').removeClass('is-error')
-    //
-    //   if (isAdvancedUpload) {
-    //     console.log('Uploading file using AJAX for modern browsers')
-    //     // CODE FOR MDERN BROWSERS - WILL NEED CHECKING!!!
-    //     e.preventDefault();
-    //
-    //     var ajaxData = new FormData($form.get(0))
-    //
-    //     if (droppedFiles) {
-    //       $.each( droppedFiles, function(i, file) {
-    //         ajaxData.append( $input.attr('name'), file );
-    //       })
-    //     }
-    //
-    //     $.ajax({
-    //       url: $form.attr('action'),
-    //       type: $form.attr('method'),
-    //       data: ajaxData,
-    //       dataType: 'json',
-    //       cache: false,
-    //       contentType: false,
-    //       processData: false,
-    //       complete: function() {
-    //         $form.removeClass('is-uploading');
-    //       },
-    //       success: function(data) {
-    //         $form.addClass( data.success == true ? 'is-success' : 'is-error' );
-    //         if (!data.success) $errorMsg.text(data.error);
-    //       },
-    //       error: function() {
-    //         // Log the error, show an alert, whatever works for you
-    //       }
-    //     })
-    //   } else {
-    //     console.log('Uploading file using AJAX for legacy browsers')
-    //     // CODE FOR LEGACY BROWSERS - WILL NEED CHECKING!!!
-    //     var iframeName = 'uploadiframe' + new Date().getTime()
-    //     var $iframe = $('<iframe name="' + iframeName + '" style="display: none;"></iframe>')
-    //
-    //     $('body').append($iframe)
-    //     $form.attr('target', iframeName)
-    //
-    //     $iframe.one('load', function () {
-    //       var data = JSON.parse($iframe.contents().find('body').text())
-    //       $form
-    //         .removeClass('is-uploading')
-    //         .addClass(data.success === true ? 'is-success' : 'is-error')
-    //         .removeAttr('target')
-    //       if (!data.success) $errorMsg.text(data.error);
-    //       $form.removeAttr('target')
-    //       $iframe.remove()
-    //     })
-    //   }
-    // })
   })()
 })
