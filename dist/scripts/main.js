@@ -270,7 +270,6 @@ __WEBPACK_IMPORTED_MODULE_0_jquery___default()(function () {
     }())
 
     if (isAdvancedUpload) { // Handle advanced file upload
-      // var $fileUpload = $('.file-upload')
       var $fileUploader = __WEBPACK_IMPORTED_MODULE_0_jquery___default()('.file-upload__uploader')
       var $fileInputUploader = __WEBPACK_IMPORTED_MODULE_0_jquery___default()('.file-upload__input')
       var $fileList = __WEBPACK_IMPORTED_MODULE_0_jquery___default()('.file-upload__file-list')

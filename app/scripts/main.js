@@ -197,7 +197,6 @@ $(function () {
     }())
 
     if (isAdvancedUpload) { // Handle advanced file upload
-      // var $fileUpload = $('.file-upload')
       var $fileUploader = $('.file-upload__uploader')
       var $fileInputUploader = $('.file-upload__input')
       var $fileList = $('.file-upload__file-list')
