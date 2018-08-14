@@ -1,9 +1,9 @@
+{%- if (url | length > 0) -%}
+<a class="button-link" href="{{ url }}">
+{%- endif -%}
 <div class="button button--activity button--activity--icon-{{ icon }} button--primary">
-  {%- if (url | length > 0) -%}
-  <a href="#">
-    {%- endif -%}
     {{ text }}
-    {%- if (url | length > 0) -%}
-    </a>
-    {%- endif -%}
 </div>
+{%- if (url | length > 0) -%}
+</a>
+{%- endif -%}

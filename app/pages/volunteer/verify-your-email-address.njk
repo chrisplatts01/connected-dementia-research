@@ -11,7 +11,7 @@
   {% call volunteer.form('verify-your-email-address', '#', 'get' ) %}
   {{ volunteer.inputField('Verification code', 'verification-code') }}
   {{ volunteer.paragraph('<small><a href="#">Resend code</a></small>' | safe) }}
-  {{ volunteer.pageNavigation(next={label: 'Verify email', url: '#'}) }}
+  {{ volunteer.pageNavigation({label: 'Back', url: '/volunteer/consent.html'}, {label: 'Verify email', url: '/volunteer/thank-you-for-creating-your-account.html'}) }}
   {% endcall %}
 </div>
 {% endblock %}

@@ -14,7 +14,7 @@
   {% call volunteer.form('describe-symptoms', '#', 'get') %}
   {{ volunteer.segmentedControl('', 'symptoms', options=['Mild', 'Moderate', 'Severe']) }}
   {{ volunteer.prompt('Many studies are very specific about the symptoms&hellip;' | safe) }}
-  {{ volunteer.pageNavigation(next={label: 'Continue', url: '#'}) }}
+  {{ volunteer.pageNavigation({label: 'Back', url: '/volunteer/do-you-know-what-your-diagnosis-is.html'}, {label: 'Continue', url: '/volunteer/thank-you-for-registering.html'}) }}
   {% endcall %}
 </div>
 {% endblock %}

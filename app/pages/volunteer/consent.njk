@@ -21,7 +21,7 @@
   ) }}
   {% call volunteer.form('consent', '#', 'get') %}
   {{ volunteer.checkbox('Please tick this box to confirm that you consent for us to contact you to participate in research.', 'agree')}}
-  {{ volunteer.pageNavigation(next={label: 'Continue', url: '#'}) }}
+  {{ volunteer.pageNavigation({label: 'Back', url: '/volunteer/create-login-details.html'}, {label: 'Continue', url: '/volunteer/verify-your-email-address.html'}) }}
   {% endcall %}
 </div>
 {% endblock %}

@@ -17,7 +17,7 @@
   {{ volunteer.inputField('Security answer', 'security-answer') }}
   {{ volunteer.prompt('We use your security question to help verify your identity if you forget your password.') }}
   {{ volunteer.checkbox('I agree to the <a href="#">Terms &amp; Conditions</a>.' | safe, 'terms')}}
-  {{ volunteer.pageNavigation(next={label: 'Create login', url: '#'}) }}
+  {{ volunteer.pageNavigation({label: 'Back', url: '/volunteer/your-details.html'}, {label: 'Create login', url: '/volunteer/consent.html'}) }}
   {% endcall %}
 </div>
 {% endblock %}

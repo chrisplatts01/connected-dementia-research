@@ -8,16 +8,15 @@
     height: 136px;
     margin: 0 auto;
     text-align: left;
-    vertical-align: top;
-
-    a:link,
-    a:visited,
-    a:hover,
-    a:focus,
-    a:active {
-      color: $white;
-      text-decoration: none;
-    }
+    //
+    // a:link,
+    // a:visited,
+    // a:hover,
+    // a:focus,
+    // a:active {
+    //   color: $white;
+    //   text-decoration: none;
+    // }
 
     &--icon-avatar::after {
       position: absolute;

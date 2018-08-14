@@ -1,8 +1,7 @@
 // base.scss
 * {
 	box-sizing: border-box;
-	font-smoothing: antialised;
-	-webkit-font-smoothing: none;
+	-webkit-font-smoothing: antialiased;
 }
 
 body {

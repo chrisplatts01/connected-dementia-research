@@ -14,7 +14,7 @@
   {% call volunteer.form('diagnosis', '#', 'get') %}
   {{ volunteer.segmentedControl('', 'dementia-diagnosis', ['Yes', 'No']) }}
   {{ volunteer.prompt('You can register whether you have a diagnosis or not, but what we ask you will depend on whether you do or not.') }}
-  {{ volunteer.pageNavigation(next={label: 'Continue', url: '#'}) }}
+  {{ volunteer.pageNavigation({label: 'Back', url: '/volunteer/thank-you-for-creating-your-account.html'}, {label: 'Continue', url: '/volunteer/do-you-know-what-your-diagnosis-is.html'}) }}
   {% endcall %}
 </div>
 {% endblock %}

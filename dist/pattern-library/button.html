@@ -159,21 +159,6 @@
     box-shadow: 0 4px 0 0 $grey-L60 !important;
     cursor: default;
   }
-
-  a {
-    display: block;
-    color: $grey;
-    background-color: transparent;
-    text-decoration: none;
-
-    &:hover,
-    &:focus,
-    &:active,
-    &.hover {
-      color: $grey-D10;
-      background-color: $grey-L35;
-    }
-  }
 }
 
 .button--primary {
@@ -324,6 +309,14 @@
       top: 0;
     }
   }
+}
+
+a.button-link:link,
+a.button-link:visited,
+a.button-link:hover,
+a.button-link:focus,
+a.button-link:active {
+  text-decoration: none;
 }
 
   </textarea>
