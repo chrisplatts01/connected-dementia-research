@@ -682,7 +682,12 @@ a.button-link:active {
 .checkbox.disabled:hover [type=checkbox] ~ .checkmark {
   border-color: #b8c4cc;
   background-color: white;
-  cursor: default;
+  box-shadow: none;
+}
+
+.checkbox.disabled [type=checkbox]:checked ~ .checkmark,
+.checkbox.disabled:hover [type=checkbox]:checked ~ .checkmark {
+  background-color: #b8c4cc;
 }
 
 .checkbox.disabled label,
