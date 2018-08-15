@@ -127,7 +127,7 @@ $(function () {
 
       var setCheckboxes = function (state) {
         var $checkboxes = $conditionalCheckboxGroup.find('.checkbox')
-        var $inputs = $checkboxes.find('[type=checkbox]')
+        var $inputs = $checkboxes.find('input:checkbox')
 
         if (state) {
           $checkboxes.removeClass('disabled')
@@ -141,8 +141,10 @@ $(function () {
       setCheckboxes(false)
 
       $radioButtons.click(function () {
-        var value = $(this).val()
-        setCheckboxes(value === 'yes')
+        var $this = $(this)
+        console.log($this.attr('data-checkboxes-enabled'))
+        var state = $this.attr('data-checkboxes-enabled') === 'true'
+        setCheckboxes(state)
       })
     })()
 

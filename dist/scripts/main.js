@@ -200,7 +200,7 @@ __WEBPACK_IMPORTED_MODULE_0_jquery___default()(function () {
 
       var setCheckboxes = function (state) {
         var $checkboxes = $conditionalCheckboxGroup.find('.checkbox')
-        var $inputs = $checkboxes.find('[type=checkbox]')
+        var $inputs = $checkboxes.find('input:checkbox')
 
         if (state) {
           $checkboxes.removeClass('disabled')
@@ -214,8 +214,10 @@ __WEBPACK_IMPORTED_MODULE_0_jquery___default()(function () {
       setCheckboxes(false)
 
       $radioButtons.click(function () {
-        var value = __WEBPACK_IMPORTED_MODULE_0_jquery___default()(this).val()
-        setCheckboxes(value === 'yes')
+        var $this = __WEBPACK_IMPORTED_MODULE_0_jquery___default()(this)
+        console.log($this.attr('data-checkboxes-enabled'))
+        var state = $this.attr('data-checkboxes-enabled') === 'true'
+        setCheckboxes(state)
       })
     })()
 
