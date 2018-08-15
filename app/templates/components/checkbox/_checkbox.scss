@@ -83,16 +83,21 @@
     background-color: $ruby-L60;
   }
 
-    &.disabled [type=checkbox] ~ .checkmark,
-    &.disabled:hover [type=checkbox] ~ .checkmark {
-      border-color: $grey-L52;
-      background-color: $white;
-      cursor: default;
-    }
+  &.disabled [type=checkbox] ~ .checkmark,
+  &.disabled:hover [type=checkbox] ~ .checkmark {
+    border-color: $grey-L52;
+    background-color: $white;
+    box-shadow: none;
+  }
 
-      &.disabled label,
-      &.disabled:hover label {
-        color: $grey-L52;
-        cursor: default;
-      }
+  &.disabled [type=checkbox]:checked ~ .checkmark,
+  &.disabled:hover [type=checkbox]:checked ~ .checkmark {
+    background-color: $grey-L52;
+  }
+
+  &.disabled label,
+  &.disabled:hover label {
+    color: $grey-L52;
+    cursor: default;
+  }
 }
