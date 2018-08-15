@@ -21,12 +21,12 @@
     .dropdown__option {
       @include small-font;
       width: 100%;
-      height: 41px;
+      // height: 41px;
       font-weight: 400;
       color: $grey-L20;
       background-color: $white;
       box-sizing: border-box;
-      padding: 8px 0.5em 0;
+      padding: 8px;
     }
 
     .dropdown__selected {

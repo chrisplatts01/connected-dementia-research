@@ -102,15 +102,21 @@
   <p><small>To illustrate the styling of <em>checked</em> and <em>hover</em> states, <code>.hover</code> and <code>.checked</code> classes have been added to simulate these states. These classes are not required in production where the <code>:hover</code> and <code>:checked</code> pseudo-classes are used.</small></p>
   
 <div class="dropdown-select">
-  <label>Please choose from the following options:
+  <label>Please choose an option:
     <select id="select-id">
       <option selected disabled>Select&hellip;</option>
       
-      <option value="option_1">Option 1</option>
+      <option value="guardian_(including_enduring_guardian,_public_guardian_(and_his/her_delegate)_or_interstate_guardian_[aks])">Guardian (including Enduring Guardian, Public Guardian (and his/her delegate) or Interstate Guardian [AKS])</option>
       
-      <option value="option_2">Option 2</option>
+      <option value="agent">Agent</option>
       
-      <option value="option3">Option3</option>
+      <option value="a_person_empowered_under_law_to_act_as_agent_or_in_the_best_interests_of_the_volunteer">A person empowered under law to act as agent or in the best interests of the Volunteer</option>
+      
+      <option value="substitute_decision_maker">Substitute decision maker</option>
+      
+      <option value="others_equivalent_to_the_above">Others equivalent to the above</option>
+      
+      <option value="none_of_the_above">None of the above</option>
       
     </select>
   </label>
@@ -120,15 +126,21 @@
   <div class="error">
     
 <div class="dropdown-select">
-  <label>Please choose from the following options: (Error)
+  <label>Please choose an option:
     <select id="select-id">
       <option selected disabled>Select&hellip;</option>
       
-      <option value="option_1">Option 1</option>
+      <option value="guardian_(including_enduring_guardian,_public_guardian_(and_his/her_delegate)_or_interstate_guardian_[aks])">Guardian (including Enduring Guardian, Public Guardian (and his/her delegate) or Interstate Guardian [AKS])</option>
       
-      <option value="option_2">Option 2</option>
+      <option value="agent">Agent</option>
       
-      <option value="option3">Option3</option>
+      <option value="a_person_empowered_under_law_to_act_as_agent_or_in_the_best_interests_of_the_volunteer">A person empowered under law to act as agent or in the best interests of the Volunteer</option>
+      
+      <option value="substitute_decision_maker">Substitute decision maker</option>
+      
+      <option value="others_equivalent_to_the_above">Others equivalent to the above</option>
+      
+      <option value="none_of_the_above">None of the above</option>
       
     </select>
   </label>
@@ -140,15 +152,21 @@
   <textarea class="pl-code" disabled>
     
 <div class="dropdown-select">
-  <label>Please choose from the following options:
+  <label>Please choose an option:
     <select id="select-id">
       <option selected disabled>Select&hellip;</option>
       
-      <option value="option_1">Option 1</option>
+      <option value="guardian_(including_enduring_guardian,_public_guardian_(and_his/her_delegate)_or_interstate_guardian_[aks])">Guardian (including Enduring Guardian, Public Guardian (and his/her delegate) or Interstate Guardian [AKS])</option>
       
-      <option value="option_2">Option 2</option>
+      <option value="agent">Agent</option>
       
-      <option value="option3">Option3</option>
+      <option value="a_person_empowered_under_law_to_act_as_agent_or_in_the_best_interests_of_the_volunteer">A person empowered under law to act as agent or in the best interests of the Volunteer</option>
+      
+      <option value="substitute_decision_maker">Substitute decision maker</option>
+      
+      <option value="others_equivalent_to_the_above">Others equivalent to the above</option>
+      
+      <option value="none_of_the_above">None of the above</option>
       
     </select>
   </label>
@@ -181,12 +199,12 @@
     .dropdown__option {
       @include small-font;
       width: 100%;
-      height: 41px;
+      // height: 41px;
       font-weight: 400;
       color: $grey-L20;
       background-color: $white;
       box-sizing: border-box;
-      padding: 8px 0.5em 0;
+      padding: 8px;
     }
 
     .dropdown__selected {

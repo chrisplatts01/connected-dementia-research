@@ -780,12 +780,11 @@ a.button-link:active {
   line-height: 24px;
   color: #333f48;
   width: 100%;
-  height: 41px;
   font-weight: 400;
   color: #5d7384;
   background-color: white;
   box-sizing: border-box;
-  padding: 8px 0.5em 0;
+  padding: 8px;
 }
 
 .dropdown-select .dropdown .dropdown__selected {

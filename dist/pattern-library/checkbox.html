@@ -213,15 +213,13 @@
   &.disabled [type=checkbox] ~ .checkmark,
   &.disabled:hover [type=checkbox] ~ .checkmark {
     border-color: $grey-L52;
-    background-color: $grey-L52;
-    cursor: default;
+    background-color: $white;
+    box-shadow: none;
   }
 
   &.disabled [type=checkbox]:checked ~ .checkmark,
   &.disabled:hover [type=checkbox]:checked ~ .checkmark {
-    border-color: $grey-L52;
     background-color: $grey-L52;
-    cursor: default;
   }
 
   &.disabled label,
