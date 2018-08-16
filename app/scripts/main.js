@@ -138,7 +138,11 @@ $(function () {
         }
       }
 
-      setCheckboxes(false)
+      $radioButtons.each(function () {
+        var $this = $(this)
+        var state = $this.attr('data-checkboxes-enabled') === 'true'
+        setCheckboxes(state)
+      })
 
       $radioButtons.click(function () {
         var $this = $(this)
