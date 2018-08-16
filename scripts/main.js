@@ -211,7 +211,11 @@ __WEBPACK_IMPORTED_MODULE_0_jquery___default()(function () {
         }
       }
 
-      setCheckboxes(false)
+      $radioButtons.each(function () {
+        var $this = __WEBPACK_IMPORTED_MODULE_0_jquery___default()(this)
+        var state = $this.attr('data-checkboxes-enabled') === 'true'
+        setCheckboxes(state)
+      })
 
       $radioButtons.click(function () {
         var $this = __WEBPACK_IMPORTED_MODULE_0_jquery___default()(this)
