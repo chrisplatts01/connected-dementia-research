@@ -102,7 +102,7 @@
   
 <div class="input-field input-field--text">
   <label>Field label
-    <input id="input-field" type="text" placeholder=""   />
+    <input id="input-field" name="input-field" type="text" placeholder=""   />
   </label>
 </div>
 
@@ -112,7 +112,7 @@
     
 <div class="input-field input-field--text">
   <label>Field label
-    <input id="input-field" type="text" placeholder=""   />
+    <input id="input-field" name="input-field" type="text" placeholder=""   />
   </label>
 </div>
 
@@ -165,7 +165,8 @@
     border-color: $coral;
   }
 
-  &.error input {
+  &.error input,
+  & input.error {
     border: 3px solid $ruby;
   }
 }

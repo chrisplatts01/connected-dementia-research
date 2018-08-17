@@ -61,12 +61,12 @@
 
 
   
-<form id="your-details" action="#" method="get">
+<form id="your-details" name="your-details" action="#" method="get">
   
   
 <div class="input-field input-field--text input-field--short">
   <label>Title
-    <input id="name" type="text" placeholder=""   />
+    <input id="name" name="name" type="text" placeholder=""   />
   </label>
 </div>
 
@@ -74,7 +74,7 @@
   
 <div class="input-field input-field--text">
   <label>First name(s)
-    <input id="first-name" type="text" placeholder=""   />
+    <input id="first-name" name="first-name" type="text" placeholder=""   />
   </label>
 </div>
 
@@ -82,7 +82,7 @@
   
 <div class="input-field input-field--text">
   <label>Surname
-    <input id="surname" type="text" placeholder=""   />
+    <input id="surname" name="surname" type="text" placeholder=""   />
   </label>
 </div>
 
@@ -92,17 +92,17 @@
   <legend>Date of birth</legend>
   <div class="input-field input-field--text input-field--short">
     <label>Day (DD)
-      <input id="date-day" type="number" />
+      <input id="date-day" name="date-day" type="number"   />
     </label>
   </div>
   <div class="input-field input-field--text input-field--short">
     <label>Month (MM)
-      <input id="date-month" type="number" />
+      <input id="date-month" name="date-month" type="number"   />
     </label>
   </div>
   <div class="input-field input-field--text input-field--short">
     <label>Year (YYYY)
-      <input id="date-year" type="number" />
+      <input id="date-year" name="date-year" type="number"   />
     </label>
   </div>
 </fieldset>
@@ -112,10 +112,10 @@
 <div class="segmented-control segmented-control--2-across">
   <p class="label">Sex</p>
   
-  <input id="sex-male" name="sex" type="radio" />
+  <input id="sex-male" name="sex" type="radio"   />
   <label for="sex-male">Male</label>
   
-  <input id="sex-female" name="sex" type="radio" />
+  <input id="sex-female" name="sex" type="radio"   />
   <label for="sex-female">Female</label>
   
 </div>
@@ -124,7 +124,7 @@
   
 <div class="input-field input-field--text input-field--postcode-lookup input-field--short">
   <label>Postcode
-    <input id="postcoode" type="text" />
+    <input id="postcoode" name="postcoode" type="text" />
   </label>
   <button class="button button--secondary button--postcode-find" type="button">Find</button>
   <a class="link link--enter-manually" href="#">or enter manually</a>
@@ -134,7 +134,7 @@
   
 <div class="input-field input-field--text">
   <label>Telephone number
-    <input id="telephone" type="text" placeholder=""   />
+    <input id="telephone" name="telephone" type="text" placeholder=""   />
   </label>
 </div>
 
@@ -142,7 +142,7 @@
   
 <div class="dropdown-select">
   <label>How did you hear about us? (optional)
-    <select id="how-heard">
+    <select id="how-heard" name="how-heard"  >
       <option selected disabled>Select&hellip;</option>
       
       <option value="option_1">Option 1</option>
@@ -157,7 +157,7 @@
   
 <div class="checkbox">
   <label>
-    <input id="contact" name="contact" type="checkbox" />
+    <input id="contact" name="contact" type="checkbox"   />
     Please keep me up to date with the Joint Dementia Research newsletter
     <span class="checkmark"></span>
   </label>
@@ -177,8 +177,6 @@
 
   
 </form>
-
-
 
 
 </div>
