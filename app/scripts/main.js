@@ -135,6 +135,7 @@ $(function () {
         } else {
           $checkboxes.addClass('disabled')
           $inputs.prop('disabled', true)
+          $checkboxes.find('input:checkbox').prop('checked', false)
         }
       }
 
