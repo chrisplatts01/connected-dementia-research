@@ -1,6 +1,6 @@
 <div class="dropdown-select">
   <label>{{ label }}
-    <select id="{{ id }}">
+    <select id="{{ id }}" name="{{ id }}" {{ disabled }} {{ validation }}>
       <option selected disabled>Select&hellip;</option>
       {% for option in options %}
       <option value="{{ option | lower | replace(' ', '_') }}">{{ option }}</option>

@@ -697,13 +697,15 @@ a.button-link:active {
 }
 
 .checkbox-group {
+  position: relative;
   border: none;
-  padding: 0;
-  margin: 0;
+  margin-bottom: 32px;
 }
 
 .conditional-checkbox-group {
+  position: relative;
   border: 0;
+  margin-bottom: 32px;
 }
 
 .conditional-checkbox-group .checkboxes {
@@ -711,9 +713,9 @@ a.button-link:active {
 }
 
 .date-field-group {
+  position: relative;
   border: none;
-  padding: 0;
-  margin: 0 -6px 0 -10px;
+  margin: 0 -6px 32px -10px;
 }
 
 .date-field-group::after {
@@ -748,6 +750,7 @@ a.button-link:active {
 }
 
 .dropdown-select {
+  position: relative;
   margin-bottom: 32px;
 }
 
@@ -894,8 +897,9 @@ a.button-link:active {
 }
 
 .file-upload {
+  position: relative;
   width: 360px;
-  margin: 0 auto;
+  margin: 0 auto 32px;
 }
 
 .file-upload__uploader {
@@ -1000,6 +1004,28 @@ a.button-link:active {
   background: url("/images/icon-delete.svg") top center no-repeat;
 }
 
+form label.error {
+  font-family: "Calibri", "Helvetica", "Arial", sans-serif;
+  font-size: 19px;
+  font-weight: 700;
+  line-height: 24px;
+  color: #333f48;
+  position: absolute;
+  bottom: -28px;
+  left: 0;
+  display: inline-block;
+  color: #a6093d;
+  padding: 8px 0 0;
+  text-align: left;
+}
+
+form label.error:before {
+  position: relative;
+  top: 2px;
+  padding-right: 0.5rem;
+  content: url("/images/icon-error.svg");
+}
+
 .heading {
   font-family: "Montserrat", "Helvetica", "Arial", sans-serif;
   font-size: 28px;
@@ -1010,7 +1036,8 @@ a.button-link:active {
 }
 
 .input-field {
-  margin-bottom: 28px;
+  position: relative;
+  margin-bottom: 32px;
 }
 
 .input-field.input-field--short input {
@@ -1067,7 +1094,8 @@ a.button-link:active {
   border-color: #f15b5b;
 }
 
-.input-field.error input {
+.input-field.error input,
+.input-field input.error {
   border: 3px solid #a6093d;
 }
 
@@ -1104,7 +1132,7 @@ a.button-link:active {
 }
 
 .page-navigation {
-  margin: 28px 0;
+  margin: 64px 0;
 }
 
 .page-navigation::after {
@@ -1152,6 +1180,8 @@ p, .paragraph {
   font-weight: 400;
   line-height: 24px;
   color: #333f48;
+  position: relative;
+  margin-bottom: 32px;
 }
 
 .input-field--postcode-lookup .button--postcode-find,
@@ -1219,8 +1249,8 @@ p, .paragraph {
 }
 
 .radio-button {
-  display: block;
   position: relative;
+  display: block;
   margin-bottom: 16px;
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -1313,13 +1343,15 @@ p, .paragraph {
 }
 
 .radio-button-group {
+  position: relative;
   border: none;
-  padding: 0;
+  margin-bottom: 32px;
   margin: 0;
 }
 
 .segmented-control {
-  padding-bottom: 29px;
+  position: relative;
+  margin-bottom: 32px;
   text-align: center;
 }
 

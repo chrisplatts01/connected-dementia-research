@@ -1,0 +1,19 @@
+form {
+  label.error {
+    @include message-font();
+    position: absolute;
+    bottom: -28px;
+    left: 0;
+    display: inline-block;
+    color: $ruby;
+    padding: 8px 0 0;
+    text-align: left;
+
+    &:before {
+      position: relative;
+      top: 2px;
+      padding-right: 0.5rem;
+      content: url('/images/icon-error.svg');
+    }
+  }
+}
