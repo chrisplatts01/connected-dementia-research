@@ -1,5 +1,7 @@
 .input-field--postcode-lookup {
   @include small-font();
+  position: relative;
+  margin-bottom: 32px;
 
   .button--postcode-find,
   .link--enter-manually {

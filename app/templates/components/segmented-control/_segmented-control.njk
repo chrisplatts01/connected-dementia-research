@@ -1,7 +1,7 @@
 <div class="segmented-control segmented-control--{{ options | length }}-across">
   <p class="label">{{ label }}</p>
   {% for option in options %}
-  <input id="{{ id }}-{{ option | lower | replace(' ', '_') }}" name="{{ id }}" type="radio" />
+  <input id="{{ id }}-{{ option | lower | replace(' ', '_') }}" name="{{ id }}" type="radio" {{ disabled }} {{ validation }} />
   <label for="{{ id }}-{{ option | lower | replace(' ', '_') }}">{{ option }}</label>
   {% endfor %}
 </div>

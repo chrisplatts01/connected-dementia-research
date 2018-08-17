@@ -36,7 +36,7 @@
 {% include 'components/form/_form.njk' %}
 {% endmacro %}
 
-{% macro inputField(label, id, name, type='text', size='', placeholder='', disabled='', validation='') %}
+{% macro inputField(label, id, type='text', size='', placeholder='', disabled='', validation='') %}
 {% include 'components/input-field/_input-field.njk' %}
 {% endmacro %}
 
@@ -44,39 +44,35 @@
 {% include 'components/input-field/_input-field.njk' %}
 {% endmacro %}
 
-{% macro passwordField(label, id, name, size='long', placeholder='', disabled='', validation='') %}
+{% macro passwordField(label, id, size='long', placeholder='', disabled='', validation='') %}
 {% include 'components/password-field/_password-field.njk' %}
 {% endmacro %}
 
-{% macro checkbox(label, id) %}
+{% macro checkbox(label, id, disabled='', validation='') %}
 {% include 'components/checkbox/_checkbox.njk' %}
 {% endmacro %}
 
-{% macro radioButton(label, id) %}
+{% macro radioButton(label, id, disabled='', validation='') %}
 {% include 'components/radio-button/_radio-button.njk' %}
 {% endmacro %}
 
-{% macro checkboxGroup(id, options=['Checkbox label']) %}
+{% macro checkboxGroup(id, options=['Checkbox label'], disabled='', validation='') %}
 {% include 'components/checkbox-group/_checkbox-group.njk' %}
 {% endmacro %}
 
-{% macro radioButtonGroup(id, options=['Radio button label']) %}
+{% macro radioButtonGroup(id, options=['Radio button label'], disabled='', validation='') %}
 {% include 'components/radio-button-group/_radio-button-group.njk' %}
 {% endmacro %}
 
-{% macro conditionalCheckboxGroup(id, options=[{ label: 'Label', id: 'id' }]) %}
+{% macro conditionalCheckboxGroup(id, options=[{ label: 'Label', id: 'id' }], disabled='', validation='') %}
 {% include 'components/conditional-checkbox-group/_conditional-checkbox-group.njk' %}
 {% endmacro %}
 
-{# Radio button group #}
-
-{# Conditional checkbox group #}
-
-{% macro dropdownSelect(label, id, options) %}
+{% macro dropdownSelect(label, id, options, disabled='', validation='') %}
 {% include 'components/dropdown-select/_dropdown-select.njk' %}
 {% endmacro %}
 
-{% macro segmentedControl(label='Sex', id='sex', options=['Male', 'Female']) %}
+{% macro segmentedControl(label='Sex', id='sex', options=['Male', 'Female'], disabled='', validation='') %}
 {% include 'components/segmented-control/_segmented-control.njk' %}
 {% endmacro %}
 
@@ -84,7 +80,7 @@
 {% include 'components/button/_button.njk' %}
 {% endmacro %}
 
-{% macro dateFieldGroup(legend='Date of birth', id="date")%}
+{% macro dateFieldGroup(legend='Date of birth', id="date", disabled='', validation='')%}
 {% include 'components/date-field-group/_date-field-group.njk' %}
 {% endmacro %}
 

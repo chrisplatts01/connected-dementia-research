@@ -1,7 +1,15 @@
 import $ from 'jquery'
-import * from 'jquery-validation'
+import validate from 'jquery-validation'
+import valid from 'jquery-validation'
+import rules from 'jquery-validation'
 
 $(function () {
+  /**
+   * IIFE to handle form va;idation using the jquery-validation plugin
+   */
+  var formValidation = (function () {
+    $('form').validate()
+  }())
   /**
     * IIFE to handle password show/hide
     */

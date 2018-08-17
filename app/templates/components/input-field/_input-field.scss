@@ -1,5 +1,6 @@
 .input-field {
-  margin-bottom: 28px;
+  position: relative;
+  margin-bottom: 32px;
 
   &.input-field--short {
     input {
@@ -43,7 +44,8 @@
     border-color: $coral;
   }
 
-  &.error input {
+  &.error input,
+  & input.error {
     border: 3px solid $ruby;
   }
 }

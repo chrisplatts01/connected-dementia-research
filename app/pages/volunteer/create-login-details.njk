@@ -9,14 +9,14 @@
   {{ volunteer.heading('Create login details') }}
   {{ volunteer.paragraph('Thank you. The next step is to tell us how to contact you and create an account so that you can log back in, see your study matches and manage your account. Your email address will be your username.') }}
   {% call volunteer.form('create-login-details', '#', 'get') %}
-  {{ volunteer.inputField('Email address', 'email', 'email') }}
-  {{ volunteer.passwordField('Password', 'password') }}
+  {{ volunteer.inputField('Email address', 'email', 'email', validation='required') }}
+  {{ volunteer.passwordField('Password', 'password', validation='required') }}
   {{ volunteer.prompt('Your password must be at least 8 characters, and contain at least one uppercase, lowercase and numeric character.') }}
-  {{ volunteer.passwordField('Confirm password', 'confirm-password') }}
-  {{ volunteer.inputField('Security question', 'security-question') }}
-  {{ volunteer.inputField('Security answer', 'security-answer') }}
+  {{ volunteer.passwordField('Confirm password', 'confirm-password', validation='required') }}
+  {{ volunteer.inputField('Security question', 'security-question', validation='required') }}
+  {{ volunteer.inputField('Security answer', 'security-answer', validation='required') }}
   {{ volunteer.prompt('We use your security question to help verify your identity if you forget your password.') }}
-  {{ volunteer.checkbox('I agree to the <a href="#">Terms &amp; Conditions</a>.' | safe, 'terms')}}
+  {{ volunteer.checkbox('I agree to the <a href="#">Terms &amp; Conditions</a>.' | safe, 'terms', validation='required')}}
   {{ volunteer.pageNavigation({label: 'Back', url: '/volunteer/your-details.html'}, {label: 'Create login', url: '/volunteer/consent.html'}) }}
   {% endcall %}
 </div>

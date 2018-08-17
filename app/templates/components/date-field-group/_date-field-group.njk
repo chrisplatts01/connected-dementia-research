@@ -2,17 +2,17 @@
   <legend>{{ legend }}</legend>
   <div class="input-field input-field--text input-field--short">
     <label>Day (DD)
-      <input id="{{ id }}-day" type="number" />
+      <input id="{{ id }}-day" name="{{ id }}-day" type="number" {{ disabled }} {{ validation }} />
     </label>
   </div>
   <div class="input-field input-field--text input-field--short">
     <label>Month (MM)
-      <input id="{{ id }}-month" type="number" />
+      <input id="{{ id }}-month" name="{{ id }}-month" type="number" {{ disabled }} {{ validation }} />
     </label>
   </div>
   <div class="input-field input-field--text input-field--short">
     <label>Year (YYYY)
-      <input id="{{ id }}-year" type="number" />
+      <input id="{{ id }}-year" name="{{ id }}-year" type="number" {{ disabled }} {{ validation }} />
     </label>
   </div>
 </fieldset>
