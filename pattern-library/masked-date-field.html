@@ -99,24 +99,35 @@
     </nav>
     <main class="pl-main" role="main">
       
-  <h1 class="pl-heading">Question</h1>
+  <h1 class="pl-heading">Masked date field</h1>
   
-<p class="question">Are you registering for yourself or on behalf of someone else?</p>
+<form action="#">
+<div class="input-field input-field--masked-date">
+  <label>Date of birth
+    <input id="dob" name="date" type="text" placeholder="dd/mm/yyyy" required />
+  </label>
+</div>
+<input type="submit" />
+</form>
 
 
   <h2 class="pl-heading">HTML</h2>
   <textarea class="pl-code" disabled>
     
-<p class="question">Are you registering for yourself or on behalf of someone else?</p>
+<form action="#">
+<div class="input-field input-field--masked-date">
+  <label>Date of birth
+    <input id="dob" name="date" type="text" placeholder="dd/mm/yyyy" required />
+  </label>
+</div>
+<input type="submit" />
+</form>
 
 
   </textarea>
   <h2 class="pl-heading">SCSS</h2>
   <textarea class="pl-code" disabled>
-    .question {
-  @include bold-font();
-}
-
+    
   </textarea>
 
     </main>

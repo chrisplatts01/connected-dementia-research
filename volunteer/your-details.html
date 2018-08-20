@@ -88,24 +88,28 @@
 
 
   
-<fieldset class="date-field-group">
+<form action="#">
+<fieldset id="date" class="date-field-group">
   <legend>Date of birth</legend>
   <div class="input-field input-field--text input-field--short">
     <label>Day (DD)
-      <input id="date-day" name="date-day" type="number"   />
+      <input id="date-day" name="date-field-day" type="number"    />
     </label>
   </div>
   <div class="input-field input-field--text input-field--short">
     <label>Month (MM)
-      <input id="date-month" name="date-month" type="number"   />
+      <input id="date-month" name="date-field-month" type="number"    />
     </label>
   </div>
   <div class="input-field input-field--text input-field--short">
     <label>Year (YYYY)
-      <input id="date-year" name="date-year" type="number"   />
+      <input id="date-year" name="date-field-year" type="number"    />
     </label>
   </div>
+  <!-- input id="date-date" name="date-field-date" type="text" / -->
 </fieldset>
+<input type="submit" />
+</form>
 
 
   
