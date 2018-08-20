@@ -44,6 +44,10 @@
 {% include 'components/input-field/_input-field.njk' %}
 {% endmacro %}
 
+{% macro maskedDateField(label, id, type='text', size='', placeholder='', disabled='', validation='') %}
+{% include 'components/masked-date-field/_masked-date-field.njk' %}
+{% endmacro %}
+
 {% macro passwordField(label, id, size='long', placeholder='', disabled='', validation='') %}
 {% include 'components/password-field/_password-field.njk' %}
 {% endmacro %}

@@ -1,15 +1,134 @@
 import $ from 'jquery'
-import validate from 'jquery-validation'
-import valid from 'jquery-validation'
-import rules from 'jquery-validation'
+import jqueryValidation from 'jquery-validation'
+import additionalMethods from 'jquery-validation/dist/additional-methods'
+import jqueryMaskPlugin from 'jquery-mask-plugin'
+import datejs from '../scripts/vendor/datejs/build/date-en-GB.js'
+import i18n from '../scripts/vendor/datejs/i18n/en-GB.js'
 
 $(function () {
   /**
    * IIFE to handle form va;idation using the jquery-validation plugin
    */
   var formValidation = (function () {
-    $('form').validate()
+    $.validator.addMethod('dateUK', function (value, element) {
+      var rawDate = value
+      var parsedDate = Date.parseExact(value, 'd/M/yyyy')
+      console.log(rawDate)
+      console.log(parsedDate)
+      return Date.parseExact(value, 'd/M/yyyy')
+    }, 'Please enter a valid date')
+
+    $.validator.addMethod('dateGroup', function (value, element) {
+      var $dateFieldGroup = $(element).closest('.date-field-group')
+      var day = $dateFieldGroup.find('input[name="date-field-day"]').val()
+      var month = $dateFieldGroup.find('input[name="date-field-month"]').val()
+      var year = $dateFieldGroup.find('input[name="date-field-year"]').val()
+      var date = day + '/' + month + '/' + year
+      var parsedDate = Date.parseExact(date, 'dd/MM/yyyy')
+      return parsedDate !== null
+    })
+
+    $('form').each(function () {
+      var $form = $(this)
+      $form.validate({
+        debug: true,
+        groups: {
+          dateGroup: 'date-field-day date-field-month date-field-year'
+        },
+        rules: {
+          'date-field-day': {
+            required: true,
+            number: true,
+            min: 1,
+            max: 31,
+            minlength: 2,
+            maxlength: 2,
+            dateGroup: true
+          },
+          'date-field-month': {
+            required: true,
+            number: true,
+            min: 1,
+            max: 12,
+            minlength: 2,
+            maxlength: 2,
+            dateGroup: true
+          },
+          'date-field-year': {
+            required: true,
+            number: true,
+            min: 1900,
+            minlength: 4,
+            maxlength: 4,
+            dateGroup: true
+          },
+          'date': 'dateUK',
+          'date-field-datex': 'dateUK'
+        },
+        messages: {
+          'date-field-day': {
+            required: 'Please enter values for day, month and year',
+            number: 'Please enter a number',
+            min: 'Please enter a value of at least {0}',
+            max: 'Please enter a value no greater than {0}',
+            minlength: 'Please enter exactly {0} digits',
+            maxlength: 'Please enter exactly {0} digits',
+            dateGroup: 'Please enter a valid date'
+          },
+          'date-field-month': {
+            required: 'Please enter values for day, month and year',
+            number: 'Please enter a number',
+            min: 'Please enter a value of at least {0}',
+            max: 'Please enter a value no greater than {0}',
+            minlength: 'Please enter exactly {0} digits',
+            maxlength: 'Please enter exactly {0} digits',
+            dateGroup: 'Please enter a valid date'
+          },
+          'date-field-year': {
+            required: 'Please enter values for day, month and year',
+            number: 'Please enter a valid date',
+            min: 'Please enter a value of at least {0}',
+            max: 'Please enter a value no greater than {0}',
+            minlength: 'Please enter exactly {0} digits',
+            maxlength: 'Please enter exactly {0} digits',
+            dateGroup: 'Please enter a valid date'
+          }
+        }
+      })
+    })
   }())
+
+  /**
+   * IIFE to handle date field group
+   */
+  // var dateFieldGroup = (function () {
+  //   var $dateFieldGroup = $('.date-field-group')
+  //
+  //   $dateFieldGroup.each(function () {
+  //     var $dateGroup = $(this)
+  //     var $dateField = $dateGroup.find('input[type="number"]')
+  //
+  //     $dateField.on('keyup', function () {
+  //       var $field = $(this)
+  //       var day = $field.closest($dateFieldGroup).find('input[name="date-field-day"]').val()
+  //       var month = $field.closest($dateFieldGroup).find('input[name="date-field-month"]').val()
+  //       var year = $field.closest($dateFieldGroup).find('input[name="date-field-year"]').val()
+  //       var date = day + '/' + month + '/' + year
+  //
+  //       $dateFieldGroup.find('input[name="date-field-date"]').val(date)
+  //     })
+  //   })
+  // }())
+
+  /**
+   * IIFE to handle masked date fields
+   */
+   var maskedDateField = (function () {
+     var $maskedDateField = $('.input-field--masked-date').find('input[name="date"]')
+
+     $maskedDateField.mask('00/00/0000')
+   }())
+
   /**
     * IIFE to handle password show/hide
     */
@@ -20,7 +139,6 @@ $(function () {
     $passwordShow.click(function () {
       var $this = $(this)
       var $passwordInput = $this.prev('label').children('input')
-
 
       if ($passwordInput.attr('type') === 'password') {
         $passwordInput.attr('type', 'text')

@@ -2,7 +2,7 @@ form {
   label.error {
     @include message-font();
     position: absolute;
-    bottom: -28px;
+    top: 72px;
     left: 0;
     display: inline-block;
     color: $ruby;

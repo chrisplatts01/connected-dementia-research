@@ -715,7 +715,8 @@ a.button-link:active {
 .date-field-group {
   position: relative;
   border: none;
-  margin: 0 -6px 32px -10px;
+  margin: 0 0 32px;
+  padding: 0;
 }
 
 .date-field-group::after {
@@ -732,21 +733,21 @@ a.button-link:active {
   color: #333f48;
   display: block;
   font-weight: bold;
-  margin: 0 0 4px 8px;
+  margin: 0 0 4px;
+  padding: 0;
 }
 
 .date-field-group .input-field {
-  width: 33%;
-  float: left;
-  padding: 0 10px;
-}
-
-.date-field-group .input-field:first-child {
-  padding-left: 0;
+  display: inline-block;
+  padding: 0 10px 0 0;
 }
 
 .date-field-group .input-field:last-child {
   padding-right: 0;
+}
+
+form .date-field-group label.error {
+  width: 480px;
 }
 
 .dropdown-select {
@@ -1011,7 +1012,7 @@ form label.error {
   line-height: 24px;
   color: #333f48;
   position: absolute;
-  bottom: -28px;
+  top: 72px;
   left: 0;
   display: inline-block;
   color: #a6093d;
@@ -1097,6 +1098,10 @@ form label.error:before {
 .input-field.error input,
 .input-field input.error {
   border: 3px solid #a6093d;
+}
+
+.input-field--masked-date input {
+  width: 160px;
 }
 
 .message {

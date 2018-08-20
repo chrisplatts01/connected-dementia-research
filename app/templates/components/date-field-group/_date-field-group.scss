@@ -2,21 +2,34 @@
   @include clearfix();
   position: relative;
   border: none;
-  margin: 0 -6px 32px -10px;
+  margin: 0 0 32px;
+  padding: 0;
 
   legend {
     @include small-font();
     display: block;
     font-weight: bold;
-    margin: 0 0 4px 8px;
+    margin: 0 0 4px;
+    padding: 0;
   }
 
   .input-field {
-    width: 33%;
-    float: left;
-    padding: 0 10px;
+    // width: 33%;
+    // float: left;
+    display: inline-block;
+    padding: 0 10px 0 0;
 
-    &:first-child { padding-left: 0 }
+//     &:first-child { padding-left: 0 }
     &:last-child { padding-right: 0 }
+  }
+
+  input[name="date-field-date"] {
+    // @include hide-visually;
+  }
+
+  form & label.error {
+    // position:absolute;
+    // top: 72px;
+    width: 480px;
   }
 }
