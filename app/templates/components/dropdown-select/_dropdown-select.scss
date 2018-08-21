@@ -8,7 +8,7 @@
   }
 
   select {
-    display: none;
+    @include hide-visually;
   }
 
   .dropdown {
@@ -52,13 +52,17 @@
         color: $white;
         background-color: $coral;
 
+        &:hover {
+          background-color: $coral-D20;
+        }
+
         &:after {
           background-image: url('/images/arrow-down-white.svg');
         }
       }
 
       &:hover {
-        border-color: $coral;
+        border-color: $coral-D20;
       }
     }
 

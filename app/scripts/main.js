@@ -99,28 +99,6 @@ $(function () {
   }())
 
   /**
-   * IIFE to handle date field group
-   */
-  // var dateFieldGroup = (function () {
-  //   var $dateFieldGroup = $('.date-field-group')
-  //
-  //   $dateFieldGroup.each(function () {
-  //     var $dateGroup = $(this)
-  //     var $dateField = $dateGroup.find('input[type="number"]')
-  //
-  //     $dateField.on('keyup', function () {
-  //       var $field = $(this)
-  //       var day = $field.closest($dateFieldGroup).find('input[name="date-field-day"]').val()
-  //       var month = $field.closest($dateFieldGroup).find('input[name="date-field-month"]').val()
-  //       var year = $field.closest($dateFieldGroup).find('input[name="date-field-year"]').val()
-  //       var date = day + '/' + month + '/' + year
-  //
-  //       $dateFieldGroup.find('input[name="date-field-date"]').val(date)
-  //     })
-  //   })
-  // }())
-
-  /**
    * IIFE to handle masked date fields
    */
    var maskedDateField = (function () {
@@ -211,6 +189,7 @@ $(function () {
           // Set state of select element
           var value = $select.find('.dropdown__option.selected').attr('data-value')
           $select.removeClass('error')
+          $select.parents('.error').removeClass('error')
           $select.find('option').first().removeAttr('selected')
           $select.find('option[value="' + value + '"]').prop('selected', true)
           $select.find('select').val(value)
@@ -256,25 +235,37 @@ $(function () {
         var $checkboxes = $conditionalCheckboxGroup.find('.checkbox')
         var $inputs = $checkboxes.find('input:checkbox')
 
+        console.log(state)
+
         if (state) {
+          console.log('Enabling checkboxes')
           $checkboxes.removeClass('disabled')
           $inputs.prop('disabled', false)
         } else {
+          console.log('Disabling checkboxes')
           $checkboxes.addClass('disabled')
           $inputs.prop('disabled', true)
+
+          console.log('Unchecking checkboxes')
           $checkboxes.find('input:checkbox').prop('checked', false)
         }
       }
 
       $radioButtons.each(function () {
         var $this = $(this)
-        var state = $this.attr('data-checkboxes-enabled') === 'true'
-        setCheckboxes(state)
+        var isChecked = $this.attr('checked') === 'checked'
+
+        console.log('IS_CHECKED - ' + isChecked)
+        if (isChecked) {
+          var state = $this.attr('data-checkboxes-enabled') === 'true'
+
+          console.log('STATE = ' + state)
+          setCheckboxes(state)
+        }
       })
 
       $radioButtons.click(function () {
         var $this = $(this)
-        console.log($this.attr('data-checkboxes-enabled'))
         var state = $this.attr('data-checkboxes-enabled') === 'true'
         setCheckboxes(state)
       })
