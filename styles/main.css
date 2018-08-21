@@ -765,7 +765,16 @@ form .date-field-group label.error {
 }
 
 .dropdown-select select {
-  display: none;
+  border: 0;
+  clip: rect(1px, 1px, 1px, 1px);
+  -webkit-clip-path: inset(100%);
+          clip-path: inset(100%);
+  height: 1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
 }
 
 .dropdown-select .dropdown {
@@ -815,12 +824,16 @@ form .date-field-group label.error {
   background-color: #f15b5b;
 }
 
+.dropdown-select .dropdown.selected .dropdown__selected:hover {
+  background-color: #d41212;
+}
+
 .dropdown-select .dropdown.selected .dropdown__selected:after {
   background-image: url("/images/arrow-down-white.svg");
 }
 
 .dropdown-select .dropdown.selected:hover {
-  border-color: #f15b5b;
+  border-color: #d41212;
 }
 
 .dropdown-select .dropdown .dropdown__option {
