@@ -1,12 +1,11 @@
 form {
-  label.error {
+  label.error,
+  div.error {
     @include message-font();
-    position: absolute;
-    top: 72px;
-    left: 0;
-    display: inline-block;
+    display: block;
+    margin-top: 8px;
+    padding-bottom: 0;
     color: $ruby;
-    padding: 8px 0 0;
     text-align: left;
 
     &:before {

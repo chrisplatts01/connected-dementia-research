@@ -13,8 +13,6 @@ $(function () {
     $.validator.addMethod('dateUK', function (value, element) {
       var rawDate = value
       var parsedDate = Date.parseExact(value, 'd/M/yyyy')
-      console.log(rawDate)
-      console.log(parsedDate)
       return Date.parseExact(value, 'd/M/yyyy')
     }, 'Please enter a valid date')
 
@@ -92,6 +90,10 @@ $(function () {
             maxlength: 'Please enter exactly {0} digits',
             dateGroup: 'Please enter a valid date'
           }
+        },
+        errorElement: 'div',
+        errorPlacement: function (error, element) {
+          error.appendTo(element.closest('.form__field'))
         }
       })
     })
@@ -186,7 +188,7 @@ $(function () {
           // Set state of select element
           var value = $select.find('.dropdown__option.selected').attr('data-value')
           $select.removeClass('error')
-          $select.parents('.error').removeClass('error')
+          $select.find('label.error').remove()
           $select.find('option').first().removeAttr('selected')
           $select.find('option[value="' + value + '"]').prop('selected', true)
           $select.find('select').val(value)
@@ -244,18 +246,13 @@ $(function () {
       var $checkboxes = $conditionalCheckboxGroup.find('.checkbox')
       var $inputs = $checkboxes.find('input:checkbox')
 
-      console.log(state)
-
       if (state) {
-        console.log('Enabling checkboxes')
         $checkboxes.removeClass('disabled')
         $inputs.prop('disabled', false)
       } else {
-        console.log('Disabling checkboxes')
         $checkboxes.addClass('disabled')
         $inputs.prop('disabled', true)
 
-        console.log('Unchecking checkboxes')
         $checkboxes.find('input:checkbox').prop('checked', false)
       }
     }
@@ -264,11 +261,8 @@ $(function () {
       var $this = $(this)
       var isChecked = $this.attr('checked') === 'checked'
 
-      console.log('IS_CHECKED - ' + isChecked)
       if (isChecked) {
         var state = $this.attr('data-checkboxes-enabled') === 'true'
-
-        console.log('STATE = ' + state)
         setCheckboxes(state)
       }
     })
@@ -285,12 +279,27 @@ $(function () {
       */
     var segmentedControl = (function () {
       var $segmentedControl = $('.segmented-control')
+
+      // Handle form submission with no selection
+      $segmentedControl.closest('form').on('submit', function () {
+        var $this = $(this)
+        var $control = $this.find('.segmented-control')
+        $control.each(function () {
+          var $this = $(this)
+          console.log($this.html())
+          if ($this.find('input:radio').hasClass('error')) {
+            $this.addClass('invalid')
+            $this.find('.segmented-control__label').addClass('invalid')
+          }
+        })
+      })
+
+      // Handle click event
       $segmentedControl.click(function () {
         var $this = $(this)
-        var $parent = $this.parent('.segmented-control')
         var $input = $this.find('[type=radio]')
-        $parent.find('label').removeClass('checked').removeClass('error')
-        $this.addClass('checked')
+        var $label = $this.find('.segmented-control__label')
+        $label.removeClass('checked').removeClass('invalid')
         $input.attr('checked', 'checked')
       })
     })()

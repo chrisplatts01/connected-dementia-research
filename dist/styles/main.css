@@ -716,13 +716,13 @@ a.button-link:active {
 .checkbox-group {
   position: relative;
   border: none;
-  margin-bottom: 32px;
+  margin-bottom: 28px;
 }
 
 .conditional-checkbox-group {
   position: relative;
   border: 0;
-  margin-bottom: 32px;
+  margin-bottom: 28px;
 }
 
 .conditional-checkbox-group .checkboxes {
@@ -732,7 +732,7 @@ a.button-link:active {
 .date-field-group {
   position: relative;
   border: none;
-  margin: 0 0 32px;
+  margin: 0 0 28px;
   padding: 0;
 }
 
@@ -757,6 +757,7 @@ a.button-link:active {
 .date-field-group .input-field {
   display: inline-block;
   padding: 0 10px 0 0;
+  margin-bottom: 0;
 }
 
 .date-field-group .input-field:last-child {
@@ -769,7 +770,7 @@ form .date-field-group label.error {
 
 .dropdown-select {
   position: relative;
-  margin-bottom: 40px;
+  margin-bottom: 28px;
 }
 
 .dropdown-select label {
@@ -796,7 +797,7 @@ form .date-field-group label.error {
 
 .dropdown-select .dropdown {
   display: block;
-  margin: 8px 0 16px 0;
+  margin: 8px 0 0;
   box-sizing: border-box;
   border: 2px solid #b8c4cc;
   box-shadow: 0 4px 0 0 #d0d7dd;
@@ -923,14 +924,10 @@ form .date-field-group label.error {
   background-image: url("/images/arrow-down-orange.svg");
 }
 
-.dropdown-select label.error {
-  top: 80px;
-}
-
 .file-upload {
   position: relative;
   width: 360px;
-  margin: 0 auto 32px;
+  margin: 0 auto 28px;
 }
 
 .file-upload__uploader {
@@ -1035,22 +1032,22 @@ form .date-field-group label.error {
   background: url("/images/icon-delete.svg") top center no-repeat;
 }
 
-form label.error {
+form label.error,
+form div.error {
   font-family: "Calibri", "Helvetica", "Arial", sans-serif;
   font-size: 19px;
   font-weight: 700;
   line-height: 24px;
   color: #333f48;
-  position: absolute;
-  top: 72px;
-  left: 0;
-  display: inline-block;
+  display: block;
+  margin-top: 8px;
+  padding-bottom: 0;
   color: #a6093d;
-  padding: 8px 0 0;
   text-align: left;
 }
 
-form label.error:before {
+form label.error:before,
+form div.error:before {
   position: relative;
   top: 2px;
   padding-right: 0.5rem;
@@ -1068,7 +1065,7 @@ form label.error:before {
 
 .input-field {
   position: relative;
-  margin-bottom: 32px;
+  margin-bottom: 28px;
 }
 
 .input-field.input-field--short input {
@@ -1216,7 +1213,7 @@ p, .paragraph {
   line-height: 24px;
   color: #333f48;
   position: relative;
-  margin-bottom: 32px;
+  margin-bottom: 28px;
 }
 
 .input-field--postcode-lookup .button--postcode-find,
@@ -1380,27 +1377,38 @@ p, .paragraph {
 .radio-button-group {
   position: relative;
   border: none;
-  margin-bottom: 32px;
+  margin-bottom: 28px;
   margin: 0;
 }
 
 .segmented-control {
   position: relative;
-  margin-bottom: 32px;
+  width: 100%;
+  margin-bottom: 28px;
   text-align: center;
 }
 
 .segmented-control input[type=radio] {
-  display: none;
+  border: 0;
+  clip: rect(1px, 1px, 1px, 1px);
+  -webkit-clip-path: inset(100%);
+          clip-path: inset(100%);
+  height: 1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
 }
 
-.segmented-control label {
+.segmented-control .segmented-control__label {
   font-family: "Calibri", "Helvetica", "Arial", sans-serif;
   font-size: 19px;
   font-weight: 400;
   line-height: 24px;
   color: #333f48;
   display: inline-block;
+  text-align: center;
   height: 42px;
   margin: 0 0 0 -6px;
   padding: 7px;
@@ -1413,22 +1421,23 @@ p, .paragraph {
   width: 50%;
 }
 
-.segmented-control label:last-of-type {
+.segmented-control .segmented-control__label:last-of-type {
   border-right-color: #d0d7dd;
 }
 
-.segmented-control label:hover, .segmented-control label.hover {
+.segmented-control .segmented-control__label:hover, .segmented-control .segmented-control__label.hover {
   color: #d41212;
   background-color: #fef1f1;
 }
 
-.segmented-control label.error {
+.segmented-control .segmented-control__label.invalid {
   font-family: "Calibri", "Helvetica", "Arial", sans-serif;
   font-size: 19px;
   font-weight: 400;
   line-height: 24px;
   color: #333f48;
   display: inline-block;
+  text-align: center;
   height: 42px;
   margin: 0 0 0 -6px;
   padding: 7px;
@@ -1440,11 +1449,11 @@ p, .paragraph {
   cursor: pointer;
 }
 
-.segmented-control label.error:last-of-type {
+.segmented-control .segmented-control__label.invalid:last-of-type {
   border-right-color: #a6093d;
 }
 
-.segmented-control label.error:hover, .segmented-control label.error.hover {
+.segmented-control .segmented-control__label.invalid:hover, .segmented-control .segmented-control__label.invalid.hover {
   color: #7f072f;
   background-color: #feedf3;
 }
@@ -1456,6 +1465,7 @@ p, .paragraph {
   line-height: 24px;
   color: #333f48;
   display: inline-block;
+  text-align: center;
   height: 42px;
   margin: 0 0 0 -6px;
   padding: 7px;
@@ -1476,19 +1486,15 @@ p, .paragraph {
   background-color: #d41212;
 }
 
-.segmented-control ~ .message--error {
-  padding-top: 20px;
-}
-
-.segmented-control--2-across label {
+.segmented-control--2-across .segmented-control__label {
   width: 50%;
 }
 
-.segmented-control--3-across label {
+.segmented-control--3-across .segmented-control__label {
   width: 33%;
 }
 
-.segmented-control--4-across label {
+.segmented-control--4-across .segmented-control__label {
   width: 25%;
 }
 

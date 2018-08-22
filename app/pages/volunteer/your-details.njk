@@ -14,7 +14,7 @@
   {{ volunteer.inputField('Surname', 'surname', validation='required') }}
   {{ volunteer.dateFieldGroup() }}
   {{ volunteer.segmentedControl(validation='required') }}
-  {{ volunteer.postcodeLookup(validation='required') }}
+  {{ volunteer.postcodeLookup('postcode', validation='required') }}
   {{ volunteer.inputField('Telephone number', 'telephone', validation='required') }}
   {{ volunteer.dropdownSelect('How did you hear about us? (optional)', 'how-heard', ['Option 1', 'Option 2'], validation='required') }}
   {{ volunteer.checkbox('Please keep me up to date with the Joint Dementia Research newsletter', 'contact', validation='required')}}

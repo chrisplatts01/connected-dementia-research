@@ -107,7 +107,7 @@
       
   <h1 class="pl-heading">Dropdown select</h1>
   
-<div class="dropdown-select">
+<div class="form__field dropdown-select">
   <label>Please choose an option:
     <select id="select-id" name="select-id"  required>
       <option selected disabled>Select&hellip;</option>
@@ -132,7 +132,7 @@
   <div class="error">
     <p><i>Error state:</i></p>
     
-<div class="dropdown-select">
+<div class="form__field dropdown-select">
   <label>Please choose an option:
     <select id="select-id" name="select-id"  required>
       <option selected disabled>Select&hellip;</option>
@@ -158,7 +158,7 @@
   <h2 class="pl-heading">HTML</h2>
   <textarea class="pl-code" disabled>
     
-<div class="dropdown-select">
+<div class="form__field dropdown-select">
   <label>Please choose an option:
     <select id="select-id" name="select-id"  >
       <option selected disabled>Select&hellip;</option>
@@ -185,7 +185,7 @@
   <textarea class="pl-code" disabled>
     .dropdown-select {
   position: relative;
-  margin-bottom: 32px;
+  margin-bottom: 28px;
 
   label {
     @include small-font;
@@ -198,7 +198,7 @@
 
   .dropdown {
     display: block;
-    margin: 1em 0;
+    margin: 8px 0 0;
     box-sizing: border-box;
     border: 2px solid $border-color;
     box-shadow: 0 4px 0 0 $border-shadow-color;
@@ -326,11 +326,6 @@
       }
     }
   }
-
-  .message--error {
-    padding-top: 0;
-  }
-
 }
 
   </textarea>

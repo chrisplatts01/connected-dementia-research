@@ -1,18 +1,19 @@
 .segmented-control {
   position: relative;
-  margin-bottom: 32px;
+  width: 100%;
+  margin-bottom: 28px;
   text-align: center;
 
   input[type=radio] {
-    display: none;
+    @include hide-visually;
   }
 
-  label {
+  .segmented-control__label {
     @include form-segmented-control(unselected);
     width: 50%;
 
-    &.error {
-      @include form-segmented-control(error);
+    &.invalid {
+      @include form-segmented-control(invalid);
     }
   }
 
@@ -21,19 +22,14 @@
   }
 }
 
-.segmented-control ~ .message--error {
-  padding-top: 20px;
-}
-
-
-.segmented-control--2-across label {
+.segmented-control--2-across .segmented-control__label {
   width: 50%;
 }
 
-.segmented-control--3-across label {
+.segmented-control--3-across .segmented-control__label {
   width: 33%;
 }
 
-.segmented-control--4-across label {
+.segmented-control--4-across .segmented-control__label {
   width: 25%;
 }

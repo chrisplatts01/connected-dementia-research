@@ -2,7 +2,7 @@
   @include clearfix();
   position: relative;
   border: none;
-  margin: 0 0 32px;
+  margin: 0 0 28px;
   padding: 0;
 
   legend {
@@ -14,10 +14,9 @@
   }
 
   .input-field {
-    // width: 33%;
-    // float: left;
     display: inline-block;
     padding: 0 10px 0 0;
+    margin-bottom: 0;
 
 //     &:first-child { padding-left: 0 }
     &:last-child { padding-right: 0 }
