@@ -12253,9 +12253,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 __WEBPACK_IMPORTED_MODULE_0_jquery___default()(function () {
-  /**
-   * IIFE to handle form va;idation using the jquery-validation plugin
-   */
+//   /**
+//    * IIFE to handle form va;idation using the jquery-validation plugin
+//    */
   var formValidation = (function () {
     __WEBPACK_IMPORTED_MODULE_0_jquery___default.a.validator.addMethod('dateUK', function (value, element) {
       var rawDate = value
@@ -12278,7 +12278,6 @@ __WEBPACK_IMPORTED_MODULE_0_jquery___default()(function () {
     __WEBPACK_IMPORTED_MODULE_0_jquery___default()('form').each(function () {
       var $form = __WEBPACK_IMPORTED_MODULE_0_jquery___default()(this)
       $form.validate({
-        debug: true,
         groups: {
           dateGroup: 'date-field-day date-field-month date-field-year'
         },
@@ -12397,8 +12396,6 @@ __WEBPACK_IMPORTED_MODULE_0_jquery___default()(function () {
   var dropdownSelect = (function () {
     var $dropdownSelect
     var $dropdown
-    // var $dropdownSelected
-    // var $dropdownOptions
     var $dropdownOption
 
     $dropdownSelect = __WEBPACK_IMPORTED_MODULE_0_jquery___default()('.dropdown-select')
@@ -12447,6 +12444,18 @@ __WEBPACK_IMPORTED_MODULE_0_jquery___default()(function () {
     // Initialise dropdowns
     $dropdownSelect.each(function () {
       dropdownState.init(__WEBPACK_IMPORTED_MODULE_0_jquery___default()(this))
+    })
+
+    // Handle form submission with no selection
+    $dropdownSelect.closest('form').on('submit', function () {
+      var $this = __WEBPACK_IMPORTED_MODULE_0_jquery___default()(this)
+      var $dropdown = $this.find('.dropdown-select')
+      $dropdown.each(function () {
+        var $this = __WEBPACK_IMPORTED_MODULE_0_jquery___default()(this)
+        if ($this.find('select').hasClass('error')) {
+          $this.addClass('error')
+        }
+      })
     })
 
     $dropdown = __WEBPACK_IMPORTED_MODULE_0_jquery___default()('.dropdown')

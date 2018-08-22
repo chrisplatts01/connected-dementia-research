@@ -347,16 +347,15 @@ p.label {
   font-weight: 700;
   line-height: 32px;
   color: #333f48;
+  position: relative;
   display: block;
   padding: 20px;
-  color: white;
-  width: 360px;
   height: 136px;
   margin: 0 auto;
   text-align: left;
 }
 
-.button.button--activity--icon-avatar::after {
+.button.button--activity--icon-contact::after {
   position: absolute;
   bottom: 20px;
   left: 20px;
@@ -364,7 +363,7 @@ p.label {
   height: 20px;
   content: '\00a0';
   opacity: 0.6;
-  background: transparent url("/images/icon-avatar.svg") top left no-repeat;
+  background: transparent url("/images/icon-contact.svg") top left no-repeat;
 }
 
 .button.button--activity--icon-note::after {
@@ -450,37 +449,55 @@ p.label {
   cursor: default;
 }
 
-.button--primary {
+.button.button--primary {
   color: white;
   background-color: #f15b5b;
   box-shadow: 0 4px 0 0 #d41212;
 }
 
-.button--primary:hover, .button--primary:focus, .button--primary.hover {
+.button.button--primary:hover, .button.button--primary:focus, .button.button--primary.hover {
   color: white;
   background-color: #d41212;
   box-shadow: 0 4px 0 0 #ae0f0f;
 }
 
-.button--primary:active, .button--primary.active {
+.button.button--primary:active, .button.button--primary.active {
   color: white;
   background-color: #d41212;
   box-shadow: 0 -4px 0 0 #ae0f0f;
 }
 
-.button--secondary {
+.button.button--secondary {
+  color: white;
+  background-color: #008194;
+  box-shadow: 0 4px 0 0 #004c57;
+}
+
+.button.button--secondary:hover, .button.button--secondary:focus, .button.button--secondary.hover {
+  color: white;
+  background-color: #004c57;
+  box-shadow: 0 4px 0 0 #00282e;
+}
+
+.button.button--secondary:active, .button.button--secondary.active {
+  color: white;
+  background-color: #004c57;
+  box-shadow: 0 -4px 0 0 #00282e;
+}
+
+.button.button--tertiary {
   color: #333f48;
   background-color: #b8c4cc;
   box-shadow: 0 4px 0 0 #8599a9;
 }
 
-.button--secondary:hover, .button--secondary:focus, .button--secondary.hover {
+.button.button--tertiary:hover, .button.button--tertiary:focus, .button.button--tertiary.hover {
   color: #1e252a;
   background-color: #8599a9;
   box-shadow: 0 4px 0 0 #5d7384;
 }
 
-.button--secondary:active, .button--secondary.active {
+.button.button--tertiary:active, .button.button--tertiary.active {
   color: #1e252a;
   background-color: #8599a9;
   box-shadow: 0 -4px 0 0 #5d7384;

@@ -60,6 +60,12 @@
         <li><a href="/volunteer/do-you-know-what-your-diagnosis-is.html">Volunteer: Do you know what your diagnosis is?</a></li>
         <li><a href="/volunteer/how-would-you-describe-your-symptoms.html">Volunteer: How would you describe your symptoms?</a></li>
         <li><a href="/volunteer/thank-you-for-registering.html">Volunteer: Thank you for registering</a></li>
+        <li><a href="/volunteer/thank-you-for-registering-as-a-volunteer.html">Volunteer: Thank you for registering as a volunteer</a></li>
+        <li><a href="/volunteer/volunteer-landing-page.html">Volunteer: Landing page</a></li>
+        <li><a href="/volunteer/participant-landing-page.html">Participant: Landing page</a></li>
+        <li><a href="/volunteer/participant-registration.html">Participant: Registration</a></li>
+        <li><a href="/volunteer/participant-registration-confirmation.html">Participant: Registration confirmation</a></li>
+        <li><a href="/volunteer/studies.html">Studies</a></li>
       </ul>
       <h4>Components:</h4>
       <ul class="component-list">
@@ -100,11 +106,10 @@
     <main class="pl-main" role="main">
       
   <h1 class="pl-heading">Dropdown select</h1>
-  <p><small>To illustrate the styling of <em>checked</em> and <em>hover</em> states, <code>.hover</code> and <code>.checked</code> classes have been added to simulate these states. These classes are not required in production where the <code>:hover</code> and <code>:checked</code> pseudo-classes are used.</small></p>
   
 <div class="dropdown-select">
   <label>Please choose an option:
-    <select id="select-id" name="select-id"  >
+    <select id="select-id" name="select-id"  required>
       <option selected disabled>Select&hellip;</option>
       
       <option value="guardian_(including_enduring_guardian,_public_guardian_(and_his/her_delegate)_or_interstate_guardian_[aks])">Guardian (including Enduring Guardian, Public Guardian (and his/her delegate) or Interstate Guardian [AKS])</option>
@@ -125,10 +130,11 @@
 
 
   <div class="error">
+    <p><i>Error state:</i></p>
     
 <div class="dropdown-select">
   <label>Please choose an option:
-    <select id="select-id" name="select-id"  >
+    <select id="select-id" name="select-id"  required>
       <option selected disabled>Select&hellip;</option>
       
       <option value="guardian_(including_enduring_guardian,_public_guardian_(and_his/her_delegate)_or_interstate_guardian_[aks])">Guardian (including Enduring Guardian, Public Guardian (and his/her delegate) or Interstate Guardian [AKS])</option>
