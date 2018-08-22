@@ -31,7 +31,6 @@ $(function () {
     $('form').each(function () {
       var $form = $(this)
       $form.validate({
-        debug: true,
         groups: {
           dateGroup: 'date-field-day date-field-month date-field-year'
         },

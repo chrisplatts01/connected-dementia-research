@@ -12278,7 +12278,6 @@ __WEBPACK_IMPORTED_MODULE_0_jquery___default()(function () {
     __WEBPACK_IMPORTED_MODULE_0_jquery___default()('form').each(function () {
       var $form = __WEBPACK_IMPORTED_MODULE_0_jquery___default()(this)
       $form.validate({
-        debug: true,
         groups: {
           dateGroup: 'date-field-day date-field-month date-field-year'
         },
