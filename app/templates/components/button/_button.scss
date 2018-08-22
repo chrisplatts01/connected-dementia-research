@@ -33,47 +33,68 @@
     box-shadow: 0 4px 0 0 $grey-L60 !important;
     cursor: default;
   }
-}
 
-.button--primary {
-  color: $white;
-  background-color: $coral;
-  box-shadow: 0 4px 0 0 $coral-D20;
-
-  &:hover,
-  &:focus,
-  &.hover {
+  &.button--primary {
     color: $white;
-    background-color: $coral-D20;
-    box-shadow: 0 4px 0 0 $coral-D28;
+    background-color: $coral;
+    box-shadow: 0 4px 0 0 $coral-D20;
+
+    &:hover,
+    &:focus,
+    &.hover {
+      color: $white;
+      background-color: $coral-D20;
+      box-shadow: 0 4px 0 0 $coral-D28;
+    }
+
+    &:active,
+    &.active {
+      color: $white;
+      background-color: $coral-D20;
+      box-shadow: 0 -4px 0 0 $coral-D28;
+    }
   }
 
-  &:active,
-  &.active {
+  &.button--secondary {
     color: $white;
-    background-color: $coral-D20;
-    box-shadow: 0 -4px 0 0 $coral-D28;
+    background-color: $turquoise;
+    box-shadow: 0 4px 0 0 $turquoise-D12;
+
+    &:hover,
+    &:focus,
+    &.hover {
+      color: $white;
+      background-color: $turquoise-D12;
+      box-shadow: 0 4px 0 0 $turquoise-D20;
+    }
+
+    &:active,
+    &.active {
+      color: $white;
+      background-color: $turquoise-D12;
+      box-shadow: 0 -4px 0 0 $turquoise-D20;
+    }
   }
-}
 
-.button--secondary {
-  color: $grey;
-  background-color: $grey-L52;
-  box-shadow: 0 4px 0 0 $grey-L35;
+  &.button--tertiary {
+    color: $grey;
+    background-color: $grey-L52;
+    box-shadow: 0 4px 0 0 $grey-L35;
 
-  &:hover,
-  &:focus,
-  &.hover {
-    color: $grey-D10;
-    background-color: $grey-L35;
-    box-shadow: 0 4px 0 0 $grey-L20;
-  }
+    &:hover,
+    &:focus,
+    &.hover {
+      color: $grey-D10;
+      background-color: $grey-L35;
+      box-shadow: 0 4px 0 0 $grey-L20;
+    }
 
-  &:active,
-  &.active {
-    color: $grey-D10;
-    background-color: $grey-L35;
-    box-shadow: 0 -4px 0 0 $grey-L20;
+    &:active,
+    &.active {
+      color: $grey-D10;
+      background-color: $grey-L35;
+      box-shadow: 0 -4px 0 0 $grey-L20;
+    }
   }
 }
 

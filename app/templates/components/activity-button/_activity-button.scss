@@ -1,24 +1,14 @@
 .button {
   &.button--activity {
     @include bold-font;
+    position: relative;
     display: block;
     padding: 20px;
-    color: $white;
-    width: 360px;
     height: 136px;
     margin: 0 auto;
     text-align: left;
-    //
-    // a:link,
-    // a:visited,
-    // a:hover,
-    // a:focus,
-    // a:active {
-    //   color: $white;
-    //   text-decoration: none;
-    // }
 
-    &--icon-avatar::after {
+    &--icon-contact::after {
       position: absolute;
       bottom: 20px;
       left: 20px;
@@ -26,7 +16,7 @@
       height: 20px;
       content: '\00a0';
       opacity: 0.6;
-      background: transparent url('/images/icon-avatar.svg') top left no-repeat;
+      background: transparent url('/images/icon-contact.svg') top left no-repeat;
     }
 
     &--icon-note::after {

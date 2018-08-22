@@ -60,6 +60,12 @@
         <li><a href="/volunteer/do-you-know-what-your-diagnosis-is.html">Volunteer: Do you know what your diagnosis is?</a></li>
         <li><a href="/volunteer/how-would-you-describe-your-symptoms.html">Volunteer: How would you describe your symptoms?</a></li>
         <li><a href="/volunteer/thank-you-for-registering.html">Volunteer: Thank you for registering</a></li>
+        <li><a href="/volunteer/thank-you-for-registering-as-a-volunteer.html">Volunteer: Thank you for registering as a volunteer</a></li>
+        <li><a href="/volunteer/volunteer-landing-page.html">Volunteer: Landing page</a></li>
+        <li><a href="/volunteer/participant-landing-page.html">Participant: Landing page</a></li>
+        <li><a href="/volunteer/participant-registration.html">Participant: Registration</a></li>
+        <li><a href="/volunteer/participant-registration-confirmation.html">Participant: Registration confirmation</a></li>
+        <li><a href="/volunteer/studies.html">Studies</a></li>
       </ul>
       <h4>Components:</h4>
       <ul class="component-list">
@@ -101,16 +107,28 @@
       
   <h1 class="pl-heading">Activity button</h1>
   
-<a class="button-link" href="#"><div class="button button--activity button--activity--icon-avatar button--primary">
+<a class="button-link" href="#"><div class="button button--activity button--activity--icon-contact button--primary">
+    Register someone else as a volunteer
+</div></a>
+
+  <br />
+  
+<a class="button-link" href="#"><div class="button button--activity button--activity--icon-pencil button--secondary">
+    Register someone else as a volunteer
+</div></a>
+
+  <br />
+  
+<a class="button-link" href="#"><div class="button button--activity button--activity--icon-note button--tertiary">
     Register someone else as a volunteer
 </div></a>
 
   <h2 class="pl-heading">HTML</h2>
   <textarea class="pl-code" disabled>
     
-<a class="button-link" href="#"><div class="button button--activity button--activity--icon-avatar button--primary">
+<div class="button button--activity button--activity--icon-contact button--#">
     Register someone else as a volunteer
-</div></a>
+</div>
 
   </textarea>
   <h2 class="pl-heading">SCSS</h2>
@@ -118,24 +136,14 @@
     .button {
   &.button--activity {
     @include bold-font;
+    position: relative;
     display: block;
     padding: 20px;
-    color: $white;
-    width: 360px;
     height: 136px;
     margin: 0 auto;
     text-align: left;
-    //
-    // a:link,
-    // a:visited,
-    // a:hover,
-    // a:focus,
-    // a:active {
-    //   color: $white;
-    //   text-decoration: none;
-    // }
 
-    &--icon-avatar::after {
+    &--icon-contact::after {
       position: absolute;
       bottom: 20px;
       left: 20px;
@@ -143,7 +151,7 @@
       height: 20px;
       content: '\00a0';
       opacity: 0.6;
-      background: transparent url('/images/icon-avatar.svg') top left no-repeat;
+      background: transparent url('/images/icon-contact.svg') top left no-repeat;
     }
 
     &--icon-note::after {

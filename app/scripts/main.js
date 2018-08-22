@@ -6,9 +6,9 @@ import datejs from '../scripts/vendor/datejs/build/date-en-GB.js'
 import i18n from '../scripts/vendor/datejs/i18n/en-GB.js'
 
 $(function () {
-  /**
-   * IIFE to handle form va;idation using the jquery-validation plugin
-   */
+//   /**
+//    * IIFE to handle form va;idation using the jquery-validation plugin
+//    */
   var formValidation = (function () {
     $.validator.addMethod('dateUK', function (value, element) {
       var rawDate = value
@@ -149,8 +149,6 @@ $(function () {
   var dropdownSelect = (function () {
     var $dropdownSelect
     var $dropdown
-    // var $dropdownSelected
-    // var $dropdownOptions
     var $dropdownOption
 
     $dropdownSelect = $('.dropdown-select')
@@ -201,6 +199,18 @@ $(function () {
       dropdownState.init($(this))
     })
 
+    // Handle form submission with no selection
+    $dropdownSelect.closest('form').on('submit', function () {
+      var $this = $(this)
+      var $dropdown = $this.find('.dropdown-select')
+      $dropdown.each(function () {
+        var $this = $(this)
+        if ($this.find('select').hasClass('error')) {
+          $this.addClass('error')
+        }
+      })
+    })
+
     $dropdown = $('.dropdown')
     $dropdown.click(function () {
       var $this = $(this)
@@ -223,67 +233,67 @@ $(function () {
     })
   })()
 
-    /**
-      * IIFE to handle conditional checkbox groups
-      */
-    var conditionalCheckboxGroup = (function () {
-      var $conditionalCheckboxGroup = $('.conditional-checkbox-group')
-      var $radioButtons = $conditionalCheckboxGroup.find('input:radio')
+  /**
+    * IIFE to handle conditional checkbox groups
+    */
+  var conditionalCheckboxGroup = (function () {
+    var $conditionalCheckboxGroup = $('.conditional-checkbox-group')
+    var $radioButtons = $conditionalCheckboxGroup.find('input:radio')
 
-      var setCheckboxes = function (state) {
-        var $checkboxes = $conditionalCheckboxGroup.find('.checkbox')
-        var $inputs = $checkboxes.find('input:checkbox')
+    var setCheckboxes = function (state) {
+      var $checkboxes = $conditionalCheckboxGroup.find('.checkbox')
+      var $inputs = $checkboxes.find('input:checkbox')
 
-        console.log(state)
+      console.log(state)
 
-        if (state) {
-          console.log('Enabling checkboxes')
-          $checkboxes.removeClass('disabled')
-          $inputs.prop('disabled', false)
-        } else {
-          console.log('Disabling checkboxes')
-          $checkboxes.addClass('disabled')
-          $inputs.prop('disabled', true)
+      if (state) {
+        console.log('Enabling checkboxes')
+        $checkboxes.removeClass('disabled')
+        $inputs.prop('disabled', false)
+      } else {
+        console.log('Disabling checkboxes')
+        $checkboxes.addClass('disabled')
+        $inputs.prop('disabled', true)
 
-          console.log('Unchecking checkboxes')
-          $checkboxes.find('input:checkbox').prop('checked', false)
-        }
+        console.log('Unchecking checkboxes')
+        $checkboxes.find('input:checkbox').prop('checked', false)
       }
+    }
 
-      $radioButtons.each(function () {
-        var $this = $(this)
-        var isChecked = $this.attr('checked') === 'checked'
+    $radioButtons.each(function () {
+      var $this = $(this)
+      var isChecked = $this.attr('checked') === 'checked'
 
-        console.log('IS_CHECKED - ' + isChecked)
-        if (isChecked) {
-          var state = $this.attr('data-checkboxes-enabled') === 'true'
-
-          console.log('STATE = ' + state)
-          setCheckboxes(state)
-        }
-      })
-
-      $radioButtons.click(function () {
-        var $this = $(this)
+      console.log('IS_CHECKED - ' + isChecked)
+      if (isChecked) {
         var state = $this.attr('data-checkboxes-enabled') === 'true'
+
+        console.log('STATE = ' + state)
         setCheckboxes(state)
+      }
+    })
+
+    $radioButtons.click(function () {
+      var $this = $(this)
+      var state = $this.attr('data-checkboxes-enabled') === 'true'
+      setCheckboxes(state)
+    })
+  })()
+
+    /**
+      * IIFE to handle segmented control components
+      */
+    var segmentedControl = (function () {
+      var $segmentedControl = $('.segmented-control')
+      $segmentedControl.click(function () {
+        var $this = $(this)
+        var $parent = $this.parent('.segmented-control')
+        var $input = $this.find('[type=radio]')
+        $parent.find('label').removeClass('checked').removeClass('error')
+        $this.addClass('checked')
+        $input.attr('checked', 'checked')
       })
     })()
-
-      /**
-        * IIFE to handle segmented control components
-        */
-      var segmentedControl = (function () {
-        var $segmentedControl = $('.segmented-control')
-        $segmentedControl.click(function () {
-          var $this = $(this)
-          var $parent = $this.parent('.segmented-control')
-          var $input = $this.find('[type=radio]')
-          $parent.find('label').removeClass('checked').removeClass('error')
-          $this.addClass('checked')
-          $input.attr('checked', 'checked')
-        })
-      })()
 
   /**
     * IIFE to handle file upload components
