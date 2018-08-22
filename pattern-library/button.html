@@ -60,6 +60,12 @@
         <li><a href="/volunteer/do-you-know-what-your-diagnosis-is.html">Volunteer: Do you know what your diagnosis is?</a></li>
         <li><a href="/volunteer/how-would-you-describe-your-symptoms.html">Volunteer: How would you describe your symptoms?</a></li>
         <li><a href="/volunteer/thank-you-for-registering.html">Volunteer: Thank you for registering</a></li>
+        <li><a href="/volunteer/thank-you-for-registering-as-a-volunteer.html">Volunteer: Thank you for registering as a volunteer</a></li>
+        <li><a href="/volunteer/volunteer-landing-page.html">Volunteer: Landing page</a></li>
+        <li><a href="/volunteer/participant-landing-page.html">Participant: Landing page</a></li>
+        <li><a href="/volunteer/participant-registration.html">Participant: Registration</a></li>
+        <li><a href="/volunteer/participant-registration-confirmation.html">Participant: Registration confirmation</a></li>
+        <li><a href="/volunteer/studies.html">Studies</a></li>
       </ul>
       <h4>Components:</h4>
       <ul class="component-list">
@@ -106,7 +112,12 @@
 
 
   
-<button class="button button--secondary" type="button">Continue</button>
+<button class="button button--secondary" type="button">Do it!</button>
+
+
+
+  
+<button class="button button--tertiary" type="button">Continue</button>
 
 
 
@@ -118,7 +129,7 @@
 
 
   
-<button class="button button--secondary" type="button">Continue</button>
+<button class="button button--tertiary" type="button">Continue</button>
 
 
 
@@ -160,47 +171,68 @@
     box-shadow: 0 4px 0 0 $grey-L60 !important;
     cursor: default;
   }
-}
 
-.button--primary {
-  color: $white;
-  background-color: $coral;
-  box-shadow: 0 4px 0 0 $coral-D20;
-
-  &:hover,
-  &:focus,
-  &.hover {
+  &.button--primary {
     color: $white;
-    background-color: $coral-D20;
-    box-shadow: 0 4px 0 0 $coral-D28;
+    background-color: $coral;
+    box-shadow: 0 4px 0 0 $coral-D20;
+
+    &:hover,
+    &:focus,
+    &.hover {
+      color: $white;
+      background-color: $coral-D20;
+      box-shadow: 0 4px 0 0 $coral-D28;
+    }
+
+    &:active,
+    &.active {
+      color: $white;
+      background-color: $coral-D20;
+      box-shadow: 0 -4px 0 0 $coral-D28;
+    }
   }
 
-  &:active,
-  &.active {
+  &.button--secondary {
     color: $white;
-    background-color: $coral-D20;
-    box-shadow: 0 -4px 0 0 $coral-D28;
+    background-color: $turquoise;
+    box-shadow: 0 4px 0 0 $turquoise-D12;
+
+    &:hover,
+    &:focus,
+    &.hover {
+      color: $white;
+      background-color: $turquoise-D12;
+      box-shadow: 0 4px 0 0 $turquoise-D20;
+    }
+
+    &:active,
+    &.active {
+      color: $white;
+      background-color: $turquoise-D12;
+      box-shadow: 0 -4px 0 0 $turquoise-D20;
+    }
   }
-}
 
-.button--secondary {
-  color: $grey;
-  background-color: $grey-L52;
-  box-shadow: 0 4px 0 0 $grey-L35;
+  &.button--tertiary {
+    color: $grey;
+    background-color: $grey-L52;
+    box-shadow: 0 4px 0 0 $grey-L35;
 
-  &:hover,
-  &:focus,
-  &.hover {
-    color: $grey-D10;
-    background-color: $grey-L35;
-    box-shadow: 0 4px 0 0 $grey-L20;
-  }
+    &:hover,
+    &:focus,
+    &.hover {
+      color: $grey-D10;
+      background-color: $grey-L35;
+      box-shadow: 0 4px 0 0 $grey-L20;
+    }
 
-  &:active,
-  &.active {
-    color: $grey-D10;
-    background-color: $grey-L35;
-    box-shadow: 0 -4px 0 0 $grey-L20;
+    &:active,
+    &.active {
+      color: $grey-D10;
+      background-color: $grey-L35;
+      box-shadow: 0 -4px 0 0 $grey-L20;
+    }
   }
 }
 
