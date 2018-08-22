@@ -769,7 +769,7 @@ form .date-field-group label.error {
 
 .dropdown-select {
   position: relative;
-  margin-bottom: 32px;
+  margin-bottom: 40px;
 }
 
 .dropdown-select label {
@@ -796,7 +796,7 @@ form .date-field-group label.error {
 
 .dropdown-select .dropdown {
   display: block;
-  margin: 1em 0;
+  margin: 8px 0 16px 0;
   box-sizing: border-box;
   border: 2px solid #b8c4cc;
   box-shadow: 0 4px 0 0 #d0d7dd;
@@ -923,8 +923,8 @@ form .date-field-group label.error {
   background-image: url("/images/arrow-down-orange.svg");
 }
 
-.dropdown-select .message--error {
-  padding-top: 0;
+.dropdown-select label.error {
+  top: 80px;
 }
 
 .file-upload {

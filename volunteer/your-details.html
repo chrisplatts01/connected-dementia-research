@@ -66,7 +66,7 @@
   
 <div class="input-field input-field--text input-field--short">
   <label>Title
-    <input id="name" name="name" type="text" placeholder=""   />
+    <input id="name" name="name" type="text" placeholder=""  required />
   </label>
 </div>
 
@@ -74,7 +74,7 @@
   
 <div class="input-field input-field--text">
   <label>First name(s)
-    <input id="first-name" name="first-name" type="text" placeholder=""   />
+    <input id="first-name" name="first-name" type="text" placeholder=""  required />
   </label>
 </div>
 
@@ -82,7 +82,7 @@
   
 <div class="input-field input-field--text">
   <label>Surname
-    <input id="surname" name="surname" type="text" placeholder=""   />
+    <input id="surname" name="surname" type="text" placeholder=""  required />
   </label>
 </div>
 
@@ -112,10 +112,10 @@
 <div class="segmented-control segmented-control--2-across">
   <p class="label">Sex</p>
   
-  <input id="sex-male" name="sex" type="radio"   />
+  <input id="sex-male" name="sex" type="radio"  required />
   <label for="sex-male">Male</label>
   
-  <input id="sex-female" name="sex" type="radio"   />
+  <input id="sex-female" name="sex" type="radio"  required />
   <label for="sex-female">Female</label>
   
 </div>
@@ -134,7 +134,7 @@
   
 <div class="input-field input-field--text">
   <label>Telephone number
-    <input id="telephone" name="telephone" type="text" placeholder=""   />
+    <input id="telephone" name="telephone" type="text" placeholder=""  required />
   </label>
 </div>
 
@@ -142,7 +142,7 @@
   
 <div class="dropdown-select">
   <label>How did you hear about us? (optional)
-    <select id="how-heard" name="how-heard"  >
+    <select id="how-heard" name="how-heard"  required>
       <option selected disabled>Select&hellip;</option>
       
       <option value="option_1">Option 1</option>
@@ -157,7 +157,7 @@
   
 <div class="checkbox">
   <label>
-    <input id="contact" name="contact" type="checkbox"   />
+    <input id="contact" name="contact" type="checkbox"  required />
     Please keep me up to date with the Joint Dementia Research newsletter
     <span class="checkmark"></span>
   </label>
