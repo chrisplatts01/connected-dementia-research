@@ -1,6 +1,6 @@
 .dropdown-select {
   position: relative;
-  margin-bottom: 32px;
+  margin-bottom: 40px;
 
   label {
     @include small-font;
@@ -13,7 +13,7 @@
 
   .dropdown {
     display: block;
-    margin: 1em 0;
+    margin: 8px 0 16px 0;
     box-sizing: border-box;
     border: 2px solid $border-color;
     box-shadow: 0 4px 0 0 $border-shadow-color;
@@ -142,8 +142,7 @@
     }
   }
 
-  .message--error {
-    padding-top: 0;
+  label.error {
+    top: 80px;
   }
-
 }
