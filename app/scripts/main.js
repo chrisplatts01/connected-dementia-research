@@ -6,9 +6,9 @@ import datejs from '../scripts/vendor/datejs/build/date-en-GB.js'
 import i18n from '../scripts/vendor/datejs/i18n/en-GB.js'
 
 $(function () {
-  /**
-   * IIFE to handle form va;idation using the jquery-validation plugin
-   */
+//   /**
+//    * IIFE to handle form va;idation using the jquery-validation plugin
+//    */
   var formValidation = (function () {
     $.validator.addMethod('dateUK', function (value, element) {
       var rawDate = value
@@ -31,7 +31,6 @@ $(function () {
     $('form').each(function () {
       var $form = $(this)
       $form.validate({
-        debug: true,
         groups: {
           dateGroup: 'date-field-day date-field-month date-field-year'
         },
@@ -150,8 +149,6 @@ $(function () {
   var dropdownSelect = (function () {
     var $dropdownSelect
     var $dropdown
-    // var $dropdownSelected
-    // var $dropdownOptions
     var $dropdownOption
 
     $dropdownSelect = $('.dropdown-select')
@@ -200,6 +197,18 @@ $(function () {
     // Initialise dropdowns
     $dropdownSelect.each(function () {
       dropdownState.init($(this))
+    })
+
+    // Handle form submission with no selection
+    $dropdownSelect.closest('form').on('submit', function () {
+      var $this = $(this)
+      var $dropdown = $this.find('.dropdown-select')
+      $dropdown.each(function () {
+        var $this = $(this)
+        if ($this.find('select').hasClass('error')) {
+          $this.addClass('error')
+        }
+      })
     })
 
     $dropdown = $('.dropdown')
