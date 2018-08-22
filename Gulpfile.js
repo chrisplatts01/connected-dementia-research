@@ -11,7 +11,7 @@ var sassdoc = require('sassdoc')
 var browserSync = require('browser-sync').create()
 var nunjucksRender = require('gulp-nunjucks-render')
 var imagemin = require('gulp-imagemin')
-// var uglify = require('gulp-uglify')
+var uglify = require('gulp-uglify')
 var pngquant = require('imagemin-pngquant')
 var fs = require('fs')
 var bourbon = require('bourbon').includePaths
@@ -60,6 +60,7 @@ gulp.task('clean_scripts', () => {
 
 gulp.task('scripts', ['clean_scripts'], () => {
   return webpackStream(webpackConfig)
+  	.pipe(uglify())
     .pipe(gulp.dest(`${outputScripts}`))
     .pipe(browserSync.stream())
 })

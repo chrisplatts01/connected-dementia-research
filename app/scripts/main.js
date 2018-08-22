@@ -233,67 +233,67 @@ $(function () {
     })
   })()
 
-    /**
-      * IIFE to handle conditional checkbox groups
-      */
-    var conditionalCheckboxGroup = (function () {
-      var $conditionalCheckboxGroup = $('.conditional-checkbox-group')
-      var $radioButtons = $conditionalCheckboxGroup.find('input:radio')
+  /**
+    * IIFE to handle conditional checkbox groups
+    */
+  var conditionalCheckboxGroup = (function () {
+    var $conditionalCheckboxGroup = $('.conditional-checkbox-group')
+    var $radioButtons = $conditionalCheckboxGroup.find('input:radio')
 
-      var setCheckboxes = function (state) {
-        var $checkboxes = $conditionalCheckboxGroup.find('.checkbox')
-        var $inputs = $checkboxes.find('input:checkbox')
+    var setCheckboxes = function (state) {
+      var $checkboxes = $conditionalCheckboxGroup.find('.checkbox')
+      var $inputs = $checkboxes.find('input:checkbox')
 
-        console.log(state)
+      console.log(state)
 
-        if (state) {
-          console.log('Enabling checkboxes')
-          $checkboxes.removeClass('disabled')
-          $inputs.prop('disabled', false)
-        } else {
-          console.log('Disabling checkboxes')
-          $checkboxes.addClass('disabled')
-          $inputs.prop('disabled', true)
+      if (state) {
+        console.log('Enabling checkboxes')
+        $checkboxes.removeClass('disabled')
+        $inputs.prop('disabled', false)
+      } else {
+        console.log('Disabling checkboxes')
+        $checkboxes.addClass('disabled')
+        $inputs.prop('disabled', true)
 
-          console.log('Unchecking checkboxes')
-          $checkboxes.find('input:checkbox').prop('checked', false)
-        }
+        console.log('Unchecking checkboxes')
+        $checkboxes.find('input:checkbox').prop('checked', false)
       }
+    }
 
-      $radioButtons.each(function () {
-        var $this = $(this)
-        var isChecked = $this.attr('checked') === 'checked'
+    $radioButtons.each(function () {
+      var $this = $(this)
+      var isChecked = $this.attr('checked') === 'checked'
 
-        console.log('IS_CHECKED - ' + isChecked)
-        if (isChecked) {
-          var state = $this.attr('data-checkboxes-enabled') === 'true'
-
-          console.log('STATE = ' + state)
-          setCheckboxes(state)
-        }
-      })
-
-      $radioButtons.click(function () {
-        var $this = $(this)
+      console.log('IS_CHECKED - ' + isChecked)
+      if (isChecked) {
         var state = $this.attr('data-checkboxes-enabled') === 'true'
+
+        console.log('STATE = ' + state)
         setCheckboxes(state)
+      }
+    })
+
+    $radioButtons.click(function () {
+      var $this = $(this)
+      var state = $this.attr('data-checkboxes-enabled') === 'true'
+      setCheckboxes(state)
+    })
+  })()
+
+    /**
+      * IIFE to handle segmented control components
+      */
+    var segmentedControl = (function () {
+      var $segmentedControl = $('.segmented-control')
+      $segmentedControl.click(function () {
+        var $this = $(this)
+        var $parent = $this.parent('.segmented-control')
+        var $input = $this.find('[type=radio]')
+        $parent.find('label').removeClass('checked').removeClass('error')
+        $this.addClass('checked')
+        $input.attr('checked', 'checked')
       })
     })()
-
-      /**
-        * IIFE to handle segmented control components
-        */
-      var segmentedControl = (function () {
-        var $segmentedControl = $('.segmented-control')
-        $segmentedControl.click(function () {
-          var $this = $(this)
-          var $parent = $this.parent('.segmented-control')
-          var $input = $this.find('[type=radio]')
-          $parent.find('label').removeClass('checked').removeClass('error')
-          $this.addClass('checked')
-          $input.attr('checked', 'checked')
-        })
-      })()
 
   /**
     * IIFE to handle file upload components
