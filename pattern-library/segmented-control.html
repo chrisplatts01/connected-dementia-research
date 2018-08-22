@@ -109,30 +109,30 @@
   <p>Used instead of radio button when there are a limited number of mutually-exclusive choices.</p>
   <p><small>To illustrate the styling of <em>checked</em> and <em>hover</em> states, <code>.hover</code> and <code>.checked</code> classes have been added to simulate these states. These classes are not required in production where the <code>:hover</code> and <code>:checked</code> pseudo-classes are used.</small></p>
   
-<div class="segmented-control segmented-control--2-across">
+<div class="form__field segmented-control segmented-control--2-across">
   <p class="label">Sex</p>
   
   <input id="sex-male" name="sex" type="radio"   />
-  <label for="sex-male">Male</label>
+  <label class="segmented-control__label" for="sex-male">Male</label>
   
   <input id="sex-female" name="sex" type="radio"   />
-  <label for="sex-female">Female</label>
+  <label class="segmented-control__label" for="sex-female">Female</label>
   
 </div>
 
 
   
-<div class="segmented-control segmented-control--3-across">
+<div class="form__field segmented-control segmented-control--3-across">
   <p class="label">Your options</p>
   
   <input id="options-option_1" name="options" type="radio"   />
-  <label for="options-option_1">Option 1</label>
+  <label class="segmented-control__label" for="options-option_1">Option 1</label>
   
   <input id="options-option_2" name="options" type="radio"   />
-  <label for="options-option_2">Option 2</label>
+  <label class="segmented-control__label" for="options-option_2">Option 2</label>
   
   <input id="options-option_3" name="options" type="radio"   />
-  <label for="options-option_3">Option 3</label>
+  <label class="segmented-control__label" for="options-option_3">Option 3</label>
   
 </div>
 
@@ -140,14 +140,14 @@
   <h2 class="pl-heading">HTML</h2>
   <textarea class="pl-code" disabled>
     
-<div class="segmented-control segmented-control--2-across">
+<div class="form__field segmented-control segmented-control--2-across">
   <p class="label">Sex</p>
   
   <input id="sex-male" name="sex" type="radio"   />
-  <label for="sex-male">Male</label>
+  <label class="segmented-control__label" for="sex-male">Male</label>
   
   <input id="sex-female" name="sex" type="radio"   />
-  <label for="sex-female">Female</label>
+  <label class="segmented-control__label" for="sex-female">Female</label>
   
 </div>
 
@@ -157,19 +157,20 @@
   <textarea class="pl-code" disabled>
     .segmented-control {
   position: relative;
-  margin-bottom: 32px;
+  width: 100%;
+  margin-bottom: 28px;
   text-align: center;
 
   input[type=radio] {
-    display: none;
+    @include hide-visually;
   }
 
-  label {
+  .segmented-control__label {
     @include form-segmented-control(unselected);
     width: 50%;
 
-    &.error {
-      @include form-segmented-control(error);
+    &.invalid {
+      @include form-segmented-control(invalid);
     }
   }
 
@@ -178,20 +179,15 @@
   }
 }
 
-.segmented-control ~ .message--error {
-  padding-top: 20px;
-}
-
-
-.segmented-control--2-across label {
+.segmented-control--2-across .segmented-control__label {
   width: 50%;
 }
 
-.segmented-control--3-across label {
+.segmented-control--3-across .segmented-control__label {
   width: 33%;
 }
 
-.segmented-control--4-across label {
+.segmented-control--4-across .segmented-control__label {
   width: 25%;
 }
 

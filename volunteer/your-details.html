@@ -64,7 +64,7 @@
 <form id="your-details" name="your-details" action="/volunteer/create-login-details.html" method="get">
   
   
-<div class="input-field input-field--text input-field--short">
+<div class="form__field input-field input-field--text input-field--short">
   <label>Title
     <input id="name" name="name" type="text" placeholder=""  required />
   </label>
@@ -72,7 +72,7 @@
 
 
   
-<div class="input-field input-field--text">
+<div class="form__field input-field input-field--text">
   <label>First name(s)
     <input id="first-name" name="first-name" type="text" placeholder=""  required />
   </label>
@@ -80,7 +80,7 @@
 
 
   
-<div class="input-field input-field--text">
+<div class="form__field input-field input-field--text">
   <label>Surname
     <input id="surname" name="surname" type="text" placeholder=""  required />
   </label>
@@ -88,7 +88,7 @@
 
 
   
-<fieldset id="date" class="date-field-group">
+<fieldset id="date" class="form__field date-field-group">
   <legend>Date of birth</legend>
   <div class="input-field input-field--text input-field--short">
     <label>Day (DD)
@@ -109,22 +109,22 @@
 
 
   
-<div class="segmented-control segmented-control--2-across">
+<div class="form__field segmented-control segmented-control--2-across">
   <p class="label">Sex</p>
   
   <input id="sex-male" name="sex" type="radio"  required />
-  <label for="sex-male">Male</label>
+  <label class="segmented-control__label" for="sex-male">Male</label>
   
   <input id="sex-female" name="sex" type="radio"  required />
-  <label for="sex-female">Female</label>
+  <label class="segmented-control__label" for="sex-female">Female</label>
   
 </div>
 
 
   
-<div class="input-field input-field--text input-field--postcode-lookup input-field--short">
+<div class="form__field input-field input-field--text input-field--postcode-lookup input-field--short">
   <label>Postcode
-    <input id="postcoode" name="postcoode" type="text" />
+    <input id="postcode" name="postcode" type="text" required />
   </label>
   <button class="button button--tertiary button--postcode-find" type="button">Find</button>
   <a class="link link--enter-manually" href="#">or enter manually</a>
@@ -132,7 +132,7 @@
 
 
   
-<div class="input-field input-field--text">
+<div class="form__field input-field input-field--text">
   <label>Telephone number
     <input id="telephone" name="telephone" type="text" placeholder=""  required />
   </label>
@@ -140,7 +140,7 @@
 
 
   
-<div class="dropdown-select">
+<div class="form__field dropdown-select">
   <label>How did you hear about us? (optional)
     <select id="how-heard" name="how-heard"  required>
       <option selected disabled>Select&hellip;</option>
@@ -155,7 +155,7 @@
 
 
   
-<div class="checkbox">
+<div class="form__field checkbox">
   <label>
     <input id="contact" name="contact" type="checkbox"  required />
     Please keep me up to date with the Joint Dementia Research newsletter
