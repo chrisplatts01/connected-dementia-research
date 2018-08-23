@@ -157,12 +157,13 @@
   <textarea class="pl-code" disabled>
     .user-bar {
   @include clearfix();
+  position: relative;
   background: $grey;
   padding: 24px;
   margin: -24px -24px 28px;
 
   .user-bar__users {
-    width: 75%;
+    width: 64%;
     float: left;
 
     .volunteer {
@@ -188,16 +189,93 @@
   }
 
   .user-bar__menu {
-    width: 25%;
-    float: right;
+    position: absolute;
+    top: 36px;
+    right: 16px;
+    width: 36%;
+    color: $grey;
+    background-color: $grey-L52;
+    border-bottom: 4px solid $grey-L35;
+    z-index: 20;
+
+    &:hover {
+      color: $grey-D10;
+      background-color: $grey-L35;
+      border-bottom: 4px solid $grey-L20;
+    }
   }
 
-  .notification img {
-    vertical-align: bottom;
+  .user-bar__menu-select {
+    padding: 8px 16px;
+    color: $grey;
+    background-color: $grey-L52;
+
+    &:hover {
+      color: $grey-D10;
+      background-color: $grey-L35;
+    }
+
+    &:after {
+      position: absolute;
+      top: 8px;
+      right: 16px;
+      content: url('/images/arrow-down-grey.svg');
+    }
   }
 
-  button {
-    float: right;
+  .user-bar__menu-options {
+    display: none;
+  }
+
+  .user-bar__menu-option {
+    color: $grey;
+    background-color: $grey-L60;
+    padding: 8px 16px;
+
+    &.volunteer {
+      color: $grey;
+      background-color: $grey-L60;
+
+      .name:before {
+        content: url('/images/icon-user-avatar-black.svg');
+      }
+    }
+
+    &.participant {
+      color: $white;
+      background-color: $coral;
+
+      .name:before {
+        content: url('/images/icon-user-avatar-white.svg');
+      }
+    }
+
+    .name {
+      display: block;
+      font-weight: 700;
+
+      &:before {
+        display: inline-block;
+        content: url('/images/icon-user-avatar-black.svg');
+        padding-right: 4px;
+      }
+    }
+
+    .label {
+      display: block;
+    }
+
+    .add-participant {
+      &:before {
+        display: inline-block;
+        content: url('/images/icon-add.svg');
+        padding-right: 4px;
+      }
+    }
+
+    .notification img {
+      vertical-align: bottom;
+    }
   }
 }
 

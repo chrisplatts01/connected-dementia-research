@@ -307,6 +307,15 @@ $(function () {
   /**
     * HIDEABLE PANEL: Handle hideable panel
     */
+  var userBar = (function () {
+    $('.user-bar__menu-select').on('click', function () {
+      $(this).next('.user-bar__menu-options').slideToggle()
+    })
+  }())
+
+  /**
+    * HIDEABLE PANEL: Handle hideable panel
+    */
   var hideablePanel = (function () {
     var $hideablePanels = $('.hideable-panel')
 

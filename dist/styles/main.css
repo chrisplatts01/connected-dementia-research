@@ -1339,6 +1339,7 @@ p, .paragraph {
 }
 
 .user-bar {
+  position: relative;
   background: #333f48;
   padding: 24px;
   margin: -24px -24px 28px;
@@ -1389,33 +1390,87 @@ p, .paragraph {
 }
 
 .user-bar .user-bar__menu {
-  position: relative;
+  position: absolute;
+  top: 36px;
+  right: 16px;
   width: 36%;
-  float: right;
-  margin-top: 16px;
-  padding: 8px 16px;
   color: #333f48;
   background-color: #b8c4cc;
   border-bottom: 4px solid #8599a9;
+  z-index: 20;
 }
 
-.user-bar .user-bar__menu:after {
+.user-bar .user-bar__menu:hover {
+  color: #1e252a;
+  background-color: #8599a9;
+  border-bottom: 4px solid #5d7384;
+}
+
+.user-bar .user-bar__menu-select {
+  padding: 8px 16px;
+}
+
+.user-bar .user-bar__menu-select:after {
   position: absolute;
   top: 8px;
   right: 16px;
   content: url("/images/arrow-down-grey.svg");
 }
 
-.user-bar .user-bar__menu-option {
+.user-bar .user-bar__menu-options {
   display: none;
 }
 
-.user-bar .notification img {
-  vertical-align: bottom;
+.user-bar .user-bar__menu-option {
+  color: #333f48;
+  background-color: #d0d7dd;
+  padding: 8px 16px;
 }
 
-.user-bar button {
-  float: right;
+.user-bar .user-bar__menu-option:hover {
+  background: #b8c4cc;
+}
+
+.user-bar .user-bar__menu-option.volunteer .name:before {
+  content: url("/images/icon-user-avatar-black.svg");
+}
+
+.user-bar .user-bar__menu-option.participant {
+  color: white;
+  background-color: #f15b5b;
+}
+
+.user-bar .user-bar__menu-option.participant:hover {
+  background: #d41212;
+}
+
+.user-bar .user-bar__menu-option.participant .name:before {
+  content: url("/images/icon-user-avatar-white.svg");
+}
+
+.user-bar .user-bar__menu-option .name {
+  display: block;
+  font-weight: 700;
+}
+
+.user-bar .user-bar__menu-option .name:before {
+  display: inline-block;
+  content: url("/images/icon-user-avatar-black.svg");
+  padding-right: 4px;
+}
+
+.user-bar .user-bar__menu-option .label {
+  display: block;
+}
+
+.user-bar .user-bar__menu-option .add-participant:before {
+  display: inline-block;
+  content: url("/images/icon-add.svg");
+  padding-right: 4px;
+}
+
+.user-bar .notification img {
+  vertical-align: middle;
 }
 
 .tab-bar {
