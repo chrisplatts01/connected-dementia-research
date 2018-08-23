@@ -6,9 +6,9 @@ import datejs from '../scripts/vendor/datejs/build/date-en-GB.js'
 import i18n from '../scripts/vendor/datejs/i18n/en-GB.js'
 
 $(function () {
-//   /**
-//    * IIFE to handle form va;idation using the jquery-validation plugin
-//    */
+  /**
+   * FORM VALIDATION: Handle form va;idation using the jquery-validation plugin
+   */
   var formValidation = (function () {
     $.validator.addMethod('dateUK', function (value, element) {
       var rawDate = value
@@ -100,7 +100,7 @@ $(function () {
   }())
 
   /**
-   * IIFE to handle masked date fields
+   * MASKED DATE FIELD: Handle masked date fields
    */
    var maskedDateField = (function () {
      var $maskedDateField = $('.input-field--masked-date').find('input[name="date"]')
@@ -109,7 +109,7 @@ $(function () {
    }())
 
   /**
-    * IIFE to handle password show/hide
+    * PASSWORD FIELD: Handle password show/hide
     */
   var passwordField = (function () {
     var $passwordField = $('.input-field--password')
@@ -130,7 +130,7 @@ $(function () {
   }())
 
     /**
-      * IIFE to handle progress indicators
+      * PROGRESS INDICATOR: Handle progress indicators
       */
   var progressIndicator = (function () {
     var $progressIndicator = $('.progress-indicator')
@@ -146,7 +146,7 @@ $(function () {
   }())
 
   /**
-    * IIFE to handle custom select components
+    * DROPDOWN SELECT: Handle custom select components
     */
   var dropdownSelect = (function () {
     var $dropdownSelect
@@ -236,7 +236,7 @@ $(function () {
   })()
 
   /**
-    * IIFE to handle conditional checkbox groups
+    * CONDITIONAL CHECKBOXES: Handle conditional checkbox groups
     */
   var conditionalCheckboxGroup = (function () {
     var $conditionalCheckboxGroup = $('.conditional-checkbox-group')
@@ -274,38 +274,79 @@ $(function () {
     })
   })()
 
-    /**
-      * IIFE to handle segmented control components
-      */
-    var segmentedControl = (function () {
-      var $segmentedControl = $('.segmented-control')
+  /**
+    * SEGMENTED CONTROL: Handle segmented control components
+    */
+  var segmentedControl = (function () {
+    var $segmentedControl = $('.segmented-control')
 
-      // Handle form submission with no selection
-      $segmentedControl.closest('form').on('submit', function () {
+    // Handle form submission with no selection
+    $segmentedControl.closest('form').on('submit', function () {
+      var $this = $(this)
+      var $control = $this.find('.segmented-control')
+      $control.each(function () {
         var $this = $(this)
-        var $control = $this.find('.segmented-control')
-        $control.each(function () {
-          var $this = $(this)
-          console.log($this.html())
-          if ($this.find('input:radio').hasClass('error')) {
-            $this.addClass('invalid')
-            $this.find('.segmented-control__label').addClass('invalid')
-          }
-        })
+        console.log($this.html())
+        if ($this.find('input:radio').hasClass('error')) {
+          $this.addClass('invalid')
+          $this.find('.segmented-control__label').addClass('invalid')
+        }
       })
+    })
 
-      // Handle click event
-      $segmentedControl.click(function () {
-        var $this = $(this)
-        var $input = $this.find('[type=radio]')
-        var $label = $this.find('.segmented-control__label')
-        $label.removeClass('checked').removeClass('invalid')
-        $input.attr('checked', 'checked')
-      })
-    })()
+    // Handle click event
+    $segmentedControl.click(function () {
+      var $this = $(this)
+      var $input = $this.find('[type=radio]')
+      var $label = $this.find('.segmented-control__label')
+      $label.removeClass('checked').removeClass('invalid')
+      $input.attr('checked', 'checked')
+    })
+  })()
 
   /**
-    * IIFE to handle file upload components
+    * HIDEABLE PANEL: Handle hideable panel
+    */
+  var hideablePanel = (function () {
+    var $hideablePanels = $('.hideable-panel')
+
+    $hideablePanels.each(function () {
+      var $hideablePanel = $(this)
+      var $hidePanel = $hideablePanel.find('.hideable-panel__close')
+
+      $hidePanel.on('click', function () {
+        $hideablePanel.hide()
+      })
+    })
+  }())
+
+  /**
+    * ACCORDION: Handle accordion init/show/hide
+    */
+  var accordion = (function () {
+    var $accordions = $('.accordion')
+
+    $accordions.each(function () {
+      var $accordion = $(this)
+      var $items = $accordion.find('.accordion__item')
+      $items.addClass('closed')
+      $items.first().removeClass('closed')
+
+      $items.on('click', function () {
+        var $item = $(this)
+        console.log($item)
+        console.log($items)
+        $items.addClass('closed')
+        $item.removeClass('closed')
+      //   $('html, body').animate({
+      //     scrollTop: ($item.offset().top)
+      //   },500);
+      })
+    })
+  }())
+
+  /**
+    * FILE UPLOAD: Handle file upload components
     */
   var fileUpload = (function () {
     // Check if browser supports advanced file upload features

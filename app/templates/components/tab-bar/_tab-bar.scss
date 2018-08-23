@@ -1,6 +1,6 @@
 .tab-bar {
   @include clearfix();
-  margin: -28px -24px 24px;
+  margin: 0 -24px 24px;
   padding: 0 16px;
   background-color: $white;
 
@@ -41,4 +41,8 @@
       }
     }
   }
+}
+
+.user-bar + .tab-bar {
+  margin-top: -28px;
 }

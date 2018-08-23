@@ -16,13 +16,6 @@
 // Mixins
 @import 'mixins/forms/_segmented-control.scss';
 
-// Modules
-// @import 'app/templates/modules/masthead/masthead';
-// @import 'app/templates/modules/navigation/navigation';
-// @import 'app/templates/modules/footer/footer';
-// @import 'app/templates/modules/social-media/social-media';
-// @import 'app/templates/modules/sponsors/sponsors';
-
 // Pattern library components
 @import 'app/templates/components/activity-button/activity-button';
 @import 'app/templates/components/bullet-list/bullet-list';
@@ -50,6 +43,8 @@
 @import 'app/templates/components/segmented-control/segmented-control';
 @import 'app/templates/components/user-bar/user-bar';
 @import 'app/templates/components/tab-bar/tab-bar';
+@import 'app/templates/components/hideable-panel/hideable-panel';
+@import 'app/templates/components/accordion/accordion';
 
 // Pattern library modules
 @import 'app/templates/modules/volunteer-page-header/volunteer-page-header';

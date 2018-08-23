@@ -1,12 +1,11 @@
-<div class="user-bar">
-  <span class="user-bar__name">Username</span>
-  <span class="user-bar__surname">Surname</span>
-</div>
+<header class="user-bar">
+  <h1 class="primary-user"><span class="primary-user__label">Volunteer</span>Username Surname</h1>
+</header>
 <br />
-<div class="user-bar">
-  <span class="user-bar__role">Volunteer</span>
-  <span class="user-bar__name">Username</span>
-  <span class="user-bar__surname">Surname</span>
-  <button class="button button--tertiary">Add volunteer</button>
-  <span class="user-bar__info">Represented by <em>Proxy Name</em></span>
-</div>
+<header class="user-bar">
+  <div class="user-bar__users">
+    <h1 class="volunteer"><span class="label">Volunteer</span>Username Surname</h1>
+    <h2 class="particpant"><span class="label">Represented by</span> Proxy Name</h2>
+  </div>
+  <div class="user-bar__menu">{{ volunteer.dropdownSelect('Accounts') }}</div>
+</header>

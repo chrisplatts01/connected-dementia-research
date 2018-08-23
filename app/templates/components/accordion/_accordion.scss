@@ -1,0 +1,45 @@
+.accordion {}
+
+.accordion__item {
+  position: relative;
+  margin-top: 8px;
+}
+
+.accordion__header {
+  @include clearfix();
+  color: $grey;
+  background: $grey-L52 url('/images/arrow-up-grey.svg') 98% 50% no-repeat;
+
+  .accordion__item.closed & {
+    background-image: url('/images/arrow-down-grey.svg');
+  }
+
+  &:hover {
+    color: $grey-D10;
+    background-color: $grey-L35;
+  }
+
+  h2 {
+    @include small-font;
+    width: 80%;
+    float: left;
+    margin: 0;
+    padding: 8px 16px
+  }
+
+  .accordion__edit {
+    @include small-font;
+    text-decoration: underline;
+    float: right;
+    width: 72px;
+    padding: 8px 0 0 0;
+  }
+}
+
+.accordion__content {
+  padding: 16px 0;
+
+  .accordion__item.closed & {
+    display: none;
+  }
+}
