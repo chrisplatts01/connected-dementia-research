@@ -1341,7 +1341,7 @@ p, .paragraph {
 .user-bar {
   position: relative;
   background: #333f48;
-  padding: 24px;
+  padding: 12px 24px;
   margin: -24px -24px 28px;
 }
 
@@ -1391,8 +1391,8 @@ p, .paragraph {
 
 .user-bar .user-bar__menu {
   position: absolute;
-  top: 36px;
-  right: 16px;
+  top: 40px;
+  right: 24px;
   width: 36%;
   color: #333f48;
   background-color: #b8c4cc;

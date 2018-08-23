@@ -2,7 +2,7 @@
   @include clearfix();
   position: relative;
   background: $grey;
-  padding: 24px;
+  padding: 12px 24px;
   margin: -24px -24px 28px;
 
   .user-bar__users {
@@ -33,8 +33,8 @@
 
   .user-bar__menu {
     position: absolute;
-    top: 36px;
-    right: 16px;
+    top: 40px;
+    right: 24px;
     width: 36%;
     color: $grey;
     background-color: $grey-L52;
