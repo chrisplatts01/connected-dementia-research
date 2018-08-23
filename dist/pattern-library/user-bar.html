@@ -158,8 +158,9 @@
     .user-bar {
   @include clearfix();
   position: relative;
+  height: 100px;
   background: $grey;
-  padding: 0 24px;
+  padding: 12px 24px;
   margin: -24px -24px 28px;
 
   .user-bar__users {
@@ -169,6 +170,7 @@
     .volunteer {
         @include bold-font;
         color: $white;
+        margin: 0 0 16px;
 
       .label {
         @include base-font;
@@ -179,6 +181,7 @@
     .participant {
       @include small-font;
       color: $coral;
+      margin: 0 0 4px;
 
       .label {
         font-weight: 400;
@@ -190,8 +193,8 @@
 
   .user-bar__menu {
     position: absolute;
-    top: 36px;
-    right: 16px;
+    top: 32px;
+    right: 24px;
     width: 36%;
     color: $grey;
     background-color: $grey-L52;

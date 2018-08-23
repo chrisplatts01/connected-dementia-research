@@ -1,6 +1,7 @@
 .user-bar {
   @include clearfix();
   position: relative;
+  height: 100px;
   background: $grey;
   padding: 12px 24px;
   margin: -24px -24px 28px;
@@ -12,6 +13,7 @@
     .volunteer {
         @include bold-font;
         color: $white;
+        margin: 0 0 16px;
 
       .label {
         @include base-font;
@@ -22,6 +24,7 @@
     .participant {
       @include small-font;
       color: $coral;
+      margin: 0 0 4px;
 
       .label {
         font-weight: 400;
@@ -33,7 +36,7 @@
 
   .user-bar__menu {
     position: absolute;
-    top: 40px;
+    top: 32px;
     right: 24px;
     width: 36%;
     color: $grey;
@@ -53,9 +56,13 @@
 
     &:after {
       position: absolute;
-      top: 8px;
+      top: 7px;
       right: 16px;
       content: url('/images/arrow-down-grey.svg');
+    }
+
+    &.open:after {
+      content: url('/images/arrow-up-grey.svg');
     }
   }
 

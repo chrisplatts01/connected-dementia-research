@@ -11,8 +11,6 @@ $(function () {
    */
   var formValidation = (function () {
     $.validator.addMethod('dateUK', function (value, element) {
-      var rawDate = value
-      var parsedDate = Date.parseExact(value, 'd/M/yyyy')
       return Date.parseExact(value, 'd/M/yyyy')
     }, 'Please enter a valid date')
 
@@ -309,7 +307,9 @@ $(function () {
     */
   var userBar = (function () {
     $('.user-bar__menu-select').on('click', function () {
-      $(this).next('.user-bar__menu-options').slideToggle()
+      var $select = $(this)
+      $select.toggleClass('open')
+      $select.next('.user-bar__menu-options').slideToggle()
     })
   }())
 
