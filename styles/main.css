@@ -1340,6 +1340,7 @@ p, .paragraph {
 
 .user-bar {
   position: relative;
+  height: 100px;
   background: #333f48;
   padding: 12px 24px;
   margin: -24px -24px 28px;
@@ -1363,6 +1364,7 @@ p, .paragraph {
   line-height: 32px;
   color: #333f48;
   color: white;
+  margin: 0 0 16px;
 }
 
 .user-bar .user-bar__users .volunteer .label {
@@ -1381,6 +1383,7 @@ p, .paragraph {
   line-height: 24px;
   color: #333f48;
   color: #f15b5b;
+  margin: 0 0 4px;
 }
 
 .user-bar .user-bar__users .participant .label {
@@ -1391,7 +1394,7 @@ p, .paragraph {
 
 .user-bar .user-bar__menu {
   position: absolute;
-  top: 40px;
+  top: 32px;
   right: 24px;
   width: 36%;
   color: #333f48;
@@ -1412,9 +1415,13 @@ p, .paragraph {
 
 .user-bar .user-bar__menu-select:after {
   position: absolute;
-  top: 8px;
+  top: 7px;
   right: 16px;
   content: url("/images/arrow-down-grey.svg");
+}
+
+.user-bar .user-bar__menu-select.open:after {
+  content: url("/images/arrow-up-grey.svg");
 }
 
 .user-bar .user-bar__menu-options {
