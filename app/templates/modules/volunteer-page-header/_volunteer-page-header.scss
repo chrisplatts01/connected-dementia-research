@@ -1,6 +1,6 @@
 .masthead {
   background-color: $white;
-  padding: 20px 0;
+  padding: 20px 16px;
   height: 100px;
 
   @include from(2) {
@@ -21,7 +21,6 @@
   }
 
   .user-admin {
-    // width: 50%;
     float: right;
   }
 

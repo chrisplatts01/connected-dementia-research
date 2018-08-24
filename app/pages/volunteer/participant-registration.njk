@@ -4,36 +4,39 @@
 
 
 {% block content %}
-<!-- div class="page-content__inner-wrapper" -->
   <div class="user-bar">
-    <span class="user-bar__name">Username</span>
-    <span class="user-bar__surname">Surname</span>
-  </div>
-  {{ volunteer.heading('Thank you for creating your account') }}
-  {{ volunteer.paragraph('What would you like to do next?') }}
-  <div class="grid-row">
-    <div class="grid-cell grid-cell--1-of-2 grid-cell--first">
-      <div class="grid-cell__wrapper">
-        {{ volunteer.activityButton('Register as a volunteer myself', 'note', '/volunteer/do-you-have-a-diagnosis-of-dementia.html') }}
-      </div>
+    <div class="user-bar__users">
+      <h1 class="volunteer" ><span class="label">Volunteer</span> Laura Ashley</h1>
     </div>
-    <div class="grid-cell grid-cell--1-of-2 grid-cell--last">
-      <div class="grid-cell__wrapper">
-        {{ volunteer.activityButton('Register someone else as a volunteer', 'contact', '/volunteer/do-you-have-a-diagnosis-of-dementia.html') }}
-      </div>
-    </div>
-  </div>
-  <div class="grid-row">
-    <div class="grid-cell grid-cell--1-of-2 grid-cell--first">
-      <div class="grid-cell__wrapper">
-        {{ volunteer.activityButton('Edit my account information', 'pencil', '/volunteer/do-you-have-a-diagnosis-of-dementia.html') }}
-      </div>
-    </div>
-    <div class="grid-cell grid-cell--1-of-2 grid-cell--last">
-      <div class="grid-cell__wrapper">
-        {{ volunteer.activityButton('Help spread the word', 'smiley', '/volunteer/do-you-have-a-diagnosis-of-dementia.html') }}
+    <div class="user-bar__menu">
+      <div class="user-bar__menu-select">Accounts</div>
+      <div class="user-bar__menu-options">
+        <div class="user-bar__menu-option volunteer">
+          <span class="name">Laura Ashley</span>
+          <span class="label">Volunteer</span>
+        </div>
+        <div class="user-bar__menu-option">
+          <span class="add-participant">Add participants</span>
+        </div>
       </div>
     </div>
   </div>
-<!-- /div -->
+  {{ volunteer.heading('Register participant') }}
+  {{ volunteer.progressIndicator(1, 4) }}
+  <div class="page-content__inner-wrapper">
+    {{ volunteer.heading('Enter details') }}
+    {{ volunteer.paragraph('Thank you for registering. The first step is to create an account. Please begin by telling us who you are.') }}
+    {% call volunteer.form('your-details', '/volunteer/create-login-details.html', 'get' ) %}
+    {{ volunteer.shortInputField('Title', 'name', validation='required') }}
+    {{ volunteer.inputField('First name(s)', 'first-name', validation='required') }}
+    {{ volunteer.inputField('Surname', 'surname', validation='required') }}
+    {{ volunteer.dateFieldGroup() }}
+    {{ volunteer.segmentedControl(validation='required') }}
+    {{ volunteer.postcodeLookup('postcode', validation='required') }}
+    {{ volunteer.inputField('Telephone number', 'telephone', validation='required') }}
+    {{ volunteer.dropdownSelect('How did you hear about us? (optional)', 'how-heard', ['Option 1', 'Option 2'], validation='required') }}
+    {{ volunteer.checkbox('Please keep me up to date with the Joint Dementia Research newsletter', 'contact', validation='required')}}
+    {{ volunteer.pageNavigation({label: 'Back', url: '/'}, {label: 'Submit details', url: '/volunteer/create-login-details.html'}) }}
+    {% endcall %}
+  </div>
 {% endblock %}

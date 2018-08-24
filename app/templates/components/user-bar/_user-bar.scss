@@ -44,7 +44,8 @@
     border-bottom: 4px solid $grey-L35;
     z-index: 20;
 
-    &:hover {
+    &:hover,
+    &:focus {
       color: $grey-D10;
       background-color: $grey-L35;
       border-bottom: 4px solid $grey-L20;
@@ -75,29 +76,6 @@
     background-color: $grey-L60;
     padding: 8px 16px;
 
-    &:hover {
-      background: $grey-L52;
-    }
-
-    &.volunteer {
-      .name:before {
-        content: url('/images/icon-user-avatar-black.svg');
-      }
-    }
-
-    &.participant {
-      color: $white;
-      background-color: $coral;
-
-      &:hover {
-        background: $coral-D20;
-      }
-
-      .name:before {
-        content: url('/images/icon-user-avatar-white.svg');
-      }
-    }
-
     .name {
       display: block;
       font-weight: 700;
@@ -105,7 +83,7 @@
       &:before {
         display: inline-block;
         content: url('/images/icon-user-avatar-black.svg');
-        padding-right: 4px;
+        padding-right: 8px;
       }
     }
 
@@ -113,14 +91,50 @@
       display: block;
     }
 
-    .add-participant:before {
-      display: inline-block;
-      content: url('/images/icon-add.svg');
-      padding-right: 4px;
+    .add-participant{
+      border-bottom: 0;
+      &:before {
+        position: relative;
+        top:4px;
+        display: inline-block;
+        content: url('/images/icon-add.svg');
+        padding-right: 8px;
+      }
+    }
+
+    &:hover,
+    &:focus,
+    &:active {
+      color: $white;
+      background: $coral;
+
+      .name:before {
+        content: url('/images/icon-user-avatar-white.svg');
+      }
+
+      .add-participant:before {
+        content: url('/images/icon-add-white.svg');
+      }
+
+      .count {
+        color: $coral;
+        background-color: $white;
+      }
     }
   }
 
-  .notification img {
-    vertical-align: middle;
+  .count {
+    position: relative;
+    top: -2px;
+    font-size: 15px;
+    font-weight: 700;
+    line-height: 20px;
+    display: inline-block;
+    color: $white;
+    background-color: $coral;
+    height: 20px;
+    width: 20px;
+    border-radius: 50%;
+    text-align: center;
   }
 }

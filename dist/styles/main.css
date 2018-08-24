@@ -1403,7 +1403,7 @@ p, .paragraph {
   z-index: 20;
 }
 
-.user-bar .user-bar__menu:hover {
+.user-bar .user-bar__menu:hover, .user-bar .user-bar__menu:focus {
   color: #1e252a;
   background-color: #8599a9;
   border-bottom: 4px solid #5d7384;
@@ -1434,27 +1434,6 @@ p, .paragraph {
   padding: 8px 16px;
 }
 
-.user-bar .user-bar__menu-option:hover {
-  background: #b8c4cc;
-}
-
-.user-bar .user-bar__menu-option.volunteer .name:before {
-  content: url("/images/icon-user-avatar-black.svg");
-}
-
-.user-bar .user-bar__menu-option.participant {
-  color: white;
-  background-color: #f15b5b;
-}
-
-.user-bar .user-bar__menu-option.participant:hover {
-  background: #d41212;
-}
-
-.user-bar .user-bar__menu-option.participant .name:before {
-  content: url("/images/icon-user-avatar-white.svg");
-}
-
 .user-bar .user-bar__menu-option .name {
   display: block;
   font-weight: 700;
@@ -1463,21 +1442,56 @@ p, .paragraph {
 .user-bar .user-bar__menu-option .name:before {
   display: inline-block;
   content: url("/images/icon-user-avatar-black.svg");
-  padding-right: 4px;
+  padding-right: 8px;
 }
 
 .user-bar .user-bar__menu-option .label {
   display: block;
 }
 
-.user-bar .user-bar__menu-option .add-participant:before {
-  display: inline-block;
-  content: url("/images/icon-add.svg");
-  padding-right: 4px;
+.user-bar .user-bar__menu-option .add-participant {
+  border-bottom: 0;
 }
 
-.user-bar .notification img {
-  vertical-align: middle;
+.user-bar .user-bar__menu-option .add-participant:before {
+  position: relative;
+  top: 4px;
+  display: inline-block;
+  content: url("/images/icon-add.svg");
+  padding-right: 8px;
+}
+
+.user-bar .user-bar__menu-option:hover, .user-bar .user-bar__menu-option:focus, .user-bar .user-bar__menu-option:active {
+  color: white;
+  background: #f15b5b;
+}
+
+.user-bar .user-bar__menu-option:hover .name:before, .user-bar .user-bar__menu-option:focus .name:before, .user-bar .user-bar__menu-option:active .name:before {
+  content: url("/images/icon-user-avatar-white.svg");
+}
+
+.user-bar .user-bar__menu-option:hover .add-participant:before, .user-bar .user-bar__menu-option:focus .add-participant:before, .user-bar .user-bar__menu-option:active .add-participant:before {
+  content: url("/images/icon-add-white.svg");
+}
+
+.user-bar .user-bar__menu-option:hover .count, .user-bar .user-bar__menu-option:focus .count, .user-bar .user-bar__menu-option:active .count {
+  color: #f15b5b;
+  background-color: white;
+}
+
+.user-bar .count {
+  position: relative;
+  top: -2px;
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 20px;
+  display: inline-block;
+  color: white;
+  background-color: #f15b5b;
+  height: 20px;
+  width: 20px;
+  border-radius: 50%;
+  text-align: center;
 }
 
 .tab-bar {
@@ -1628,7 +1642,7 @@ p, .paragraph {
 
 .masthead {
   background-color: white;
-  padding: 20px 0;
+  padding: 20px 16px;
   height: 100px;
 }
 
