@@ -30,8 +30,11 @@
     h1.pl-heading { font-size: 1.5rem; border-bottom: 1px solid #ccc; }
     h2.pl-heading { font-size: 1.0rem; margin-top: 3rem; }
     .pl-nav { font-size: 14px; }
-    .pl-nav .component-list { list-style: none; padding: 0; margin: 0 0 1rem 0; font-size: 14px; }
-    .pl-nav h4 { margin-bottom: 0; font-size: 14px; }
+    .pl-nav .component-list { list-style: none; padding: 0; margin: 0 0 1rem 8px; font-size: 14px; line-height: 18px; }
+    .pl-nav .component-list li {margin-bottom: 4px;}
+    .pl-nav h4 { margin-bottom: 0; font-size: 1.0rem; }
+    .pl-nav a:link, .pl-nav a:visited {color: #333; text-decoration: none;}
+    .pl-nav li span {color: #999}
   </style>
   <link rel="stylesheet" href="/styles/main.css">
 
@@ -51,21 +54,24 @@
       </ul>
       <h4>Pages:</h4>
       <ul class="component-list">
-        <li><a href="/volunteer/your-details.html">Volunteer: Your details</a></li>
-        <li><a href="/volunteer/create-login-details.html">Volunteer: Create login details</a></li>
-        <li><a href="/volunteer/consent.html">Volunteer: Consent</a></li>
-        <li><a href="/volunteer/verify-your-email-address.html">Volunteer: Verify your email address</a></li>
-        <li><a href="/volunteer/thank-you-for-creating-your-account.html">Volunteer: Thank you for creating your account</a></li>
-        <li><a href="/volunteer/do-you-have-a-diagnosis-of-dementia.html">Volunteer: Do you have a diagnosis of dementia?</a></li>
-        <li><a href="/volunteer/do-you-know-what-your-diagnosis-is.html">Volunteer: Do you know what your diagnosis is?</a></li>
-        <li><a href="/volunteer/how-would-you-describe-your-symptoms.html">Volunteer: How would you describe your symptoms?</a></li>
-        <li><a href="/volunteer/thank-you-for-registering.html">Volunteer: Thank you for registering</a></li>
-        <li><a href="/volunteer/thank-you-for-registering-as-a-volunteer.html">Volunteer: Thank you for registering as a volunteer</a></li>
-        <li><a href="/volunteer/volunteer-landing-page.html">Volunteer: Landing page</a></li>
-        <li><a href="/volunteer/participant-landing-page.html">Participant: Landing page</a></li>
-        <li><a href="/volunteer/participant-registration.html">Participant: Registration</a></li>
-        <li><a href="/volunteer/participant-registration-confirmation.html">Participant: Registration confirmation</a></li>
-        <li><a href="/volunteer/studies.html">Studies</a></li>
+        <li><a href="/volunteer/your-details.html"><b>Volunteer sign-up</b>: Your details</a></li>
+        <li><a href="/volunteer/create-login-details.html"><b>Volunteer sign-up</b>: Create login details</a></li>
+        <li><a href="/volunteer/consent.html"><b>Volunteer sign-up</b>: Consent</a></li>
+        <li><a href="/volunteer/verify-your-email-address.html"><b>Volunteer sign-up</b>: Verify your email address</a></li>
+        <li><a href="/volunteer/thank-you-for-creating-your-account.html"><b>Volunteer sign-up</b>: Thank you for creating your account</a></li>
+        <li><a href="/volunteer/do-you-have-a-diagnosis-of-dementia.html"><b>Volunteer sign-up</b>: Do you have a diagnosis of dementia?</a></li>
+        <li><a href="/volunteer/do-you-know-what-your-diagnosis-is.html"><b>Volunteer sign-up</b>: Do you know what your diagnosis is?</a></li>
+        <li><a href="/volunteer/how-would-you-describe-your-symptoms.html"><b>Volunteer sign-up</b>: How would you describe your symptoms?</a></li>
+        <li><a href="/volunteer/thank-you-for-registering.html"><b>Volunteer sign-up</b>: Thank you for registering</a></li>
+        <li><a href="/volunteer/thank-you-for-registering-as-a-volunteer.html"><b>Volunteer sign-up</b>: Thank you for registering as a volunteer</a></li>
+        <br />
+        <li><a href="/volunteer/participant-registration.html"><b>Participant sign-up</b>: Registration</a></li>
+        <br />
+        <li><a href="/volunteer/volunteer-landing-page-1.html"><b>Dashboard</b>: Volunteer landing page - registration confirmation</a></li>
+        <li><a href="/volunteer/volunteer-landing-page-2.html"><b>Dashboard</b>: Volunteer landing page</a></li>
+        <li><a href="/volunteer/participant-landing-page-1.html"><b>Dashboard</b>: Participant landing page - registration confirmation</a></li>
+        <li><a href="/volunteer/participant-landing-page-2.html"><b>Dashboard</b>: Participant landing page</a></li>
+        <li><a href="/volunteer/studies.html"><b>Dashboard</b>: Studies</a></li>
       </ul>
       <h4>Components:</h4>
       <ul class="component-list">
@@ -191,9 +197,15 @@
     }
   }
 
+  .user-bar__action {
+    position: absolute;
+    top: 28px;
+    right: 24px;
+  }
+
   .user-bar__menu {
     position: absolute;
-    top: 32px;
+    top: 28px;
     right: 24px;
     width: 36%;
     color: $grey;
@@ -248,29 +260,24 @@
       display: block;
     }
 
-    .add-participant:before {
-      position: relative;
-      top:4px;
-      display: inline-block;
-      content: url('/images/icon-add.svg');
-      padding-right: 8px;
-    }
-
-    .count {
-      font-size: 15px;
-      line-height: 20px;
-      display: inline-block;
-      color: $white;
-      background-color: $coral;
-      height: 20px;
-      width: 20px;
-      border-radius: 50%;
-      text-align: center;
+    .add-participant{
+      border-bottom: 0;
+      &:before {
+        position: relative;
+        top:4px;
+        display: inline-block;
+        content: url('/images/icon-add.svg');
+        padding-right: 8px;
+      }
     }
 
     &:hover,
-    &:focus,
-    &:active {
+    &:focus {
+      color: $grey-D10;
+      background: $grey-L52;
+    }
+
+    &.active {
       color: $white;
       background: $coral;
 
@@ -286,10 +293,17 @@
         color: $coral;
         background-color: $white;
       }
+
+      // &:hover,
+      // &:focus {
+      //   background-color: $coral-D20;
+      // }
     }
   }
 
   .count {
+    position: relative;
+    top: -2px;
     font-size: 15px;
     font-weight: 700;
     line-height: 20px;

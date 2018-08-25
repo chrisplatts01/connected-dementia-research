@@ -34,9 +34,15 @@
     }
   }
 
+  .user-bar__action {
+    position: absolute;
+    top: 28px;
+    right: 24px;
+  }
+
   .user-bar__menu {
     position: absolute;
-    top: 32px;
+    top: 28px;
     right: 24px;
     width: 36%;
     color: $grey;
@@ -103,8 +109,12 @@
     }
 
     &:hover,
-    &:focus,
-    &:active {
+    &:focus {
+      color: $grey-D10;
+      background: $grey-L52;
+    }
+
+    &.active {
       color: $white;
       background: $coral;
 
@@ -120,6 +130,11 @@
         color: $coral;
         background-color: $white;
       }
+
+      // &:hover,
+      // &:focus {
+      //   background-color: $coral-D20;
+      // }
     }
   }
 

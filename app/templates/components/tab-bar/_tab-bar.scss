@@ -1,7 +1,7 @@
 .tab-bar {
   @include clearfix();
-  margin: 0 -24px 24px;
-  padding: 0 16px;
+  margin: 0 0 24px 0;
+  padding: 0;
   background-color: $white;
 
   ul {
@@ -28,10 +28,25 @@
       text-align: center;
     }
 
+    span.count {
+      position: relative;
+      top: 0;
+      font-size: 15px;
+      font-weight: 700;
+      line-height: 7px;
+      display: inline-block;
+      color: $white;
+      background-color: $coral;
+      height: 20px;
+      width: 20px;
+      border-radius: 50%;
+      text-align: center;
+    }
+
     a {
-      color: $grey-L52;
+      color: $grey-L35;
       background-color: $white;
-      border-right-color: $grey-L52;
+      border-right-color: $grey-L35;
       text-decoration: none;
     }
 

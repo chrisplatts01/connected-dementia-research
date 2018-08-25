@@ -4,7 +4,7 @@
 
 .grid-cell {
   float: left;
-  padding: 0;
+  padding: 8px;
   margin: 0;
 }
 
@@ -32,10 +32,12 @@
   width: 20%;
 }
 
-.grid-cell--first {}
-
-.grid-cell--last {}
-
-.grid-cell__wrapper {
-  margin: 8px;
+.grid-cell--first {
+  padding-left: 0;
 }
+
+.grid-cell--last {
+  padding-right: 0;
+}
+
+.grid-cell__wrapper {}

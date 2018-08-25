@@ -5,11 +5,11 @@
 
 {% block content %}
 <div class="user-bar">
-  <span class="user-bar__role">Volunteer</span>
-  <span class="user-bar__name">Username</span>
-  <span class="user-bar__surname">Surname</span>
-  <button class="button button--tertiary">Add volunteer</button>
-  <span class="user-bar__info">Represented by <em>Proxy Name</em></span>
+  <div class="user-bar__users">
+    <h1 class="volunteer" ><span class="label">Volunteer</span> Laura Ashley</h1>
+    <h2 class="participant"><span class="label">Represented by</span> Ria Mitchell</h2>
+  </div>
+  <button class="user-bar__action button button--tertiary">Add volunteer</button>
 </div>
 {{ volunteer.tabBar(tabs=[
   {label: 'Profile', url: ''},

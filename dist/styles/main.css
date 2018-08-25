@@ -124,7 +124,7 @@ tr:last-child td {
 
 .grid-cell {
   float: left;
-  padding: 0;
+  padding: 8px;
   margin: 0;
 }
 
@@ -152,8 +152,12 @@ tr:last-child td {
   width: 20%;
 }
 
-.grid-cell__wrapper {
-  margin: 8px;
+.grid-cell--first {
+  padding-left: 0;
+}
+
+.grid-cell--last {
+  padding-right: 0;
 }
 
 .menu {
@@ -1392,9 +1396,15 @@ p, .paragraph {
   color: white;
 }
 
+.user-bar .user-bar__action {
+  position: absolute;
+  top: 28px;
+  right: 24px;
+}
+
 .user-bar .user-bar__menu {
   position: absolute;
-  top: 32px;
+  top: 28px;
   right: 24px;
   width: 36%;
   color: #333f48;
@@ -1461,20 +1471,25 @@ p, .paragraph {
   padding-right: 8px;
 }
 
-.user-bar .user-bar__menu-option:hover, .user-bar .user-bar__menu-option:focus, .user-bar .user-bar__menu-option:active {
+.user-bar .user-bar__menu-option:hover, .user-bar .user-bar__menu-option:focus {
+  color: #1e252a;
+  background: #b8c4cc;
+}
+
+.user-bar .user-bar__menu-option.active {
   color: white;
   background: #f15b5b;
 }
 
-.user-bar .user-bar__menu-option:hover .name:before, .user-bar .user-bar__menu-option:focus .name:before, .user-bar .user-bar__menu-option:active .name:before {
+.user-bar .user-bar__menu-option.active .name:before {
   content: url("/images/icon-user-avatar-white.svg");
 }
 
-.user-bar .user-bar__menu-option:hover .add-participant:before, .user-bar .user-bar__menu-option:focus .add-participant:before, .user-bar .user-bar__menu-option:active .add-participant:before {
+.user-bar .user-bar__menu-option.active .add-participant:before {
   content: url("/images/icon-add-white.svg");
 }
 
-.user-bar .user-bar__menu-option:hover .count, .user-bar .user-bar__menu-option:focus .count, .user-bar .user-bar__menu-option:active .count {
+.user-bar .user-bar__menu-option.active .count {
   color: #f15b5b;
   background-color: white;
 }
@@ -1495,8 +1510,8 @@ p, .paragraph {
 }
 
 .tab-bar {
-  margin: 0 -24px 24px;
-  padding: 0 16px;
+  margin: 0 0 24px 0;
+  padding: 0;
   background-color: white;
 }
 
@@ -1535,10 +1550,25 @@ p, .paragraph {
   text-align: center;
 }
 
+.tab-bar li span.count {
+  position: relative;
+  top: 0;
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 7px;
+  display: inline-block;
+  color: white;
+  background-color: #f15b5b;
+  height: 20px;
+  width: 20px;
+  border-radius: 50%;
+  text-align: center;
+}
+
 .tab-bar li a {
-  color: #b8c4cc;
+  color: #8599a9;
   background-color: white;
-  border-right-color: #b8c4cc;
+  border-right-color: #8599a9;
   text-decoration: none;
 }
 
