@@ -113,98 +113,64 @@
     </nav>
     <main class="pl-main" role="main">
       
-  <h1 class="pl-heading">Conditional checkbox group</h1>
+  <h1 class="pl-heading">Hideable panel</h1>
+  <div style="padding: 0 24px">
   
-<fieldset class="form__field conditional-checkbox-group">
-  <div class="radio-button">
-    <label>
-      <input id="ccg-id-no" name="ccg-id-yesno" data-checkboxes-enabled="false" value="no" type="radio" />
-      No
-      <span class="checkmark"></span>
-    </label>
-  </div>
-  <div class="radio-button">
-    <label>
-      <input id="ccg-id-yes" name="ccg-id-yesno" data-checkboxes-enabled="true" value="yes" checked type="radio" />
-      Yes
-      <span class="checkmark"></span>
-    </label>
-  </div>
-  <div class="checkboxes">
-    
-    <div class="checkbox">
-      <label>
-        <input id="option-1-option_1" name="option-1" value="option_1" type="checkbox" />
-        Option 1
-        <span class="checkmark"></span>
-      </label>
-    </div>
-    
-    <div class="checkbox">
-      <label>
-        <input id="option-2-option_2" name="option-2" value="option_2" type="checkbox" />
-        Option 2
-        <span class="checkmark"></span>
-      </label>
-    </div>
-    
-    <div class="checkbox">
-      <label>
-        <input id="option-3-option_3" name="option-3" value="option_3" type="checkbox" />
-        Option 3
-        <span class="checkmark"></span>
-      </label>
-    </div>
-    
-  </div>
-</fieldset>
+<div class="hideable-panel">
+  
+    <p><b>Click on the <img src="/images/icon-delete-black.svg" valign="middle" /> button &ndash; above &ndash; to hide this panel.</b> Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Donec ullamcorper nulla non metus auctor fringilla. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+  
+  <div class="hideable-panel__close"><img src="/images/icon-delete-black.svg" alt="Close" /></div>
+</div>
 
 
+</div>
   <h2 class="pl-heading">HTML</h2>
   <textarea class="pl-code" disabled>
     
-<fieldset class="form__field conditional-checkbox-group">
-  <div class="radio-button">
-    <label>
-      <input id="ccg-id-no" name="ccg-id-yesno" data-checkboxes-enabled="false" value="no" type="radio" />
-      No
-      <span class="checkmark"></span>
-    </label>
-  </div>
-  <div class="radio-button">
-    <label>
-      <input id="ccg-id-yes" name="ccg-id-yesno" data-checkboxes-enabled="true" value="yes" checked type="radio" />
-      Yes
-      <span class="checkmark"></span>
-    </label>
-  </div>
-  <div class="checkboxes">
+<div class="hideable-panel">
+  
+      <p><b>This is an example of a closeable content panel.</b> Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Donec ullamcorper nulla non metus auctor fringilla. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
     
-    <div class="checkbox">
-      <label>
-        <input id="option-3-option_3" name="option-3" value="option_3" type="checkbox" />
-        Option 3
-        <span class="checkmark"></span>
-      </label>
-    </div>
-    
-  </div>
-</fieldset>
+  <div class="hideable-panel__close"><img src="/images/icon-delete-black.svg" alt="Close" /></div>
+</div>
 
 
   </textarea>
   <h2 class="pl-heading">SCSS</h2>
   <textarea class="pl-code" disabled>
-    .checkbox-group {
-  position:relative;
-  border: none;
-  margin: 0 0 28px;
-  padding: 0;
-}
+    .hideable-panel {
+  position: relative;
+  margin: 0 -24px 28px;
+  background-color: $white;
+  border: 1px solid $coral;
+  padding: 48px 24px;
 
-.checkbox-group--compact {
-  .checkbox {
-    display: inline;
+  .hideable-panel__close {
+    position: absolute;
+    display: inline-block;
+    top: 16px;
+    right: 16px;
+    height: 40px;
+    width: 40px;
+    text-align: center;
+    padding-top: 10px;
+    cursor: pointer;
+    z-index: 10;
+
+    &:hover {
+      opacity: 0.7;
+    }
+  }
+
+  &.closed {
+    display: none;
+  }
+
+
+
+  .user-bar ~ & {
+    margin-top: -28px;
   }
 }
 

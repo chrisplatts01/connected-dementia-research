@@ -1,5 +1,15 @@
-@import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,400i,600,600i,700,700i");
 @import url("https://fonts.googleapis.com/css?family=Montserrat:400,400i,700,700i");
+@import url("https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700,700i");
+@font-face {
+  font-family: 'Calibri';
+  src: url("/fonts/Calibri.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: 'Calibri Bold';
+  src: url("/fonts/Calibri Bold.ttf") format("truetype");
+}
+
 * {
   box-sizing: border-box;
   -webkit-font-smoothing: antialiased;
@@ -79,7 +89,7 @@ a:hover, a:focus, a:active {
 }
 
 p.label {
-  font-family: "Calibri", "Helvetica", "Arial", sans-serif;
+  font-family: "Calibri", "Open Sans", "Helvetica", "Arial", sans-serif;
   font-size: 19px;
   font-weight: 400;
   line-height: 24px;
@@ -96,7 +106,7 @@ table {
 }
 
 th, td {
-  font-family: "Calibri", "Helvetica", "Arial", sans-serif;
+  font-family: "Calibri", "Open Sans", "Helvetica", "Arial", sans-serif;
   font-size: 19px;
   font-weight: 400;
   line-height: 24px;
@@ -114,6 +124,18 @@ th {
 tr:last-child th,
 tr:last-child td {
   border-bottom: 0;
+}
+
+.force-left {
+  width: 50%;
+  float: left;
+  text-align: left;
+}
+
+.force-right {
+  width: 50%;
+  float: right;
+  text-align: right;
 }
 
 .grid-row::after {
@@ -150,6 +172,34 @@ tr:last-child td {
 
 .grid-cell--1-of-5 {
   width: 20%;
+}
+
+.grid-cell--1-of-6 {
+  width: 16.6%;
+}
+
+.grid-cell--1-of-7 {
+  width: 14.2%;
+}
+
+.grid-cell--1-of-8 {
+  width: 12.5%;
+}
+
+.grid-cell--1-of-9 {
+  width: 11.1%;
+}
+
+.grid-cell--1-of-10 {
+  width: 10%;
+}
+
+.grid-cell--1-of-11 {
+  width: 9%;
+}
+
+.grid-cell--1-of-12 {
+  width: 8.3%;
 }
 
 .grid-cell--first {
@@ -255,7 +305,7 @@ tr:last-child td {
 }
 
 .button {
-  font-family: "Calibri", "Helvetica", "Arial", sans-serif;
+  font-family: "Calibri", "Open Sans", "Helvetica", "Arial", sans-serif;
   font-size: 19px;
   font-weight: 400;
   line-height: 24px;
@@ -447,6 +497,11 @@ a.button-link:active {
   text-decoration: none;
 }
 
+.form-actions--full-width button {
+  width: 100%;
+  margin-bottom: 16px;
+}
+
 .checkbox {
   display: block;
   position: relative;
@@ -458,7 +513,7 @@ a.button-link:active {
 }
 
 .checkbox label {
-  font-family: "Calibri", "Helvetica", "Arial", sans-serif;
+  font-family: "Calibri", "Open Sans", "Helvetica", "Arial", sans-serif;
   font-size: 19px;
   font-weight: 400;
   line-height: 24px;
@@ -556,13 +611,19 @@ a.button-link:active {
 .checkbox-group {
   position: relative;
   border: none;
-  margin-bottom: 28px;
+  margin: 0 0 28px;
+  padding: 0;
+}
+
+.checkbox-group--compact .checkbox {
+  display: inline;
 }
 
 .conditional-checkbox-group {
   position: relative;
   border: 0;
-  margin-bottom: 28px;
+  margin: 0 0 28px;
+  padding: 0;
 }
 
 .conditional-checkbox-group .checkboxes {
@@ -583,7 +644,7 @@ a.button-link:active {
 }
 
 .date-field-group legend {
-  font-family: "Calibri", "Helvetica", "Arial", sans-serif;
+  font-family: "Calibri", "Open Sans", "Helvetica", "Arial", sans-serif;
   font-size: 19px;
   font-weight: 400;
   line-height: 24px;
@@ -614,7 +675,7 @@ form .date-field-group label.error {
 }
 
 .dropdown-select label {
-  font-family: "Calibri", "Helvetica", "Arial", sans-serif;
+  font-family: "Calibri", "Open Sans", "Helvetica", "Arial", sans-serif;
   font-size: 19px;
   font-weight: 400;
   line-height: 24px;
@@ -645,7 +706,7 @@ form .date-field-group label.error {
 
 .dropdown-select .dropdown .dropdown__selected,
 .dropdown-select .dropdown .dropdown__option {
-  font-family: "Calibri", "Helvetica", "Arial", sans-serif;
+  font-family: "Calibri", "Open Sans", "Helvetica", "Arial", sans-serif;
   font-size: 19px;
   font-weight: 400;
   line-height: 24px;
@@ -787,7 +848,7 @@ form .date-field-group label.error {
 }
 
 .file-upload__uploader label {
-  font-family: "Calibri", "Helvetica", "Arial", sans-serif;
+  font-family: "Calibri", "Open Sans", "Helvetica", "Arial", sans-serif;
   font-size: 19px;
   font-weight: 400;
   line-height: 24px;
@@ -826,7 +887,7 @@ form .date-field-group label.error {
 }
 
 .file-upload__file-list {
-  font-family: "Calibri", "Helvetica", "Arial", sans-serif;
+  font-family: "Calibri", "Open Sans", "Helvetica", "Arial", sans-serif;
   font-size: 19px;
   font-weight: 400;
   line-height: 24px;
@@ -874,7 +935,7 @@ form .date-field-group label.error {
 
 form label.error,
 form div.error {
-  font-family: "Calibri", "Helvetica", "Arial", sans-serif;
+  font-family: "Calibri", "Open Sans", "Helvetica", "Arial", sans-serif;
   font-size: 19px;
   font-weight: 700;
   line-height: 24px;
@@ -907,6 +968,26 @@ form div.error:before {
   font-weight: 400;
 }
 
+.subheading {
+  font-family: "Montserrat", "Helvetica", "Arial", sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 32px;
+  color: #333f48;
+  margin: 0 0 28px 0;
+}
+
+.small-heading {
+  font-family: "Calibri", "Open Sans", "Helvetica", "Arial", sans-serif;
+  font-size: 19px;
+  font-weight: 400;
+  line-height: 24px;
+  color: #333f48;
+  font-size: 19px;
+  font-weight: 700;
+  margin: 14px 0;
+}
+
 .input-field {
   position: relative;
   margin-bottom: 28px;
@@ -917,7 +998,7 @@ form div.error:before {
 }
 
 .input-field label {
-  font-family: "Calibri", "Helvetica", "Arial", sans-serif;
+  font-family: "Calibri", "Open Sans", "Helvetica", "Arial", sans-serif;
   font-size: 19px;
   font-weight: 400;
   line-height: 24px;
@@ -926,7 +1007,7 @@ form div.error:before {
 }
 
 .input-field input {
-  font-family: "Calibri", "Helvetica", "Arial", sans-serif;
+  font-family: "Calibri", "Open Sans", "Helvetica", "Arial", sans-serif;
   font-size: 19px;
   font-weight: 400;
   line-height: 24px;
@@ -976,7 +1057,7 @@ form div.error:before {
 }
 
 .message {
-  font-family: "Calibri", "Helvetica", "Arial", sans-serif;
+  font-family: "Calibri", "Open Sans", "Helvetica", "Arial", sans-serif;
   font-size: 19px;
   font-weight: 700;
   line-height: 24px;
@@ -1037,6 +1118,15 @@ p, .paragraph {
   margin: 0 0 28px 0;
 }
 
+.paragraph-small {
+  font-family: "Calibri", "Open Sans", "Helvetica", "Arial", sans-serif;
+  font-size: 19px;
+  font-weight: 400;
+  line-height: 24px;
+  color: #333f48;
+  margin: 0 0 28px 0;
+}
+
 .input-field--password {
   position: relative;
 }
@@ -1051,7 +1141,7 @@ p, .paragraph {
 }
 
 .input-field--postcode-lookup {
-  font-family: "Calibri", "Helvetica", "Arial", sans-serif;
+  font-family: "Calibri", "Open Sans", "Helvetica", "Arial", sans-serif;
   font-size: 19px;
   font-weight: 400;
   line-height: 24px;
@@ -1067,7 +1157,7 @@ p, .paragraph {
 }
 
 .progress-indicator {
-  font-family: "Calibri", "Helvetica", "Arial", sans-serif;
+  font-family: "Calibri", "Open Sans", "Helvetica", "Arial", sans-serif;
   font-size: 19px;
   font-weight: 400;
   line-height: 24px;
@@ -1101,7 +1191,7 @@ p, .paragraph {
 }
 
 .prompt {
-  font-family: "Calibri", "Helvetica", "Arial", sans-serif;
+  font-family: "Calibri", "Open Sans", "Helvetica", "Arial", sans-serif;
   font-size: 19px;
   font-weight: 400;
   line-height: 24px;
@@ -1135,7 +1225,7 @@ p, .paragraph {
 }
 
 .radio-button label {
-  font-family: "Calibri", "Helvetica", "Arial", sans-serif;
+  font-family: "Calibri", "Open Sans", "Helvetica", "Arial", sans-serif;
   font-size: 19px;
   font-weight: 400;
   line-height: 24px;
@@ -1221,8 +1311,21 @@ p, .paragraph {
 .radio-button-group {
   position: relative;
   border: none;
-  margin-bottom: 28px;
-  margin: 0;
+  margin: 0 0 28px;
+  padding: 0;
+}
+
+.radio-button-group--compact .radio-button {
+  display: inline;
+}
+
+.radio-button-group--compact label {
+  display: inline;
+  padding: 0 24px 0 32px;
+}
+
+.radio-button-group--compact .checkmark {
+  top: -4px;
 }
 
 .segmented-control {
@@ -1246,7 +1349,7 @@ p, .paragraph {
 }
 
 .segmented-control .segmented-control__label {
-  font-family: "Calibri", "Helvetica", "Arial", sans-serif;
+  font-family: "Calibri", "Open Sans", "Helvetica", "Arial", sans-serif;
   font-size: 19px;
   font-weight: 400;
   line-height: 24px;
@@ -1275,7 +1378,7 @@ p, .paragraph {
 }
 
 .segmented-control .segmented-control__label.invalid {
-  font-family: "Calibri", "Helvetica", "Arial", sans-serif;
+  font-family: "Calibri", "Open Sans", "Helvetica", "Arial", sans-serif;
   font-size: 19px;
   font-weight: 400;
   line-height: 24px;
@@ -1303,7 +1406,7 @@ p, .paragraph {
 }
 
 .segmented-control input[type=radio]:checked + label, .segmented-control .checked {
-  font-family: "Calibri", "Helvetica", "Arial", sans-serif;
+  font-family: "Calibri", "Open Sans", "Helvetica", "Arial", sans-serif;
   font-size: 19px;
   font-weight: 400;
   line-height: 24px;
@@ -1381,7 +1484,7 @@ p, .paragraph {
 }
 
 .user-bar .user-bar__users .participant {
-  font-family: "Calibri", "Helvetica", "Arial", sans-serif;
+  font-family: "Calibri", "Open Sans", "Helvetica", "Arial", sans-serif;
   font-size: 19px;
   font-weight: 400;
   line-height: 24px;
@@ -1529,7 +1632,7 @@ p, .paragraph {
 }
 
 .tab-bar li {
-  font-family: "Calibri", "Helvetica", "Arial", sans-serif;
+  font-family: "Calibri", "Open Sans", "Helvetica", "Arial", sans-serif;
   font-size: 19px;
   font-weight: 400;
   line-height: 24px;
@@ -1550,6 +1653,17 @@ p, .paragraph {
   text-align: center;
 }
 
+.tab-bar li a {
+  color: #8599a9;
+  background-color: white;
+  border-right-color: #8599a9;
+  text-decoration: none;
+}
+
+.tab-bar li:last-child a, .tab-bar li:last-child span {
+  border-right: none;
+}
+
 .tab-bar li span.count {
   position: relative;
   top: 0;
@@ -1565,17 +1679,6 @@ p, .paragraph {
   text-align: center;
 }
 
-.tab-bar li a {
-  color: #8599a9;
-  background-color: white;
-  border-right-color: #8599a9;
-  text-decoration: none;
-}
-
-.tab-bar li:last-child a, .tab-bar li:last-child span {
-  border-right: none;
-}
-
 .user-bar + .tab-bar {
   margin-top: -28px;
 }
@@ -1585,14 +1688,14 @@ p, .paragraph {
   margin: 0 -24px 28px;
   background-color: white;
   border: 1px solid #f15b5b;
-  padding: 24px;
+  padding: 48px 24px;
 }
 
 .hideable-panel .hideable-panel__close {
   position: absolute;
   display: inline-block;
-  top: 24px;
-  right: 24px;
+  top: 16px;
+  right: 16px;
   height: 40px;
   width: 40px;
   text-align: center;
@@ -1611,6 +1714,35 @@ p, .paragraph {
 
 .user-bar ~ .hideable-panel {
   margin-top: -28px;
+}
+
+.content-panel {
+  padding: 16px;
+  background-color: white;
+}
+
+.content-panel__header--dark {
+  margin: -16px -16px 0;
+  padding: 8px 16px;
+  background-color: #333f48;
+  color: white;
+}
+
+.content-panel__header--dark h2 {
+  font-family: "Calibri", "Open Sans", "Helvetica", "Arial", sans-serif;
+  font-size: 19px;
+  font-weight: 400;
+  line-height: 24px;
+  color: #333f48;
+  color: white;
+  margin: 0;
+}
+
+.content-panel__hrule {
+  margin: 0 -16px;
+  height: 1px;
+  border: 0;
+  background-color: #b8c4cc;
 }
 
 .accordion__item {
@@ -1639,7 +1771,7 @@ p, .paragraph {
 }
 
 .accordion__header h2 {
-  font-family: "Calibri", "Helvetica", "Arial", sans-serif;
+  font-family: "Calibri", "Open Sans", "Helvetica", "Arial", sans-serif;
   font-size: 19px;
   font-weight: 400;
   line-height: 24px;
@@ -1651,7 +1783,7 @@ p, .paragraph {
 }
 
 .accordion__header .accordion__edit {
-  font-family: "Calibri", "Helvetica", "Arial", sans-serif;
+  font-family: "Calibri", "Open Sans", "Helvetica", "Arial", sans-serif;
   font-size: 19px;
   font-weight: 400;
   line-height: 24px;
@@ -1668,6 +1800,75 @@ p, .paragraph {
 
 .accordion__item.closed .accordion__content {
   display: none;
+}
+
+.meta-tag {
+  font-family: "Calibri", "Open Sans", "Helvetica", "Arial", sans-serif;
+  font-size: 19px;
+  font-weight: 400;
+  line-height: 24px;
+  color: #333f48;
+  font-size: 14px;
+  font-weight: 700;
+  text-transform: uppercase;
+  display: inline-block;
+  padding: 0 8px;
+  color: white;
+  background-color: #5d7384;
+}
+
+.meta-tag--primary {
+  background-color: #f15b5b;
+}
+
+.meta-tag--secondary {
+  background-color: #008194;
+}
+
+.meta-tag--tertiary {
+  background-color: #5d7384;
+}
+
+.meta-tag--quaternary {
+  color: #5d7384;
+  background-color: white;
+  border: 1px solid #5d7384;
+}
+
+.meta-info {
+  font-family: "Calibri", "Open Sans", "Helvetica", "Arial", sans-serif;
+  font-size: 19px;
+  font-weight: 400;
+  line-height: 24px;
+  color: #333f48;
+  font-size: 14px;
+  font-weight: 700;
+  display: inline-block;
+  padding: 0 8px;
+  color: #5d7384;
+  background-color: white;
+}
+
+.meta-info--primary {
+  color: #f15b5b;
+}
+
+.meta-info--secondary {
+  color: #008194;
+}
+
+.meta-info--tertiary {
+  color: #5d7384;
+}
+
+.meta-bar {
+  margin: 24px 0 48px;
+}
+
+.meta-bar::after {
+  clear: both;
+  content: "";
+  display: block;
 }
 
 .masthead {
@@ -1857,7 +2058,7 @@ p, .paragraph {
 }
 
 .font-swatch__swatch-small-text span {
-  font-family: "Calibri", "Helvetica", "Arial", sans-serif;
+  font-family: "Calibri", "Open Sans", "Helvetica", "Arial", sans-serif;
   font-size: 19px;
   font-weight: 400;
   line-height: 24px;
