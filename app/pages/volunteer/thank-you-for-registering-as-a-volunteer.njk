@@ -26,19 +26,13 @@
   {{ volunteer.paragraph('What would you like to do next?') }}
   <div class="grid-row">
     <div class="grid-cell grid-cell--1-of-3 grid-cell--first">
-      <div class="grid-cell__wrapper">
-        {{ volunteer.activityButton('Register someone as a participant', 'contact', 'primary', '/volunteer/participant-registration.html') }}
-      </div>
-    </div>
-    <div class="grid-cell grid-cell--1-of-3 grid-cell--last">
-      <div class="grid-cell__wrapper">
-        {{ volunteer.activityButton('Edit my account information', 'pencil', 'tertiary', '/volunteer/do-you-have-a-diagnosis-of-dementia.html') }}
-      </div>
+      {{ volunteer.activityButton('Register someone as a participant', 'contact', 'primary', '/volunteer/participant-registration.html') }}
     </div>
     <div class="grid-cell grid-cell--1-of-3">
-      <div class="grid-cell__wrapper">
-        {{ volunteer.activityButton('Help spread the word', 'smiley', 'secondary', '/volunteer/do-you-have-a-diagnosis-of-dementia.html') }}
-      </div>
+      {{ volunteer.activityButton('Edit my account information', 'pencil', 'tertiary', '/volunteer/do-you-have-a-diagnosis-of-dementia.html') }}
+    </div>
+    <div class="grid-cell grid-cell--1-of-3 grid-cell--last">
+      {{ volunteer.activityButton('Help spread the word', 'smiley', 'secondary', '/volunteer/do-you-have-a-diagnosis-of-dementia.html') }}
     </div>
   </div>
 {% endblock %}
