@@ -213,3 +213,10 @@ a.button-link:focus,
 a.button-link:active {
   text-decoration: none;
 }
+
+.form-actions--full-width {
+  button {
+    width: 100%;
+    margin-bottom: 16px;
+  }
+}

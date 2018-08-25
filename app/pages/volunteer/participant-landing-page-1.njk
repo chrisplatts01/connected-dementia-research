@@ -25,6 +25,9 @@
       </div>
     </div>
   </div>
+  {% call volunteer.hideablePanel() %}
+  {{ volunteer.heading('Thank you for registering as a participant') }}
+  {% endcall %}
   {{ volunteer.heading('<span class="heading__label">Participant</span> Ria Mitchell' | safe) }}
   {{ volunteer.tabBar(tabs=[
     {label: 'Profile', url: ''},

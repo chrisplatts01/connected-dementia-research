@@ -1,0 +1,4 @@
+.paragraph-small {
+  @include small-font();
+  margin: 0 0 28px 0;
+}

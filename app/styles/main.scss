@@ -28,11 +28,14 @@
 @import 'app/templates/components/file-upload/file-upload';
 @import 'app/templates/components/form/form';
 @import 'app/templates/components/heading/heading';
+@import 'app/templates/components/subheading/subheading';
+@import 'app/templates/components/small-heading/small-heading';
 @import 'app/templates/components/input-field/input-field';
 @import 'app/templates/components/masked-date-field/masked-date-field';
 @import 'app/templates/components/message/message';
 @import 'app/templates/components/page-navigation/page-navigation';
 @import 'app/templates/components/paragraph/paragraph';
+@import 'app/templates/components/paragraph-small/paragraph-small';
 @import 'app/templates/components/password-field/password-field';
 @import 'app/templates/components/postcode-lookup/postcode-lookup';
 @import 'app/templates/components/progress-indicator/progress-indicator';
@@ -44,7 +47,10 @@
 @import 'app/templates/components/user-bar/user-bar';
 @import 'app/templates/components/tab-bar/tab-bar';
 @import 'app/templates/components/hideable-panel/hideable-panel';
+@import 'app/templates/components/content-panel/content-panel';
 @import 'app/templates/components/accordion/accordion';
+@import 'app/templates/components/meta-tag/meta-tag';
+@import 'app/templates/components/meta-info/meta-info';
 
 // Pattern library modules
 @import 'app/templates/modules/volunteer-page-header/volunteer-page-header';

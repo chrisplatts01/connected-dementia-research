@@ -11,7 +11,7 @@
 </div>
 {{ volunteer.progressIndicator(3, 8) }}
 <div class="page-content__inner-wrapper">
-  {{ volunteer.subheading('How would you describe your symptoms?') }}
+  {{ volunteer.subHeading('How would you describe your symptoms?') }}
   {% call volunteer.form('describe-symptoms', '#', 'get') %}
   {{ volunteer.segmentedControl('', 'symptoms', options=['Mild', 'Moderate', 'Severe']) }}
   {{ volunteer.prompt('Many studies are very specific about the symptoms&hellip;' | safe) }}

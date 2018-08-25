@@ -1,0 +1,24 @@
+.content-panel {
+  padding: 16px;
+  background-color: $white;
+}
+
+.content-panel__header--dark {
+  margin: -16px -16px 0;
+  padding: 8px 16px;
+  background-color: $grey;
+  color: $white;
+
+  h2 {
+    @include small-font;
+    color: $white;
+    margin: 0;
+  }
+}
+
+.content-panel__hrule {
+  margin: 0 -16px;
+  height: 1px;
+  border: 0;
+  background-color: $grey-L52;
+}

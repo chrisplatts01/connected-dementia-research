@@ -1,0 +1,22 @@
+{% extends "pattern-library-layout.njk" %}
+
+{% import 'macros/volunteer.njk' as volunteer %}
+
+{% block content %}
+  <h1 class="pl-heading">Hideable panel</h1>
+  <div style="padding: 0 24px">
+  {% call volunteer.hideablePanel() %}
+    <p><b>Click on the <img src="/images/icon-delete-black.svg" valign="middle" /> button &ndash; above &ndash; to hide this panel.</b> Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Donec ullamcorper nulla non metus auctor fringilla. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+  {% endcall %}
+</div>
+  <h2 class="pl-heading">HTML</h2>
+  <textarea class="pl-code" disabled>
+    {% call volunteer.hideablePanel() %}
+      <p><b>This is an example of a closeable content panel.</b> Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Donec ullamcorper nulla non metus auctor fringilla. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+    {% endcall %}
+  </textarea>
+  <h2 class="pl-heading">SCSS</h2>
+  <textarea class="pl-code" disabled>
+    {% include 'components/hideable-panel/_hideable-panel.scss' ignore missing %}
+  </textarea>
+{% endblock %}

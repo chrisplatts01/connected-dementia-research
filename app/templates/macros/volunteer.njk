@@ -7,8 +7,12 @@
 {% include 'components/heading/_heading.njk' %}
 {% endmacro %}
 
-{% macro subheading(text) %}
+{% macro subHeading(text) %}
 {% include 'components/subheading/_subheading.njk' %}
+{% endmacro %}
+
+{% macro smallHeading(text) %}
+{% include 'components/small-heading/_small-heading.njk' %}
 {% endmacro %}
 
 {% macro question(text) %}
@@ -17,6 +21,10 @@
 
 {% macro paragraph(text) %}
 {% include 'components/paragraph/_paragraph.njk' %}
+{% endmacro %}
+
+{% macro paragraphSmall(text) %}
+{% include 'components/paragraph-small/_paragraph-small.njk' %}
 {% endmacro %}
 
 {% macro bulletList(items=['Item 1', 'Item 2']) %}
@@ -105,7 +113,7 @@
 {% include 'components/page-navigation/_page-navigation.njk' %}
 {% endmacro %}
 
-{% macro tabBar(tabs=[{label: 'tab 1', url: '#'}]) %}
+{% macro tabBar(tabs=[{label: 'tab 1', url: '#', state: ''}]) %}
 {% include 'components/tab-bar/_tab-bar.njk' %}
 {% endmacro %}
 
@@ -114,6 +122,18 @@
 {% include 'components/activity-button/_activity-button.njk' %}
 {% endmacro %}
 
+{% macro contentPanel() %}
+{% include 'components/content-panel/_content-panel.njk' %}
+{% endmacro %}
+
 {% macro hideablePanel() %}
 {% include 'components/hideable-panel/_hideable-panel.njk' %}
+{% endmacro %}
+
+{% macro metaTag( text, order ) %}
+{% include 'components/meta-tag/_meta-tag.njk' %}
+{% endmacro %}
+
+{% macro metaInfo( text, order ) %}
+{% include 'components/meta-info/_meta-info.njk' %}
 {% endmacro %}

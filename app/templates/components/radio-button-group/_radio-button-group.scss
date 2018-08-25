@@ -1,6 +1,21 @@
 .radio-button-group {
   position: relative;
   border: none;
-  margin-bottom: 28px;
-  margin: 0;
+  margin: 0 0 28px;
+  padding: 0;
+}
+
+.radio-button-group--compact {
+  .radio-button {
+    display: inline;
+  }
+
+  label {
+    display: inline;
+    padding: 0 24px 0 32px;
+  }
+
+  .checkmark {
+    top: -4px;
+  }
 }

@@ -22,17 +22,111 @@
   </div>
   {{ volunteer.heading('<span class="heading__label">Volunteer</span> Laura Ashley' | safe) }}
   {{ volunteer.tabBar(tabs=[
-    {label: 'Profile', url: ''},
-    {label: 'Studies', url: '#'},
+    {label: 'Profile', url: '#'},
+    {label: 'Studies', url: ''},
     {label: 'Notifications', url: '#'},
     {label: 'Audit trail', url: '#'}
     ]) }}
     <div class="grid-row">
       <div class="grid-cell grid-cell--1-of-3 grid-cell--first">
-        SEARCH
+        <div class="content-panel">
+          <header class="content-panel__header--dark">
+            <h2>Search</h2>
+          </header>
+          {% call volunteer.form('search', '#') %}
+          {{ volunteer.smallHeading('Research type') }}
+          {{ volunteer.checkboxGroup('research-type', options = ['Technology', 'Scanning', 'Genetic', 'Questionnaire', 'Drug', 'Therapy/Care']) }}
+          <hr class="content-panel__hrule" />
+          {{ volunteer.smallHeading('Status') }}
+          {{ volunteer.inputField('', 'status', placeholder='Ending soon') }}
+          <hr class="content-panel__hrule" />
+          {{ volunteer.smallHeading('Distance') }}
+          {{ volunteer.inputField('', 'distance', placeholder='Postcode/City') }}
+          <div class="message--error" style="margin-top: 0; margin-bottom: 16px;"> TODO: Distance slider.</div>
+          <hr class="content-panel__hrule" />
+          {{ volunteer.smallHeading('Start date') }}
+          <fieldset class="form__field radio-button-group radio-button-group--compact">
+            <div class="radio-button">
+              <label>
+                <input id="start-date-before" name="start-date" value="before" type="radio" />
+                Before
+                <span class="checkmark"></span>
+              </label>
+            </div>
+            <div class="radio-button">
+              <label>
+                <input id="start-date-after" name="start-date" value="after" type="radio" />
+                After
+                <span class="checkmark"></span>
+              </label>
+            </div>
+          </fieldset>
+          {{ volunteer.maskedDateField('', 'start-date') }}
+          <div class="message--error" style="margin-top: 0; margin-bottom: 16px;"> TODO: Date picker.</div>
+          <div class="form-actions--full-width">
+            {{ volunteer.button('Submit', 'submit', 'primary') }}
+            {{ volunteer.button('Reset', 'reset', 'tertiary') }}
+          </div>
+          {% endcall %}
+        </div>
       </div>
       <div class="grid-cell grid-cell--2-of-3 grid-cell--last">
-        TABBED CONTENT
+        <div class="content-panel">
+          <div class="message--error" style="margin-top: 0; margin-bottom: 16px;"> TODO: Tabbed interface.</div>
+          <div class="meta-bar">
+            <div class="force-left">
+              {{ volunteer.metaTag('Open', 'secondary') }}
+            </div>
+            <div class="force-right">
+              {{ volunteer.metaInfo('1.4 miles from BS16 6LF', 'tertiary') }}
+            </div>
+          </div>
+          {{ volunteer.subHeading('Play Sea Hero Quest and help our scientists') }}
+          {{ volunteer.paragraphSmall('Alzheimer’s Research UK has team up with Deutsche Telecom and scientists from University College London and the Universtity of East Anglia to develop Sea Hero Quest, a smartphone game (not available on PC) that re-writes the rules on how we go about dementia research&hellip;' | safe) }}
+          <div class="force-left">
+            {{ volunteer.paragraphSmall('<b>Opening date:</b> 12/07/2016' | safe) }}
+          </div>
+          <div class="force-right">
+            {{ volunteer.paragraphSmall('<b>Closing date:</b> 31/12/2016' | safe) }}
+          </div>
+          {{ volunteer.paragraphSmall('<b>Volunteers recruited:</b> 107/500' | safe) }}
+          <p>{{ volunteer.metaTag('Game', 'quaternary') }} {{ volunteer.metaTag('Research', 'quaternary') }}</p>
+          <div class="grid-row" style="width: 80%; margin-bottom: 28px;">
+            <div class="grid-cell grid-cell--1-of-2 grid-cell--first">
+              {{ volunteer.button('See study details', 'button', 'tertiary' ) }}
+            </div>
+            <div class="grid-cell grid-cell--1-of-2 grid-cell--last">
+              {{ volunteer.button('Participate', 'button', 'next' ) }}
+            </div>
+          </div>
+          <hr class="content-panel__hrule" />
+          <div class="meta-bar">
+            <div class="force-left">
+              {{ volunteer.metaTag('Ending soon', 'tertiary') }}
+            </div>
+            <div class="force-right">
+              {{ volunteer.metaInfo('18 miles from BS16 6LF', 'tertiary') }}
+            </div>
+          </div>
+          {{ volunteer.subHeading('Software Architecture for Mental Health Self Management Reliability and Proof of Concept study') }}
+          {{ volunteer.paragraphSmall('Luptusda voluptio. Itatem rerestis mo et magnis ent aut pa volorupta et aut aut aut autempo rroviducid escias ad quid que quatur? Ectorrunte nones adis nonsequos moluptatios doluptas dolore aciaecti odi dolupta ssequi ad que volorem quiatus. Doluptas dolore aciaecti odi dolupta ssequi ad que volorem quiatus.' | safe) }}
+          <div class="force-left">
+            {{ volunteer.paragraphSmall('<b>Opening date:</b> 12/07/2016' | safe) }}
+          </div>
+          <div class="force-right">
+            {{ volunteer.paragraphSmall('<b>Closing date:</b> 31/12/2016' | safe) }}
+          </div>
+          {{ volunteer.paragraphSmall('<b>Volunteers recruited:</b> 107/500' | safe) }}
+          <p>{{ volunteer.metaTag('Game', 'quaternary') }} {{ volunteer.metaTag('Research', 'quaternary') }}</p>
+          <div class="grid-row" style="width: 80%; margin-bottom: 28px;">
+            <div class="grid-cell grid-cell--1-of-2 grid-cell--first">
+              {{ volunteer.button('See study details', 'button', 'tertiary' ) }}
+            </div>
+            <div class="grid-cell grid-cell--1-of-2 grid-cell--last">
+              {{ volunteer.button('Participate', 'button', 'next' ) }}
+            </div>
+          </div>
+        </div>
       </div>
     </div>
 

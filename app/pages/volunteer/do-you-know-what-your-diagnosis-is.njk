@@ -11,7 +11,7 @@
 </div>
 {{ volunteer.progressIndicator(2, 8) }}
 <div class="page-content__inner-wrapper">
-  {{ volunteer.subheading('Do you know what your diagnosis is?') }}
+  {{ volunteer.subHeading('Do you know what your diagnosis is?') }}
   {% call volunteer.form('what-diagnosis', '#', 'get') %}
   {{ volunteer.conditionalCheckboxGroup(
     'diagnosis',

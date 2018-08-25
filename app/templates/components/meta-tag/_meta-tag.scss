@@ -1,0 +1,19 @@
+.meta-tag {
+  @include small-font;
+  font-size: 14px;
+  font-weight: 700;
+  text-transform: uppercase;
+  display: inline-block;
+  padding: 0 8px;
+  color: $white;
+  background-color: $grey-L20;
+}
+
+.meta-tag--primary { background-color: $coral; }
+.meta-tag--secondary { background-color: $turquoise; }
+.meta-tag--tertiary { background-color: $grey-L20; }
+.meta-tag--quaternary {
+  color: $grey-L20;
+  background-color: $white;
+  border: 1px solid $grey-L20;
+}

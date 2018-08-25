@@ -1,5 +1,12 @@
 .checkbox-group {
   position:relative;
   border: none;
-  margin-bottom: 28px;
+  margin: 0 0 28px;
+  padding: 0;
+}
+
+.checkbox-group--compact {
+  .checkbox {
+    display: inline;
+  }
 }

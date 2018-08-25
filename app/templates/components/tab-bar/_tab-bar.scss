@@ -28,6 +28,19 @@
       text-align: center;
     }
 
+    a {
+      color: $grey-L35;
+      background-color: $white;
+      border-right-color: $grey-L35;
+      text-decoration: none;
+    }
+
+    &:last-child {
+      a, span {
+        border-right: none;
+      }
+    }
+
     span.count {
       position: relative;
       top: 0;
@@ -41,19 +54,6 @@
       width: 20px;
       border-radius: 50%;
       text-align: center;
-    }
-
-    a {
-      color: $grey-L35;
-      background-color: $white;
-      border-right-color: $grey-L35;
-      text-decoration: none;
-    }
-
-    &:last-child {
-      a, span {
-        border-right: none;
-      }
     }
   }
 }

@@ -73,13 +73,13 @@
     
     <li>
       
-      <span data-href="">Profile</span>
+      <a href='#'>Profile</a>
       
     </li>
     
     <li>
       
-      <a href='#'>Studies</a>
+      <span data-href="">Studies</span>
       
     </li>
     
@@ -101,10 +101,289 @@
 
     <div class="grid-row">
       <div class="grid-cell grid-cell--1-of-3 grid-cell--first">
-        SEARCH
+        <div class="content-panel">
+          <header class="content-panel__header--dark">
+            <h2>Search</h2>
+          </header>
+          
+<form id="search" name="search" action="#" method="get">
+  
+          
+<h3 class="small-heading">Research type</h3>
+
+
+          
+<fieldset class="form__field checkbox-group">
+  
+  <div class="checkbox">
+    <label>
+      <input id="research-type-technology" name="research-type" value="technology" type="checkbox"   />
+      Technology
+      <span class="checkmark"></span>
+    </label>
+  </div>
+  
+  <div class="checkbox">
+    <label>
+      <input id="research-type-scanning" name="research-type" value="scanning" type="checkbox"   />
+      Scanning
+      <span class="checkmark"></span>
+    </label>
+  </div>
+  
+  <div class="checkbox">
+    <label>
+      <input id="research-type-genetic" name="research-type" value="genetic" type="checkbox"   />
+      Genetic
+      <span class="checkmark"></span>
+    </label>
+  </div>
+  
+  <div class="checkbox">
+    <label>
+      <input id="research-type-questionnaire" name="research-type" value="questionnaire" type="checkbox"   />
+      Questionnaire
+      <span class="checkmark"></span>
+    </label>
+  </div>
+  
+  <div class="checkbox">
+    <label>
+      <input id="research-type-drug" name="research-type" value="drug" type="checkbox"   />
+      Drug
+      <span class="checkmark"></span>
+    </label>
+  </div>
+  
+  <div class="checkbox">
+    <label>
+      <input id="research-type-therapy/care" name="research-type" value="therapy/care" type="checkbox"   />
+      Therapy/Care
+      <span class="checkmark"></span>
+    </label>
+  </div>
+  
+</fieldset>
+
+
+          <hr class="content-panel__hrule" />
+          
+<h3 class="small-heading">Status</h3>
+
+
+          
+<div class="form__field input-field input-field--text">
+  <label>
+    <input id="status" name="status" type="text" placeholder="Ending soon"   />
+  </label>
+</div>
+
+
+          <hr class="content-panel__hrule" />
+          
+<h3 class="small-heading">Distance</h3>
+
+
+          
+<div class="form__field input-field input-field--text">
+  <label>
+    <input id="distance" name="distance" type="text" placeholder="Postcode/City"   />
+  </label>
+</div>
+
+
+          <div class="message--error" style="margin-top: 0; margin-bottom: 16px;"> TODO: Distance slider.</div>
+          <hr class="content-panel__hrule" />
+          
+<h3 class="small-heading">Start date</h3>
+
+
+          <fieldset class="form__field radio-button-group radio-button-group--compact">
+            <div class="radio-button">
+              <label>
+                <input id="start-date-before" name="start-date" value="before" type="radio" />
+                Before
+                <span class="checkmark"></span>
+              </label>
+            </div>
+            <div class="radio-button">
+              <label>
+                <input id="start-date-after" name="start-date" value="after" type="radio" />
+                After
+                <span class="checkmark"></span>
+              </label>
+            </div>
+          </fieldset>
+          
+<div class="form__field input-field input-field--masked-date">
+  <label>
+    <input id="start-date" name="date" type="text" placeholder="dd/mm/yyyy" required />
+  </label>
+</div>
+
+
+          <div class="message--error" style="margin-top: 0; margin-bottom: 16px;"> TODO: Date picker.</div>
+          <div class="form-actions--full-width">
+            
+<button class="button button--primary" type="submit">Submit</button>
+
+
+
+            
+<button class="button button--tertiary" type="reset">Reset</button>
+
+
+
+          </div>
+          
+</form>
+
+
+        </div>
       </div>
       <div class="grid-cell grid-cell--2-of-3 grid-cell--last">
-        TABBED CONTENT
+        <div class="content-panel">
+          <div class="message--error" style="margin-top: 0; margin-bottom: 16px;"> TODO: Tabbed interface.</div>
+          <div class="meta-bar">
+            <div class="force-left">
+              
+<div class="meta-tag meta-tag--secondary">
+  Open
+</div>
+
+
+            </div>
+            <div class="force-right">
+              
+<div class="meta-info meta-info--tertiary">
+  1.4 miles from BS16 6LF
+</div>
+
+
+            </div>
+          </div>
+          
+<h2 class="subheading">Play Sea Hero Quest and help our scientists</h2>
+
+
+          
+<p class="paragraph-small">Alzheimer’s Research UK has team up with Deutsche Telecom and scientists from University College London and the Universtity of East Anglia to develop Sea Hero Quest, a smartphone game (not available on PC) that re-writes the rules on how we go about dementia research&hellip;</p>
+
+
+          <div class="force-left">
+            
+<p class="paragraph-small"><b>Opening date:</b> 12/07/2016</p>
+
+
+          </div>
+          <div class="force-right">
+            
+<p class="paragraph-small"><b>Closing date:</b> 31/12/2016</p>
+
+
+          </div>
+          
+<p class="paragraph-small"><b>Volunteers recruited:</b> 107/500</p>
+
+
+          <p>
+<div class="meta-tag meta-tag--quaternary">
+  Game
+</div>
+
+ 
+<div class="meta-tag meta-tag--quaternary">
+  Research
+</div>
+
+</p>
+          <div class="grid-row" style="width: 80%; margin-bottom: 28px;">
+            <div class="grid-cell grid-cell--1-of-2 grid-cell--first">
+              
+<button class="button button--tertiary" type="button">See study details</button>
+
+
+
+            </div>
+            <div class="grid-cell grid-cell--1-of-2 grid-cell--last">
+              
+<button class="button button--next" type="button">Participate</button>
+
+
+
+            </div>
+          </div>
+          <hr class="content-panel__hrule" />
+          <div class="meta-bar">
+            <div class="force-left">
+              
+<div class="meta-tag meta-tag--tertiary">
+  Ending soon
+</div>
+
+
+            </div>
+            <div class="force-right">
+              
+<div class="meta-info meta-info--tertiary">
+  18 miles from BS16 6LF
+</div>
+
+
+            </div>
+          </div>
+          
+<h2 class="subheading">Software Architecture for Mental Health Self Management Reliability and Proof of Concept study</h2>
+
+
+          
+<p class="paragraph-small">Luptusda voluptio. Itatem rerestis mo et magnis ent aut pa volorupta et aut aut aut autempo rroviducid escias ad quid que quatur? Ectorrunte nones adis nonsequos moluptatios doluptas dolore aciaecti odi dolupta ssequi ad que volorem quiatus. Doluptas dolore aciaecti odi dolupta ssequi ad que volorem quiatus.</p>
+
+
+          <div class="force-left">
+            
+<p class="paragraph-small"><b>Opening date:</b> 12/07/2016</p>
+
+
+          </div>
+          <div class="force-right">
+            
+<p class="paragraph-small"><b>Closing date:</b> 31/12/2016</p>
+
+
+          </div>
+          
+<p class="paragraph-small"><b>Volunteers recruited:</b> 107/500</p>
+
+
+          <p>
+<div class="meta-tag meta-tag--quaternary">
+  Game
+</div>
+
+ 
+<div class="meta-tag meta-tag--quaternary">
+  Research
+</div>
+
+</p>
+          <div class="grid-row" style="width: 80%; margin-bottom: 28px;">
+            <div class="grid-cell grid-cell--1-of-2 grid-cell--first">
+              
+<button class="button button--tertiary" type="button">See study details</button>
+
+
+
+            </div>
+            <div class="grid-cell grid-cell--1-of-2 grid-cell--last">
+              
+<button class="button button--next" type="button">Participate</button>
+
+
+
+            </div>
+          </div>
+        </div>
       </div>
     </div>
 

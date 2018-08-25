@@ -1,0 +1,6 @@
+.small-heading {
+  @include small-font();
+  font-size: 19px;
+  font-weight: 700;
+  margin: 14px 0;
+}
