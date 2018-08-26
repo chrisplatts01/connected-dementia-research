@@ -4,15 +4,20 @@
 
 {% block content %}
   <h1 class="pl-heading">Activity button</h1>
-  {{ volunteer.activityButton('Register someone else as a volunteer', 'contact', 'primary', '#') }}
-  <br />
-  {{ volunteer.activityButton('Register someone else as a volunteer', 'pencil', 'secondary', '#') }}
-  <br />
-  {{ volunteer.activityButton('Register someone else as a volunteer', 'note', 'tertiary', '#') }}
+  <div class="grid-row">
+    <div class="grid-cell grid-cell--1-of-3 grid-cell--first">
+      {{ volunteer.activityButton('Register someone else&hellip;' | safe, 'contact', 'primary', '#') }}
+    </div>
+    <div class="grid-cell grid-cell--1-of-3">
+      {{ volunteer.activityButton('Register someone else&hellip;' | safe, 'pencil', 'secondary', '#') }}
+    </div>
+    <div class="grid-cell grid-cell--1-of-3 grid-cell--last">
+      {{ volunteer.activityButton('Register someone else&hellip;' | safe, 'note', 'tertiary', '#') }}
+    </div>
+  </div>
   <h2 class="pl-heading">HTML</h2>
   <textarea class="pl-code" disabled>
-    {{ volunteer.activityButton('Register someone else as a volunteer', 'contact', '#') }}
-  </textarea>
+{{ volunteer.activityButton('Register someone else&hellip;' | safe, 'contact', 'primary', '#') }}  </textarea>
   <h2 class="pl-heading">SCSS</h2>
   <textarea class="pl-code" disabled>
     {% include 'components/activity-button/_activity-button.scss' ignore missing %}

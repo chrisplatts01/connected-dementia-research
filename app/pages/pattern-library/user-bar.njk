@@ -4,7 +4,9 @@
 
 {% block content %}
   <h1 class="pl-heading">User bar</h1>
-  {% include 'components/user-bar/_user-bar.njk' %}
+  <div style="padding: 24px 24px 0">
+    {% include 'components/user-bar/_user-bar.njk' %}
+  </div>
   <h2 class="pl-heading">HTML</h2>
   <textarea class="pl-code" disabled>
     {% include 'components/user-bar/_user-bar.njk' %}
