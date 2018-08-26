@@ -114,64 +114,30 @@
     </nav>
     <main class="pl-main" role="main">
       
-  <h1 class="pl-heading">Content panel</h1>
-  
-<div class="content-panel">
-  
-    <p><b>A content area with a white background.</b> Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Donec ullamcorper nulla non metus auctor fringilla. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-  
+  <h1 class="pl-heading">File upload (Fine Uploader plugin test)</h1>
+  <form id="form-file-upload" method="post" action="#">
+    
+<div id="file-upload" class="form__field file-upload-1">
+<div class="fallback">
+  <input name="file" type="file" multiple />
+</div>
 </div>
 
 
+    <input type="submit" />
+  </form>
   <h2 class="pl-heading">HTML</h2>
   <textarea class="pl-code" disabled>
     
-<div class="content-panel">
-  
-      <p><b>A content area with a white background.</b> Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Donec ullamcorper nulla non metus auctor fringilla. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-    
+<div id="file-upload" class="form__field file-upload-1">
+<div class="fallback">
+  <input name="file" type="file" multiple />
+</div>
 </div>
 
 
   </textarea>
-  <h2 class="pl-heading">SCSS</h2>
-  <textarea class="pl-code" disabled>
-    .hideable-panel {
-  position: relative;
-  margin: 0 -24px 28px;
-  background-color: $white;
-  border: 1px solid $coral;
-  padding: 48px 24px;
-
-  .hideable-panel__close {
-    position: absolute;
-    display: inline-block;
-    top: 16px;
-    right: 16px;
-    height: 40px;
-    width: 40px;
-    text-align: center;
-    padding-top: 10px;
-    cursor: pointer;
-    z-index: 10;
-
-    &:hover {
-      opacity: 0.7;
-    }
-  }
-
-  &.closed {
-    display: none;
-  }
-
-
-
-  .user-bar ~ & {
-    margin-top: -28px;
-  }
-}
-
-  </textarea>
+  
 
     </main>
   </div>
