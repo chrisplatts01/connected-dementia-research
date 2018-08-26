@@ -4,10 +4,10 @@
 
 {% block content %}
   <h1 class="pl-heading">Masked date field</h1>
-  {{ volunteer.maskedDateField() }}
+  {{ volunteer.maskedDateField('Date', 'masked-date') }}
   <h2 class="pl-heading">HTML</h2>
   <textarea class="pl-code" disabled>
-    {{ volunteer.maskedDateField() }}
+    {{ volunteer.maskedDateField('Date', 'masked-date') }}
   </textarea>
   <h2 class="pl-heading">SCSS</h2>
   <textarea class="pl-code" disabled>

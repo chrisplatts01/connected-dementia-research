@@ -6,7 +6,10 @@
   <h1 class="pl-heading">File upload</h1>
   <p><small>Drag and  drop file upload using <i>XMLHttpRequest</i> requires support for the <code>draggable</code> method, the <code>FormData</code> XHR method and the <code>FileReader</code> API. These are not supported in IE9,  so a fallback solution is needed for this browser.</small></p>
   <p><small><i><b>NOTE:</b> Uploading the chosen file(s) will depend on the component's parent form submission. The actual method for uplaoding the file will depend on the implementation - front/back end, AJAX/legacy (IFRAME?), etc.</i></small></p>
-  {{ volunteer.fileUpload() }}
+  <form id="file-upload" method="GET" action="file-upload-handler.html">
+    {{ volunteer.fileUpload() }}
+    <button id="upload" class="button button--primary" type="button">Upload</button>
+  </form>
   <h2 class="pl-heading">HTML</h2>
   <textarea class="pl-code" disabled>
     {{ volunteer.fileUpload() }}

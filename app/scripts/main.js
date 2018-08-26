@@ -7,7 +7,7 @@ import i18n from '../scripts/vendor/datejs/i18n/en-GB.js'
 
 $(function () {
   /**
-   * FORM VALIDATION: Handle form va;idation using the jquery-validation plugin
+   * FORM VALIDATION: Handle form validation using the jquery-validation plugin
    */
   var formValidation = (function () {
     $.validator.addMethod('dateUK', function (value, element) {
@@ -101,7 +101,7 @@ $(function () {
    * MASKED DATE FIELD: Handle masked date fields
    */
    var maskedDateField = (function () {
-     var $maskedDateField = $('.input-field--masked-date').find('input[name="date"]')
+     var $maskedDateField = $('.input-field--masked-date').find('input[name|="date"]')
 
      $maskedDateField.mask('00/00/0000')
    }())
@@ -138,8 +138,8 @@ $(function () {
       var steps = $this.attr('data-steps')
       var width = step / steps * 100
 
-      $this.prepend('<span class="progress-indicator__steps">&nbsp;</span>')
-      $this.append('<span class="progress-indicator__step" style="width:' + width + '%">&nbsp;</span>')
+      $this.prepend('<span class="progress-indicator__steps">&nbsp</span>')
+      $this.append('<span class="progress-indicator__step" style="width:' + width + '%">&nbsp</span>')
     })
   }())
 
@@ -284,7 +284,6 @@ $(function () {
       var $control = $this.find('.segmented-control')
       $control.each(function () {
         var $this = $(this)
-        console.log($this.html())
         if ($this.find('input:radio').hasClass('error')) {
           $this.addClass('invalid')
           $this.find('.segmented-control__label').addClass('invalid')
@@ -343,13 +342,11 @@ $(function () {
 
       $items.on('click', function () {
         var $item = $(this)
-        console.log($item)
-        console.log($items)
         $items.addClass('closed')
         $item.removeClass('closed')
       //   $('html, body').animate({
       //     scrollTop: ($item.offset().top)
-      //   },500);
+      //   },500)
       })
     })
   }())
@@ -365,9 +362,9 @@ $(function () {
     })()
 
     // Handle list of files to be displayed/uploaded
-    var fileList = (function ($list, files) {
+    var fileList = (function () {
       return {
-        init: function () {
+        init: function ($form) {
           if (typeof fileList.files === 'undefined') {
             fileList.files = []
           }
@@ -385,18 +382,24 @@ $(function () {
           $.each(fileList.files, function (index, file) {
             $list.append('<li class="file-upload__file-added" data-index="' + index + '">' + file.name + '  <span class="file-upload__delete-file"></span></li>')
           })
+        },
+        upload: function () {
+          // How???
         }
       }
     }())
+
+    $('#upload').on('click', fileList.upload())
 
     if (isAdvancedUpload) { // Handle advanced file upload
       var $fileUploader = $('.file-upload__uploader')
       var $fileInputUploader = $('.file-upload__input')
       var $fileList = $('.file-upload__file-list')
+      var $form = $fileUploader.closest('form')
       var fileDelete = '.file-upload__delete-file'
 
       // Initialise file list array
-      fileList.init()
+      fileList.init($form)
 
       // Visually hide file input element
       $('.file-upload__button, .file-upload__input').addClass('hide')
@@ -404,13 +407,13 @@ $(function () {
       // Handle non-drag and drop file selection
       $fileInputUploader.change(function () {
         var $this = $(this)
-        var $list = $this.closest('.file-upload').children('.file-upload__file-list')
+        var $list = $this.closest('.file-upload__uploader').prev('.file-upload__file-list')
         var files = $this.prop('files')
         fileList.add(files)
         fileList.show($list)
       })
 
-      // Handle darg and drop file selection
+      // Handle drag and drop file selection
       $fileUploader.on('drag dragstart dragend dragover dragenter dragleave drop', function (e) {
         e.preventDefault()
         e.stopPropagation()
@@ -423,14 +426,14 @@ $(function () {
       })
       .on('drop', function (e) {
         var $this = $(this)
-        var $list = $this.closest('.file-upload').children('.file-upload__file-list')
+        var $list = $this.prev('.file-upload__file-list')
         var files = e.originalEvent.dataTransfer.files
         fileList.add(files)
         fileList.show($list)
       })
     } else { // Handle basic file upload
       $('.file-upload__button, .file-upload__input').removeClass('hide')
-    };
+    }
 
     // Delete file from file list
     $fileList.on('click', fileDelete, function (e) {

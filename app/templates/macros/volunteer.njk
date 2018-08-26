@@ -52,7 +52,7 @@
 {% include 'components/input-field/_input-field.njk' %}
 {% endmacro %}
 
-{% macro maskedDateField(label, id, type='text', size='', placeholder='', disabled='', validation='') %}
+{% macro maskedDateField(label, id, placeholder='', disabled='', validation='') %}
 {% include 'components/masked-date-field/_masked-date-field.njk' %}
 {% endmacro %}
 
@@ -98,6 +98,10 @@
 
 {% macro fileUpload() %}
 {% include 'components/file-upload/_file-upload.njk' %}
+{% endmacro %}
+
+{% macro fileUpload_1() %}
+{% include 'components/file-upload-1/_file-upload-1.njk' %}
 {% endmacro %}
 
 {% macro postcodeLookup(id='postcoode', validation='') %}
