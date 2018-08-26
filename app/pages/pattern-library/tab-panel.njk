@@ -1,0 +1,60 @@
+{% extends "pattern-library-layout.njk" %}
+
+{% import 'macros/volunteer.njk' as volunteer %}
+
+{% block content %}
+  <h1 class="pl-heading">Tab panel</h1>
+  {% call volunteer.tabPanel() %}
+  <div class="tab-panel__pane">
+    <div class="tab-panel__label">Tab label 1</div>
+    <div class="tab-panel__content">
+      <h1 class="subheading">Heading 1</h1>
+      <p>Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec ullamcorper nulla non metus auctor fringilla. Praesent commodo cursus magna, vel scelerisque nisl consectetur et.</p>
+    </div>
+  </div>
+  <div class="tab-panel__pane">
+    <div class="tab-panel__label">Tab label 2</div>
+    <div class="tab-panel__content">
+      <h1 class="subheading">Heading 2</h1>
+      <p>Vestibulum id ligula porta felis euismod semper. Maecenas sed diam eget risus varius blandit sit amet non magna. Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper.</p>
+    </div>
+  </div>
+  <div class="tab-panel__pane">
+    <div class="tab-panel__label">Tab label 3</div>
+    <div class="tab-panel__content">
+      <h1 class="subheading">Heading 3</h1>
+      <p>Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit.</p>
+    </div>
+  </div>
+  {% endcall %}
+  <h2 class="pl-heading">HTML</h2>
+  <textarea class="pl-code" disabled>
+    {% call volunteer.tabPanel() %}
+    <div class="tab-panel__pane">
+      <div class="tab-panel__tab-label">Tab label 1</div>
+      <div class="tab-panel__content">
+        <h1 class="subheading">Heading 1</h1>
+        <p>Cum sociis natoque penatibus et magnis dis parturient montes, nascetur&hellip;</p>
+      </div>
+    </div>
+    <div class="tab-panel__pane">
+      <div class="tab-panel__tab-label">Tab label 2</div>
+      <div class="tab-panel__content">
+        <h1 class="subheading">Heading 2</h1>
+        <p>Vestibulum id ligula porta felis euismod semper. Maecenas sed diam&hellip;</p>
+      </div>
+    </div>
+    <div class="tab-panel__pane">
+      <div class="tab-panel__tab-label">Tab label 3</div>
+      <div class="tab-panel__content">
+        <h1 class="subheading">Heading 3</h1>
+        <p>Aenean eu leo quam. Pellentesque ornare sem lacinia quam&hellip;</p>
+      </div>
+    </div>
+    {% endcall %}
+  </textarea>
+  <h2 class="pl-heading">SCSS</h2>
+  <textarea class="pl-code" disabled>
+    {% include 'components/heading/_heading.scss' ignore missing %}
+  </textarea>
+{% endblock %}

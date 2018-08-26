@@ -71,64 +71,78 @@
         </div>
       </div>
       <div class="grid-cell grid-cell--2-of-3 grid-cell--last">
-        <div class="content-panel">
-          <div class="message--error" style="margin-top: 0; margin-bottom: 16px;"> TODO: Tabbed interface.</div>
-          <div class="meta-bar">
+        {% call volunteer.tabPanel() %}
+        <div class="tab-panel__pane">
+          <div class="tab-panel__label">Matches</div>
+          <div class="tab-panel__content">
+            <div class="meta-bar">
+              <div class="force-left">
+                {{ volunteer.metaTag('Open', 'secondary') }}
+              </div>
+              <div class="force-right">
+                {{ volunteer.metaInfo('1.4 miles from BS16 6LF', 'tertiary') }}
+              </div>
+            </div>
+            {{ volunteer.subHeading('Play Sea Hero Quest and help our scientists') }}
+            {{ volunteer.paragraphSmall('Alzheimer’s Research UK has team up with Deutsche Telecom and scientists from University College London and the Universtity of East Anglia to develop Sea Hero Quest, a smartphone game (not available on PC) that re-writes the rules on how we go about dementia research&hellip;' | safe) }}
             <div class="force-left">
-              {{ volunteer.metaTag('Open', 'secondary') }}
+              {{ volunteer.paragraphSmall('<b>Opening date:</b> 12/07/2016' | safe) }}
             </div>
             <div class="force-right">
-              {{ volunteer.metaInfo('1.4 miles from BS16 6LF', 'tertiary') }}
+              {{ volunteer.paragraphSmall('<b>Closing date:</b> 31/12/2016' | safe) }}
             </div>
-          </div>
-          {{ volunteer.subHeading('Play Sea Hero Quest and help our scientists') }}
-          {{ volunteer.paragraphSmall('Alzheimer’s Research UK has team up with Deutsche Telecom and scientists from University College London and the Universtity of East Anglia to develop Sea Hero Quest, a smartphone game (not available on PC) that re-writes the rules on how we go about dementia research&hellip;' | safe) }}
-          <div class="force-left">
-            {{ volunteer.paragraphSmall('<b>Opening date:</b> 12/07/2016' | safe) }}
-          </div>
-          <div class="force-right">
-            {{ volunteer.paragraphSmall('<b>Closing date:</b> 31/12/2016' | safe) }}
-          </div>
-          {{ volunteer.paragraphSmall('<b>Volunteers recruited:</b> 107/500' | safe) }}
-          <p>{{ volunteer.metaTag('Game', 'quaternary') }} {{ volunteer.metaTag('Research', 'quaternary') }}</p>
-          <div class="grid-row" style="width: 80%; margin-bottom: 28px;">
-            <div class="grid-cell grid-cell--1-of-2 grid-cell--first">
-              {{ volunteer.button('See study details', 'button', 'tertiary' ) }}
+            {{ volunteer.paragraphSmall('<b>Volunteers recruited:</b> 107/500' | safe) }}
+            <p>{{ volunteer.metaTag('Game', 'quaternary') }} {{ volunteer.metaTag('Research', 'quaternary') }}</p>
+            <div class="grid-row" style="width: 80%; margin-bottom: 28px;">
+              <div class="grid-cell grid-cell--1-of-2 grid-cell--first">
+                {{ volunteer.button('See study details', 'button', 'tertiary' ) }}
+              </div>
+              <div class="grid-cell grid-cell--1-of-2 grid-cell--last">
+                {{ volunteer.button('Participate', 'button', 'next' ) }}
+              </div>
             </div>
-            <div class="grid-cell grid-cell--1-of-2 grid-cell--last">
-              {{ volunteer.button('Participate', 'button', 'next' ) }}
+            <hr class="content-panel__hrule" />
+            <div class="meta-bar">
+              <div class="force-left">
+                {{ volunteer.metaTag('Ending soon', 'tertiary') }}
+              </div>
+              <div class="force-right">
+                {{ volunteer.metaInfo('18 miles from BS16 6LF', 'tertiary') }}
+              </div>
             </div>
-          </div>
-          <hr class="content-panel__hrule" />
-          <div class="meta-bar">
+            {{ volunteer.subHeading('Software Architecture for Mental Health Self Management Reliability and Proof of Concept study') }}
+            {{ volunteer.paragraphSmall('Luptusda voluptio. Itatem rerestis mo et magnis ent aut pa volorupta et aut aut aut autempo rroviducid escias ad quid que quatur? Ectorrunte nones adis nonsequos moluptatios doluptas dolore aciaecti odi dolupta ssequi ad que volorem quiatus. Doluptas dolore aciaecti odi dolupta ssequi ad que volorem quiatus.' | safe) }}
             <div class="force-left">
-              {{ volunteer.metaTag('Ending soon', 'tertiary') }}
+              {{ volunteer.paragraphSmall('<b>Opening date:</b> 12/07/2016' | safe) }}
             </div>
             <div class="force-right">
-              {{ volunteer.metaInfo('18 miles from BS16 6LF', 'tertiary') }}
+              {{ volunteer.paragraphSmall('<b>Closing date:</b> 31/12/2016' | safe) }}
             </div>
-          </div>
-          {{ volunteer.subHeading('Software Architecture for Mental Health Self Management Reliability and Proof of Concept study') }}
-          {{ volunteer.paragraphSmall('Luptusda voluptio. Itatem rerestis mo et magnis ent aut pa volorupta et aut aut aut autempo rroviducid escias ad quid que quatur? Ectorrunte nones adis nonsequos moluptatios doluptas dolore aciaecti odi dolupta ssequi ad que volorem quiatus. Doluptas dolore aciaecti odi dolupta ssequi ad que volorem quiatus.' | safe) }}
-          <div class="force-left">
-            {{ volunteer.paragraphSmall('<b>Opening date:</b> 12/07/2016' | safe) }}
-          </div>
-          <div class="force-right">
-            {{ volunteer.paragraphSmall('<b>Closing date:</b> 31/12/2016' | safe) }}
-          </div>
-          {{ volunteer.paragraphSmall('<b>Volunteers recruited:</b> 107/500' | safe) }}
-          <p>{{ volunteer.metaTag('Game', 'quaternary') }} {{ volunteer.metaTag('Research', 'quaternary') }}</p>
-          <div class="grid-row" style="width: 80%; margin-bottom: 28px;">
-            <div class="grid-cell grid-cell--1-of-2 grid-cell--first">
-              {{ volunteer.button('See study details', 'button', 'tertiary' ) }}
-            </div>
-            <div class="grid-cell grid-cell--1-of-2 grid-cell--last">
-              {{ volunteer.button('Participate', 'button', 'next' ) }}
+            {{ volunteer.paragraphSmall('<b>Volunteers recruited:</b> 107/500' | safe) }}
+            <p>{{ volunteer.metaTag('Game', 'quaternary') }} {{ volunteer.metaTag('Research', 'quaternary') }}</p>
+            <div class="grid-row" style="width: 80%; margin-bottom: 28px;">
+              <div class="grid-cell grid-cell--1-of-2 grid-cell--first">
+                {{ volunteer.button('See study details', 'button', 'tertiary' ) }}
+              </div>
+              <div class="grid-cell grid-cell--1-of-2 grid-cell--last">
+                {{ volunteer.button('Participate', 'button', 'next' ) }}
+              </div>
             </div>
           </div>
         </div>
+        <div class="tab-panel__pane">
+          <div class="tab-panel__label">In progress</div>
+          <div class="tab-panel__content">
+            <p>Vestibulum id ligula porta felis euismod semper. Maecenas sed diam eget risus varius blandit sit amet non magna. Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper.</p>
+          </div>
+        </div>
+        <div class="tab-panel__pane">
+          <div class="tab-panel__label">Enrolled</div>
+          <div class="tab-panel__content">
+            <p>Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit.</p>
+          </div>
+        </div>
+        {% endcall %}
       </div>
     </div>
-
-
 {% endblock %}

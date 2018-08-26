@@ -354,6 +354,43 @@ $(function () {
   /**
     * FILE UPLOAD: Handle file upload components
     */
+  var tabPanel = (function () {
+    var $tabPanels = $('.tab-panel')
+
+    $tabPanels.each(function () {
+      var $panel = $(this)
+      var $panes = $panel.find('.tab-panel__pane')
+      var $tabBar
+      var $tabs
+      var tabWidth = 100 / $panes.length
+
+      $panel.prepend('<div class="tab-panel__tabs"></div>')
+      $tabBar = $panel.find('.tab-panel__tabs')
+      $panes.each(function () {
+        var label = $(this).find('.tab-panel__label').text()
+        $tabBar.append('<div class="tab-panel__tab" style="width: ' + tabWidth + '%;">' + label + '</div>')
+      })
+      $tabs = $panel.find($('.tab-panel__tab'))
+
+      $tabs.first().addClass('active')
+      $panes.first().addClass('active')
+
+      $tabs.on('click', function () {
+        var $tab = $(this)
+        var index = $tabs.index($tab)
+
+        $tabs.removeClass('active')
+        $tab.addClass('active')
+
+        $panes.removeClass('active')
+        $panes.eq(index).addClass('active')
+      })
+    })
+  }())
+
+  /**
+    * FILE UPLOAD: Handle file upload components
+    */
   var fileUpload = (function () {
     // Check if browser supports advanced file upload features
     var isAdvancedUpload = (function () {

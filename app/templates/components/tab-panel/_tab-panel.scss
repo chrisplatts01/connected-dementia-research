@@ -1,0 +1,42 @@
+.tab-panel {}
+
+.tab-panel__pane {
+  display: none;
+
+  &.active {
+    display: block;
+  }
+
+  .tab-panel__label {
+    @include hide-visually
+  }
+}
+
+.tab-panel__tabs {
+  @include clearfix();
+  background-color: $grey-L52;
+}
+
+.tab-panel__tab {
+  @include small-font;
+  float: left;
+  padding: 8px 16px;
+  text-align: center;
+  color: $grey-L35;
+  background-color: $grey-L66;
+  border-right: 1px solid $grey-L35;
+
+  &.active {
+    color: $grey;
+    background-color: $white;
+  }
+
+  &:last-child {
+    border: 0;
+  }
+}
+
+.tab-panel__content {
+  padding: 16px;
+  background-color: $white;
+}
