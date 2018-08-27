@@ -4,6 +4,7 @@ import additionalMethods from 'jquery-validation/dist/additional-methods'
 import jqueryMaskPlugin from 'jquery-mask-plugin'
 import datejs from '../scripts/vendor/datejs/build/date-en-GB.js'
 import i18n from '../scripts/vendor/datejs/i18n/en-GB.js'
+import datePicker from '@chenfengyuan/datepicker/dist/datepicker.common.js'
 
 $(function () {
   /**
@@ -100,11 +101,23 @@ $(function () {
   /**
    * MASKED DATE FIELD: Handle masked date fields
    */
-   var maskedDateField = (function () {
-     var $maskedDateField = $('.input-field--masked-date').find('input[name|="date"]')
+  var maskedDateField = (function () {
+    var $maskedDateField = $('.input-field--masked-date').find('input[name|="date"]')
 
-     $maskedDateField.mask('00/00/0000')
-   }())
+    $maskedDateField.mask('00/00/0000')
+  }())
+
+  /**
+   * DATE PICKER FIELD: Handle date picker field input 
+   */
+  var datePickerField = (function () {
+    var $datePicker = $('[data-toggle="datepicker"]')
+    $datePicker.datepicker({
+      autoHide: true,
+      language: 'en-GB',
+      format: 'dd/mm/yyyy'
+    })
+  }())
 
   /**
     * PASSWORD FIELD: Handle password show/hide
@@ -127,9 +140,9 @@ $(function () {
     })
   }())
 
-    /**
-      * PROGRESS INDICATOR: Handle progress indicators
-      */
+  /**
+    * PROGRESS INDICATOR: Handle progress indicators
+    */
   var progressIndicator = (function () {
     var $progressIndicator = $('.progress-indicator')
     $progressIndicator.each(function () {
@@ -344,9 +357,9 @@ $(function () {
         var $item = $(this)
         $items.addClass('closed')
         $item.removeClass('closed')
-      //   $('html, body').animate({
-      //     scrollTop: ($item.offset().top)
-      //   },500)
+        //   $('html, body').animate({
+        //     scrollTop: ($item.offset().top)
+        //   },500)
       })
     })
   }())
@@ -455,19 +468,19 @@ $(function () {
         e.preventDefault()
         e.stopPropagation()
       })
-      .on('dragover dragenter', function () {
-        $(this).addClass('is-dragover')
-      })
-      .on('dragleave dragend drop', function () {
-        $(this).removeClass('is-dragover')
-      })
-      .on('drop', function (e) {
-        var $this = $(this)
-        var $list = $this.prev('.file-upload__file-list')
-        var files = e.originalEvent.dataTransfer.files
-        fileList.add(files)
-        fileList.show($list)
-      })
+        .on('dragover dragenter', function () {
+          $(this).addClass('is-dragover')
+        })
+        .on('dragleave dragend drop', function () {
+          $(this).removeClass('is-dragover')
+        })
+        .on('drop', function (e) {
+          var $this = $(this)
+          var $list = $this.prev('.file-upload__file-list')
+          var files = e.originalEvent.dataTransfer.files
+          fileList.add(files)
+          fileList.show($list)
+        })
     } else { // Handle basic file upload
       $('.file-upload__button, .file-upload__input').removeClass('hide')
     }

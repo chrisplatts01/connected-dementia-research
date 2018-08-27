@@ -61,8 +61,7 @@
               </label>
             </div>
           </fieldset>
-          {{ volunteer.maskedDateField('', 'start-date') }}
-          <div class="message--error" style="margin-top: 0; margin-bottom: 16px;"> TODO: Date picker.</div>
+          {{ volunteer.datePickerField('Date', 'date-field', type='text', placeholder='', disabled='', validation='') }}
           <div class="form-actions--full-width">
             {{ volunteer.button('Submit', 'submit', 'primary') }}
             {{ volunteer.button('Reset', 'reset', 'tertiary') }}
