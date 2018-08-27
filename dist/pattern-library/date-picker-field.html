@@ -116,90 +116,55 @@
     </nav>
     <main class="pl-main" role="main">
       
-  <h1 class="pl-heading">Segmented control</h1>
-  <p>Used instead of radio button when there are a limited number of mutually-exclusive choices.</p>
-  <p><small>To illustrate the styling of <em>checked</em> and <em>hover</em> states, <code>.hover</code> and <code>.checked</code> classes have been added to simulate these states. These classes are not required in production where the <code>:hover</code> and <code>:checked</code> pseudo-classes are used.</small></p>
+  <h1 class="pl-heading">Date picker field</h1>
   
-<div class="form__field segmented-control segmented-control--2-across">
-  <p class="label">Sex</p>
-  
-  <input id="sex-male" name="sex" type="radio"   />
-  <label class="segmented-control__label" for="sex-male">Male</label>
-  
-  <input id="sex-female" name="sex" type="radio"   />
-  <label class="segmented-control__label" for="sex-female">Female</label>
-  
+<div class="input-field input-field--date-picker">
+  <label>
+    Date
+    <input id="date-field" name=date-field data-toggle="datepicker" type="date"   />
+  </label>
 </div>
-
-
-  
-<div class="form__field segmented-control segmented-control--3-across">
-  <p class="label">Your options</p>
-  
-  <input id="options-option_1" name="options" type="radio"   />
-  <label class="segmented-control__label" for="options-option_1">Option 1</label>
-  
-  <input id="options-option_2" name="options" type="radio"   />
-  <label class="segmented-control__label" for="options-option_2">Option 2</label>
-  
-  <input id="options-option_3" name="options" type="radio"   />
-  <label class="segmented-control__label" for="options-option_3">Option 3</label>
-  
-</div>
-
 
   <h2 class="pl-heading">HTML</h2>
   <textarea class="pl-code" disabled>
     
-<div class="form__field segmented-control segmented-control--2-across">
-  <p class="label">Sex</p>
-  
-  <input id="sex-male" name="sex" type="radio"   />
-  <label class="segmented-control__label" for="sex-male">Male</label>
-  
-  <input id="sex-female" name="sex" type="radio"   />
-  <label class="segmented-control__label" for="sex-female">Female</label>
-  
+<div class="input-field input-field--date-picker">
+  <label>
+    Date
+    <input id="date-field" name=date-field data-toggle="datepicker" type="date"   />
+  </label>
 </div>
-
 
   </textarea>
   <h2 class="pl-heading">SCSS</h2>
   <textarea class="pl-code" disabled>
-    .segmented-control {
-  position: relative;
-  width: 100%;
-  margin-bottom: 28px;
-  text-align: center;
+    .input-field--date-picker {
+  label {
+    position: relative;
+    display: block;
+    width: 100%;
+    max-width: 200px;
 
-  input[type=radio] {
-    @include hide-visually;
-  }
-
-  .segmented-control__label {
-    @include form-segmented-control(unselected);
-    width: 50%;
-
-    &.invalid {
-      @include form-segmented-control(invalid);
+    &:after {
+      position: absolute;
+      // width: 100%;
+      // max-width: 200px;
+      // display: block;
+      bottom: 22px;
+      right: 0px;
+      content: url('/images/icon-datepicker.svg')
     }
   }
 
-  input[type=radio]:checked + label, .checked {
-    @include form-segmented-control(selected);
+  input[data-toggle="datepicker"] {
+    width: 100%;
+    max-width: 200px;
   }
-}
+}  
 
-.segmented-control--2-across .segmented-control__label {
-  width: 50%;
-}
-
-.segmented-control--3-across .segmented-control__label {
-  width: 33%;
-}
-
-.segmented-control--4-across .segmented-control__label {
-  width: 25%;
+.datepicker-container {
+  @include small-font;
+  font-size: 17px !important;
 }
 
   </textarea>

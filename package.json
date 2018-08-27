@@ -43,6 +43,7 @@
     "webpack-stream": "^4.0.3"
   },
   "dependencies": {
+    "@chenfengyuan/datepicker": "^1.0.0",
     "datejs": "^1.0.0-rc3",
     "jquery": "^3.3.1",
     "jquery-mask-plugin": "^1.14.15",

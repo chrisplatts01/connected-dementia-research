@@ -56,6 +56,10 @@
 {% include 'components/masked-date-field/_masked-date-field.njk' %}
 {% endmacro %}
 
+{% macro datePickerField(label, id, placeholder='', disabled='', validation='') %}
+{% include 'components/date-picker-field/_date-picker-field.njk' %}
+{% endmacro %}
+
 {% macro passwordField(label, id, size='long', placeholder='', disabled='', validation='') %}
 {% include 'components/password-field/_password-field.njk' %}
 {% endmacro %}

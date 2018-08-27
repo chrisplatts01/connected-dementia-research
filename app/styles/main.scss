@@ -52,6 +52,7 @@
 @import 'app/templates/components/meta-tag/meta-tag';
 @import 'app/templates/components/meta-info/meta-info';
 @import 'app/templates/components/tab-panel/tab-panel';
+@import 'app/templates/components/date-picker-field/date-picker-field';
 
 // Pattern library modules
 @import 'app/templates/modules/volunteer-page-header/volunteer-page-header';
@@ -59,3 +60,6 @@
 // Swatches
 @import 'app/templates/swatches/colours/colours';
 @import 'app/templates/swatches/fonts/fonts';
+
+// External CSS imports
+@import 'node_modules/@chenfengyuan/datepicker/src/css/datepicker.scss'
