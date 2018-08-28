@@ -172,159 +172,161 @@
   <h2 class="pl-heading">SCSS</h2>
   <textarea class="pl-code" disabled>
     .user-bar {
-  @include clearfix();
-  position: relative;
-  height: 100px;
-  background: $grey;
-  padding: 12px 24px;
-  margin: -24px -24px 28px;
+	@include clearfix();
+	position: relative;
+	height: 100px;
+	background: $grey;
+	padding: 12px 24px;
+	margin: -24px -24px 28px;
 
-  .user-bar__users {
-    width: 64%;
-    float: left;
+	.user-bar__users {
+		width: 64%;
+		float: left;
 
-    .volunteer {
-        @include bold-font;
-        color: $white;
-        margin: 0 0 16px;
+		.volunteer {
+			@include bold-font;
+			color: $white;
+			margin: 0 0 16px;
 
-      .label {
-        @include base-font;
-        color: $white;
-      }
-    }
+			.label {
+				@include base-font;
+				color: $white;
+			}
+		}
 
-    .participant {
-      @include small-font;
-      color: $coral;
-      margin: 0 0 4px;
+		.participant {
+			@include small-font;
+			color: $coral;
+			margin: 0 0 4px;
 
-      .label {
-        font-weight: 400;
-        font-size: $small-font-size;
-        color: $white;
-      }
-    }
-  }
+			.label {
+				font-weight: 400;
+				font-size: $small-font-size;
+				color: $white;
+			}
+		}
+	}
 
-  .user-bar__action {
-    position: absolute;
-    top: 28px;
-    right: 24px;
-  }
+	.user-bar__action {
+		position: absolute;
+		top: 28px;
+		right: 24px;
+	}
 
-  .user-bar__menu {
-    position: absolute;
-    top: 28px;
-    right: 24px;
-    width: 36%;
-    color: $grey;
-    background-color: $grey-L52;
-    border-bottom: 4px solid $grey-L35;
-    z-index: 20;
+	.user-bar__menu {
+		@include small-font;
+		position: absolute;
+		top: 28px;
+		right: 24px;
+		width: 36%;
+		color: $grey;
+		background-color: $grey-L52;
+		border-bottom: 4px solid $grey-L35;
+		z-index: 20;
 
-    &:hover,
-    &:focus {
-      color: $grey-D10;
-      background-color: $grey-L35;
-      border-bottom: 4px solid $grey-L20;
-    }
-  }
+		&:hover,
+		&:focus {
+			color: $grey-D10;
+			background-color: $grey-L35;
+			border-bottom: 4px solid $grey-L20;
+		}
+	}
 
-  .user-bar__menu-select {
-    padding: 8px 16px;
+	.user-bar__menu-select {
+		padding: 8px 16px;
 
-    &:after {
-      position: absolute;
-      top: 7px;
-      right: 16px;
-      content: url('/images/arrow-down-grey.svg');
-    }
+		&:after {
+			position: absolute;
+			top: 7px;
+			right: 16px;
+			content: url('/images/arrow-down-grey.svg');
+		}
 
-    &.open:after {
-      content: url('/images/arrow-up-grey.svg');
-    }
-  }
+		&.open:after {
+			content: url('/images/arrow-up-grey.svg');
+		}
+	}
 
-  .user-bar__menu-options {
-    display: none;
-  }
+	.user-bar__menu-options {
+		display: none;
+	}
 
-  .user-bar__menu-option {
-    color: $grey;
-    background-color: $grey-L60;
-    padding: 8px 16px;
+	.user-bar__menu-option {
+		color: $grey;
+		background-color: $grey-L60;
+		padding: 8px 16px;
 
-    .name {
-      display: block;
-      font-weight: 700;
+		.name {
+			display: block;
+			font-weight: 700;
 
-      &:before {
-        display: inline-block;
-        content: url('/images/icon-user-avatar-black.svg');
-        padding-right: 8px;
-      }
-    }
+			&:before {
+				display: inline-block;
+				content: url('/images/icon-user-avatar-black.svg');
+				padding-right: 8px;
+			}
+		}
 
-    .label {
-      display: block;
-    }
+		.label {
+			display: block;
+		}
 
-    .add-participant{
-      border-bottom: 0;
-      &:before {
-        position: relative;
-        top:4px;
-        display: inline-block;
-        content: url('/images/icon-add.svg');
-        padding-right: 8px;
-      }
-    }
+		.add-participant {
+			border-bottom: 0;
 
-    &:hover,
-    &:focus {
-      color: $grey-D10;
-      background: $grey-L52;
-    }
+			&:before {
+				position: relative;
+				top: 4px;
+				display: inline-block;
+				content: url('/images/icon-add.svg');
+				padding-right: 8px;
+			}
+		}
 
-    &.active {
-      color: $white;
-      background: $coral;
+		&:hover,
+		&:focus {
+			color: $grey-D10;
+			background: $grey-L52;
+		}
 
-      .name:before {
-        content: url('/images/icon-user-avatar-white.svg');
-      }
+		&.active {
+			color: $white;
+			background: $coral;
 
-      .add-participant:before {
-        content: url('/images/icon-add-white.svg');
-      }
+			.name:before {
+				content: url('/images/icon-user-avatar-white.svg');
+			}
 
-      .count {
-        color: $coral;
-        background-color: $white;
-      }
+			.add-participant:before {
+				content: url('/images/icon-add-white.svg');
+			}
 
-      // &:hover,
-      // &:focus {
-      //   background-color: $coral-D20;
-      // }
-    }
-  }
+			.count {
+				color: $coral;
+				background-color: $white;
+			}
 
-  .count {
-    position: relative;
-    top: -2px;
-    font-size: 15px;
-    font-weight: 700;
-    line-height: 20px;
-    display: inline-block;
-    color: $white;
-    background-color: $coral;
-    height: 20px;
-    width: 20px;
-    border-radius: 50%;
-    text-align: center;
-  }
+			// &:hover,
+			// &:focus {
+			//   background-color: $coral-D20;
+			// }
+		}
+	}
+
+	.count {
+		position: relative;
+		top: -2px;
+		font-size: 15px;
+		font-weight: 700;
+		line-height: 20px;
+		display: inline-block;
+		color: $white;
+		background-color: $coral;
+		height: 20px;
+		width: 20px;
+		border-radius: 50%;
+		text-align: center;
+	}
 }
 
   </textarea>
