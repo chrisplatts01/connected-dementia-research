@@ -1,63 +1,67 @@
 .tab-bar {
-  @include clearfix();
-  margin: 0 0 24px 0;
-  padding: 0;
-  background-color: $white;
+	@include clearfix();
+	margin: 0 0 24px 0;
+	padding: 0;
+	background-color: $white;
 
-  ul {
-    margin: 0;
-    padding: 0;
-    list-style: none;
-    background-color: $white;
-  }
+	ul {
+		margin: 0;
+		padding: 0;
+		list-style: none;
+		background-color: $white;
+	}
 
-  li {
-    @include small-font;
-    width: 25%;
-    float: left;
-    margin: 0;
-    padding: 0;
+	li {
+		@include small-font;
+		width: 25%;
+		float: left;
+		margin: 0;
+		padding: 0;
 
-    a, span {
-      display: block;
-      height: 40px;
-      color: $white;
-      background-color: $coral;
-      border-right: 1px solid $coral;
-      padding-top: 6px;
-      text-align: center;
-    }
+		a,
+		span {
+			display: block;
+			height: 40px;
+			color: $white;
+			background-color: $coral;
+			border-right: 1px solid $coral;
+			padding-top: 6px;
+			text-align: center;
+		}
 
-    a {
-      color: $grey-L35;
-      background-color: $white;
-      border-right-color: $grey-L35;
-      text-decoration: none;
-    }
+		a {
+			color: $grey-L35;
+			background-color: $white;
+			border-right-color: $grey-L35;
+			text-decoration: none;
+		}
 
-    &:last-child {
-      a, span {
-        border-right: none;
-      }
-    }
+		&:last-child {
 
-    span.count {
-      position: relative;
-      top: 0;
-      font-size: 15px;
-      font-weight: 700;
-      line-height: 7px;
-      display: inline-block;
-      color: $white;
-      background-color: $coral;
-      height: 20px;
-      width: 20px;
-      border-radius: 50%;
-      text-align: center;
-    }
-  }
+			a,
+			span {
+				border-right: none;
+			}
+		}
+
+		.count {
+			position: relative;
+			top: 1px;
+			padding: 10px 0 0 1px;
+			font-size: 15px;
+			font-weight: 700;
+			line-height: 0;
+			display: inline-block;
+			color: $white;
+			background-color: $coral;
+			height: 21px;
+			width: 21px;
+			border-radius: 50%;
+			text-align: center;
+		}
+	}
 }
 
-.user-bar + .tab-bar {
-  margin-top: -28px;
+.user-bar+.tab-bar {
+	margin-top: -28px;
 }

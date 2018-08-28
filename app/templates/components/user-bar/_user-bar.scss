@@ -131,6 +131,7 @@
 			.count {
 				color: $coral;
 				background-color: $white;
+				padding-left: 1px;
 			}
 
 			// &:hover,
@@ -143,14 +144,15 @@
 	.count {
 		position: relative;
 		top: -2px;
+		padding-left: 0;
 		font-size: 15px;
 		font-weight: 700;
 		line-height: 20px;
 		display: inline-block;
 		color: $white;
 		background-color: $coral;
-		height: 20px;
-		width: 20px;
+		height: 21px;
+		width: 21px;
 		border-radius: 50%;
 		text-align: center;
 	}

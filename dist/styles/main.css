@@ -1599,19 +1599,21 @@ p, .paragraph {
 .user-bar .user-bar__menu-option.active .count {
   color: #f15b5b;
   background-color: white;
+  padding-left: 1px;
 }
 
 .user-bar .count {
   position: relative;
   top: -2px;
+  padding-left: 0;
   font-size: 15px;
   font-weight: 700;
   line-height: 20px;
   display: inline-block;
   color: white;
   background-color: #f15b5b;
-  height: 20px;
-  width: 20px;
+  height: 21px;
+  width: 21px;
   border-radius: 50%;
   text-align: center;
 }
@@ -1647,7 +1649,8 @@ p, .paragraph {
   padding: 0;
 }
 
-.tab-bar li a, .tab-bar li span {
+.tab-bar li a,
+.tab-bar li span {
   display: block;
   height: 40px;
   color: white;
@@ -1664,21 +1667,23 @@ p, .paragraph {
   text-decoration: none;
 }
 
-.tab-bar li:last-child a, .tab-bar li:last-child span {
+.tab-bar li:last-child a,
+.tab-bar li:last-child span {
   border-right: none;
 }
 
-.tab-bar li span.count {
+.tab-bar li .count {
   position: relative;
-  top: 0;
+  top: 1px;
+  padding: 10px 0 0 1px;
   font-size: 15px;
   font-weight: 700;
-  line-height: 7px;
+  line-height: 0;
   display: inline-block;
   color: white;
   background-color: #f15b5b;
-  height: 20px;
-  width: 20px;
+  height: 21px;
+  width: 21px;
   border-radius: 50%;
   text-align: center;
 }
