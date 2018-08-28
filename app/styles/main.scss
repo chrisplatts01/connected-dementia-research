@@ -1,10 +1,9 @@
 // main.scss
-
+// -------------------------------------
 // Libraries
 @import 'bourbon';
 @import 'node_modules/breakpoint-sass/stylesheets/breakpoint';
 @import 'node_modules/breakpoint-slicer/stylesheets/breakpoint-slicer';
-
 // Partials
 @import 'partials/colours';
 @import 'partials/typography';
@@ -12,10 +11,8 @@
 @import 'partials/base';
 @import 'partials/grid-layout';
 @import 'partials/navigation';
-
 // Mixins
 @import 'mixins/forms/_segmented-control.scss';
-
 // Pattern library components
 @import 'app/templates/components/activity-button/activity-button';
 @import 'app/templates/components/bullet-list/bullet-list';
@@ -53,13 +50,13 @@
 @import 'app/templates/components/meta-info/meta-info';
 @import 'app/templates/components/tab-panel/tab-panel';
 @import 'app/templates/components/date-picker-field/date-picker-field';
-
+@import 'app/templates/components/select-slider-field/select-slider-field';
 // Pattern library modules
 @import 'app/templates/modules/volunteer-page-header/volunteer-page-header';
-
 // Swatches
 @import 'app/templates/swatches/colours/colours';
 @import 'app/templates/swatches/fonts/fonts';
-
 // External CSS imports
-@import 'node_modules/@chenfengyuan/datepicker/src/css/datepicker.scss'
+@import 'node_modules/@chenfengyuan/datepicker/src/css/datepicker.scss';
+// @import 'node_modules/jquery-ui/themes/base/core.css';
+// @import 'node_modules/jquery-ui/themes/base/slider.css';

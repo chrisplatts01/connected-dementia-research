@@ -187,12 +187,27 @@
           
 <div class="form__field input-field input-field--text">
   <label>
-    <input id="distance" name="distance" type="text" placeholder="Postcode/City"   />
+    <input id="distance-from" name="distance-from" type="text" placeholder="Postcode/City"   />
   </label>
 </div>
 
 
-          <div class="message--error" style="margin-top: 0; margin-bottom: 16px;"> TODO: Distance slider.</div>
+  				
+<div class="form-field select-slider-field" data-options="1 mile,10 miles,50 miles,Nationwide">
+	
+	
+	<label for="distance"></label>
+	<div class="slider">
+		<div class="slider__mercury"></div>
+		<span class="slider__label-1">1 mile</span>
+		<span class="slider__label-2">Nationwide</span>
+		<span class="slider__value"></span>
+		<input class="slider__input" id="distance" name="distance" type="text"   />
+	</div>
+</div>
+
+
+
           <hr class="content-panel__hrule" />
           
 <h3 class="small-heading">Start date</h3>

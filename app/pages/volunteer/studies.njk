@@ -41,8 +41,8 @@
           {{ volunteer.inputField('', 'status', placeholder='Ending soon') }}
           <hr class="content-panel__hrule" />
           {{ volunteer.smallHeading('Distance') }}
-          {{ volunteer.inputField('', 'distance', placeholder='Postcode/City') }}
-          <div class="message--error" style="margin-top: 0; margin-bottom: 16px;"> TODO: Distance slider.</div>
+          {{ volunteer.inputField('', 'distance-from', placeholder='Postcode/City') }}
+  				{{ volunteer.selectSliderField('', 'distance', ['1 mile', '10 miles', '50 miles', 'Nationwide']) }}
           <hr class="content-panel__hrule" />
           {{ volunteer.smallHeading('Start date') }}
           <fieldset class="form__field radio-button-group radio-button-group--compact">
