@@ -1,0 +1,16 @@
+{% extends "pattern-library-layout.njk" %}
+
+{% import 'macros/volunteer.njk' as volunteer %}
+
+{% block content %}
+  <h1 class="pl-heading">Select slider field</h1>
+  {{ volunteer.selectSliderField('Field label', 'select-slider-field', ['Option 1', 'Option 2', 'Option 3', 'Option 4']) }}
+  <h2 class="pl-heading">HTML</h2>
+  <textarea class="pl-code" disabled>
+  	{{ volunteer.selectSliderField('Field label', 'select-slider-field', ['Option 1', 'Option 2', 'Option 3', 'Option 4']) }}
+  </textarea>
+  <h2 class="pl-heading">SCSS</h2>
+  <textarea class="pl-code" disabled>
+    {% include 'components/select-slider-field/_select-slider-field.scss' ignore missing %}
+  </textarea>
+{% endblock %}

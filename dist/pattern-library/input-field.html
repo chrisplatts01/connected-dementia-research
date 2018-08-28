@@ -101,6 +101,7 @@
         <li><a href="/pattern-library/radio-button.html">Radio button</a></li>
         <li><a href="/pattern-library/radio-button-group.html">Radio button group</a></li>
         <li><a href="/pattern-library/segmented-control.html">Segmented control</a></li>
+        <li><a href="/pattern-library/select-slider-field.html">Select slider field</a></li>
         <li><a href="/pattern-library/tab-panel.html">Tab panel</a></li>
       </ul>
       <h4>Modules:</h4>
@@ -139,55 +140,47 @@
   <h2 class="pl-heading">SCSS</h2>
   <textarea class="pl-code" disabled>
     .input-field {
-  position: relative;
-  margin-bottom: 28px;
-
-  &.input-field--short {
-    input {
-      width: 150px;
-    }
-  }
-
-  label {
-    @include small-font;
-    // padding-bottom: 28px;
-  }
-
-  input {
-    @include small-font;
-    display: block;
-    width: 100%;
-    height: 40px;
-    margin-top: 8px;
-    border: 1px solid $border-color;
-    padding: 0 10px;
-    box-shadow: inset 0 3px 0 0 $grey-L66;
-
-    &::placeholder {
-      color: $grey-L20;
-      opacity: 1;
-    }
-
-    &:hover {
-      border-color: $border-hover-color;
-    }
-    &:focus, &:active {
-      border-color: $coral;
-    }
-  }
-
-  &.hover input {
-    border-color: $border-hover-color;
-  }
-
-  &.focus input {
-    border-color: $coral;
-  }
-
-  &.error input,
-  & input.error {
-    border: 3px solid $ruby;
-  }
+	position: relative;
+	margin-bottom: 28px;
+	&.input-field--short {
+		input {
+			width: 150px;
+		}
+	}
+	label {
+		@include small-font;
+	}
+	input {
+		@include small-font;
+		display: block;
+		width: 100%;
+		height: 40px;
+		margin-top: 8px;
+		border: 1px solid $border-color;
+		padding: 0 10px;
+		box-shadow: inset 0 3px 0 0 $grey-L66;
+		&::placeholder {
+			color: $grey-L20;
+			opacity: 1;
+		}
+		&:hover {
+			border-color: $border-hover-color;
+		}
+		&:focus,
+		&:active {
+			border-color: $coral;
+		}
+	}
+	&.hover input {
+		border-color: $border-hover-color;
+	}
+	&.focus input {
+		border-color: $coral;
+	}
+	&.error input,
+	& input.error {
+		border: 3px solid $ruby;
+	}
 }
 
   </textarea>
