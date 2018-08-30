@@ -446,7 +446,7 @@ $(function () {
 	}())
 
 	/**
-	 * FILE UPLOAD: Handle file uploader components
+	 * FILE UPLOAD: Handle file upload components
 	 */
 	var fileUpload = (function () {
 		// Check if browser supports advanced file upload features
