@@ -26,6 +26,9 @@
 	"author": "Chris Platts",
 	"license": "MIT",
 	"devDependencies": {
+		"@uppy/core": "^0.27.0",
+		"@uppy/dashboard": "^0.27.2",
+		"@uppy/tus": "^0.27.2",
 		"autoprefixer": "^8.6.5",
 		"bourbon": "^5.0.1",
 		"bourbon-neat": "^3.0.0",
