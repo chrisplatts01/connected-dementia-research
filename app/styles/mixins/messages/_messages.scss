@@ -1,0 +1,27 @@
+@mixin message-success {
+	@include message-font();
+	padding-top: 16px;
+	text-align: left;
+	color: $turquoise !important;
+
+	&:before {
+		position: relative;
+		top: 2px;
+		padding-right: 0.5rem;
+		content: url('/images/icon-success.svg');
+	}
+}
+
+@mixin message-error {
+	@include message-font();
+	padding-top: 16px;
+	text-align: left;
+	color: $ruby !important;
+
+	&:before {
+		position: relative;
+		top: 2px;
+		padding-right: 0.5rem;
+		content: url('/images/icon-error.svg');
+	}
+}

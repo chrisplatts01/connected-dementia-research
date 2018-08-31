@@ -1,94 +1,121 @@
 .file-upload {
-  position: relative;
-  width: 360px;
-  margin: 0 auto 28px;
+	position: relative;
+	width: 360px;
+	margin: 0 auto 28px;
 }
 
-.file-upload__uploader {
-  position: relative;
-  height: 180px;
-  background: $white url('/images/icon-file-upload.svg') center 30% no-repeat;
-  border: 1px dashed $border-color;
-  border-radius: 4px;
-
-  &:hover,
-  &.hover {
-    border: 1px solid $border-hover-color;
-  }
-
-  &.is-dragover {
-    border: 1px solid $coral;
-    // background-color: $coral-L32;
-  }
-
-  label {
-    @include small-font;
-    display: block;
-    position: relative;
-    top: 100px;
-    text-align: center;
-  }
+.UppyModalOpenerBtn {
+	@include hide-visually;
 }
 
-.file-upload__browse {
-  color: $coral;
-  text-decoration: underline;
-  cursor: pointer;
-}
-
-.file-upload__button,
-.file-upload__input {
-  &.hide {
-    @include hide-visually();
-  }
-}
-
-.file-upload__dragndrop,
-.file-upload__uploading,
-.file-upload__success,
-.file-upload__error {
-  display: none;
-}
-
-.file-upload__file-list {
-  @include small-font;
-  width: 360px;
-  margin: 0 auto 10px;
-  padding: 0;
-  list-style: none;
-}
-
-.file-upload__file-added {
-  position: relative;
-  padding: 10px 0;
-  margin: 0;
-  border-bottom: 1px solid $border-color;
-
-  &.error {
-    color: $ruby;
-  }
-
-  &:last-child {
-    border: 0;
-  }
-
-  span.message {
-    display: block;
-    padding-top: 10px;
-  }
-}
-
-.file-upload__delete-file {
-  width: 24px;
-  height: 32px;
-  position: absolute;
-  top: 12px;
-  right: 0;
-  display: inline-block;
-  background: url('/images/icon-trash.svg') top center no-repeat;
-  cursor: pointer;
-}
-
-.error .file-upload__delete-file {
-  background: url('/images/icon-delete.svg') top center no-repeat;
-}
+// 	.file-upload__open-dashboard {
+// 		@include hide-visually;
+// 	}
+// 	.file-upload__dashboard-container {
+// 		position: relative;
+// 		height: 180px;
+// 		background: $white url('/images/icon-file-upload.svg') center 30% no-repeat;
+// 		border: 1px dashed $border-color;
+// 		border-radius: 4px;
+// 		&:hover,
+// 		&.hover {
+// 			border: 1px solid $border-hover-color;
+// 		}
+// 	}
+// }
+// // Override Uppy default styles
+// button.uppy-Dashboard-close {
+// 	@include hide-visually;
+// }
+// .uppy-Dashboard-inner {
+// 	@include small-font;
+// 	display: block;
+// 	width: 100% !important;
+// 	height: 100px !important;
+// 	position: relative;
+// 	top: 100px;
+// 	text-align: center;
+// }
+// .uppy-Dashboard-browse {
+// 	@include small-font;
+// 	border: 0;
+// 	background-color: transparent;
+// 	padding: 0;
+// 	color: $coral;
+// 	cursor: pointer;
+// 	&:hover,
+// 	&:focus {
+// 		text-decoration: underline;
+// 	}
+// }
+// .uppy-Dashboard-note,
+// .uppy-Dashboard-poweredBy {
+// 	@include hide-visually;
+// }
+// .uppy-Dashboard-innerWrap>.uppy-DashboardContent-bar {
+// 	height: 32px;
+// 	width: 100%;
+// 	margin-top: -100px;
+// 	border-bottom: 1px dotted $grey-L52;
+// 	.uppy-DashboardContent-back {
+// 		@include small-font;
+// 		float: left;
+// 		width: 25%;
+// 		border: 0;
+// 		background-color: transparent;
+// 		color: $coral;
+// 		text-align: left;
+// 	}
+// 	.uppy-DashboardContent-title {
+// 		@include small-font;
+// 		float: left;
+// 		width: 50%;
+// 		color: $grey;
+// 		text-align: center;
+// 	}
+// 	.uppy-DashboardContent-addMore {
+// 		@include small-font;
+// 		float: left;
+// 		width: 25%;
+// 		border: 0;
+// 		background-color: transparent;
+// 		color: $grey;
+// 		text-align: right;
+// 	}
+// }
+// .uppy-Dashboard-files {
+// 	@include small-font;
+// 	width: 360px;
+// 	margin: 0 auto 10px;
+// 	padding: 0;
+// 	list-style: none;
+// 	text-align: left;
+// 	.uppy-DashboardItem {
+// 		position: relative;
+// 		padding: 10px 0;
+// 		margin: 0;
+// 		border-bottom: 1px solid $border-color;
+// 		&:last-child {
+// 			border: 0;
+// 		}
+// 	}
+// 	.uppy-DashboardItem-preview,
+// 	.uppy-DashboardItem-progress,
+// 	.uppy-DashboardItem-status {
+// 		display: none;
+// 	}
+// 	.uppy-DashboardItem-remove {
+// 		width: 24px;
+// 		height: 32px;
+// 		position: absolute;
+// 		top: 12px;
+// 		right: 0;
+// 		display: inline-block;
+// 		background: transparent url('/images/icon-trash.svg') top center no-repeat;
+// 		cursor: pointer;
+// 		border: 0;
+// 		svg {
+// 			opacity: 0;
+// 		}
+// 	}
+// }

@@ -4,10 +4,10 @@
 
 {% block content %}
   <h1 class="pl-heading">File upload</h1>
-  <form id="file-upload" method="GET" action="file-upload-handler.html">
+  {# <form id="file-upload" method="GET" action="file-upload-handler.html" > #}
     {{ volunteer.fileUpload() }}
     {# <button id="upload" class="button button--primary" type="button">Upload</button> #}
-  </form>
+  {# </form> #}
   <h2 class="pl-heading">HTML</h2>
   <textarea class="pl-code" disabled>
     {{ volunteer.fileUpload() }}

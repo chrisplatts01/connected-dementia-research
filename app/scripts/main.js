@@ -1,541 +1,552 @@
 import $ from 'jquery'
 import jqueryValidation from 'jquery-validation'
-// import jqueryui from 'webpack-jquery-ui'
-import slider from 'webpack-jquery-ui/slider.js'
 import additionalMethods from 'jquery-validation/dist/additional-methods'
+// import jqueryui from 'webpack-jquery-ui' // Load all jquery-ui modules
+import slider from 'webpack-jquery-ui/slider.js' // Load jquery-ui Slider module
 import jqueryMaskPlugin from 'jquery-mask-plugin'
 import datejs from '../scripts/vendor/datejs/build/date-en-GB.js'
 import i18n from '../scripts/vendor/datejs/i18n/en-GB.js'
 import datePicker from '@chenfengyuan/datepicker/dist/datepicker.common.js'
 
+/**
+ * Load Uppy file upload core and plugins (run `yarn add -D @uppy/[PLUGIN_NAME]` at the CLI to install dependencies)
+ */
+const Uppy = require('@uppy/core') // Core Uppy code
+const Dashboard = require('@uppy/dashboard') // Full-featured sleek UI with file previews, metadata editing, upload/pause/resume/cancel buttons and more. Includes StatusBar and Informer plugins by default
+// const DragDrop = require('@uppy/drag-drop') // Plain and simple drag-and-drop area
+// const FileInput = require('@uppy/file-input') // Even more plain and simple, just a button
+// const Webcam = require('@uppy/webcam') // Upload selfies or audio / video recordings
+// const Dropbox = require('@uppy/dropbox') // Import files from Dropbox
+// const GoogleDrive = require('@uppy/google-drive') // Import files from Google Drive
+// const Instagram = require('@uppy/instagram') // Import files from Instagram
+// const Url = require('@uppy/url') // Import files from any public URL
+const Tus = require('@uppy/tus') // Uploads using the tus resumable upload protocol
+const XHRUpload = require('@uppy/xhr-upload') // Classic multipart form uploads or binary uploads using XMLHTTPRequest
+// const AwsS3 = require('@uppy/aws-s3') // Uploader for AWS S3
+// const AwsS3Multipart = require('@uppy/aws-s3 - multipart') // Uploader for AWS S3 using its resumable Multipart protocol
+// const ProgressBar = require('@uppy/progress-bar') // Add a small YouTube-style progress bar at the top of the page
+// const StatusBar = require('@uppy/status-bar') // Advanced upload progress status bar
+// const Informer = require('@uppy/informer') // Show notifications
+// const Transloadit = require('@uppy/transloadit') // Manipulate and transcode uploaded files using the transloadit.com service
+// const Form = require('@uppy/form') // Collect metadata from <form> right before the Uppy upload, then optionally append results back to the form
+// const ThumbnailGenerator = require('@uppy/thumbnail-generator') // Generate preview thumbnails for images to be uploaded [documentation not yet available]
+// const GoldenRetriever = require('@uppy/golden-retriever') // Restore files and continue uploading after a page refresh or a browser crash
+
 $(function () {
-	/**
-	 * FORM VALIDATION: Handle form validation using the jquery-validation plugin
-	 */
-	var formValidation = (function () {
-		$.validator.addMethod('dateUK', function (value, element) {
-			return Date.parseExact(value, 'd/M/yyyy')
-		}, 'Please enter a valid date')
+  /**
+   * FILE UPLOAD: Handle file upload components
+   */
+  var fileUpload = (function () {
+    var $fileUpload = $('.file-upload')
 
-		$.validator.addMethod('dateGroup', function (value, element) {
-			var $dateFieldGroup = $(element).closest('.date-field-group')
-			var day = $dateFieldGroup.find('input[name="date-field-day"]').val()
-			var month = $dateFieldGroup.find('input[name="date-field-month"]').val()
-			var year = $dateFieldGroup.find('input[name="date-field-year"]').val()
-			var date = day + '/' + month + '/' + year
-			var parsedDate = Date.parseExact(date, 'dd/MM/yyyy')
-			return parsedDate !== null
-		})
+    $fileUpload.each(function (index, element) {
+      var $this = $[this]
 
-		$('form').each(function () {
-			var $form = $(this)
-			$form.validate({
-				groups: {
-					dateGroup: 'date-field-day date-field-month date-field-year'
-				},
-				rules: {
-					'date-field-day': {
-						required: true,
-						number: true,
-						min: 1,
-						max: 31,
-						minlength: 2,
-						maxlength: 2,
-						dateGroup: true
-					},
-					'date-field-month': {
-						required: true,
-						number: true,
-						min: 1,
-						max: 12,
-						minlength: 2,
-						maxlength: 2,
-						dateGroup: true
-					},
-					'date-field-year': {
-						required: true,
-						number: true,
-						min: 1900,
-						minlength: 4,
-						maxlength: 4,
-						dateGroup: true
-					},
-					'date': 'dateUK',
-					'date-field-datex': 'dateUK'
-				},
-				messages: {
-					'date-field-day': {
-						required: 'Please enter values for day, month and year',
-						number: 'Please enter a number',
-						min: 'Please enter a value of at least {0}',
-						max: 'Please enter a value no greater than {0}',
-						minlength: 'Please enter exactly {0} digits',
-						maxlength: 'Please enter exactly {0} digits',
-						dateGroup: 'Please enter a valid date'
-					},
-					'date-field-month': {
-						required: 'Please enter values for day, month and year',
-						number: 'Please enter a number',
-						min: 'Please enter a value of at least {0}',
-						max: 'Please enter a value no greater than {0}',
-						minlength: 'Please enter exactly {0} digits',
-						maxlength: 'Please enter exactly {0} digits',
-						dateGroup: 'Please enter a valid date'
-					},
-					'date-field-year': {
-						required: 'Please enter values for day, month and year',
-						number: 'Please enter a valid date',
-						min: 'Please enter a value of at least {0}',
-						max: 'Please enter a value no greater than {0}',
-						minlength: 'Please enter exactly {0} digits',
-						maxlength: 'Please enter exactly {0} digits',
-						dateGroup: 'Please enter a valid date'
-					}
-				},
-				errorElement: 'div',
-				errorPlacement: function (error, element) {
-					error.appendTo(element.closest('.form__field'))
-				}
-			})
-		})
-	}())
+      var uppy = Uppy({
+        debug: true,
+        autoProceed: false,
+        restrictions: {
+          maxFileSize: 1000000,
+          maxNumberOfFiles: 3,
+          minNumberOfFiles: 1,
+          allowedFileTypes: ['image/*', 'video/*']
+        }
+      })
+      .use(Dashboard, {
+        trigger: '.UppyModalOpenerBtn',
+        inline: true,
+        target: '.DashboardContainer',
+        replaceTargetContent: true,
+        showProgressDetails: false,
+        note: 'Images and video only, 1–3 files, up to 1 MB',
+        height: 180,
+        width: 360,
+        metaFields: [{
+          id: 'name',
+          name: 'Name',
+          placeholder: 'file name'
+        },
+        {
+          id: 'caption',
+          name: 'Caption',
+          placeholder: 'Describe what the image is about'
+        }],
+        locale: {
+          strings: {
+            dropPaste: 'Drag file(s) here or %{browse}',
+            complete: 'Upload successful'
+          }
+        },
+        browserBackButtonClose: true
+      })
+      .use(XHRUpload, {
+        endpoint: 'https://master.tus.io/files/'
+      })
 
-	/**
-	 * SELECT SLIDER FIELD: Handle slidr interface on select filds
-	 */
-	var selectSliderField = (function () {
-		var $selectSliderFields = $('.select-slider-field')
+      uppy.on('complete', result => {
+        console.log('successful files:', result.successful)
+        console.log('failed files:', result.failed)
+      })
+    })
+  })()
 
-		$selectSliderFields.each(function () {
-			var $selectSliderField = $(this)
-			var $slider = $selectSliderField.find('.slider')
-			var $mercury = $slider.find('.slider__mercury')
-			var $input = $slider.find('input[type="text"]')
-			var $value = $slider.find('.slider__value')
+  /**
+   * FORM VALIDATION: Handle form validation using the jquery-validation plugin
+   */
+  var formValidation = (function () {
+    $.validator.addMethod(
+      'dateUK',
+      function (value, element) {
+        return Date.parseExact(value, 'd/M/yyyy')
+      },
+      'Please enter a valid date'
+    )
 
-			var values = $selectSliderField.attr('data-options').split(',')
-			var steps = values.length
+    $.validator.addMethod('dateGroup', function (value, element) {
+      var $dateFieldGroup = $(element).closest('.date-field-group')
+      var day = $dateFieldGroup.find('input[name="date-field-day"]').val()
+      var month = $dateFieldGroup.find('input[name="date-field-month"]').val()
+      var year = $dateFieldGroup.find('input[name="date-field-year"]').val()
+      var date = day + '/' + month + '/' + year
+      var parsedDate = Date.parseExact(date, 'dd/MM/yyyy')
+      return parsedDate !== null
+    })
 
-			var step = 0
-			var value = values[0]
-			var width = 0
+    $('form').each(function () {
+      var $form = $(this)
+      $form.validate({
+        groups: {
+          dateGroup: 'date-field-day date-field-month date-field-year'
+        },
+        rules: {
+          'date-field-day': {
+            required: true,
+            number: true,
+            min: 1,
+            max: 31,
+            minlength: 2,
+            maxlength: 2,
+            dateGroup: true
+          },
+          'date-field-month': {
+            required: true,
+            number: true,
+            min: 1,
+            max: 12,
+            minlength: 2,
+            maxlength: 2,
+            dateGroup: true
+          },
+          'date-field-year': {
+            required: true,
+            number: true,
+            min: 1900,
+            minlength: 4,
+            maxlength: 4,
+            dateGroup: true
+          },
+          date: 'dateUK',
+          'date-field-datex': 'dateUK'
+        },
+        messages: {
+          'date-field-day': {
+            required: 'Please enter values for day, month and year',
+            number: 'Please enter a number',
+            min: 'Please enter a value of at least {0}',
+            max: 'Please enter a value no greater than {0}',
+            minlength: 'Please enter exactly {0} digits',
+            maxlength: 'Please enter exactly {0} digits',
+            dateGroup: 'Please enter a valid date'
+          },
+          'date-field-month': {
+            required: 'Please enter values for day, month and year',
+            number: 'Please enter a number',
+            min: 'Please enter a value of at least {0}',
+            max: 'Please enter a value no greater than {0}',
+            minlength: 'Please enter exactly {0} digits',
+            maxlength: 'Please enter exactly {0} digits',
+            dateGroup: 'Please enter a valid date'
+          },
+          'date-field-year': {
+            required: 'Please enter values for day, month and year',
+            number: 'Please enter a valid date',
+            min: 'Please enter a value of at least {0}',
+            max: 'Please enter a value no greater than {0}',
+            minlength: 'Please enter exactly {0} digits',
+            maxlength: 'Please enter exactly {0} digits',
+            dateGroup: 'Please enter a valid date'
+          }
+        },
+        errorElement: 'div',
+        errorPlacement: function (error, element) {
+          error.appendTo(element.closest('.form__field'))
+        }
+      })
+    })
+  })()
 
-			$input.val(value)
-			$value.text(value)
-			$mercury.css("width", width + "%")
+  /**
+   * SELECT SLIDER FIELD: Handle slidr interface on select filds
+   */
+  var selectSliderField = (function () {
+    var $selectSliderFields = $('.select-slider-field')
 
+    $selectSliderFields.each(function () {
+      var $selectSliderField = $(this)
+      var $slider = $selectSliderField.find('.slider')
+      var $mercury = $slider.find('.slider__mercury')
+      var $input = $slider.find('input[type="text"]')
+      var $value = $slider.find('.slider__value')
 
-			$slider.slider({
-				min: 0,
-				max: steps - 1,
-			})
+      var values = $selectSliderField.attr('data-options').split(',')
+      var steps = values.length
 
-			$slider.on('slidestop', function () {
-				step = $slider.slider("value")
-				value = values[step]
-				width = step * 100 / (steps - 1)
+      var step = 0
+      var value = values[0]
+      var width = 0
 
-				$input.val(value)
-				$value.text(value)
-				$mercury.css("width", width + "%")
-			})
-		})
-	}())
+      $input.val(value)
+      $value.text(value)
+      $mercury.css('width', width + '%')
 
-	/**
-	 * MASKED DATE FIELD: Handle masked date fields
-	 */
-	var maskedDateField = (function () {
-		var $maskedDateField = $('.input-field--masked-date').find('input[name|="date"]')
+      $slider.slider({
+        min: 0,
+        max: steps - 1
+      })
 
-		$maskedDateField.mask('00/00/0000')
-	}())
+      $slider.on('slidestop', function () {
+        step = $slider.slider('value')
+        value = values[step]
+        width = (step * 100) / (steps - 1)
 
-	/**
-	 * DATE PICKER FIELD: Handle date picker field input
-	 */
-	var datePickerField = (function () {
-		var $datePicker = $('[data-toggle="datepicker"]')
-		$datePicker.datepicker({
-			autoHide: true,
-			language: 'en-GB',
-			format: 'dd/mm/yyyy'
-		})
-	}())
+        $input.val(value)
+        $value.text(value)
+        $mercury.css('width', width + '%')
+      })
+    })
+  })()
 
-	/**
-	 * PASSWORD FIELD: Handle password show/hide
-	 */
-	var passwordField = (function () {
-		var $passwordField = $('.input-field--password')
-		var $passwordShow = $passwordField.children('.show')
+  /**
+   * MASKED DATE FIELD: Handle masked date fields
+   */
+  var maskedDateField = (function () {
+    var $maskedDateField = $('.input-field--masked-date').find(
+      'input[name|="date"]'
+    )
 
-		$passwordShow.click(function () {
-			var $this = $(this)
-			var $passwordInput = $this.prev('label').children('input')
+    $maskedDateField.mask('00/00/0000')
+  })()
 
-			if ($passwordInput.attr('type') === 'password') {
-				$passwordInput.attr('type', 'text')
-				$this.text('Hide')
-			} else {
-				$passwordInput.attr('type', 'password')
-				$this.text('Show')
-			}
-		})
-	}())
+  /**
+   * DATE PICKER FIELD: Handle date picker field input
+   */
+  var datePickerField = (function () {
+    var $datePicker = $('[data-toggle="datepicker"]')
+    $datePicker.datepicker({
+      autoHide: true,
+      language: 'en-GB',
+      format: 'dd/mm/yyyy'
+    })
+  })()
 
-	/**
-	 * PROGRESS INDICATOR: Handle progress indicators
-	 */
-	var progressIndicator = (function () {
-		var $progressIndicator = $('.progress-indicator')
-		$progressIndicator.each(function () {
-			var $this = $(this)
-			var step = $this.attr('data-step')
-			var steps = $this.attr('data-steps')
-			var width = step / steps * 100
+  /**
+   * PASSWORD FIELD: Handle password show/hide
+   */
+  var passwordField = (function () {
+    var $passwordField = $('.input-field--password')
+    var $passwordShow = $passwordField.children('.show')
 
-			$this.prepend('<span class="progress-indicator__steps">&nbsp</span>')
-			$this.append('<span class="progress-indicator__step" style="width:' + width + '%">&nbsp</span>')
-		})
-	}())
+    $passwordShow.click(function () {
+      var $this = $(this)
+      var $passwordInput = $this.prev('label').children('input')
 
-	/**
-	 * DROPDOWN SELECT: Handle custom select components
-	 */
-	var dropdownSelect = (function () {
-		var $dropdownSelect
-		var $dropdown
-		var $dropdownOption
+      if ($passwordInput.attr('type') === 'password') {
+        $passwordInput.attr('type', 'text')
+        $this.text('Hide')
+      } else {
+        $passwordInput.attr('type', 'password')
+        $this.text('Show')
+      }
+    })
+  })()
 
-		$dropdownSelect = $('.dropdown-select')
+  /**
+   * PROGRESS INDICATOR: Handle progress indicators
+   */
+  var progressIndicator = (function () {
+    var $progressIndicator = $('.progress-indicator')
+    $progressIndicator.each(function () {
+      var $this = $(this)
+      var step = $this.attr('data-step')
+      var steps = $this.attr('data-steps')
+      var width = (step / steps) * 100
 
-		var dropdownState = (function () {
-			return {
-				init: function ($select) {
-					// Set initial state of dropdown-select controls
-					var dropdown = '<div class="dropdown"></div>'
-					var selected = '<div class="dropdown__selected"></div>'
-					var options = '<div class="dropdown__options"></div>'
-					var option = '<div class="dropdown__option"></div>'
-					var $dropdown = $(dropdown).appendTo($select)
-					var $selected = $(selected).appendTo($dropdown)
-					var $options = $(options).appendTo($dropdown)
-					var $option
+      $this.prepend('<span class="progress-indicator__steps">&nbsp</span>')
+      $this.append(
+        '<span class="progress-indicator__step" style="width:' + width + '%">&nbsp</span>'
+      )
+    })
+  })()
 
-					$selected.text($select.find('option:selected').text())
-					$select.find('option').not(':selected').each(function () {
-						var $this = $(this)
-						var text = $this.text()
-						var value = $this.val()
-						$option = $(option).appendTo($options)
-						$option.text(text)
-						$option.attr('data-value', value)
-					})
+  /**
+   * DROPDOWN SELECT: Handle custom select components
+   */
+  var dropdownSelect = (function () {
+    var $dropdownSelect
+    var $dropdown
+    var $dropdownOption
 
-					$select.find('.message--error').detach().appendTo($select)
-				},
-				get: function ($select) {
-					// Get current state of select element
-					// NOTE: Not currently required
-				},
-				set: function ($select) {
-					// Set state of select element
-					var value = $select.find('.dropdown__option.selected').attr('data-value')
-					$select.removeClass('error')
-					$select.find('div.error').remove()
-					$select.find('option').first().removeAttr('selected')
-					$select.find('option[value="' + value + '"]').prop('selected', true)
-					$select.find('select').val(value)
-				}
-			}
-		}())
+    $dropdownSelect = $('.dropdown-select')
 
-		// Initialise dropdowns
-		$dropdownSelect.each(function () {
-			dropdownState.init($(this))
-		})
+    var dropdownState = (function () {
+      return {
+        init: function ($select) {
+          // Set initial state of dropdown-select controls
+          var dropdown = '<div class="dropdown"></div>'
+          var selected = '<div class="dropdown__selected"></div>'
+          var options = '<div class="dropdown__options"></div>'
+          var option = '<div class="dropdown__option"></div>'
+          var $dropdown = $(dropdown).appendTo($select)
+          var $selected = $(selected).appendTo($dropdown)
+          var $options = $(options).appendTo($dropdown)
+          var $option
 
-		// Handle form submission with no selection
-		$dropdownSelect.closest('form').on('submit', function () {
-			var $this = $(this)
-			var $dropdown = $this.find('.dropdown-select')
-			$dropdown.each(function () {
-				var $this = $(this)
-				if ($this.find('select').hasClass('error')) {
-					$this.addClass('error')
-				}
-			})
-		})
+          $selected.text($select.find('option:selected').text())
+          $select
+            .find('option')
+            .not(':selected')
+            .each(function () {
+              var $this = $(this)
+              var text = $this.text()
+              var value = $this.val()
+              $option = $(option).appendTo($options)
+              $option.text(text)
+              $option.attr('data-value', value)
+            })
 
-		$dropdown = $('.dropdown')
-		$dropdown.click(function () {
-			var $this = $(this)
-			$this.toggleClass('open')
-			$this.find('.dropdown__option').toggle()
-		})
+          $select
+            .find('.message--error')
+            .detach()
+            .appendTo($select)
+        },
+        get: function ($select) {
+          // Get current state of select element
+          // NOTE: Not currently required
+        },
+        set: function ($select) {
+          // Set state of select element
+          var value = $select
+            .find('.dropdown__option.selected')
+            .attr('data-value')
+          $select.removeClass('error')
+          $select.find('div.error').remove()
+          $select
+            .find('option')
+            .first()
+            .removeAttr('selected')
+          $select.find('option[value="' + value + '"]').prop('selected', true)
+          $select.find('select').val(value)
+        }
+      }
+    })()
 
-		$dropdownOption = $dropdown.find('.dropdown__option')
-		$dropdownOption.click(function () {
-			var $this = $(this)
-			var $select = $this.closest('.dropdown-select')
-			var $dropdown = $this.closest('.dropdown') // .children('.dropdown__selected')
-			var $options = $this.parent('.dropdown__options').children('.dropdown__option')
-			var $selected = $this.closest('.dropdown').children('.dropdown__selected')
-			$options.removeClass('selected')
-			$this.addClass('selected')
-			$dropdown.addClass('selected')
-			$selected.text($this.text())
-			dropdownState.set($select)
-		})
-	})()
+    // Initialise dropdowns
+    $dropdownSelect.each(function () {
+      dropdownState.init($(this))
+    })
 
-	/**
-	 * CONDITIONAL CHECKBOXES: Handle conditional checkbox groups
-	 */
-	var conditionalCheckboxGroup = (function () {
-		var $conditionalCheckboxGroup = $('.conditional-checkbox-group')
-		var $radioButtons = $conditionalCheckboxGroup.find('input:radio')
+    // Handle form submission with no selection
+    $dropdownSelect.closest('form').on('submit', function () {
+      var $this = $(this)
+      var $dropdown = $this.find('.dropdown-select')
+      $dropdown.each(function () {
+        var $this = $(this)
+        if ($this.find('select').hasClass('error')) {
+          $this.addClass('error')
+        }
+      })
+    })
 
-		var setCheckboxes = function (state) {
-			var $checkboxes = $conditionalCheckboxGroup.find('.checkbox')
-			var $inputs = $checkboxes.find('input:checkbox')
+    $dropdown = $('.dropdown')
+    $dropdown.click(function () {
+      var $this = $(this)
+      $this.toggleClass('open')
+      $this.find('.dropdown__option').toggle()
+    })
 
-			if (state) {
-				$checkboxes.removeClass('disabled')
-				$inputs.prop('disabled', false)
-			} else {
-				$checkboxes.addClass('disabled')
-				$inputs.prop('disabled', true)
+    $dropdownOption = $dropdown.find('.dropdown__option')
+    $dropdownOption.click(function () {
+      var $this = $(this)
+      var $select = $this.closest('.dropdown-select')
+      var $dropdown = $this.closest('.dropdown') // .children('.dropdown__selected')
+      var $options = $this
+        .parent('.dropdown__options')
+        .children('.dropdown__option')
+      var $selected = $this
+        .closest('.dropdown')
+        .children('.dropdown__selected')
+      $options.removeClass('selected')
+      $this.addClass('selected')
+      $dropdown.addClass('selected')
+      $selected.text($this.text())
+      dropdownState.set($select)
+    })
+  })()
 
-				$checkboxes.find('input:checkbox').prop('checked', false)
-			}
-		}
+  /**
+   * CONDITIONAL CHECKBOXES: Handle conditional checkbox groups
+   */
+  var conditionalCheckboxGroup = (function () {
+    var $conditionalCheckboxGroup = $('.conditional-checkbox-group')
+    var $radioButtons = $conditionalCheckboxGroup.find('input:radio')
 
-		$radioButtons.each(function () {
-			var $this = $(this)
-			var isChecked = $this.attr('checked') === 'checked'
+    var setCheckboxes = function (state) {
+      var $checkboxes = $conditionalCheckboxGroup.find('.checkbox')
+      var $inputs = $checkboxes.find('input:checkbox')
 
-			if (isChecked) {
-				var state = $this.attr('data-checkboxes-enabled') === 'true'
-				setCheckboxes(state)
-			}
-		})
+      if (state) {
+        $checkboxes.removeClass('disabled')
+        $inputs.prop('disabled', false)
+      } else {
+        $checkboxes.addClass('disabled')
+        $inputs.prop('disabled', true)
 
-		$radioButtons.click(function () {
-			var $this = $(this)
-			var state = $this.attr('data-checkboxes-enabled') === 'true'
-			setCheckboxes(state)
-		})
-	})()
+        $checkboxes.find('input:checkbox').prop('checked', false)
+      }
+    }
 
-	/**
-	 * SEGMENTED CONTROL: Handle segmented control components
-	 */
-	var segmentedControl = (function () {
-		var $segmentedControl = $('.segmented-control')
+    $radioButtons.each(function () {
+      var $this = $(this)
+      var isChecked = $this.attr('checked') === 'checked'
 
-		// Handle form submission with no selection
-		$segmentedControl.closest('form').on('submit', function () {
-			var $this = $(this)
-			var $control = $this.find('.segmented-control')
-			$control.each(function () {
-				var $this = $(this)
-				if ($this.find('input:radio').hasClass('error')) {
-					$this.addClass('invalid')
-					$this.find('.segmented-control__label').addClass('invalid')
-				}
-			})
-		})
+      if (isChecked) {
+        var state = $this.attr('data-checkboxes-enabled') === 'true'
+        setCheckboxes(state)
+      }
+    })
 
-		// Handle click event
-		$segmentedControl.click(function () {
-			var $this = $(this)
-			var $input = $this.find('[type=radio]')
-			var $label = $this.find('.segmented-control__label')
-			$label.removeClass('checked').removeClass('invalid')
-			$input.attr('checked', 'checked')
-		})
-	})()
+    $radioButtons.click(function () {
+      var $this = $(this)
+      var state = $this.attr('data-checkboxes-enabled') === 'true'
+      setCheckboxes(state)
+    })
+  })()
 
-	/**
-	 * HIDEABLE PANEL: Handle hideable panel
-	 */
-	var userBar = (function () {
-		$('.user-bar__menu-select').on('click', function () {
-			var $select = $(this)
-			$select.toggleClass('open')
-			$select.next('.user-bar__menu-options').slideToggle()
-		})
-	}())
+  /**
+   * SEGMENTED CONTROL: Handle segmented control components
+   */
+  var segmentedControl = (function () {
+    var $segmentedControl = $('.segmented-control')
 
-	/**
-	 * HIDEABLE PANEL: Handle hideable panel
-	 */
-	var hideablePanel = (function () {
-		var $hideablePanels = $('.hideable-panel')
+    // Handle form submission with no selection
+    $segmentedControl.closest('form').on('submit', function () {
+      var $this = $(this)
+      var $control = $this.find('.segmented-control')
+      $control.each(function () {
+        var $this = $(this)
+        if ($this.find('input:radio').hasClass('error')) {
+          $this.addClass('invalid')
+          $this.find('.segmented-control__label').addClass('invalid')
+        }
+      })
+    })
 
-		$hideablePanels.each(function () {
-			var $hideablePanel = $(this)
-			var $hidePanel = $hideablePanel.find('.hideable-panel__close')
+    // Handle click event
+    $segmentedControl.click(function () {
+      var $this = $(this)
+      var $input = $this.find('[type=radio]')
+      var $label = $this.find('.segmented-control__label')
+      $label.removeClass('checked').removeClass('invalid')
+      $input.attr('checked', 'checked')
+    })
+  })()
 
-			$hidePanel.on('click', function () {
-				$hideablePanel.hide()
-			})
-		})
-	}())
+  /**
+   * HIDEABLE PANEL: Handle hideable panel
+   */
+  var userBar = (function () {
+    $('.user-bar__menu-select').on('click', function () {
+      var $select = $(this)
+      $select.toggleClass('open')
+      $select.next('.user-bar__menu-options').slideToggle()
+    })
+  })()
 
-	/**
-	 * ACCORDION: Handle accordion init/show/hide
-	 */
-	var accordion = (function () {
-		var $accordions = $('.accordion')
+  /**
+   * HIDEABLE PANEL: Handle hideable panel
+   */
+  var hideablePanel = (function () {
+    var $hideablePanels = $('.hideable-panel')
 
-		$accordions.each(function () {
-			var $accordion = $(this)
-			var $items = $accordion.find('.accordion__item')
-			$items.addClass('closed')
-			$items.first().removeClass('closed')
+    $hideablePanels.each(function () {
+      var $hideablePanel = $(this)
+      var $hidePanel = $hideablePanel.find('.hideable-panel__close')
 
-			$items.on('click', function () {
-				var $item = $(this)
-				$items.addClass('closed')
-				$item.removeClass('closed')
-				//   $('html, body').animate({
-				//     scrollTop: ($item.offset().top)
-				//   },500)
-			})
-		})
-	}())
+      $hidePanel.on('click', function () {
+        $hideablePanel.hide()
+      })
+    })
+  })()
 
-	/**
-	 * FILE UPLOAD: Handle file upload components
-	 */
-	var tabPanel = (function () {
-		var $tabPanels = $('.tab-panel')
+  /**
+   * ACCORDION: Handle accordion init/show/hide
+   */
+  var accordion = (function () {
+    var $accordions = $('.accordion')
 
-		$tabPanels.each(function () {
-			var $panel = $(this)
-			var $panes = $panel.find('.tab-panel__pane')
-			var $tabBar
-			var $tabs
-			var tabWidth = 100 / $panes.length
+    $accordions.each(function () {
+      var $accordion = $(this)
+      var $items = $accordion.find('.accordion__item')
+      $items.addClass('closed')
+      $items.first().removeClass('closed')
 
-			$panel.prepend('<div class="tab-panel__tabs"></div>')
-			$tabBar = $panel.find('.tab-panel__tabs')
-			$panes.each(function () {
-				var label = $(this).find('.tab-panel__label').text()
-				$tabBar.append('<div class="tab-panel__tab" style="width: ' + tabWidth + '%;">' + label + '</div>')
-			})
-			$tabs = $panel.find($('.tab-panel__tab'))
+      $items.on('click', function () {
+        var $item = $(this)
+        $items.addClass('closed')
+        $item.removeClass('closed')
+        //   $('html, body').animate({
+        //     scrollTop: ($item.offset().top)
+        //   },500)
+      })
+    })
+  })()
 
-			$tabs.first().addClass('active')
-			$panes.first().addClass('active')
+  /**
+   * TAB PANEL: Handle tabbed content panel
+   */
+  var tabPanel = (function () {
+    var $tabPanels = $('.tab-panel')
 
-			$tabs.on('click', function () {
-				var $tab = $(this)
-				var index = $tabs.index($tab)
+    $tabPanels.each(function () {
+      var $panel = $(this)
+      var $panes = $panel.find('.tab-panel__pane')
+      var $tabBar
+      var $tabs
+      var tabWidth = 100 / $panes.length
 
-				$tabs.removeClass('active')
-				$tab.addClass('active')
+      $panel.prepend('<div class="tab-panel__tabs"></div>')
+      $tabBar = $panel.find('.tab-panel__tabs')
+      $panes.each(function () {
+        var label = $(this)
+          .find('.tab-panel__label')
+          .text()
+        $tabBar.append('<div class="tab-panel__tab" style="width: ' + tabWidth + '%;">' + label + '</div>')
+      })
+      $tabs = $panel.find($('.tab-panel__tab'))
 
-				$panes.removeClass('active')
-				$panes.eq(index).addClass('active')
-			})
-		})
-	}())
+      $tabs.first().addClass('active')
+      $panes.first().addClass('active')
 
-	/**
-	 * FILE UPLOAD: Handle file upload components
-	 */
-	var fileUpload = (function () {
-		// Check if browser supports advanced file upload features
-		var isAdvancedUpload = (function () {
-			var div = document.createElement('div')
-			return (('draggable' in div) || ('ondragstart' in div && 'ondrop' in div)) && 'FormData' in window && 'FileReader' in window
-		})()
+      $tabs.on('click', function () {
+        var $tab = $(this)
+        var index = $tabs.index($tab)
 
-		// Handle list of files to be displayed/uploaded
-		var fileList = (function () {
-			return {
-				init: function ($form) {
-					if (typeof fileList.files === 'undefined') {
-						fileList.files = []
-					}
-				},
-				add: function (files) {
-					$.each(files, function (index, file) {
-						fileList.files.push(file)
-					})
-				},
-				delete: function (index) {
-					fileList.files.splice(index, 1)
-				},
-				show: function ($list) {
-					$list.empty()
-					$.each(fileList.files, function (index, file) {
-						$list.append('<li class="file-upload__file-added" data-index="' + index + '">' + file.name + '  <span class="file-upload__delete-file"></span></li>')
-					})
-				},
-				upload: function () {
-					// How???
-				}
-			}
-		}())
+        $tabs.removeClass('active')
+        $tab.addClass('active')
 
-		$('#upload').on('click', fileList.upload())
-
-		if (isAdvancedUpload) { // Handle advanced file upload
-			var $fileUploader = $('.file-upload__uploader')
-			var $fileInputUploader = $('.file-upload__input')
-			var $fileList = $('.file-upload__file-list')
-			var $form = $fileUploader.closest('form')
-			var fileDelete = '.file-upload__delete-file'
-
-			// Initialise file list array
-			fileList.init($form)
-
-			// Visually hide file input element
-			$('.file-upload__button, .file-upload__input').addClass('hide')
-
-			// Handle non-drag and drop file selection
-			$fileInputUploader.change(function () {
-				var $this = $(this)
-				var $list = $this.closest('.file-upload__uploader').prev('.file-upload__file-list')
-				var files = $this.prop('files')
-				fileList.add(files)
-				fileList.show($list)
-			})
-
-			// Handle drag and drop file selection
-			$fileUploader.on('drag dragstart dragend dragover dragenter dragleave drop', function (e) {
-					e.preventDefault()
-					e.stopPropagation()
-				})
-				.on('dragover dragenter', function () {
-					$(this).addClass('is-dragover')
-				})
-				.on('dragleave dragend drop', function () {
-					$(this).removeClass('is-dragover')
-				})
-				.on('drop', function (e) {
-					var $this = $(this)
-					var $list = $this.prev('.file-upload__file-list')
-					var files = e.originalEvent.dataTransfer.files
-					fileList.add(files)
-					fileList.show($list)
-				})
-		} else { // Handle basic file upload
-			$('.file-upload__button, .file-upload__input').removeClass('hide')
-		}
-
-		// Delete file from file list
-		$fileList.on('click', fileDelete, function (e) {
-			var $this = $(this)
-			var $list = $this.closest('.file-upload').children('.file-upload__file-list')
-			var index = $this.parent('.file-upload__file-added').attr('data-index')
-			fileList.delete(index)
-			fileList.show($list)
-		})
-	})()
+        $panes.removeClass('active')
+        $panes.eq(index).addClass('active')
+      })
+    })
+  })()
 })

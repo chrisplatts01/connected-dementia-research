@@ -1,0 +1,129 @@
+// Button primary
+@mixin button-primary() {
+	font-family: $small-font-family !important;
+	font-size: $small-font-size !important;
+	font-weight: $small-font-weight !important;
+	line-height: $small-line-height !important;
+	position: relative !important;
+	height: 42px !important;
+	min-width: 150px !important;
+	padding: 0 8px !important;
+	border: 0 !important;
+	color: $white !important;
+	background-color: $coral !important;
+	box-shadow: 0 4px 0 0 $coral-D20 !important;
+	cursor: pointer !important;
+
+	&:hover,
+	&:focus,
+	&:active,
+	&.hover {
+		color: $white !important;
+		background-color: $coral-D20 !important;
+		box-shadow: 0 4px 0 0 $coral-D28 !important;
+	}
+
+	&:active,
+	&.active {
+		top: 4px !important;
+		color: $white !important;
+		background-color: $coral-D20 !important;
+		box-shadow: 0 -4px 0 0 $coral-D28 !important;
+	}
+
+	&:disabled,
+	&:disabled.hover,
+	&:disabled.active {
+		top: 0 !important !important;
+		color: $grey-L35 !important !important;
+		background-color: $grey-L66 !important !important;
+		box-shadow: 0 4px 0 0 $grey-L60 !important !important;
+		cursor: default !important;
+	}
+}
+
+// Button secondary
+@mixin button-secondary() {
+	font-family: $small-font-family !important;
+	font-size: $small-font-size !important;
+	font-weight: $small-font-weight !important;
+	line-height: $small-line-height !important;
+	position: relative !important;
+	height: 42px !important;
+	min-width: 150px !important;
+	padding: 0 8px !important;
+	border: 0 !important;
+	color: $white !important;
+	background-color: $turquoise !important;
+	box-shadow: 0 4px 0 0 $turquoise-D12 !important;
+	cursor: pointer !important;
+
+	&:hover,
+	&:focus,
+	&:active,
+	&.hover {
+		color: $white !important;
+		background-color: $turquoise-D12 !important;
+		box-shadow: 0 4px 0 0 $turquoise-D20 !important;
+	}
+
+	&:active,
+	&.active {
+		top: 4px !important;
+		color: $white !important;
+		background-color: $turquoise-D12 !important;
+		box-shadow: 0 -4px 0 0 $turquoise-D20 !important;
+	}
+
+	&:disabled,
+	&:disabled.hover,
+	&:disabled.active {
+		top: 0 !important !important;
+		color: $grey-L35 !important !important;
+		background-color: $grey-L66 !important !important;
+		box-shadow: 0 4px 0 0 $grey-L60 !important !important;
+		cursor: default !important;
+	}
+}
+
+// Button tertiary
+@mixin button-tertiary() {
+	font-family: $small-font-family !important;
+	font-size: $small-font-size !important;
+	font-weight: $small-font-weight !important;
+	line-height: $small-line-height !important;
+	position: relative !important;
+	height: 42px !important;
+	min-width: 150px !important;
+	padding: 0 8px !important;
+	border: 0 !important;
+	background-color: $grey-L52 !important;
+	box-shadow: 0 4px 0 0 $grey-L35 !important;
+	cursor: pointer !important;
+
+	&:hover,
+	&:focus,
+	&:active,
+	&.hover {
+		color: $grey-D10 !important;
+		background-color: $grey-L35 !important;
+		box-shadow: 0 4px 0 0 $grey-L20 !important;
+	}
+
+	&:active,
+	&.active {
+		top: 4px !important;
+		background-color: $grey-L35 !important;
+		box-shadow: 0 -4px 0 0 $grey-L20 !important;
+	}
+
+	&:disabled,
+	&:disabled.hover,
+	&:disabled.active {
+		top: 0 !important !important;
+		color: $grey-L35 !important !important;
+		background-color: $grey-L66 !important !important;
+		box-shadow: 0 4px 0 0 $grey-L60 !important !important;
+		cursor: default !important;
+	}
+}
