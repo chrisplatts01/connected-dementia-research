@@ -45,8 +45,7 @@ button.uppy-Dashboard-close {
 	cursor: pointer;
 
 	&:hover,
-	&:focus,
-	&:active {
+	&:focus {
 		text-decoration: underline;
 	}
 }
@@ -56,12 +55,48 @@ button.uppy-Dashboard-close {
 	@include hide-visually;
 }
 
+.uppy-Dashboard-innerWrap>.uppy-DashboardContent-bar {
+	height: 32px;
+	width: 100%;
+	margin-top: -100px;
+	border-bottom: 1px dotted $grey-L52;
+
+	.uppy-DashboardContent-back {
+		@include small-font;
+		float: left;
+		width: 25%;
+		border: 0;
+		background-color: transparent;
+		color: $coral;
+		text-align: left;
+	}
+
+	.uppy-DashboardContent-title {
+		@include small-font;
+		float: left;
+		width: 50%;
+		color: $grey;
+		text-align: center;
+	}
+
+	.uppy-DashboardContent-addMore {
+		@include small-font;
+		float: left;
+		width: 25%;
+		border: 0;
+		background-color: transparent;
+		color: $grey;
+		text-align: right;
+	}
+}
+
 .uppy-Dashboard-files {
 	@include small-font;
 	width: 360px;
 	margin: 0 auto 10px;
 	padding: 0;
 	list-style: none;
+	text-align: left;
 
 	.uppy-DashboardItem {
 		position: relative;
@@ -80,18 +115,19 @@ button.uppy-Dashboard-close {
 		display: none;
 	}
 
-	.uppy-DashboardItem-action {
+	.uppy-DashboardItem-remove {
 		width: 24px;
 		height: 32px;
 		position: absolute;
 		top: 12px;
 		right: 0;
 		display: inline-block;
-		background: url('/images/icon-trash.svg') top center no-repeat;
+		background: transparent url('/images/icon-trash.svg') top center no-repeat;
 		cursor: pointer;
+		border: 0;
 
-		button svg {
-			@include hide-visually;
+		svg {
+			opacity: 0;
 		}
 	}
 }
