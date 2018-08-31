@@ -119,10 +119,9 @@
   <h1 class="pl-heading">File upload</h1>
   
     
-<div id="file-upload" class="form__field file-upload">
-	<div class="file-list"></div>
-	<button class="file-upload__open-dashboard UppyModalOpenerBtn">Open Uppy Dashboard Modal</button>
-	<div class="file-upload__dashboard-container DashboardContainer"></div>
+<div class="form__field file-upload">
+	<button class="UppyModalOpenerBtn">Open Uppy Dashboard Modal</button>
+	<div class="DashboardContainer"></div>
 </div>
 
 
@@ -131,10 +130,9 @@
   <h2 class="pl-heading">HTML</h2>
   <textarea class="pl-code" disabled>
     
-<div id="file-upload" class="form__field file-upload">
-	<div class="file-list"></div>
-	<button class="file-upload__open-dashboard UppyModalOpenerBtn">Open Uppy Dashboard Modal</button>
-	<div class="file-upload__dashboard-container DashboardContainer"></div>
+<div class="form__field file-upload">
+	<button class="UppyModalOpenerBtn">Open Uppy Dashboard Modal</button>
+	<div class="DashboardContainer"></div>
 </div>
 
 
@@ -145,244 +143,122 @@
 	position: relative;
 	width: 360px;
 	margin: 0 auto 28px;
-
-	.file-upload__open-dashboard {
-		@include hide-visually;
-	}
-
-	.file-upload__dashboard-container {
-		position: relative;
-		height: 180px;
-		background: $white url('/images/icon-file-upload.svg') center 30% no-repeat;
-		border: 1px dashed $border-color;
-		border-radius: 4px;
-
-		&:hover,
-		&.hover {
-			border: 1px solid $border-hover-color;
-		}
-	}
 }
 
-// Override Uppy default styles
-button.uppy-Dashboard-close {
+.UppyModalOpenerBtn {
 	@include hide-visually;
 }
 
-.uppy-Dashboard-inner {
-	@include small-font;
-	display: block;
-	width: 100% !important;
-	height: 100px !important;
-	position: relative;
-	top: 100px;
-	text-align: center;
-}
-
-.uppy-Dashboard-browse {
-	@include small-font;
-	border: 0;
-	background-color: transparent;
-	padding: 0;
-	color: $coral;
-	cursor: pointer;
-
-	&:hover,
-	&:focus {
-		text-decoration: underline;
-	}
-}
-
-.uppy-Dashboard-note,
-.uppy-Dashboard-poweredBy {
-	@include hide-visually;
-}
-
-.uppy-Dashboard-innerWrap>.uppy-DashboardContent-bar {
-	height: 32px;
-	width: 100%;
-	margin-top: -100px;
-	border-bottom: 1px dotted $grey-L52;
-
-	.uppy-DashboardContent-back {
-		@include small-font;
-		float: left;
-		width: 25%;
-		border: 0;
-		background-color: transparent;
-		color: $coral;
-		text-align: left;
-	}
-
-	.uppy-DashboardContent-title {
-		@include small-font;
-		float: left;
-		width: 50%;
-		color: $grey;
-		text-align: center;
-	}
-
-	.uppy-DashboardContent-addMore {
-		@include small-font;
-		float: left;
-		width: 25%;
-		border: 0;
-		background-color: transparent;
-		color: $grey;
-		text-align: right;
-	}
-}
-
-.uppy-Dashboard-files {
-	@include small-font;
-	width: 360px;
-	margin: 0 auto 10px;
-	padding: 0;
-	list-style: none;
-	text-align: left;
-
-	.uppy-DashboardItem {
-		position: relative;
-		padding: 10px 0;
-		margin: 0;
-		border-bottom: 1px solid $border-color;
-
-		&:last-child {
-			border: 0;
-		}
-	}
-
-	.uppy-DashboardItem-preview,
-	.uppy-DashboardItem-progress,
-	.uppy-DashboardItem-status {
-		display: none;
-	}
-
-	.uppy-DashboardItem-remove {
-		width: 24px;
-		height: 32px;
-		position: absolute;
-		top: 12px;
-		right: 0;
-		display: inline-block;
-		background: transparent url('/images/icon-trash.svg') top center no-repeat;
-		cursor: pointer;
-		border: 0;
-
-		svg {
-			opacity: 0;
-		}
-	}
-}
-
-/*
-<ul class="uppy-Dashboard-files">
-	<li class="uppy-DashboardItem is-resumable"id="uppy_uppy-6387465622027437880jpeg-image/jpeg-347054-1530287617000"title="6387465622027437880.jpeg">
-		<div class="uppy-DashboardItem-preview">
-			<div class="uppy-DashboardItem-previewInnerWrap"style="background-color: rgb(242, 242, 242);">
-				<img class="uppy-DashboardItem-previewImg"alt="6387465622027437880.jpeg"src="blob:http://localhost:3000/0772771f-2300-4a84-acb8-2e3a5a562649">
-			</div>
-			<div class="uppy-DashboardItem-progress">
-				<button class="uppy-DashboardItem-progressIndicator"type="button"aria-label="Pause upload"title="Pause upload">
-					<svg width="70"height="70"viewBox="0 0 36 36"class="UppyIcon UppyIcon-progressCircle"><g class="progress-group"><circle class="bg"r="15"cx="18"cy="18"stroke-width="2"fill="none"></circle><circle class="progress"r="15"cx="18"cy="18"transform="rotate(-90, 18, 18)"stroke-width="2"fill="none"stroke-dasharray="94.24777960769379"stroke-dashoffset="94.24777960769379"></circle></g><g><polygon class="play"transform="translate(3, 3)"points="12 20 12 10 20 15"></polygon><g class="pause"transform="translate(14.5, 13)"><rect x="0"y="0"width="2"height="10"rx="0"></rect><rect x="5"y="0"width="2"height="10"rx="0"></rect></g><polygon class="cancel"transform="translate(2, 2)"points="19.8856516 11.0625 16 14.9481516 12.1019737 11.0625 11.0625 12.1143484 14.9481516 16 11.0625 19.8980263 12.1019737 20.9375 16 17.0518484 19.8856516 20.9375 20.9375 19.8980263 17.0518484 16 20.9375 12"></polygon></g><polygon class="check"transform="translate(2, 3)"points="14 22.5 7 15.2457065 8.99985857 13.1732815 14 18.3547104 22.9729883 9 25 11.1005634"></polygon></svg>
-				</button>
-			</div>
-		</div>
-		<div class="uppy-DashboardItem-info">
-			<div class="uppy-DashboardItem-name" title="6387465622027437880">
-				6387465622027437880.jpeg
-			</div>
-			<div class="uppy-DashboardItem-status">
-				<div class="uppy-DashboardItem-statusSize">
-					347 KB
-				</div>
-				<button class="uppy-DashboardItem-edit"type="button"aria-label="Edit file"title="Edit file">
-					Edit
-				</button>
-			</div>
-		</div>
-		<div class="uppy-DashboardItem-action">
-			<button class="uppy-DashboardItem-remove"type="button"aria-label="Remove file"title="Remove file">
-				<svg aria-hidden="true"class="UppyIcon"width="60"height="60"viewBox="0 0 60 60"xmlns="http://www.w3.org/2000/svg"><path stroke="#FFF"stroke-width="1"fill-rule="nonzero"vector-effect="non-scaling-stroke"d="M30 1C14 1 1 14 1 30s13 29 29 29 29-13 29-29S46 1 30 1z"></path><path fill="#FFF"vector-effect="non-scaling-stroke"d="M42 39.667L39.667 42 30 32.333 20.333 42 18 39.667 27.667 30 18 20.333 20.333 18 30 27.667 39.667 18 42 20.333 32.333 30z"></path></svg>
-			</button>
-		</div>
-	</li>
-</ul>
-*/
-// .file-upload__uploader {
-//   position: relative;
-//   height: 180px;
-//   background: $white url('/images/icon-file-upload.svg') center 30% no-repeat;
-//   border: 1px dashed $border-color;
-//   border-radius: 4px;
-//   &:hover,
-//   &.hover {
-//     border: 1px solid $border-hover-color;
-//   }
-//   &.is-dragover {
-//     border: 1px solid $coral;
-//     // background-color: $coral-L32;
-//   }
-//   label {
-//     @include small-font;
-//     display: block;
-//     position: relative;
-//     top: 100px;
-//     text-align: center;
-//   }
+// 	.file-upload__open-dashboard {
+// 		@include hide-visually;
+// 	}
+// 	.file-upload__dashboard-container {
+// 		position: relative;
+// 		height: 180px;
+// 		background: $white url('/images/icon-file-upload.svg') center 30% no-repeat;
+// 		border: 1px dashed $border-color;
+// 		border-radius: 4px;
+// 		&:hover,
+// 		&.hover {
+// 			border: 1px solid $border-hover-color;
+// 		}
+// 	}
 // }
-// .file-upload__browse {
-//   color: $coral;
-//   text-decoration: underline;
-//   cursor: pointer;
+// // Override Uppy default styles
+// button.uppy-Dashboard-close {
+// 	@include hide-visually;
 // }
-// .file-upload__button,
-// .file-upload__input {
-//   &.hide {
-//     @include hide-visually();
-//   }
+// .uppy-Dashboard-inner {
+// 	@include small-font;
+// 	display: block;
+// 	width: 100% !important;
+// 	height: 100px !important;
+// 	position: relative;
+// 	top: 100px;
+// 	text-align: center;
 // }
-// .file-upload__dragndrop,
-// .file-upload__uploading,
-// .file-upload__success,
-// .file-upload__error {
-//   display: none;
+// .uppy-Dashboard-browse {
+// 	@include small-font;
+// 	border: 0;
+// 	background-color: transparent;
+// 	padding: 0;
+// 	color: $coral;
+// 	cursor: pointer;
+// 	&:hover,
+// 	&:focus {
+// 		text-decoration: underline;
+// 	}
 // }
-// .file-upload__file-list {
-//   @include small-font;
-//   width: 360px;
-//   margin: 0 auto 10px;
-//   padding: 0;
-//   list-style: none;
+// .uppy-Dashboard-note,
+// .uppy-Dashboard-poweredBy {
+// 	@include hide-visually;
 // }
-// .file-upload__file-added {
-//   position: relative;
-//   padding: 10px 0;
-//   margin: 0;
-//   border-bottom: 1px solid $border-color;
-//   &.error {
-//     color: $ruby;
-//   }
-//   &:last-child {
-//     border: 0;
-//   }
-//   span.message {
-//     display: block;
-//     padding-top: 10px;
-//   }
+// .uppy-Dashboard-innerWrap>.uppy-DashboardContent-bar {
+// 	height: 32px;
+// 	width: 100%;
+// 	margin-top: -100px;
+// 	border-bottom: 1px dotted $grey-L52;
+// 	.uppy-DashboardContent-back {
+// 		@include small-font;
+// 		float: left;
+// 		width: 25%;
+// 		border: 0;
+// 		background-color: transparent;
+// 		color: $coral;
+// 		text-align: left;
+// 	}
+// 	.uppy-DashboardContent-title {
+// 		@include small-font;
+// 		float: left;
+// 		width: 50%;
+// 		color: $grey;
+// 		text-align: center;
+// 	}
+// 	.uppy-DashboardContent-addMore {
+// 		@include small-font;
+// 		float: left;
+// 		width: 25%;
+// 		border: 0;
+// 		background-color: transparent;
+// 		color: $grey;
+// 		text-align: right;
+// 	}
 // }
-// .file-upload__delete-file {
-//   width: 24px;
-//   height: 32px;
-//   position: absolute;
-//   top: 12px;
-//   right: 0;
-//   display: inline-block;
-//   background: url('/images/icon-trash.svg') top center no-repeat;
-//   cursor: pointer;
-// }
-// .error .file-upload__delete-file {
-//   background: url('/images/icon-delete.svg') top center no-repeat;
+// .uppy-Dashboard-files {
+// 	@include small-font;
+// 	width: 360px;
+// 	margin: 0 auto 10px;
+// 	padding: 0;
+// 	list-style: none;
+// 	text-align: left;
+// 	.uppy-DashboardItem {
+// 		position: relative;
+// 		padding: 10px 0;
+// 		margin: 0;
+// 		border-bottom: 1px solid $border-color;
+// 		&:last-child {
+// 			border: 0;
+// 		}
+// 	}
+// 	.uppy-DashboardItem-preview,
+// 	.uppy-DashboardItem-progress,
+// 	.uppy-DashboardItem-status {
+// 		display: none;
+// 	}
+// 	.uppy-DashboardItem-remove {
+// 		width: 24px;
+// 		height: 32px;
+// 		position: absolute;
+// 		top: 12px;
+// 		right: 0;
+// 		display: inline-block;
+// 		background: transparent url('/images/icon-trash.svg') top center no-repeat;
+// 		cursor: pointer;
+// 		border: 0;
+// 		svg {
+// 			opacity: 0;
+// 		}
+// 	}
 // }
 
   </textarea>
