@@ -4,6 +4,14 @@
 
 {% block content %}
   <h1 class="pl-heading">File upload</h1>
+  <p>
+    This file upload widget uses the 'Uppy' Javascript plugin. As currently configured it uses a TUS (resumable upload) endpoint provided by the developers Transloadit.
+    A simple configuration change alows the use of an XHR (XMLHttpRequest) endpoint.
+   </p>
+   <p>
+     The widget is alsoconfigured to allow between 1 and 3 image files (image/*) to be attached, with upload once attached with the click of a button.
+     It can also be configured to begin the upload as soon as the files are attached.
+    </p>
   {# <form id="file-upload" method="GET" action="file-upload-handler.html" > #}
     {{ volunteer.fileUpload() }}
     {# <button id="upload" class="button button--primary" type="button">Upload</button> #}
