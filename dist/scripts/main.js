@@ -187,7 +187,7 @@ jquery__WEBPACK_IMPORTED_MODULE_0___default()(function () {
         },
         browserBackButtonClose: true
       })
-      .use(XHRUpload, {
+      .use(Tus, {
         endpoint: 'https://master.tus.io/files/'
       })
 
