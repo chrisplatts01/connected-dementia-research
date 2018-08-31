@@ -1,98 +1,99 @@
-// @import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,400i,600,600i,700,700i');
 @import url('https://fonts.googleapis.com/css?family=Montserrat:400,400i,700,700i');
-// @import url('https://fonts.googleapis.com/css?family=Fira+Sans:400,400i,700,700i');
 @import url('https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700,700i');
-// @import url('https://fonts.googleapis.com/css?family=Droid+Sans:400,400i,700,700i');
 
 @font-face {
-  font-family: 'Calibri';
-  src: url('/fonts/Calibri.ttf')  format('truetype');
+	font-family: 'Calibri';
+	src: url('/fonts/Calibri.ttf') format('truetype');
 }
 
 @font-face {
-  font-family: 'Calibri Bold';
-  src: url('/fonts/Calibri\ Bold.ttf')  format('truetype');
+	font-family: 'Calibri Bold';
+	src: url('/fonts/Calibri\ Bold.ttf') format('truetype');
 }
 
-$base-font-family: "Montserrat", "Helvetica", "Arial", sans-serif;
+$base-font-family: "Montserrat",
+"Helvetica",
+"Arial",
+sans-serif;
 $base-font-size: 20px;
 $base-font-weight: 400;
 $base-line-height: 32px;
 $base-font-color: $grey;
-
 $bold-font-family: $base-font-family;
 $bold-font-size: 20px;
 $bold-font-weight: 700;
 $bold-line-height: 32px;
 $bold-font-color: $grey;
-
-$small-font-family: "Calibri", "Open Sans", "Helvetica", "Arial", sans-serif;
+$small-font-family: "Calibri",
+"Open Sans",
+"Helvetica",
+"Arial",
+sans-serif;
 $small-font-size: 19px;
 $small-font-weight: 400;
 $small-line-height: 24px;
 $small-font-color: $grey;
-
 $large-font-family: $base-font-family;
 $large-font-size: 28px;
 $large-font-weight: 400;
 $large-line-height: 40px;
 $large-font-color: $grey;
-
 $heading-font-family: $base-font-family;
-$heading-font-size: $large-font-size;;
+$heading-font-size: $large-font-size;
+;
 $heading-font-weight: 700;
 $heading-line-height: $large-line-height;
 $heading-font-color: $grey;
-
 $message-font-family: $small-font-family;
 $message-font-size: $small-font-size;
 $message-font-weight: 700;
-$message-line-height: 24px;
+$message-line-height: $small-line-height;
 $message-font-color: $grey;
 
 @mixin base-font {
-  font-family: $base-font-family;
-  font-size: $base-font-size;
-  font-weight: $base-font-weight;
-  line-height: $base-line-height;
-  color: $base-font-color;
+	font-family: $base-font-family;
+	font-size: $base-font-size;
+	font-weight: $base-font-weight;
+	line-height: $base-line-height;
+	color: $base-font-color;
 }
 
 @mixin bold-font {
-  font-family: $bold-font-family;
-  font-size: $bold-font-size;
-  font-weight: $bold-font-weight;
-  line-height: $bold-line-height;
-  color: $bold-font-color;
+	font-family: $bold-font-family;
+	font-size: $bold-font-size;
+	font-weight: $bold-font-weight;
+	line-height: $bold-line-height;
+	color: $bold-font-color;
 }
 
 @mixin small-font {
-  font-family: $small-font-family;
-  font-size: $small-font-size;
-  font-weight: $small-font-weight;;
-  line-height: $small-line-height;
-  color: $small-font-color;
+	font-family: $small-font-family;
+	font-size: $small-font-size;
+	font-weight: $small-font-weight;
+	;
+	line-height: $small-line-height;
+	color: $small-font-color;
 }
 
 @mixin large-font {
-  font-family: $large-font-family;
-  font-size: $large-font-size;
-  line-height: $large-line-height;
-  color: $large-font-color;
+	font-family: $large-font-family;
+	font-size: $large-font-size;
+	line-height: $large-line-height;
+	color: $large-font-color;
 }
 
 @mixin heading-font {
-  font-family: $heading-font-family;
-  font-size: $heading-font-size;
-  font-weight: $heading-font-weight;
-  line-height: $heading-line-height;
-  color: $heading-font-color;
+	font-family: $heading-font-family;
+	font-size: $heading-font-size;
+	font-weight: $heading-font-weight;
+	line-height: $heading-line-height;
+	color: $heading-font-color;
 }
 
 @mixin message-font {
-  font-family: $message-font-family;
-  font-size: $message-font-size;
-  font-weight: $message-font-weight;
-  line-height: $message-line-height;
-  color: $message-font-color;
+	font-family: $message-font-family;
+	font-size: $message-font-size;
+	font-weight: $message-font-weight;
+	line-height: $message-line-height;
+	color: $message-font-color;
 }
