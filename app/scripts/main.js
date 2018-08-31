@@ -79,7 +79,7 @@ $(function () {
         },
         browserBackButtonClose: true
       })
-      .use(XHRUpload, {
+      .use(Tus, {
         endpoint: 'https://master.tus.io/files/'
       })
 
