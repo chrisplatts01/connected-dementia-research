@@ -109,8 +109,8 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-// NOTE: Uncomment to load all jquery-ui modules: import jqueryui from 'webpack-jquery-ui'
-
+// import jqueryui from 'webpack-jquery-ui' // Load all jquery-ui modules
+ // Load jquery-ui Slider module
 
 
 
@@ -147,30 +147,25 @@ jquery__WEBPACK_IMPORTED_MODULE_0___default()(function () {
 	 * FILE UPLOAD: Handle file upload components
 	 */
 	var fileUpload = (function () {
-		// Invoke Uppy
 		const uppy = Uppy({
 				debug: true,
 				autoProceed: false,
 				restrictions: {
 					maxFileSize: 1000000,
 					maxNumberOfFiles: 3,
-					minNumberOfFiles: null,
+					minNumberOfFiles: 1,
 					allowedFileTypes: ['image/*', 'video/*']
 				}
 			})
 			.use(Dashboard, {
-				trigger: '.file-upload__open-dashboard',
+				trigger: '.UppyModalOpenerBtn',
 				inline: true,
-				target: '.file-upload__dashboard-container',
-				replaceTargetContent: false,
+				target: '.DashboardContainer',
+				replaceTargetContent: true,
 				showProgressDetails: false,
-				note: 'Images and video only, 2–3 files, up to 1 MB',
-				height: 470,
-				locale: {
-					strings: {
-						dropPaste: 'Drag file(s) here or %{browse}',
-					}
-				},
+				note: 'Images and video only, 1–3 files, up to 1 MB',
+				height: 180,
+				width: 360,
 				metaFields: [{
 						id: 'name',
 						name: 'Name',
@@ -179,18 +174,23 @@ jquery__WEBPACK_IMPORTED_MODULE_0___default()(function () {
 					{
 						id: 'caption',
 						name: 'Caption',
-						placeholder: 'describe what the image is about'
+						placeholder: 'Describe what the image is about'
 					}
 				],
-				browserBackButtonClose: false
+				locale: {
+					strings: {
+						dropPaste: 'Drag file(s) here or %{browse}'
+					}
+				},
+				browserBackButtonClose: true
 			})
 			.use(Tus, {
 				endpoint: 'https://master.tus.io/files/'
 			})
 
-		uppy.on('complete', (result) => {
-			console.log('Successful files: ', result.successful)
-			console.log('Failed files: ', result.failed)
+		uppy.on('complete', result => {
+			console.log('successful files:', result.successful)
+			console.log('failed files:', result.failed)
 		})
 	})()
 

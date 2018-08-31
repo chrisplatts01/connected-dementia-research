@@ -12,7 +12,9 @@
 @import 'partials/grid-layout';
 @import 'partials/navigation';
 // Mixins
-@import 'mixins/forms/_segmented-control.scss';
+@import 'mixins/forms/segmented-control';
+@import 'mixins/buttons/buttons';
+@import 'mixins/messages/messages';
 // Pattern library components
 @import 'app/templates/components/activity-button/activity-button';
 @import 'app/templates/components/bullet-list/bullet-list';
@@ -23,6 +25,7 @@
 @import 'app/templates/components/date-field-group/date-field-group';
 @import 'app/templates/components/dropdown-select/dropdown-select';
 @import 'app/templates/components/file-upload/file-upload';
+@import 'app/templates/components/file-upload/file-upload-uppy-dashboard';
 @import 'app/templates/components/form/form';
 @import 'app/templates/components/heading/heading';
 @import 'app/templates/components/subheading/subheading';
