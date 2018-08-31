@@ -140,126 +140,90 @@ const Tus = __webpack_require__(237); // Uploads using the tus resumable upload 
 // const ThumbnailGenerator = require('@uppy/thumbnail-generator') // Generate preview thumbnails for images to be uploaded [documentation not yet available]
 // const GoldenRetriever = require('@uppy/golden-retriever') // Restore files and continue uploading after a page refresh or a browser crash
 
-/**
- * Invoke Uppy
- */
-// const uppy = Uppy({
-// 	id: 'file-upload',
-// 	autoProceed: false,
-// 	debug: true,
-// 	restrictions: {
-// 		maxFileSize: null,
-// 		maxNumberOfFiles: null,
-// 		minNumberOfFiles: null,
-// 		allowedFileTypes: null
-// 	},
-// 	meta: {},
-// 	onBeforeFileAdded: (currentFile, files) => currentFile,
-// 	onBeforeUpload: (files) => {},
-// 	locale: defaultLocale,
-// 	store: new DefaultStore()
-// })
 
-// -------------------------------------
-// const Uppy = require('@uppy/core')
-// const Dashboard = require('@uppy/dashboard')
-// const Tus = require('@uppy/tus')
 
-const uppy = Uppy({
-	debug: true,
-	autoProceed: true,
-	restrictions: {
-		maxFileSize: 1000000,
-		maxNumberOfFiles: 3,
-		minNumberOfFiles: null,
-		allowedFileTypes: ["image/*", "video/*"]
-	}
-})
-	.use(Dashboard, {
-		trigger: ".file-upload__open-dashboard",
-		inline: true,
-		target: ".file-upload__dashboard-container",
-		replaceTargetContent: true,
-		showProgressDetails: false,
-		note: "Images and video only, 2–3 files, up to 1 MB",
-		height: 470,
-		metaFields: [
-			{
-				id: "name",
-				name: "Name",
-				placeholder: "file name"
-			},
-			{
-				id: "caption",
-				name: "Caption",
-				placeholder: "describe what the image is about"
-			}
-		],
-		browserBackButtonClose: false
-	})
-	.use(Tus, {
-		endpoint: "https://master.tus.io/files/"
-	});
-
-uppy.on("complete", result => {
-	console.log("successful files:", result.successful);
-	console.log("failed files:", result.failed);
-}); // -------------------------------------
-
-jquery__WEBPACK_IMPORTED_MODULE_0___default()(function() {
+jquery__WEBPACK_IMPORTED_MODULE_0___default()(function () {
 	/**
 	 * FILE UPLOAD: Handle file upload components
 	 */
-	// var fileUpload = (function () {
-	// 	const uppy = Uppy({
-	// 		id: 'file-upload',
-	// 		autoProceed: false,
-	// 		debug: true,
-	// 		restrictions: {
-	// 			maxFileSize: null,
-	// 			maxNumberOfFiles: null,
-	// 			minNumberOfFiles: null,
-	// 			allowedFileTypes: null
-	// 		},
-	// 		meta: {},
-	// 		onBeforeFileAdded: (currentFile, files) => currentFile,
-	// 		onBeforeUpload: (files) => {},
-	// 		locale: defaultLocale,
-	// 		store: new DefaultStore()
-	// 	})
-	// 	console.log(uppy)
-	// })()
+	var fileUpload = (function () {
+		// Invoke Uppy
+		const uppy = Uppy({
+				debug: true,
+				autoProceed: false,
+				restrictions: {
+					maxFileSize: 1000000,
+					maxNumberOfFiles: 3,
+					minNumberOfFiles: null,
+					allowedFileTypes: ['image/*', 'video/*']
+				}
+			})
+			.use(Dashboard, {
+				trigger: '.file-upload__open-dashboard',
+				inline: true,
+				target: '.file-upload__dashboard-container',
+				replaceTargetContent: false,
+				showProgressDetails: false,
+				note: 'Images and video only, 2–3 files, up to 1 MB',
+				height: 470,
+				locale: {
+					strings: {
+						dropPaste: 'Drag file(s) here or %{browse}',
+					}
+				},
+				metaFields: [{
+						id: 'name',
+						name: 'Name',
+						placeholder: 'file name'
+					},
+					{
+						id: 'caption',
+						name: 'Caption',
+						placeholder: 'describe what the image is about'
+					}
+				],
+				browserBackButtonClose: false
+			})
+			.use(Tus, {
+				endpoint: 'https://master.tus.io/files/'
+			})
+
+		uppy.on('complete', (result) => {
+			console.log('Successful files: ', result.successful)
+			console.log('Failed files: ', result.failed)
+		})
+	})()
 
 	/**
 	 * FORM VALIDATION: Handle form validation using the jquery-validation plugin
 	 */
-	var formValidation = (function() {
+	var formValidation = (function () {
 		jquery__WEBPACK_IMPORTED_MODULE_0___default.a.validator.addMethod(
-			"dateUK",
-			function(value, element) {
-				return Date.parseExact(value, "d/M/yyyy");
+			'dateUK',
+			function (value, element) {
+				return Date.parseExact(value, 'd/M/yyyy');
 			},
-			"Please enter a valid date"
+			'Please enter a valid date'
 		);
 
-		jquery__WEBPACK_IMPORTED_MODULE_0___default.a.validator.addMethod("dateGroup", function(value, element) {
-			var $dateFieldGroup = jquery__WEBPACK_IMPORTED_MODULE_0___default()(element).closest(".date-field-group");
+		jquery__WEBPACK_IMPORTED_MODULE_0___default.a.validator.addMethod('dateGroup', function (value, element) {
+			var $dateFieldGroup = jquery__WEBPACK_IMPORTED_MODULE_0___default()(element).closest('.date-field-group');
 			var day = $dateFieldGroup.find('input[name="date-field-day"]').val();
 			var month = $dateFieldGroup.find('input[name="date-field-month"]').val();
 			var year = $dateFieldGroup.find('input[name="date-field-year"]').val();
-			var date = day + "/" + month + "/" + year;
-			var parsedDate = Date.parseExact(date, "dd/MM/yyyy");
+			var date = day + '/' + month + '/' + year;
+			var parsedDate = Date.parseExact(date, 'dd/MM/yyyy');
 			return parsedDate !== null;
 		});
 
-		jquery__WEBPACK_IMPORTED_MODULE_0___default()("form").each(function() {
+		jquery__WEBPACK_IMPORTED_MODULE_0___default()('form').each(function () {
 			var $form = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this);
 			$form.validate({
 				groups: {
-					dateGroup: "date-field-day date-field-month date-field-year"
+					dateGroup: 'date-field-day date-field-month date-field-year'
 				},
 				rules: {
-					"date-field-day": {
+					'date-field-day': {
 						required: true,
 						number: true,
 						min: 1,
@@ -268,7 +232,7 @@ jquery__WEBPACK_IMPORTED_MODULE_0___default()(function() {
 						maxlength: 2,
 						dateGroup: true
 					},
-					"date-field-month": {
+					'date-field-month': {
 						required: true,
 						number: true,
 						min: 1,
@@ -277,7 +241,7 @@ jquery__WEBPACK_IMPORTED_MODULE_0___default()(function() {
 						maxlength: 2,
 						dateGroup: true
 					},
-					"date-field-year": {
+					'date-field-year': {
 						required: true,
 						number: true,
 						min: 1900,
@@ -285,41 +249,41 @@ jquery__WEBPACK_IMPORTED_MODULE_0___default()(function() {
 						maxlength: 4,
 						dateGroup: true
 					},
-					date: "dateUK",
-					"date-field-datex": "dateUK"
+					date: 'dateUK',
+					'date-field-datex': 'dateUK'
 				},
 				messages: {
-					"date-field-day": {
-						required: "Please enter values for day, month and year",
-						number: "Please enter a number",
-						min: "Please enter a value of at least {0}",
-						max: "Please enter a value no greater than {0}",
-						minlength: "Please enter exactly {0} digits",
-						maxlength: "Please enter exactly {0} digits",
-						dateGroup: "Please enter a valid date"
+					'date-field-day': {
+						required: 'Please enter values for day, month and year',
+						number: 'Please enter a number',
+						min: 'Please enter a value of at least {0}',
+						max: 'Please enter a value no greater than {0}',
+						minlength: 'Please enter exactly {0} digits',
+						maxlength: 'Please enter exactly {0} digits',
+						dateGroup: 'Please enter a valid date'
 					},
-					"date-field-month": {
-						required: "Please enter values for day, month and year",
-						number: "Please enter a number",
-						min: "Please enter a value of at least {0}",
-						max: "Please enter a value no greater than {0}",
-						minlength: "Please enter exactly {0} digits",
-						maxlength: "Please enter exactly {0} digits",
-						dateGroup: "Please enter a valid date"
+					'date-field-month': {
+						required: 'Please enter values for day, month and year',
+						number: 'Please enter a number',
+						min: 'Please enter a value of at least {0}',
+						max: 'Please enter a value no greater than {0}',
+						minlength: 'Please enter exactly {0} digits',
+						maxlength: 'Please enter exactly {0} digits',
+						dateGroup: 'Please enter a valid date'
 					},
-					"date-field-year": {
-						required: "Please enter values for day, month and year",
-						number: "Please enter a valid date",
-						min: "Please enter a value of at least {0}",
-						max: "Please enter a value no greater than {0}",
-						minlength: "Please enter exactly {0} digits",
-						maxlength: "Please enter exactly {0} digits",
-						dateGroup: "Please enter a valid date"
+					'date-field-year': {
+						required: 'Please enter values for day, month and year',
+						number: 'Please enter a valid date',
+						min: 'Please enter a value of at least {0}',
+						max: 'Please enter a value no greater than {0}',
+						minlength: 'Please enter exactly {0} digits',
+						maxlength: 'Please enter exactly {0} digits',
+						dateGroup: 'Please enter a valid date'
 					}
 				},
-				errorElement: "div",
-				errorPlacement: function(error, element) {
-					error.appendTo(element.closest(".form__field"));
+				errorElement: 'div',
+				errorPlacement: function (error, element) {
+					error.appendTo(element.closest('.form__field'));
 				}
 			});
 		});
@@ -328,17 +292,17 @@ jquery__WEBPACK_IMPORTED_MODULE_0___default()(function() {
 	/**
 	 * SELECT SLIDER FIELD: Handle slidr interface on select filds
 	 */
-	var selectSliderField = (function() {
-		var $selectSliderFields = jquery__WEBPACK_IMPORTED_MODULE_0___default()(".select-slider-field");
+	var selectSliderField = (function () {
+		var $selectSliderFields = jquery__WEBPACK_IMPORTED_MODULE_0___default()('.select-slider-field');
 
-		$selectSliderFields.each(function() {
+		$selectSliderFields.each(function () {
 			var $selectSliderField = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this);
-			var $slider = $selectSliderField.find(".slider");
-			var $mercury = $slider.find(".slider__mercury");
+			var $slider = $selectSliderField.find('.slider');
+			var $mercury = $slider.find('.slider__mercury');
 			var $input = $slider.find('input[type="text"]');
-			var $value = $slider.find(".slider__value");
+			var $value = $slider.find('.slider__value');
 
-			var values = $selectSliderField.attr("data-options").split(",");
+			var values = $selectSliderField.attr('data-options').split(',');
 			var steps = values.length;
 
 			var step = 0;
@@ -347,21 +311,21 @@ jquery__WEBPACK_IMPORTED_MODULE_0___default()(function() {
 
 			$input.val(value);
 			$value.text(value);
-			$mercury.css("width", width + "%");
+			$mercury.css('width', width + '%');
 
 			$slider.slider({
 				min: 0,
 				max: steps - 1
 			});
 
-			$slider.on("slidestop", function() {
-				step = $slider.slider("value");
+			$slider.on('slidestop', function () {
+				step = $slider.slider('value');
 				value = values[step];
 				width = (step * 100) / (steps - 1);
 
 				$input.val(value);
 				$value.text(value);
-				$mercury.css("width", width + "%");
+				$mercury.css('width', width + '%');
 			});
 		});
 	})();
@@ -369,43 +333,43 @@ jquery__WEBPACK_IMPORTED_MODULE_0___default()(function() {
 	/**
 	 * MASKED DATE FIELD: Handle masked date fields
 	 */
-	var maskedDateField = (function() {
-		var $maskedDateField = jquery__WEBPACK_IMPORTED_MODULE_0___default()(".input-field--masked-date").find(
+	var maskedDateField = (function () {
+		var $maskedDateField = jquery__WEBPACK_IMPORTED_MODULE_0___default()('.input-field--masked-date').find(
 			'input[name|="date"]'
 		);
 
-		$maskedDateField.mask("00/00/0000");
+		$maskedDateField.mask('00/00/0000');
 	})();
 
 	/**
 	 * DATE PICKER FIELD: Handle date picker field input
 	 */
-	var datePickerField = (function() {
+	var datePickerField = (function () {
 		var $datePicker = jquery__WEBPACK_IMPORTED_MODULE_0___default()('[data-toggle="datepicker"]');
 		$datePicker.datepicker({
 			autoHide: true,
-			language: "en-GB",
-			format: "dd/mm/yyyy"
+			language: 'en-GB',
+			format: 'dd/mm/yyyy'
 		});
 	})();
 
 	/**
 	 * PASSWORD FIELD: Handle password show/hide
 	 */
-	var passwordField = (function() {
-		var $passwordField = jquery__WEBPACK_IMPORTED_MODULE_0___default()(".input-field--password");
-		var $passwordShow = $passwordField.children(".show");
+	var passwordField = (function () {
+		var $passwordField = jquery__WEBPACK_IMPORTED_MODULE_0___default()('.input-field--password');
+		var $passwordShow = $passwordField.children('.show');
 
-		$passwordShow.click(function() {
+		$passwordShow.click(function () {
 			var $this = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this);
-			var $passwordInput = $this.prev("label").children("input");
+			var $passwordInput = $this.prev('label').children('input');
 
-			if ($passwordInput.attr("type") === "password") {
-				$passwordInput.attr("type", "text");
-				$this.text("Hide");
+			if ($passwordInput.attr('type') === 'password') {
+				$passwordInput.attr('type', 'text');
+				$this.text('Hide');
 			} else {
-				$passwordInput.attr("type", "password");
-				$this.text("Show");
+				$passwordInput.attr('type', 'password');
+				$this.text('Show');
 			}
 		});
 	})();
@@ -413,19 +377,17 @@ jquery__WEBPACK_IMPORTED_MODULE_0___default()(function() {
 	/**
 	 * PROGRESS INDICATOR: Handle progress indicators
 	 */
-	var progressIndicator = (function() {
-		var $progressIndicator = jquery__WEBPACK_IMPORTED_MODULE_0___default()(".progress-indicator");
-		$progressIndicator.each(function() {
+	var progressIndicator = (function () {
+		var $progressIndicator = jquery__WEBPACK_IMPORTED_MODULE_0___default()('.progress-indicator');
+		$progressIndicator.each(function () {
 			var $this = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this);
-			var step = $this.attr("data-step");
-			var steps = $this.attr("data-steps");
+			var step = $this.attr('data-step');
+			var steps = $this.attr('data-steps');
 			var width = (step / steps) * 100;
 
 			$this.prepend('<span class="progress-indicator__steps">&nbsp</span>');
 			$this.append(
-				'<span class="progress-indicator__step" style="width:' +
-					width +
-					'%">&nbsp</span>'
+				'<span class="progress-indicator__step" style="width:' + width + '%">&nbsp</span>'
 			);
 		});
 	})();
@@ -433,16 +395,16 @@ jquery__WEBPACK_IMPORTED_MODULE_0___default()(function() {
 	/**
 	 * DROPDOWN SELECT: Handle custom select components
 	 */
-	var dropdownSelect = (function() {
+	var dropdownSelect = (function () {
 		var $dropdownSelect;
 		var $dropdown;
 		var $dropdownOption;
 
-		$dropdownSelect = jquery__WEBPACK_IMPORTED_MODULE_0___default()(".dropdown-select");
+		$dropdownSelect = jquery__WEBPACK_IMPORTED_MODULE_0___default()('.dropdown-select');
 
-		var dropdownState = (function() {
+		var dropdownState = (function () {
 			return {
-				init: function($select) {
+				init: function ($select) {
 					// Set initial state of dropdown-select controls
 					var dropdown = '<div class="dropdown"></div>';
 					var selected = '<div class="dropdown__selected"></div>';
@@ -453,83 +415,83 @@ jquery__WEBPACK_IMPORTED_MODULE_0___default()(function() {
 					var $options = jquery__WEBPACK_IMPORTED_MODULE_0___default()(options).appendTo($dropdown);
 					var $option;
 
-					$selected.text($select.find("option:selected").text());
+					$selected.text($select.find('option:selected').text());
 					$select
-						.find("option")
-						.not(":selected")
-						.each(function() {
+						.find('option')
+						.not(':selected')
+						.each(function () {
 							var $this = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this);
 							var text = $this.text();
 							var value = $this.val();
 							$option = jquery__WEBPACK_IMPORTED_MODULE_0___default()(option).appendTo($options);
 							$option.text(text);
-							$option.attr("data-value", value);
+							$option.attr('data-value', value);
 						});
 
 					$select
-						.find(".message--error")
+						.find('.message--error')
 						.detach()
 						.appendTo($select);
 				},
-				get: function($select) {
+				get: function ($select) {
 					// Get current state of select element
 					// NOTE: Not currently required
 				},
-				set: function($select) {
+				set: function ($select) {
 					// Set state of select element
 					var value = $select
-						.find(".dropdown__option.selected")
-						.attr("data-value");
-					$select.removeClass("error");
-					$select.find("div.error").remove();
+						.find('.dropdown__option.selected')
+						.attr('data-value');
+					$select.removeClass('error');
+					$select.find('div.error').remove();
 					$select
-						.find("option")
+						.find('option')
 						.first()
-						.removeAttr("selected");
-					$select.find('option[value="' + value + '"]').prop("selected", true);
-					$select.find("select").val(value);
+						.removeAttr('selected');
+					$select.find('option[value="' + value + '"]').prop('selected', true);
+					$select.find('select').val(value);
 				}
 			};
 		})();
 
 		// Initialise dropdowns
-		$dropdownSelect.each(function() {
+		$dropdownSelect.each(function () {
 			dropdownState.init(jquery__WEBPACK_IMPORTED_MODULE_0___default()(this));
 		});
 
 		// Handle form submission with no selection
-		$dropdownSelect.closest("form").on("submit", function() {
+		$dropdownSelect.closest('form').on('submit', function () {
 			var $this = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this);
-			var $dropdown = $this.find(".dropdown-select");
-			$dropdown.each(function() {
+			var $dropdown = $this.find('.dropdown-select');
+			$dropdown.each(function () {
 				var $this = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this);
-				if ($this.find("select").hasClass("error")) {
-					$this.addClass("error");
+				if ($this.find('select').hasClass('error')) {
+					$this.addClass('error');
 				}
 			});
 		});
 
-		$dropdown = jquery__WEBPACK_IMPORTED_MODULE_0___default()(".dropdown");
-		$dropdown.click(function() {
+		$dropdown = jquery__WEBPACK_IMPORTED_MODULE_0___default()('.dropdown');
+		$dropdown.click(function () {
 			var $this = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this);
-			$this.toggleClass("open");
-			$this.find(".dropdown__option").toggle();
+			$this.toggleClass('open');
+			$this.find('.dropdown__option').toggle();
 		});
 
-		$dropdownOption = $dropdown.find(".dropdown__option");
-		$dropdownOption.click(function() {
+		$dropdownOption = $dropdown.find('.dropdown__option');
+		$dropdownOption.click(function () {
 			var $this = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this);
-			var $select = $this.closest(".dropdown-select");
-			var $dropdown = $this.closest(".dropdown"); // .children('.dropdown__selected')
+			var $select = $this.closest('.dropdown-select');
+			var $dropdown = $this.closest('.dropdown'); // .children('.dropdown__selected')
 			var $options = $this
-				.parent(".dropdown__options")
-				.children(".dropdown__option");
+				.parent('.dropdown__options')
+				.children('.dropdown__option');
 			var $selected = $this
-				.closest(".dropdown")
-				.children(".dropdown__selected");
-			$options.removeClass("selected");
-			$this.addClass("selected");
-			$dropdown.addClass("selected");
+				.closest('.dropdown')
+				.children('.dropdown__selected');
+			$options.removeClass('selected');
+			$this.addClass('selected');
+			$dropdown.addClass('selected');
 			$selected.text($this.text());
 			dropdownState.set($select);
 		});
@@ -538,38 +500,38 @@ jquery__WEBPACK_IMPORTED_MODULE_0___default()(function() {
 	/**
 	 * CONDITIONAL CHECKBOXES: Handle conditional checkbox groups
 	 */
-	var conditionalCheckboxGroup = (function() {
-		var $conditionalCheckboxGroup = jquery__WEBPACK_IMPORTED_MODULE_0___default()(".conditional-checkbox-group");
-		var $radioButtons = $conditionalCheckboxGroup.find("input:radio");
+	var conditionalCheckboxGroup = (function () {
+		var $conditionalCheckboxGroup = jquery__WEBPACK_IMPORTED_MODULE_0___default()('.conditional-checkbox-group');
+		var $radioButtons = $conditionalCheckboxGroup.find('input:radio');
 
-		var setCheckboxes = function(state) {
-			var $checkboxes = $conditionalCheckboxGroup.find(".checkbox");
-			var $inputs = $checkboxes.find("input:checkbox");
+		var setCheckboxes = function (state) {
+			var $checkboxes = $conditionalCheckboxGroup.find('.checkbox');
+			var $inputs = $checkboxes.find('input:checkbox');
 
 			if (state) {
-				$checkboxes.removeClass("disabled");
-				$inputs.prop("disabled", false);
+				$checkboxes.removeClass('disabled');
+				$inputs.prop('disabled', false);
 			} else {
-				$checkboxes.addClass("disabled");
-				$inputs.prop("disabled", true);
+				$checkboxes.addClass('disabled');
+				$inputs.prop('disabled', true);
 
-				$checkboxes.find("input:checkbox").prop("checked", false);
+				$checkboxes.find('input:checkbox').prop('checked', false);
 			}
 		};
 
-		$radioButtons.each(function() {
+		$radioButtons.each(function () {
 			var $this = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this);
-			var isChecked = $this.attr("checked") === "checked";
+			var isChecked = $this.attr('checked') === 'checked';
 
 			if (isChecked) {
-				var state = $this.attr("data-checkboxes-enabled") === "true";
+				var state = $this.attr('data-checkboxes-enabled') === 'true';
 				setCheckboxes(state);
 			}
 		});
 
-		$radioButtons.click(function() {
+		$radioButtons.click(function () {
 			var $this = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this);
-			var state = $this.attr("data-checkboxes-enabled") === "true";
+			var state = $this.attr('data-checkboxes-enabled') === 'true';
 			setCheckboxes(state);
 		});
 	})();
@@ -577,54 +539,54 @@ jquery__WEBPACK_IMPORTED_MODULE_0___default()(function() {
 	/**
 	 * SEGMENTED CONTROL: Handle segmented control components
 	 */
-	var segmentedControl = (function() {
-		var $segmentedControl = jquery__WEBPACK_IMPORTED_MODULE_0___default()(".segmented-control");
+	var segmentedControl = (function () {
+		var $segmentedControl = jquery__WEBPACK_IMPORTED_MODULE_0___default()('.segmented-control');
 
 		// Handle form submission with no selection
-		$segmentedControl.closest("form").on("submit", function() {
+		$segmentedControl.closest('form').on('submit', function () {
 			var $this = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this);
-			var $control = $this.find(".segmented-control");
-			$control.each(function() {
+			var $control = $this.find('.segmented-control');
+			$control.each(function () {
 				var $this = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this);
-				if ($this.find("input:radio").hasClass("error")) {
-					$this.addClass("invalid");
-					$this.find(".segmented-control__label").addClass("invalid");
+				if ($this.find('input:radio').hasClass('error')) {
+					$this.addClass('invalid');
+					$this.find('.segmented-control__label').addClass('invalid');
 				}
 			});
 		});
 
 		// Handle click event
-		$segmentedControl.click(function() {
+		$segmentedControl.click(function () {
 			var $this = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this);
-			var $input = $this.find("[type=radio]");
-			var $label = $this.find(".segmented-control__label");
-			$label.removeClass("checked").removeClass("invalid");
-			$input.attr("checked", "checked");
+			var $input = $this.find('[type=radio]');
+			var $label = $this.find('.segmented-control__label');
+			$label.removeClass('checked').removeClass('invalid');
+			$input.attr('checked', 'checked');
 		});
 	})();
 
 	/**
 	 * HIDEABLE PANEL: Handle hideable panel
 	 */
-	var userBar = (function() {
-		jquery__WEBPACK_IMPORTED_MODULE_0___default()(".user-bar__menu-select").on("click", function() {
+	var userBar = (function () {
+		jquery__WEBPACK_IMPORTED_MODULE_0___default()('.user-bar__menu-select').on('click', function () {
 			var $select = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this);
-			$select.toggleClass("open");
-			$select.next(".user-bar__menu-options").slideToggle();
+			$select.toggleClass('open');
+			$select.next('.user-bar__menu-options').slideToggle();
 		});
 	})();
 
 	/**
 	 * HIDEABLE PANEL: Handle hideable panel
 	 */
-	var hideablePanel = (function() {
-		var $hideablePanels = jquery__WEBPACK_IMPORTED_MODULE_0___default()(".hideable-panel");
+	var hideablePanel = (function () {
+		var $hideablePanels = jquery__WEBPACK_IMPORTED_MODULE_0___default()('.hideable-panel');
 
-		$hideablePanels.each(function() {
+		$hideablePanels.each(function () {
 			var $hideablePanel = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this);
-			var $hidePanel = $hideablePanel.find(".hideable-panel__close");
+			var $hidePanel = $hideablePanel.find('.hideable-panel__close');
 
-			$hidePanel.on("click", function() {
+			$hidePanel.on('click', function () {
 				$hideablePanel.hide();
 			});
 		});
@@ -633,19 +595,19 @@ jquery__WEBPACK_IMPORTED_MODULE_0___default()(function() {
 	/**
 	 * ACCORDION: Handle accordion init/show/hide
 	 */
-	var accordion = (function() {
-		var $accordions = jquery__WEBPACK_IMPORTED_MODULE_0___default()(".accordion");
+	var accordion = (function () {
+		var $accordions = jquery__WEBPACK_IMPORTED_MODULE_0___default()('.accordion');
 
-		$accordions.each(function() {
+		$accordions.each(function () {
 			var $accordion = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this);
-			var $items = $accordion.find(".accordion__item");
-			$items.addClass("closed");
-			$items.first().removeClass("closed");
+			var $items = $accordion.find('.accordion__item');
+			$items.addClass('closed');
+			$items.first().removeClass('closed');
 
-			$items.on("click", function() {
+			$items.on('click', function () {
 				var $item = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this);
-				$items.addClass("closed");
-				$item.removeClass("closed");
+				$items.addClass('closed');
+				$item.removeClass('closed');
 				//   $('html, body').animate({
 				//     scrollTop: ($item.offset().top)
 				//   },500)
@@ -656,44 +618,38 @@ jquery__WEBPACK_IMPORTED_MODULE_0___default()(function() {
 	/**
 	 * TAB PANEL: Handle tabbed content panel
 	 */
-	var tabPanel = (function() {
-		var $tabPanels = jquery__WEBPACK_IMPORTED_MODULE_0___default()(".tab-panel");
+	var tabPanel = (function () {
+		var $tabPanels = jquery__WEBPACK_IMPORTED_MODULE_0___default()('.tab-panel');
 
-		$tabPanels.each(function() {
+		$tabPanels.each(function () {
 			var $panel = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this);
-			var $panes = $panel.find(".tab-panel__pane");
+			var $panes = $panel.find('.tab-panel__pane');
 			var $tabBar;
 			var $tabs;
 			var tabWidth = 100 / $panes.length;
 
 			$panel.prepend('<div class="tab-panel__tabs"></div>');
-			$tabBar = $panel.find(".tab-panel__tabs");
-			$panes.each(function() {
+			$tabBar = $panel.find('.tab-panel__tabs');
+			$panes.each(function () {
 				var label = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this)
-					.find(".tab-panel__label")
+					.find('.tab-panel__label')
 					.text();
-				$tabBar.append(
-					'<div class="tab-panel__tab" style="width: ' +
-						tabWidth +
-						'%;">' +
-						label +
-						"</div>"
-				);
+				$tabBar.append('<div class="tab-panel__tab" style="width: ' + tabWidth + '%;">' + label + '</div>');
 			});
-			$tabs = $panel.find(jquery__WEBPACK_IMPORTED_MODULE_0___default()(".tab-panel__tab"));
+			$tabs = $panel.find(jquery__WEBPACK_IMPORTED_MODULE_0___default()('.tab-panel__tab'));
 
-			$tabs.first().addClass("active");
-			$panes.first().addClass("active");
+			$tabs.first().addClass('active');
+			$panes.first().addClass('active');
 
-			$tabs.on("click", function() {
+			$tabs.on('click', function () {
 				var $tab = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this);
 				var index = $tabs.index($tab);
 
-				$tabs.removeClass("active");
-				$tab.addClass("active");
+				$tabs.removeClass('active');
+				$tab.addClass('active');
 
-				$panes.removeClass("active");
-				$panes.eq(index).addClass("active");
+				$panes.removeClass('active');
+				$panes.eq(index).addClass('active');
 			});
 		});
 	})();
