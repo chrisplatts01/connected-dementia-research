@@ -2,7 +2,7 @@
 	@include message-font();
 	padding-top: 16px;
 	text-align: left;
-	color: $turquoise;
+	color: $turquoise !important;
 
 	&:before {
 		position: relative;
@@ -16,7 +16,7 @@
 	@include message-font();
 	padding-top: 16px;
 	text-align: left;
-	color: $ruby;
+	color: $ruby !important;
 
 	&:before {
 		position: relative;

@@ -119,8 +119,8 @@ __webpack_require__.r(__webpack_exports__);
 /**
  * Load Uppy file upload core and plugins (run `yarn add -D @uppy/[PLUGIN_NAME]` at the CLI to install dependencies)
  */
-const Uppy = __webpack_require__(178); // Core Uppy code
-const Dashboard = __webpack_require__(198); // Full-featured sleek UI with file previews, metadata editing, upload/pause/resume/cancel buttons and more. Includes StatusBar and Informer plugins by default
+const Uppy = __webpack_require__(178) // Core Uppy code
+const Dashboard = __webpack_require__(198) // Full-featured sleek UI with file previews, metadata editing, upload/pause/resume/cancel buttons and more. Includes StatusBar and Informer plugins by default
 // const DragDrop = require('@uppy/drag-drop') // Plain and simple drag-and-drop area
 // const FileInput = require('@uppy/file-input') // Even more plain and simple, just a button
 // const Webcam = require('@uppy/webcam') // Upload selfies or audio / video recordings
@@ -128,8 +128,8 @@ const Dashboard = __webpack_require__(198); // Full-featured sleek UI with file 
 // const GoogleDrive = require('@uppy/google-drive') // Import files from Google Drive
 // const Instagram = require('@uppy/instagram') // Import files from Instagram
 // const Url = require('@uppy/url') // Import files from any public URL
-const Tus = __webpack_require__(237); // Uploads using the tus resumable upload protocol
-// const XHRUpload = require('@uppy/xhr-upload') // Classic multipart form uploads or binary uploads using XMLHTTPRequest
+const Tus = __webpack_require__(237) // Uploads using the tus resumable upload protocol
+const XHRUpload = __webpack_require__(256) // Classic multipart form uploads or binary uploads using XMLHTTPRequest
 // const AwsS3 = require('@uppy/aws-s3') // Uploader for AWS S3
 // const AwsS3Multipart = require('@uppy/aws-s3 - multipart') // Uploader for AWS S3 using its resumable Multipart protocol
 // const ProgressBar = require('@uppy/progress-bar') // Add a small YouTube-style progress bar at the top of the page
@@ -140,520 +140,524 @@ const Tus = __webpack_require__(237); // Uploads using the tus resumable upload 
 // const ThumbnailGenerator = require('@uppy/thumbnail-generator') // Generate preview thumbnails for images to be uploaded [documentation not yet available]
 // const GoldenRetriever = require('@uppy/golden-retriever') // Restore files and continue uploading after a page refresh or a browser crash
 
-
-
 jquery__WEBPACK_IMPORTED_MODULE_0___default()(function () {
-	/**
-	 * FILE UPLOAD: Handle file upload components
-	 */
-	var fileUpload = (function () {
-		const uppy = Uppy({
-				debug: true,
-				autoProceed: false,
-				restrictions: {
-					maxFileSize: 1000000,
-					maxNumberOfFiles: 3,
-					minNumberOfFiles: 1,
-					allowedFileTypes: ['image/*', 'video/*']
-				}
-			})
-			.use(Dashboard, {
-				trigger: '.UppyModalOpenerBtn',
-				inline: true,
-				target: '.DashboardContainer',
-				replaceTargetContent: true,
-				showProgressDetails: false,
-				note: 'Images and video only, 1–3 files, up to 1 MB',
-				height: 180,
-				width: 360,
-				metaFields: [{
-						id: 'name',
-						name: 'Name',
-						placeholder: 'file name'
-					},
-					{
-						id: 'caption',
-						name: 'Caption',
-						placeholder: 'Describe what the image is about'
-					}
-				],
-				locale: {
-					strings: {
-						dropPaste: 'Drag file(s) here or %{browse}'
-					}
-				},
-				browserBackButtonClose: true
-			})
-			.use(Tus, {
-				endpoint: 'https://master.tus.io/files/'
-			})
+  /**
+   * FILE UPLOAD: Handle file upload components
+   */
+  var fileUpload = (function () {
+    var $fileUpload = jquery__WEBPACK_IMPORTED_MODULE_0___default()('.file-upload')
 
-		uppy.on('complete', result => {
-			console.log('successful files:', result.successful)
-			console.log('failed files:', result.failed)
-		})
-	})()
+    $fileUpload.each(function (index, element) {
+      var $this = jquery__WEBPACK_IMPORTED_MODULE_0___default.a[this]
 
-	/**
-	 * FORM VALIDATION: Handle form validation using the jquery-validation plugin
-	 */
-	var formValidation = (function () {
-		jquery__WEBPACK_IMPORTED_MODULE_0___default.a.validator.addMethod(
-			'dateUK',
-			function (value, element) {
-				return Date.parseExact(value, 'd/M/yyyy');
-			},
-			'Please enter a valid date'
-		);
+      var uppy = Uppy({
+        debug: true,
+        autoProceed: false,
+        restrictions: {
+          maxFileSize: 1000000,
+          maxNumberOfFiles: 3,
+          minNumberOfFiles: 1,
+          allowedFileTypes: ['image/*', 'video/*']
+        }
+      })
+      .use(Dashboard, {
+        trigger: '.UppyModalOpenerBtn',
+        inline: true,
+        target: '.DashboardContainer',
+        replaceTargetContent: true,
+        showProgressDetails: false,
+        note: 'Images and video only, 1–3 files, up to 1 MB',
+        height: 180,
+        width: 360,
+        metaFields: [{
+          id: 'name',
+          name: 'Name',
+          placeholder: 'file name'
+        },
+        {
+          id: 'caption',
+          name: 'Caption',
+          placeholder: 'Describe what the image is about'
+        }],
+        locale: {
+          strings: {
+            dropPaste: 'Drag file(s) here or %{browse}',
+            complete: 'Upload successful'
+          }
+        },
+        browserBackButtonClose: true
+      })
+      .use(XHRUpload, {
+        endpoint: 'https://master.tus.io/files/'
+      })
 
-		jquery__WEBPACK_IMPORTED_MODULE_0___default.a.validator.addMethod('dateGroup', function (value, element) {
-			var $dateFieldGroup = jquery__WEBPACK_IMPORTED_MODULE_0___default()(element).closest('.date-field-group');
-			var day = $dateFieldGroup.find('input[name="date-field-day"]').val();
-			var month = $dateFieldGroup.find('input[name="date-field-month"]').val();
-			var year = $dateFieldGroup.find('input[name="date-field-year"]').val();
-			var date = day + '/' + month + '/' + year;
-			var parsedDate = Date.parseExact(date, 'dd/MM/yyyy');
-			return parsedDate !== null;
-		});
+      uppy.on('complete', result => {
+        console.log('successful files:', result.successful)
+        console.log('failed files:', result.failed)
+      })
+    })
+  })()
 
-		jquery__WEBPACK_IMPORTED_MODULE_0___default()('form').each(function () {
-			var $form = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this);
-			$form.validate({
-				groups: {
-					dateGroup: 'date-field-day date-field-month date-field-year'
-				},
-				rules: {
-					'date-field-day': {
-						required: true,
-						number: true,
-						min: 1,
-						max: 31,
-						minlength: 2,
-						maxlength: 2,
-						dateGroup: true
-					},
-					'date-field-month': {
-						required: true,
-						number: true,
-						min: 1,
-						max: 12,
-						minlength: 2,
-						maxlength: 2,
-						dateGroup: true
-					},
-					'date-field-year': {
-						required: true,
-						number: true,
-						min: 1900,
-						minlength: 4,
-						maxlength: 4,
-						dateGroup: true
-					},
-					date: 'dateUK',
-					'date-field-datex': 'dateUK'
-				},
-				messages: {
-					'date-field-day': {
-						required: 'Please enter values for day, month and year',
-						number: 'Please enter a number',
-						min: 'Please enter a value of at least {0}',
-						max: 'Please enter a value no greater than {0}',
-						minlength: 'Please enter exactly {0} digits',
-						maxlength: 'Please enter exactly {0} digits',
-						dateGroup: 'Please enter a valid date'
-					},
-					'date-field-month': {
-						required: 'Please enter values for day, month and year',
-						number: 'Please enter a number',
-						min: 'Please enter a value of at least {0}',
-						max: 'Please enter a value no greater than {0}',
-						minlength: 'Please enter exactly {0} digits',
-						maxlength: 'Please enter exactly {0} digits',
-						dateGroup: 'Please enter a valid date'
-					},
-					'date-field-year': {
-						required: 'Please enter values for day, month and year',
-						number: 'Please enter a valid date',
-						min: 'Please enter a value of at least {0}',
-						max: 'Please enter a value no greater than {0}',
-						minlength: 'Please enter exactly {0} digits',
-						maxlength: 'Please enter exactly {0} digits',
-						dateGroup: 'Please enter a valid date'
-					}
-				},
-				errorElement: 'div',
-				errorPlacement: function (error, element) {
-					error.appendTo(element.closest('.form__field'));
-				}
-			});
-		});
-	})();
+  /**
+   * FORM VALIDATION: Handle form validation using the jquery-validation plugin
+   */
+  var formValidation = (function () {
+    jquery__WEBPACK_IMPORTED_MODULE_0___default.a.validator.addMethod(
+      'dateUK',
+      function (value, element) {
+        return Date.parseExact(value, 'd/M/yyyy')
+      },
+      'Please enter a valid date'
+    )
 
-	/**
-	 * SELECT SLIDER FIELD: Handle slidr interface on select filds
-	 */
-	var selectSliderField = (function () {
-		var $selectSliderFields = jquery__WEBPACK_IMPORTED_MODULE_0___default()('.select-slider-field');
+    jquery__WEBPACK_IMPORTED_MODULE_0___default.a.validator.addMethod('dateGroup', function (value, element) {
+      var $dateFieldGroup = jquery__WEBPACK_IMPORTED_MODULE_0___default()(element).closest('.date-field-group')
+      var day = $dateFieldGroup.find('input[name="date-field-day"]').val()
+      var month = $dateFieldGroup.find('input[name="date-field-month"]').val()
+      var year = $dateFieldGroup.find('input[name="date-field-year"]').val()
+      var date = day + '/' + month + '/' + year
+      var parsedDate = Date.parseExact(date, 'dd/MM/yyyy')
+      return parsedDate !== null
+    })
 
-		$selectSliderFields.each(function () {
-			var $selectSliderField = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this);
-			var $slider = $selectSliderField.find('.slider');
-			var $mercury = $slider.find('.slider__mercury');
-			var $input = $slider.find('input[type="text"]');
-			var $value = $slider.find('.slider__value');
+    jquery__WEBPACK_IMPORTED_MODULE_0___default()('form').each(function () {
+      var $form = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this)
+      $form.validate({
+        groups: {
+          dateGroup: 'date-field-day date-field-month date-field-year'
+        },
+        rules: {
+          'date-field-day': {
+            required: true,
+            number: true,
+            min: 1,
+            max: 31,
+            minlength: 2,
+            maxlength: 2,
+            dateGroup: true
+          },
+          'date-field-month': {
+            required: true,
+            number: true,
+            min: 1,
+            max: 12,
+            minlength: 2,
+            maxlength: 2,
+            dateGroup: true
+          },
+          'date-field-year': {
+            required: true,
+            number: true,
+            min: 1900,
+            minlength: 4,
+            maxlength: 4,
+            dateGroup: true
+          },
+          date: 'dateUK',
+          'date-field-datex': 'dateUK'
+        },
+        messages: {
+          'date-field-day': {
+            required: 'Please enter values for day, month and year',
+            number: 'Please enter a number',
+            min: 'Please enter a value of at least {0}',
+            max: 'Please enter a value no greater than {0}',
+            minlength: 'Please enter exactly {0} digits',
+            maxlength: 'Please enter exactly {0} digits',
+            dateGroup: 'Please enter a valid date'
+          },
+          'date-field-month': {
+            required: 'Please enter values for day, month and year',
+            number: 'Please enter a number',
+            min: 'Please enter a value of at least {0}',
+            max: 'Please enter a value no greater than {0}',
+            minlength: 'Please enter exactly {0} digits',
+            maxlength: 'Please enter exactly {0} digits',
+            dateGroup: 'Please enter a valid date'
+          },
+          'date-field-year': {
+            required: 'Please enter values for day, month and year',
+            number: 'Please enter a valid date',
+            min: 'Please enter a value of at least {0}',
+            max: 'Please enter a value no greater than {0}',
+            minlength: 'Please enter exactly {0} digits',
+            maxlength: 'Please enter exactly {0} digits',
+            dateGroup: 'Please enter a valid date'
+          }
+        },
+        errorElement: 'div',
+        errorPlacement: function (error, element) {
+          error.appendTo(element.closest('.form__field'))
+        }
+      })
+    })
+  })()
 
-			var values = $selectSliderField.attr('data-options').split(',');
-			var steps = values.length;
+  /**
+   * SELECT SLIDER FIELD: Handle slidr interface on select filds
+   */
+  var selectSliderField = (function () {
+    var $selectSliderFields = jquery__WEBPACK_IMPORTED_MODULE_0___default()('.select-slider-field')
 
-			var step = 0;
-			var value = values[0];
-			var width = 0;
+    $selectSliderFields.each(function () {
+      var $selectSliderField = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this)
+      var $slider = $selectSliderField.find('.slider')
+      var $mercury = $slider.find('.slider__mercury')
+      var $input = $slider.find('input[type="text"]')
+      var $value = $slider.find('.slider__value')
 
-			$input.val(value);
-			$value.text(value);
-			$mercury.css('width', width + '%');
+      var values = $selectSliderField.attr('data-options').split(',')
+      var steps = values.length
 
-			$slider.slider({
-				min: 0,
-				max: steps - 1
-			});
+      var step = 0
+      var value = values[0]
+      var width = 0
 
-			$slider.on('slidestop', function () {
-				step = $slider.slider('value');
-				value = values[step];
-				width = (step * 100) / (steps - 1);
+      $input.val(value)
+      $value.text(value)
+      $mercury.css('width', width + '%')
 
-				$input.val(value);
-				$value.text(value);
-				$mercury.css('width', width + '%');
-			});
-		});
-	})();
+      $slider.slider({
+        min: 0,
+        max: steps - 1
+      })
 
-	/**
-	 * MASKED DATE FIELD: Handle masked date fields
-	 */
-	var maskedDateField = (function () {
-		var $maskedDateField = jquery__WEBPACK_IMPORTED_MODULE_0___default()('.input-field--masked-date').find(
-			'input[name|="date"]'
-		);
+      $slider.on('slidestop', function () {
+        step = $slider.slider('value')
+        value = values[step]
+        width = (step * 100) / (steps - 1)
 
-		$maskedDateField.mask('00/00/0000');
-	})();
+        $input.val(value)
+        $value.text(value)
+        $mercury.css('width', width + '%')
+      })
+    })
+  })()
 
-	/**
-	 * DATE PICKER FIELD: Handle date picker field input
-	 */
-	var datePickerField = (function () {
-		var $datePicker = jquery__WEBPACK_IMPORTED_MODULE_0___default()('[data-toggle="datepicker"]');
-		$datePicker.datepicker({
-			autoHide: true,
-			language: 'en-GB',
-			format: 'dd/mm/yyyy'
-		});
-	})();
+  /**
+   * MASKED DATE FIELD: Handle masked date fields
+   */
+  var maskedDateField = (function () {
+    var $maskedDateField = jquery__WEBPACK_IMPORTED_MODULE_0___default()('.input-field--masked-date').find(
+      'input[name|="date"]'
+    )
 
-	/**
-	 * PASSWORD FIELD: Handle password show/hide
-	 */
-	var passwordField = (function () {
-		var $passwordField = jquery__WEBPACK_IMPORTED_MODULE_0___default()('.input-field--password');
-		var $passwordShow = $passwordField.children('.show');
+    $maskedDateField.mask('00/00/0000')
+  })()
 
-		$passwordShow.click(function () {
-			var $this = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this);
-			var $passwordInput = $this.prev('label').children('input');
+  /**
+   * DATE PICKER FIELD: Handle date picker field input
+   */
+  var datePickerField = (function () {
+    var $datePicker = jquery__WEBPACK_IMPORTED_MODULE_0___default()('[data-toggle="datepicker"]')
+    $datePicker.datepicker({
+      autoHide: true,
+      language: 'en-GB',
+      format: 'dd/mm/yyyy'
+    })
+  })()
 
-			if ($passwordInput.attr('type') === 'password') {
-				$passwordInput.attr('type', 'text');
-				$this.text('Hide');
-			} else {
-				$passwordInput.attr('type', 'password');
-				$this.text('Show');
-			}
-		});
-	})();
+  /**
+   * PASSWORD FIELD: Handle password show/hide
+   */
+  var passwordField = (function () {
+    var $passwordField = jquery__WEBPACK_IMPORTED_MODULE_0___default()('.input-field--password')
+    var $passwordShow = $passwordField.children('.show')
 
-	/**
-	 * PROGRESS INDICATOR: Handle progress indicators
-	 */
-	var progressIndicator = (function () {
-		var $progressIndicator = jquery__WEBPACK_IMPORTED_MODULE_0___default()('.progress-indicator');
-		$progressIndicator.each(function () {
-			var $this = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this);
-			var step = $this.attr('data-step');
-			var steps = $this.attr('data-steps');
-			var width = (step / steps) * 100;
+    $passwordShow.click(function () {
+      var $this = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this)
+      var $passwordInput = $this.prev('label').children('input')
 
-			$this.prepend('<span class="progress-indicator__steps">&nbsp</span>');
-			$this.append(
-				'<span class="progress-indicator__step" style="width:' + width + '%">&nbsp</span>'
-			);
-		});
-	})();
+      if ($passwordInput.attr('type') === 'password') {
+        $passwordInput.attr('type', 'text')
+        $this.text('Hide')
+      } else {
+        $passwordInput.attr('type', 'password')
+        $this.text('Show')
+      }
+    })
+  })()
 
-	/**
-	 * DROPDOWN SELECT: Handle custom select components
-	 */
-	var dropdownSelect = (function () {
-		var $dropdownSelect;
-		var $dropdown;
-		var $dropdownOption;
+  /**
+   * PROGRESS INDICATOR: Handle progress indicators
+   */
+  var progressIndicator = (function () {
+    var $progressIndicator = jquery__WEBPACK_IMPORTED_MODULE_0___default()('.progress-indicator')
+    $progressIndicator.each(function () {
+      var $this = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this)
+      var step = $this.attr('data-step')
+      var steps = $this.attr('data-steps')
+      var width = (step / steps) * 100
 
-		$dropdownSelect = jquery__WEBPACK_IMPORTED_MODULE_0___default()('.dropdown-select');
+      $this.prepend('<span class="progress-indicator__steps">&nbsp</span>')
+      $this.append(
+        '<span class="progress-indicator__step" style="width:' + width + '%">&nbsp</span>'
+      )
+    })
+  })()
 
-		var dropdownState = (function () {
-			return {
-				init: function ($select) {
-					// Set initial state of dropdown-select controls
-					var dropdown = '<div class="dropdown"></div>';
-					var selected = '<div class="dropdown__selected"></div>';
-					var options = '<div class="dropdown__options"></div>';
-					var option = '<div class="dropdown__option"></div>';
-					var $dropdown = jquery__WEBPACK_IMPORTED_MODULE_0___default()(dropdown).appendTo($select);
-					var $selected = jquery__WEBPACK_IMPORTED_MODULE_0___default()(selected).appendTo($dropdown);
-					var $options = jquery__WEBPACK_IMPORTED_MODULE_0___default()(options).appendTo($dropdown);
-					var $option;
+  /**
+   * DROPDOWN SELECT: Handle custom select components
+   */
+  var dropdownSelect = (function () {
+    var $dropdownSelect
+    var $dropdown
+    var $dropdownOption
 
-					$selected.text($select.find('option:selected').text());
-					$select
-						.find('option')
-						.not(':selected')
-						.each(function () {
-							var $this = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this);
-							var text = $this.text();
-							var value = $this.val();
-							$option = jquery__WEBPACK_IMPORTED_MODULE_0___default()(option).appendTo($options);
-							$option.text(text);
-							$option.attr('data-value', value);
-						});
+    $dropdownSelect = jquery__WEBPACK_IMPORTED_MODULE_0___default()('.dropdown-select')
 
-					$select
-						.find('.message--error')
-						.detach()
-						.appendTo($select);
-				},
-				get: function ($select) {
-					// Get current state of select element
-					// NOTE: Not currently required
-				},
-				set: function ($select) {
-					// Set state of select element
-					var value = $select
-						.find('.dropdown__option.selected')
-						.attr('data-value');
-					$select.removeClass('error');
-					$select.find('div.error').remove();
-					$select
-						.find('option')
-						.first()
-						.removeAttr('selected');
-					$select.find('option[value="' + value + '"]').prop('selected', true);
-					$select.find('select').val(value);
-				}
-			};
-		})();
+    var dropdownState = (function () {
+      return {
+        init: function ($select) {
+          // Set initial state of dropdown-select controls
+          var dropdown = '<div class="dropdown"></div>'
+          var selected = '<div class="dropdown__selected"></div>'
+          var options = '<div class="dropdown__options"></div>'
+          var option = '<div class="dropdown__option"></div>'
+          var $dropdown = jquery__WEBPACK_IMPORTED_MODULE_0___default()(dropdown).appendTo($select)
+          var $selected = jquery__WEBPACK_IMPORTED_MODULE_0___default()(selected).appendTo($dropdown)
+          var $options = jquery__WEBPACK_IMPORTED_MODULE_0___default()(options).appendTo($dropdown)
+          var $option
 
-		// Initialise dropdowns
-		$dropdownSelect.each(function () {
-			dropdownState.init(jquery__WEBPACK_IMPORTED_MODULE_0___default()(this));
-		});
+          $selected.text($select.find('option:selected').text())
+          $select
+            .find('option')
+            .not(':selected')
+            .each(function () {
+              var $this = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this)
+              var text = $this.text()
+              var value = $this.val()
+              $option = jquery__WEBPACK_IMPORTED_MODULE_0___default()(option).appendTo($options)
+              $option.text(text)
+              $option.attr('data-value', value)
+            })
 
-		// Handle form submission with no selection
-		$dropdownSelect.closest('form').on('submit', function () {
-			var $this = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this);
-			var $dropdown = $this.find('.dropdown-select');
-			$dropdown.each(function () {
-				var $this = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this);
-				if ($this.find('select').hasClass('error')) {
-					$this.addClass('error');
-				}
-			});
-		});
+          $select
+            .find('.message--error')
+            .detach()
+            .appendTo($select)
+        },
+        get: function ($select) {
+          // Get current state of select element
+          // NOTE: Not currently required
+        },
+        set: function ($select) {
+          // Set state of select element
+          var value = $select
+            .find('.dropdown__option.selected')
+            .attr('data-value')
+          $select.removeClass('error')
+          $select.find('div.error').remove()
+          $select
+            .find('option')
+            .first()
+            .removeAttr('selected')
+          $select.find('option[value="' + value + '"]').prop('selected', true)
+          $select.find('select').val(value)
+        }
+      }
+    })()
 
-		$dropdown = jquery__WEBPACK_IMPORTED_MODULE_0___default()('.dropdown');
-		$dropdown.click(function () {
-			var $this = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this);
-			$this.toggleClass('open');
-			$this.find('.dropdown__option').toggle();
-		});
+    // Initialise dropdowns
+    $dropdownSelect.each(function () {
+      dropdownState.init(jquery__WEBPACK_IMPORTED_MODULE_0___default()(this))
+    })
 
-		$dropdownOption = $dropdown.find('.dropdown__option');
-		$dropdownOption.click(function () {
-			var $this = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this);
-			var $select = $this.closest('.dropdown-select');
-			var $dropdown = $this.closest('.dropdown'); // .children('.dropdown__selected')
-			var $options = $this
-				.parent('.dropdown__options')
-				.children('.dropdown__option');
-			var $selected = $this
-				.closest('.dropdown')
-				.children('.dropdown__selected');
-			$options.removeClass('selected');
-			$this.addClass('selected');
-			$dropdown.addClass('selected');
-			$selected.text($this.text());
-			dropdownState.set($select);
-		});
-	})();
+    // Handle form submission with no selection
+    $dropdownSelect.closest('form').on('submit', function () {
+      var $this = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this)
+      var $dropdown = $this.find('.dropdown-select')
+      $dropdown.each(function () {
+        var $this = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this)
+        if ($this.find('select').hasClass('error')) {
+          $this.addClass('error')
+        }
+      })
+    })
 
-	/**
-	 * CONDITIONAL CHECKBOXES: Handle conditional checkbox groups
-	 */
-	var conditionalCheckboxGroup = (function () {
-		var $conditionalCheckboxGroup = jquery__WEBPACK_IMPORTED_MODULE_0___default()('.conditional-checkbox-group');
-		var $radioButtons = $conditionalCheckboxGroup.find('input:radio');
+    $dropdown = jquery__WEBPACK_IMPORTED_MODULE_0___default()('.dropdown')
+    $dropdown.click(function () {
+      var $this = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this)
+      $this.toggleClass('open')
+      $this.find('.dropdown__option').toggle()
+    })
 
-		var setCheckboxes = function (state) {
-			var $checkboxes = $conditionalCheckboxGroup.find('.checkbox');
-			var $inputs = $checkboxes.find('input:checkbox');
+    $dropdownOption = $dropdown.find('.dropdown__option')
+    $dropdownOption.click(function () {
+      var $this = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this)
+      var $select = $this.closest('.dropdown-select')
+      var $dropdown = $this.closest('.dropdown') // .children('.dropdown__selected')
+      var $options = $this
+        .parent('.dropdown__options')
+        .children('.dropdown__option')
+      var $selected = $this
+        .closest('.dropdown')
+        .children('.dropdown__selected')
+      $options.removeClass('selected')
+      $this.addClass('selected')
+      $dropdown.addClass('selected')
+      $selected.text($this.text())
+      dropdownState.set($select)
+    })
+  })()
 
-			if (state) {
-				$checkboxes.removeClass('disabled');
-				$inputs.prop('disabled', false);
-			} else {
-				$checkboxes.addClass('disabled');
-				$inputs.prop('disabled', true);
+  /**
+   * CONDITIONAL CHECKBOXES: Handle conditional checkbox groups
+   */
+  var conditionalCheckboxGroup = (function () {
+    var $conditionalCheckboxGroup = jquery__WEBPACK_IMPORTED_MODULE_0___default()('.conditional-checkbox-group')
+    var $radioButtons = $conditionalCheckboxGroup.find('input:radio')
 
-				$checkboxes.find('input:checkbox').prop('checked', false);
-			}
-		};
+    var setCheckboxes = function (state) {
+      var $checkboxes = $conditionalCheckboxGroup.find('.checkbox')
+      var $inputs = $checkboxes.find('input:checkbox')
 
-		$radioButtons.each(function () {
-			var $this = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this);
-			var isChecked = $this.attr('checked') === 'checked';
+      if (state) {
+        $checkboxes.removeClass('disabled')
+        $inputs.prop('disabled', false)
+      } else {
+        $checkboxes.addClass('disabled')
+        $inputs.prop('disabled', true)
 
-			if (isChecked) {
-				var state = $this.attr('data-checkboxes-enabled') === 'true';
-				setCheckboxes(state);
-			}
-		});
+        $checkboxes.find('input:checkbox').prop('checked', false)
+      }
+    }
 
-		$radioButtons.click(function () {
-			var $this = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this);
-			var state = $this.attr('data-checkboxes-enabled') === 'true';
-			setCheckboxes(state);
-		});
-	})();
+    $radioButtons.each(function () {
+      var $this = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this)
+      var isChecked = $this.attr('checked') === 'checked'
 
-	/**
-	 * SEGMENTED CONTROL: Handle segmented control components
-	 */
-	var segmentedControl = (function () {
-		var $segmentedControl = jquery__WEBPACK_IMPORTED_MODULE_0___default()('.segmented-control');
+      if (isChecked) {
+        var state = $this.attr('data-checkboxes-enabled') === 'true'
+        setCheckboxes(state)
+      }
+    })
 
-		// Handle form submission with no selection
-		$segmentedControl.closest('form').on('submit', function () {
-			var $this = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this);
-			var $control = $this.find('.segmented-control');
-			$control.each(function () {
-				var $this = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this);
-				if ($this.find('input:radio').hasClass('error')) {
-					$this.addClass('invalid');
-					$this.find('.segmented-control__label').addClass('invalid');
-				}
-			});
-		});
+    $radioButtons.click(function () {
+      var $this = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this)
+      var state = $this.attr('data-checkboxes-enabled') === 'true'
+      setCheckboxes(state)
+    })
+  })()
 
-		// Handle click event
-		$segmentedControl.click(function () {
-			var $this = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this);
-			var $input = $this.find('[type=radio]');
-			var $label = $this.find('.segmented-control__label');
-			$label.removeClass('checked').removeClass('invalid');
-			$input.attr('checked', 'checked');
-		});
-	})();
+  /**
+   * SEGMENTED CONTROL: Handle segmented control components
+   */
+  var segmentedControl = (function () {
+    var $segmentedControl = jquery__WEBPACK_IMPORTED_MODULE_0___default()('.segmented-control')
 
-	/**
-	 * HIDEABLE PANEL: Handle hideable panel
-	 */
-	var userBar = (function () {
-		jquery__WEBPACK_IMPORTED_MODULE_0___default()('.user-bar__menu-select').on('click', function () {
-			var $select = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this);
-			$select.toggleClass('open');
-			$select.next('.user-bar__menu-options').slideToggle();
-		});
-	})();
+    // Handle form submission with no selection
+    $segmentedControl.closest('form').on('submit', function () {
+      var $this = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this)
+      var $control = $this.find('.segmented-control')
+      $control.each(function () {
+        var $this = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this)
+        if ($this.find('input:radio').hasClass('error')) {
+          $this.addClass('invalid')
+          $this.find('.segmented-control__label').addClass('invalid')
+        }
+      })
+    })
 
-	/**
-	 * HIDEABLE PANEL: Handle hideable panel
-	 */
-	var hideablePanel = (function () {
-		var $hideablePanels = jquery__WEBPACK_IMPORTED_MODULE_0___default()('.hideable-panel');
+    // Handle click event
+    $segmentedControl.click(function () {
+      var $this = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this)
+      var $input = $this.find('[type=radio]')
+      var $label = $this.find('.segmented-control__label')
+      $label.removeClass('checked').removeClass('invalid')
+      $input.attr('checked', 'checked')
+    })
+  })()
 
-		$hideablePanels.each(function () {
-			var $hideablePanel = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this);
-			var $hidePanel = $hideablePanel.find('.hideable-panel__close');
+  /**
+   * HIDEABLE PANEL: Handle hideable panel
+   */
+  var userBar = (function () {
+    jquery__WEBPACK_IMPORTED_MODULE_0___default()('.user-bar__menu-select').on('click', function () {
+      var $select = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this)
+      $select.toggleClass('open')
+      $select.next('.user-bar__menu-options').slideToggle()
+    })
+  })()
 
-			$hidePanel.on('click', function () {
-				$hideablePanel.hide();
-			});
-		});
-	})();
+  /**
+   * HIDEABLE PANEL: Handle hideable panel
+   */
+  var hideablePanel = (function () {
+    var $hideablePanels = jquery__WEBPACK_IMPORTED_MODULE_0___default()('.hideable-panel')
 
-	/**
-	 * ACCORDION: Handle accordion init/show/hide
-	 */
-	var accordion = (function () {
-		var $accordions = jquery__WEBPACK_IMPORTED_MODULE_0___default()('.accordion');
+    $hideablePanels.each(function () {
+      var $hideablePanel = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this)
+      var $hidePanel = $hideablePanel.find('.hideable-panel__close')
 
-		$accordions.each(function () {
-			var $accordion = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this);
-			var $items = $accordion.find('.accordion__item');
-			$items.addClass('closed');
-			$items.first().removeClass('closed');
+      $hidePanel.on('click', function () {
+        $hideablePanel.hide()
+      })
+    })
+  })()
 
-			$items.on('click', function () {
-				var $item = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this);
-				$items.addClass('closed');
-				$item.removeClass('closed');
-				//   $('html, body').animate({
-				//     scrollTop: ($item.offset().top)
-				//   },500)
-			});
-		});
-	})();
+  /**
+   * ACCORDION: Handle accordion init/show/hide
+   */
+  var accordion = (function () {
+    var $accordions = jquery__WEBPACK_IMPORTED_MODULE_0___default()('.accordion')
 
-	/**
-	 * TAB PANEL: Handle tabbed content panel
-	 */
-	var tabPanel = (function () {
-		var $tabPanels = jquery__WEBPACK_IMPORTED_MODULE_0___default()('.tab-panel');
+    $accordions.each(function () {
+      var $accordion = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this)
+      var $items = $accordion.find('.accordion__item')
+      $items.addClass('closed')
+      $items.first().removeClass('closed')
 
-		$tabPanels.each(function () {
-			var $panel = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this);
-			var $panes = $panel.find('.tab-panel__pane');
-			var $tabBar;
-			var $tabs;
-			var tabWidth = 100 / $panes.length;
+      $items.on('click', function () {
+        var $item = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this)
+        $items.addClass('closed')
+        $item.removeClass('closed')
+        //   $('html, body').animate({
+        //     scrollTop: ($item.offset().top)
+        //   },500)
+      })
+    })
+  })()
 
-			$panel.prepend('<div class="tab-panel__tabs"></div>');
-			$tabBar = $panel.find('.tab-panel__tabs');
-			$panes.each(function () {
-				var label = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this)
-					.find('.tab-panel__label')
-					.text();
-				$tabBar.append('<div class="tab-panel__tab" style="width: ' + tabWidth + '%;">' + label + '</div>');
-			});
-			$tabs = $panel.find(jquery__WEBPACK_IMPORTED_MODULE_0___default()('.tab-panel__tab'));
+  /**
+   * TAB PANEL: Handle tabbed content panel
+   */
+  var tabPanel = (function () {
+    var $tabPanels = jquery__WEBPACK_IMPORTED_MODULE_0___default()('.tab-panel')
 
-			$tabs.first().addClass('active');
-			$panes.first().addClass('active');
+    $tabPanels.each(function () {
+      var $panel = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this)
+      var $panes = $panel.find('.tab-panel__pane')
+      var $tabBar
+      var $tabs
+      var tabWidth = 100 / $panes.length
 
-			$tabs.on('click', function () {
-				var $tab = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this);
-				var index = $tabs.index($tab);
+      $panel.prepend('<div class="tab-panel__tabs"></div>')
+      $tabBar = $panel.find('.tab-panel__tabs')
+      $panes.each(function () {
+        var label = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this)
+          .find('.tab-panel__label')
+          .text()
+        $tabBar.append('<div class="tab-panel__tab" style="width: ' + tabWidth + '%;">' + label + '</div>')
+      })
+      $tabs = $panel.find(jquery__WEBPACK_IMPORTED_MODULE_0___default()('.tab-panel__tab'))
 
-				$tabs.removeClass('active');
-				$tab.addClass('active');
+      $tabs.first().addClass('active')
+      $panes.first().addClass('active')
 
-				$panes.removeClass('active');
-				$panes.eq(index).addClass('active');
-			});
-		});
-	})();
-});
+      $tabs.on('click', function () {
+        var $tab = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this)
+        var index = $tabs.index($tab)
+
+        $tabs.removeClass('active')
+        $tab.addClass('active')
+
+        $panes.removeClass('active')
+        $panes.eq(index).addClass('active')
+      })
+    })
+  })()
+})
 
 
 /***/ }),
@@ -61543,6 +61547,550 @@ module.exports = function limitPromises(limit) {
     if (next) next();
   }
 };
+
+/***/ }),
+/* 256 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var _require = __webpack_require__(178),
+    Plugin = _require.Plugin;
+
+var cuid = __webpack_require__(181);
+var Translator = __webpack_require__(179);
+
+var _require2 = __webpack_require__(248),
+    Provider = _require2.Provider,
+    Socket = _require2.Socket;
+
+var emitSocketProgress = __webpack_require__(252);
+var getSocketHost = __webpack_require__(253);
+var settle = __webpack_require__(254);
+var limitPromises = __webpack_require__(255);
+
+function buildResponseError(xhr, error) {
+  // No error message
+  if (!error) error = new Error('Upload error');
+  // Got an error message string
+  if (typeof error === 'string') error = new Error(error);
+  // Got something else
+  if (!(error instanceof Error)) {
+    error = _extends(new Error('Upload error'), { data: error });
+  }
+
+  error.request = xhr;
+  return error;
+}
+
+module.exports = function (_Plugin) {
+  _inherits(XHRUpload, _Plugin);
+
+  function XHRUpload(uppy, opts) {
+    _classCallCheck(this, XHRUpload);
+
+    var _this = _possibleConstructorReturn(this, _Plugin.call(this, uppy, opts));
+
+    _this.type = 'uploader';
+    _this.id = 'XHRUpload';
+    _this.title = 'XHRUpload';
+
+    var defaultLocale = {
+      strings: {
+        timedOut: 'Upload stalled for %{seconds} seconds, aborting.'
+      }
+
+      // Default options
+    };var defaultOptions = {
+      formData: true,
+      fieldName: 'files[]',
+      method: 'post',
+      metaFields: null,
+      responseUrlFieldName: 'url',
+      bundle: false,
+      headers: {},
+      locale: defaultLocale,
+      timeout: 30 * 1000,
+      limit: 0,
+      withCredentials: false,
+      /**
+       * @typedef respObj
+       * @property {string} responseText
+       * @property {number} status
+       * @property {string} statusText
+       * @property {Object.<string, string>} headers
+       *
+       * @param {string} responseText the response body string
+       * @param {XMLHttpRequest | respObj} response the response object (XHR or similar)
+       */
+      getResponseData: function getResponseData(responseText, response) {
+        var parsedResponse = {};
+        try {
+          parsedResponse = JSON.parse(responseText);
+        } catch (err) {
+          console.log(err);
+        }
+
+        return parsedResponse;
+      },
+
+      /**
+       *
+       * @param {string} responseText the response body string
+       * @param {XMLHttpRequest | respObj} response the response object (XHR or similar)
+       */
+      getResponseError: function getResponseError(responseText, response) {
+        return new Error('Upload error');
+      }
+    };
+
+    // Merge default options with the ones set by user
+    _this.opts = _extends({}, defaultOptions, opts);
+    _this.locale = _extends({}, defaultLocale, _this.opts.locale);
+    _this.locale.strings = _extends({}, defaultLocale.strings, _this.opts.locale.strings);
+
+    // i18n
+    _this.translator = new Translator({ locale: _this.locale });
+    _this.i18n = _this.translator.translate.bind(_this.translator);
+
+    _this.handleUpload = _this.handleUpload.bind(_this);
+
+    // Simultaneous upload limiting is shared across all uploads with this plugin.
+    if (typeof _this.opts.limit === 'number' && _this.opts.limit !== 0) {
+      _this.limitUploads = limitPromises(_this.opts.limit);
+    } else {
+      _this.limitUploads = function (fn) {
+        return fn;
+      };
+    }
+
+    if (_this.opts.bundle && !_this.opts.formData) {
+      throw new Error('`opts.formData` must be true when `opts.bundle` is enabled.');
+    }
+    return _this;
+  }
+
+  XHRUpload.prototype.getOptions = function getOptions(file) {
+    var overrides = this.uppy.getState().xhrUpload;
+    var opts = _extends({}, this.opts, overrides || {}, file.xhrUpload || {});
+    opts.headers = {};
+    _extends(opts.headers, this.opts.headers);
+    if (overrides) {
+      _extends(opts.headers, overrides.headers);
+    }
+    if (file.xhrUpload) {
+      _extends(opts.headers, file.xhrUpload.headers);
+    }
+
+    return opts;
+  };
+
+  // Helper to abort upload requests if there has not been any progress for `timeout` ms.
+  // Create an instance using `timer = createProgressTimeout(10000, onTimeout)`
+  // Call `timer.progress()` to signal that there has been progress of any kind.
+  // Call `timer.done()` when the upload has completed.
+
+
+  XHRUpload.prototype.createProgressTimeout = function createProgressTimeout(timeout, timeoutHandler) {
+    var uppy = this.uppy;
+    var self = this;
+    var isDone = false;
+
+    function onTimedOut() {
+      uppy.log('[XHRUpload] timed out');
+      var error = new Error(self.i18n('timedOut', { seconds: Math.ceil(timeout / 1000) }));
+      timeoutHandler(error);
+    }
+
+    var aliveTimer = null;
+    function progress() {
+      // Some browsers fire another progress event when the upload is
+      // cancelled, so we have to ignore progress after the timer was
+      // told to stop.
+      if (isDone) return;
+
+      if (timeout > 0) {
+        if (aliveTimer) clearTimeout(aliveTimer);
+        aliveTimer = setTimeout(onTimedOut, timeout);
+      }
+    }
+
+    function done() {
+      uppy.log('[XHRUpload] timer done');
+      if (aliveTimer) {
+        clearTimeout(aliveTimer);
+        aliveTimer = null;
+      }
+      isDone = true;
+    }
+
+    return {
+      progress: progress,
+      done: done
+    };
+  };
+
+  XHRUpload.prototype.createFormDataUpload = function createFormDataUpload(file, opts) {
+    var formPost = new FormData();
+
+    var metaFields = Array.isArray(opts.metaFields) ? opts.metaFields
+    // Send along all fields by default.
+    : Object.keys(file.meta);
+    metaFields.forEach(function (item) {
+      formPost.append(item, file.meta[item]);
+    });
+
+    formPost.append(opts.fieldName, file.data);
+
+    return formPost;
+  };
+
+  XHRUpload.prototype.createBareUpload = function createBareUpload(file, opts) {
+    return file.data;
+  };
+
+  XHRUpload.prototype.upload = function upload(file, current, total) {
+    var _this2 = this;
+
+    var opts = this.getOptions(file);
+
+    this.uppy.log('uploading ' + current + ' of ' + total);
+    return new Promise(function (resolve, reject) {
+      var data = opts.formData ? _this2.createFormDataUpload(file, opts) : _this2.createBareUpload(file, opts);
+
+      var timer = _this2.createProgressTimeout(opts.timeout, function (error) {
+        xhr.abort();
+        _this2.uppy.emit('upload-error', file, error);
+        reject(error);
+      });
+
+      var xhr = new XMLHttpRequest();
+      var id = cuid();
+
+      xhr.upload.addEventListener('loadstart', function (ev) {
+        _this2.uppy.log('[XHRUpload] ' + id + ' started');
+        // Begin checking for timeouts when loading starts.
+        timer.progress();
+      });
+
+      xhr.upload.addEventListener('progress', function (ev) {
+        _this2.uppy.log('[XHRUpload] ' + id + ' progress: ' + ev.loaded + ' / ' + ev.total);
+        timer.progress();
+
+        if (ev.lengthComputable) {
+          _this2.uppy.emit('upload-progress', file, {
+            uploader: _this2,
+            bytesUploaded: ev.loaded,
+            bytesTotal: ev.total
+          });
+        }
+      });
+
+      xhr.addEventListener('load', function (ev) {
+        _this2.uppy.log('[XHRUpload] ' + id + ' finished');
+        timer.done();
+
+        if (ev.target.status >= 200 && ev.target.status < 300) {
+          var body = opts.getResponseData(xhr.responseText, xhr);
+          var uploadURL = body[opts.responseUrlFieldName];
+
+          var response = {
+            status: ev.target.status,
+            body: body,
+            uploadURL: uploadURL
+          };
+
+          _this2.uppy.setFileState(file.id, { response: response });
+
+          _this2.uppy.emit('upload-success', file, body, uploadURL);
+
+          if (uploadURL) {
+            _this2.uppy.log('Download ' + file.name + ' from ' + file.uploadURL);
+          }
+
+          return resolve(file);
+        } else {
+          var _body = opts.getResponseData(xhr.responseText, xhr);
+          var error = buildResponseError(xhr, opts.getResponseError(xhr.responseText, xhr));
+
+          var _response = {
+            status: ev.target.status,
+            body: _body
+          };
+
+          _this2.uppy.setFileState(file.id, { response: _response });
+
+          _this2.uppy.emit('upload-error', file, error);
+          return reject(error);
+        }
+      });
+
+      xhr.addEventListener('error', function (ev) {
+        _this2.uppy.log('[XHRUpload] ' + id + ' errored');
+        timer.done();
+
+        var error = buildResponseError(xhr, opts.getResponseError(xhr.responseText, xhr));
+        _this2.uppy.emit('upload-error', file, error);
+        return reject(error);
+      });
+
+      xhr.open(opts.method.toUpperCase(), opts.endpoint, true);
+
+      xhr.withCredentials = opts.withCredentials;
+
+      Object.keys(opts.headers).forEach(function (header) {
+        xhr.setRequestHeader(header, opts.headers[header]);
+      });
+
+      xhr.send(data);
+
+      _this2.uppy.on('file-removed', function (removedFile) {
+        if (removedFile.id === file.id) {
+          timer.done();
+          xhr.abort();
+        }
+      });
+
+      _this2.uppy.on('upload-cancel', function (fileID) {
+        if (fileID === file.id) {
+          timer.done();
+          xhr.abort();
+        }
+      });
+
+      _this2.uppy.on('cancel-all', function () {
+        timer.done();
+        xhr.abort();
+      });
+    });
+  };
+
+  XHRUpload.prototype.uploadRemote = function uploadRemote(file, current, total) {
+    var _this3 = this;
+
+    var opts = this.getOptions(file);
+    return new Promise(function (resolve, reject) {
+      var fields = {};
+      var metaFields = Array.isArray(opts.metaFields) ? opts.metaFields
+      // Send along all fields by default.
+      : Object.keys(file.meta);
+
+      metaFields.forEach(function (name) {
+        fields[name] = file.meta[name];
+      });
+
+      var provider = new Provider(_this3.uppy, file.remote.providerOptions);
+      provider.post(file.remote.url, _extends({}, file.remote.body, {
+        endpoint: opts.endpoint,
+        size: file.data.size,
+        fieldname: opts.fieldName,
+        metadata: fields,
+        headers: opts.headers
+      })).then(function (res) {
+        var token = res.token;
+        var host = getSocketHost(file.remote.serverUrl);
+        var socket = new Socket({ target: host + '/api/' + token });
+
+        socket.on('progress', function (progressData) {
+          return emitSocketProgress(_this3, progressData, file);
+        });
+
+        socket.on('success', function (data) {
+          var resp = opts.getResponseData(data.response.responseText, data.response);
+          var uploadURL = resp[opts.responseUrlFieldName];
+          _this3.uppy.emit('upload-success', file, resp, uploadURL);
+          socket.close();
+          return resolve();
+        });
+
+        socket.on('error', function (errData) {
+          var resp = errData.response;
+          var error = resp ? opts.getResponseError(resp.responseText, resp) : _extends(new Error(errData.error.message), { cause: errData.error });
+          _this3.uppy.emit('upload-error', file, error);
+          reject(error);
+        });
+      });
+    });
+  };
+
+  XHRUpload.prototype.uploadBundle = function uploadBundle(files) {
+    var _this4 = this;
+
+    return new Promise(function (resolve, reject) {
+      var endpoint = _this4.opts.endpoint;
+      var method = _this4.opts.method;
+
+      var formData = new FormData();
+      files.forEach(function (file, i) {
+        var opts = _this4.getOptions(file);
+        formData.append(opts.fieldName, file.data);
+      });
+
+      var xhr = new XMLHttpRequest();
+
+      xhr.withCredentials = _this4.opts.withCredentials;
+
+      var timer = _this4.createProgressTimeout(_this4.opts.timeout, function (error) {
+        xhr.abort();
+        emitError(error);
+        reject(error);
+      });
+
+      var emitError = function emitError(error) {
+        files.forEach(function (file) {
+          _this4.uppy.emit('upload-error', file, error);
+        });
+      };
+
+      xhr.upload.addEventListener('loadstart', function (ev) {
+        _this4.uppy.log('[XHRUpload] started uploading bundle');
+        timer.progress();
+      });
+
+      xhr.upload.addEventListener('progress', function (ev) {
+        timer.progress();
+
+        if (!ev.lengthComputable) return;
+
+        files.forEach(function (file) {
+          _this4.uppy.emit('upload-progress', file, {
+            uploader: _this4,
+            bytesUploaded: ev.loaded / ev.total * file.size,
+            bytesTotal: file.size
+          });
+        });
+      });
+
+      xhr.addEventListener('load', function (ev) {
+        timer.done();
+
+        if (ev.target.status >= 200 && ev.target.status < 300) {
+          var resp = _this4.opts.getResponseData(xhr.responseText, xhr);
+          files.forEach(function (file) {
+            _this4.uppy.emit('upload-success', file, resp);
+          });
+          return resolve();
+        }
+
+        var error = _this4.opts.getResponseError(xhr.responseText, xhr) || new Error('Upload error');
+        error.request = xhr;
+        emitError(error);
+        return reject(error);
+      });
+
+      xhr.addEventListener('error', function (ev) {
+        timer.done();
+
+        var error = _this4.opts.getResponseError(xhr.responseText, xhr) || new Error('Upload error');
+        emitError(error);
+        return reject(error);
+      });
+
+      _this4.uppy.on('cancel-all', function () {
+        timer.done();
+        xhr.abort();
+      });
+
+      xhr.open(method.toUpperCase(), endpoint, true);
+
+      xhr.withCredentials = _this4.opts.withCredentials;
+
+      Object.keys(_this4.opts.headers).forEach(function (header) {
+        xhr.setRequestHeader(header, _this4.opts.headers[header]);
+      });
+
+      xhr.send(formData);
+
+      files.forEach(function (file) {
+        _this4.uppy.emit('upload-started', file);
+      });
+    });
+  };
+
+  XHRUpload.prototype.uploadFiles = function uploadFiles(files) {
+    var _this5 = this;
+
+    var actions = files.map(function (file, i) {
+      var current = parseInt(i, 10) + 1;
+      var total = files.length;
+
+      if (file.error) {
+        return function () {
+          return Promise.reject(new Error(file.error));
+        };
+      } else if (file.isRemote) {
+        // We emit upload-started here, so that it's also emitted for files
+        // that have to wait due to the `limit` option.
+        _this5.uppy.emit('upload-started', file);
+        return _this5.uploadRemote.bind(_this5, file, current, total);
+      } else {
+        _this5.uppy.emit('upload-started', file);
+        return _this5.upload.bind(_this5, file, current, total);
+      }
+    });
+
+    var promises = actions.map(function (action) {
+      var limitedAction = _this5.limitUploads(action);
+      return limitedAction();
+    });
+
+    return settle(promises);
+  };
+
+  XHRUpload.prototype.handleUpload = function handleUpload(fileIDs) {
+    var _this6 = this;
+
+    if (fileIDs.length === 0) {
+      this.uppy.log('[XHRUpload] No files to upload!');
+      return Promise.resolve();
+    }
+
+    this.uppy.log('[XHRUpload] Uploading...');
+    var files = fileIDs.map(function (fileID) {
+      return _this6.uppy.getFile(fileID);
+    });
+
+    if (this.opts.bundle) {
+      return this.uploadBundle(files);
+    }
+
+    return this.uploadFiles(files).then(function () {
+      return null;
+    });
+  };
+
+  XHRUpload.prototype.install = function install() {
+    if (this.opts.bundle) {
+      this.uppy.setState({
+        capabilities: _extends({}, this.uppy.getState().capabilities, {
+          bundled: true
+        })
+      });
+    }
+
+    this.uppy.addUploader(this.handleUpload);
+  };
+
+  XHRUpload.prototype.uninstall = function uninstall() {
+    if (this.opts.bundle) {
+      this.uppy.setState({
+        capabilities: _extends({}, this.uppy.getState().capabilities, {
+          bundled: true
+        })
+      });
+    }
+
+    this.uppy.removeUploader(this.handleUpload);
+  };
+
+  return XHRUpload;
+}(Plugin);
 
 /***/ })
 /******/ ]);

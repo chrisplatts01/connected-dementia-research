@@ -1446,14 +1446,6 @@ form .date-field-group label.error {
 }
 
 .uppy-StatusBar-content {
-  font-family: "Calibri", "Open Sans", "Helvetica", "Arial", sans-serif;
-  font-size: 19px;
-  font-weight: 700;
-  line-height: 24px;
-  color: #333f48;
-  padding-top: 16px;
-  text-align: left;
-  color: #008194;
   display: -ms-flexbox !important;
   display: flex !important;
   -ms-flex-align: center !important;
@@ -1464,8 +1456,15 @@ form .date-field-group label.error {
   padding-left: 15px !important;
   white-space: nowrap !important;
   text-overflow: ellipsis !important;
-  color: #000 !important;
   height: 100% !important;
+  font-family: "Calibri", "Open Sans", "Helvetica", "Arial", sans-serif;
+  font-size: 19px;
+  font-weight: 700;
+  line-height: 24px;
+  color: #333f48;
+  padding-top: 16px;
+  text-align: left;
+  color: #008194 !important;
 }
 
 .uppy-StatusBar-content:before {
@@ -1593,6 +1592,7 @@ form .date-field-group label.error {
 }
 
 .uppy-StatusBar.is-waiting .uppy-StatusBar-actionBtn--upload {
+  width: 100% !important;
   font-family: "Calibri", "Open Sans", "Helvetica", "Arial", sans-serif !important;
   font-size: 19px !important;
   font-weight: 400 !important;
@@ -1606,7 +1606,6 @@ form .date-field-group label.error {
   background-color: #f15b5b !important;
   box-shadow: 0 4px 0 0 #d41212 !important;
   cursor: pointer !important;
-  width: 100% !important;
 }
 
 .uppy-StatusBar.is-waiting .uppy-StatusBar-actionBtn--upload:hover, .uppy-StatusBar.is-waiting .uppy-StatusBar-actionBtn--upload:focus, .uppy-StatusBar.is-waiting .uppy-StatusBar-actionBtn--upload:active, .uppy-StatusBar.is-waiting .uppy-StatusBar-actionBtn--upload.hover {

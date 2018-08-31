@@ -90,6 +90,14 @@
   dependencies:
     lodash.throttle "^4.1.1"
 
+"@uppy/xhr-upload@^0.27.1":
+  version "0.27.1"
+  resolved "https://registry.yarnpkg.com/@uppy/xhr-upload/-/xhr-upload-0.27.1.tgz#a272d91839076b92ee645974163a36279211d260"
+  dependencies:
+    "@uppy/companion-client" "0.27.1"
+    "@uppy/utils" "0.27.0"
+    cuid "^2.1.1"
+
 "@webassemblyjs/ast@1.5.13":
   version "1.5.13"
   resolved "https://registry.yarnpkg.com/@webassemblyjs/ast/-/ast-1.5.13.tgz#81155a570bd5803a30ec31436bc2c9c0ede38f25"
