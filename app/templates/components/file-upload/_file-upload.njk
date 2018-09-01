@@ -1,17 +1,3 @@
-<!--
-  File upload widget - using th eUppy JS plugin. Only one per page at the moment!
-
-  attributes:
-    data-auto-upload="true|false" - Choose whether to allow automatic or user-initiated uploads; the default is 'false'
-    data-protocol="tus|xhr" - Choose which request protocol to use; the default is 'xhr' (XmlHttpRequest)
-    data-endpoint="YOUR_ENDPOINT_URL" - See notes below
-
-  notes:
-    For the 'tus' protocol the default endpoint is 'https://master.tus.io/files/' provided for test purposes by Transloadit
-    For the 'xhr' protocol the default endpoint is 'https://example.cm/upload' and will fail!
-    The TUS protocol is a resumable protocol developed by Transloadit.
-    The XHR protocol uses standard Ajax XmlHttpRequest
-  -->
 <div id="file-upload" class="form__field file-upload" data-auto-upload="false" data-protocol="tus" data-endpoint="https://master.tus.io/files/">
 	<button class="UppyModalOpenerBtn">Open Uppy Dashboard Modal</button>
 	<div class="DashboardContainer"></div>

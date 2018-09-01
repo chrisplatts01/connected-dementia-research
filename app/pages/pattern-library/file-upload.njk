@@ -4,29 +4,27 @@
 
 {% block content %}
   <h1 class="pl-heading">File upload</h1>
-  <p>The file upload widget uses the Uppy JS plugin. Only one per page is allowed at the moment  as each instance requires the JS code to target each container ID specifically.
-    <br>
-    <br>
-    <b>Attributes</b><br>
-      <code>data-auto-upload="true|false"</code> - Choose whether to allow automatic or user-initiated uploads; the default is 'false'<br>
-      <code>data-protocol="tus|xhr"</code> - Choose which request protocolto use; the default is 'xhr' (XmlHttpRequest)<br>
-      <code>data-endpoint="YOUR_ENDPOINT_URL"</code> - See notes below<br>
-    <br>
-    <br>
-
-    <b>notes:</b><br>
-    The TUS protocol is a resumable protocol developed by Transloadit, The default endpoint is 'https://master.tus.io/files/' provided for test purposes by Transloadit<br>
-    The XHR protocol uses standard Ajax XmlHttpReques. The default endpoint is 'https://example.cm/upload' <em>and will fail</em>!
-  </p>
-  <p>
-    The widget is currently configured to allow between 1 and 3 image files (image/*) to be attached.
-  </p>
+  <p>The file upload widget uses the Uppy JS uploader. Only one instance per page is allowed at the moment  as each instance requires the JS code to target each container ID specifically.</p>
+  <p>There are various options to customise the how the uploader works, three of which are currently exposed though <code>data-*</code> attributes, controlling whether uploads are automatically initiated or by user interaction; which plugin is used to upload the file(s) - options are <i>TUS</i> and <i>XHRUpload</i>; and which endpoint URL is the target. Details are shown below.</p>
+  <h3>Attributes</h3>
+    <ul>
+      <li><code>data-auto-upload="true|false"</code> - Choose whether to allow automatic or user-initiated uploads - the default is 'false'</li>
+      <li><code>data-protocol="tus|xhr"</code> - Choose which request protocol to use - the default is 'xhr' (XmlHttpRequest)</li>
+      <li><code>data-endpoint="YOUR_ENDPOINT_URL"</code> - See notes below</li>
+    </ul>
+    <h3>Notes:</h3>
+    <ol>
+      <li><i>TUS</i> is a resumable protocol developed by Transloadit, The default endpoint is 'https://master.tus.io/files/' provided for test purposes by Transloadit</li>
+      <li><i>XHRUpload</i> uses the standard Ajax XmlHttpRequest. The default endpoint is 'https://example.cm/upload' <em>and will fail</em>!</li>
+      <li>The widget is currently configured to allow between 1 and 3 image files (image/*) of up to 1MB each to be uploaded.</li>
+    </ol>
+    <h3>Work in progress</h3>
+    <ol>
+      <li><i>TODO:</i> Test edge cases for style inconsistencies.</li>
+      <li><i>TODO:</i> Find a way to allow multiple instances on a page with generated rather than explicit IDs.</li>
+    </ol>
   {{ volunteer.fileUpload() }}
-  <p>
-    <small><i>TODO:</i> Test edge cases for style inconsistencies.</small><br />
-    <small><i>TODO:</i> Find a way toallow multiple instances on a page with gnerated rather than explicit IDs.</small>
-  </p>
-  <h2 class="pl-heading">HTML</h2>
+   <h2 class="pl-heading">HTML</h2>
   <textarea class="pl-code" disabled>
     {{ volunteer.fileUpload() }}
   </textarea>
