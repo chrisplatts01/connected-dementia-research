@@ -170,7 +170,7 @@ jquery__WEBPACK_IMPORTED_MODULE_0___default()(function () {
           maxFileSize: 1000000,
           maxNumberOfFiles: 3,
           minNumberOfFiles: 1,
-          allowedFileTypes: ['image/*', 'video/*']
+          allowedFileTypes: ['image/*']
         }
       })
 
@@ -180,7 +180,7 @@ jquery__WEBPACK_IMPORTED_MODULE_0___default()(function () {
         target: '.DashboardContainer',
         replaceTargetContent: true,
         showProgressDetails: false,
-        note: 'Images and video only, 1–3 files, up to 1 MB',
+        note: 'Images only, 1–3 files, up to 1 MB',
         height: 180,
         width: 360,
         metaFields: [{
