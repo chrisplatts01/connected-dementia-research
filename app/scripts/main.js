@@ -34,17 +34,30 @@ const XHRUpload = require('@uppy/xhr-upload') // Classic multipart form uploads 
 
 $(function () {
   /**
-   * FILE UPLOAD: Handle file upload components
+   * FILE UPLOAD: Handle file upload components (user initiated upload using XHR)
    */
   var fileUpload = (function () {
-    var $fileUpload = $('.file-upload')
+    var $fileUpload = $('#file-upload')
 
-    $fileUpload.each(function (index, element) {
-      var $this = $[this]
+    $fileUpload.each(function () {
+      var autoProceed = ($fileUpload.attr('data-auto-upload') === "true")
+      var protocol = $fileUpload.attr('data-protocol')
+      var endpoint = $fileUpload.attr('data-endpoint')
+
+      console.log('RAW VALUES = ', autoProceed, protocol, endpoint)
+
+      protocol = protocol || 'xhr'
+      if (protocol === 'tus') {
+        endpoint = endpoint || 'https://master.tus.io/files/' // This endpoint is provided by Transloadit for testing
+      } else  {
+        endpoint = endpoint || 'https://example.com/upload' // This endpoint will fail
+      }
+
+      console.log('VALUES = ', autoProceed, protocol, endpoint)
 
       var uppy = Uppy({
         debug: true,
-        autoProceed: false,
+        autoProceed: autoProceed,
         restrictions: {
           maxFileSize: 1000000,
           maxNumberOfFiles: 3,
@@ -52,7 +65,8 @@ $(function () {
           allowedFileTypes: ['image/*', 'video/*']
         }
       })
-      .use(Dashboard, {
+
+      uppy.use(Dashboard, {
         trigger: '.UppyModalOpenerBtn',
         inline: true,
         target: '.DashboardContainer',
@@ -74,14 +88,22 @@ $(function () {
         locale: {
           strings: {
             dropPaste: 'Drag file(s) here or %{browse}',
-            complete: 'Upload successful'
+            complete: 'Upload successful',
+            pleasePressRetry: ''
           }
         },
         browserBackButtonClose: true
       })
-      .use(Tus, {
-        endpoint: 'https://master.tus.io/files/'
-      })
+
+      if (protocol === 'tus') {
+        uppy.use(Tus, {
+          endpoint: endpoint
+        })
+      } else {
+        uppy.use(XHRUpload, {
+          endpoint: endpoint
+        })
+      }
 
       uppy.on('complete', result => {
         console.log('successful files:', result.successful)
@@ -114,6 +136,7 @@ $(function () {
 
     $('form').each(function () {
       var $form = $(this)
+      if (a === b)
       $form.validate({
         groups: {
           dateGroup: 'date-field-day date-field-month date-field-year'
