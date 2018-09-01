@@ -1,0 +1,802 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"endmacro",
+				"endmacro"
+			],
+			[
+				"msg--error",
+				"message--error\t main.css"
+			],
+			[
+				"tex",
+				"text-decoration"
+			],
+			[
+				"text-",
+				"text-align"
+			],
+			[
+				"inline-",
+				"inline-block"
+			],
+			[
+				"text",
+				"text-align"
+			],
+			[
+				"back",
+				"background-color"
+			],
+			[
+				"br",
+				"brand-primary\t _panel-progress.scss"
+			],
+			[
+				"pad",
+				"padding-bottom"
+			],
+			[
+				"marg",
+				"margin-right"
+			],
+			[
+				"border",
+				"border-top"
+			],
+			[
+				"bac",
+				"background-color"
+			],
+			[
+				"ba",
+				"base-spacing\t _page-header.scss"
+			],
+			[
+				"sm",
+				"small-spacing\t _page-footer.scss"
+			],
+			[
+				"te",
+				"text-decoration"
+			],
+			[
+				"i",
+				"inline"
+			],
+			[
+				"padd",
+				"padding-top"
+			],
+			[
+				"c",
+				"centred\t _forms.scss"
+			],
+			[
+				"b",
+				"brand-primary\t _page-header.scss"
+			],
+			[
+				"li",
+				"light-blue\t _panel-progress.scss"
+			],
+			[
+				"fo",
+				"font-weight"
+			],
+			[
+				"border-top",
+				"border-top-right-radius"
+			],
+			[
+				"bor",
+				"border-right"
+			],
+			[
+				"borde",
+				"border-radius"
+			],
+			[
+				"u",
+				"ul\tTag"
+			],
+			[
+				"font",
+				"font-size"
+			],
+			[
+				"fa",
+				"fadeIn\t.fadeIn()"
+			],
+			[
+				"tabC",
+				"tabCognitiveTests"
+			],
+			[
+				"backg",
+				"background-size"
+			],
+			[
+				"se",
+				"section-title\t _panel-progress.scss"
+			],
+			[
+				"alt",
+				"alt-font-family\t _variables.scss"
+			],
+			[
+				"base",
+				"base-border-color\t _variables.scss"
+			],
+			[
+				"base-",
+				"base-spacing\t _page-layout.scss"
+			],
+			[
+				"acc",
+				"accordion_content\t main.scss"
+			],
+			[
+				"alt-f",
+				"alt-font-color\t _typography.scss"
+			],
+			[
+				"base-f",
+				"base-font-color\t _typography.scss"
+			],
+			[
+				"position",
+				"_position-button-arrow.scss"
+			],
+			[
+				"padding-",
+				"padding-left"
+			],
+			[
+				"content-",
+				"content-section--grey"
+			],
+			[
+				"box",
+				"box-sizing"
+			],
+			[
+				"base-b",
+				"base-border-radius\t _buttons.scss"
+			],
+			[
+				"va",
+				"values"
+			],
+			[
+				"d",
+				"dark-gray\t main.scss"
+			],
+			[
+				"border-co",
+				"border-color"
+			],
+			[
+				"light-",
+				"light-gray\t _base.scss"
+			],
+			[
+				"light",
+				"light-gray\t _base.scss"
+			],
+			[
+				"medication_",
+				"medication_add-row"
+			],
+			[
+				"curr",
+				"currentRows"
+			],
+			[
+				"bra",
+				"brand-secondary\t _select-slider.scss"
+			],
+			[
+				"small",
+				"small-font-size\t _base.scss"
+			],
+			[
+				"check",
+				"checkIfValid"
+			],
+			[
+				"pa",
+				"parsley"
+			],
+			[
+				"tot",
+				"totalDuration〔variable〕"
+			],
+			[
+				"parsley",
+				"parsley-errors-list\t main.scss"
+			],
+			[
+				"flex",
+				"flex-direction"
+			],
+			[
+				"st",
+				"stylesheet"
+			],
+			[
+				"ma",
+				"manifest.webapp"
+			],
+			[
+				"con",
+				"container"
+			],
+			[
+				"brand",
+				"brand-primary\t main.scss"
+			],
+			[
+				"sess",
+				"session-panel\t main.css"
+			],
+			[
+				"ses",
+				"session-panel\t main.css"
+			],
+			[
+				"form-fi",
+				"form-field--textarea\t _forms.scss"
+			],
+			[
+				"me",
+				"measures-thanks.njk"
+			],
+			[
+				"rev",
+				"review-goals-3.njk"
+			],
+			[
+				"we",
+				"welcome-week-2.njk"
+			],
+			[
+				"ex",
+				"exercise-diary-update-7b.njk"
+			],
+			[
+				"welcome",
+				"welcome-1a.njk"
+			],
+			[
+				"sett",
+				"setting-goals-2.njk"
+			],
+			[
+				"exer",
+				"exercise-diary-5.njk"
+			],
+			[
+				"exe",
+				"exercise-diary-3.njk"
+			],
+			[
+				"exerc",
+				"exercise-diary-2a.njk"
+			],
+			[
+				"mea",
+				"measures-1.njk"
+			],
+			[
+				"phy",
+				"physical-fitness-4.njk"
+			],
+			[
+				"py",
+				"physical-fitness-1a.njk"
+			],
+			[
+				"measure",
+				"measures-1.njk"
+			],
+			[
+				"reg",
+				"register-thanks.njk"
+			],
+			[
+				"regi",
+				"register-4.njk"
+			],
+			[
+				"regis",
+				"register-3.njk"
+			],
+			[
+				"re",
+				"review-goals-3a.njk"
+			],
+			[
+				"fun",
+				"function〔keyword〕"
+			],
+			[
+				"form-field",
+				"form-field--radio\t _forms.scss"
+			],
+			[
+				"fade",
+				"fadeOut\t.fadeOut()"
+			],
+			[
+				"mi",
+				"mid-gray\t _slider.scss"
+			],
+			[
+				"user-",
+				"user-status\t main.css"
+			],
+			[
+				"w",
+				"word-wrap"
+			],
+			[
+				"str",
+				"stroke-width"
+			],
+			[
+				"border-t",
+				"border-top-left-radius"
+			],
+			[
+				"lig",
+				"light-gray\t _variables.scss"
+			],
+			[
+				"line-",
+				"line-height"
+			],
+			[
+				"backgr",
+				"background-size"
+			],
+			[
+				"col",
+				"color"
+			],
+			[
+				"ali",
+				"align-items"
+			],
+			[
+				"pro",
+				"progress-panel_progress-bar"
+			],
+			[
+				"list",
+				"list-style"
+			],
+			[
+				"dis",
+				"display-panel__text"
+			],
+			[
+				"align",
+				"align-content"
+			],
+			[
+				"he",
+				"height"
+			],
+			[
+				"font-",
+				"font-style"
+			],
+			[
+				"mar",
+				"margin-top"
+			],
+			[
+				"inline",
+				"inline-block"
+			],
+			[
+				"a",
+				"lower-alpha"
+			],
+			[
+				"form-",
+				"form-action-group\t _forms.scss"
+			],
+			[
+				"l",
+				"label"
+			],
+			[
+				"bower",
+				"bower_components/"
+			],
+			[
+				"data-parsley-",
+				"data-parsley-validate"
+			],
+			[
+				"list-s",
+				"list-style-type"
+			],
+			[
+				"in",
+				"inline-block"
+			],
+			[
+				"di",
+				"display"
+			],
+			[
+				"background-c",
+				"background-color"
+			],
+			[
+				"text-tr",
+				"text-transform"
+			],
+			[
+				"our",
+				"our-work"
+			]
+		]
+	},
+	"buffers":
+	[
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 392.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"lint",
+				"SublimeLinter: Lint This View"
+			],
+			[
+				"pi",
+				"Package Control: Install Package"
+			],
+			[
+				"pret",
+				"HTMLPrettify"
+			],
+			[
+				"prett",
+				"HTMLPrettify"
+			],
+			[
+				"sass",
+				"SassBeautify"
+			],
+			[
+				"CSS",
+				"Run CSScomb"
+			],
+			[
+				"pack",
+				"Package Control: List Packages"
+			],
+			[
+				"html",
+				"HTMLPrettify"
+			],
+			[
+				"htm",
+				"HTMLPrettify"
+			],
+			[
+				"scss",
+				"Set Syntax: SCSS"
+			],
+			[
+				"mat",
+				"Material Theme: Configuration"
+			]
+		],
+		"width": 509.0
+	},
+	"console":
+	{
+		"height": 58.0,
+		"history":
+		[
+			"import urllib.request,os,hashlib; h = '6f4c264a24d933ce70df5dedcf1dcaee' + 'ebe013ee18cced0ef93d5f746d80ef60'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)",
+			"import urllib.request,os,hashlib; h = '2915d1851351e5ee549c20394736b442' + '8bc59f460fa1548d1514676163dafc88'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)"
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/Users/chris/Sites/Development/connected-dementia-research"
+	],
+	"file_history":
+	[
+		"/Users/chris/Sites/Development/connected-dementia-research/node_modules/fine-uploader/package.json",
+		"/Users/chris/Sites/Development/connected-dementia-research/app/templates/components/progress-indicator/_progress-indicator.njk",
+		"/Users/chris/Sites/Development/connected-dementia-research/app/pages/pattern-library/progress-indicator.njk",
+		"/Users/chris/Sites/Development/connected-dementia-research/app/pages/pattern-library/postcode-lookup.njk",
+		"/Users/chris/Sites/Development/connected-dementia-research/app/templates/components/postcode-lookup/_postcode-lookup.njk",
+		"/Users/chris/Sites/Development/connected-dementia-research/app/templates/components/message/_message.njk",
+		"/Users/chris/Sites/Development/connected-dementia-research/app/pages/pattern-library/message.njk",
+		"/Users/chris/Sites/Development/connected-dementia-research/app/pages/pattern-library/paragraph.njk",
+		"/Users/chris/Sites/Development/connected-dementia-research/app/templates/components/message/_message.scss",
+		"/Users/chris/Sites/Development/connected-dementia-research/app/templates/pattern-library-layout.njk",
+		"/Users/chris/Sites/Development/connected-dementia-research/app/pages/pattern-library/heading.njk",
+		"/Users/chris/Sites/Development/connected-dementia-research/app/pages/pattern-library/input-field.njk",
+		"/Users/chris/Sites/Development/connected-dementia-research/app/templates/components/input-field/_input-field.njk",
+		"/Users/chris/Sites/Development/connected-dementia-research/app/pages/pattern-library/bullet-list.njk",
+		"/Users/chris/Sites/Development/connected-dementia-research/app/templates/components/activity-button/_activity-button.scss",
+		"/Users/chris/Sites/Development/connected-dementia-research/app/templates/components/checkbox/_checkbox.scss",
+		"/Users/chris/Sites/Development/connected-dementia-research/app/pages/pattern-library/file-upload.njk",
+		"/Users/chris/Sites/Development/connected-dementia-research/app/templates/components/radio-button/_radio-button.scss",
+		"/Users/chris/Sites/Development/connected-dementia-research/app/templates/components/bullet-list/_bullet-list.njk",
+		"/Users/chris/Sites/Development/connected-dementia-research/app/templates/components/bullet-list/_bullet-list.scss",
+		"/Users/chris/Sites/Development/connected-dementia-research/app/pages/pattern-library/bullet-point.njk",
+		"/Users/chris/Sites/Development/connected-dementia-research/app/styles/main.scss",
+		"/Users/chris/Sites/Development/connected-dementia-research/app/pages/volunteer/your-details.njk",
+		"/Users/chris/Sites/Development/connected-dementia-research/app/templates/components/checkbox/_checkbox.njk",
+		"/Users/chris/Sites/Development/connected-dementia-research/app/templates/components/segmented-control/_segmented-control.njk",
+		"/Users/chris/Sites/Development/connected-dementia-research/app/templates/components/dropdown-select/_dropdown-select.njk",
+		"/Users/chris/Sites/Development/connected-dementia-research/app/templates/components/form/_form.njk",
+		"/Users/chris/Sites/Development/connected-dementia-research/app/templates/components/page-navigation/_page-navigation.njk",
+		"/Users/chris/Sites/Development/connected-dementia-research/app/templates/components/page-navigation/_page-navigation.scss",
+		"/Users/chris/Sites/Development/connected-dementia-research/app/templates/components/date-field-group/_date-field-group.njk",
+		"/Users/chris/Sites/Development/connected-dementia-research/app/templates/macros/volunteer.njk",
+		"/Users/chris/Sites/Development/connected-dementia-research/app/templates/components/dob-field-group/_dob-field-group.scss",
+		"/Users/chris/Sites/Development/connected-dementia-research/app/pages/pattern-library/form-field.njk",
+		"/Users/chris/Sites/Development/connected-dementia-research/app/templates/components/dob-field-group/_dob-field-group.njk",
+		"/Users/chris/Sites/Development/connected-dementia-research/app/templates/components/form-field/_form-field.scss",
+		"/Users/chris/Sites/Development/connected-dementia-research/app/templates/components/postcode-lookup/_postcode-lookup.scss",
+		"/Users/chris/Sites/Development/connected-dementia-research/app/templates/components/form/_form.scss",
+		"/Users/chris/Sites/Development/connected-dementia-research/app/templates/components/heading/_heading.njk",
+		"/Users/chris/Sites/Development/connected-dementia-research/app/templates/components/subheading/_subheading.njk",
+		"/Users/chris/Sites/Development/connected-dementia-research/app/templates/components/subheading/_subheading.scss",
+		"/Users/chris/Sites/Development/connected-dementia-research/app/templates/components/file-upload/_file-upload.njk",
+		"/Users/chris/Sites/Development/connected-dementia-research/app/pages/pattern-library/fonts.njk",
+		"/Users/chris/Sites/Development/connected-dementia-research/app/pages/pattern-library/index.njk",
+		"/Users/chris/Sites/Development/connected-dementia-research/app/pages/pattern-library/page-header.njk",
+		"/Users/chris/Sites/Development/connected-dementia-research/app/pages/pattern-library/prompt.njk",
+		"/Users/chris/Sites/Development/connected-dementia-research/app/pages/pattern-library/question.njk",
+		"/Users/chris/Sites/Development/connected-dementia-research/app/pages/pattern-library/radio-button.njk",
+		"/Users/chris/Sites/Development/connected-dementia-research/app/pages/pattern-library/segmented-control.njk",
+		"/Users/chris/Sites/Development/connected-dementia-research/app/pages/pattern-library/user-bar.njk",
+		"/Users/chris/Sites/Development/connected-dementia-research/app/templates/components/button/_button.njk",
+		"/Users/chris/Sites/Development/connected-dementia-research/app/templates/components/dropdown-select/_dropdown-select.scss",
+		"/Users/chris/Sites/Development/connected-dementia-research/app/pages/pattern-library/dropdown-select.njk",
+		"/Users/chris/Sites/Development/connected-dementia-research/app/pages/pattern-library/colours.njk",
+		"/Users/chris/Sites/Development/connected-dementia-research/app/pages/pattern-library/checkbox.njk",
+		"/Users/chris/Sites/Development/connected-dementia-research/app/pages/pattern-library/button.njk",
+		"/Users/chris/Sites/Development/connected-dementia-research/app/templates/components/activity-button/_activity-button.njk",
+		"/Users/chris/Sites/Development/connected-dementia-research/app/pages/pattern-library/activity-button.njk",
+		"/private/var/folders/hz/pdw4ybgn3lx6qy30v01bb58c0000gn/T/14BE471C-F182-4420-A0CD-CB9316C93A3F/app/styles/mixins/forms/_segmented-control.scss",
+		"/Users/chris/Sites/Production/fit-fish.co.uk/retreats/book-now/index.html",
+		"/Users/chris/Sites/Production/fit-fish.co.uk/retreats/faqs/index.html",
+		"/Users/chris/Sites/Production/fit-fish.co.uk/retreats/feedback/index.html",
+		"/Users/chris/Sites/Production/fit-fish.co.uk/retreats/prices/index.html",
+		"/Users/chris/Sites/Production/fit-fish.co.uk/retreats/weekends/house-of-bread-2016.html",
+		"/Users/chris/Sites/Production/fit-fish.co.uk/retreats/weekends/house-of-bread-2017.html",
+		"/Users/chris/Sites/Production/fit-fish.co.uk/retreats/weekends/house-of-bread-2018.html",
+		"/Users/chris/Sites/Production/fit-fish.co.uk/retreats/weekends/index.html.OLD",
+		"/Users/chris/Sites/Production/fit-fish.co.uk/retreats/weekends/programme.html",
+		"/Users/chris/Sites/Production/fit-fish.co.uk/retreats/weeks/france.html",
+		"/Users/chris/Sites/Production/fit-fish.co.uk/retreats/weeks/index.html",
+		"/Users/chris/Sites/Production/fit-fish.co.uk/retreats/weeks/snow-and-spa.html",
+		"/Users/chris/Sites/Production/fit-fish.co.uk/sandbox/index.html",
+		"/Users/chris/Sites/Production/fit-fish.co.uk/shop/index.html",
+		"/Users/chris/Sites/Production/fit-fish.co.uk/index.html",
+		"/Users/chris/Sites/Production/fit-fish.co.uk/about-fitfish/fitfish-stories/index.html",
+		"/Users/chris/Sites/Production/fit-fish.co.uk/about-fitfish/meet-the-team/index.html",
+		"/Users/chris/Sites/Production/fit-fish.co.uk/about-fitfish/what-is-fitfish/index.html",
+		"/Users/chris/Sites/Production/fit-fish.co.uk/contact-us/index.html",
+		"/Users/chris/Sites/Production/fit-fish.co.uk/days/index.html",
+		"/Users/chris/Sites/Production/fit-fish.co.uk/friends/index.html",
+		"/Users/chris/Sites/Production/fit-fish.co.uk/local/at-work/index.html",
+		"/Users/chris/Sites/Production/fit-fish.co.uk/local/classes/index.html",
+		"/Users/chris/Sites/Production/fit-fish.co.uk/local/days/index.html",
+		"/Users/chris/Sites/Production/fit-fish.co.uk/local/localfit/bedfordshire.html",
+		"/Users/chris/Sites/Production/fit-fish.co.uk/local/localfit/berkshire.html",
+		"/Users/chris/Sites/Production/fit-fish.co.uk/local/localfit/birmingham.html",
+		"/Users/chris/Sites/Production/fit-fish.co.uk/local/localfit/bournemouth.html",
+		"/Users/chris/Sites/Production/fit-fish.co.uk/local/localfit/brighton.html",
+		"/Users/chris/Sites/Production/fit-fish.co.uk/local/localfit/bristol.html",
+		"/Users/chris/Sites/Production/fit-fish.co.uk/local/localfit/cambridge.html",
+		"/Users/chris/Sites/Production/fit-fish.co.uk/local/localfit/essex.html",
+		"/Users/chris/Sites/Production/fit-fish.co.uk/local/localfit/gloucester.html",
+		"/Users/chris/Sites/Production/fit-fish.co.uk/local/localfit/index.html",
+		"/Users/chris/Sites/Production/fit-fish.co.uk/local/localfit/london.html",
+		"/Users/chris/Sites/Production/fit-fish.co.uk/local/localfit/manchester.html",
+		"/Users/chris/Sites/Production/fit-fish.co.uk/local/localfit/northampton.html",
+		"/Users/chris/Sites/Production/fit-fish.co.uk/local/localfit/shropshire.html",
+		"/Users/chris/Sites/Production/fit-fish.co.uk/local/localfit/southampton.html",
+		"/Users/chris/Sites/Production/fit-fish.co.uk/local/localfit/stockport.html",
+		"/Users/chris/Sites/Production/fit-fish.co.uk/motivation/inspiration/index.html",
+		"/Users/chris/Sites/Production/fit-fish.co.uk/motivation/inspiration/sweet-potato.html",
+		"/Users/chris/Sites/Production/fit-fish.co.uk/motivation/online-support-groups/index.html",
+		"/Users/chris/Sites/Production/fit-fish.co.uk/nutrition/recipes/index.html",
+		"/Users/chris/Sites/Production/fit-fish.co.uk/nutrition/recipes/index_HOLDING_PAGE.html",
+		"/Users/chris/Sites/Production/fit-fish.co.uk/nutrition/recipes/recipe-after-dinner-chocolate-coconut-log.html",
+		"/Users/chris/Sites/Production/fit-fish.co.uk/nutrition/recipes/recipe-apple-and-raisin-cake.html",
+		"/Users/chris/Sites/Production/fit-fish.co.uk/nutrition/recipes/recipe-apple-cinnamon-date-cake.html",
+		"/Users/chris/Sites/Production/fit-fish.co.uk/nutrition/recipes/recipe-balanced-breakfast-scramble.html",
+		"/Users/chris/Sites/Production/fit-fish.co.uk/nutrition/recipes/recipe-butternut-squash-pepper-soup.html",
+		"/Users/chris/Sites/Production/fit-fish.co.uk/nutrition/recipes/recipe-chicken-and-butternut-squash-tagine.html",
+		"/Users/chris/Sites/Production/fit-fish.co.uk/nutrition/recipes/recipe-chicken-casserole.html",
+		"/Users/chris/Sites/Production/fit-fish.co.uk/nutrition/recipes/recipe-chicken-roast-vegetables.html",
+		"/Users/chris/Sites/Production/fit-fish.co.uk/nutrition/recipes/recipe-chicken-rogan-josh.html",
+		"/Users/chris/Sites/Production/fit-fish.co.uk/nutrition/recipes/recipe-christmas-cake.html",
+		"/Users/chris/Sites/Production/fit-fish.co.uk/nutrition/recipes/recipe-christmas-pudding-muffins.html",
+		"/Users/chris/Sites/Production/fit-fish.co.uk/nutrition/recipes/recipe-christmas-pudding.html",
+		"/Users/chris/Sites/Production/fit-fish.co.uk/nutrition/recipes/recipe-commuter-breakfast-cake.html",
+		"/Users/chris/Sites/Production/fit-fish.co.uk/nutrition/recipes/recipe-creamy-chicken-butternut-and-haricot-curry.html",
+		"/Users/chris/Sites/Production/fit-fish.co.uk/nutrition/recipes/recipe-date-and-coconut-loaf.html",
+		"/Users/chris/Sites/Production/fit-fish.co.uk/nutrition/recipes/recipe-easy-as-ginger-ice-cream.html",
+		"/Users/chris/Sites/Production/fit-fish.co.uk/nutrition/recipes/recipe-easy-oaty-pancakes.html",
+		"/Users/chris/Sites/Production/fit-fish.co.uk/nutrition/recipes/recipe-fat-free-fruit-loaf.html",
+		"/Users/chris/Sites/Production/fit-fish.co.uk/nutrition/recipes/recipe-fitfish-chocolate.html",
+		"/Users/chris/Sites/Production/fit-fish.co.uk/nutrition/recipes/recipe-ginger-lemon-coconut-salmon.html",
+		"/Users/chris/Sites/Production/fit-fish.co.uk/nutrition/recipes/recipe-great-veggie-chilli.html",
+		"/Users/chris/Sites/Production/fit-fish.co.uk/nutrition/recipes/recipe-jingle-balls.html",
+		"/Users/chris/Sites/Production/fit-fish.co.uk/nutrition/recipes/recipe-juicy-date-berry-cake.html",
+		"/Users/chris/Sites/Production/fit-fish.co.uk/nutrition/recipes/recipe-mediterranean-tuna.html",
+		"/Users/chris/Sites/Production/fit-fish.co.uk/nutrition/recipes/recipe-prawn-stir-fry.html"
+	],
+	"find":
+	{
+		"height": 26.0
+	},
+	"find_in_files":
+	{
+		"height": 346.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": true,
+		"find_history":
+		[
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 26.0
+	},
+	"input":
+	{
+		"height": 41.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.CSS Extended Completions":
+	{
+		"height": 0.0
+	},
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "",
+	"project": "cdr.sublime-project",
+	"replace":
+	{
+		"height": 48.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"screen.css",
+				"node_modules/node-forge/tests/screen.css"
+			],
+			[
+				"screen",
+				"node_modules/node-forge/tests/screen.css"
+			],
+			[
+				"html.html.twig",
+				"themes/contrib/neato/templates/base/html.html.twig"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": false,
+	"show_open_files": true,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 276.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}

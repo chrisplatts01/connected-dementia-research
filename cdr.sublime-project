@@ -1,0 +1,12 @@
+{
+	"folders":
+	[
+		{
+			"path": "/Users/chris/Sites/Development/connected-dementia-research"
+		},
+		{
+			"follow_symlinks": true,
+			"path": "/Users/chris/Sites/Development/connected-dementia-research/app"
+		}
+	]
+}
