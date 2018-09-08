@@ -106,6 +106,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _scripts_vendor_datejs_i18n_en_GB_js__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_scripts_vendor_datejs_i18n_en_GB_js__WEBPACK_IMPORTED_MODULE_6__);
 /* harmony import */ var _chenfengyuan_datepicker_dist_datepicker_common_js__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(177);
 /* harmony import */ var _chenfengyuan_datepicker_dist_datepicker_common_js__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(_chenfengyuan_datepicker_dist_datepicker_common_js__WEBPACK_IMPORTED_MODULE_7__);
+/**
+ *  Declare these two varibles to fix an issue importing modules
+ */
+var a = ''
+var b = ''
+
 
 
 
@@ -141,545 +147,546 @@ const XHRUpload = __webpack_require__(256) // Classic multipart form uploads or 
 // const GoldenRetriever = require('@uppy/golden-retriever') // Restore files and continue uploading after a page refresh or a browser crash
 
 jquery__WEBPACK_IMPORTED_MODULE_0___default()(function () {
-  /**
-   * FILE UPLOAD: Handle file upload components (user initiated upload using XHR)
-   */
-  var fileUpload = (function () {
-    var $fileUpload = jquery__WEBPACK_IMPORTED_MODULE_0___default()('#file-upload')
+	/**
+	 * FILE UPLOAD: Handle file upload components (user initiated upload using XHR)
+	 */
+	var fileUpload = (function () {
+		var $fileUpload = jquery__WEBPACK_IMPORTED_MODULE_0___default()('#file-upload')
 
-    $fileUpload.each(function () {
-      var autoProceed = ($fileUpload.attr('data-auto-upload') === "true")
-      var protocol = $fileUpload.attr('data-protocol')
-      var endpoint = $fileUpload.attr('data-endpoint')
+		$fileUpload.each(function () {
+			var autoProceed = ($fileUpload.attr('data-auto-upload') === "true")
+			var protocol = $fileUpload.attr('data-protocol')
+			var endpoint = $fileUpload.attr('data-endpoint')
 
-      console.log('RAW VALUES = ', autoProceed, protocol, endpoint)
+			console.log('RAW VALUES = ', autoProceed, protocol, endpoint)
 
-      protocol = protocol || 'xhr'
-      if (protocol === 'tus') {
-        endpoint = endpoint || 'https://master.tus.io/files/' // This endpoint is provided by Transloadit for testing
-      } else  {
-        endpoint = endpoint || 'https://example.com/upload' // This endpoint will fail
-      }
+			protocol = protocol || 'xhr'
+			if (protocol === 'tus') {
+				endpoint = endpoint || 'https://master.tus.io/files/' // This endpoint is provided by Transloadit for testing
+			} else {
+				endpoint = endpoint || 'https://example.com/upload' // This endpoint will fail
+			}
 
-      console.log('VALUES = ', autoProceed, protocol, endpoint)
+			console.log('VALUES = ', autoProceed, protocol, endpoint)
 
-      var uppy = Uppy({
-        debug: true,
-        autoProceed: autoProceed,
-        restrictions: {
-          maxFileSize: 1000000,
-          maxNumberOfFiles: 3,
-          minNumberOfFiles: 1,
-          allowedFileTypes: ['image/*']
-        }
-      })
+			var uppy = Uppy({
+				debug: true,
+				autoProceed: autoProceed,
+				restrictions: {
+					maxFileSize: 1000000,
+					maxNumberOfFiles: 3,
+					minNumberOfFiles: 1,
+					allowedFileTypes: ['image/*']
+				}
+			})
 
-      uppy.use(Dashboard, {
-        trigger: '.UppyModalOpenerBtn',
-        inline: true,
-        target: '.DashboardContainer',
-        replaceTargetContent: true,
-        showProgressDetails: false,
-        note: 'Images only, 1–3 files, up to 1 MB',
-        height: 180,
-        width: 360,
-        metaFields: [{
-          id: 'name',
-          name: 'Name',
-          placeholder: 'file name'
-        },
-        {
-          id: 'caption',
-          name: 'Caption',
-          placeholder: 'Describe what the image is about'
-        }],
-        locale: {
-          strings: {
-            dropPaste: 'Drag file(s) here or %{browse}',
-            complete: 'Upload successful',
-            pleasePressRetry: ''
-          }
-        },
-        browserBackButtonClose: true
-      })
+			uppy.use(Dashboard, {
+				trigger: '.UppyModalOpenerBtn',
+				inline: true,
+				target: '.DashboardContainer',
+				replaceTargetContent: true,
+				showProgressDetails: false,
+				note: 'Images only, 1–3 files, up to 1 MB',
+				height: 180,
+				width: 360,
+				metaFields: [{
+						id: 'name',
+						name: 'Name',
+						placeholder: 'file name'
+					},
+					{
+						id: 'caption',
+						name: 'Caption',
+						placeholder: 'Describe what the image is about'
+					}
+				],
+				locale: {
+					strings: {
+						dropPaste: 'Drag file(s) here or %{browse}',
+						complete: 'Upload successful',
+						pleasePressRetry: ''
+					}
+				},
+				browserBackButtonClose: true
+			})
 
-      if (protocol === 'tus') {
-        uppy.use(Tus, {
-          endpoint: endpoint
-        })
-      } else {
-        uppy.use(XHRUpload, {
-          endpoint: endpoint
-        })
-      }
+			if (protocol === 'tus') {
+				uppy.use(Tus, {
+					endpoint: endpoint
+				})
+			} else {
+				uppy.use(XHRUpload, {
+					endpoint: endpoint
+				})
+			}
 
-      uppy.on('complete', result => {
-        console.log('successful files:', result.successful)
-        console.log('failed files:', result.failed)
-      })
-    })
-  })()
+			uppy.on('complete', result => {
+				console.log('successful files:', result.successful)
+				console.log('failed files:', result.failed)
+			})
+		})
+	})()
 
-  /**
-   * FORM VALIDATION: Handle form validation using the jquery-validation plugin
-   */
-  var formValidation = (function () {
-    jquery__WEBPACK_IMPORTED_MODULE_0___default.a.validator.addMethod(
-      'dateUK',
-      function (value, element) {
-        return Date.parseExact(value, 'd/M/yyyy')
-      },
-      'Please enter a valid date'
-    )
+	/**
+	 * FORM VALIDATION: Handle form validation using the jquery-validation plugin
+	 */
+	var formValidation = (function () {
+		jquery__WEBPACK_IMPORTED_MODULE_0___default.a.validator.addMethod(
+			'dateUK',
+			function (value, element) {
+				return Date.parseExact(value, 'd/M/yyyy')
+			},
+			'Please enter a valid date'
+		)
 
-    jquery__WEBPACK_IMPORTED_MODULE_0___default.a.validator.addMethod('dateGroup', function (value, element) {
-      var $dateFieldGroup = jquery__WEBPACK_IMPORTED_MODULE_0___default()(element).closest('.date-field-group')
-      var day = $dateFieldGroup.find('input[name="date-field-day"]').val()
-      var month = $dateFieldGroup.find('input[name="date-field-month"]').val()
-      var year = $dateFieldGroup.find('input[name="date-field-year"]').val()
-      var date = day + '/' + month + '/' + year
-      var parsedDate = Date.parseExact(date, 'dd/MM/yyyy')
-      return parsedDate !== null
-    })
+		jquery__WEBPACK_IMPORTED_MODULE_0___default.a.validator.addMethod('dateGroup', function (value, element) {
+			var $dateFieldGroup = jquery__WEBPACK_IMPORTED_MODULE_0___default()(element).closest('.date-field-group')
+			var day = $dateFieldGroup.find('input[name="date-field-day"]').val()
+			var month = $dateFieldGroup.find('input[name="date-field-month"]').val()
+			var year = $dateFieldGroup.find('input[name="date-field-year"]').val()
+			var date = day + '/' + month + '/' + year
+			var parsedDate = Date.parseExact(date, 'dd/MM/yyyy')
+			return parsedDate !== null
+		})
 
-    jquery__WEBPACK_IMPORTED_MODULE_0___default()('form').each(function () {
-      var $form = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this)
-      if (a === b)
-      $form.validate({
-        groups: {
-          dateGroup: 'date-field-day date-field-month date-field-year'
-        },
-        rules: {
-          'date-field-day': {
-            required: true,
-            number: true,
-            min: 1,
-            max: 31,
-            minlength: 2,
-            maxlength: 2,
-            dateGroup: true
-          },
-          'date-field-month': {
-            required: true,
-            number: true,
-            min: 1,
-            max: 12,
-            minlength: 2,
-            maxlength: 2,
-            dateGroup: true
-          },
-          'date-field-year': {
-            required: true,
-            number: true,
-            min: 1900,
-            minlength: 4,
-            maxlength: 4,
-            dateGroup: true
-          },
-          date: 'dateUK',
-          'date-field-datex': 'dateUK'
-        },
-        messages: {
-          'date-field-day': {
-            required: 'Please enter values for day, month and year',
-            number: 'Please enter a number',
-            min: 'Please enter a value of at least {0}',
-            max: 'Please enter a value no greater than {0}',
-            minlength: 'Please enter exactly {0} digits',
-            maxlength: 'Please enter exactly {0} digits',
-            dateGroup: 'Please enter a valid date'
-          },
-          'date-field-month': {
-            required: 'Please enter values for day, month and year',
-            number: 'Please enter a number',
-            min: 'Please enter a value of at least {0}',
-            max: 'Please enter a value no greater than {0}',
-            minlength: 'Please enter exactly {0} digits',
-            maxlength: 'Please enter exactly {0} digits',
-            dateGroup: 'Please enter a valid date'
-          },
-          'date-field-year': {
-            required: 'Please enter values for day, month and year',
-            number: 'Please enter a valid date',
-            min: 'Please enter a value of at least {0}',
-            max: 'Please enter a value no greater than {0}',
-            minlength: 'Please enter exactly {0} digits',
-            maxlength: 'Please enter exactly {0} digits',
-            dateGroup: 'Please enter a valid date'
-          }
-        },
-        errorElement: 'div',
-        errorPlacement: function (error, element) {
-          error.appendTo(element.closest('.form__field'))
-        }
-      })
-    })
-  })()
+		jquery__WEBPACK_IMPORTED_MODULE_0___default()('form').each(function () {
+			var $form = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this)
+			if (a === b)
+				$form.validate({
+					groups: {
+						dateGroup: 'date-field-day date-field-month date-field-year'
+					},
+					rules: {
+						'date-field-day': {
+							required: true,
+							number: true,
+							min: 1,
+							max: 31,
+							minlength: 2,
+							maxlength: 2,
+							dateGroup: true
+						},
+						'date-field-month': {
+							required: true,
+							number: true,
+							min: 1,
+							max: 12,
+							minlength: 2,
+							maxlength: 2,
+							dateGroup: true
+						},
+						'date-field-year': {
+							required: true,
+							number: true,
+							min: 1900,
+							minlength: 4,
+							maxlength: 4,
+							dateGroup: true
+						},
+						date: 'dateUK',
+						'date-field-datex': 'dateUK'
+					},
+					messages: {
+						'date-field-day': {
+							required: 'Please enter values for day, month and year',
+							number: 'Please enter a number',
+							min: 'Please enter a value of at least {0}',
+							max: 'Please enter a value no greater than {0}',
+							minlength: 'Please enter exactly {0} digits',
+							maxlength: 'Please enter exactly {0} digits',
+							dateGroup: 'Please enter a valid date'
+						},
+						'date-field-month': {
+							required: 'Please enter values for day, month and year',
+							number: 'Please enter a number',
+							min: 'Please enter a value of at least {0}',
+							max: 'Please enter a value no greater than {0}',
+							minlength: 'Please enter exactly {0} digits',
+							maxlength: 'Please enter exactly {0} digits',
+							dateGroup: 'Please enter a valid date'
+						},
+						'date-field-year': {
+							required: 'Please enter values for day, month and year',
+							number: 'Please enter a valid date',
+							min: 'Please enter a value of at least {0}',
+							max: 'Please enter a value no greater than {0}',
+							minlength: 'Please enter exactly {0} digits',
+							maxlength: 'Please enter exactly {0} digits',
+							dateGroup: 'Please enter a valid date'
+						}
+					},
+					errorElement: 'div',
+					errorPlacement: function (error, element) {
+						error.appendTo(element.closest('.form__field'))
+					}
+				})
+		})
+	})()
 
-  /**
-   * SELECT SLIDER FIELD: Handle slidr interface on select filds
-   */
-  var selectSliderField = (function () {
-    var $selectSliderFields = jquery__WEBPACK_IMPORTED_MODULE_0___default()('.select-slider-field')
+	/**
+	 * SELECT SLIDER FIELD: Handle slidr interface on select filds
+	 */
+	var selectSliderField = (function () {
+		var $selectSliderFields = jquery__WEBPACK_IMPORTED_MODULE_0___default()('.select-slider-field')
 
-    $selectSliderFields.each(function () {
-      var $selectSliderField = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this)
-      var $slider = $selectSliderField.find('.slider')
-      var $mercury = $slider.find('.slider__mercury')
-      var $input = $slider.find('input[type="text"]')
-      var $value = $slider.find('.slider__value')
+		$selectSliderFields.each(function () {
+			var $selectSliderField = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this)
+			var $slider = $selectSliderField.find('.slider')
+			var $mercury = $slider.find('.slider__mercury')
+			var $input = $slider.find('input[type="text"]')
+			var $value = $slider.find('.slider__value')
 
-      var values = $selectSliderField.attr('data-options').split(',')
-      var steps = values.length
+			var values = $selectSliderField.attr('data-options').split(',')
+			var steps = values.length
 
-      var step = 0
-      var value = values[0]
-      var width = 0
+			var step = 0
+			var value = values[0]
+			var width = 0
 
-      $input.val(value)
-      $value.text(value)
-      $mercury.css('width', width + '%')
+			$input.val(value)
+			$value.text(value)
+			$mercury.css('width', width + '%')
 
-      $slider.slider({
-        min: 0,
-        max: steps - 1
-      })
+			$slider.slider({
+				min: 0,
+				max: steps - 1
+			})
 
-      $slider.on('slidestop', function () {
-        step = $slider.slider('value')
-        value = values[step]
-        width = (step * 100) / (steps - 1)
+			$slider.on('slidestop', function () {
+				step = $slider.slider('value')
+				value = values[step]
+				width = (step * 100) / (steps - 1)
 
-        $input.val(value)
-        $value.text(value)
-        $mercury.css('width', width + '%')
-      })
-    })
-  })()
+				$input.val(value)
+				$value.text(value)
+				$mercury.css('width', width + '%')
+			})
+		})
+	})()
 
-  /**
-   * MASKED DATE FIELD: Handle masked date fields
-   */
-  var maskedDateField = (function () {
-    var $maskedDateField = jquery__WEBPACK_IMPORTED_MODULE_0___default()('.input-field--masked-date').find(
-      'input[name|="date"]'
-    )
+	/**
+	 * MASKED DATE FIELD: Handle masked date fields
+	 */
+	var maskedDateField = (function () {
+		var $maskedDateField = jquery__WEBPACK_IMPORTED_MODULE_0___default()('.input-field--masked-date').find(
+			'input[name|="date"]'
+		)
 
-    $maskedDateField.mask('00/00/0000')
-  })()
+		$maskedDateField.mask('00/00/0000')
+	})()
 
-  /**
-   * DATE PICKER FIELD: Handle date picker field input
-   */
-  var datePickerField = (function () {
-    var $datePicker = jquery__WEBPACK_IMPORTED_MODULE_0___default()('[data-toggle="datepicker"]')
-    $datePicker.datepicker({
-      autoHide: true,
-      language: 'en-GB',
-      format: 'dd/mm/yyyy'
-    })
-  })()
+	/**
+	 * DATE PICKER FIELD: Handle date picker field input
+	 */
+	var datePickerField = (function () {
+		var $datePicker = jquery__WEBPACK_IMPORTED_MODULE_0___default()('[data-toggle="datepicker"]')
+		$datePicker.datepicker({
+			autoHide: true,
+			language: 'en-GB',
+			format: 'dd/mm/yyyy'
+		})
+	})()
 
-  /**
-   * PASSWORD FIELD: Handle password show/hide
-   */
-  var passwordField = (function () {
-    var $passwordField = jquery__WEBPACK_IMPORTED_MODULE_0___default()('.input-field--password')
-    var $passwordShow = $passwordField.children('.show')
+	/**
+	 * PASSWORD FIELD: Handle password show/hide
+	 */
+	var passwordField = (function () {
+		var $passwordField = jquery__WEBPACK_IMPORTED_MODULE_0___default()('.input-field--password')
+		var $passwordShow = $passwordField.children('.show')
 
-    $passwordShow.click(function () {
-      var $this = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this)
-      var $passwordInput = $this.prev('label').children('input')
+		$passwordShow.click(function () {
+			var $this = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this)
+			var $passwordInput = $this.prev('label').children('input')
 
-      if ($passwordInput.attr('type') === 'password') {
-        $passwordInput.attr('type', 'text')
-        $this.text('Hide')
-      } else {
-        $passwordInput.attr('type', 'password')
-        $this.text('Show')
-      }
-    })
-  })()
+			if ($passwordInput.attr('type') === 'password') {
+				$passwordInput.attr('type', 'text')
+				$this.text('Hide')
+			} else {
+				$passwordInput.attr('type', 'password')
+				$this.text('Show')
+			}
+		})
+	})()
 
-  /**
-   * PROGRESS INDICATOR: Handle progress indicators
-   */
-  var progressIndicator = (function () {
-    var $progressIndicator = jquery__WEBPACK_IMPORTED_MODULE_0___default()('.progress-indicator')
-    $progressIndicator.each(function () {
-      var $this = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this)
-      var step = $this.attr('data-step')
-      var steps = $this.attr('data-steps')
-      var width = (step / steps) * 100
+	/**
+	 * PROGRESS INDICATOR: Handle progress indicators
+	 */
+	var progressIndicator = (function () {
+		var $progressIndicator = jquery__WEBPACK_IMPORTED_MODULE_0___default()('.progress-indicator')
+		$progressIndicator.each(function () {
+			var $this = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this)
+			var step = $this.attr('data-step')
+			var steps = $this.attr('data-steps')
+			var width = (step / steps) * 100
 
-      $this.prepend('<span class="progress-indicator__steps">&nbsp</span>')
-      $this.append(
-        '<span class="progress-indicator__step" style="width:' + width + '%">&nbsp</span>'
-      )
-    })
-  })()
+			$this.prepend('<span class="progress-indicator__steps">&nbsp</span>')
+			$this.append(
+				'<span class="progress-indicator__step" style="width:' + width + '%">&nbsp</span>'
+			)
+		})
+	})()
 
-  /**
-   * DROPDOWN SELECT: Handle custom select components
-   */
-  var dropdownSelect = (function () {
-    var $dropdownSelect
-    var $dropdown
-    var $dropdownOption
+	/**
+	 * DROPDOWN SELECT: Handle custom select components
+	 */
+	var dropdownSelect = (function () {
+		var $dropdownSelect
+		var $dropdown
+		var $dropdownOption
 
-    $dropdownSelect = jquery__WEBPACK_IMPORTED_MODULE_0___default()('.dropdown-select')
+		$dropdownSelect = jquery__WEBPACK_IMPORTED_MODULE_0___default()('.dropdown-select')
 
-    var dropdownState = (function () {
-      return {
-        init: function ($select) {
-          // Set initial state of dropdown-select controls
-          var dropdown = '<div class="dropdown"></div>'
-          var selected = '<div class="dropdown__selected"></div>'
-          var options = '<div class="dropdown__options"></div>'
-          var option = '<div class="dropdown__option"></div>'
-          var $dropdown = jquery__WEBPACK_IMPORTED_MODULE_0___default()(dropdown).appendTo($select)
-          var $selected = jquery__WEBPACK_IMPORTED_MODULE_0___default()(selected).appendTo($dropdown)
-          var $options = jquery__WEBPACK_IMPORTED_MODULE_0___default()(options).appendTo($dropdown)
-          var $option
+		var dropdownState = (function () {
+			return {
+				init: function ($select) {
+					// Set initial state of dropdown-select controls
+					var dropdown = '<div class="dropdown"></div>'
+					var selected = '<div class="dropdown__selected"></div>'
+					var options = '<div class="dropdown__options"></div>'
+					var option = '<div class="dropdown__option"></div>'
+					var $dropdown = jquery__WEBPACK_IMPORTED_MODULE_0___default()(dropdown).appendTo($select)
+					var $selected = jquery__WEBPACK_IMPORTED_MODULE_0___default()(selected).appendTo($dropdown)
+					var $options = jquery__WEBPACK_IMPORTED_MODULE_0___default()(options).appendTo($dropdown)
+					var $option
 
-          $selected.text($select.find('option:selected').text())
-          $select
-            .find('option')
-            .not(':selected')
-            .each(function () {
-              var $this = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this)
-              var text = $this.text()
-              var value = $this.val()
-              $option = jquery__WEBPACK_IMPORTED_MODULE_0___default()(option).appendTo($options)
-              $option.text(text)
-              $option.attr('data-value', value)
-            })
+					$selected.text($select.find('option:selected').text())
+					$select
+						.find('option')
+						.not(':selected')
+						.each(function () {
+							var $this = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this)
+							var text = $this.text()
+							var value = $this.val()
+							$option = jquery__WEBPACK_IMPORTED_MODULE_0___default()(option).appendTo($options)
+							$option.text(text)
+							$option.attr('data-value', value)
+						})
 
-          $select
-            .find('.message--error')
-            .detach()
-            .appendTo($select)
-        },
-        get: function ($select) {
-          // Get current state of select element
-          // NOTE: Not currently required
-        },
-        set: function ($select) {
-          // Set state of select element
-          var value = $select
-            .find('.dropdown__option.selected')
-            .attr('data-value')
-          $select.removeClass('error')
-          $select.find('div.error').remove()
-          $select
-            .find('option')
-            .first()
-            .removeAttr('selected')
-          $select.find('option[value="' + value + '"]').prop('selected', true)
-          $select.find('select').val(value)
-        }
-      }
-    })()
+					$select
+						.find('.message--error')
+						.detach()
+						.appendTo($select)
+				},
+				get: function ($select) {
+					// Get current state of select element
+					// NOTE: Not currently required
+				},
+				set: function ($select) {
+					// Set state of select element
+					var value = $select
+						.find('.dropdown__option.selected')
+						.attr('data-value')
+					$select.removeClass('error')
+					$select.find('div.error').remove()
+					$select
+						.find('option')
+						.first()
+						.removeAttr('selected')
+					$select.find('option[value="' + value + '"]').prop('selected', true)
+					$select.find('select').val(value)
+				}
+			}
+		})()
 
-    // Initialise dropdowns
-    $dropdownSelect.each(function () {
-      dropdownState.init(jquery__WEBPACK_IMPORTED_MODULE_0___default()(this))
-    })
+		// Initialise dropdowns
+		$dropdownSelect.each(function () {
+			dropdownState.init(jquery__WEBPACK_IMPORTED_MODULE_0___default()(this))
+		})
 
-    // Handle form submission with no selection
-    $dropdownSelect.closest('form').on('submit', function () {
-      var $this = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this)
-      var $dropdown = $this.find('.dropdown-select')
-      $dropdown.each(function () {
-        var $this = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this)
-        if ($this.find('select').hasClass('error')) {
-          $this.addClass('error')
-        }
-      })
-    })
+		// Handle form submission with no selection
+		$dropdownSelect.closest('form').on('submit', function () {
+			var $this = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this)
+			var $dropdown = $this.find('.dropdown-select')
+			$dropdown.each(function () {
+				var $this = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this)
+				if ($this.find('select').hasClass('error')) {
+					$this.addClass('error')
+				}
+			})
+		})
 
-    $dropdown = jquery__WEBPACK_IMPORTED_MODULE_0___default()('.dropdown')
-    $dropdown.click(function () {
-      var $this = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this)
-      $this.toggleClass('open')
-      $this.find('.dropdown__option').toggle()
-    })
+		$dropdown = jquery__WEBPACK_IMPORTED_MODULE_0___default()('.dropdown')
+		$dropdown.click(function () {
+			var $this = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this)
+			$this.toggleClass('open')
+			$this.find('.dropdown__option').toggle()
+		})
 
-    $dropdownOption = $dropdown.find('.dropdown__option')
-    $dropdownOption.click(function () {
-      var $this = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this)
-      var $select = $this.closest('.dropdown-select')
-      var $dropdown = $this.closest('.dropdown') // .children('.dropdown__selected')
-      var $options = $this
-        .parent('.dropdown__options')
-        .children('.dropdown__option')
-      var $selected = $this
-        .closest('.dropdown')
-        .children('.dropdown__selected')
-      $options.removeClass('selected')
-      $this.addClass('selected')
-      $dropdown.addClass('selected')
-      $selected.text($this.text())
-      dropdownState.set($select)
-    })
-  })()
+		$dropdownOption = $dropdown.find('.dropdown__option')
+		$dropdownOption.click(function () {
+			var $this = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this)
+			var $select = $this.closest('.dropdown-select')
+			var $dropdown = $this.closest('.dropdown') // .children('.dropdown__selected')
+			var $options = $this
+				.parent('.dropdown__options')
+				.children('.dropdown__option')
+			var $selected = $this
+				.closest('.dropdown')
+				.children('.dropdown__selected')
+			$options.removeClass('selected')
+			$this.addClass('selected')
+			$dropdown.addClass('selected')
+			$selected.text($this.text())
+			dropdownState.set($select)
+		})
+	})()
 
-  /**
-   * CONDITIONAL CHECKBOXES: Handle conditional checkbox groups
-   */
-  var conditionalCheckboxGroup = (function () {
-    var $conditionalCheckboxGroup = jquery__WEBPACK_IMPORTED_MODULE_0___default()('.conditional-checkbox-group')
-    var $radioButtons = $conditionalCheckboxGroup.find('input:radio')
+	/**
+	 * CONDITIONAL CHECKBOXES: Handle conditional checkbox groups
+	 */
+	var conditionalCheckboxGroup = (function () {
+		var $conditionalCheckboxGroup = jquery__WEBPACK_IMPORTED_MODULE_0___default()('.conditional-checkbox-group')
+		var $radioButtons = $conditionalCheckboxGroup.find('input:radio')
 
-    var setCheckboxes = function (state) {
-      var $checkboxes = $conditionalCheckboxGroup.find('.checkbox')
-      var $inputs = $checkboxes.find('input:checkbox')
+		var setCheckboxes = function (state) {
+			var $checkboxes = $conditionalCheckboxGroup.find('.checkbox')
+			var $inputs = $checkboxes.find('input:checkbox')
 
-      if (state) {
-        $checkboxes.removeClass('disabled')
-        $inputs.prop('disabled', false)
-      } else {
-        $checkboxes.addClass('disabled')
-        $inputs.prop('disabled', true)
+			if (state) {
+				$checkboxes.removeClass('disabled')
+				$inputs.prop('disabled', false)
+			} else {
+				$checkboxes.addClass('disabled')
+				$inputs.prop('disabled', true)
 
-        $checkboxes.find('input:checkbox').prop('checked', false)
-      }
-    }
+				$checkboxes.find('input:checkbox').prop('checked', false)
+			}
+		}
 
-    $radioButtons.each(function () {
-      var $this = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this)
-      var isChecked = $this.attr('checked') === 'checked'
+		$radioButtons.each(function () {
+			var $this = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this)
+			var isChecked = $this.attr('checked') === 'checked'
 
-      if (isChecked) {
-        var state = $this.attr('data-checkboxes-enabled') === 'true'
-        setCheckboxes(state)
-      }
-    })
+			if (isChecked) {
+				var state = $this.attr('data-checkboxes-enabled') === 'true'
+				setCheckboxes(state)
+			}
+		})
 
-    $radioButtons.click(function () {
-      var $this = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this)
-      var state = $this.attr('data-checkboxes-enabled') === 'true'
-      setCheckboxes(state)
-    })
-  })()
+		$radioButtons.click(function () {
+			var $this = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this)
+			var state = $this.attr('data-checkboxes-enabled') === 'true'
+			setCheckboxes(state)
+		})
+	})()
 
-  /**
-   * SEGMENTED CONTROL: Handle segmented control components
-   */
-  var segmentedControl = (function () {
-    var $segmentedControl = jquery__WEBPACK_IMPORTED_MODULE_0___default()('.segmented-control')
+	/**
+	 * SEGMENTED CONTROL: Handle segmented control components
+	 */
+	var segmentedControl = (function () {
+		var $segmentedControl = jquery__WEBPACK_IMPORTED_MODULE_0___default()('.segmented-control')
 
-    // Handle form submission with no selection
-    $segmentedControl.closest('form').on('submit', function () {
-      var $this = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this)
-      var $control = $this.find('.segmented-control')
-      $control.each(function () {
-        var $this = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this)
-        if ($this.find('input:radio').hasClass('error')) {
-          $this.addClass('invalid')
-          $this.find('.segmented-control__label').addClass('invalid')
-        }
-      })
-    })
+		// Handle form submission with no selection
+		$segmentedControl.closest('form').on('submit', function () {
+			var $this = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this)
+			var $control = $this.find('.segmented-control')
+			$control.each(function () {
+				var $this = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this)
+				if ($this.find('input:radio').hasClass('error')) {
+					$this.addClass('invalid')
+					$this.find('.segmented-control__label').addClass('invalid')
+				}
+			})
+		})
 
-    // Handle click event
-    $segmentedControl.click(function () {
-      var $this = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this)
-      var $input = $this.find('[type=radio]')
-      var $label = $this.find('.segmented-control__label')
-      $label.removeClass('checked').removeClass('invalid')
-      $input.attr('checked', 'checked')
-    })
-  })()
+		// Handle click event
+		$segmentedControl.click(function () {
+			var $this = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this)
+			var $input = $this.find('[type=radio]')
+			var $label = $this.find('.segmented-control__label')
+			$label.removeClass('checked').removeClass('invalid')
+			$input.attr('checked', 'checked')
+		})
+	})()
 
-  /**
-   * HIDEABLE PANEL: Handle hideable panel
-   */
-  var userBar = (function () {
-    jquery__WEBPACK_IMPORTED_MODULE_0___default()('.user-bar__menu-select').on('click', function () {
-      var $select = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this)
-      $select.toggleClass('open')
-      $select.next('.user-bar__menu-options').slideToggle()
-    })
-  })()
+	/**
+	 * HIDEABLE PANEL: Handle hideable panel
+	 */
+	var userBar = (function () {
+		jquery__WEBPACK_IMPORTED_MODULE_0___default()('.user-bar__menu-select').on('click', function () {
+			var $select = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this)
+			$select.toggleClass('open')
+			$select.next('.user-bar__menu-options').slideToggle()
+		})
+	})()
 
-  /**
-   * HIDEABLE PANEL: Handle hideable panel
-   */
-  var hideablePanel = (function () {
-    var $hideablePanels = jquery__WEBPACK_IMPORTED_MODULE_0___default()('.hideable-panel')
+	/**
+	 * HIDEABLE PANEL: Handle hideable panel
+	 */
+	var hideablePanel = (function () {
+		var $hideablePanels = jquery__WEBPACK_IMPORTED_MODULE_0___default()('.hideable-panel')
 
-    $hideablePanels.each(function () {
-      var $hideablePanel = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this)
-      var $hidePanel = $hideablePanel.find('.hideable-panel__close')
+		$hideablePanels.each(function () {
+			var $hideablePanel = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this)
+			var $hidePanel = $hideablePanel.find('.hideable-panel__close')
 
-      $hidePanel.on('click', function () {
-        $hideablePanel.hide()
-      })
-    })
-  })()
+			$hidePanel.on('click', function () {
+				$hideablePanel.hide()
+			})
+		})
+	})()
 
-  /**
-   * ACCORDION: Handle accordion init/show/hide
-   */
-  var accordion = (function () {
-    var $accordions = jquery__WEBPACK_IMPORTED_MODULE_0___default()('.accordion')
+	/**
+	 * ACCORDION: Handle accordion init/show/hide
+	 */
+	var accordion = (function () {
+		var $accordions = jquery__WEBPACK_IMPORTED_MODULE_0___default()('.accordion')
 
-    $accordions.each(function () {
-      var $accordion = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this)
-      var $items = $accordion.find('.accordion__item')
-      $items.addClass('closed')
-      $items.first().removeClass('closed')
+		$accordions.each(function () {
+			var $accordion = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this)
+			var $items = $accordion.find('.accordion__item')
+			$items.addClass('closed')
+			$items.first().removeClass('closed')
 
-      $items.on('click', function () {
-        var $item = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this)
-        $items.addClass('closed')
-        $item.removeClass('closed')
-        //   $('html, body').animate({
-        //     scrollTop: ($item.offset().top)
-        //   },500)
-      })
-    })
-  })()
+			$items.on('click', function () {
+				var $item = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this)
+				$items.addClass('closed')
+				$item.removeClass('closed')
+				//   $('html, body').animate({
+				//     scrollTop: ($item.offset().top)
+				//   },500)
+			})
+		})
+	})()
 
-  /**
-   * TAB PANEL: Handle tabbed content panel
-   */
-  var tabPanel = (function () {
-    var $tabPanels = jquery__WEBPACK_IMPORTED_MODULE_0___default()('.tab-panel')
+	/**
+	 * TAB PANEL: Handle tabbed content panel
+	 */
+	var tabPanel = (function () {
+		var $tabPanels = jquery__WEBPACK_IMPORTED_MODULE_0___default()('.tab-panel')
 
-    $tabPanels.each(function () {
-      var $panel = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this)
-      var $panes = $panel.find('.tab-panel__pane')
-      var $tabBar
-      var $tabs
-      var tabWidth = 100 / $panes.length
+		$tabPanels.each(function () {
+			var $panel = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this)
+			var $panes = $panel.find('.tab-panel__pane')
+			var $tabBar
+			var $tabs
+			var tabWidth = 100 / $panes.length
 
-      $panel.prepend('<div class="tab-panel__tabs"></div>')
-      $tabBar = $panel.find('.tab-panel__tabs')
-      $panes.each(function () {
-        var label = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this)
-          .find('.tab-panel__label')
-          .text()
-        $tabBar.append('<div class="tab-panel__tab" style="width: ' + tabWidth + '%;">' + label + '</div>')
-      })
-      $tabs = $panel.find(jquery__WEBPACK_IMPORTED_MODULE_0___default()('.tab-panel__tab'))
+			$panel.prepend('<div class="tab-panel__tabs"></div>')
+			$tabBar = $panel.find('.tab-panel__tabs')
+			$panes.each(function () {
+				var label = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this)
+					.find('.tab-panel__label')
+					.text()
+				$tabBar.append('<div class="tab-panel__tab" style="width: ' + tabWidth + '%;">' + label + '</div>')
+			})
+			$tabs = $panel.find(jquery__WEBPACK_IMPORTED_MODULE_0___default()('.tab-panel__tab'))
 
-      $tabs.first().addClass('active')
-      $panes.first().addClass('active')
+			$tabs.first().addClass('active')
+			$panes.first().addClass('active')
 
-      $tabs.on('click', function () {
-        var $tab = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this)
-        var index = $tabs.index($tab)
+			$tabs.on('click', function () {
+				var $tab = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this)
+				var index = $tabs.index($tab)
 
-        $tabs.removeClass('active')
-        $tab.addClass('active')
+				$tabs.removeClass('active')
+				$tab.addClass('active')
 
-        $panes.removeClass('active')
-        $panes.eq(index).addClass('active')
-      })
-    })
-  })()
+				$panes.removeClass('active')
+				$panes.eq(index).addClass('active')
+			})
+		})
+	})()
 })
 
 
