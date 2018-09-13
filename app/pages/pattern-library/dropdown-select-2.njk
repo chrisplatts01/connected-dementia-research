@@ -1,0 +1,20 @@
+{% extends "pattern-library-layout.njk" %}
+
+{% import 'macros/volunteer.njk' as volunteer %}
+
+{% block content %}
+  <h1 class="pl-heading">Dropdown select 2</h1>
+  {{ volunteer.dropdownSelect2('Please choose an option:', 'select-id', ['Guardian (including Enduring Guardian, Public Guardian (and his/her delegate) or Interstate Guardian [AKS])', 'Agent', 'A person empowered under law to act as agent or in the best interests of the Volunteer', 'Substitute decision maker', 'Others equivalent to the above', 'None of the above'], validation="required") }}
+  <div class="error">
+    <p><i>Error state:</i></p>
+    {{ volunteer.dropdownSelect2('Please choose an option:', 'select-id', ['Guardian (including Enduring Guardian, Public Guardian (and his/her delegate) or Interstate Guardian [AKS])', 'Agent', 'A person empowered under law to act as agent or in the best interests of the Volunteer', 'Substitute decision maker', 'Others equivalent to the above', 'None of the above'], validation="required") }}
+  </div>
+  <h2 class="pl-heading">HTML</h2>
+  <textarea class="pl-code" disabled>
+    {{ volunteer.dropdownSelect2('Please choose an option:', 'select-id', ['Guardian (including Enduring Guardian, Public Guardian (and his/her delegate) or Interstate Guardian [AKS])', 'Agent', 'A person empowered under law to act as agent or in the best interests of the Volunteer', 'Substitute decision maker', 'Others equivalent to the above', 'None of the above']) }}
+  </textarea>
+  <h2 class="pl-heading">SCSS</h2>
+  <textarea class="pl-code" disabled>
+    {% include 'components/dropdown-select-2/_dropdown-select-2.scss' ignore missing %}
+  </textarea>
+{% endblock %}

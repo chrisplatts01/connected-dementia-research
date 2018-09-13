@@ -1,0 +1,10 @@
+<div class="form__field dropdown-select-2">
+  <label>{{ label }}
+    <select id="{{ id }}" name="{{ id }}" {{ disabled }} {{ validation }}>
+      <option selected disabled>Select&hellip;</option>
+      {% for option in options %}
+      <option value="{{ option | lower | replace(' ', '_') }}">{{ option }}</option>
+      {% endfor %}
+    </select>
+  </label>
+</div>
