@@ -21,7 +21,8 @@
 			}
 		}
 
-		.participant {
+		.participant,
+		.volunteer-action {
 			@include small-font;
 			color: $coral;
 			margin: 0 0 4px;

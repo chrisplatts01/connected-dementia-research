@@ -1,0 +1,105 @@
+{% extends "volunteer-layout.njk" %}
+
+{% import 'macros/volunteer.njk' as volunteer %}
+
+{% block content %}
+  <div class="user-bar">
+    <div class="user-bar__users">
+      <h1 class="volunteer" ><span class="label">Volunteer</span> Laura Ashley</h1>
+      <!-- h2 class="participant" ><span class="label">Representing</span> Ria Mitchell <span class="count">1</span></h1 -->
+    </div>
+    <div class="user-bar__menu">
+      <div class="user-bar__menu-select">Accounts</div>
+      <div class="user-bar__menu-options">
+        <div class="user-bar__menu-option volunteer active">
+          <span class="name">Laura Ashley</span>
+          <span class="label">Volunteer</span>
+        </div>
+        <div class="user-bar__menu-option">
+          <span class="add-participant">Add participants</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  {% call volunteer.hideablePanel() %}
+  {{ volunteer.heading('Profile refresh') }}
+  {{ volunteer.paragraph('Because some of the questions we ask you depend on the answers you have previously given, to refresh your profile we will take you through the question flow from the start.  We have some additional questions we would like you to answer if you have time. ') }}
+  <div class="grid-row">
+    <div class="grid-cell grid-cell--1-of-3 grid-cell--first">
+      {{ volunteer.activityButton('Refresh later', '', 'primary', '#') }}
+    </div>
+    <div class="grid-cell grid-cell--1-of-3">
+      {{ volunteer.activityButton('Continue answering only the mandatory questions', '', 'tertiary', '#') }}
+    </div>
+    <div class="grid-cell grid-cell--1-of-3 grid-cell--last">
+      {{ volunteer.activityButton('Continue answering all the questions', '', 'secondary', '#') }}
+    </div>
+  </div>
+  {% endcall %}
+  {{ volunteer.heading('<span class="heading__label">Volunteer</span> Laura Ashley' | safe) }}
+  {{ volunteer.tabBar(tabs=[
+    {label: 'Profile', url: ''},
+    {label: 'Studies', url: '#'},
+    {label: 'Notifications', url: '#'},
+    {label: 'Audit trail', url: '#'}
+    ]) }}
+    <div class="grid-row">
+      <div class="grid-cell grid-cell--1-of-3 grid-cell--first">
+        <div class="grid-row">
+          <div class="grid-cell grid-cell--1-of-1">
+          {{ volunteer.activityButton('Refresh my profile by reviewing the questions I have already answered', '', 'primary', '#') }}
+          </div>
+        </div>
+        <div class="grid-row">
+          <div class="grid-cell grid-cell--1-of-1">
+          {{ volunteer.activityButton('Complete my profile by answering more questions', '', 'primary', '#') }}
+          </div>
+        </div>
+      </div>
+      <div class="grid-cell grid-cell--2-of-3 grid-cell--last">
+        <div class="accordion">
+          <section class="accordion__item">
+            <header class="accordion__header">
+              <h2>Personal details</h2>
+              <a class="accordion__edit">Edit</a>
+            </header>
+            <article class="accordion__content">
+              <table>
+                <tr>
+                  <th>Title</th>
+                  <td>Mrs</td>
+                </tr>
+                <tr>
+                  <th>First name</th>
+                  <td>Laura</td>
+                </tr>
+                <tr>
+                  <th>Surname</th>
+                  <td>Ashley</td>
+                </tr>
+                <tr>
+                  <th>Gender</th>
+                  <td>Female</td>
+                </tr>
+                <tr>
+                  <th>Date of birth</th>
+                  <td>12/01/1957</td>
+                </tr>
+              </table>
+            </article>
+          </section>
+          <section class="accordion__item">
+            <header class="accordion__header">
+              <h2>Profile information</h2>
+              <a class="accordion__edit">Refresh</a>
+            </header>
+            <article class="accordion__content">
+              <p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Cras justo odio, dapibus ac facilisis in, egestas eget quam.</p>
+            </article>
+          </section>
+          </div>
+      </div>
+    </div>
+
+
+{% endblock %}

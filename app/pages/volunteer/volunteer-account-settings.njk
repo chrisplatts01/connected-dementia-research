@@ -1,0 +1,45 @@
+{% extends "volunteer-layout.njk" %}
+
+{% import 'macros/volunteer.njk' as volunteer %}
+
+
+{% block content %}
+  <div class="user-bar">
+    <div class="user-bar__users">
+      <h1 class="volunteer" ><span class="label">Welcome</span> Laura Ashley</h1>
+      <h2 class="volunteer-action"><span class="label">Change account settings</span></h2>
+    </div>
+    <div class="user-bar__menu">
+      <div class="user-bar__menu-select">Profiles</div>
+      <div class="user-bar__menu-options">
+        <div class="user-bar__menu-option volunteer active">
+          <span class="name">Laura Ashley</span>
+          <span class="label">Volunteer</span>
+        </div>
+        <div class="user-bar__menu-option">
+          <span class="add-participant">Add participants</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  {{ volunteer.paragraph('Account settings') }}
+  {{ volunteer.heading('What would you like to do?') }}
+  {# <div class="page-content__inner-wrapper"> #}
+    <div class="grid-row">
+      <div class="grid-cell grid-cell--1-of-2 grid-cell--first">
+        {{ volunteer.activityButton('Change your password', 'pencil', 'secondary', '#') }}
+      </div>
+      <div class="grid-cell grid-cell--1-of-2 grid-cell--last">
+        {{ volunteer.activityButton('View or change your contact settings', 'contact', 'primary', '#') }}
+      </div>
+    </div>
+    <div class="grid-row">
+      <div class="grid-cell grid-cell--1-of-2 grid-cell--first">
+        {{ volunteer.activityButton('View or change your security question and answer', 'contact', 'primary', '#') }}
+      </div>
+      <div class="grid-cell grid-cell--1-of-2 grid-cell--last">
+        {{ volunteer.activityButton('Delete your account', 'pencil', 'secondary', '#') }}
+      </div>
+    </div>
+  {# </div> #}
+{% endblock %}
