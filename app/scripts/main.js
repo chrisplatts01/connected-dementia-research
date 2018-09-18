@@ -322,34 +322,62 @@ $(function () {
 	 * DROPDOWN SELECT: Handle custom select components
 	 */
 	var dropdownSelect2 = (function () {
-		var $dropdowns = $('.dropdown-select-2')
-
-		console.log('Dropdown select 2: ', $dropdowns.length)
+		var $dropdownSelects = $('.dropdown-select-2')
 
 		// Initialise dropdown, get and set a dropdown select component
 		var state = (function () {
 			return {
-				// Initialise the component structure
-				init: function ($dropdown) {
-					console.log('Initialising dropdown state: ', $dropdown)
-				},
-				get: function ($dropdown) {
-					console.log('Getting dropdown state: ', $dropdown)
+				// Initialise the component's structure
+				init: function ($dropdownSelect) {
+					var $dropdown
+					var $dropdownOptions
+					var $dropdownSelected
+					var $select = $dropdownSelect.find('select').first()
+					var $options = state.get($select)
+
+					$dropdownSelect.append('<div class="dropdown"></div>')
+					$dropdown = $dropdownSelect.find('.dropdown')
+
+					$dropdown.prepend('<div class="dropdown__selected">Select&hellip;</div>')
+					$dropdownSelected = $dropdown.find('.dropdown__selected')
+
+					$dropdown.append('<div class="dropdown__options"></div>')
+					$dropdownOptions = $dropdown.find('.dropdown__options')
+
+					$options.each(function () {
+						var $option = $(this)
+
+						if ($option.attr('value')) {
+							$dropdownOptions.append('<div class="dropdown__option" data-value=' + $option.attr('value') + '>' + $option.text() + '</div>')
+						}
+					})
 					return $dropdown
 				},
-				set: function ($dropdown) {
-					console.log('Setting dropdown state: ', $dropdown)
-				}
+
+				// Get the current state fo the select element
+				get: function ($select) {
+					return $select.children('option')
+				},
+
+				// Set the current state of the select element
+				set: function ($select) {}
 			}
 		}())
 
 		// Initialise dropdowns
-		$dropdowns.each(function () {
-			var $dropdown = $(this)
-			state.init($dropdown)
-			$dropdown = state.get($dropdown)
-			console.log('Got: ', $dropdown)
-			state.set($dropdown)
+		$dropdownSelects.each(function () {
+			var $dropdownSelect = $(this)
+			var $dropdown = state.init($dropdownSelect)
+			var $dropdownOption = $dropdown.find('.dropdown__option')
+
+			// Open/close this dropdown select
+			$dropdown.click(function () {
+				$dropdown.toggleClass('open')
+			})
+
+			$dropdownOption.click(function () {
+				console.log($(this).text())
+			})
 		})
 	})()
 
