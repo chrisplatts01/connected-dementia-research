@@ -1,17 +1,25 @@
 .button {
   &.button--activity {
     @include bold-font;
+    font-size: $small-font-size;
     position: relative;
     display: block;
-    padding: 20px;
-    height: 136px;
+    padding: 16px;
+    height: auto;
+    min-height: 136px;
     margin: 0 auto;
     text-align: left;
 
+    &.vertically-centred {
+     display: flex !important;
+     align-items: center;
+     justify-content: center;
+    }
+
     &--icon-contact::after {
       position: absolute;
-      bottom: 20px;
-      left: 20px;
+      bottom: 12px;
+      left: 16px;
       width: 20px;
       height: 20px;
       content: '\00a0';
@@ -21,8 +29,8 @@
 
     &--icon-note::after {
       position: absolute;
-      bottom: 20px;
-      left: 20px;
+      bottom: 12px;
+      left: 16px;
       width: 20px;
       height: 20px;
       content: '\00a0';
@@ -32,8 +40,8 @@
 
     &--icon-pencil::after {
       position: absolute;
-      bottom: 20px;
-      left: 20px;
+      bottom: 12px;
+      left: 16px;
       width: 20px;
       height: 20px;
       content: '\00a0';
@@ -43,8 +51,8 @@
 
     &--icon-smiley::after {
       position: absolute;
-      bottom: 20px;
-      left: 20px;
+      bottom: 12px;
+      left: 16px;
       width: 20px;
       height: 20px;
       content: '\00a0';

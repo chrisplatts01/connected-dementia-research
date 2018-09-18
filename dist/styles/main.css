@@ -210,6 +210,10 @@ tr:last-child td {
   padding-right: 0;
 }
 
+.grid-cell__wrapper {
+  padding: 16px;
+}
+
 .menu {
   display: inline-block;
   font-weight: 700;
@@ -237,18 +241,29 @@ tr:last-child td {
   font-weight: 700;
   line-height: 32px;
   color: #333f48;
+  font-size: 19px;
   position: relative;
   display: block;
-  padding: 20px;
-  height: 136px;
+  padding: 16px;
+  height: auto;
+  min-height: 136px;
   margin: 0 auto;
   text-align: left;
 }
 
+.button.button--activity.vertically-centred {
+  display: -ms-flexbox !important;
+  display: flex !important;
+  -ms-flex-align: center;
+      align-items: center;
+  -ms-flex-pack: center;
+      justify-content: center;
+}
+
 .button.button--activity--icon-contact::after {
   position: absolute;
-  bottom: 20px;
-  left: 20px;
+  bottom: 12px;
+  left: 16px;
   width: 20px;
   height: 20px;
   content: '\00a0';
@@ -258,8 +273,8 @@ tr:last-child td {
 
 .button.button--activity--icon-note::after {
   position: absolute;
-  bottom: 20px;
-  left: 20px;
+  bottom: 12px;
+  left: 16px;
   width: 20px;
   height: 20px;
   content: '\00a0';
@@ -269,8 +284,8 @@ tr:last-child td {
 
 .button.button--activity--icon-pencil::after {
   position: absolute;
-  bottom: 20px;
-  left: 20px;
+  bottom: 12px;
+  left: 16px;
   width: 20px;
   height: 20px;
   content: '\00a0';
@@ -280,8 +295,8 @@ tr:last-child td {
 
 .button.button--activity--icon-smiley::after {
   position: absolute;
-  bottom: 20px;
-  left: 20px;
+  bottom: 12px;
+  left: 16px;
   width: 20px;
   height: 20px;
   content: '\00a0';
@@ -3853,7 +3868,8 @@ p, .paragraph {
   color: white;
 }
 
-.user-bar .user-bar__users .participant {
+.user-bar .user-bar__users .participant,
+.user-bar .user-bar__users .volunteer-action {
   font-family: "Calibri", "Open Sans", "Helvetica", "Arial", sans-serif;
   font-size: 19px;
   font-weight: 400;
@@ -3863,7 +3879,8 @@ p, .paragraph {
   margin: 0 0 4px;
 }
 
-.user-bar .user-bar__users .participant .label {
+.user-bar .user-bar__users .participant .label,
+.user-bar .user-bar__users .volunteer-action .label {
   font-weight: 400;
   font-size: 19px;
   color: white;
@@ -4156,7 +4173,7 @@ p, .paragraph {
   font-weight: 400;
   line-height: 24px;
   color: #333f48;
-  width: 80%;
+  width: 75%;
   float: left;
   margin: 0;
   padding: 8px 16px;
@@ -4170,8 +4187,7 @@ p, .paragraph {
   color: #333f48;
   text-decoration: underline;
   float: right;
-  width: 72px;
-  padding: 8px 0 0 0;
+  padding: 8px 32px 0 0;
 }
 
 .accordion__content {

@@ -21,7 +21,7 @@
 
   h2 {
     @include small-font;
-    width: 80%;
+    width: 75%;
     float: left;
     margin: 0;
     padding: 8px 16px
@@ -31,8 +31,7 @@
     @include small-font;
     text-decoration: underline;
     float: right;
-    width: 72px;
-    padding: 8px 0 0 0;
+    padding: 8px 32px 0 0;
   }
 }
 
