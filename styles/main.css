@@ -733,7 +733,7 @@ form .date-field-group label.error {
 }
 
 .dropdown-select .dropdown.error {
-  border-color: #a6093d;
+  border: 3px solid #a6093d;
 }
 
 .dropdown-select .dropdown .dropdown__options {
