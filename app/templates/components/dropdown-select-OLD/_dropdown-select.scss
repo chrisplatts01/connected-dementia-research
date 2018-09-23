@@ -75,7 +75,7 @@
 		}
 
 		&.error {
-			border: 3px solid $ruby;
+			border: 4px solid $ruby;
 
 			.dropdown__selected:after {
 				background-image: url('/images/arrow-down-purple.svg')
