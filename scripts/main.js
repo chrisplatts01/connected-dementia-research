@@ -134,8 +134,8 @@ const Dashboard = __webpack_require__(198) // Full-featured sleek UI with file p
 // const GoogleDrive = require('@uppy/google-drive') // Import files from Google Drive
 // const Instagram = require('@uppy/instagram') // Import files from Instagram
 // const Url = require('@uppy/url') // Import files from any public URL
-const Tus = __webpack_require__(237) // Uploads using the tus resumable upload protocol
-const XHRUpload = __webpack_require__(256) // Classic multipart form uploads or binary uploads using XMLHTTPRequest
+const Tus = __webpack_require__(238) // Uploads using the tus resumable upload protocol
+const XHRUpload = __webpack_require__(257) // Classic multipart form uploads or binary uploads using XMLHTTPRequest
 // const AwsS3 = require('@uppy/aws-s3') // Uploader for AWS S3
 // const AwsS3Multipart = require('@uppy/aws-s3 - multipart') // Uploader for AWS S3 using its resumable Multipart protocol
 // const ProgressBar = require('@uppy/progress-bar') // Add a small YouTube-style progress bar at the top of the page
@@ -316,6 +316,7 @@ jquery__WEBPACK_IMPORTED_MODULE_0___default()(function () {
 						}
 					},
 					errorElement: 'div',
+					errorClass: 'error message message--error',
 					errorPlacement: function (error, element) {
 						error.appendTo(element.closest('.form__field'))
 					}
@@ -324,7 +325,7 @@ jquery__WEBPACK_IMPORTED_MODULE_0___default()(function () {
 	})()
 
 	/**
-	 * SELECT SLIDER FIELD: Handle slidr interface on select filds
+	 * SELECT SLIDER FIELD: Handle slider interface on select filds
 	 */
 	var selectSliderField = (function () {
 		var $selectSliderFields = jquery__WEBPACK_IMPORTED_MODULE_0___default()('.select-slider-field')
@@ -430,104 +431,113 @@ jquery__WEBPACK_IMPORTED_MODULE_0___default()(function () {
 	 * DROPDOWN SELECT: Handle custom select components
 	 */
 	var dropdownSelect = (function () {
-		var $dropdownSelect
-		var $dropdown
-		var $dropdownOption
+		var $dropdownSelects = jquery__WEBPACK_IMPORTED_MODULE_0___default()('.dropdown-select')
 
-		$dropdownSelect = jquery__WEBPACK_IMPORTED_MODULE_0___default()('.dropdown-select')
+		// Handle state of dropdown select
+		var state = (function () {
 
-		var dropdownState = (function () {
-			return {
-				init: function ($select) {
-					// Set initial state of dropdown-select controls
-					var dropdown = '<div class="dropdown"></div>'
-					var selected = '<div class="dropdown__selected"></div>'
-					var options = '<div class="dropdown__options"></div>'
-					var option = '<div class="dropdown__option"></div>'
-					var $dropdown = jquery__WEBPACK_IMPORTED_MODULE_0___default()(dropdown).appendTo($select)
-					var $selected = jquery__WEBPACK_IMPORTED_MODULE_0___default()(selected).appendTo($dropdown)
-					var $options = jquery__WEBPACK_IMPORTED_MODULE_0___default()(options).appendTo($dropdown)
-					var $option
+			// Public: Initialize dropdown select UI
+			var init = function ($dropdownSelect) {
+				var $dropdown
+				var $dropdownSelected
+				var $dropdownOptions
 
-					$selected.text($select.find('option:selected').text())
-					$select
-						.find('option')
-						.not(':selected')
-						.each(function () {
-							var $this = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this)
-							var text = $this.text()
-							var value = $this.val()
-							$option = jquery__WEBPACK_IMPORTED_MODULE_0___default()(option).appendTo($options)
-							$option.text(text)
-							$option.attr('data-value', value)
-						})
+				var $select = $dropdownSelect.find('select').first()
+				var $options = $select.children('option')
 
-					$select
-						.find('.message--error')
-						.detach()
-						.appendTo($select)
-				},
-				get: function ($select) {
-					// Get current state of select element
-					// NOTE: Not currently required
-				},
-				set: function ($select) {
-					// Set state of select element
-					var value = $select
-						.find('.dropdown__option.selected')
-						.attr('data-value')
-					$select.removeClass('error')
-					$select.find('div.error').remove()
-					$select
-						.find('option')
-						.first()
-						.removeAttr('selected')
-					$select.find('option[value="' + value + '"]').prop('selected', true)
-					$select.find('select').val(value)
-				}
+				$dropdownSelect.append('<div class="dropdown"></div>')
+				$dropdown = $dropdownSelect.find('.dropdown')
+
+				$dropdown.prepend('<div class="dropdown__selected">Select&hellip;</div>')
+				$dropdownSelected = $dropdownSelect.find('.dropdown__selected')
+
+				$dropdown.append('<div class="dropdown__options"></div>')
+				$dropdownOptions = $dropdown.find('.dropdown__options')
+
+				$options.each(function () {
+					var $option = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this)
+					var value = $option.attr('value')
+					var text = $option.text()
+
+					if (value) {
+						$dropdownOptions.append('<div class="dropdown__option" data-value=' + $option.attr('value') + '>' + $option.text() + '</div>')
+						console.log(value)
+						console.log($select)
+
+						if (value === get($select)) {
+							$dropdown.addClass('selected')
+							$dropdownSelected.replaceWith('<div class="dropdown__selected selected">' + text + '</div>')
+						}
+					}
+				})
+				return $dropdown
 			}
-		})()
 
-		// Initialise dropdowns
-		$dropdownSelect.each(function () {
-			dropdownState.init(jquery__WEBPACK_IMPORTED_MODULE_0___default()(this))
-		})
+			// Public: Handle change event
+			var change = function ($dropdownSelect, $dropdownOption) {
+				var $select = $dropdownSelect.find('select')
+				var $dropdown = $dropdownSelect.find('.dropdown')
+				var $dropdownOptions = $dropdown.find('.dropdown__option')
+				var $dropdownSelected = $dropdown.find('.dropdown__selected')
 
-		// Handle form submission with no selection
-		$dropdownSelect.closest('form').on('submit', function () {
-			var $this = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this)
-			var $dropdown = $this.find('.dropdown-select')
-			$dropdown.each(function () {
-				var $this = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this)
-				if ($this.find('select').hasClass('error')) {
-					$this.addClass('error')
+				$dropdown.removeClass('error')
+				$dropdownSelect.find('.message--error').detach()
+
+
+				$dropdownOptions.removeClass('selected')
+				$dropdownOption.addClass('selected')
+
+				$dropdownSelected.addClass('selected')
+				$dropdownSelected.text($dropdownOption.text())
+
+				$dropdown.addClass('selected')
+			}
+
+			// Public: Get the current value of the select element
+			var get = function ($select) {
+				return $select.val()
+			}
+
+			// Public: Set the current value of the select element
+			var set = function ($select, value) {
+				$select.val(value)
+			}
+
+			return {
+				init: init,
+				change: change,
+				get: get,
+				set: set
+			}
+		}())
+
+		// Initialise dropdowns and bind events
+		$dropdownSelects.each(function () {
+			var $dropdownSelect = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this)
+			var $dropdown = state.init($dropdownSelect)
+			var $dropdownOptions = $dropdown.find('.dropdown__option')
+
+			// Open/close dropdown
+			$dropdown.click(function () {
+				$dropdown.toggleClass('open')
+			})
+
+			// Change selected option
+			$dropdownOptions.click(function () {
+				var $dropdownOption = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this)
+
+				var $select = $dropdownSelect.find('select').first()
+				var value = $dropdownOption.attr('data-value')
+
+				state.change($dropdownSelect, $dropdownOption)
+				state.set($select, value)
+			})
+			// Handle error on form submit
+			$dropdownSelect.closest('form').on('submit', function () {
+				if ($dropdownSelect.find('select').hasClass('error')) {
+					$dropdown.addClass('error')
 				}
 			})
-		})
-
-		$dropdown = jquery__WEBPACK_IMPORTED_MODULE_0___default()('.dropdown')
-		$dropdown.click(function () {
-			var $this = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this)
-			$this.toggleClass('open')
-			$this.find('.dropdown__option').toggle()
-		})
-
-		$dropdownOption = $dropdown.find('.dropdown__option')
-		$dropdownOption.click(function () {
-			var $this = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this)
-			var $select = $this.closest('.dropdown-select')
-			var $dropdown = $this.closest('.dropdown') // .children('.dropdown__selected')
-			var $options = $this
-				.parent('.dropdown__options')
-				.children('.dropdown__option')
-			var $selected = $this
-				.closest('.dropdown')
-				.children('.dropdown__selected')
-			$options.removeClass('selected')
-			$this.addClass('selected')
-			$dropdown.addClass('selected')
-			$selected.text($this.text())
-			dropdownState.set($select)
 		})
 	})()
 
@@ -11066,11 +11076,11 @@ return jQuery;
 /***/ (function(module, exports, __webpack_require__) {
 
 var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
- * jQuery Validation Plugin v1.17.0
+ * jQuery Validation Plugin v1.18.0
  *
  * https://jqueryvalidation.org/
  *
- * Copyright (c) 2017 Jörn Zaefferer
+ * Copyright (c) 2018 Jörn Zaefferer
  * Released under the MIT license
  */
 (function( factory ) {
@@ -11133,6 +11143,7 @@ $.extend( $.fn, {
 					// Prevent form submit to be able to see console output
 					event.preventDefault();
 				}
+
 				function handle() {
 					var hidden, result;
 
@@ -11148,7 +11159,7 @@ $.extend( $.fn, {
 							.appendTo( validator.currentForm );
 					}
 
-					if ( validator.settings.submitHandler ) {
+					if ( validator.settings.submitHandler && !validator.settings.debug ) {
 						result = validator.settings.submitHandler.call( validator, validator.currentForm, event );
 						if ( hidden ) {
 
@@ -11215,7 +11226,7 @@ $.extend( $.fn, {
 			return;
 		}
 
-		if ( !element.form && element.hasAttribute( "contenteditable" ) ) {
+		if ( !element.form && element.isContentEditable ) {
 			element.form = this.closest( "form" )[ 0 ];
 			element.name = this.attr( "name" );
 		}
@@ -11459,7 +11470,8 @@ $.extend( $.validator, {
 			this.invalid = {};
 			this.reset();
 
-			var groups = ( this.groups = {} ),
+			var currentForm = this.currentForm,
+				groups = ( this.groups = {} ),
 				rules;
 			$.each( this.settings.groups, function( key, value ) {
 				if ( typeof value === "string" ) {
@@ -11477,9 +11489,15 @@ $.extend( $.validator, {
 			function delegate( event ) {
 
 				// Set form expando on contenteditable
-				if ( !this.form && this.hasAttribute( "contenteditable" ) ) {
+				if ( !this.form && this.isContentEditable ) {
 					this.form = $( this ).closest( "form" )[ 0 ];
 					this.name = $( this ).attr( "name" );
+				}
+
+				// Ignore the element if it belongs to another form. This will happen mainly
+				// when setting the `form` attribute of an input to the id of another form.
+				if ( currentForm !== this.form ) {
+					return;
 				}
 
 				var validator = $.data( this.form, "validator" ),
@@ -11710,9 +11728,14 @@ $.extend( $.validator, {
 				}
 
 				// Set form expando on contenteditable
-				if ( this.hasAttribute( "contenteditable" ) ) {
+				if ( this.isContentEditable ) {
 					this.form = $( this ).closest( "form" )[ 0 ];
 					this.name = name;
+				}
+
+				// Ignore elements that belong to other/nested forms
+				if ( this.form !== validator.currentForm ) {
+					return false;
 				}
 
 				// Select only the first element for each name, and only those with rules specified
@@ -11768,7 +11791,7 @@ $.extend( $.validator, {
 				return element.validity.badInput ? "NaN" : $element.val();
 			}
 
-			if ( element.hasAttribute( "contenteditable" ) ) {
+			if ( element.isContentEditable ) {
 				val = $element.text();
 			} else {
 				val = $element.val();
@@ -11828,10 +11851,6 @@ $.extend( $.validator, {
 			// Note that `this` in the normalizer is `element`.
 			if ( normalizer ) {
 				val = normalizer.call( element, val );
-
-				if ( typeof val !== "string" ) {
-					throw new TypeError( "The normalizer should return a string value." );
-				}
 
 				// Delete the normalizer from rules to avoid treating it as a pre-defined method.
 				delete rules.normalizer;
@@ -12208,7 +12227,19 @@ $.extend( $.validator, {
 				.removeData( "validator" )
 				.find( ".validate-equalTo-blur" )
 					.off( ".validate-equalTo" )
-					.removeClass( "validate-equalTo-blur" );
+					.removeClass( "validate-equalTo-blur" )
+				.find( ".validate-lessThan-blur" )
+					.off( ".validate-lessThan" )
+					.removeClass( "validate-lessThan-blur" )
+				.find( ".validate-lessThanEqual-blur" )
+					.off( ".validate-lessThanEqual" )
+					.removeClass( "validate-lessThanEqual-blur" )
+				.find( ".validate-greaterThanEqual-blur" )
+					.off( ".validate-greaterThanEqual" )
+					.removeClass( "validate-greaterThanEqual-blur" )
+				.find( ".validate-greaterThan-blur" )
+					.off( ".validate-greaterThan" )
+					.removeClass( "validate-greaterThan-blur" );
 		}
 
 	},
@@ -12312,6 +12343,12 @@ $.extend( $.validator, {
 
 		for ( method in $.validator.methods ) {
 			value = $element.data( "rule" + method.charAt( 0 ).toUpperCase() + method.substring( 1 ).toLowerCase() );
+
+			// Cast empty attributes like `data-rule-required` to `true`
+			if ( value === "" ) {
+				value = true;
+			}
+
 			this.normalizeAttributeRule( rules, type, method, value );
 		}
 		return rules;
@@ -12437,7 +12474,7 @@ $.extend( $.validator, {
 			if ( this.checkable( element ) ) {
 				return this.getLength( value, element ) > 0;
 			}
-			return value.length > 0;
+			return value !== undefined && value !== null && value.length > 0;
 		},
 
 		// https://jqueryvalidation.org/email-method/
@@ -12461,9 +12498,26 @@ $.extend( $.validator, {
 		},
 
 		// https://jqueryvalidation.org/date-method/
-		date: function( value, element ) {
-			return this.optional( element ) || !/Invalid|NaN/.test( new Date( value ).toString() );
-		},
+		date: ( function() {
+			var called = false;
+
+			return function( value, element ) {
+				if ( !called ) {
+					called = true;
+					if ( this.settings.debug && window.console ) {
+						console.warn(
+							"The `date` method is deprecated and will be removed in version '2.0.0'.\n" +
+							"Please don't use it, since it relies on the Date constructor, which\n" +
+							"behaves very differently across browsers and locales. Use `dateISO`\n" +
+							"instead or one of the locale specific methods in `localizations/`\n" +
+							"and `additional-methods.js`."
+						);
+					}
+				}
+
+				return this.optional( element ) || !/Invalid|NaN/.test( new Date( value ).toString() );
+			};
+		}() ),
 
 		// https://jqueryvalidation.org/dateISO-method/
 		dateISO: function( value, element ) {
@@ -12671,11 +12725,11 @@ return $;
 /***/ (function(module, exports, __webpack_require__) {
 
 var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
- * jQuery Validation Plugin v1.17.0
+ * jQuery Validation Plugin v1.18.0
  *
  * https://jqueryvalidation.org/
  *
- * Copyright (c) 2017 Jörn Zaefferer
+ * Copyright (c) 2018 Jörn Zaefferer
  * Released under the MIT license
  */
 (function( factory ) {
@@ -13008,7 +13062,7 @@ $.validator.addMethod( "creditcard", function( value, element ) {
 	value = value.replace( /\D/g, "" );
 
 	// Basing min and max length on
-	// https://developer.ean.com/general_info/Valid_Credit_Card_Types
+	// https://dev.ean.com/general-info/valid-card-types/
 	if ( value.length < 13 || value.length > 19 ) {
 		return false;
 	}
@@ -13069,7 +13123,7 @@ $.validator.addMethod( "creditcardtypes", function( value, element, param ) {
 	if ( param.all ) {
 		validTypes = 0x0001 | 0x0002 | 0x0004 | 0x0008 | 0x0010 | 0x0020 | 0x0040 | 0x0080;
 	}
-	if ( validTypes & 0x0001 && /^(5[12345])/.test( value ) ) { // Mastercard
+	if ( validTypes & 0x0001 && ( /^(5[12345])/.test( value ) || /^(2[234567])/.test( value ) ) ) { // Mastercard
 		return value.length === 16;
 	}
 	if ( validTypes & 0x0002 && /^(4)/.test( value ) ) { // Visa
@@ -13201,6 +13255,30 @@ $.validator.addMethod( "extension", function( value, element, param ) {
 $.validator.addMethod( "giroaccountNL", function( value, element ) {
 	return this.optional( element ) || /^[0-9]{1,7}$/.test( value );
 }, "Please specify a valid giro account number" );
+
+$.validator.addMethod( "greaterThan", function( value, element, param ) {
+    var target = $( param );
+
+    if ( this.settings.onfocusout && target.not( ".validate-greaterThan-blur" ).length ) {
+        target.addClass( "validate-greaterThan-blur" ).on( "blur.validate-greaterThan", function() {
+            $( element ).valid();
+        } );
+    }
+
+    return value > target.val();
+}, "Please enter a greater value." );
+
+$.validator.addMethod( "greaterThanEqual", function( value, element, param ) {
+    var target = $( param );
+
+    if ( this.settings.onfocusout && target.not( ".validate-greaterThanEqual-blur" ).length ) {
+        target.addClass( "validate-greaterThanEqual-blur" ).on( "blur.validate-greaterThanEqual", function() {
+            $( element ).valid();
+        } );
+    }
+
+    return value >= target.val();
+}, "Please enter a greater value." );
 
 /**
  * IBAN is the international bank account number.
@@ -13351,6 +13429,30 @@ $.validator.addMethod( "ipv6", function( value, element ) {
 	return this.optional( element ) || /^((([0-9A-Fa-f]{1,4}:){7}[0-9A-Fa-f]{1,4})|(([0-9A-Fa-f]{1,4}:){6}:[0-9A-Fa-f]{1,4})|(([0-9A-Fa-f]{1,4}:){5}:([0-9A-Fa-f]{1,4}:)?[0-9A-Fa-f]{1,4})|(([0-9A-Fa-f]{1,4}:){4}:([0-9A-Fa-f]{1,4}:){0,2}[0-9A-Fa-f]{1,4})|(([0-9A-Fa-f]{1,4}:){3}:([0-9A-Fa-f]{1,4}:){0,3}[0-9A-Fa-f]{1,4})|(([0-9A-Fa-f]{1,4}:){2}:([0-9A-Fa-f]{1,4}:){0,4}[0-9A-Fa-f]{1,4})|(([0-9A-Fa-f]{1,4}:){6}((\b((25[0-5])|(1\d{2})|(2[0-4]\d)|(\d{1,2}))\b)\.){3}(\b((25[0-5])|(1\d{2})|(2[0-4]\d)|(\d{1,2}))\b))|(([0-9A-Fa-f]{1,4}:){0,5}:((\b((25[0-5])|(1\d{2})|(2[0-4]\d)|(\d{1,2}))\b)\.){3}(\b((25[0-5])|(1\d{2})|(2[0-4]\d)|(\d{1,2}))\b))|(::([0-9A-Fa-f]{1,4}:){0,5}((\b((25[0-5])|(1\d{2})|(2[0-4]\d)|(\d{1,2}))\b)\.){3}(\b((25[0-5])|(1\d{2})|(2[0-4]\d)|(\d{1,2}))\b))|([0-9A-Fa-f]{1,4}::([0-9A-Fa-f]{1,4}:){0,5}[0-9A-Fa-f]{1,4})|(::([0-9A-Fa-f]{1,4}:){0,6}[0-9A-Fa-f]{1,4})|(([0-9A-Fa-f]{1,4}:){1,7}:))$/i.test( value );
 }, "Please enter a valid IP v6 address." );
 
+$.validator.addMethod( "lessThan", function( value, element, param ) {
+    var target = $( param );
+
+    if ( this.settings.onfocusout && target.not( ".validate-lessThan-blur" ).length ) {
+        target.addClass( "validate-lessThan-blur" ).on( "blur.validate-lessThan", function() {
+            $( element ).valid();
+        } );
+    }
+
+    return value < target.val();
+}, "Please enter a lesser value." );
+
+$.validator.addMethod( "lessThanEqual", function( value, element, param ) {
+    var target = $( param );
+
+    if ( this.settings.onfocusout && target.not( ".validate-lessThanEqual-blur" ).length ) {
+        target.addClass( "validate-lessThanEqual-blur" ).on( "blur.validate-lessThanEqual", function() {
+            $( element ).valid();
+        } );
+    }
+
+    return value <= target.val();
+}, "Please enter a lesser value." );
+
 $.validator.addMethod( "lettersonly", function( value, element ) {
 	return this.optional( element ) || /^[a-z]+$/i.test( value );
 }, "Letters only please" );
@@ -13358,6 +13460,63 @@ $.validator.addMethod( "lettersonly", function( value, element ) {
 $.validator.addMethod( "letterswithbasicpunc", function( value, element ) {
 	return this.optional( element ) || /^[a-z\-.,()'"\s]+$/i.test( value );
 }, "Letters or punctuation only please" );
+
+// Limit the number of files in a FileList.
+$.validator.addMethod( "maxfiles", function( value, element, param ) {
+	if ( this.optional( element ) ) {
+		return true;
+	}
+
+	if ( $( element ).attr( "type" ) === "file" ) {
+		if ( element.files && element.files.length > param ) {
+			return false;
+		}
+	}
+
+	return true;
+}, $.validator.format( "Please select no more than {0} files." ) );
+
+// Limit the size of each individual file in a FileList.
+$.validator.addMethod( "maxsize", function( value, element, param ) {
+	if ( this.optional( element ) ) {
+		return true;
+	}
+
+	if ( $( element ).attr( "type" ) === "file" ) {
+		if ( element.files && element.files.length ) {
+			for ( var i = 0; i < element.files.length; i++ ) {
+				if ( element.files[ i ].size > param ) {
+					return false;
+				}
+			}
+		}
+	}
+
+	return true;
+}, $.validator.format( "File size must not exceed {0} bytes each." ) );
+
+// Limit the size of all files in a FileList.
+$.validator.addMethod( "maxsizetotal", function( value, element, param ) {
+	if ( this.optional( element ) ) {
+		return true;
+	}
+
+	if ( $( element ).attr( "type" ) === "file" ) {
+		if ( element.files && element.files.length ) {
+			var totalSize = 0;
+
+			for ( var i = 0; i < element.files.length; i++ ) {
+				totalSize += element.files[ i ].size;
+				if ( totalSize > param ) {
+					return false;
+				}
+			}
+		}
+	}
+
+	return true;
+}, $.validator.format( "Total size of all files must not exceed {0} bytes." ) );
+
 
 $.validator.addMethod( "mobileNL", function( value, element ) {
 	return this.optional( element ) || /^((\+|00(\s|\s?\-\s?)?)31(\s|\s?\-\s?)?(\(0\)[\-\s]?)?|0)6((\s|\s?\-\s?)?[0-9]){8}$/.test( value );
@@ -13475,6 +13634,64 @@ $.validator.addMethod( "nipPL", function( value ) {
 	return ( intControlNr === parseInt( value[ 9 ], 10 ) );
 }, "Please specify a valid NIP number." );
 
+/**
+ * Created for project jquery-validation.
+ * @Description Brazillian PIS or NIS number (Número de Identificação Social Pis ou Pasep) is the equivalent of a
+ * Brazilian tax registration number NIS of PIS numbers have 11 digits in total: 10 numbers followed by 1 check numbers
+ * that are being used for validation.
+ * @copyright (c) 21/08/2018 13:14, Cleiton da Silva Mendonça
+ * @author Cleiton da Silva Mendonça <cleiton.mendonca@gmail.com>
+ * @link http://gitlab.com/csmendonca Gitlab of Cleiton da Silva Mendonça
+ * @link http://github.com/csmendonca Github of Cleiton da Silva Mendonça
+ */
+$.validator.addMethod( "nisBR", function( value ) {
+	var number;
+	var cn;
+	var sum = 0;
+	var dv;
+	var count;
+	var multiplier;
+
+	// Removing special characters from value
+	value = value.replace( /([~!@#$%^&*()_+=`{}\[\]\-|\\:;'<>,.\/? ])+/g, "" );
+
+	// Checking value to have 11 digits only
+	if ( value.length !== 11 ) {
+		return false;
+	}
+
+	//Get check number of value
+	cn = parseInt( value.substring( 10, 11 ), 10 );
+
+	//Get number with 10 digits of the value
+	number = parseInt( value.substring( 0, 10 ), 10 );
+
+	for ( count = 2; count < 12; count++ ) {
+		multiplier = count;
+		if ( count === 10 ) {
+			multiplier = 2;
+		}
+		if ( count === 11 ) {
+			multiplier = 3;
+		}
+		sum += ( ( number % 10 ) * multiplier );
+		number = parseInt( number / 10, 10 );
+	}
+	dv = ( sum % 11 );
+
+	if ( dv > 1 ) {
+		dv = ( 11 - dv );
+	} else {
+		dv = 0;
+	}
+
+	if ( cn === dv ) {
+		return true;
+	} else {
+		return false;
+	}
+}, "Please specify a valid NIS/PIS number" );
+
 $.validator.addMethod( "notEqualTo", function( value, element, param ) {
 	return this.optional( element ) || !$.validator.methods.equalTo.call( this, value, element, param );
 }, "Please enter a different value, values must not be the same." );
@@ -13512,6 +13729,30 @@ $.validator.addMethod( "pattern", function( value, element, param ) {
 $.validator.addMethod( "phoneNL", function( value, element ) {
 	return this.optional( element ) || /^((\+|00(\s|\s?\-\s?)?)31(\s|\s?\-\s?)?(\(0\)[\-\s]?)?|0)[1-9]((\s|\s?\-\s?)?[0-9]){8}$/.test( value );
 }, "Please specify a valid phone number." );
+
+/**
+ * Polish telephone numbers have 9 digits.
+ *
+ * Mobile phone numbers starts with following digits:
+ * 45, 50, 51, 53, 57, 60, 66, 69, 72, 73, 78, 79, 88.
+ *
+ * Fixed-line numbers starts with area codes:
+ * 12, 13, 14, 15, 16, 17, 18, 22, 23, 24, 25, 29, 32, 33,
+ * 34, 41, 42, 43, 44, 46, 48, 52, 54, 55, 56, 58, 59, 61,
+ * 62, 63, 65, 67, 68, 71, 74, 75, 76, 77, 81, 82, 83, 84,
+ * 85, 86, 87, 89, 91, 94, 95.
+ *
+ * Ministry of National Defence numbers and VoIP numbers starts with 26 and 39.
+ *
+ * Excludes intelligent networks (premium rate, shared cost, free phone numbers).
+ *
+ * Poland National Numbering Plan http://www.itu.int/oth/T02020000A8/en
+ */
+$.validator.addMethod( "phonePL", function( phone_number, element ) {
+	phone_number = phone_number.replace( /\s+/g, "" );
+	var regexp = /^(?:(?:(?:\+|00)?48)|(?:\(\+?48\)))?(?:1[2-8]|2[2-69]|3[2-49]|4[1-68]|5[0-9]|6[0-35-9]|[7-8][1-9]|9[145])\d{7}$/;
+	return this.optional( element ) || regexp.test( phone_number );
+}, "Please specify a valid phone number" );
 
 /* For UK phone functions, do the following server side processing:
  * Compare original input with this RegEx pattern:
@@ -13562,7 +13803,7 @@ $.validator.addMethod( "phoneUK", function( phone_number, element ) {
 $.validator.addMethod( "phoneUS", function( phone_number, element ) {
 	phone_number = phone_number.replace( /\s+/g, "" );
 	return this.optional( element ) || phone_number.length > 9 &&
-		phone_number.match( /^(\+?1-?)?(\([2-9]([02-9]\d|1[02-9])\)|[2-9]([02-9]\d|1[02-9]))-?[2-9]([02-9]\d|1[02-9])-?\d{4}$/ );
+		phone_number.match( /^(\+?1-?)?(\([2-9]([02-9]\d|1[02-9])\)|[2-9]([02-9]\d|1[02-9]))-?[2-9]\d{2}-?\d{4}$/ );
 }, "Please specify a valid phone number" );
 
 /*
@@ -51938,7 +52179,7 @@ var Uppy = function () {
         },
         exceedsSize: 'This file exceeds maximum allowed size of',
         youCanOnlyUploadFileTypes: 'You can only upload:',
-        uppyServerError: 'Connection with Uppy Server failed',
+        companionError: 'Connection with Companion failed',
         failedToUpload: 'Failed to upload %{file}',
         noInternetConnection: 'No Internet connection',
         connectedToInternet: 'Connected to the Internet',
@@ -53861,8 +54102,8 @@ module.exports = function getFileType(file) {
     return mimeTypes[fileExtension];
   }
 
-  // if all fails, well, return empty
-  return null;
+  // if all fails, fall back to a generic byte stream type
+  return 'application/octet-stream';
 };
 
 /***/ }),
@@ -54136,7 +54377,7 @@ module.exports = function () {
     }
 
     this.uppy.log('Not installing ' + callerPluginName);
-    throw new Error('Invalid target option given to ' + callerPluginName);
+    throw new Error('Invalid target option given to ' + callerPluginName + '. Please make sure that the element \n      exists on the page, or that the plugin you are targeting has been installed. Check that the <script> tag initializing Uppy \n      comes at the bottom of the page, before the closing </body> tag (see https://github.com/transloadit/uppy/issues/1042).');
   };
 
   Plugin.prototype.render = function render(state) {
@@ -54955,7 +55196,7 @@ var ThumbnailGenerator = __webpack_require__(232);
 var findAllDOMElements = __webpack_require__(235);
 var toArray = __webpack_require__(236);
 var prettyBytes = __webpack_require__(184);
-var throttle = __webpack_require__(224);
+var ResizeObserver = __webpack_require__(237);
 
 var _require2 = __webpack_require__(210),
     defaultTabIcon = _require2.defaultTabIcon;
@@ -55023,6 +55264,7 @@ module.exports = function (_Plugin) {
         resumeUpload: 'Resume upload',
         pauseUpload: 'Pause upload',
         retryUpload: 'Retry upload',
+        cancelUpload: 'Cancel upload',
         xFilesSelected: {
           0: '%{smart_count} file selected',
           1: '%{smart_count} files selected'
@@ -55068,6 +55310,7 @@ module.exports = function (_Plugin) {
       onRequestCloseModal: function onRequestCloseModal() {
         return _this.closeModal();
       },
+      showSelectedFiles: true,
       locale: defaultLocale,
       browserBackButtonClose: false
 
@@ -55103,8 +55346,6 @@ module.exports = function (_Plugin) {
     _this.handleDrop = _this.handleDrop.bind(_this);
     _this.handlePaste = _this.handlePaste.bind(_this);
     _this.handleInputChange = _this.handleInputChange.bind(_this);
-    _this.updateDashboardElWidth = _this.updateDashboardElWidth.bind(_this);
-    _this.throttledUpdateDashboardElWidth = throttle(_this.updateDashboardElWidth, 500, { leading: true, trailing: true });
     _this.render = _this.render.bind(_this);
     _this.install = _this.install.bind(_this);
     return _this;
@@ -55180,9 +55421,6 @@ module.exports = function (_Plugin) {
 
   Dashboard.prototype.getFocusableNodes = function getFocusableNodes() {
     var nodes = this.el.querySelectorAll(FOCUSABLE_ELEMENTS);
-    console.log(Object.keys(nodes).map(function (key) {
-      return nodes[key];
-    }));
     return Object.keys(nodes).map(function (key) {
       return nodes[key];
     });
@@ -55273,8 +55511,7 @@ module.exports = function (_Plugin) {
     // handle ESC and TAB keys in modal dialog
     document.addEventListener('keydown', this.onKeydown);
 
-    this.rerender(this.uppy.getState());
-    this.updateDashboardElWidth();
+    // this.rerender(this.uppy.getState())
     this.setFocusToBrowse();
   };
 
@@ -55406,8 +55643,36 @@ module.exports = function (_Plugin) {
       _this6.handleDrop(files);
     });
 
-    this.updateDashboardElWidth();
-    window.addEventListener('resize', this.throttledUpdateDashboardElWidth);
+    // Watch for Dashboard container (`.uppy-Dashboard-inner`) resize
+    // and update containerWidth/containerHeight in plugin state accordingly
+    this.ro = new ResizeObserver(function (entries, observer) {
+      for (var _iterator = entries, _isArray = Array.isArray(_iterator), _i = 0, _iterator = _isArray ? _iterator : _iterator[Symbol.iterator]();;) {
+        var _ref;
+
+        if (_isArray) {
+          if (_i >= _iterator.length) break;
+          _ref = _iterator[_i++];
+        } else {
+          _i = _iterator.next();
+          if (_i.done) break;
+          _ref = _i.value;
+        }
+
+        var entry = _ref;
+        var _entry$contentRect = entry.contentRect,
+            width = _entry$contentRect.width,
+            height = _entry$contentRect.height;
+
+
+        _this6.uppy.log('[Dashboard] resized: ' + width + ' / ' + height);
+
+        _this6.setPluginState({
+          containerWidth: width,
+          containerHeight: height
+        });
+      }
+    });
+    this.ro.observe(this.el.querySelector('.uppy-Dashboard-inner'));
 
     this.uppy.on('plugin-remove', this.removeTarget);
     this.uppy.on('file-added', function (ev) {
@@ -55425,23 +55690,14 @@ module.exports = function (_Plugin) {
       });
     }
 
+    this.ro.unobserve(this.el.querySelector('.uppy-Dashboard-inner'));
+
     this.removeDragDropListener();
-    window.removeEventListener('resize', this.updateDashboardElWidth);
+    // window.removeEventListener('resize', this.throttledUpdateDashboardElWidth)
     window.removeEventListener('popstate', this.handlePopState, false);
     this.uppy.off('plugin-remove', this.removeTarget);
     this.uppy.off('file-added', function (ev) {
       return _this7.toggleAddFilesPanel(false);
-    });
-  };
-
-  Dashboard.prototype.updateDashboardElWidth = function updateDashboardElWidth() {
-    var dashboardEl = this.el.querySelector('.uppy-Dashboard-inner');
-    if (!dashboardEl) return;
-
-    this.uppy.log('Dashboard width: ' + dashboardEl.offsetWidth);
-
-    this.setPluginState({
-      containerWidth: dashboardEl.offsetWidth
     });
   };
 
@@ -55592,7 +55848,6 @@ module.exports = function (_Plugin) {
       toggleAddFilesPanel: this.toggleAddFilesPanel,
       showAddFilesPanel: pluginState.showAddFilesPanel,
       saveFileCard: saveFileCard,
-      updateDashboardElWidth: this.updateDashboardElWidth,
       width: this.opts.width,
       height: this.opts.height,
       showLinkToFileUploadResult: this.opts.showLinkToFileUploadResult,
@@ -55602,7 +55857,8 @@ module.exports = function (_Plugin) {
       containerWidth: pluginState.containerWidth,
       isTargetDOMEl: this.isTargetDOMEl,
       allowedFileTypes: this.uppy.opts.restrictions.allowedFileTypes,
-      maxNumberOfFiles: this.uppy.opts.restrictions.maxNumberOfFiles
+      maxNumberOfFiles: this.uppy.opts.restrictions.maxNumberOfFiles,
+      showSelectedFiles: this.opts.showSelectedFiles
     });
   };
 
@@ -56206,9 +56462,8 @@ module.exports = function Dashboard(props) {
   // }
 
   var noFiles = props.totalFileCount === 0;
-  var dashboardClassName = classNames({ 'uppy-Root': props.isTargetDOMEl }, 'uppy-Dashboard', { 'Uppy--isTouchDevice': isTouchDevice() }, { 'uppy-Dashboard--animateOpenClose': props.animateOpenClose }, { 'uppy-Dashboard--isClosing': props.isClosing }, { 'uppy-Dashboard--modal': !props.inline },
-  // { 'uppy-Dashboard--wide': props.isWide },
-  { 'uppy-size--md': props.containerWidth > 576 }, { 'uppy-size--lg': props.containerWidth > 700 }, { 'uppy-Dashboard--isAddFilesPanelVisible': props.showAddFilesPanel });
+
+  var dashboardClassName = classNames({ 'uppy-Root': props.isTargetDOMEl }, 'uppy-Dashboard', { 'Uppy--isTouchDevice': isTouchDevice() }, { 'uppy-Dashboard--animateOpenClose': props.animateOpenClose }, { 'uppy-Dashboard--isClosing': props.isClosing }, { 'uppy-Dashboard--modal': !props.inline }, { 'uppy-size--md': props.containerWidth > 576 }, { 'uppy-size--lg': props.containerWidth > 700 }, { 'uppy-Dashboard--isAddFilesPanelVisible': props.showAddFilesPanel });
 
   return h(
     'div',
@@ -56242,8 +56497,8 @@ module.exports = function Dashboard(props) {
       h(
         'div',
         { 'class': 'uppy-Dashboard-innerWrap' },
-        !noFiles && h(PanelTopBar, props),
-        noFiles ? h(AddFiles, props) : h(FileList, props),
+        !noFiles && props.showSelectedFiles && h(PanelTopBar, props),
+        props.showSelectedFiles ? noFiles ? h(AddFiles, props) : h(FileList, props) : h(AddFiles, props),
         h(
           PreactCSSTransitionGroup,
           {
@@ -56331,7 +56586,7 @@ var classNames = __webpack_require__(212);
 var _require2 = __webpack_require__(195),
     h = _require2.h;
 
-var FileItemProgressWrapper = function FileItemProgressWrapper(props) {
+function FileItemProgressWrapper(props) {
   if (props.hideRetryButton && props.error) {
     return;
   }
@@ -56363,7 +56618,7 @@ var FileItemProgressWrapper = function FileItemProgressWrapper(props) {
       hidePauseResumeCancelButtons: props.hidePauseResumeCancelButtons
     })
   );
-};
+}
 
 module.exports = function fileItem(props) {
   var file = props.file;
@@ -56379,7 +56634,7 @@ module.exports = function fileItem(props) {
   var fileName = getFileNameAndExtension(file.meta.name).name;
   var truncatedFileName = props.isWide ? truncateString(fileName, 30) : fileName;
 
-  var onPauseResumeCancelRetry = function onPauseResumeCancelRetry(ev) {
+  function onPauseResumeCancelRetry(ev) {
     if (isUploaded) return;
 
     if (error && !props.hideRetryButton) {
@@ -56396,11 +56651,29 @@ module.exports = function fileItem(props) {
     } else {
       props.cancelUpload(file.id);
     }
-  };
+  }
+
+  function progressIndicatorTitle(props) {
+    if (isUploaded) {
+      return props.i18n('uploadComplete');
+    }
+
+    if (error) {
+      return props.i18n('retryUpload');
+    }
+
+    if (props.resumableUploads) {
+      if (file.isPaused) {
+        return props.i18n('resumeUpload');
+      }
+      return props.i18n('pauseUpload');
+    } else {
+      console.log('ЗДЕСЬ Я');
+      return props.i18n('cancelUpload');
+    }
+  }
 
   var dashboardItemClass = classNames('uppy-DashboardItem', { 'is-inprogress': uploadInProgress }, { 'is-processing': isProcessing }, { 'is-complete': isUploaded }, { 'is-paused': isPaused }, { 'is-error': error }, { 'is-resumable': props.resumableUploads }, { 'is-bundled': props.bundledUpload });
-
-  var progressIndicatorTitle = isUploaded ? props.i18n('uploadComplete') : props.resumableUploads ? file.isPaused ? props.i18n('resumeUpload') : props.i18n('pauseUpload') : error ? props.i18n('retryUpload') : props.i18n('cancelUpload');
 
   return h(
     'li',
@@ -56418,7 +56691,7 @@ module.exports = function fileItem(props) {
         'div',
         { 'class': 'uppy-DashboardItem-progress' },
         h(FileItemProgressWrapper, _extends({
-          progressIndicatorTitle: progressIndicatorTitle,
+          progressIndicatorTitle: progressIndicatorTitle(props),
           onPauseResumeCancelRetry: onPauseResumeCancelRetry,
           file: file,
           error: error
@@ -56990,12 +57263,16 @@ var AddFiles = function (_Component) {
             maxNumberOfFiles: this.props.maxNumberOfFiles
           })
         ),
-        this.props.note && h(
+        h(
           'div',
-          { 'class': 'uppy-Dashboard-note' },
-          this.props.note
-        ),
-        this.props.proudlyDisplayPoweredByUppy && poweredByUppy(this.props)
+          { 'class': 'uppy-DashboarAddFiles-info' },
+          this.props.note && h(
+            'div',
+            { 'class': 'uppy-Dashboard-note' },
+            this.props.note
+          ),
+          this.props.proudlyDisplayPoweredByUppy && poweredByUppy(this.props)
+        )
       );
     }
 
@@ -57076,12 +57353,16 @@ var AddFiles = function (_Component) {
           })
         )
       ),
-      this.props.note && h(
+      h(
         'div',
-        { 'class': 'uppy-Dashboard-note' },
-        this.props.note
-      ),
-      this.props.proudlyDisplayPoweredByUppy && poweredByUppy(this.props)
+        { 'class': 'uppy-DashboarAddFiles-info' },
+        this.props.note && h(
+          'div',
+          { 'class': 'uppy-Dashboard-note' },
+          this.props.note
+        ),
+        this.props.proudlyDisplayPoweredByUppy && poweredByUppy(this.props)
+      )
     );
   };
 
@@ -58223,6 +58504,9 @@ module.exports = function (_Plugin) {
     var inProgressFiles = Object.keys(files).filter(function (file) {
       return !files[file].progress.uploadComplete && files[file].progress.uploadStarted && !files[file].isPaused;
     });
+    var startedFiles = Object.keys(files).filter(function (file) {
+      return files[file].progress.uploadStarted || files[file].progress.preprocess || files[file].progress.postprocess;
+    });
     var processingFiles = Object.keys(files).filter(function (file) {
       return files[file].progress.preprocess || files[file].progress.postprocess;
     });
@@ -58267,7 +58551,7 @@ module.exports = function (_Plugin) {
       isUploadStarted: isUploadStarted,
       complete: completeFiles.length,
       newFiles: newFiles.length,
-      inProgress: inProgressFiles.length,
+      numUploads: startedFiles.length,
       totalSpeed: totalSpeed,
       totalETA: totalETA,
       files: state.files,
@@ -59335,9 +59619,6 @@ module.exports = function (_Plugin) {
       canvas.width = maxW;
       canvas.height = maxH;
       canvas.getContext('2d').drawImage(image, 0, 0, maxW, maxH);
-      image.src = 'about:blank';
-      image.width = 1;
-      image.height = 1;
       image = canvas;
     }
 
@@ -59560,6 +59841,1039 @@ module.exports = function toArray(list) {
 
 /***/ }),
 /* 237 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* WEBPACK VAR INJECTION */(function(global) {/**
+ * A collection of shims that provide minimal functionality of the ES6 collections.
+ *
+ * These implementations are not meant to be used outside of the ResizeObserver
+ * modules as they cover only a limited range of use cases.
+ */
+/* eslint-disable require-jsdoc, valid-jsdoc */
+var MapShim = (function () {
+    if (typeof Map !== 'undefined') {
+        return Map;
+    }
+
+    /**
+     * Returns index in provided array that matches the specified key.
+     *
+     * @param {Array<Array>} arr
+     * @param {*} key
+     * @returns {number}
+     */
+    function getIndex(arr, key) {
+        var result = -1;
+
+        arr.some(function (entry, index) {
+            if (entry[0] === key) {
+                result = index;
+
+                return true;
+            }
+
+            return false;
+        });
+
+        return result;
+    }
+
+    return (function () {
+        function anonymous() {
+            this.__entries__ = [];
+        }
+
+        var prototypeAccessors = { size: { configurable: true } };
+
+        /**
+         * @returns {boolean}
+         */
+        prototypeAccessors.size.get = function () {
+            return this.__entries__.length;
+        };
+
+        /**
+         * @param {*} key
+         * @returns {*}
+         */
+        anonymous.prototype.get = function (key) {
+            var index = getIndex(this.__entries__, key);
+            var entry = this.__entries__[index];
+
+            return entry && entry[1];
+        };
+
+        /**
+         * @param {*} key
+         * @param {*} value
+         * @returns {void}
+         */
+        anonymous.prototype.set = function (key, value) {
+            var index = getIndex(this.__entries__, key);
+
+            if (~index) {
+                this.__entries__[index][1] = value;
+            } else {
+                this.__entries__.push([key, value]);
+            }
+        };
+
+        /**
+         * @param {*} key
+         * @returns {void}
+         */
+        anonymous.prototype.delete = function (key) {
+            var entries = this.__entries__;
+            var index = getIndex(entries, key);
+
+            if (~index) {
+                entries.splice(index, 1);
+            }
+        };
+
+        /**
+         * @param {*} key
+         * @returns {void}
+         */
+        anonymous.prototype.has = function (key) {
+            return !!~getIndex(this.__entries__, key);
+        };
+
+        /**
+         * @returns {void}
+         */
+        anonymous.prototype.clear = function () {
+            this.__entries__.splice(0);
+        };
+
+        /**
+         * @param {Function} callback
+         * @param {*} [ctx=null]
+         * @returns {void}
+         */
+        anonymous.prototype.forEach = function (callback, ctx) {
+            var this$1 = this;
+            if ( ctx === void 0 ) ctx = null;
+
+            for (var i = 0, list = this$1.__entries__; i < list.length; i += 1) {
+                var entry = list[i];
+
+                callback.call(ctx, entry[1], entry[0]);
+            }
+        };
+
+        Object.defineProperties( anonymous.prototype, prototypeAccessors );
+
+        return anonymous;
+    }());
+})();
+
+/**
+ * Detects whether window and document objects are available in current environment.
+ */
+var isBrowser = typeof window !== 'undefined' && typeof document !== 'undefined' && window.document === document;
+
+// Returns global object of a current environment.
+var global$1 = (function () {
+    if (typeof global !== 'undefined' && global.Math === Math) {
+        return global;
+    }
+
+    if (typeof self !== 'undefined' && self.Math === Math) {
+        return self;
+    }
+
+    if (typeof window !== 'undefined' && window.Math === Math) {
+        return window;
+    }
+
+    // eslint-disable-next-line no-new-func
+    return Function('return this')();
+})();
+
+/**
+ * A shim for the requestAnimationFrame which falls back to the setTimeout if
+ * first one is not supported.
+ *
+ * @returns {number} Requests' identifier.
+ */
+var requestAnimationFrame$1 = (function () {
+    if (typeof requestAnimationFrame === 'function') {
+        // It's required to use a bounded function because IE sometimes throws
+        // an "Invalid calling object" error if rAF is invoked without the global
+        // object on the left hand side.
+        return requestAnimationFrame.bind(global$1);
+    }
+
+    return function (callback) { return setTimeout(function () { return callback(Date.now()); }, 1000 / 60); };
+})();
+
+// Defines minimum timeout before adding a trailing call.
+var trailingTimeout = 2;
+
+/**
+ * Creates a wrapper function which ensures that provided callback will be
+ * invoked only once during the specified delay period.
+ *
+ * @param {Function} callback - Function to be invoked after the delay period.
+ * @param {number} delay - Delay after which to invoke callback.
+ * @returns {Function}
+ */
+var throttle = function (callback, delay) {
+    var leadingCall = false,
+        trailingCall = false,
+        lastCallTime = 0;
+
+    /**
+     * Invokes the original callback function and schedules new invocation if
+     * the "proxy" was called during current request.
+     *
+     * @returns {void}
+     */
+    function resolvePending() {
+        if (leadingCall) {
+            leadingCall = false;
+
+            callback();
+        }
+
+        if (trailingCall) {
+            proxy();
+        }
+    }
+
+    /**
+     * Callback invoked after the specified delay. It will further postpone
+     * invocation of the original function delegating it to the
+     * requestAnimationFrame.
+     *
+     * @returns {void}
+     */
+    function timeoutCallback() {
+        requestAnimationFrame$1(resolvePending);
+    }
+
+    /**
+     * Schedules invocation of the original function.
+     *
+     * @returns {void}
+     */
+    function proxy() {
+        var timeStamp = Date.now();
+
+        if (leadingCall) {
+            // Reject immediately following calls.
+            if (timeStamp - lastCallTime < trailingTimeout) {
+                return;
+            }
+
+            // Schedule new call to be in invoked when the pending one is resolved.
+            // This is important for "transitions" which never actually start
+            // immediately so there is a chance that we might miss one if change
+            // happens amids the pending invocation.
+            trailingCall = true;
+        } else {
+            leadingCall = true;
+            trailingCall = false;
+
+            setTimeout(timeoutCallback, delay);
+        }
+
+        lastCallTime = timeStamp;
+    }
+
+    return proxy;
+};
+
+// Minimum delay before invoking the update of observers.
+var REFRESH_DELAY = 20;
+
+// A list of substrings of CSS properties used to find transition events that
+// might affect dimensions of observed elements.
+var transitionKeys = ['top', 'right', 'bottom', 'left', 'width', 'height', 'size', 'weight'];
+
+// Check if MutationObserver is available.
+var mutationObserverSupported = typeof MutationObserver !== 'undefined';
+
+/**
+ * Singleton controller class which handles updates of ResizeObserver instances.
+ */
+var ResizeObserverController = function() {
+    this.connected_ = false;
+    this.mutationEventsAdded_ = false;
+    this.mutationsObserver_ = null;
+    this.observers_ = [];
+
+    this.onTransitionEnd_ = this.onTransitionEnd_.bind(this);
+    this.refresh = throttle(this.refresh.bind(this), REFRESH_DELAY);
+};
+
+/**
+ * Adds observer to observers list.
+ *
+ * @param {ResizeObserverSPI} observer - Observer to be added.
+ * @returns {void}
+ */
+
+
+/**
+ * Holds reference to the controller's instance.
+ *
+ * @private {ResizeObserverController}
+ */
+
+
+/**
+ * Keeps reference to the instance of MutationObserver.
+ *
+ * @private {MutationObserver}
+ */
+
+/**
+ * Indicates whether DOM listeners have been added.
+ *
+ * @private {boolean}
+ */
+ResizeObserverController.prototype.addObserver = function (observer) {
+    if (!~this.observers_.indexOf(observer)) {
+        this.observers_.push(observer);
+    }
+
+    // Add listeners if they haven't been added yet.
+    if (!this.connected_) {
+        this.connect_();
+    }
+};
+
+/**
+ * Removes observer from observers list.
+ *
+ * @param {ResizeObserverSPI} observer - Observer to be removed.
+ * @returns {void}
+ */
+ResizeObserverController.prototype.removeObserver = function (observer) {
+    var observers = this.observers_;
+    var index = observers.indexOf(observer);
+
+    // Remove observer if it's present in registry.
+    if (~index) {
+        observers.splice(index, 1);
+    }
+
+    // Remove listeners if controller has no connected observers.
+    if (!observers.length && this.connected_) {
+        this.disconnect_();
+    }
+};
+
+/**
+ * Invokes the update of observers. It will continue running updates insofar
+ * it detects changes.
+ *
+ * @returns {void}
+ */
+ResizeObserverController.prototype.refresh = function () {
+    var changesDetected = this.updateObservers_();
+
+    // Continue running updates if changes have been detected as there might
+    // be future ones caused by CSS transitions.
+    if (changesDetected) {
+        this.refresh();
+    }
+};
+
+/**
+ * Updates every observer from observers list and notifies them of queued
+ * entries.
+ *
+ * @private
+ * @returns {boolean} Returns "true" if any observer has detected changes in
+ *  dimensions of it's elements.
+ */
+ResizeObserverController.prototype.updateObservers_ = function () {
+    // Collect observers that have active observations.
+    var activeObservers = this.observers_.filter(function (observer) {
+        return observer.gatherActive(), observer.hasActive();
+    });
+
+    // Deliver notifications in a separate cycle in order to avoid any
+    // collisions between observers, e.g. when multiple instances of
+    // ResizeObserver are tracking the same element and the callback of one
+    // of them changes content dimensions of the observed target. Sometimes
+    // this may result in notifications being blocked for the rest of observers.
+    activeObservers.forEach(function (observer) { return observer.broadcastActive(); });
+
+    return activeObservers.length > 0;
+};
+
+/**
+ * Initializes DOM listeners.
+ *
+ * @private
+ * @returns {void}
+ */
+ResizeObserverController.prototype.connect_ = function () {
+    // Do nothing if running in a non-browser environment or if listeners
+    // have been already added.
+    if (!isBrowser || this.connected_) {
+        return;
+    }
+
+    // Subscription to the "Transitionend" event is used as a workaround for
+    // delayed transitions. This way it's possible to capture at least the
+    // final state of an element.
+    document.addEventListener('transitionend', this.onTransitionEnd_);
+
+    window.addEventListener('resize', this.refresh);
+
+    if (mutationObserverSupported) {
+        this.mutationsObserver_ = new MutationObserver(this.refresh);
+
+        this.mutationsObserver_.observe(document, {
+            attributes: true,
+            childList: true,
+            characterData: true,
+            subtree: true
+        });
+    } else {
+        document.addEventListener('DOMSubtreeModified', this.refresh);
+
+        this.mutationEventsAdded_ = true;
+    }
+
+    this.connected_ = true;
+};
+
+/**
+ * Removes DOM listeners.
+ *
+ * @private
+ * @returns {void}
+ */
+ResizeObserverController.prototype.disconnect_ = function () {
+    // Do nothing if running in a non-browser environment or if listeners
+    // have been already removed.
+    if (!isBrowser || !this.connected_) {
+        return;
+    }
+
+    document.removeEventListener('transitionend', this.onTransitionEnd_);
+    window.removeEventListener('resize', this.refresh);
+
+    if (this.mutationsObserver_) {
+        this.mutationsObserver_.disconnect();
+    }
+
+    if (this.mutationEventsAdded_) {
+        document.removeEventListener('DOMSubtreeModified', this.refresh);
+    }
+
+    this.mutationsObserver_ = null;
+    this.mutationEventsAdded_ = false;
+    this.connected_ = false;
+};
+
+/**
+ * "Transitionend" event handler.
+ *
+ * @private
+ * @param {TransitionEvent} event
+ * @returns {void}
+ */
+ResizeObserverController.prototype.onTransitionEnd_ = function (ref) {
+        var propertyName = ref.propertyName; if ( propertyName === void 0 ) propertyName = '';
+
+    // Detect whether transition may affect dimensions of an element.
+    var isReflowProperty = transitionKeys.some(function (key) {
+        return !!~propertyName.indexOf(key);
+    });
+
+    if (isReflowProperty) {
+        this.refresh();
+    }
+};
+
+/**
+ * Returns instance of the ResizeObserverController.
+ *
+ * @returns {ResizeObserverController}
+ */
+ResizeObserverController.getInstance = function () {
+    if (!this.instance_) {
+        this.instance_ = new ResizeObserverController();
+    }
+
+    return this.instance_;
+};
+
+ResizeObserverController.instance_ = null;
+
+/**
+ * Defines non-writable/enumerable properties of the provided target object.
+ *
+ * @param {Object} target - Object for which to define properties.
+ * @param {Object} props - Properties to be defined.
+ * @returns {Object} Target object.
+ */
+var defineConfigurable = (function (target, props) {
+    for (var i = 0, list = Object.keys(props); i < list.length; i += 1) {
+        var key = list[i];
+
+        Object.defineProperty(target, key, {
+            value: props[key],
+            enumerable: false,
+            writable: false,
+            configurable: true
+        });
+    }
+
+    return target;
+});
+
+/**
+ * Returns the global object associated with provided element.
+ *
+ * @param {Object} target
+ * @returns {Object}
+ */
+var getWindowOf = (function (target) {
+    // Assume that the element is an instance of Node, which means that it
+    // has the "ownerDocument" property from which we can retrieve a
+    // corresponding global object.
+    var ownerGlobal = target && target.ownerDocument && target.ownerDocument.defaultView;
+
+    // Return the local global object if it's not possible extract one from
+    // provided element.
+    return ownerGlobal || global$1;
+});
+
+// Placeholder of an empty content rectangle.
+var emptyRect = createRectInit(0, 0, 0, 0);
+
+/**
+ * Converts provided string to a number.
+ *
+ * @param {number|string} value
+ * @returns {number}
+ */
+function toFloat(value) {
+    return parseFloat(value) || 0;
+}
+
+/**
+ * Extracts borders size from provided styles.
+ *
+ * @param {CSSStyleDeclaration} styles
+ * @param {...string} positions - Borders positions (top, right, ...)
+ * @returns {number}
+ */
+function getBordersSize(styles) {
+    var positions = [], len = arguments.length - 1;
+    while ( len-- > 0 ) positions[ len ] = arguments[ len + 1 ];
+
+    return positions.reduce(function (size, position) {
+        var value = styles['border-' + position + '-width'];
+
+        return size + toFloat(value);
+    }, 0);
+}
+
+/**
+ * Extracts paddings sizes from provided styles.
+ *
+ * @param {CSSStyleDeclaration} styles
+ * @returns {Object} Paddings box.
+ */
+function getPaddings(styles) {
+    var positions = ['top', 'right', 'bottom', 'left'];
+    var paddings = {};
+
+    for (var i = 0, list = positions; i < list.length; i += 1) {
+        var position = list[i];
+
+        var value = styles['padding-' + position];
+
+        paddings[position] = toFloat(value);
+    }
+
+    return paddings;
+}
+
+/**
+ * Calculates content rectangle of provided SVG element.
+ *
+ * @param {SVGGraphicsElement} target - Element content rectangle of which needs
+ *      to be calculated.
+ * @returns {DOMRectInit}
+ */
+function getSVGContentRect(target) {
+    var bbox = target.getBBox();
+
+    return createRectInit(0, 0, bbox.width, bbox.height);
+}
+
+/**
+ * Calculates content rectangle of provided HTMLElement.
+ *
+ * @param {HTMLElement} target - Element for which to calculate the content rectangle.
+ * @returns {DOMRectInit}
+ */
+function getHTMLElementContentRect(target) {
+    // Client width & height properties can't be
+    // used exclusively as they provide rounded values.
+    var clientWidth = target.clientWidth;
+    var clientHeight = target.clientHeight;
+
+    // By this condition we can catch all non-replaced inline, hidden and
+    // detached elements. Though elements with width & height properties less
+    // than 0.5 will be discarded as well.
+    //
+    // Without it we would need to implement separate methods for each of
+    // those cases and it's not possible to perform a precise and performance
+    // effective test for hidden elements. E.g. even jQuery's ':visible' filter
+    // gives wrong results for elements with width & height less than 0.5.
+    if (!clientWidth && !clientHeight) {
+        return emptyRect;
+    }
+
+    var styles = getWindowOf(target).getComputedStyle(target);
+    var paddings = getPaddings(styles);
+    var horizPad = paddings.left + paddings.right;
+    var vertPad = paddings.top + paddings.bottom;
+
+    // Computed styles of width & height are being used because they are the
+    // only dimensions available to JS that contain non-rounded values. It could
+    // be possible to utilize the getBoundingClientRect if only it's data wasn't
+    // affected by CSS transformations let alone paddings, borders and scroll bars.
+    var width = toFloat(styles.width),
+        height = toFloat(styles.height);
+
+    // Width & height include paddings and borders when the 'border-box' box
+    // model is applied (except for IE).
+    if (styles.boxSizing === 'border-box') {
+        // Following conditions are required to handle Internet Explorer which
+        // doesn't include paddings and borders to computed CSS dimensions.
+        //
+        // We can say that if CSS dimensions + paddings are equal to the "client"
+        // properties then it's either IE, and thus we don't need to subtract
+        // anything, or an element merely doesn't have paddings/borders styles.
+        if (Math.round(width + horizPad) !== clientWidth) {
+            width -= getBordersSize(styles, 'left', 'right') + horizPad;
+        }
+
+        if (Math.round(height + vertPad) !== clientHeight) {
+            height -= getBordersSize(styles, 'top', 'bottom') + vertPad;
+        }
+    }
+
+    // Following steps can't be applied to the document's root element as its
+    // client[Width/Height] properties represent viewport area of the window.
+    // Besides, it's as well not necessary as the <html> itself neither has
+    // rendered scroll bars nor it can be clipped.
+    if (!isDocumentElement(target)) {
+        // In some browsers (only in Firefox, actually) CSS width & height
+        // include scroll bars size which can be removed at this step as scroll
+        // bars are the only difference between rounded dimensions + paddings
+        // and "client" properties, though that is not always true in Chrome.
+        var vertScrollbar = Math.round(width + horizPad) - clientWidth;
+        var horizScrollbar = Math.round(height + vertPad) - clientHeight;
+
+        // Chrome has a rather weird rounding of "client" properties.
+        // E.g. for an element with content width of 314.2px it sometimes gives
+        // the client width of 315px and for the width of 314.7px it may give
+        // 314px. And it doesn't happen all the time. So just ignore this delta
+        // as a non-relevant.
+        if (Math.abs(vertScrollbar) !== 1) {
+            width -= vertScrollbar;
+        }
+
+        if (Math.abs(horizScrollbar) !== 1) {
+            height -= horizScrollbar;
+        }
+    }
+
+    return createRectInit(paddings.left, paddings.top, width, height);
+}
+
+/**
+ * Checks whether provided element is an instance of the SVGGraphicsElement.
+ *
+ * @param {Element} target - Element to be checked.
+ * @returns {boolean}
+ */
+var isSVGGraphicsElement = (function () {
+    // Some browsers, namely IE and Edge, don't have the SVGGraphicsElement
+    // interface.
+    if (typeof SVGGraphicsElement !== 'undefined') {
+        return function (target) { return target instanceof getWindowOf(target).SVGGraphicsElement; };
+    }
+
+    // If it's so, then check that element is at least an instance of the
+    // SVGElement and that it has the "getBBox" method.
+    // eslint-disable-next-line no-extra-parens
+    return function (target) { return target instanceof getWindowOf(target).SVGElement && typeof target.getBBox === 'function'; };
+})();
+
+/**
+ * Checks whether provided element is a document element (<html>).
+ *
+ * @param {Element} target - Element to be checked.
+ * @returns {boolean}
+ */
+function isDocumentElement(target) {
+    return target === getWindowOf(target).document.documentElement;
+}
+
+/**
+ * Calculates an appropriate content rectangle for provided html or svg element.
+ *
+ * @param {Element} target - Element content rectangle of which needs to be calculated.
+ * @returns {DOMRectInit}
+ */
+function getContentRect(target) {
+    if (!isBrowser) {
+        return emptyRect;
+    }
+
+    if (isSVGGraphicsElement(target)) {
+        return getSVGContentRect(target);
+    }
+
+    return getHTMLElementContentRect(target);
+}
+
+/**
+ * Creates rectangle with an interface of the DOMRectReadOnly.
+ * Spec: https://drafts.fxtf.org/geometry/#domrectreadonly
+ *
+ * @param {DOMRectInit} rectInit - Object with rectangle's x/y coordinates and dimensions.
+ * @returns {DOMRectReadOnly}
+ */
+function createReadOnlyRect(ref) {
+    var x = ref.x;
+    var y = ref.y;
+    var width = ref.width;
+    var height = ref.height;
+
+    // If DOMRectReadOnly is available use it as a prototype for the rectangle.
+    var Constr = typeof DOMRectReadOnly !== 'undefined' ? DOMRectReadOnly : Object;
+    var rect = Object.create(Constr.prototype);
+
+    // Rectangle's properties are not writable and non-enumerable.
+    defineConfigurable(rect, {
+        x: x, y: y, width: width, height: height,
+        top: y,
+        right: x + width,
+        bottom: height + y,
+        left: x
+    });
+
+    return rect;
+}
+
+/**
+ * Creates DOMRectInit object based on the provided dimensions and the x/y coordinates.
+ * Spec: https://drafts.fxtf.org/geometry/#dictdef-domrectinit
+ *
+ * @param {number} x - X coordinate.
+ * @param {number} y - Y coordinate.
+ * @param {number} width - Rectangle's width.
+ * @param {number} height - Rectangle's height.
+ * @returns {DOMRectInit}
+ */
+function createRectInit(x, y, width, height) {
+    return { x: x, y: y, width: width, height: height };
+}
+
+/**
+ * Class that is responsible for computations of the content rectangle of
+ * provided DOM element and for keeping track of it's changes.
+ */
+var ResizeObservation = function(target) {
+    this.broadcastWidth = 0;
+    this.broadcastHeight = 0;
+    this.contentRect_ = createRectInit(0, 0, 0, 0);
+
+    this.target = target;
+};
+
+/**
+ * Updates content rectangle and tells whether it's width or height properties
+ * have changed since the last broadcast.
+ *
+ * @returns {boolean}
+ */
+
+
+/**
+ * Reference to the last observed content rectangle.
+ *
+ * @private {DOMRectInit}
+ */
+
+
+/**
+ * Broadcasted width of content rectangle.
+ *
+ * @type {number}
+ */
+ResizeObservation.prototype.isActive = function () {
+    var rect = getContentRect(this.target);
+
+    this.contentRect_ = rect;
+
+    return rect.width !== this.broadcastWidth || rect.height !== this.broadcastHeight;
+};
+
+/**
+ * Updates 'broadcastWidth' and 'broadcastHeight' properties with a data
+ * from the corresponding properties of the last observed content rectangle.
+ *
+ * @returns {DOMRectInit} Last observed content rectangle.
+ */
+ResizeObservation.prototype.broadcastRect = function () {
+    var rect = this.contentRect_;
+
+    this.broadcastWidth = rect.width;
+    this.broadcastHeight = rect.height;
+
+    return rect;
+};
+
+var ResizeObserverEntry = function(target, rectInit) {
+    var contentRect = createReadOnlyRect(rectInit);
+
+    // According to the specification following properties are not writable
+    // and are also not enumerable in the native implementation.
+    //
+    // Property accessors are not being used as they'd require to define a
+    // private WeakMap storage which may cause memory leaks in browsers that
+    // don't support this type of collections.
+    defineConfigurable(this, { target: target, contentRect: contentRect });
+};
+
+var ResizeObserverSPI = function(callback, controller, callbackCtx) {
+    this.activeObservations_ = [];
+    this.observations_ = new MapShim();
+
+    if (typeof callback !== 'function') {
+        throw new TypeError('The callback provided as parameter 1 is not a function.');
+    }
+
+    this.callback_ = callback;
+    this.controller_ = controller;
+    this.callbackCtx_ = callbackCtx;
+};
+
+/**
+ * Starts observing provided element.
+ *
+ * @param {Element} target - Element to be observed.
+ * @returns {void}
+ */
+
+
+/**
+ * Registry of the ResizeObservation instances.
+ *
+ * @private {Map<Element, ResizeObservation>}
+ */
+
+
+/**
+ * Public ResizeObserver instance which will be passed to the callback
+ * function and used as a value of it's "this" binding.
+ *
+ * @private {ResizeObserver}
+ */
+
+/**
+ * Collection of resize observations that have detected changes in dimensions
+ * of elements.
+ *
+ * @private {Array<ResizeObservation>}
+ */
+ResizeObserverSPI.prototype.observe = function (target) {
+    if (!arguments.length) {
+        throw new TypeError('1 argument required, but only 0 present.');
+    }
+
+    // Do nothing if current environment doesn't have the Element interface.
+    if (typeof Element === 'undefined' || !(Element instanceof Object)) {
+        return;
+    }
+
+    if (!(target instanceof getWindowOf(target).Element)) {
+        throw new TypeError('parameter 1 is not of type "Element".');
+    }
+
+    var observations = this.observations_;
+
+    // Do nothing if element is already being observed.
+    if (observations.has(target)) {
+        return;
+    }
+
+    observations.set(target, new ResizeObservation(target));
+
+    this.controller_.addObserver(this);
+
+    // Force the update of observations.
+    this.controller_.refresh();
+};
+
+/**
+ * Stops observing provided element.
+ *
+ * @param {Element} target - Element to stop observing.
+ * @returns {void}
+ */
+ResizeObserverSPI.prototype.unobserve = function (target) {
+    if (!arguments.length) {
+        throw new TypeError('1 argument required, but only 0 present.');
+    }
+
+    // Do nothing if current environment doesn't have the Element interface.
+    if (typeof Element === 'undefined' || !(Element instanceof Object)) {
+        return;
+    }
+
+    if (!(target instanceof getWindowOf(target).Element)) {
+        throw new TypeError('parameter 1 is not of type "Element".');
+    }
+
+    var observations = this.observations_;
+
+    // Do nothing if element is not being observed.
+    if (!observations.has(target)) {
+        return;
+    }
+
+    observations.delete(target);
+
+    if (!observations.size) {
+        this.controller_.removeObserver(this);
+    }
+};
+
+/**
+ * Stops observing all elements.
+ *
+ * @returns {void}
+ */
+ResizeObserverSPI.prototype.disconnect = function () {
+    this.clearActive();
+    this.observations_.clear();
+    this.controller_.removeObserver(this);
+};
+
+/**
+ * Collects observation instances the associated element of which has changed
+ * it's content rectangle.
+ *
+ * @returns {void}
+ */
+ResizeObserverSPI.prototype.gatherActive = function () {
+        var this$1 = this;
+
+    this.clearActive();
+
+    this.observations_.forEach(function (observation) {
+        if (observation.isActive()) {
+            this$1.activeObservations_.push(observation);
+        }
+    });
+};
+
+/**
+ * Invokes initial callback function with a list of ResizeObserverEntry
+ * instances collected from active resize observations.
+ *
+ * @returns {void}
+ */
+ResizeObserverSPI.prototype.broadcastActive = function () {
+    // Do nothing if observer doesn't have active observations.
+    if (!this.hasActive()) {
+        return;
+    }
+
+    var ctx = this.callbackCtx_;
+
+    // Create ResizeObserverEntry instance for every active observation.
+    var entries = this.activeObservations_.map(function (observation) {
+        return new ResizeObserverEntry(observation.target, observation.broadcastRect());
+    });
+
+    this.callback_.call(ctx, entries, ctx);
+    this.clearActive();
+};
+
+/**
+ * Clears the collection of active observations.
+ *
+ * @returns {void}
+ */
+ResizeObserverSPI.prototype.clearActive = function () {
+    this.activeObservations_.splice(0);
+};
+
+/**
+ * Tells whether observer has active observations.
+ *
+ * @returns {boolean}
+ */
+ResizeObserverSPI.prototype.hasActive = function () {
+    return this.activeObservations_.length > 0;
+};
+
+// Registry of internal observers. If WeakMap is not available use current shim
+// for the Map collection as it has all required methods and because WeakMap
+// can't be fully polyfilled anyway.
+var observers = typeof WeakMap !== 'undefined' ? new WeakMap() : new MapShim();
+
+/**
+ * ResizeObserver API. Encapsulates the ResizeObserver SPI implementation
+ * exposing only those methods and properties that are defined in the spec.
+ */
+var ResizeObserver = function(callback) {
+    if (!(this instanceof ResizeObserver)) {
+        throw new TypeError('Cannot call a class as a function.');
+    }
+    if (!arguments.length) {
+        throw new TypeError('1 argument required, but only 0 present.');
+    }
+
+    var controller = ResizeObserverController.getInstance();
+    var observer = new ResizeObserverSPI(callback, controller, this);
+
+    observers.set(this, observer);
+};
+
+// Expose public methods of ResizeObserver.
+['observe', 'unobserve', 'disconnect'].forEach(function (method) {
+    ResizeObserver.prototype[method] = function () {
+        return (ref = observers.get(this))[method].apply(ref, arguments);
+        var ref;
+    };
+});
+
+var index = (function () {
+    // Export existing implementation if available.
+    if (typeof global$1.ResizeObserver !== 'undefined') {
+        return global$1.ResizeObserver;
+    }
+
+    return ResizeObserver;
+})();
+
+/* harmony default export */ __webpack_exports__["default"] = (index);
+
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(225)))
+
+/***/ }),
+/* 238 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
@@ -59573,17 +60887,17 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 var _require = __webpack_require__(178),
     Plugin = _require.Plugin;
 
-var tus = __webpack_require__(238);
+var tus = __webpack_require__(239);
 
-var _require2 = __webpack_require__(248),
+var _require2 = __webpack_require__(249),
     Provider = _require2.Provider,
     RequestClient = _require2.RequestClient,
     Socket = _require2.Socket;
 
-var emitSocketProgress = __webpack_require__(252);
-var getSocketHost = __webpack_require__(253);
-var settle = __webpack_require__(254);
-var limitPromises = __webpack_require__(255);
+var emitSocketProgress = __webpack_require__(253);
+var getSocketHost = __webpack_require__(254);
+var settle = __webpack_require__(255);
+var limitPromises = __webpack_require__(256);
 
 // Extracted from https://github.com/tus/tus-js-client/blob/master/lib/upload.js#L13
 // excepted we removed 'fingerprint' key to avoid adding more dependencies
@@ -59685,7 +60999,7 @@ module.exports = function (_Plugin) {
 
   /**
    * Clean up all references for a file's upload: the tus.Upload instance,
-   * any events related to the file, and the uppy-server WebSocket connection.
+   * any events related to the file, and the Companion WebSocket connection.
    */
 
 
@@ -59902,7 +61216,7 @@ module.exports = function (_Plugin) {
         var error = _extends(new Error(message), { cause: errData.error });
 
         // If the remote retry optimisation should not be used,
-        // close the socket—this will tell uppy-server to clear state and delete the file.
+        // close the socket—this will tell companion to clear state and delete the file.
         if (!_this4.opts.useFastRemoteRetry) {
           _this4.resetUploaderReferences(file.id);
           // Remove the serverToken so that a new one will be created for the retry.
@@ -60082,18 +61396,18 @@ module.exports = function (_Plugin) {
 }(Plugin);
 
 /***/ }),
-/* 238 */
+/* 239 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 // Generated by Babel
 
 
-var _upload = __webpack_require__(239);
+var _upload = __webpack_require__(240);
 
 var _upload2 = _interopRequireDefault(_upload);
 
-var _storage = __webpack_require__(247);
+var _storage = __webpack_require__(248);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -60125,7 +61439,7 @@ module.exports = {
 };
 
 /***/ }),
-/* 239 */
+/* 240 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -60143,27 +61457,27 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _fingerprint = __webpack_require__(240);
+var _fingerprint = __webpack_require__(241);
 
 var _fingerprint2 = _interopRequireDefault(_fingerprint);
 
-var _error = __webpack_require__(241);
+var _error = __webpack_require__(242);
 
 var _error2 = _interopRequireDefault(_error);
 
-var _extend = __webpack_require__(242);
+var _extend = __webpack_require__(243);
 
 var _extend2 = _interopRequireDefault(_extend);
 
-var _request = __webpack_require__(243);
+var _request = __webpack_require__(244);
 
-var _source = __webpack_require__(245);
+var _source = __webpack_require__(246);
 
-var _base = __webpack_require__(246);
+var _base = __webpack_require__(247);
 
 var Base64 = _interopRequireWildcard(_base);
 
-var _storage = __webpack_require__(247);
+var _storage = __webpack_require__(248);
 
 var Storage = _interopRequireWildcard(_storage);
 
@@ -60729,7 +62043,7 @@ Upload.defaultOptions = defaultOptions;
 exports.default = Upload;
 
 /***/ }),
-/* 240 */
+/* 241 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -60751,7 +62065,7 @@ function fingerprint(file, options) {
 }
 
 /***/ }),
-/* 241 */
+/* 242 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -60799,7 +62113,7 @@ var DetailedError = function (_Error) {
 exports.default = DetailedError;
 
 /***/ }),
-/* 242 */
+/* 243 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -60923,7 +62237,7 @@ module.exports = function extend() {
 
 
 /***/ }),
-/* 243 */
+/* 244 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -60936,7 +62250,7 @@ Object.defineProperty(exports, "__esModule", {
 exports.newRequest = newRequest;
 exports.resolveUrl = resolveUrl;
 
-var _resolveUrl = __webpack_require__(244);
+var _resolveUrl = __webpack_require__(245);
 
 var _resolveUrl2 = _interopRequireDefault(_resolveUrl);
 
@@ -60952,7 +62266,7 @@ function resolveUrl(origin, link) {
 }
 
 /***/ }),
-/* 244 */
+/* 245 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_RESULT__;// Copyright 2014 Simon Lydell
@@ -61005,7 +62319,7 @@ void (function(root, factory) {
 
 
 /***/ }),
-/* 245 */
+/* 246 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -61055,7 +62369,7 @@ function getSource(input) {
 }
 
 /***/ }),
-/* 246 */
+/* 247 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -61077,7 +62391,7 @@ function encode(data) {
 var isSupported = exports.isSupported = "btoa" in window;
 
 /***/ }),
-/* 247 */
+/* 248 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -61129,17 +62443,17 @@ function removeItem(key) {
 }
 
 /***/ }),
-/* 248 */
+/* 249 */
 /***/ (function(module, exports, __webpack_require__) {
 
 'use-strict';
 /**
- * Manages communications with Uppy Server
+ * Manages communications with Companion
  */
 
-var RequestClient = __webpack_require__(249);
-var Provider = __webpack_require__(250);
-var Socket = __webpack_require__(251);
+var RequestClient = __webpack_require__(250);
+var Provider = __webpack_require__(251);
+var Socket = __webpack_require__(252);
 
 module.exports = {
   RequestClient: RequestClient,
@@ -61148,7 +62462,7 @@ module.exports = {
 };
 
 /***/ }),
-/* 249 */
+/* 250 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -61177,15 +62491,15 @@ module.exports = function () {
 
   RequestClient.prototype.onReceiveResponse = function onReceiveResponse(response) {
     var state = this.uppy.getState();
-    var uppyServer = state.uppyServer || {};
+    var companion = state.companion || {};
     var host = this.opts.serverUrl;
     var headers = response.headers;
-    // Store the self-identified domain name for the uppy-server we just hit.
-    if (headers.has('i-am') && headers.get('i-am') !== uppyServer[host]) {
+    // Store the self-identified domain name for the Companion instance we just hit.
+    if (headers.has('i-am') && headers.get('i-am') !== companion[host]) {
       var _extends2;
 
       this.uppy.setState({
-        uppyServer: _extends({}, uppyServer, (_extends2 = {}, _extends2[host] = headers.get('i-am'), _extends2))
+        companion: _extends({}, companion, (_extends2 = {}, _extends2[host] = headers.get('i-am'), _extends2))
       });
     }
     return response;
@@ -61253,10 +62567,10 @@ module.exports = function () {
     key: 'hostname',
     get: function get() {
       var _uppy$getState = this.uppy.getState(),
-          uppyServer = _uppy$getState.uppyServer;
+          companion = _uppy$getState.companion;
 
       var host = this.opts.serverUrl;
-      return stripSlash(uppyServer && uppyServer[host] ? uppyServer[host] : host);
+      return stripSlash(companion && companion[host] ? companion[host] : host);
     }
   }, {
     key: 'defaultHeaders',
@@ -61277,7 +62591,7 @@ module.exports = function () {
 }();
 
 /***/ }),
-/* 250 */
+/* 251 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -61293,7 +62607,7 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var RequestClient = __webpack_require__(249);
+var RequestClient = __webpack_require__(250);
 
 var _getName = function _getName(id) {
   return id.split('-').map(function (s) {
@@ -61313,7 +62627,7 @@ module.exports = function (_RequestClient) {
     _this.id = _this.provider;
     _this.authProvider = opts.authProvider || _this.provider;
     _this.name = _this.opts.name || _getName(_this.id);
-    _this.tokenKey = 'uppy-server-' + _this.id + '-auth-token';
+    _this.tokenKey = 'companion-' + _this.id + '-auth-token';
     return _this;
   }
 
@@ -61386,7 +62700,7 @@ module.exports = function (_RequestClient) {
 }(RequestClient);
 
 /***/ }),
-/* 251 */
+/* 252 */
 /***/ (function(module, exports, __webpack_require__) {
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -61472,7 +62786,7 @@ module.exports = function () {
 }();
 
 /***/ }),
-/* 252 */
+/* 253 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var throttle = __webpack_require__(224);
@@ -61495,7 +62809,7 @@ function _emitSocketProgress(uploader, progressData, file) {
 module.exports = throttle(_emitSocketProgress, 300, { leading: true, trailing: true });
 
 /***/ }),
-/* 253 */
+/* 254 */
 /***/ (function(module, exports) {
 
 module.exports = function getSocketHost(url) {
@@ -61508,7 +62822,7 @@ module.exports = function getSocketHost(url) {
 };
 
 /***/ }),
-/* 254 */
+/* 255 */
 /***/ (function(module, exports) {
 
 module.exports = function settle(promises) {
@@ -61534,7 +62848,7 @@ module.exports = function settle(promises) {
 };
 
 /***/ }),
-/* 255 */
+/* 256 */
 /***/ (function(module, exports) {
 
 /**
@@ -61579,7 +62893,7 @@ module.exports = function limitPromises(limit) {
 };
 
 /***/ }),
-/* 256 */
+/* 257 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
@@ -61596,14 +62910,14 @@ var _require = __webpack_require__(178),
 var cuid = __webpack_require__(181);
 var Translator = __webpack_require__(179);
 
-var _require2 = __webpack_require__(248),
+var _require2 = __webpack_require__(249),
     Provider = _require2.Provider,
     Socket = _require2.Socket;
 
-var emitSocketProgress = __webpack_require__(252);
-var getSocketHost = __webpack_require__(253);
-var settle = __webpack_require__(254);
-var limitPromises = __webpack_require__(255);
+var emitSocketProgress = __webpack_require__(253);
+var getSocketHost = __webpack_require__(254);
+var settle = __webpack_require__(255);
+var limitPromises = __webpack_require__(256);
 
 function buildResponseError(xhr, error) {
   // No error message
@@ -61776,7 +63090,11 @@ module.exports = function (_Plugin) {
       formPost.append(item, file.meta[item]);
     });
 
-    formPost.append(opts.fieldName, file.data);
+    if (file.name) {
+      formPost.append(opts.fieldName, file.data, file.name);
+    } else {
+      formPost.append(opts.fieldName, file.data);
+    }
 
     return formPost;
   };
