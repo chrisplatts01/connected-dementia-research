@@ -208,6 +208,7 @@ $(function () {
 						}
 					},
 					errorElement: 'div',
+					errorClass: 'error message message--error',
 					errorPlacement: function (error, element) {
 						error.appendTo(element.closest('.form__field'))
 					}
@@ -321,170 +322,116 @@ $(function () {
 	/**
 	 * DROPDOWN SELECT: Handle custom select components
 	 */
-	var dropdownSelect2 = (function () {
-		var $dropdownSelects = $('.dropdown-select-2')
+	var dropdownSelect = (function () {
+		var $dropdownSelects = $('.dropdown-select')
 
-		// Initialise dropdown, get and set a dropdown select component
+		// Handle state of dropdown select
 		var state = (function () {
-			return {
-				// Initialise the component's structure
-				init: function ($dropdownSelect) {
-					var $dropdown
-					var $dropdownOptions
-					var $dropdownSelected
-					var $select = $dropdownSelect.find('select').first()
-					var $options = state.get($select)
 
-					$dropdownSelect.append('<div class="dropdown"></div>')
-					$dropdown = $dropdownSelect.find('.dropdown')
+			// Public: Initialize dropdown select UI
+			var init = function ($dropdownSelect) {
+				var $dropdown
+				var $dropdownSelected
+				var $dropdownOptions
 
-					$dropdown.prepend('<div class="dropdown__selected">Select&hellip;</div>')
-					$dropdownSelected = $dropdown.find('.dropdown__selected')
+				var $select = $dropdownSelect.find('select').first()
+				var $options = $select.children('option')
 
-					$dropdown.append('<div class="dropdown__options"></div>')
-					$dropdownOptions = $dropdown.find('.dropdown__options')
+				$dropdownSelect.append('<div class="dropdown"></div>')
+				$dropdown = $dropdownSelect.find('.dropdown')
 
-					$options.each(function () {
-						var $option = $(this)
+				$dropdown.prepend('<div class="dropdown__selected">Select&hellip;</div>')
+				$dropdownSelected = $dropdownSelect.find('.dropdown__selected')
 
-						if ($option.attr('value')) {
-							$dropdownOptions.append('<div class="dropdown__option" data-value=' + $option.attr('value') + '>' + $option.text() + '</div>')
+				$dropdown.append('<div class="dropdown__options"></div>')
+				$dropdownOptions = $dropdown.find('.dropdown__options')
+
+				$options.each(function () {
+					var $option = $(this)
+					var value = $option.attr('value')
+					var text = $option.text()
+
+					if (value) {
+						$dropdownOptions.append('<div class="dropdown__option" data-value=' + $option.attr('value') + '>' + $option.text() + '</div>')
+						console.log(value)
+						console.log($select)
+
+						if (value === get($select)) {
+							$dropdown.addClass('selected')
+							$dropdownSelected.replaceWith('<div class="dropdown__selected selected">' + text + '</div>')
 						}
-					})
-					return $dropdown
-				},
+					}
+				})
+				return $dropdown
+			}
 
-				// Get the current state fo the select element
-				get: function ($select) {
-					return $select.children('option')
-				},
+			// Public: Handle change event
+			var change = function ($dropdownSelect, $dropdownOption) {
+				var $select = $dropdownSelect.find('select')
+				var $dropdown = $dropdownSelect.find('.dropdown')
+				var $dropdownOptions = $dropdown.find('.dropdown__option')
+				var $dropdownSelected = $dropdown.find('.dropdown__selected')
 
-				// Set the current state of the select element
-				set: function ($select) {}
+				$dropdown.removeClass('error')
+				$dropdownSelect.find('.message--error').detach()
+
+
+				$dropdownOptions.removeClass('selected')
+				$dropdownOption.addClass('selected')
+
+				$dropdownSelected.addClass('selected')
+				$dropdownSelected.text($dropdownOption.text())
+
+				$dropdown.addClass('selected')
+			}
+
+			// Public: Get the current value of the select element
+			var get = function ($select) {
+				return $select.val()
+			}
+
+			// Public: Set the current value of the select element
+			var set = function ($select, value) {
+				$select.val(value)
+			}
+
+			return {
+				init: init,
+				change: change,
+				get: get,
+				set: set
 			}
 		}())
 
-		// Initialise dropdowns
+		// Initialise dropdowns and bind events
 		$dropdownSelects.each(function () {
 			var $dropdownSelect = $(this)
 			var $dropdown = state.init($dropdownSelect)
-			var $dropdownOption = $dropdown.find('.dropdown__option')
+			var $dropdownOptions = $dropdown.find('.dropdown__option')
 
-			// Open/close this dropdown select
+			// Open/close dropdown
 			$dropdown.click(function () {
 				$dropdown.toggleClass('open')
 			})
 
-			$dropdownOption.click(function () {
-				console.log($(this).text())
+			// Change selected option
+			$dropdownOptions.click(function () {
+				var $dropdownOption = $(this)
+
+				var $select = $dropdownSelect.find('select').first()
+				var value = $dropdownOption.attr('data-value')
+
+				state.change($dropdownSelect, $dropdownOption)
+				state.set($select, value)
+			})
+			// Handle error on form submit
+			$dropdownSelect.closest('form').on('submit', function () {
+				if ($dropdownSelect.find('select').hasClass('error')) {
+					$dropdown.addClass('error')
+				}
 			})
 		})
 	})()
-
-	/**
-	 * DROPDOWN SELECT: Handle custom select components
-	 */
-	// var dropdownSelect = (function () {
-	// 	var $dropdownSelect
-	// 	var $dropdown
-	// 	var $dropdownOption
-
-	// 	$dropdownSelect = $('.dropdown-select')
-
-	// 	var dropdownState = (function () {
-	// 		return {
-	// 			init: function ($select) {
-	// 				// Set initial state of dropdown-select controls
-	// 				var dropdown = '<div class="dropdown"></div>'
-	// 				var selected = '<div class="dropdown__selected"></div>'
-	// 				var options = '<div class="dropdown__options"></div>'
-	// 				var option = '<div class="dropdown__option"></div>'
-	// 				var $dropdown = $(dropdown).appendTo($select)
-	// 				var $selected = $(selected).appendTo($dropdown)
-	// 				var $options = $(options).appendTo($dropdown)
-	// 				var $option
-
-	// 				$selected.text($select.find('option:selected').text())
-	// 				$select
-	// 					.find('option')
-	// 					.not(':selected')
-	// 					.each(function () {
-	// 						var $this = $(this)
-	// 						var text = $this.text()
-	// 						var value = $this.val()
-	// 						$option = $(option).appendTo($options)
-	// 						$option.text(text)
-	// 						$option.attr('data-value', value)
-	// 					})
-
-	// 				$select
-	// 					.find('.message--error')
-	// 					.detach()
-	// 					.appendTo($select)
-	// 			},
-	// 			get: function ($select) {
-	// 				// Get current state of select element
-	// 				// NOTE: Not currently required
-	// 			},
-	// 			set: function ($select) {
-	// 				// Set state of select element
-	// 				var value = $select
-	// 					.find('.dropdown__option.selected')
-	// 					.attr('data-value')
-	// 				$select.removeClass('error')
-	// 				$select.find('div.error').remove()
-	// 				$select
-	// 					.find('option')
-	// 					.first()
-	// 					.removeAttr('selected')
-	// 				$select.find('option[value="' + value + '"]').prop('selected', true)
-	// 				$select.find('select').val(value)
-	// 			}
-	// 		}
-	// 	})()
-
-	// 	// Initialise dropdowns
-	// 	$dropdownSelect.each(function () {
-	// 		dropdownState.init($(this))
-	// 	})
-
-	// 	// Handle form submission with no selection
-	// 	$dropdownSelect.closest('form').on('submit', function () {
-	// 		var $this = $(this)
-	// 		var $dropdown = $this.find('.dropdown-select')
-	// 		$dropdown.each(function () {
-	// 			var $this = $(this)
-	// 			if ($this.find('select').hasClass('error')) {
-	// 				$this.addClass('error')
-	// 			}
-	// 		})
-	// 	})
-
-	// 	$dropdown = $('.dropdown')
-	// 	$dropdown.click(function () {
-	// 		var $this = $(this)
-	// 		$this.toggleClass('open')
-	// 		$this.find('.dropdown__option').toggle()
-	// 	})
-
-	// 	$dropdownOption = $dropdown.find('.dropdown__option')
-	// 	$dropdownOption.click(function () {
-	// 		var $this = $(this)
-	// 		var $select = $this.closest('.dropdown-select')
-	// 		var $dropdown = $this.closest('.dropdown') // .children('.dropdown__selected')
-	// 		var $options = $this
-	// 			.parent('.dropdown__options')
-	// 			.children('.dropdown__option')
-	// 		var $selected = $this
-	// 			.closest('.dropdown')
-	// 			.children('.dropdown__selected')
-	// 		$options.removeClass('selected')
-	// 		$this.addClass('selected')
-	// 		$dropdown.addClass('selected')
-	// 		$selected.text($this.text())
-	// 		dropdownState.set($select)
-	// 	})
-	// })()
 
 	/**
 	 * CONDITIONAL CHECKBOXES: Handle conditional checkbox groups

@@ -88,14 +88,9 @@
 {% include 'components/dropdown-select/_dropdown-select.njk' %}
 {% endmacro %}
 
-{% macro dropdownSelect2(label, id, options, disabled='', validation='') %}
-{% include 'components/dropdown-select-2/_dropdown-select-2.njk' %}
-{% endmacro %}
-
 {% macro selectSliderField(label = "Choose an option", id = "select-slider", values = ["0", "1", "2", "3", "4", "5" ], disabled="", validation = "") %}
 {% include 'components/select-slider-field/_select-slider-field.njk' %}
 {% endmacro %}
-
 
 {% macro segmentedControl(label='Sex', id='sex', options=['Male', 'Female'], disabled='', validation='') %}
 {% include 'components/segmented-control/_segmented-control.njk' %}
