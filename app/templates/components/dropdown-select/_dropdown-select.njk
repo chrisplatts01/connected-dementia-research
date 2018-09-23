@@ -1,9 +1,14 @@
 <div class="form__field dropdown-select">
   <label>{{ label }}
     <select id="{{ id }}" name="{{ id }}" {{ disabled }} {{ validation }}>
-      <option selected disabled>Select&hellip;</option>
+      <option disabled>Select&hellip;</option>
       {% for option in options %}
-      <option value="{{ option | lower | replace(' ', '_') }}">{{ option }}</option>
+				{# For testing only, set to test for non-zero option. #}
+				{% if loop.index == 0 %}
+	      <option selected value="{{ option | lower | replace(' ', '_') }}">{{ option }}</option>
+				{% else %}
+  	    <option value="{{ option | lower | replace(' ', '_') }}">{{ option }}</option>
+				{% endif %}
       {% endfor %}
     </select>
   </label>

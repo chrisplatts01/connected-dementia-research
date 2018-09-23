@@ -14,7 +14,7 @@ $grey-L60: lighten($grey, 60%);
 $grey-L66: lighten($grey, 66%);
 $grey-L74: lighten($grey, 74%);
 $coral-L32: lighten($coral, 32%);
-// $ruby-L60: lighten($ruby, 60%); // SASS functio not matching the InDesign
+// $ruby-L60: lighten($ruby, 60%); // SASS function not matching the InDesign
 $ruby-L60:	rgb(254, 237, 243);    // colour, so using InDesign RGB value.
 
 // Dark variants
@@ -31,3 +31,4 @@ $brand-primary: $coral;
 $border-color: $grey-L52;
 $border-hover-color: $grey-L20;
 $border-shadow-color: $grey-L60;
+$border-shadow-hover-color: $grey-L52;

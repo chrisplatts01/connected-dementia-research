@@ -5,10 +5,12 @@
 {% block content %}
   <h1 class="pl-heading">Dropdown select</h1>
   {{ volunteer.dropdownSelect('Please choose an option:', 'select-id', ['Guardian (including Enduring Guardian, Public Guardian (and his/her delegate) or Interstate Guardian [AKS])', 'Agent', 'A person empowered under law to act as agent or in the best interests of the Volunteer', 'Substitute decision maker', 'Others equivalent to the above', 'None of the above'], validation="required") }}
-  <div class="error">
+  {#
+	<div class="error">
     <p><i>Error state:</i></p>
     {{ volunteer.dropdownSelect('Please choose an option:', 'select-id', ['Guardian (including Enduring Guardian, Public Guardian (and his/her delegate) or Interstate Guardian [AKS])', 'Agent', 'A person empowered under law to act as agent or in the best interests of the Volunteer', 'Substitute decision maker', 'Others equivalent to the above', 'None of the above'], validation="required") }}
   </div>
+	#}
   <h2 class="pl-heading">HTML</h2>
   <textarea class="pl-code" disabled>
     {{ volunteer.dropdownSelect('Please choose an option:', 'select-id', ['Guardian (including Enduring Guardian, Public Guardian (and his/her delegate) or Interstate Guardian [AKS])', 'Agent', 'A person empowered under law to act as agent or in the best interests of the Volunteer', 'Substitute decision maker', 'Others equivalent to the above', 'None of the above']) }}

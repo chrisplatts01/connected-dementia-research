@@ -1,28 +1,27 @@
-
 .message {
-  @include message-font();
-  padding-top: 16px;
-  text-align: left;
+	@include message-font();
+	padding-top: 16px;
+	text-align: left;
 
-  &:before {
-    position: relative;
-    top: 2px;
-    padding-right: 0.5rem;
-  }
+	&:before {
+		position: relative;
+		top: 2px;
+		padding-right: 0.5rem;
+	}
 }
 
 .message--success {
-  color: $turquoise;
+	color: $turquoise;
 
-  &:before {
-    content: url('/images/icon-success.svg');
-  }
+	&:before {
+		content: url('/images/icon-success.svg');
+	}
 }
 
 .message--error {
-  color: $ruby;
+	color: $ruby;
 
-  &:before {
-    content: url('/images/icon-error.svg');
-  }
+	&:before {
+		content: url('/images/icon-error.svg');
+	}
 }

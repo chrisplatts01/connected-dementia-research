@@ -719,6 +719,39 @@ form .date-field-group label.error {
   box-shadow: 0 4px 0 0 #d0d7dd;
 }
 
+.dropdown-select .dropdown:hover, .dropdown-select .dropdown:focus {
+  border-color: #5d7384;
+  box-shadow: 0 4px 0 0 #b8c4cc;
+}
+
+.dropdown-select .dropdown.selected {
+  border-color: #f15b5b;
+}
+
+.dropdown-select .dropdown.selected:hover, .dropdown-select .dropdown.selected:focus {
+  border-color: #d41212;
+}
+
+.dropdown-select .dropdown.error {
+  border-color: #a6093d;
+}
+
+.dropdown-select .dropdown .dropdown__options {
+  display: none;
+}
+
+.dropdown-select .dropdown.open {
+  border-color: #f15b5b;
+}
+
+.dropdown-select .dropdown.open .dropdown__options {
+  display: block;
+}
+
+.dropdown-select .dropdown.open .dropdown__selected {
+  border-bottom: 1px solid #f15b5b;
+}
+
 .dropdown-select .dropdown .dropdown__selected,
 .dropdown-select .dropdown .dropdown__option {
   font-family: "Calibri", "Open Sans", "Helvetica", "Arial", sans-serif;
@@ -749,95 +782,33 @@ form .date-field-group label.error {
   background: url("/images/arrow-down-grey.svg") center center no-repeat;
 }
 
-.dropdown-select .dropdown.selected {
+.dropdown-select .dropdown .dropdown__selected.selected {
+  color: white;
+  background-color: #f15b5b;
   border-color: #f15b5b;
 }
 
-.dropdown-select .dropdown.selected .dropdown__selected {
-  color: white;
-  background-color: #f15b5b;
-}
-
-.dropdown-select .dropdown.selected .dropdown__selected:hover {
-  background-color: #d41212;
-}
-
-.dropdown-select .dropdown.selected .dropdown__selected:after {
+.dropdown-select .dropdown .dropdown__selected.selected:after {
   background-image: url("/images/arrow-down-white.svg");
 }
 
-.dropdown-select .dropdown.selected:hover {
+.dropdown-select .dropdown .dropdown__selected.selected:hover, .dropdown-select .dropdown .dropdown__selected.selected:focus {
+  background-color: #d41212;
   border-color: #d41212;
 }
 
 .dropdown-select .dropdown .dropdown__option {
-  display: none;
-}
-
-.dropdown-select .dropdown:hover {
-  border-color: #5d7384;
-}
-
-.dropdown-select .dropdown.error {
-  border: 3px solid #a6093d;
-}
-
-.dropdown-select .dropdown.error .dropdown__selected:after {
-  background-image: url("/images/arrow-down-purple.svg");
-}
-
-.dropdown-select .dropdown.open {
-  border-color: #f15b5b;
-}
-
-.dropdown-select .dropdown.open .dropdown__selected {
-  border-bottom: 2px solid #f15b5b;
-}
-
-.dropdown-select .dropdown.open .dropdown__selected:after {
-  background-image: url("/images/arrow-down-orange.svg");
-}
-
-.dropdown-select .dropdown.open .dropdown__option {
   color: #f15b5b;
   border-bottom: 1px solid #f15b5b;
 }
 
-.dropdown-select .dropdown.open .dropdown__option:last-child {
+.dropdown-select .dropdown .dropdown__option:last-child {
   border: 0;
 }
 
-.dropdown-select .dropdown.open .dropdown__option:hover {
+.dropdown-select .dropdown .dropdown__option:hover {
   color: #d41212;
   background-color: #fef1f1;
-}
-
-.dropdown-select .dropdown.open.selected .dropdown__selected {
-  border-bottom: 2px solid #f15b5b;
-}
-
-.dropdown-select .dropdown.open.selected .dropdown__selected:after {
-  background-image: url("/images/arrow-down-white.svg");
-}
-
-.error .dropdown-select .dropdown, .dropdown-select.error .dropdown {
-  border: 3px solid #a6093d;
-}
-
-.error .dropdown-select .dropdown .dropdown__selected:after, .dropdown-select.error .dropdown .dropdown__selected:after {
-  background-image: url("/images/arrow-down-purple.svg");
-}
-
-.error .dropdown-select .dropdown.open, .dropdown-select.error .dropdown.open {
-  border-color: #f15b5b;
-}
-
-.error .dropdown-select .dropdown.open .dropdown__selected, .dropdown-select.error .dropdown.open .dropdown__selected {
-  border-bottom: 2px solid #f15b5b;
-}
-
-.error .dropdown-select .dropdown.open .dropdown__selected:after, .dropdown-select.error .dropdown.open .dropdown__selected:after {
-  background-image: url("/images/arrow-down-orange.svg");
 }
 
 .file-upload {
@@ -3317,28 +3288,6 @@ button.uppy-DashboardItem-progressIndicator {
   display: inline-block !important;
   vertical-align: middle !important;
   width: 78% !important;
-}
-
-form label.error,
-form div.error {
-  font-family: "Calibri", "Open Sans", "Helvetica", "Arial", sans-serif;
-  font-size: 19px;
-  font-weight: 700;
-  line-height: 24px;
-  color: #333f48;
-  display: block;
-  margin-top: 8px;
-  padding-bottom: 0;
-  color: #a6093d;
-  text-align: left;
-}
-
-form label.error:before,
-form div.error:before {
-  position: relative;
-  top: 2px;
-  padding-right: 0.5rem;
-  content: url("/images/icon-error.svg");
 }
 
 .heading {
