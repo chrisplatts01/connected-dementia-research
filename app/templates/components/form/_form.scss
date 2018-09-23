@@ -1,18 +1,19 @@
 form {
-  label.error,
-  div.error {
-    @include message-font();
-    display: block;
-    margin-top: 8px;
-    padding-bottom: 0;
-    color: $ruby;
-    text-align: left;
 
-    &:before {
-      position: relative;
-      top: 2px;
-      padding-right: 0.5rem;
-      content: url('/images/icon-error.svg');
-    }
-  }
+	label.error,
+	div.error {
+		// @include message-font();
+		// display: block;
+		// margin-top: 8px;
+		// padding-bottom: 0;
+		// color: $ruby;
+		// text-align: left;
+
+		// &:before {
+		//   position: relative;
+		//   top: 2px;
+		//   padding-right: 0.5rem;
+		//   content: url('/images/icon-error.svg');
+		// }
+	}
 }
