@@ -8,6 +8,8 @@ bower_components
 # Compiled - uncomment this later to share build folder
 # dist
 # dist/**/*
+.publish/
+.publish/**/*
 
 # Archive files
 *.zip
