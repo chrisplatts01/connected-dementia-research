@@ -58772,17 +58772,17 @@ var ProgressBarProcessing = function ProgressBarProcessing(props) {
   );
 };
 
-var progressDetails = function progressDetails(props) {
+var ProgressDetails = function ProgressDetails(props) {
   return h(
     'div',
     { 'class': 'uppy-StatusBar-statusSecondary' },
-    props.inProgress > 1 && props.i18n('filesUploadedOfTotal', { complete: props.complete, smart_count: props.inProgress }) + ' \xB7 ',
+    props.numUploads > 1 && props.i18n('filesUploadedOfTotal', { complete: props.complete, smart_count: props.numUploads }) + ' \xB7 ',
     props.i18n('dataUploadedOfTotal', { complete: props.totalUploadedSize, total: props.totalSize }) + ' \xB7 ',
     props.i18n('xTimeLeft', { time: props.totalETA })
   );
 };
 
-var ThrottledProgressDetails = throttle(progressDetails, 500, { leading: true, trailing: true });
+var ThrottledProgressDetails = throttle(ProgressDetails, 500, { leading: true, trailing: true });
 
 var ProgressBarUploading = function ProgressBarUploading(props) {
   if (!props.isUploadStarted || props.isAllComplete) {
