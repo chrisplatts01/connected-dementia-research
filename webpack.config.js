@@ -1,5 +1,6 @@
 var path = require('path')
 var webpack = require('webpack')
+var mode = 'development'
 
 module.exports = {
 	entry: './app/scripts/main.js',
@@ -11,7 +12,7 @@ module.exports = {
 	plugins: [
 		new webpack.LoaderOptionsPlugin({
 			options: {
-				mode: 'development'
+				mode: mode
 			}
 		}),
 		new webpack.ProvidePlugin({

@@ -1,0 +1,77 @@
+{% extends "pattern-library-layout.njk" %}
+
+{% import 'macros/volunteer.njk' as volunteer %}
+
+{% block content %}
+  <h1 class="pl-heading">Accordion</h1>
+  <div class="accordion">
+    <section class="accordion__item">
+      <header class="accordion__header">
+        <h2>Item 1</h2>
+          <a class="accordion__edit">Edit</a>
+      </header>
+      <article class="accordion__content">
+				<p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Nullam quis risus eget urna mollis ornare vel eu leo. Integer posuere erat a ante venenatis dapibus posuere velit aliquet.</p>
+			</article>
+    </section>
+    <section class="accordion__item">
+      <header class="accordion__header">
+        <h2>Item 2</h2>
+          <a class="accordion__edit">Edit</a>
+      </header>
+      <article class="accordion__content">
+				<p>Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Aenean lacinia bibendum nulla sed consectetur. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.</p>
+			</article>
+    </section>
+    <section class="accordion__item">
+      <header class="accordion__header">
+        <h2>Item 3</h2>
+          <a class="accordion__edit">Edit</a>
+      </header>
+      <article class="accordion__content">
+				<p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Maecenas faucibus mollis interdum. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean lacinia bibendum nulla sed consectetur. Vestibulum id ligula porta felis euismod semper. Maecenas sed diam eget risus varius blandit sit amet non magna.</p>
+			</article>
+    </section>
+  </div>
+  <h2 class="pl-heading">HTML</h2>
+  <textarea class="pl-code" disabled>
+		<div class="accordion">
+  <div class="accordion">
+    <section class="accordion__item">
+      <header class="accordion__header">
+        <h2>Item 1</h2>
+          <a class="accordion__edit">Edit</a>
+      </header>
+      <article class="accordion__content">
+				<p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Nullam quis risus eget urna mollis ornare vel eu leo. Integer posuere erat a ante venenatis dapibus posuere velit aliquet.</p>
+			</article>
+    </section>
+    <section class="accordion__item">
+      <header class="accordion__header">
+        <h2>Item 2</h2>
+          <a class="accordion__edit">Edit</a>
+      </header>
+      <article class="accordion__content">
+				<p>Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Aenean lacinia bibendum nulla sed consectetur. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.</p>
+			</article>
+    </section>
+    <section class="accordion__item">
+      <header class="accordion__header">
+        <h2>Item 3</h2>
+          <a class="accordion__edit">Edit</a>
+      </header>
+      <article class="accordion__content">
+				<p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Maecenas faucibus mollis interdum. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean lacinia bibendum nulla sed consectetur. Vestibulum id ligula porta felis euismod semper. Maecenas sed diam eget risus varius blandit sit amet non magna.</p>
+			</article>
+    </section>
+  </div>
+	</textarea>
+  <h2 class="pl-heading">SCSS</h2>
+  <textarea class="pl-code" disabled>
+    {% include 'components/accordion/_accordion.scss' ignore missing %}
+  </textarea>
+  <h2 class="pl-heading">Javascript</h2>
+  <textarea class="pl-code" disabled>
+    {% include 'components/accordion/accordion.js' ignore missing %}
+  </textarea>
+{% endblock %}
