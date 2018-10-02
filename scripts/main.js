@@ -106,12 +106,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _scripts_vendor_datejs_i18n_en_GB_js__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_scripts_vendor_datejs_i18n_en_GB_js__WEBPACK_IMPORTED_MODULE_6__);
 /* harmony import */ var _chenfengyuan_datepicker_dist_datepicker_common_js__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(177);
 /* harmony import */ var _chenfengyuan_datepicker_dist_datepicker_common_js__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(_chenfengyuan_datepicker_dist_datepicker_common_js__WEBPACK_IMPORTED_MODULE_7__);
-/**
- *  Declare these two varibles to fix an issue importing modules
- */
+/* harmony import */ var _templates_components_accordion_accordion_js__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(178);
+// Declare these two varibles to fix an issue importing modules
 var a = ''
 var b = ''
 
+// Import library exports
 
 
 
@@ -122,11 +122,13 @@ var b = ''
 
 
 
-/**
- * Load Uppy file upload core and plugins (run `yarn add -D @uppy/[PLUGIN_NAME]` at the CLI to install dependencies)
- */
-const Uppy = __webpack_require__(178) // Core Uppy code
-const Dashboard = __webpack_require__(198) // Full-featured sleek UI with file previews, metadata editing, upload/pause/resume/cancel buttons and more. Includes StatusBar and Informer plugins by default
+// Import component exports
+
+
+// Require Uppy file upload core and plugins (run `yarn add -D @uppy/[PLUGIN_NAME]` at the CLI to install dependencies)
+// TODO: See if 'import' works with these
+const Uppy = __webpack_require__(179) // Core Uppy code
+const Dashboard = __webpack_require__(199) // Full-featured sleek UI with file previews, metadata editing, upload/pause/resume/cancel buttons and more. Includes StatusBar and Informer plugins by default
 // const DragDrop = require('@uppy/drag-drop') // Plain and simple drag-and-drop area
 // const FileInput = require('@uppy/file-input') // Even more plain and simple, just a button
 // const Webcam = require('@uppy/webcam') // Upload selfies or audio / video recordings
@@ -134,8 +136,8 @@ const Dashboard = __webpack_require__(198) // Full-featured sleek UI with file p
 // const GoogleDrive = require('@uppy/google-drive') // Import files from Google Drive
 // const Instagram = require('@uppy/instagram') // Import files from Instagram
 // const Url = require('@uppy/url') // Import files from any public URL
-const Tus = __webpack_require__(238) // Uploads using the tus resumable upload protocol
-const XHRUpload = __webpack_require__(257) // Classic multipart form uploads or binary uploads using XMLHTTPRequest
+const Tus = __webpack_require__(239) // Uploads using the tus resumable upload protocol
+const XHRUpload = __webpack_require__(258) // Classic multipart form uploads or binary uploads using XMLHTTPRequest
 // const AwsS3 = require('@uppy/aws-s3') // Uploader for AWS S3
 // const AwsS3Multipart = require('@uppy/aws-s3 - multipart') // Uploader for AWS S3 using its resumable Multipart protocol
 // const ProgressBar = require('@uppy/progress-bar') // Add a small YouTube-style progress bar at the top of the page
@@ -146,558 +148,545 @@ const XHRUpload = __webpack_require__(257) // Classic multipart form uploads or 
 // const ThumbnailGenerator = require('@uppy/thumbnail-generator') // Generate preview thumbnails for images to be uploaded [documentation not yet available]
 // const GoldenRetriever = require('@uppy/golden-retriever') // Restore files and continue uploading after a page refresh or a browser crash
 
-jquery__WEBPACK_IMPORTED_MODULE_0___default()(function () {
-	/**
-	 * FILE UPLOAD: Handle file upload components (user initiated upload using XHR)
-	 */
-	var fileUpload = (function () {
-		var $fileUpload = jquery__WEBPACK_IMPORTED_MODULE_0___default()('#file-upload')
+/**
+ * FILE UPLOAD: Handle file upload components (user initiated upload using XHR)
+ */
+var fileUpload = (function () {
+	var $fileUpload = jquery__WEBPACK_IMPORTED_MODULE_0___default()('#file-upload')
 
-		$fileUpload.each(function () {
-			var autoProceed = ($fileUpload.attr('data-auto-upload') === "true")
-			var protocol = $fileUpload.attr('data-protocol')
-			var endpoint = $fileUpload.attr('data-endpoint')
+	$fileUpload.each(function () {
+		var autoProceed = ($fileUpload.attr('data-auto-upload') === "true")
+		var protocol = $fileUpload.attr('data-protocol')
+		var endpoint = $fileUpload.attr('data-endpoint')
 
-			console.log('RAW VALUES = ', autoProceed, protocol, endpoint)
+		console.log('RAW VALUES = ', autoProceed, protocol, endpoint)
 
-			protocol = protocol || 'xhr'
-			if (protocol === 'tus') {
-				endpoint = endpoint || 'https://master.tus.io/files/' // This endpoint is provided by Transloadit for testing
-			} else {
-				endpoint = endpoint || 'https://example.com/upload' // This endpoint will fail
+		protocol = protocol || 'xhr'
+		if (protocol === 'tus') {
+			endpoint = endpoint || 'https://master.tus.io/files/' // This endpoint is provided by Transloadit for testing
+		} else {
+			endpoint = endpoint || 'https://example.com/upload' // This endpoint will fail
+		}
+
+		console.log('VALUES = ', autoProceed, protocol, endpoint)
+
+		var uppy = Uppy({
+			debug: true,
+			autoProceed: autoProceed,
+			restrictions: {
+				maxFileSize: 1000000,
+				maxNumberOfFiles: 3,
+				minNumberOfFiles: 1,
+				allowedFileTypes: ['image/*']
 			}
+		})
 
-			console.log('VALUES = ', autoProceed, protocol, endpoint)
-
-			var uppy = Uppy({
-				debug: true,
-				autoProceed: autoProceed,
-				restrictions: {
-					maxFileSize: 1000000,
-					maxNumberOfFiles: 3,
-					minNumberOfFiles: 1,
-					allowedFileTypes: ['image/*']
+		uppy.use(Dashboard, {
+			trigger: '.UppyModalOpenerBtn',
+			inline: true,
+			target: '.DashboardContainer',
+			replaceTargetContent: true,
+			showProgressDetails: false,
+			note: 'Images only, 1–3 files, up to 1 MB',
+			height: 180,
+			width: 360,
+			metaFields: [{
+					id: 'name',
+					name: 'Name',
+					placeholder: 'file name'
+				},
+				{
+					id: 'caption',
+					name: 'Caption',
+					placeholder: 'Describe what the image is about'
 				}
-			})
+			],
+			locale: {
+				strings: {
+					dropPaste: 'Drag file(s) here or %{browse}',
+					complete: 'Upload successful',
+					pleasePressRetry: ''
+				}
+			},
+			browserBackButtonClose: true
+		})
 
-			uppy.use(Dashboard, {
-				trigger: '.UppyModalOpenerBtn',
-				inline: true,
-				target: '.DashboardContainer',
-				replaceTargetContent: true,
-				showProgressDetails: false,
-				note: 'Images only, 1–3 files, up to 1 MB',
-				height: 180,
-				width: 360,
-				metaFields: [{
-						id: 'name',
-						name: 'Name',
-						placeholder: 'file name'
+		if (protocol === 'tus') {
+			uppy.use(Tus, {
+				endpoint: endpoint
+			})
+		} else {
+			uppy.use(XHRUpload, {
+				endpoint: endpoint
+			})
+		}
+
+		uppy.on('complete', result => {
+			console.log('successful files:', result.successful)
+			console.log('failed files:', result.failed)
+		})
+	})
+})()
+
+/**
+ * FORM VALIDATION: Handle form validation using the jquery-validation plugin
+ */
+var formValidation = (function () {
+	jquery__WEBPACK_IMPORTED_MODULE_0___default.a.validator.addMethod(
+		'dateUK',
+		function (value, element) {
+			return Date.parseExact(value, 'd/M/yyyy')
+		},
+		'Please enter a valid date'
+	)
+
+	jquery__WEBPACK_IMPORTED_MODULE_0___default.a.validator.addMethod('dateGroup', function (value, element) {
+		var $dateFieldGroup = jquery__WEBPACK_IMPORTED_MODULE_0___default()(element).closest('.date-field-group')
+		var day = $dateFieldGroup.find('input[name="date-field-day"]').val()
+		var month = $dateFieldGroup.find('input[name="date-field-month"]').val()
+		var year = $dateFieldGroup.find('input[name="date-field-year"]').val()
+		var date = day + '/' + month + '/' + year
+		var parsedDate = Date.parseExact(date, 'dd/MM/yyyy')
+		return parsedDate !== null
+	})
+
+	jquery__WEBPACK_IMPORTED_MODULE_0___default()('form').each(function () {
+		var $form = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this)
+		if (a === b)
+			$form.validate({
+				groups: {
+					dateGroup: 'date-field-day date-field-month date-field-year'
+				},
+				rules: {
+					'date-field-day': {
+						required: true,
+						number: true,
+						min: 1,
+						max: 31,
+						minlength: 2,
+						maxlength: 2,
+						dateGroup: true
 					},
-					{
-						id: 'caption',
-						name: 'Caption',
-						placeholder: 'Describe what the image is about'
-					}
-				],
-				locale: {
-					strings: {
-						dropPaste: 'Drag file(s) here or %{browse}',
-						complete: 'Upload successful',
-						pleasePressRetry: ''
+					'date-field-month': {
+						required: true,
+						number: true,
+						min: 1,
+						max: 12,
+						minlength: 2,
+						maxlength: 2,
+						dateGroup: true
+					},
+					'date-field-year': {
+						required: true,
+						number: true,
+						min: 1900,
+						minlength: 4,
+						maxlength: 4,
+						dateGroup: true
+					},
+					date: 'dateUK',
+					'date-field-datex': 'dateUK'
+				},
+				messages: {
+					'date-field-day': {
+						required: 'Please enter values for day, month and year',
+						number: 'Please enter a number',
+						min: 'Please enter a value of at least {0}',
+						max: 'Please enter a value no greater than {0}',
+						minlength: 'Please enter exactly {0} digits',
+						maxlength: 'Please enter exactly {0} digits',
+						dateGroup: 'Please enter a valid date'
+					},
+					'date-field-month': {
+						required: 'Please enter values for day, month and year',
+						number: 'Please enter a number',
+						min: 'Please enter a value of at least {0}',
+						max: 'Please enter a value no greater than {0}',
+						minlength: 'Please enter exactly {0} digits',
+						maxlength: 'Please enter exactly {0} digits',
+						dateGroup: 'Please enter a valid date'
+					},
+					'date-field-year': {
+						required: 'Please enter values for day, month and year',
+						number: 'Please enter a valid date',
+						min: 'Please enter a value of at least {0}',
+						max: 'Please enter a value no greater than {0}',
+						minlength: 'Please enter exactly {0} digits',
+						maxlength: 'Please enter exactly {0} digits',
+						dateGroup: 'Please enter a valid date'
 					}
 				},
-				browserBackButtonClose: true
+				errorElement: 'div',
+				errorClass: 'error message message--error',
+				errorPlacement: function (error, element) {
+					error.appendTo(element.closest('.form__field'))
+				}
 			})
+	})
+})()
 
-			if (protocol === 'tus') {
-				uppy.use(Tus, {
-					endpoint: endpoint
-				})
-			} else {
-				uppy.use(XHRUpload, {
-					endpoint: endpoint
-				})
-			}
+/**
+ * SELECT SLIDER FIELD: Handle slider interface on select filds
+ */
+var selectSliderField = (function () {
+	var $selectSliderFields = jquery__WEBPACK_IMPORTED_MODULE_0___default()('.select-slider-field')
 
-			uppy.on('complete', result => {
-				console.log('successful files:', result.successful)
-				console.log('failed files:', result.failed)
-			})
-		})
-	})()
+	$selectSliderFields.each(function () {
+		var $selectSliderField = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this)
+		var $slider = $selectSliderField.find('.slider')
+		var $mercury = $slider.find('.slider__mercury')
+		var $input = $slider.find('input[type="text"]')
+		var $value = $slider.find('.slider__value')
 
-	/**
-	 * FORM VALIDATION: Handle form validation using the jquery-validation plugin
-	 */
-	var formValidation = (function () {
-		jquery__WEBPACK_IMPORTED_MODULE_0___default.a.validator.addMethod(
-			'dateUK',
-			function (value, element) {
-				return Date.parseExact(value, 'd/M/yyyy')
-			},
-			'Please enter a valid date'
-		)
+		var values = $selectSliderField.attr('data-options').split(',')
+		var steps = values.length
 
-		jquery__WEBPACK_IMPORTED_MODULE_0___default.a.validator.addMethod('dateGroup', function (value, element) {
-			var $dateFieldGroup = jquery__WEBPACK_IMPORTED_MODULE_0___default()(element).closest('.date-field-group')
-			var day = $dateFieldGroup.find('input[name="date-field-day"]').val()
-			var month = $dateFieldGroup.find('input[name="date-field-month"]').val()
-			var year = $dateFieldGroup.find('input[name="date-field-year"]').val()
-			var date = day + '/' + month + '/' + year
-			var parsedDate = Date.parseExact(date, 'dd/MM/yyyy')
-			return parsedDate !== null
+		var step = 0
+		var value = values[0]
+		var width = 0
+
+		$input.val(value)
+		$value.text(value)
+		$mercury.css('width', width + '%')
+
+		$slider.slider({
+			min: 0,
+			max: steps - 1
 		})
 
-		jquery__WEBPACK_IMPORTED_MODULE_0___default()('form').each(function () {
-			var $form = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this)
-			if (a === b)
-				$form.validate({
-					groups: {
-						dateGroup: 'date-field-day date-field-month date-field-year'
-					},
-					rules: {
-						'date-field-day': {
-							required: true,
-							number: true,
-							min: 1,
-							max: 31,
-							minlength: 2,
-							maxlength: 2,
-							dateGroup: true
-						},
-						'date-field-month': {
-							required: true,
-							number: true,
-							min: 1,
-							max: 12,
-							minlength: 2,
-							maxlength: 2,
-							dateGroup: true
-						},
-						'date-field-year': {
-							required: true,
-							number: true,
-							min: 1900,
-							minlength: 4,
-							maxlength: 4,
-							dateGroup: true
-						},
-						date: 'dateUK',
-						'date-field-datex': 'dateUK'
-					},
-					messages: {
-						'date-field-day': {
-							required: 'Please enter values for day, month and year',
-							number: 'Please enter a number',
-							min: 'Please enter a value of at least {0}',
-							max: 'Please enter a value no greater than {0}',
-							minlength: 'Please enter exactly {0} digits',
-							maxlength: 'Please enter exactly {0} digits',
-							dateGroup: 'Please enter a valid date'
-						},
-						'date-field-month': {
-							required: 'Please enter values for day, month and year',
-							number: 'Please enter a number',
-							min: 'Please enter a value of at least {0}',
-							max: 'Please enter a value no greater than {0}',
-							minlength: 'Please enter exactly {0} digits',
-							maxlength: 'Please enter exactly {0} digits',
-							dateGroup: 'Please enter a valid date'
-						},
-						'date-field-year': {
-							required: 'Please enter values for day, month and year',
-							number: 'Please enter a valid date',
-							min: 'Please enter a value of at least {0}',
-							max: 'Please enter a value no greater than {0}',
-							minlength: 'Please enter exactly {0} digits',
-							maxlength: 'Please enter exactly {0} digits',
-							dateGroup: 'Please enter a valid date'
-						}
-					},
-					errorElement: 'div',
-					errorClass: 'error message message--error',
-					errorPlacement: function (error, element) {
-						error.appendTo(element.closest('.form__field'))
-					}
-				})
-		})
-	})()
-
-	/**
-	 * SELECT SLIDER FIELD: Handle slider interface on select filds
-	 */
-	var selectSliderField = (function () {
-		var $selectSliderFields = jquery__WEBPACK_IMPORTED_MODULE_0___default()('.select-slider-field')
-
-		$selectSliderFields.each(function () {
-			var $selectSliderField = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this)
-			var $slider = $selectSliderField.find('.slider')
-			var $mercury = $slider.find('.slider__mercury')
-			var $input = $slider.find('input[type="text"]')
-			var $value = $slider.find('.slider__value')
-
-			var values = $selectSliderField.attr('data-options').split(',')
-			var steps = values.length
-
-			var step = 0
-			var value = values[0]
-			var width = 0
+		$slider.on('slidestop', function () {
+			step = $slider.slider('value')
+			value = values[step]
+			width = (step * 100) / (steps - 1)
 
 			$input.val(value)
 			$value.text(value)
 			$mercury.css('width', width + '%')
-
-			$slider.slider({
-				min: 0,
-				max: steps - 1
-			})
-
-			$slider.on('slidestop', function () {
-				step = $slider.slider('value')
-				value = values[step]
-				width = (step * 100) / (steps - 1)
-
-				$input.val(value)
-				$value.text(value)
-				$mercury.css('width', width + '%')
-			})
 		})
-	})()
+	})
+})()
 
-	/**
-	 * MASKED DATE FIELD: Handle masked date fields
-	 */
-	var maskedDateField = (function () {
-		var $maskedDateField = jquery__WEBPACK_IMPORTED_MODULE_0___default()('.input-field--masked-date').find(
-			'input[name|="date"]'
+/**
+ * MASKED DATE FIELD: Handle masked date fields
+ */
+var maskedDateField = (function () {
+	var $maskedDateField = jquery__WEBPACK_IMPORTED_MODULE_0___default()('.input-field--masked-date').find(
+		'input[name|="date"]'
+	)
+
+	$maskedDateField.mask('00/00/0000')
+})()
+
+/**
+ * DATE PICKER FIELD: Handle date picker field input
+ */
+var datePickerField = (function () {
+	var $datePicker = jquery__WEBPACK_IMPORTED_MODULE_0___default()('[data-toggle="datepicker"]')
+	$datePicker.datepicker({
+		autoHide: true,
+		language: 'en-GB',
+		format: 'dd/mm/yyyy'
+	})
+})()
+
+/**
+ * PASSWORD FIELD: Handle password show/hide
+ */
+var passwordField = (function () {
+	var $passwordField = jquery__WEBPACK_IMPORTED_MODULE_0___default()('.input-field--password')
+	var $passwordShow = $passwordField.children('.show')
+
+	$passwordShow.click(function () {
+		var $this = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this)
+		var $passwordInput = $this.prev('label').children('input')
+
+		if ($passwordInput.attr('type') === 'password') {
+			$passwordInput.attr('type', 'text')
+			$this.text('Hide')
+		} else {
+			$passwordInput.attr('type', 'password')
+			$this.text('Show')
+		}
+	})
+})()
+
+/**
+ * PROGRESS INDICATOR: Handle progress indicators
+ */
+var progressIndicator = (function () {
+	var $progressIndicator = jquery__WEBPACK_IMPORTED_MODULE_0___default()('.progress-indicator')
+	$progressIndicator.each(function () {
+		var $this = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this)
+		var step = $this.attr('data-step')
+		var steps = $this.attr('data-steps')
+		var width = (step / steps) * 100
+
+		$this.prepend('<span class="progress-indicator__steps">&nbsp</span>')
+		$this.append(
+			'<span class="progress-indicator__step" style="width:' + width + '%">&nbsp</span>'
 		)
+	})
+})()
 
-		$maskedDateField.mask('00/00/0000')
-	})()
+/**
+ * DROPDOWN SELECT: Handle custom select components
+ */
+var dropdownSelect = (function () {
+	var $dropdownSelects = jquery__WEBPACK_IMPORTED_MODULE_0___default()('.dropdown-select')
 
-	/**
-	 * DATE PICKER FIELD: Handle date picker field input
-	 */
-	var datePickerField = (function () {
-		var $datePicker = jquery__WEBPACK_IMPORTED_MODULE_0___default()('[data-toggle="datepicker"]')
-		$datePicker.datepicker({
-			autoHide: true,
-			language: 'en-GB',
-			format: 'dd/mm/yyyy'
-		})
-	})()
+	// Handle state of dropdown select
+	var state = (function () {
 
-	/**
-	 * PASSWORD FIELD: Handle password show/hide
-	 */
-	var passwordField = (function () {
-		var $passwordField = jquery__WEBPACK_IMPORTED_MODULE_0___default()('.input-field--password')
-		var $passwordShow = $passwordField.children('.show')
+		// Public: Initialize dropdown select UI
+		var init = function ($dropdownSelect) {
+			var $dropdown
+			var $dropdownSelected
+			var $dropdownOptions
 
-		$passwordShow.click(function () {
-			var $this = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this)
-			var $passwordInput = $this.prev('label').children('input')
+			var $select = $dropdownSelect.find('select').first()
+			var $options = $select.children('option')
 
-			if ($passwordInput.attr('type') === 'password') {
-				$passwordInput.attr('type', 'text')
-				$this.text('Hide')
-			} else {
-				$passwordInput.attr('type', 'password')
-				$this.text('Show')
-			}
-		})
-	})()
+			$dropdownSelect.append('<div class="dropdown"></div>')
+			$dropdown = $dropdownSelect.find('.dropdown')
 
-	/**
-	 * PROGRESS INDICATOR: Handle progress indicators
-	 */
-	var progressIndicator = (function () {
-		var $progressIndicator = jquery__WEBPACK_IMPORTED_MODULE_0___default()('.progress-indicator')
-		$progressIndicator.each(function () {
-			var $this = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this)
-			var step = $this.attr('data-step')
-			var steps = $this.attr('data-steps')
-			var width = (step / steps) * 100
+			$dropdown.prepend('<div class="dropdown__selected">Select&hellip;</div>')
+			$dropdownSelected = $dropdownSelect.find('.dropdown__selected')
 
-			$this.prepend('<span class="progress-indicator__steps">&nbsp</span>')
-			$this.append(
-				'<span class="progress-indicator__step" style="width:' + width + '%">&nbsp</span>'
-			)
-		})
-	})()
+			$dropdown.append('<div class="dropdown__options"></div>')
+			$dropdownOptions = $dropdown.find('.dropdown__options')
 
-	/**
-	 * DROPDOWN SELECT: Handle custom select components
-	 */
-	var dropdownSelect = (function () {
-		var $dropdownSelects = jquery__WEBPACK_IMPORTED_MODULE_0___default()('.dropdown-select')
+			$options.each(function () {
+				var $option = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this)
+				var value = $option.attr('value')
+				var text = $option.text()
 
-		// Handle state of dropdown select
-		var state = (function () {
+				if (value) {
+					$dropdownOptions.append('<div class="dropdown__option" data-value=' + $option.attr('value') + '>' + $option.text() + '</div>')
+					console.log(value)
+					console.log($select)
 
-			// Public: Initialize dropdown select UI
-			var init = function ($dropdownSelect) {
-				var $dropdown
-				var $dropdownSelected
-				var $dropdownOptions
-
-				var $select = $dropdownSelect.find('select').first()
-				var $options = $select.children('option')
-
-				$dropdownSelect.append('<div class="dropdown"></div>')
-				$dropdown = $dropdownSelect.find('.dropdown')
-
-				$dropdown.prepend('<div class="dropdown__selected">Select&hellip;</div>')
-				$dropdownSelected = $dropdownSelect.find('.dropdown__selected')
-
-				$dropdown.append('<div class="dropdown__options"></div>')
-				$dropdownOptions = $dropdown.find('.dropdown__options')
-
-				$options.each(function () {
-					var $option = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this)
-					var value = $option.attr('value')
-					var text = $option.text()
-
-					if (value) {
-						$dropdownOptions.append('<div class="dropdown__option" data-value=' + $option.attr('value') + '>' + $option.text() + '</div>')
-						console.log(value)
-						console.log($select)
-
-						if (value === get($select)) {
-							$dropdown.addClass('selected')
-							$dropdownSelected.replaceWith('<div class="dropdown__selected selected">' + text + '</div>')
-						}
+					if (value === get($select)) {
+						$dropdown.addClass('selected')
+						$dropdownSelected.replaceWith('<div class="dropdown__selected selected">' + text + '</div>')
 					}
-				})
-				return $dropdown
-			}
-
-			// Public: Handle change event
-			var change = function ($dropdownSelect, $dropdownOption) {
-				var $select = $dropdownSelect.find('select')
-				var $dropdown = $dropdownSelect.find('.dropdown')
-				var $dropdownOptions = $dropdown.find('.dropdown__option')
-				var $dropdownSelected = $dropdown.find('.dropdown__selected')
-
-				$dropdown.removeClass('error')
-				$dropdownSelect.find('.message--error').detach()
-
-
-				$dropdownOptions.removeClass('selected')
-				$dropdownOption.addClass('selected')
-
-				$dropdownSelected.addClass('selected')
-				$dropdownSelected.text($dropdownOption.text())
-
-				$dropdown.addClass('selected')
-			}
-
-			// Public: Get the current value of the select element
-			var get = function ($select) {
-				return $select.val()
-			}
-
-			// Public: Set the current value of the select element
-			var set = function ($select, value) {
-				$select.val(value)
-			}
-
-			return {
-				init: init,
-				change: change,
-				get: get,
-				set: set
-			}
-		}())
-
-		// Initialise dropdowns and bind events
-		$dropdownSelects.each(function () {
-			var $dropdownSelect = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this)
-			var $dropdown = state.init($dropdownSelect)
-			var $dropdownOptions = $dropdown.find('.dropdown__option')
-
-			// Open/close dropdown
-			$dropdown.click(function () {
-				$dropdown.toggleClass('open')
-			})
-
-			// Change selected option
-			$dropdownOptions.click(function () {
-				var $dropdownOption = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this)
-
-				var $select = $dropdownSelect.find('select').first()
-				var value = $dropdownOption.attr('data-value')
-
-				state.change($dropdownSelect, $dropdownOption)
-				state.set($select, value)
-			})
-			// Handle error on form submit
-			$dropdownSelect.closest('form').on('submit', function () {
-				if ($dropdownSelect.find('select').hasClass('error')) {
-					$dropdown.addClass('error')
 				}
 			})
-		})
-	})()
-
-	/**
-	 * CONDITIONAL CHECKBOXES: Handle conditional checkbox groups
-	 */
-	var conditionalCheckboxGroup = (function () {
-		var $conditionalCheckboxGroup = jquery__WEBPACK_IMPORTED_MODULE_0___default()('.conditional-checkbox-group')
-		var $radioButtons = $conditionalCheckboxGroup.find('input:radio')
-
-		var setCheckboxes = function (state) {
-			var $checkboxes = $conditionalCheckboxGroup.find('.checkbox')
-			var $inputs = $checkboxes.find('input:checkbox')
-
-			if (state) {
-				$checkboxes.removeClass('disabled')
-				$inputs.prop('disabled', false)
-			} else {
-				$checkboxes.addClass('disabled')
-				$inputs.prop('disabled', true)
-
-				$checkboxes.find('input:checkbox').prop('checked', false)
-			}
+			return $dropdown
 		}
 
-		$radioButtons.each(function () {
-			var $this = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this)
-			var isChecked = $this.attr('checked') === 'checked'
+		// Public: Handle change event
+		var change = function ($dropdownSelect, $dropdownOption) {
+			var $select = $dropdownSelect.find('select')
+			var $dropdown = $dropdownSelect.find('.dropdown')
+			var $dropdownOptions = $dropdown.find('.dropdown__option')
+			var $dropdownSelected = $dropdown.find('.dropdown__selected')
 
-			if (isChecked) {
-				var state = $this.attr('data-checkboxes-enabled') === 'true'
-				setCheckboxes(state)
+			$dropdown.removeClass('error')
+			$dropdownSelect.find('.message--error').detach()
+
+
+			$dropdownOptions.removeClass('selected')
+			$dropdownOption.addClass('selected')
+
+			$dropdownSelected.addClass('selected')
+			$dropdownSelected.text($dropdownOption.text())
+
+			$dropdown.addClass('selected')
+		}
+
+		// Public: Get the current value of the select element
+		var get = function ($select) {
+			return $select.val()
+		}
+
+		// Public: Set the current value of the select element
+		var set = function ($select, value) {
+			$select.val(value)
+		}
+
+		return {
+			init: init,
+			change: change,
+			get: get,
+			set: set
+		}
+	}())
+
+	// Initialise dropdowns and bind events
+	$dropdownSelects.each(function () {
+		var $dropdownSelect = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this)
+		var $dropdown = state.init($dropdownSelect)
+		var $dropdownOptions = $dropdown.find('.dropdown__option')
+
+		// Open/close dropdown
+		$dropdown.click(function () {
+			$dropdown.toggleClass('open')
+		})
+
+		// Change selected option
+		$dropdownOptions.click(function () {
+			var $dropdownOption = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this)
+
+			var $select = $dropdownSelect.find('select').first()
+			var value = $dropdownOption.attr('data-value')
+
+			state.change($dropdownSelect, $dropdownOption)
+			state.set($select, value)
+		})
+		// Handle error on form submit
+		$dropdownSelect.closest('form').on('submit', function () {
+			if ($dropdownSelect.find('select').hasClass('error')) {
+				$dropdown.addClass('error')
 			}
 		})
+	})
+})()
 
-		$radioButtons.click(function () {
-			var $this = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this)
+/**
+ * CONDITIONAL CHECKBOXES: Handle conditional checkbox groups
+ */
+var conditionalCheckboxGroup = (function () {
+	var $conditionalCheckboxGroup = jquery__WEBPACK_IMPORTED_MODULE_0___default()('.conditional-checkbox-group')
+	var $radioButtons = $conditionalCheckboxGroup.find('input:radio')
+
+	var setCheckboxes = function (state) {
+		var $checkboxes = $conditionalCheckboxGroup.find('.checkbox')
+		var $inputs = $checkboxes.find('input:checkbox')
+
+		if (state) {
+			$checkboxes.removeClass('disabled')
+			$inputs.prop('disabled', false)
+		} else {
+			$checkboxes.addClass('disabled')
+			$inputs.prop('disabled', true)
+
+			$checkboxes.find('input:checkbox').prop('checked', false)
+		}
+	}
+
+	$radioButtons.each(function () {
+		var $this = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this)
+		var isChecked = $this.attr('checked') === 'checked'
+
+		if (isChecked) {
 			var state = $this.attr('data-checkboxes-enabled') === 'true'
 			setCheckboxes(state)
-		})
-	})()
+		}
+	})
 
-	/**
-	 * SEGMENTED CONTROL: Handle segmented control components
-	 */
-	var segmentedControl = (function () {
-		var $segmentedControl = jquery__WEBPACK_IMPORTED_MODULE_0___default()('.segmented-control')
+	$radioButtons.click(function () {
+		var $this = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this)
+		var state = $this.attr('data-checkboxes-enabled') === 'true'
+		setCheckboxes(state)
+	})
+})()
 
-		// Handle form submission with no selection
-		$segmentedControl.closest('form').on('submit', function () {
+/**
+ * SEGMENTED CONTROL: Handle segmented control components
+ */
+var segmentedControl = (function () {
+	var $segmentedControl = jquery__WEBPACK_IMPORTED_MODULE_0___default()('.segmented-control')
+
+	// Handle form submission with no selection
+	$segmentedControl.closest('form').on('submit', function () {
+		var $this = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this)
+		var $control = $this.find('.segmented-control')
+		$control.each(function () {
 			var $this = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this)
-			var $control = $this.find('.segmented-control')
-			$control.each(function () {
-				var $this = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this)
-				if ($this.find('input:radio').hasClass('error')) {
-					$this.addClass('invalid')
-					$this.find('.segmented-control__label').addClass('invalid')
-				}
-			})
+			if ($this.find('input:radio').hasClass('error')) {
+				$this.addClass('invalid')
+				$this.find('.segmented-control__label').addClass('invalid')
+			}
 		})
+	})
 
-		// Handle click event
-		$segmentedControl.click(function () {
-			var $this = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this)
-			var $input = $this.find('[type=radio]')
-			var $label = $this.find('.segmented-control__label')
-			$label.removeClass('checked').removeClass('invalid')
-			$input.attr('checked', 'checked')
+	// Handle click event
+	$segmentedControl.click(function () {
+		var $this = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this)
+		var $input = $this.find('[type=radio]')
+		var $label = $this.find('.segmented-control__label')
+		$label.removeClass('checked').removeClass('invalid')
+		$input.attr('checked', 'checked')
+	})
+})()
+
+/**
+ * HIDEABLE PANEL: Handle hideable panel
+ */
+var userBar = (function () {
+	jquery__WEBPACK_IMPORTED_MODULE_0___default()('.user-bar__menu-select').on('click', function () {
+		var $select = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this)
+		$select.toggleClass('open')
+		$select.next('.user-bar__menu-options').slideToggle()
+	})
+})()
+
+/**
+ * HIDEABLE PANEL: Handle hideable panel
+ */
+var hideablePanel = (function () {
+	var $hideablePanels = jquery__WEBPACK_IMPORTED_MODULE_0___default()('.hideable-panel')
+
+	$hideablePanels.each(function () {
+		var $hideablePanel = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this)
+		var $hidePanel = $hideablePanel.find('.hideable-panel__close')
+
+		$hidePanel.on('click', function () {
+			$hideablePanel.hide()
 		})
-	})()
+	})
+})()
 
-	/**
-	 * HIDEABLE PANEL: Handle hideable panel
-	 */
-	var userBar = (function () {
-		jquery__WEBPACK_IMPORTED_MODULE_0___default()('.user-bar__menu-select').on('click', function () {
-			var $select = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this)
-			$select.toggleClass('open')
-			$select.next('.user-bar__menu-options').slideToggle()
+/**
+ * ACCORDION: Handle accordion init/show/hide
+ */
+var accordion = (function () {
+	var $accordions = jquery__WEBPACK_IMPORTED_MODULE_0___default()('.accordion')
+
+	$accordions.each(function () {
+		var $accordion = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this)
+		Object(_templates_components_accordion_accordion_js__WEBPACK_IMPORTED_MODULE_8__["accordionInit"])($accordion)
+	})
+})()
+
+/**
+ * TAB PANEL: Handle tabbed content panel
+ */
+var tabPanel = (function () {
+	var $tabPanels = jquery__WEBPACK_IMPORTED_MODULE_0___default()('.tab-panel')
+
+	$tabPanels.each(function () {
+		var $panel = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this)
+		var $panes = $panel.find('.tab-panel__pane')
+		var $tabBar
+		var $tabs
+		var tabWidth = 100 / $panes.length
+
+		$panel.prepend('<div class="tab-panel__tabs"></div>')
+		$tabBar = $panel.find('.tab-panel__tabs')
+		$panes.each(function () {
+			var label = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this)
+				.find('.tab-panel__label')
+				.text()
+			$tabBar.append('<div class="tab-panel__tab" style="width: ' + tabWidth + '%;">' + label + '</div>')
 		})
-	})()
+		$tabs = $panel.find(jquery__WEBPACK_IMPORTED_MODULE_0___default()('.tab-panel__tab'))
 
-	/**
-	 * HIDEABLE PANEL: Handle hideable panel
-	 */
-	var hideablePanel = (function () {
-		var $hideablePanels = jquery__WEBPACK_IMPORTED_MODULE_0___default()('.hideable-panel')
+		$tabs.first().addClass('active')
+		$panes.first().addClass('active')
 
-		$hideablePanels.each(function () {
-			var $hideablePanel = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this)
-			var $hidePanel = $hideablePanel.find('.hideable-panel__close')
+		$tabs.on('click', function () {
+			var $tab = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this)
+			var index = $tabs.index($tab)
 
-			$hidePanel.on('click', function () {
-				$hideablePanel.hide()
-			})
+			$tabs.removeClass('active')
+			$tab.addClass('active')
+
+			$panes.removeClass('active')
+			$panes.eq(index).addClass('active')
 		})
-	})()
-
-	/**
-	 * ACCORDION: Handle accordion init/show/hide
-	 */
-	var accordion = (function () {
-		var $accordions = jquery__WEBPACK_IMPORTED_MODULE_0___default()('.accordion')
-
-		$accordions.each(function () {
-			var $accordion = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this)
-			var $items = $accordion.find('.accordion__item')
-			$items.addClass('closed')
-			$items.first().removeClass('closed')
-
-			$items.on('click', function () {
-				var $item = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this)
-				$items.addClass('closed')
-				$item.removeClass('closed')
-				//   $('html, body').animate({
-				//     scrollTop: ($item.offset().top)
-				//   },500)
-			})
-		})
-	})()
-
-	/**
-	 * TAB PANEL: Handle tabbed content panel
-	 */
-	var tabPanel = (function () {
-		var $tabPanels = jquery__WEBPACK_IMPORTED_MODULE_0___default()('.tab-panel')
-
-		$tabPanels.each(function () {
-			var $panel = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this)
-			var $panes = $panel.find('.tab-panel__pane')
-			var $tabBar
-			var $tabs
-			var tabWidth = 100 / $panes.length
-
-			$panel.prepend('<div class="tab-panel__tabs"></div>')
-			$tabBar = $panel.find('.tab-panel__tabs')
-			$panes.each(function () {
-				var label = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this)
-					.find('.tab-panel__label')
-					.text()
-				$tabBar.append('<div class="tab-panel__tab" style="width: ' + tabWidth + '%;">' + label + '</div>')
-			})
-			$tabs = $panel.find(jquery__WEBPACK_IMPORTED_MODULE_0___default()('.tab-panel__tab'))
-
-			$tabs.first().addClass('active')
-			$panes.first().addClass('active')
-
-			$tabs.on('click', function () {
-				var $tab = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this)
-				var index = $tabs.index($tab)
-
-				$tabs.removeClass('active')
-				$tab.addClass('active')
-
-				$panes.removeClass('active')
-				$panes.eq(index).addClass('active')
-			})
-		})
-	})()
-})
+	})
+})()
 
 
 /***/ }),
@@ -52127,6 +52116,56 @@ if ($.fn) {
 
 /***/ }),
 /* 178 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* WEBPACK VAR INJECTION */(function($) {/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "accordionInit", function() { return accordionInit; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "accordionUpdate", function() { return accordionUpdate; });
+/**
+ * module `accordion.js`
+ *
+ * Functions to initialise and update the jQuery object `$accordion` with the structure:
+ *
+ * <div class="accordion">
+ * 	<div class="accordion__item">...</div>
+ * 	<div class="accordion__item">...</div>
+ * 	...
+ * </div>
+ */
+
+/**
+ * function accordionInit($accordion)
+ *
+ * Initialise the accordion
+ */
+function accordionInit($accordion) {
+	var $accordionItems = $accordion.find('.accordion__item')
+	$accordionItems.addClass('closed')
+	$accordionItems.first().removeClass('closed')
+	accordionUpdate($accordion)
+}
+
+/**
+ * function accordionUpdate($accordion)
+ *
+ * Update the accordion, binding the click event handlers
+ */
+function accordionUpdate($accordion) {
+	var $accordionItems = $accordion.find('.accordion__item')
+	$accordionItems.on('click', function () {
+		var $accordionItem = $(this)
+		$accordionItems.addClass('closed')
+		$accordionItem.removeClass('closed')
+	})
+}
+
+
+
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(1)))
+
+/***/ }),
+/* 179 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
@@ -52137,19 +52176,19 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-var Translator = __webpack_require__(179);
-var ee = __webpack_require__(180);
-var cuid = __webpack_require__(181);
+var Translator = __webpack_require__(180);
+var ee = __webpack_require__(181);
+var cuid = __webpack_require__(182);
 // const throttle = require('lodash.throttle')
-var prettyBytes = __webpack_require__(184);
-var match = __webpack_require__(185);
-var DefaultStore = __webpack_require__(187);
-var getFileType = __webpack_require__(188);
-var getFileNameAndExtension = __webpack_require__(189);
-var generateFileID = __webpack_require__(191);
-var isObjectURL = __webpack_require__(192);
-var getTimeStamp = __webpack_require__(193);
-var Plugin = __webpack_require__(194); // Exported from here.
+var prettyBytes = __webpack_require__(185);
+var match = __webpack_require__(186);
+var DefaultStore = __webpack_require__(188);
+var getFileType = __webpack_require__(189);
+var getFileNameAndExtension = __webpack_require__(190);
+var generateFileID = __webpack_require__(192);
+var isObjectURL = __webpack_require__(193);
+var getTimeStamp = __webpack_require__(194);
+var Plugin = __webpack_require__(195); // Exported from here.
 
 /**
  * Uppy Core module.
@@ -53463,7 +53502,7 @@ module.exports.Uppy = Uppy;
 module.exports.Plugin = Plugin;
 
 /***/ }),
-/* 179 */
+/* 180 */
 /***/ (function(module, exports) {
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
@@ -53595,7 +53634,7 @@ module.exports = function () {
 }();
 
 /***/ }),
-/* 180 */
+/* 181 */
 /***/ (function(module, exports) {
 
 /**
@@ -53737,7 +53776,7 @@ module.exports = function createNamespaceEmitter () {
 
 
 /***/ }),
-/* 181 */
+/* 182 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /**
@@ -53752,8 +53791,8 @@ module.exports = function createNamespaceEmitter () {
  * MIT License
  */
 
-var fingerprint = __webpack_require__(182);
-var pad = __webpack_require__(183);
+var fingerprint = __webpack_require__(183);
+var pad = __webpack_require__(184);
 
 var c = 0,
   blockSize = 4,
@@ -53826,10 +53865,10 @@ module.exports = cuid;
 
 
 /***/ }),
-/* 182 */
+/* 183 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var pad = __webpack_require__(183);
+var pad = __webpack_require__(184);
 
 var env = typeof window === 'object' ? window : self;
 var globalCount = Object.keys(env).length;
@@ -53844,7 +53883,7 @@ module.exports = function fingerprint () {
 
 
 /***/ }),
-/* 183 */
+/* 184 */
 /***/ (function(module, exports) {
 
 module.exports = function pad (num, size) {
@@ -53854,7 +53893,7 @@ module.exports = function pad (num, size) {
 
 
 /***/ }),
-/* 184 */
+/* 185 */
 /***/ (function(module, exports) {
 
 module.exports = prettierBytes
@@ -53890,10 +53929,10 @@ function prettierBytes (num) {
 
 
 /***/ }),
-/* 185 */
+/* 186 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var wildcard = __webpack_require__(186);
+var wildcard = __webpack_require__(187);
 var reMimePartSplit = /[\/\+\.]/;
 
 /**
@@ -53920,7 +53959,7 @@ module.exports = function(target, pattern) {
 
 
 /***/ }),
-/* 186 */
+/* 187 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -54020,7 +54059,7 @@ module.exports = function(text, test, separator) {
 
 
 /***/ }),
-/* 187 */
+/* 188 */
 /***/ (function(module, exports) {
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
@@ -54078,11 +54117,11 @@ module.exports = function defaultStore() {
 };
 
 /***/ }),
-/* 188 */
+/* 189 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var getFileNameAndExtension = __webpack_require__(189);
-var mimeTypes = __webpack_require__(190);
+var getFileNameAndExtension = __webpack_require__(190);
+var mimeTypes = __webpack_require__(191);
 
 module.exports = function getFileType(file) {
   var fileExtension = file.name ? getFileNameAndExtension(file.name).extension : null;
@@ -54107,7 +54146,7 @@ module.exports = function getFileType(file) {
 };
 
 /***/ }),
-/* 189 */
+/* 190 */
 /***/ (function(module, exports) {
 
 /**
@@ -54127,7 +54166,7 @@ module.exports = function getFileNameAndExtension(fullFileName) {
 };
 
 /***/ }),
-/* 190 */
+/* 191 */
 /***/ (function(module, exports) {
 
 module.exports = {
@@ -54168,7 +54207,7 @@ module.exports = {
 };
 
 /***/ }),
-/* 191 */
+/* 192 */
 /***/ (function(module, exports) {
 
 /**
@@ -54187,7 +54226,7 @@ module.exports = function generateFileID(file) {
 };
 
 /***/ }),
-/* 192 */
+/* 193 */
 /***/ (function(module, exports) {
 
 /**
@@ -54201,7 +54240,7 @@ module.exports = function isObjectURL(url) {
 };
 
 /***/ }),
-/* 193 */
+/* 194 */
 /***/ (function(module, exports) {
 
 /**
@@ -54223,7 +54262,7 @@ function pad(str) {
 }
 
 /***/ }),
-/* 194 */
+/* 195 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
@@ -54232,8 +54271,8 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-var preact = __webpack_require__(195);
-var findDOMElement = __webpack_require__(196);
+var preact = __webpack_require__(196);
+var findDOMElement = __webpack_require__(197);
 
 /**
  * Defer a frequent call to the microtask queue.
@@ -54404,7 +54443,7 @@ module.exports = function () {
 }();
 
 /***/ }),
-/* 195 */
+/* 196 */
 /***/ (function(__webpack_module__, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -55134,12 +55173,12 @@ var preact = {
 
 
 /***/ }),
-/* 196 */
+/* 197 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
-var isDOMElement = __webpack_require__(197);
+var isDOMElement = __webpack_require__(198);
 
 /**
  * Find a DOM element.
@@ -55158,7 +55197,7 @@ module.exports = function findDOMElement(element) {
 };
 
 /***/ }),
-/* 197 */
+/* 198 */
 /***/ (function(module, exports) {
 
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
@@ -55173,7 +55212,7 @@ module.exports = function isDOMElement(obj) {
 };
 
 /***/ }),
-/* 198 */
+/* 199 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
@@ -55184,21 +55223,21 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var _require = __webpack_require__(178),
+var _require = __webpack_require__(179),
     Plugin = _require.Plugin;
 
-var Translator = __webpack_require__(179);
-var dragDrop = __webpack_require__(199);
-var DashboardUI = __webpack_require__(203);
-var StatusBar = __webpack_require__(222);
-var Informer = __webpack_require__(231);
-var ThumbnailGenerator = __webpack_require__(232);
-var findAllDOMElements = __webpack_require__(235);
-var toArray = __webpack_require__(236);
-var prettyBytes = __webpack_require__(184);
-var ResizeObserver = __webpack_require__(237);
+var Translator = __webpack_require__(180);
+var dragDrop = __webpack_require__(200);
+var DashboardUI = __webpack_require__(204);
+var StatusBar = __webpack_require__(223);
+var Informer = __webpack_require__(232);
+var ThumbnailGenerator = __webpack_require__(233);
+var findAllDOMElements = __webpack_require__(236);
+var toArray = __webpack_require__(237);
+var prettyBytes = __webpack_require__(185);
+var ResizeObserver = __webpack_require__(238);
 
-var _require2 = __webpack_require__(210),
+var _require2 = __webpack_require__(211),
     defaultTabIcon = _require2.defaultTabIcon;
 
 // Some code for managing focus was adopted from https://github.com/ghosh/micromodal
@@ -55962,13 +56001,13 @@ module.exports = function (_Plugin) {
 }(Plugin);
 
 /***/ }),
-/* 199 */
+/* 200 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = dragDrop
 
-var flatten = __webpack_require__(200)
-var parallel = __webpack_require__(201)
+var flatten = __webpack_require__(201)
+var parallel = __webpack_require__(202)
 
 function dragDrop (elem, listeners) {
   if (typeof elem === 'string') {
@@ -56160,7 +56199,7 @@ function toArray (list) {
 
 
 /***/ }),
-/* 200 */
+/* 201 */
 /***/ (function(module, exports) {
 
 module.exports = function flatten(list, depth) {
@@ -56189,7 +56228,7 @@ module.exports = function flatten(list, depth) {
 
 
 /***/ }),
-/* 201 */
+/* 202 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(process) {module.exports = runParallel
@@ -56241,10 +56280,10 @@ function runParallel (tasks, cb) {
   isSync = false
 }
 
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(202)))
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(203)))
 
 /***/ }),
-/* 202 */
+/* 203 */
 /***/ (function(module, exports) {
 
 // shim for using process in browser
@@ -56434,24 +56473,24 @@ process.umask = function() { return 0; };
 
 
 /***/ }),
-/* 203 */
+/* 204 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
-var FileList = __webpack_require__(204);
-var AddFiles = __webpack_require__(213);
-var AddFilesPanel = __webpack_require__(215);
-var PanelContent = __webpack_require__(216);
-var PanelTopBar = __webpack_require__(218);
-var FileCard = __webpack_require__(219);
-var classNames = __webpack_require__(212);
-var isTouchDevice = __webpack_require__(220);
+var FileList = __webpack_require__(205);
+var AddFiles = __webpack_require__(214);
+var AddFilesPanel = __webpack_require__(216);
+var PanelContent = __webpack_require__(217);
+var PanelTopBar = __webpack_require__(219);
+var FileCard = __webpack_require__(220);
+var classNames = __webpack_require__(213);
+var isTouchDevice = __webpack_require__(221);
 
-var _require = __webpack_require__(195),
+var _require = __webpack_require__(196),
     h = _require.h;
 
-var PreactCSSTransitionGroup = __webpack_require__(221);
+var PreactCSSTransitionGroup = __webpack_require__(222);
 
 // http://dev.edenspiekermann.com/2016/02/11/introducing-accessible-modal-dialog
 // https://github.com/ghosh/micromodal
@@ -56536,15 +56575,15 @@ module.exports = function Dashboard(props) {
 };
 
 /***/ }),
-/* 204 */
+/* 205 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
-var FileItem = __webpack_require__(205);
-var classNames = __webpack_require__(212);
+var FileItem = __webpack_require__(206);
+var classNames = __webpack_require__(213);
 
-var _require = __webpack_require__(195),
+var _require = __webpack_require__(196),
     h = _require.h;
 
 module.exports = function (props) {
@@ -56564,26 +56603,26 @@ module.exports = function (props) {
 };
 
 /***/ }),
-/* 205 */
+/* 206 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
-var getFileNameAndExtension = __webpack_require__(189);
-var truncateString = __webpack_require__(206);
-var copyToClipboard = __webpack_require__(207);
-var prettyBytes = __webpack_require__(184);
-var FileItemProgress = __webpack_require__(208);
-var getFileTypeIcon = __webpack_require__(209);
-var FilePreview = __webpack_require__(211);
+var getFileNameAndExtension = __webpack_require__(190);
+var truncateString = __webpack_require__(207);
+var copyToClipboard = __webpack_require__(208);
+var prettyBytes = __webpack_require__(185);
+var FileItemProgress = __webpack_require__(209);
+var getFileTypeIcon = __webpack_require__(210);
+var FilePreview = __webpack_require__(212);
 
-var _require = __webpack_require__(210),
+var _require = __webpack_require__(211),
     iconCopy = _require.iconCopy,
     iconRetry = _require.iconRetry;
 
-var classNames = __webpack_require__(212);
+var classNames = __webpack_require__(213);
 
-var _require2 = __webpack_require__(195),
+var _require2 = __webpack_require__(196),
     h = _require2.h;
 
 function FileItemProgressWrapper(props) {
@@ -56782,7 +56821,7 @@ module.exports = function fileItem(props) {
 };
 
 /***/ }),
-/* 206 */
+/* 207 */
 /***/ (function(module, exports) {
 
 module.exports = function truncateString(str, length) {
@@ -56796,7 +56835,7 @@ module.exports = function truncateString(str, length) {
 };
 
 /***/ }),
-/* 207 */
+/* 208 */
 /***/ (function(module, exports) {
 
 /**
@@ -56852,10 +56891,10 @@ module.exports = function copyToClipboard(textToCopy, fallbackString) {
 };
 
 /***/ }),
-/* 208 */
+/* 209 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var _require = __webpack_require__(195),
+var _require = __webpack_require__(196),
     h = _require.h;
 
 // http://codepen.io/Harkko/pen/rVxvNM
@@ -56899,10 +56938,10 @@ module.exports = function (props) {
 };
 
 /***/ }),
-/* 209 */
+/* 210 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var _require = __webpack_require__(210),
+var _require = __webpack_require__(211),
     iconText = _require.iconText,
     iconAudio = _require.iconAudio,
     iconVideo = _require.iconVideo,
@@ -56958,10 +56997,10 @@ module.exports = function getIconByMime(fileType) {
 };
 
 /***/ }),
-/* 210 */
+/* 211 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var _require = __webpack_require__(195),
+var _require = __webpack_require__(196),
     h = _require.h;
 
 // https://css-tricks.com/creating-svg-icon-system-react/
@@ -57089,12 +57128,12 @@ module.exports = {
 };
 
 /***/ }),
-/* 211 */
+/* 212 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var getFileTypeIcon = __webpack_require__(209);
+var getFileTypeIcon = __webpack_require__(210);
 
-var _require = __webpack_require__(195),
+var _require = __webpack_require__(196),
     h = _require.h;
 
 module.exports = function FilePreview(props) {
@@ -57132,7 +57171,7 @@ module.exports = function FilePreview(props) {
 // <span class="uppy-DashboardItem-previewType">{file.extension && file.extension.length < 5 ? file.extension : null}</span>
 
 /***/ }),
-/* 212 */
+/* 213 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
@@ -57189,7 +57228,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
 
 
 /***/ }),
-/* 213 */
+/* 214 */
 /***/ (function(module, exports, __webpack_require__) {
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -57198,12 +57237,12 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var ActionBrowseTagline = __webpack_require__(214);
+var ActionBrowseTagline = __webpack_require__(215);
 
-var _require = __webpack_require__(210),
+var _require = __webpack_require__(211),
     localIcon = _require.localIcon;
 
-var _require2 = __webpack_require__(195),
+var _require2 = __webpack_require__(196),
     h = _require2.h,
     Component = _require2.Component;
 
@@ -57372,7 +57411,7 @@ var AddFiles = function (_Component) {
 module.exports = AddFiles;
 
 /***/ }),
-/* 214 */
+/* 215 */
 /***/ (function(module, exports, __webpack_require__) {
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -57381,7 +57420,7 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var _require = __webpack_require__(195),
+var _require = __webpack_require__(196),
     h = _require.h,
     Component = _require.Component;
 
@@ -57439,13 +57478,13 @@ var ActionBrowseTagline = function (_Component) {
 module.exports = ActionBrowseTagline;
 
 /***/ }),
-/* 215 */
+/* 216 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var _require = __webpack_require__(195),
+var _require = __webpack_require__(196),
     h = _require.h;
 
-var AddFiles = __webpack_require__(213);
+var AddFiles = __webpack_require__(214);
 
 var AddFilesPanel = function AddFilesPanel(props) {
   return h(
@@ -57477,13 +57516,13 @@ var AddFilesPanel = function AddFilesPanel(props) {
 module.exports = AddFilesPanel;
 
 /***/ }),
-/* 216 */
+/* 217 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var _require = __webpack_require__(195),
+var _require = __webpack_require__(196),
     h = _require.h;
 
-var ignoreEvent = __webpack_require__(217);
+var ignoreEvent = __webpack_require__(218);
 
 function PanelContent(props) {
   return h(
@@ -57522,7 +57561,7 @@ function PanelContent(props) {
 module.exports = PanelContent;
 
 /***/ }),
-/* 217 */
+/* 218 */
 /***/ (function(module, exports) {
 
 // ignore drop/paste events if they are not in input or textarea —
@@ -57543,10 +57582,10 @@ function ignoreEvent(ev) {
 module.exports = ignoreEvent;
 
 /***/ }),
-/* 218 */
+/* 219 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var _require = __webpack_require__(195),
+var _require = __webpack_require__(196),
     h = _require.h;
 
 function DashboardContentTitle(props) {
@@ -57592,7 +57631,7 @@ function PanelTopBar(props) {
 module.exports = PanelTopBar;
 
 /***/ }),
-/* 219 */
+/* 220 */
 /***/ (function(module, exports, __webpack_require__) {
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -57601,11 +57640,11 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var getFileTypeIcon = __webpack_require__(209);
-var FilePreview = __webpack_require__(211);
-var ignoreEvent = __webpack_require__(217);
+var getFileTypeIcon = __webpack_require__(210);
+var FilePreview = __webpack_require__(212);
+var ignoreEvent = __webpack_require__(218);
 
-var _require = __webpack_require__(195),
+var _require = __webpack_require__(196),
     h = _require.h,
     Component = _require.Component;
 
@@ -57760,7 +57799,7 @@ var FileCard = function (_Component) {
 module.exports = FileCard;
 
 /***/ }),
-/* 220 */
+/* 221 */
 /***/ (function(module, exports) {
 
 module.exports = function isTouchDevice() {
@@ -57769,11 +57808,11 @@ module.exports = function isTouchDevice() {
 };
 
 /***/ }),
-/* 221 */
+/* 222 */
 /***/ (function(module, exports, __webpack_require__) {
 
 (function (global, factory) {
-   true ? module.exports = factory(__webpack_require__(195)) :
+   true ? module.exports = factory(__webpack_require__(196)) :
   undefined;
 }(this, (function (preact) { 'use strict';
 
@@ -58331,7 +58370,7 @@ return CSSTransitionGroup;
 
 
 /***/ }),
-/* 222 */
+/* 223 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
@@ -58342,16 +58381,16 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var _require = __webpack_require__(178),
+var _require = __webpack_require__(179),
     Plugin = _require.Plugin;
 
-var Translator = __webpack_require__(179);
-var StatusBarUI = __webpack_require__(223);
-var statusBarStates = __webpack_require__(226);
-var getSpeed = __webpack_require__(227);
-var getBytesRemaining = __webpack_require__(228);
-var prettyETA = __webpack_require__(229);
-var prettyBytes = __webpack_require__(184);
+var Translator = __webpack_require__(180);
+var StatusBarUI = __webpack_require__(224);
+var statusBarStates = __webpack_require__(227);
+var getSpeed = __webpack_require__(228);
+var getBytesRemaining = __webpack_require__(229);
+var prettyETA = __webpack_require__(230);
+var prettyBytes = __webpack_require__(185);
 
 /**
  * StatusBar: renders a status bar with upload/pause/resume/cancel/retry buttons,
@@ -58585,16 +58624,16 @@ module.exports = function (_Plugin) {
 }(Plugin);
 
 /***/ }),
-/* 223 */
+/* 224 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
-var throttle = __webpack_require__(224);
-var classNames = __webpack_require__(212);
-var statusBarStates = __webpack_require__(226);
+var throttle = __webpack_require__(225);
+var classNames = __webpack_require__(213);
+var statusBarStates = __webpack_require__(227);
 
-var _require = __webpack_require__(195),
+var _require = __webpack_require__(196),
     h = _require.h;
 
 function calculateProcessingProgress(files) {
@@ -58860,7 +58899,7 @@ var ProgressBarError = function ProgressBarError(_ref2) {
 };
 
 /***/ }),
-/* 224 */
+/* 225 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(global) {/**
@@ -59303,10 +59342,10 @@ function toNumber(value) {
 
 module.exports = throttle;
 
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(225)))
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(226)))
 
 /***/ }),
-/* 225 */
+/* 226 */
 /***/ (function(module, exports) {
 
 var g;
@@ -59332,7 +59371,7 @@ module.exports = g;
 
 
 /***/ }),
-/* 226 */
+/* 227 */
 /***/ (function(module, exports) {
 
 module.exports = {
@@ -59345,7 +59384,7 @@ module.exports = {
 };
 
 /***/ }),
-/* 227 */
+/* 228 */
 /***/ (function(module, exports) {
 
 module.exports = function getSpeed(fileProgress) {
@@ -59357,7 +59396,7 @@ module.exports = function getSpeed(fileProgress) {
 };
 
 /***/ }),
-/* 228 */
+/* 229 */
 /***/ (function(module, exports) {
 
 module.exports = function getBytesRemaining(fileProgress) {
@@ -59365,10 +59404,10 @@ module.exports = function getBytesRemaining(fileProgress) {
 };
 
 /***/ }),
-/* 229 */
+/* 230 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var secondsToTime = __webpack_require__(230);
+var secondsToTime = __webpack_require__(231);
 
 module.exports = function prettyETA(seconds) {
   var time = secondsToTime(seconds);
@@ -59386,7 +59425,7 @@ module.exports = function prettyETA(seconds) {
 };
 
 /***/ }),
-/* 230 */
+/* 231 */
 /***/ (function(module, exports) {
 
 module.exports = function secondsToTime(rawSeconds) {
@@ -59398,7 +59437,7 @@ module.exports = function secondsToTime(rawSeconds) {
 };
 
 /***/ }),
-/* 231 */
+/* 232 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
@@ -59409,10 +59448,10 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var _require = __webpack_require__(178),
+var _require = __webpack_require__(179),
     Plugin = _require.Plugin;
 
-var _require2 = __webpack_require__(195),
+var _require2 = __webpack_require__(196),
     h = _require2.h;
 
 /**
@@ -59507,7 +59546,7 @@ module.exports = function (_Plugin) {
 }(Plugin);
 
 /***/ }),
-/* 232 */
+/* 233 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
@@ -59518,11 +59557,11 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var _require = __webpack_require__(178),
+var _require = __webpack_require__(179),
     Plugin = _require.Plugin;
 
-var dataURItoBlob = __webpack_require__(233);
-var isPreviewSupported = __webpack_require__(234);
+var dataURItoBlob = __webpack_require__(234);
+var isPreviewSupported = __webpack_require__(235);
 
 /**
  * The Thumbnail Generator plugin
@@ -59760,7 +59799,7 @@ module.exports = function (_Plugin) {
 }(Plugin);
 
 /***/ }),
-/* 233 */
+/* 234 */
 /***/ (function(module, exports) {
 
 module.exports = function dataURItoBlob(dataURI, opts, toFile) {
@@ -59790,7 +59829,7 @@ module.exports = function dataURItoBlob(dataURI, opts, toFile) {
 };
 
 /***/ }),
-/* 234 */
+/* 235 */
 /***/ (function(module, exports) {
 
 module.exports = function isPreviewSupported(fileType) {
@@ -59804,12 +59843,12 @@ module.exports = function isPreviewSupported(fileType) {
 };
 
 /***/ }),
-/* 235 */
+/* 236 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
-var isDOMElement = __webpack_require__(197);
+var isDOMElement = __webpack_require__(198);
 
 /**
  * Find one or more DOM elements.
@@ -59829,7 +59868,7 @@ module.exports = function findAllDOMElements(element) {
 };
 
 /***/ }),
-/* 236 */
+/* 237 */
 /***/ (function(module, exports) {
 
 /**
@@ -59840,7 +59879,7 @@ module.exports = function toArray(list) {
 };
 
 /***/ }),
-/* 237 */
+/* 238 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -60870,10 +60909,10 @@ var index = (function () {
 
 /* harmony default export */ __webpack_exports__["default"] = (index);
 
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(225)))
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(226)))
 
 /***/ }),
-/* 238 */
+/* 239 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
@@ -60884,20 +60923,20 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var _require = __webpack_require__(178),
+var _require = __webpack_require__(179),
     Plugin = _require.Plugin;
 
-var tus = __webpack_require__(239);
+var tus = __webpack_require__(240);
 
-var _require2 = __webpack_require__(249),
+var _require2 = __webpack_require__(250),
     Provider = _require2.Provider,
     RequestClient = _require2.RequestClient,
     Socket = _require2.Socket;
 
-var emitSocketProgress = __webpack_require__(253);
-var getSocketHost = __webpack_require__(254);
-var settle = __webpack_require__(255);
-var limitPromises = __webpack_require__(256);
+var emitSocketProgress = __webpack_require__(254);
+var getSocketHost = __webpack_require__(255);
+var settle = __webpack_require__(256);
+var limitPromises = __webpack_require__(257);
 
 // Extracted from https://github.com/tus/tus-js-client/blob/master/lib/upload.js#L13
 // excepted we removed 'fingerprint' key to avoid adding more dependencies
@@ -61396,18 +61435,18 @@ module.exports = function (_Plugin) {
 }(Plugin);
 
 /***/ }),
-/* 239 */
+/* 240 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 // Generated by Babel
 
 
-var _upload = __webpack_require__(240);
+var _upload = __webpack_require__(241);
 
 var _upload2 = _interopRequireDefault(_upload);
 
-var _storage = __webpack_require__(248);
+var _storage = __webpack_require__(249);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -61439,7 +61478,7 @@ module.exports = {
 };
 
 /***/ }),
-/* 240 */
+/* 241 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -61457,27 +61496,27 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _fingerprint = __webpack_require__(241);
+var _fingerprint = __webpack_require__(242);
 
 var _fingerprint2 = _interopRequireDefault(_fingerprint);
 
-var _error = __webpack_require__(242);
+var _error = __webpack_require__(243);
 
 var _error2 = _interopRequireDefault(_error);
 
-var _extend = __webpack_require__(243);
+var _extend = __webpack_require__(244);
 
 var _extend2 = _interopRequireDefault(_extend);
 
-var _request = __webpack_require__(244);
+var _request = __webpack_require__(245);
 
-var _source = __webpack_require__(246);
+var _source = __webpack_require__(247);
 
-var _base = __webpack_require__(247);
+var _base = __webpack_require__(248);
 
 var Base64 = _interopRequireWildcard(_base);
 
-var _storage = __webpack_require__(248);
+var _storage = __webpack_require__(249);
 
 var Storage = _interopRequireWildcard(_storage);
 
@@ -62043,7 +62082,7 @@ Upload.defaultOptions = defaultOptions;
 exports.default = Upload;
 
 /***/ }),
-/* 241 */
+/* 242 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -62065,7 +62104,7 @@ function fingerprint(file, options) {
 }
 
 /***/ }),
-/* 242 */
+/* 243 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -62113,7 +62152,7 @@ var DetailedError = function (_Error) {
 exports.default = DetailedError;
 
 /***/ }),
-/* 243 */
+/* 244 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -62237,7 +62276,7 @@ module.exports = function extend() {
 
 
 /***/ }),
-/* 244 */
+/* 245 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -62250,7 +62289,7 @@ Object.defineProperty(exports, "__esModule", {
 exports.newRequest = newRequest;
 exports.resolveUrl = resolveUrl;
 
-var _resolveUrl = __webpack_require__(245);
+var _resolveUrl = __webpack_require__(246);
 
 var _resolveUrl2 = _interopRequireDefault(_resolveUrl);
 
@@ -62266,7 +62305,7 @@ function resolveUrl(origin, link) {
 }
 
 /***/ }),
-/* 245 */
+/* 246 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_RESULT__;// Copyright 2014 Simon Lydell
@@ -62319,7 +62358,7 @@ void (function(root, factory) {
 
 
 /***/ }),
-/* 246 */
+/* 247 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -62369,7 +62408,7 @@ function getSource(input) {
 }
 
 /***/ }),
-/* 247 */
+/* 248 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -62391,7 +62430,7 @@ function encode(data) {
 var isSupported = exports.isSupported = "btoa" in window;
 
 /***/ }),
-/* 248 */
+/* 249 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -62443,7 +62482,7 @@ function removeItem(key) {
 }
 
 /***/ }),
-/* 249 */
+/* 250 */
 /***/ (function(module, exports, __webpack_require__) {
 
 'use-strict';
@@ -62451,9 +62490,9 @@ function removeItem(key) {
  * Manages communications with Companion
  */
 
-var RequestClient = __webpack_require__(250);
-var Provider = __webpack_require__(251);
-var Socket = __webpack_require__(252);
+var RequestClient = __webpack_require__(251);
+var Provider = __webpack_require__(252);
+var Socket = __webpack_require__(253);
 
 module.exports = {
   RequestClient: RequestClient,
@@ -62462,7 +62501,7 @@ module.exports = {
 };
 
 /***/ }),
-/* 250 */
+/* 251 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -62591,7 +62630,7 @@ module.exports = function () {
 }();
 
 /***/ }),
-/* 251 */
+/* 252 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -62607,7 +62646,7 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var RequestClient = __webpack_require__(250);
+var RequestClient = __webpack_require__(251);
 
 var _getName = function _getName(id) {
   return id.split('-').map(function (s) {
@@ -62700,12 +62739,12 @@ module.exports = function (_RequestClient) {
 }(RequestClient);
 
 /***/ }),
-/* 252 */
+/* 253 */
 /***/ (function(module, exports, __webpack_require__) {
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-var ee = __webpack_require__(180);
+var ee = __webpack_require__(181);
 
 module.exports = function () {
   function UppySocket(opts) {
@@ -62786,10 +62825,10 @@ module.exports = function () {
 }();
 
 /***/ }),
-/* 253 */
+/* 254 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var throttle = __webpack_require__(224);
+var throttle = __webpack_require__(225);
 
 function _emitSocketProgress(uploader, progressData, file) {
   var progress = progressData.progress,
@@ -62809,7 +62848,7 @@ function _emitSocketProgress(uploader, progressData, file) {
 module.exports = throttle(_emitSocketProgress, 300, { leading: true, trailing: true });
 
 /***/ }),
-/* 254 */
+/* 255 */
 /***/ (function(module, exports) {
 
 module.exports = function getSocketHost(url) {
@@ -62822,7 +62861,7 @@ module.exports = function getSocketHost(url) {
 };
 
 /***/ }),
-/* 255 */
+/* 256 */
 /***/ (function(module, exports) {
 
 module.exports = function settle(promises) {
@@ -62848,7 +62887,7 @@ module.exports = function settle(promises) {
 };
 
 /***/ }),
-/* 256 */
+/* 257 */
 /***/ (function(module, exports) {
 
 /**
@@ -62893,7 +62932,7 @@ module.exports = function limitPromises(limit) {
 };
 
 /***/ }),
-/* 257 */
+/* 258 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
@@ -62904,20 +62943,20 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var _require = __webpack_require__(178),
+var _require = __webpack_require__(179),
     Plugin = _require.Plugin;
 
-var cuid = __webpack_require__(181);
-var Translator = __webpack_require__(179);
+var cuid = __webpack_require__(182);
+var Translator = __webpack_require__(180);
 
-var _require2 = __webpack_require__(249),
+var _require2 = __webpack_require__(250),
     Provider = _require2.Provider,
     Socket = _require2.Socket;
 
-var emitSocketProgress = __webpack_require__(253);
-var getSocketHost = __webpack_require__(254);
-var settle = __webpack_require__(255);
-var limitPromises = __webpack_require__(256);
+var emitSocketProgress = __webpack_require__(254);
+var getSocketHost = __webpack_require__(255);
+var settle = __webpack_require__(256);
+var limitPromises = __webpack_require__(257);
 
 function buildResponseError(xhr, error) {
   // No error message
