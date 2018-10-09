@@ -159,16 +159,12 @@ var fileUpload = (function () {
 		var protocol = $fileUpload.attr('data-protocol')
 		var endpoint = $fileUpload.attr('data-endpoint')
 
-		console.log('RAW VALUES = ', autoProceed, protocol, endpoint)
-
 		protocol = protocol || 'xhr'
 		if (protocol === 'tus') {
 			endpoint = endpoint || 'https://master.tus.io/files/' // This endpoint is provided by Transloadit for testing
 		} else {
 			endpoint = endpoint || 'https://example.com/upload' // This endpoint will fail
 		}
-
-		console.log('VALUES = ', autoProceed, protocol, endpoint)
 
 		var uppy = Uppy({
 			debug: true,
@@ -358,7 +354,6 @@ var selectSliderField = (function () {
 			step = $slider.slider('value')
 			value = values[step]
 			width = (step * 100) / (steps - 1)
-
 			$input.val(value)
 			$value.text(value)
 			$mercury.css('width', width + '%')
@@ -462,8 +457,6 @@ var dropdownSelect = (function () {
 
 				if (value) {
 					$dropdownOptions.append('<div class="dropdown__option" data-value=' + $option.attr('value') + '>' + $option.text() + '</div>')
-					console.log(value)
-					console.log($select)
 
 					if (value === get($select)) {
 						$dropdown.addClass('selected')
