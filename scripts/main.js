@@ -106,7 +106,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _scripts_vendor_datejs_i18n_en_GB_js__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_scripts_vendor_datejs_i18n_en_GB_js__WEBPACK_IMPORTED_MODULE_6__);
 /* harmony import */ var _chenfengyuan_datepicker_dist_datepicker_common_js__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(177);
 /* harmony import */ var _chenfengyuan_datepicker_dist_datepicker_common_js__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(_chenfengyuan_datepicker_dist_datepicker_common_js__WEBPACK_IMPORTED_MODULE_7__);
-/* harmony import */ var _templates_components_accordion_accordion_js__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(178);
+/* harmony import */ var _uppy_core__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(178);
+/* harmony import */ var _uppy_core__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(_uppy_core__WEBPACK_IMPORTED_MODULE_8__);
+/* harmony import */ var _uppy_dashboard__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(198);
+/* harmony import */ var _uppy_dashboard__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(_uppy_dashboard__WEBPACK_IMPORTED_MODULE_9__);
+/* harmony import */ var _uppy_tus__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(238);
+/* harmony import */ var _uppy_tus__WEBPACK_IMPORTED_MODULE_10___default = /*#__PURE__*/__webpack_require__.n(_uppy_tus__WEBPACK_IMPORTED_MODULE_10__);
+/* harmony import */ var _uppy_xhr_upload__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(257);
+/* harmony import */ var _uppy_xhr_upload__WEBPACK_IMPORTED_MODULE_11___default = /*#__PURE__*/__webpack_require__.n(_uppy_xhr_upload__WEBPACK_IMPORTED_MODULE_11__);
+/* harmony import */ var _templates_components_accordion_accordion_js__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(258);
 // Declare these two varibles to fix an issue importing modules
 var a = ''
 var b = ''
@@ -122,31 +130,17 @@ var b = ''
 
 
 
+
+
+
+
 // Import component exports
 
 
-// Require Uppy file upload core and plugins (run `yarn add -D @uppy/[PLUGIN_NAME]` at the CLI to install dependencies)
-// TODO: See if 'import' works with these
-const Uppy = __webpack_require__(179) // Core Uppy code
-const Dashboard = __webpack_require__(199) // Full-featured sleek UI with file previews, metadata editing, upload/pause/resume/cancel buttons and more. Includes StatusBar and Informer plugins by default
-// const DragDrop = require('@uppy/drag-drop') // Plain and simple drag-and-drop area
-// const FileInput = require('@uppy/file-input') // Even more plain and simple, just a button
-// const Webcam = require('@uppy/webcam') // Upload selfies or audio / video recordings
-// const Dropbox = require('@uppy/dropbox') // Import files from Dropbox
-// const GoogleDrive = require('@uppy/google-drive') // Import files from Google Drive
-// const Instagram = require('@uppy/instagram') // Import files from Instagram
-// const Url = require('@uppy/url') // Import files from any public URL
-const Tus = __webpack_require__(239) // Uploads using the tus resumable upload protocol
-const XHRUpload = __webpack_require__(258) // Classic multipart form uploads or binary uploads using XMLHTTPRequest
-// const AwsS3 = require('@uppy/aws-s3') // Uploader for AWS S3
-// const AwsS3Multipart = require('@uppy/aws-s3 - multipart') // Uploader for AWS S3 using its resumable Multipart protocol
-// const ProgressBar = require('@uppy/progress-bar') // Add a small YouTube-style progress bar at the top of the page
-// const StatusBar = require('@uppy/status-bar') // Advanced upload progress status bar
-// const Informer = require('@uppy/informer') // Show notifications
-// const Transloadit = require('@uppy/transloadit') // Manipulate and transcode uploaded files using the transloadit.com service
-// const Form = require('@uppy/form') // Collect metadata from <form> right before the Uppy upload, then optionally append results back to the form
-// const ThumbnailGenerator = require('@uppy/thumbnail-generator') // Generate preview thumbnails for images to be uploaded [documentation not yet available]
-// const GoldenRetriever = require('@uppy/golden-retriever') // Restore files and continue uploading after a page refresh or a browser crash
+// Expose functions that need to be globally accessible - probably not the best way of doing this!
+window.accordionInit = _templates_components_accordion_accordion_js__WEBPACK_IMPORTED_MODULE_12__["accordionInit"]
+window.accordionUpdate = _templates_components_accordion_accordion_js__WEBPACK_IMPORTED_MODULE_12__["accordionUpdate"]
+window.accordionTest = _templates_components_accordion_accordion_js__WEBPACK_IMPORTED_MODULE_12__["accordionTest"]
 
 /**
  * FILE UPLOAD: Handle file upload components (user initiated upload using XHR)
@@ -166,7 +160,7 @@ var fileUpload = (function () {
 			endpoint = endpoint || 'https://example.com/upload' // This endpoint will fail
 		}
 
-		var uppy = Uppy({
+		var uppy = _uppy_core__WEBPACK_IMPORTED_MODULE_8___default()({
 			debug: true,
 			autoProceed: autoProceed,
 			restrictions: {
@@ -177,7 +171,7 @@ var fileUpload = (function () {
 			}
 		})
 
-		uppy.use(Dashboard, {
+		uppy.use(_uppy_dashboard__WEBPACK_IMPORTED_MODULE_9___default.a, {
 			trigger: '.UppyModalOpenerBtn',
 			inline: true,
 			target: '.DashboardContainer',
@@ -208,11 +202,11 @@ var fileUpload = (function () {
 		})
 
 		if (protocol === 'tus') {
-			uppy.use(Tus, {
+			uppy.use(_uppy_tus__WEBPACK_IMPORTED_MODULE_10___default.a, {
 				endpoint: endpoint
 			})
 		} else {
-			uppy.use(XHRUpload, {
+			uppy.use(_uppy_xhr_upload__WEBPACK_IMPORTED_MODULE_11___default.a, {
 				endpoint: endpoint
 			})
 		}
@@ -638,7 +632,7 @@ var accordion = (function () {
 
 	$accordions.each(function () {
 		var $accordion = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this)
-		Object(_templates_components_accordion_accordion_js__WEBPACK_IMPORTED_MODULE_8__["accordionInit"])($accordion)
+		Object(_templates_components_accordion_accordion_js__WEBPACK_IMPORTED_MODULE_12__["accordionInit"])($accordion)
 	})
 })()
 
@@ -52109,56 +52103,6 @@ if ($.fn) {
 
 /***/ }),
 /* 178 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* WEBPACK VAR INJECTION */(function($) {/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "accordionInit", function() { return accordionInit; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "accordionUpdate", function() { return accordionUpdate; });
-/**
- * module `accordion.js`
- *
- * Functions to initialise and update the jQuery object `$accordion` with the structure:
- *
- * <div class="accordion">
- * 	<div class="accordion__item">...</div>
- * 	<div class="accordion__item">...</div>
- * 	...
- * </div>
- */
-
-/**
- * function accordionInit($accordion)
- *
- * Initialise the accordion
- */
-function accordionInit($accordion) {
-	var $accordionItems = $accordion.find('.accordion__item')
-	$accordionItems.addClass('closed')
-	$accordionItems.first().removeClass('closed')
-	accordionUpdate($accordion)
-}
-
-/**
- * function accordionUpdate($accordion)
- *
- * Update the accordion, binding the click event handlers
- */
-function accordionUpdate($accordion) {
-	var $accordionItems = $accordion.find('.accordion__item')
-	$accordionItems.on('click', function () {
-		var $accordionItem = $(this)
-		$accordionItems.addClass('closed')
-		$accordionItem.removeClass('closed')
-	})
-}
-
-
-
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(1)))
-
-/***/ }),
-/* 179 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
@@ -52169,19 +52113,19 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-var Translator = __webpack_require__(180);
-var ee = __webpack_require__(181);
-var cuid = __webpack_require__(182);
+var Translator = __webpack_require__(179);
+var ee = __webpack_require__(180);
+var cuid = __webpack_require__(181);
 // const throttle = require('lodash.throttle')
-var prettyBytes = __webpack_require__(185);
-var match = __webpack_require__(186);
-var DefaultStore = __webpack_require__(188);
-var getFileType = __webpack_require__(189);
-var getFileNameAndExtension = __webpack_require__(190);
-var generateFileID = __webpack_require__(192);
-var isObjectURL = __webpack_require__(193);
-var getTimeStamp = __webpack_require__(194);
-var Plugin = __webpack_require__(195); // Exported from here.
+var prettyBytes = __webpack_require__(184);
+var match = __webpack_require__(185);
+var DefaultStore = __webpack_require__(187);
+var getFileType = __webpack_require__(188);
+var getFileNameAndExtension = __webpack_require__(189);
+var generateFileID = __webpack_require__(191);
+var isObjectURL = __webpack_require__(192);
+var getTimeStamp = __webpack_require__(193);
+var Plugin = __webpack_require__(194); // Exported from here.
 
 /**
  * Uppy Core module.
@@ -53495,7 +53439,7 @@ module.exports.Uppy = Uppy;
 module.exports.Plugin = Plugin;
 
 /***/ }),
-/* 180 */
+/* 179 */
 /***/ (function(module, exports) {
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
@@ -53627,7 +53571,7 @@ module.exports = function () {
 }();
 
 /***/ }),
-/* 181 */
+/* 180 */
 /***/ (function(module, exports) {
 
 /**
@@ -53769,7 +53713,7 @@ module.exports = function createNamespaceEmitter () {
 
 
 /***/ }),
-/* 182 */
+/* 181 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /**
@@ -53784,8 +53728,8 @@ module.exports = function createNamespaceEmitter () {
  * MIT License
  */
 
-var fingerprint = __webpack_require__(183);
-var pad = __webpack_require__(184);
+var fingerprint = __webpack_require__(182);
+var pad = __webpack_require__(183);
 
 var c = 0,
   blockSize = 4,
@@ -53858,10 +53802,10 @@ module.exports = cuid;
 
 
 /***/ }),
-/* 183 */
+/* 182 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var pad = __webpack_require__(184);
+var pad = __webpack_require__(183);
 
 var env = typeof window === 'object' ? window : self;
 var globalCount = Object.keys(env).length;
@@ -53876,7 +53820,7 @@ module.exports = function fingerprint () {
 
 
 /***/ }),
-/* 184 */
+/* 183 */
 /***/ (function(module, exports) {
 
 module.exports = function pad (num, size) {
@@ -53886,7 +53830,7 @@ module.exports = function pad (num, size) {
 
 
 /***/ }),
-/* 185 */
+/* 184 */
 /***/ (function(module, exports) {
 
 module.exports = prettierBytes
@@ -53922,10 +53866,10 @@ function prettierBytes (num) {
 
 
 /***/ }),
-/* 186 */
+/* 185 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var wildcard = __webpack_require__(187);
+var wildcard = __webpack_require__(186);
 var reMimePartSplit = /[\/\+\.]/;
 
 /**
@@ -53952,7 +53896,7 @@ module.exports = function(target, pattern) {
 
 
 /***/ }),
-/* 187 */
+/* 186 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -54052,7 +53996,7 @@ module.exports = function(text, test, separator) {
 
 
 /***/ }),
-/* 188 */
+/* 187 */
 /***/ (function(module, exports) {
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
@@ -54110,11 +54054,11 @@ module.exports = function defaultStore() {
 };
 
 /***/ }),
-/* 189 */
+/* 188 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var getFileNameAndExtension = __webpack_require__(190);
-var mimeTypes = __webpack_require__(191);
+var getFileNameAndExtension = __webpack_require__(189);
+var mimeTypes = __webpack_require__(190);
 
 module.exports = function getFileType(file) {
   var fileExtension = file.name ? getFileNameAndExtension(file.name).extension : null;
@@ -54139,7 +54083,7 @@ module.exports = function getFileType(file) {
 };
 
 /***/ }),
-/* 190 */
+/* 189 */
 /***/ (function(module, exports) {
 
 /**
@@ -54159,7 +54103,7 @@ module.exports = function getFileNameAndExtension(fullFileName) {
 };
 
 /***/ }),
-/* 191 */
+/* 190 */
 /***/ (function(module, exports) {
 
 module.exports = {
@@ -54200,7 +54144,7 @@ module.exports = {
 };
 
 /***/ }),
-/* 192 */
+/* 191 */
 /***/ (function(module, exports) {
 
 /**
@@ -54219,7 +54163,7 @@ module.exports = function generateFileID(file) {
 };
 
 /***/ }),
-/* 193 */
+/* 192 */
 /***/ (function(module, exports) {
 
 /**
@@ -54233,7 +54177,7 @@ module.exports = function isObjectURL(url) {
 };
 
 /***/ }),
-/* 194 */
+/* 193 */
 /***/ (function(module, exports) {
 
 /**
@@ -54255,7 +54199,7 @@ function pad(str) {
 }
 
 /***/ }),
-/* 195 */
+/* 194 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
@@ -54264,8 +54208,8 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-var preact = __webpack_require__(196);
-var findDOMElement = __webpack_require__(197);
+var preact = __webpack_require__(195);
+var findDOMElement = __webpack_require__(196);
 
 /**
  * Defer a frequent call to the microtask queue.
@@ -54436,7 +54380,7 @@ module.exports = function () {
 }();
 
 /***/ }),
-/* 196 */
+/* 195 */
 /***/ (function(__webpack_module__, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -55166,12 +55110,12 @@ var preact = {
 
 
 /***/ }),
-/* 197 */
+/* 196 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
-var isDOMElement = __webpack_require__(198);
+var isDOMElement = __webpack_require__(197);
 
 /**
  * Find a DOM element.
@@ -55190,7 +55134,7 @@ module.exports = function findDOMElement(element) {
 };
 
 /***/ }),
-/* 198 */
+/* 197 */
 /***/ (function(module, exports) {
 
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
@@ -55205,7 +55149,7 @@ module.exports = function isDOMElement(obj) {
 };
 
 /***/ }),
-/* 199 */
+/* 198 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
@@ -55216,21 +55160,21 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var _require = __webpack_require__(179),
+var _require = __webpack_require__(178),
     Plugin = _require.Plugin;
 
-var Translator = __webpack_require__(180);
-var dragDrop = __webpack_require__(200);
-var DashboardUI = __webpack_require__(204);
-var StatusBar = __webpack_require__(223);
-var Informer = __webpack_require__(232);
-var ThumbnailGenerator = __webpack_require__(233);
-var findAllDOMElements = __webpack_require__(236);
-var toArray = __webpack_require__(237);
-var prettyBytes = __webpack_require__(185);
-var ResizeObserver = __webpack_require__(238);
+var Translator = __webpack_require__(179);
+var dragDrop = __webpack_require__(199);
+var DashboardUI = __webpack_require__(203);
+var StatusBar = __webpack_require__(222);
+var Informer = __webpack_require__(231);
+var ThumbnailGenerator = __webpack_require__(232);
+var findAllDOMElements = __webpack_require__(235);
+var toArray = __webpack_require__(236);
+var prettyBytes = __webpack_require__(184);
+var ResizeObserver = __webpack_require__(237);
 
-var _require2 = __webpack_require__(211),
+var _require2 = __webpack_require__(210),
     defaultTabIcon = _require2.defaultTabIcon;
 
 // Some code for managing focus was adopted from https://github.com/ghosh/micromodal
@@ -55994,13 +55938,13 @@ module.exports = function (_Plugin) {
 }(Plugin);
 
 /***/ }),
-/* 200 */
+/* 199 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = dragDrop
 
-var flatten = __webpack_require__(201)
-var parallel = __webpack_require__(202)
+var flatten = __webpack_require__(200)
+var parallel = __webpack_require__(201)
 
 function dragDrop (elem, listeners) {
   if (typeof elem === 'string') {
@@ -56192,7 +56136,7 @@ function toArray (list) {
 
 
 /***/ }),
-/* 201 */
+/* 200 */
 /***/ (function(module, exports) {
 
 module.exports = function flatten(list, depth) {
@@ -56221,7 +56165,7 @@ module.exports = function flatten(list, depth) {
 
 
 /***/ }),
-/* 202 */
+/* 201 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(process) {module.exports = runParallel
@@ -56273,10 +56217,10 @@ function runParallel (tasks, cb) {
   isSync = false
 }
 
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(203)))
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(202)))
 
 /***/ }),
-/* 203 */
+/* 202 */
 /***/ (function(module, exports) {
 
 // shim for using process in browser
@@ -56466,24 +56410,24 @@ process.umask = function() { return 0; };
 
 
 /***/ }),
-/* 204 */
+/* 203 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
-var FileList = __webpack_require__(205);
-var AddFiles = __webpack_require__(214);
-var AddFilesPanel = __webpack_require__(216);
-var PanelContent = __webpack_require__(217);
-var PanelTopBar = __webpack_require__(219);
-var FileCard = __webpack_require__(220);
-var classNames = __webpack_require__(213);
-var isTouchDevice = __webpack_require__(221);
+var FileList = __webpack_require__(204);
+var AddFiles = __webpack_require__(213);
+var AddFilesPanel = __webpack_require__(215);
+var PanelContent = __webpack_require__(216);
+var PanelTopBar = __webpack_require__(218);
+var FileCard = __webpack_require__(219);
+var classNames = __webpack_require__(212);
+var isTouchDevice = __webpack_require__(220);
 
-var _require = __webpack_require__(196),
+var _require = __webpack_require__(195),
     h = _require.h;
 
-var PreactCSSTransitionGroup = __webpack_require__(222);
+var PreactCSSTransitionGroup = __webpack_require__(221);
 
 // http://dev.edenspiekermann.com/2016/02/11/introducing-accessible-modal-dialog
 // https://github.com/ghosh/micromodal
@@ -56568,15 +56512,15 @@ module.exports = function Dashboard(props) {
 };
 
 /***/ }),
-/* 205 */
+/* 204 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
-var FileItem = __webpack_require__(206);
-var classNames = __webpack_require__(213);
+var FileItem = __webpack_require__(205);
+var classNames = __webpack_require__(212);
 
-var _require = __webpack_require__(196),
+var _require = __webpack_require__(195),
     h = _require.h;
 
 module.exports = function (props) {
@@ -56596,26 +56540,26 @@ module.exports = function (props) {
 };
 
 /***/ }),
-/* 206 */
+/* 205 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
-var getFileNameAndExtension = __webpack_require__(190);
-var truncateString = __webpack_require__(207);
-var copyToClipboard = __webpack_require__(208);
-var prettyBytes = __webpack_require__(185);
-var FileItemProgress = __webpack_require__(209);
-var getFileTypeIcon = __webpack_require__(210);
-var FilePreview = __webpack_require__(212);
+var getFileNameAndExtension = __webpack_require__(189);
+var truncateString = __webpack_require__(206);
+var copyToClipboard = __webpack_require__(207);
+var prettyBytes = __webpack_require__(184);
+var FileItemProgress = __webpack_require__(208);
+var getFileTypeIcon = __webpack_require__(209);
+var FilePreview = __webpack_require__(211);
 
-var _require = __webpack_require__(211),
+var _require = __webpack_require__(210),
     iconCopy = _require.iconCopy,
     iconRetry = _require.iconRetry;
 
-var classNames = __webpack_require__(213);
+var classNames = __webpack_require__(212);
 
-var _require2 = __webpack_require__(196),
+var _require2 = __webpack_require__(195),
     h = _require2.h;
 
 function FileItemProgressWrapper(props) {
@@ -56814,7 +56758,7 @@ module.exports = function fileItem(props) {
 };
 
 /***/ }),
-/* 207 */
+/* 206 */
 /***/ (function(module, exports) {
 
 module.exports = function truncateString(str, length) {
@@ -56828,7 +56772,7 @@ module.exports = function truncateString(str, length) {
 };
 
 /***/ }),
-/* 208 */
+/* 207 */
 /***/ (function(module, exports) {
 
 /**
@@ -56884,10 +56828,10 @@ module.exports = function copyToClipboard(textToCopy, fallbackString) {
 };
 
 /***/ }),
-/* 209 */
+/* 208 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var _require = __webpack_require__(196),
+var _require = __webpack_require__(195),
     h = _require.h;
 
 // http://codepen.io/Harkko/pen/rVxvNM
@@ -56931,10 +56875,10 @@ module.exports = function (props) {
 };
 
 /***/ }),
-/* 210 */
+/* 209 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var _require = __webpack_require__(211),
+var _require = __webpack_require__(210),
     iconText = _require.iconText,
     iconAudio = _require.iconAudio,
     iconVideo = _require.iconVideo,
@@ -56990,10 +56934,10 @@ module.exports = function getIconByMime(fileType) {
 };
 
 /***/ }),
-/* 211 */
+/* 210 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var _require = __webpack_require__(196),
+var _require = __webpack_require__(195),
     h = _require.h;
 
 // https://css-tricks.com/creating-svg-icon-system-react/
@@ -57121,12 +57065,12 @@ module.exports = {
 };
 
 /***/ }),
-/* 212 */
+/* 211 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var getFileTypeIcon = __webpack_require__(210);
+var getFileTypeIcon = __webpack_require__(209);
 
-var _require = __webpack_require__(196),
+var _require = __webpack_require__(195),
     h = _require.h;
 
 module.exports = function FilePreview(props) {
@@ -57164,7 +57108,7 @@ module.exports = function FilePreview(props) {
 // <span class="uppy-DashboardItem-previewType">{file.extension && file.extension.length < 5 ? file.extension : null}</span>
 
 /***/ }),
-/* 213 */
+/* 212 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
@@ -57221,7 +57165,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
 
 
 /***/ }),
-/* 214 */
+/* 213 */
 /***/ (function(module, exports, __webpack_require__) {
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -57230,12 +57174,12 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var ActionBrowseTagline = __webpack_require__(215);
+var ActionBrowseTagline = __webpack_require__(214);
 
-var _require = __webpack_require__(211),
+var _require = __webpack_require__(210),
     localIcon = _require.localIcon;
 
-var _require2 = __webpack_require__(196),
+var _require2 = __webpack_require__(195),
     h = _require2.h,
     Component = _require2.Component;
 
@@ -57404,7 +57348,7 @@ var AddFiles = function (_Component) {
 module.exports = AddFiles;
 
 /***/ }),
-/* 215 */
+/* 214 */
 /***/ (function(module, exports, __webpack_require__) {
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -57413,7 +57357,7 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var _require = __webpack_require__(196),
+var _require = __webpack_require__(195),
     h = _require.h,
     Component = _require.Component;
 
@@ -57471,13 +57415,13 @@ var ActionBrowseTagline = function (_Component) {
 module.exports = ActionBrowseTagline;
 
 /***/ }),
-/* 216 */
+/* 215 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var _require = __webpack_require__(196),
+var _require = __webpack_require__(195),
     h = _require.h;
 
-var AddFiles = __webpack_require__(214);
+var AddFiles = __webpack_require__(213);
 
 var AddFilesPanel = function AddFilesPanel(props) {
   return h(
@@ -57509,13 +57453,13 @@ var AddFilesPanel = function AddFilesPanel(props) {
 module.exports = AddFilesPanel;
 
 /***/ }),
-/* 217 */
+/* 216 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var _require = __webpack_require__(196),
+var _require = __webpack_require__(195),
     h = _require.h;
 
-var ignoreEvent = __webpack_require__(218);
+var ignoreEvent = __webpack_require__(217);
 
 function PanelContent(props) {
   return h(
@@ -57554,7 +57498,7 @@ function PanelContent(props) {
 module.exports = PanelContent;
 
 /***/ }),
-/* 218 */
+/* 217 */
 /***/ (function(module, exports) {
 
 // ignore drop/paste events if they are not in input or textarea —
@@ -57575,10 +57519,10 @@ function ignoreEvent(ev) {
 module.exports = ignoreEvent;
 
 /***/ }),
-/* 219 */
+/* 218 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var _require = __webpack_require__(196),
+var _require = __webpack_require__(195),
     h = _require.h;
 
 function DashboardContentTitle(props) {
@@ -57624,7 +57568,7 @@ function PanelTopBar(props) {
 module.exports = PanelTopBar;
 
 /***/ }),
-/* 220 */
+/* 219 */
 /***/ (function(module, exports, __webpack_require__) {
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -57633,11 +57577,11 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var getFileTypeIcon = __webpack_require__(210);
-var FilePreview = __webpack_require__(212);
-var ignoreEvent = __webpack_require__(218);
+var getFileTypeIcon = __webpack_require__(209);
+var FilePreview = __webpack_require__(211);
+var ignoreEvent = __webpack_require__(217);
 
-var _require = __webpack_require__(196),
+var _require = __webpack_require__(195),
     h = _require.h,
     Component = _require.Component;
 
@@ -57792,7 +57736,7 @@ var FileCard = function (_Component) {
 module.exports = FileCard;
 
 /***/ }),
-/* 221 */
+/* 220 */
 /***/ (function(module, exports) {
 
 module.exports = function isTouchDevice() {
@@ -57801,11 +57745,11 @@ module.exports = function isTouchDevice() {
 };
 
 /***/ }),
-/* 222 */
+/* 221 */
 /***/ (function(module, exports, __webpack_require__) {
 
 (function (global, factory) {
-   true ? module.exports = factory(__webpack_require__(196)) :
+   true ? module.exports = factory(__webpack_require__(195)) :
   undefined;
 }(this, (function (preact) { 'use strict';
 
@@ -58363,7 +58307,7 @@ return CSSTransitionGroup;
 
 
 /***/ }),
-/* 223 */
+/* 222 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
@@ -58374,16 +58318,16 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var _require = __webpack_require__(179),
+var _require = __webpack_require__(178),
     Plugin = _require.Plugin;
 
-var Translator = __webpack_require__(180);
-var StatusBarUI = __webpack_require__(224);
-var statusBarStates = __webpack_require__(227);
-var getSpeed = __webpack_require__(228);
-var getBytesRemaining = __webpack_require__(229);
-var prettyETA = __webpack_require__(230);
-var prettyBytes = __webpack_require__(185);
+var Translator = __webpack_require__(179);
+var StatusBarUI = __webpack_require__(223);
+var statusBarStates = __webpack_require__(226);
+var getSpeed = __webpack_require__(227);
+var getBytesRemaining = __webpack_require__(228);
+var prettyETA = __webpack_require__(229);
+var prettyBytes = __webpack_require__(184);
 
 /**
  * StatusBar: renders a status bar with upload/pause/resume/cancel/retry buttons,
@@ -58617,16 +58561,16 @@ module.exports = function (_Plugin) {
 }(Plugin);
 
 /***/ }),
-/* 224 */
+/* 223 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
-var throttle = __webpack_require__(225);
-var classNames = __webpack_require__(213);
-var statusBarStates = __webpack_require__(227);
+var throttle = __webpack_require__(224);
+var classNames = __webpack_require__(212);
+var statusBarStates = __webpack_require__(226);
 
-var _require = __webpack_require__(196),
+var _require = __webpack_require__(195),
     h = _require.h;
 
 function calculateProcessingProgress(files) {
@@ -58892,7 +58836,7 @@ var ProgressBarError = function ProgressBarError(_ref2) {
 };
 
 /***/ }),
-/* 225 */
+/* 224 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(global) {/**
@@ -59335,10 +59279,10 @@ function toNumber(value) {
 
 module.exports = throttle;
 
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(226)))
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(225)))
 
 /***/ }),
-/* 226 */
+/* 225 */
 /***/ (function(module, exports) {
 
 var g;
@@ -59364,7 +59308,7 @@ module.exports = g;
 
 
 /***/ }),
-/* 227 */
+/* 226 */
 /***/ (function(module, exports) {
 
 module.exports = {
@@ -59377,7 +59321,7 @@ module.exports = {
 };
 
 /***/ }),
-/* 228 */
+/* 227 */
 /***/ (function(module, exports) {
 
 module.exports = function getSpeed(fileProgress) {
@@ -59389,7 +59333,7 @@ module.exports = function getSpeed(fileProgress) {
 };
 
 /***/ }),
-/* 229 */
+/* 228 */
 /***/ (function(module, exports) {
 
 module.exports = function getBytesRemaining(fileProgress) {
@@ -59397,10 +59341,10 @@ module.exports = function getBytesRemaining(fileProgress) {
 };
 
 /***/ }),
-/* 230 */
+/* 229 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var secondsToTime = __webpack_require__(231);
+var secondsToTime = __webpack_require__(230);
 
 module.exports = function prettyETA(seconds) {
   var time = secondsToTime(seconds);
@@ -59418,7 +59362,7 @@ module.exports = function prettyETA(seconds) {
 };
 
 /***/ }),
-/* 231 */
+/* 230 */
 /***/ (function(module, exports) {
 
 module.exports = function secondsToTime(rawSeconds) {
@@ -59430,7 +59374,7 @@ module.exports = function secondsToTime(rawSeconds) {
 };
 
 /***/ }),
-/* 232 */
+/* 231 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
@@ -59441,10 +59385,10 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var _require = __webpack_require__(179),
+var _require = __webpack_require__(178),
     Plugin = _require.Plugin;
 
-var _require2 = __webpack_require__(196),
+var _require2 = __webpack_require__(195),
     h = _require2.h;
 
 /**
@@ -59539,7 +59483,7 @@ module.exports = function (_Plugin) {
 }(Plugin);
 
 /***/ }),
-/* 233 */
+/* 232 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
@@ -59550,11 +59494,11 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var _require = __webpack_require__(179),
+var _require = __webpack_require__(178),
     Plugin = _require.Plugin;
 
-var dataURItoBlob = __webpack_require__(234);
-var isPreviewSupported = __webpack_require__(235);
+var dataURItoBlob = __webpack_require__(233);
+var isPreviewSupported = __webpack_require__(234);
 
 /**
  * The Thumbnail Generator plugin
@@ -59792,7 +59736,7 @@ module.exports = function (_Plugin) {
 }(Plugin);
 
 /***/ }),
-/* 234 */
+/* 233 */
 /***/ (function(module, exports) {
 
 module.exports = function dataURItoBlob(dataURI, opts, toFile) {
@@ -59822,7 +59766,7 @@ module.exports = function dataURItoBlob(dataURI, opts, toFile) {
 };
 
 /***/ }),
-/* 235 */
+/* 234 */
 /***/ (function(module, exports) {
 
 module.exports = function isPreviewSupported(fileType) {
@@ -59836,12 +59780,12 @@ module.exports = function isPreviewSupported(fileType) {
 };
 
 /***/ }),
-/* 236 */
+/* 235 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
-var isDOMElement = __webpack_require__(198);
+var isDOMElement = __webpack_require__(197);
 
 /**
  * Find one or more DOM elements.
@@ -59861,7 +59805,7 @@ module.exports = function findAllDOMElements(element) {
 };
 
 /***/ }),
-/* 237 */
+/* 236 */
 /***/ (function(module, exports) {
 
 /**
@@ -59872,7 +59816,7 @@ module.exports = function toArray(list) {
 };
 
 /***/ }),
-/* 238 */
+/* 237 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -60902,10 +60846,10 @@ var index = (function () {
 
 /* harmony default export */ __webpack_exports__["default"] = (index);
 
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(226)))
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(225)))
 
 /***/ }),
-/* 239 */
+/* 238 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
@@ -60916,20 +60860,20 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var _require = __webpack_require__(179),
+var _require = __webpack_require__(178),
     Plugin = _require.Plugin;
 
-var tus = __webpack_require__(240);
+var tus = __webpack_require__(239);
 
-var _require2 = __webpack_require__(250),
+var _require2 = __webpack_require__(249),
     Provider = _require2.Provider,
     RequestClient = _require2.RequestClient,
     Socket = _require2.Socket;
 
-var emitSocketProgress = __webpack_require__(254);
-var getSocketHost = __webpack_require__(255);
-var settle = __webpack_require__(256);
-var limitPromises = __webpack_require__(257);
+var emitSocketProgress = __webpack_require__(253);
+var getSocketHost = __webpack_require__(254);
+var settle = __webpack_require__(255);
+var limitPromises = __webpack_require__(256);
 
 // Extracted from https://github.com/tus/tus-js-client/blob/master/lib/upload.js#L13
 // excepted we removed 'fingerprint' key to avoid adding more dependencies
@@ -61428,18 +61372,18 @@ module.exports = function (_Plugin) {
 }(Plugin);
 
 /***/ }),
-/* 240 */
+/* 239 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 // Generated by Babel
 
 
-var _upload = __webpack_require__(241);
+var _upload = __webpack_require__(240);
 
 var _upload2 = _interopRequireDefault(_upload);
 
-var _storage = __webpack_require__(249);
+var _storage = __webpack_require__(248);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -61471,7 +61415,7 @@ module.exports = {
 };
 
 /***/ }),
-/* 241 */
+/* 240 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -61489,27 +61433,27 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _fingerprint = __webpack_require__(242);
+var _fingerprint = __webpack_require__(241);
 
 var _fingerprint2 = _interopRequireDefault(_fingerprint);
 
-var _error = __webpack_require__(243);
+var _error = __webpack_require__(242);
 
 var _error2 = _interopRequireDefault(_error);
 
-var _extend = __webpack_require__(244);
+var _extend = __webpack_require__(243);
 
 var _extend2 = _interopRequireDefault(_extend);
 
-var _request = __webpack_require__(245);
+var _request = __webpack_require__(244);
 
-var _source = __webpack_require__(247);
+var _source = __webpack_require__(246);
 
-var _base = __webpack_require__(248);
+var _base = __webpack_require__(247);
 
 var Base64 = _interopRequireWildcard(_base);
 
-var _storage = __webpack_require__(249);
+var _storage = __webpack_require__(248);
 
 var Storage = _interopRequireWildcard(_storage);
 
@@ -62075,7 +62019,7 @@ Upload.defaultOptions = defaultOptions;
 exports.default = Upload;
 
 /***/ }),
-/* 242 */
+/* 241 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -62097,7 +62041,7 @@ function fingerprint(file, options) {
 }
 
 /***/ }),
-/* 243 */
+/* 242 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -62145,7 +62089,7 @@ var DetailedError = function (_Error) {
 exports.default = DetailedError;
 
 /***/ }),
-/* 244 */
+/* 243 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -62269,7 +62213,7 @@ module.exports = function extend() {
 
 
 /***/ }),
-/* 245 */
+/* 244 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -62282,7 +62226,7 @@ Object.defineProperty(exports, "__esModule", {
 exports.newRequest = newRequest;
 exports.resolveUrl = resolveUrl;
 
-var _resolveUrl = __webpack_require__(246);
+var _resolveUrl = __webpack_require__(245);
 
 var _resolveUrl2 = _interopRequireDefault(_resolveUrl);
 
@@ -62298,7 +62242,7 @@ function resolveUrl(origin, link) {
 }
 
 /***/ }),
-/* 246 */
+/* 245 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_RESULT__;// Copyright 2014 Simon Lydell
@@ -62351,7 +62295,7 @@ void (function(root, factory) {
 
 
 /***/ }),
-/* 247 */
+/* 246 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -62401,7 +62345,7 @@ function getSource(input) {
 }
 
 /***/ }),
-/* 248 */
+/* 247 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -62423,7 +62367,7 @@ function encode(data) {
 var isSupported = exports.isSupported = "btoa" in window;
 
 /***/ }),
-/* 249 */
+/* 248 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -62475,7 +62419,7 @@ function removeItem(key) {
 }
 
 /***/ }),
-/* 250 */
+/* 249 */
 /***/ (function(module, exports, __webpack_require__) {
 
 'use-strict';
@@ -62483,9 +62427,9 @@ function removeItem(key) {
  * Manages communications with Companion
  */
 
-var RequestClient = __webpack_require__(251);
-var Provider = __webpack_require__(252);
-var Socket = __webpack_require__(253);
+var RequestClient = __webpack_require__(250);
+var Provider = __webpack_require__(251);
+var Socket = __webpack_require__(252);
 
 module.exports = {
   RequestClient: RequestClient,
@@ -62494,7 +62438,7 @@ module.exports = {
 };
 
 /***/ }),
-/* 251 */
+/* 250 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -62623,7 +62567,7 @@ module.exports = function () {
 }();
 
 /***/ }),
-/* 252 */
+/* 251 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -62639,7 +62583,7 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var RequestClient = __webpack_require__(251);
+var RequestClient = __webpack_require__(250);
 
 var _getName = function _getName(id) {
   return id.split('-').map(function (s) {
@@ -62732,12 +62676,12 @@ module.exports = function (_RequestClient) {
 }(RequestClient);
 
 /***/ }),
-/* 253 */
+/* 252 */
 /***/ (function(module, exports, __webpack_require__) {
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-var ee = __webpack_require__(181);
+var ee = __webpack_require__(180);
 
 module.exports = function () {
   function UppySocket(opts) {
@@ -62818,10 +62762,10 @@ module.exports = function () {
 }();
 
 /***/ }),
-/* 254 */
+/* 253 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var throttle = __webpack_require__(225);
+var throttle = __webpack_require__(224);
 
 function _emitSocketProgress(uploader, progressData, file) {
   var progress = progressData.progress,
@@ -62841,7 +62785,7 @@ function _emitSocketProgress(uploader, progressData, file) {
 module.exports = throttle(_emitSocketProgress, 300, { leading: true, trailing: true });
 
 /***/ }),
-/* 255 */
+/* 254 */
 /***/ (function(module, exports) {
 
 module.exports = function getSocketHost(url) {
@@ -62854,7 +62798,7 @@ module.exports = function getSocketHost(url) {
 };
 
 /***/ }),
-/* 256 */
+/* 255 */
 /***/ (function(module, exports) {
 
 module.exports = function settle(promises) {
@@ -62880,7 +62824,7 @@ module.exports = function settle(promises) {
 };
 
 /***/ }),
-/* 257 */
+/* 256 */
 /***/ (function(module, exports) {
 
 /**
@@ -62925,7 +62869,7 @@ module.exports = function limitPromises(limit) {
 };
 
 /***/ }),
-/* 258 */
+/* 257 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
@@ -62936,20 +62880,20 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var _require = __webpack_require__(179),
+var _require = __webpack_require__(178),
     Plugin = _require.Plugin;
 
-var cuid = __webpack_require__(182);
-var Translator = __webpack_require__(180);
+var cuid = __webpack_require__(181);
+var Translator = __webpack_require__(179);
 
-var _require2 = __webpack_require__(250),
+var _require2 = __webpack_require__(249),
     Provider = _require2.Provider,
     Socket = _require2.Socket;
 
-var emitSocketProgress = __webpack_require__(254);
-var getSocketHost = __webpack_require__(255);
-var settle = __webpack_require__(256);
-var limitPromises = __webpack_require__(257);
+var emitSocketProgress = __webpack_require__(253);
+var getSocketHost = __webpack_require__(254);
+var settle = __webpack_require__(255);
+var limitPromises = __webpack_require__(256);
 
 function buildResponseError(xhr, error) {
   // No error message
@@ -63471,6 +63415,64 @@ module.exports = function (_Plugin) {
 
   return XHRUpload;
 }(Plugin);
+
+/***/ }),
+/* 258 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* WEBPACK VAR INJECTION */(function($) {/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "accordionInit", function() { return accordionInit; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "accordionUpdate", function() { return accordionUpdate; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "accordionTest", function() { return accordionTest; });
+/**
+ * module `accordion.js`
+ *
+ * Functions to initialise and update the jQuery object `$accordion` with the structure:
+ *
+ * <div class="accordion">
+ * 	<div class="accordion__item">...</div>
+ * 	<div class="accordion__item">...</div>
+ * 	...
+ * </div>
+ */
+
+/**
+ * function accordionInit($accordion)
+ *
+ * Initialise the accordion
+ */
+function accordionInit($accordion) {
+	var $accordionItems = $accordion.find('.accordion__item')
+	$accordionItems.addClass('closed')
+	$accordionItems.first().removeClass('closed')
+	accordionUpdate($accordion)
+}
+
+/**
+ * function accordionUpdate($accordion)
+ *
+ * Update the accordion, binding the click event handlers
+ */
+function accordionUpdate($accordion) {
+	var $accordionItems = $accordion.find('.accordion__item')
+	$accordionItems.on('click', function () {
+		var $accordionItem = $(this)
+		$accordionItems.addClass('closed')
+		$accordionItem.removeClass('closed')
+	})
+}
+
+/**
+ * function accordionTest
+ */
+function accordionTest() {
+	console.log('Test successful!')
+}
+
+
+
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(1)))
 
 /***/ })
 /******/ ]);
