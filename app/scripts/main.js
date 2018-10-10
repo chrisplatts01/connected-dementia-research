@@ -12,6 +12,10 @@ import jqueryMaskPlugin from 'jquery-mask-plugin'
 import datejs from '../scripts/vendor/datejs/build/date-en-GB.js'
 import i18n from '../scripts/vendor/datejs/i18n/en-GB.js'
 import datePicker from '@chenfengyuan/datepicker/dist/datepicker.common.js'
+import Uppy from '@uppy/core'
+import Dashboard from '@uppy/dashboard'
+import Tus from '@uppy/tus'
+import XHRUpload from '@uppy/xhr-upload'
 
 // Import component exports
 import {
@@ -21,8 +25,8 @@ import {
 
 // Require Uppy file upload core and plugins (run `yarn add -D @uppy/[PLUGIN_NAME]` at the CLI to install dependencies)
 // TODO: See if 'import' works with these
-const Uppy = require('@uppy/core') // Core Uppy code
-const Dashboard = require('@uppy/dashboard') // Full-featured sleek UI with file previews, metadata editing, upload/pause/resume/cancel buttons and more. Includes StatusBar and Informer plugins by default
+//const Uppy = require('@uppy/core') // Core Uppy code
+//const Dashboard = require('@uppy/dashboard') // Full-featured sleek UI with file previews, metadata editing, upload/pause/resume/cancel buttons and more. Includes StatusBar and Informer plugins by default
 // const DragDrop = require('@uppy/drag-drop') // Plain and simple drag-and-drop area
 // const FileInput = require('@uppy/file-input') // Even more plain and simple, just a button
 // const Webcam = require('@uppy/webcam') // Upload selfies or audio / video recordings
@@ -30,8 +34,8 @@ const Dashboard = require('@uppy/dashboard') // Full-featured sleek UI with file
 // const GoogleDrive = require('@uppy/google-drive') // Import files from Google Drive
 // const Instagram = require('@uppy/instagram') // Import files from Instagram
 // const Url = require('@uppy/url') // Import files from any public URL
-const Tus = require('@uppy/tus') // Uploads using the tus resumable upload protocol
-const XHRUpload = require('@uppy/xhr-upload') // Classic multipart form uploads or binary uploads using XMLHTTPRequest
+// const Tus = require('@uppy/tus') // Uploads using the tus resumable upload protocol
+// const XHRUpload = require('@uppy/xhr-upload') // Classic multipart form uploads or binary uploads using XMLHTTPRequest
 // const AwsS3 = require('@uppy/aws-s3') // Uploader for AWS S3
 // const AwsS3Multipart = require('@uppy/aws-s3 - multipart') // Uploader for AWS S3 using its resumable Multipart protocol
 // const ProgressBar = require('@uppy/progress-bar') // Add a small YouTube-style progress bar at the top of the page
