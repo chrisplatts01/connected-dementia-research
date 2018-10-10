@@ -20,31 +20,14 @@ import XHRUpload from '@uppy/xhr-upload'
 // Import component exports
 import {
 	accordionInit,
-	accordionUpdate
+	accordionUpdate,
+	accordionTest
 } from '../templates/components/accordion/accordion.js';
 
-// Require Uppy file upload core and plugins (run `yarn add -D @uppy/[PLUGIN_NAME]` at the CLI to install dependencies)
-// TODO: See if 'import' works with these
-//const Uppy = require('@uppy/core') // Core Uppy code
-//const Dashboard = require('@uppy/dashboard') // Full-featured sleek UI with file previews, metadata editing, upload/pause/resume/cancel buttons and more. Includes StatusBar and Informer plugins by default
-// const DragDrop = require('@uppy/drag-drop') // Plain and simple drag-and-drop area
-// const FileInput = require('@uppy/file-input') // Even more plain and simple, just a button
-// const Webcam = require('@uppy/webcam') // Upload selfies or audio / video recordings
-// const Dropbox = require('@uppy/dropbox') // Import files from Dropbox
-// const GoogleDrive = require('@uppy/google-drive') // Import files from Google Drive
-// const Instagram = require('@uppy/instagram') // Import files from Instagram
-// const Url = require('@uppy/url') // Import files from any public URL
-// const Tus = require('@uppy/tus') // Uploads using the tus resumable upload protocol
-// const XHRUpload = require('@uppy/xhr-upload') // Classic multipart form uploads or binary uploads using XMLHTTPRequest
-// const AwsS3 = require('@uppy/aws-s3') // Uploader for AWS S3
-// const AwsS3Multipart = require('@uppy/aws-s3 - multipart') // Uploader for AWS S3 using its resumable Multipart protocol
-// const ProgressBar = require('@uppy/progress-bar') // Add a small YouTube-style progress bar at the top of the page
-// const StatusBar = require('@uppy/status-bar') // Advanced upload progress status bar
-// const Informer = require('@uppy/informer') // Show notifications
-// const Transloadit = require('@uppy/transloadit') // Manipulate and transcode uploaded files using the transloadit.com service
-// const Form = require('@uppy/form') // Collect metadata from <form> right before the Uppy upload, then optionally append results back to the form
-// const ThumbnailGenerator = require('@uppy/thumbnail-generator') // Generate preview thumbnails for images to be uploaded [documentation not yet available]
-// const GoldenRetriever = require('@uppy/golden-retriever') // Restore files and continue uploading after a page refresh or a browser crash
+// Expose functions that need to be globally accessible - probably not the best way of doing this!
+window.accordionInit = accordionInit
+window.accordionUpdate = accordionUpdate
+window.accordionTest = accordionTest
 
 /**
  * FILE UPLOAD: Handle file upload components (user initiated upload using XHR)

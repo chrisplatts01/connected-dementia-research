@@ -36,7 +36,15 @@ function accordionUpdate($accordion) {
 	})
 }
 
+/**
+ * function accordionTest
+ */
+function accordionTest() {
+	console.log('Test successful!')
+}
+
 export {
 	accordionInit,
-	accordionUpdate
+	accordionUpdate,
+	accordionTest
 }
