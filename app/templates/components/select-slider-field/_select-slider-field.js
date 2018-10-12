@@ -32,7 +32,8 @@ function selectSliderInit($slider) {
 
 	$slider.slider({
 		min: 0,
-		max: steps - 1
+		max: steps - 1,
+		value: step
 	})
 }
 

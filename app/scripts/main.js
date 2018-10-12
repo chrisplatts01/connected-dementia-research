@@ -223,36 +223,6 @@ var selectSliderField = (function () {
 			selectSliderUpdate($slider)
 		})
 	})
-	// var $slider = $selectSliderField.find('.slider')
-	// var $mercury = $slider.find('.slider__mercury')
-	// var $input = $slider.find('input[type="text"]')
-	// var $value = $slider.find('.slider__value')
-
-	// var values = $selectSliderField.attr('data-options').split(',')
-	// var steps = values.length
-
-	// var step = 0
-	// var value = values[0]
-	// var width = 0
-
-	// $input.val(value)
-	// $value.text(value)
-	// $mercury.css('width', width + '%')
-
-	// $slider.slider({
-	// 	min: 0,
-	// 	max: steps - 1
-	// })
-
-	// $slider.on('slidestop', function () {
-	// 	step = $slider.slider('value')
-	// 	value = values[step]
-	// 	width = (step * 100) / (steps - 1)
-	// 	$input.val(value)
-	// 	$value.text(value)
-	// 	$mercury.css('width', width + '%')
-	// })
-	// })
 })()
 
 /**
