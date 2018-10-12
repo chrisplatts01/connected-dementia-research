@@ -20,14 +20,19 @@ import XHRUpload from '@uppy/xhr-upload'
 // Import component exports
 import {
 	accordionInit,
-	accordionUpdate,
-	accordionTest
-} from '../templates/components/accordion/accordion.js';
+	accordionUpdate
+} from '../templates/components/accordion/_accordion.js';
+
+import {
+	selectSliderInit,
+	selectSliderUpdate
+} from '../templates/components/select-slider-field/_select-slider-field.js'
 
 // Expose functions that need to be globally accessible - probably not the best way of doing this!
 window.accordionInit = accordionInit
 window.accordionUpdate = accordionUpdate
-window.accordionTest = accordionTest
+window.selectSliderInit = selectSliderInit
+window.selectSliderUpdate = selectSliderUpdate
 
 /**
  * FILE UPLOAD: Handle file upload components (user initiated upload using XHR)
@@ -206,40 +211,48 @@ var formValidation = (function () {
  * SELECT SLIDER FIELD: Handle slider interface on select filds
  */
 var selectSliderField = (function () {
-	var $selectSliderFields = $('.select-slider-field')
+	var $selectSliders = $('.select-slider-field')
 
-	$selectSliderFields.each(function () {
-		var $selectSliderField = $(this)
-		var $slider = $selectSliderField.find('.slider')
-		var $mercury = $slider.find('.slider__mercury')
-		var $input = $slider.find('input[type="text"]')
-		var $value = $slider.find('.slider__value')
+	$selectSliders.each(function () {
+		var $selectSlider = $(this)
+		var $slider = $selectSlider.find('.slider')
 
-		var values = $selectSliderField.attr('data-options').split(',')
-		var steps = values.length
-
-		var step = 0
-		var value = values[0]
-		var width = 0
-
-		$input.val(value)
-		$value.text(value)
-		$mercury.css('width', width + '%')
-
-		$slider.slider({
-			min: 0,
-			max: steps - 1
-		})
+		selectSliderInit($slider)
 
 		$slider.on('slidestop', function () {
-			step = $slider.slider('value')
-			value = values[step]
-			width = (step * 100) / (steps - 1)
-			$input.val(value)
-			$value.text(value)
-			$mercury.css('width', width + '%')
+			selectSliderUpdate($slider)
 		})
 	})
+	// var $slider = $selectSliderField.find('.slider')
+	// var $mercury = $slider.find('.slider__mercury')
+	// var $input = $slider.find('input[type="text"]')
+	// var $value = $slider.find('.slider__value')
+
+	// var values = $selectSliderField.attr('data-options').split(',')
+	// var steps = values.length
+
+	// var step = 0
+	// var value = values[0]
+	// var width = 0
+
+	// $input.val(value)
+	// $value.text(value)
+	// $mercury.css('width', width + '%')
+
+	// $slider.slider({
+	// 	min: 0,
+	// 	max: steps - 1
+	// })
+
+	// $slider.on('slidestop', function () {
+	// 	step = $slider.slider('value')
+	// 	value = values[step]
+	// 	width = (step * 100) / (steps - 1)
+	// 	$input.val(value)
+	// 	$value.text(value)
+	// 	$mercury.css('width', width + '%')
+	// })
+	// })
 })()
 
 /**
