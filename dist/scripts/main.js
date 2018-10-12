@@ -63484,6 +63484,8 @@ function selectSliderInit($slider) {
 		width = 0
 	}
 
+	console.log(value)
+
 	$input.val(value)
 	$value.text(value)
 	$mercury.css('width', width + '%')
@@ -63513,10 +63515,6 @@ function selectSliderUpdate($slider) {
 	$input.val(value)
 	$value.text(value)
 	$mercury.css('width', width + '%')
-
-	console.log('MIN IS: ', $slider.slider('min'))
-	console.log('MAX IS: ', $slider.slider('max'))
-	console.log('VALUE IS: ', $slider.slider('value'))
 }
 
 

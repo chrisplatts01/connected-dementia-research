@@ -34,7 +34,8 @@ var inputStylesMain = input + 'styles/main.scss'
 var inputImages = input + 'images/**/*'
 var inputFonts = input + 'fonts/**/*'
 var inputScripts = [
-	input + 'scripts/**/*.js'
+	input + 'scripts/**/*.js',
+	input + 'templates/**/*.js'
 ]
 
 var output = './dist/'

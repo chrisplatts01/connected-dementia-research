@@ -26,6 +26,8 @@ function selectSliderInit($slider) {
 		width = 0
 	}
 
+	console.log(value)
+
 	$input.val(value)
 	$value.text(value)
 	$mercury.css('width', width + '%')
