@@ -162,3 +162,8 @@ gulp.task('browser-sync', function () {
 // Default task
 // -----------------------------------------------------------------------------
 gulp.task('default', ['sass', 'nunjucks', 'img', 'scripts', 'fonts', 'watch', 'browser-sync'])
+
+// -----------------------------------------------------------------------------
+// Build task
+// -----------------------------------------------------------------------------
+gulp.task('build', ['sass', 'nunjucks', 'img', 'scripts', 'fonts'])

@@ -63540,7 +63540,6 @@ function selectSliderUpdate($slider) {
 	var width = (step * 100) / (steps - 1)
 
 	$input.val(value)
-	console.log('VALUE IS: ', $input.val())
 	$value.text(value)
 	$mercury.css('width', width + '%')
 }
