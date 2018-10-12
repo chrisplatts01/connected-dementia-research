@@ -115,6 +115,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _uppy_xhr_upload__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(257);
 /* harmony import */ var _uppy_xhr_upload__WEBPACK_IMPORTED_MODULE_11___default = /*#__PURE__*/__webpack_require__.n(_uppy_xhr_upload__WEBPACK_IMPORTED_MODULE_11__);
 /* harmony import */ var _templates_components_accordion_accordion_js__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(258);
+/* harmony import */ var _templates_components_select_slider_field_select_slider_field_js__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(259);
 // Declare these two varibles to fix an issue importing modules
 var a = ''
 var b = ''
@@ -137,10 +138,13 @@ var b = ''
 // Import component exports
 
 
+
+
 // Expose functions that need to be globally accessible - probably not the best way of doing this!
 window.accordionInit = _templates_components_accordion_accordion_js__WEBPACK_IMPORTED_MODULE_12__["accordionInit"]
 window.accordionUpdate = _templates_components_accordion_accordion_js__WEBPACK_IMPORTED_MODULE_12__["accordionUpdate"]
-window.accordionTest = _templates_components_accordion_accordion_js__WEBPACK_IMPORTED_MODULE_12__["accordionTest"]
+window.selectSliderInit = _templates_components_select_slider_field_select_slider_field_js__WEBPACK_IMPORTED_MODULE_13__["selectSliderInit"]
+window.selectSliderUpdate = _templates_components_select_slider_field_select_slider_field_js__WEBPACK_IMPORTED_MODULE_13__["selectSliderUpdate"]
 
 /**
  * FILE UPLOAD: Handle file upload components (user initiated upload using XHR)
@@ -319,40 +323,48 @@ var formValidation = (function () {
  * SELECT SLIDER FIELD: Handle slider interface on select filds
  */
 var selectSliderField = (function () {
-	var $selectSliderFields = jquery__WEBPACK_IMPORTED_MODULE_0___default()('.select-slider-field')
+	var $selectSliders = jquery__WEBPACK_IMPORTED_MODULE_0___default()('.select-slider-field')
 
-	$selectSliderFields.each(function () {
-		var $selectSliderField = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this)
-		var $slider = $selectSliderField.find('.slider')
-		var $mercury = $slider.find('.slider__mercury')
-		var $input = $slider.find('input[type="text"]')
-		var $value = $slider.find('.slider__value')
+	$selectSliders.each(function () {
+		var $selectSlider = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this)
+		var $slider = $selectSlider.find('.slider')
 
-		var values = $selectSliderField.attr('data-options').split(',')
-		var steps = values.length
-
-		var step = 0
-		var value = values[0]
-		var width = 0
-
-		$input.val(value)
-		$value.text(value)
-		$mercury.css('width', width + '%')
-
-		$slider.slider({
-			min: 0,
-			max: steps - 1
-		})
+		Object(_templates_components_select_slider_field_select_slider_field_js__WEBPACK_IMPORTED_MODULE_13__["selectSliderInit"])($slider)
 
 		$slider.on('slidestop', function () {
-			step = $slider.slider('value')
-			value = values[step]
-			width = (step * 100) / (steps - 1)
-			$input.val(value)
-			$value.text(value)
-			$mercury.css('width', width + '%')
+			Object(_templates_components_select_slider_field_select_slider_field_js__WEBPACK_IMPORTED_MODULE_13__["selectSliderUpdate"])($slider)
 		})
 	})
+	// var $slider = $selectSliderField.find('.slider')
+	// var $mercury = $slider.find('.slider__mercury')
+	// var $input = $slider.find('input[type="text"]')
+	// var $value = $slider.find('.slider__value')
+
+	// var values = $selectSliderField.attr('data-options').split(',')
+	// var steps = values.length
+
+	// var step = 0
+	// var value = values[0]
+	// var width = 0
+
+	// $input.val(value)
+	// $value.text(value)
+	// $mercury.css('width', width + '%')
+
+	// $slider.slider({
+	// 	min: 0,
+	// 	max: steps - 1
+	// })
+
+	// $slider.on('slidestop', function () {
+	// 	step = $slider.slider('value')
+	// 	value = values[step]
+	// 	width = (step * 100) / (steps - 1)
+	// 	$input.val(value)
+	// 	$value.text(value)
+	// 	$mercury.css('width', width + '%')
+	// })
+	// })
 })()
 
 /**
@@ -63424,7 +63436,6 @@ module.exports = function (_Plugin) {
 __webpack_require__.r(__webpack_exports__);
 /* WEBPACK VAR INJECTION */(function($) {/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "accordionInit", function() { return accordionInit; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "accordionUpdate", function() { return accordionUpdate; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "accordionTest", function() { return accordionTest; });
 /**
  * module `accordion.js`
  *
@@ -63443,10 +63454,10 @@ __webpack_require__.r(__webpack_exports__);
  * Initialise the accordion
  */
 function accordionInit($accordion) {
-	var $accordionItems = $accordion.find('.accordion__item')
-	$accordionItems.addClass('closed')
-	$accordionItems.first().removeClass('closed')
-	accordionUpdate($accordion)
+	var $accordionItems = $accordion.find(".accordion__item");
+	$accordionItems.addClass("closed");
+	$accordionItems.first().removeClass("closed");
+	accordionUpdate($accordion);
 }
 
 /**
@@ -63455,24 +63466,86 @@ function accordionInit($accordion) {
  * Update the accordion, binding the click event handlers
  */
 function accordionUpdate($accordion) {
-	var $accordionItems = $accordion.find('.accordion__item')
-	$accordionItems.on('click', function () {
-		var $accordionItem = $(this)
-		$accordionItems.addClass('closed')
-		$accordionItem.removeClass('closed')
-	})
-}
-
-/**
- * function accordionTest
- */
-function accordionTest() {
-	console.log('Test successful!')
+	var $accordionItems = $accordion.find(".accordion__item");
+	$accordionItems.on("click", function () {
+		var $accordionItem = $(this);
+		$accordionItems.addClass("closed");
+		$accordionItem.removeClass("closed");
+	});
 }
 
 
 
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(1)))
+
+/***/ }),
+/* 259 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "selectSliderInit", function() { return selectSliderInit; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "selectSliderUpdate", function() { return selectSliderUpdate; });
+/**
+ * module `select-slider-field.js`
+ *
+ * Functions to initialise and update the jQuery object `$select-slider'
+ *
+ */
+
+/**
+ * function selectSliderInit($selectSlider)
+ *
+ * Initialise the slider
+ */
+function selectSliderInit($slider) {
+	var $mercury = $slider.find('.slider__mercury')
+	var $input = $slider.find('input[type="text"]')
+	var $value = $slider.find('.slider__value')
+	var values = $slider.closest('.select-slider-field').attr('data-options').split(',')
+	var steps = values.length
+	var value = $input.val()
+	var step = values.indexOf(value)
+	var width = (step * 100) / (steps - 1)
+
+	if (step < 0) {
+		value = values[0]
+		step = 0
+		width = 0
+	}
+
+	$input.val(value)
+	$value.text(value)
+	$mercury.css('width', width + '%')
+
+	$slider.slider({
+		min: 0,
+		max: steps - 1
+	})
+}
+
+/**
+ * function selectSliderUpdate($slider)
+ *
+ * Update the accordion, binding the click event handlers
+ */
+function selectSliderUpdate($slider) {
+	var $mercury = $slider.find('.slider__mercury')
+	var $input = $slider.find('input[type="text"]')
+	var $value = $slider.find('.slider__value')
+	var values = $slider.closest('.select-slider-field').attr('data-options').split(',')
+	var steps = values.length
+	var step = $slider.slider('value')
+	var value = values[step]
+	var width = (step * 100) / (steps - 1)
+
+	$input.val(value)
+	$value.text(value)
+	$mercury.css('width', width + '%')
+}
+
+
+
 
 /***/ })
 /******/ ]);
