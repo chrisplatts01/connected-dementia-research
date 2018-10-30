@@ -83,9 +83,7 @@ yarn.lock                               # Yarn package manager lockfile
 
 - **package.json**: This file contains the configuration for the **NodeJS** packages that are required by the project, along with metadata about the project. It also defines aliases for some simple command line tasks.
 
-- **DOCUMENTATION.md** and **DOCUMENTATION.pdf**: The **Markdown** source of this file and its current **PDF** version.
-
-- **README.md**: The project README file.
+- **README.md**: The project README file _(This file!)_.
 
 - **webpack.config.js**: The **Webpack** configuration file.
 
