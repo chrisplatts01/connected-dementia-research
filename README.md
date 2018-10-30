@@ -55,7 +55,7 @@ The git repository contains the following branches:
 - **master**: The stable branch containing the current build-ready and deployable code.
 - **develop**: The branch containing the code integrating features which have completed development but are not yet fully tested.
 - **feature/FEATURE_NAME**: A temporary feature branch containing code for a feature currently under development, but not yet integrated.
-- **dist**: A subtree branch containing only the currently deployable `dist/` directory.
+- **dist**: A `git subtree` branch containing only the currently deployable `dist/` directory. Used to `git pull` the latest build to the test server.
 
 Features branches are managed by the **[git-flow](https://jeffkreeftmeijer.com/git-flow/)** workflow.
 
