@@ -64,14 +64,13 @@ Features branches are managed by the **[git-flow](https://jeffkreeftmeijer.com/g
 ```sh
 app/                                    # Source files
 dist/                                   # Generated web pages
-node_modules/                           # NodeJS packages
-Gulpfile.js                             # Task runner configuration
+node_modules/                           # NodeJS package repository
+Gulpfile.js                             # Gulp task runner configuration
 package.json                            # NodeJS package configuration
-DOCUMENTATION.md                        # This documentation file
 README.md                               # Project README file
-webpack.config.js                       # Javascript bundler configuration
-yarn-error.log                          # Package manager error log
-yarn.lock                               # Package manager lockfile
+webpack.config.js                       # Webpack Javascript bundler configuration
+yarn-error.log                          # Yarn package manager error log
+yarn.lock                               # Yarn package manager lockfile
 ```
 
 - **app/**: This directory is under version control and contains all of the source files required to build the production web pages, except for the **NodeJS** packages managed by **Yarn**.
