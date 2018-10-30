@@ -1,7 +1,9 @@
-# Connected Dementia Research: Technology Overview
+# Connected Dementia Research
 
 - [Introduction](#introduction)
 - [Technologies used in the project](#technologies-used-in-the-project)
+- [Installation](#installation)
+	- [Prerequisites](#prerequisites)
 - [Project structure](#project-structure)
 	- [Git repository](#git-repository)
 	- [Top-level file structure](#top-level-file-structure)
@@ -9,25 +11,31 @@
 
 ## Introduction
 
-This document will provide developers and maintainers with an overview of the technologies used in the project, and descriptions of the project's file structure and its build process.
+This document will provide developers and maintainers with instructions on installing, building and deploying the application; an overview of the technologies used in the project; and descriptions of the project's file structure.
 
 ## Technologies used in the project
 
 - **[Github](https://github.com)**: A service providing remote hosting and management of **git** repositories.
 
-- **[NodeJS](https://nodejs.org)**: A Javascript command line environment for developing applications that can run outside of a browser environment. The [Node Package Managemer (_npm_) repository](https://npmjs.org) is rich source of prebuilt packages containing modules that can be run in the **NodeJS** environment. Packages can also be obtained from many public git repositories (Github, GitLab, BitBucket, etc)
+- **[NodeJS](https://nodejs.org)**: A Javascript command line environment for developing applications that can run outside of a browser environment.
 
-- **[Yarn](https://yarnpkg.com/lang/en/)**: A package manager for **NodeJS** packages with secure and reliable dependency management that improves on the features provided by the **npm** application. The packages that are required for a project are defined in a file called _package.json_ and stored in the _node_modules_ directory
+- **[Yarn](https://yarnpkg.com/lang/en/)**: A package manager for **NodeJS** packages with secure and reliable dependency management.
 
-- **[Gulp](https://gulpjs.com)**: A task runner using **NodeJS** modules to accomplish a given task. The tasks are defined in a configuration file called _Gulpfile.js_ or _gulpfile.js_ and run from the command line using the `gulp` command with the name of the task as a parameter (for instance `gulp build`). Running the command `gulp` with no parameters will run the default task if one has been defined.
+- **[Gulp](https://gulpjs.com)**: A task runner using **NodeJS** modules to accomplish a given task.
 
-  At its most basic, each task is a series of Gulp API calls or calls to any **NodeJS** module declared with a `require()` statement, where the output of one task is piped as the input to the next. Each task usually begins with a call to `src()` defining which input files to use, and ending with a call to `dest()` defining where the output files are generated.
+- **[Webpack](https://webpack.js.org)**: A static module bundler for JavaScript applications[^webpack].
 
-- **[Webpack](https://webpack.js.org)**: A static module bundler for JavaScript applications. It will take one or more Javascript modules (CommonJS, AMD and other module formats supported) and bundle them into a one or more runtime files. When **Webpack** processes the application it will build a dependency graph to ensure it includes each dependent module once and once only, so - for instance - if more than one module requires **jQuery** then it will only be included in the bundle once.
+- **[Nunjucks](https://mozilla.github.io/nunjucks/)**: A front-end templating language using Handlebars-style syntax. It is a NodeJS port of the Python-based **Jinja2**.
 
-  _[NOTE: While **Gulp** and **Webpack** work in fundamentally different ways, each can accomplish many of the same tasks, but the bundling of Javascript files is more robust with **Webpack**. However configuration beyond bundling Javascript is less intuitive/more complex so I am currently running a simple instance of **Webpack** as part of the `scripts` task within **Gulp**.)]_
+## Installation
 
-- **[Nunjucks](https://mozilla.github.io/nunjucks/)**: A templating language using Handlebars-style syntax. It is a NodeJS port of the Python-based **Jinja2** templating language. It offers a fairly rich set of templating tags with block inheritance, autoescaping, macros, filtering, etc.
+### Prerequisites
+
+- git: See [Git - Downloads](https://git-scm.com/downloads) for installation information[^pm].
+- NodeJS
+- Yarn
+- Gulp
+- Webpack
 
 ## Project structure
 
@@ -38,9 +46,7 @@ The git repository contains the following branches:
 - **master**: The stable branch containing the current build-ready and deployable code.
 - **develop**: The branch containing the code integrating features which have completed development but are not yet fully tested.
 - **feature/FEATURE_NAME**: A feature branch containing code for a feature currently under development, but not yet integrated.
-- **dist**: A subtree branch containing only the currently deployable `dist/` folder.
-
-  _(NOTE: Once the `git subtree` process has been finalised and tested, the application should be deployed from this branch, and the `dist/` folder will be removed from the master branch.)_
+- **dist**: A subtree branch containing only the currently deployable `dist/` folder[^dist].
 
 Features branches are managed by the **[git-flow](https://jeffkreeftmeijer.com/git-flow/)** workflow.
 
@@ -62,9 +68,7 @@ yarn.lock		# Package manager lockfile
 
 - **app/**: This folder is under version control and contains all of the source files required to build the production web pages, except for the `NodeJS` packages managed by `yarn`.
 
-- **dist/**: This folder contains the built web application (HTML,CSS, Javascript and other assets) ready for deployment to the development or production server.
-
-  _[Note: Ideally this folder should not be under version control as it is completely replaced on every build, resulting in large commits every time, but until I have fully tested the `git subtree` process it will remain under version control in the master and develop branches.]_
+- **dist/**: This folder contains the built web application (HTML,CSS, Javascript and other assets) ready for deployment to the development or production server[^dist].
 
 - **node_modules/**: This folder contains the **NodeJS** packages and dependencies defined in the `package.json` file. As it is completely managed by **Yarn**, and can be reinstalled and updated at any time, it is not under version control.
 
@@ -108,3 +112,15 @@ app/
     styles/
     templates/
 ```
+
+[^webpack]:
+
+  While **Gulp** and **Webpack** work in fundamentally different ways, each can accomplish many of the same tasks, but the bundling of Javascript files is more robust with **Webpack**. However configuration beyond bundling Javascript is less intuitive/more complex so I am currently running a simple instance of **Webpack** as part of the `scripts` task within **Gulp**.
+
+[^pm]:
+
+  Or use a package manager such as [Homebrew](https://brew.sh) or [APT](https://wiki.debian.org/Apt)
+
+[^dist]:
+
+  Ideally this folder should not be under version control as it is completely replaced on every build, resulting in large commits every time, but until I have fully tested the `git subtree` process it will remain under version control in the master and develop branches.
