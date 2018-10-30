@@ -1904,10 +1904,9 @@ dateformat@^2.0.0:
   resolved "https://registry.yarnpkg.com/dateformat/-/dateformat-2.2.0.tgz#4065e2013cf9fb916ddfd82efb506ad4c6769062"
   integrity sha1-QGXiATz5+5Ft39gu+1Bq1MZ2kGI=
 
-datejs@^1.0.0-rc3:
+"datejs@https://github.com/abritinthebay/datejs.git":
   version "1.0.0-rc3"
-  resolved "https://registry.yarnpkg.com/datejs/-/datejs-1.0.0-rc3.tgz#bffa1efedefeb41fdd8a242af55afa01fb58de57"
-  integrity sha1-v/oe/t7+tB/diiQq9Vr6AftY3lc=
+  resolved "https://github.com/abritinthebay/datejs.git#3675d46ed96d57e30aeddf9b1d1026ac81d37ae3"
 
 debug-log@^1.0.0:
   version "1.0.1"
