@@ -4,11 +4,15 @@
 - [Technologies used in the project](#technologies-used-in-the-project)
 - [Installation](#installation)
 	- [Prerequisites](#prerequisites)
-	- [Setting up the project](#setting-up-the-project)
+	- [Setting up and building the project](#setting-up-and-building-the-project)
 - [Project structure](#project-structure)
 	- [Git repository](#git-repository)
+		- [Git workflow for new features](#git-workflow-for-new-features)
 	- [Top-level file structure](#top-level-file-structure)
 	- [Source code directory file structure](#source-code-directory-file-structure)
+- [Appendices](#appendices)
+	- [TODO](#todo)
+	- [Lessons learned](#lessons-learned)
 
 ## Introduction
 
@@ -37,14 +41,14 @@ Ensure that the latest version of the following applications are installed:
 
 **git**, **NodeJS** and **Yarn** can also be installed using a package manager such as [Homebrew](https://brew.sh) or [APT](https://wiki.debian.org/Apt).
 
-### Setting up the project
+### Setting up and building the project
 
 Run the following commands to set up the project:
 
 1. `git clone https://github.com/chrisplatts01/connected-dementia-research.git`: Clone the repository form **Github**.
 2. `cd connected-dementia-research` : Change to the working directory.
 3. `yarn install`: Install the required **NodeJS** packages and their dependencies.
-4. `gulp`: Run the default task to build the application and open the start page in your default browser.
+4. `gulp`: Run the default task to build the application and open the start page in your default browser on port 3000.
 
 ## Project structure
 
@@ -57,7 +61,25 @@ The git repository contains the following branches:
 - **feature/FEATURE_NAME**: A temporary feature branch containing code for a feature currently under development, but not yet integrated.
 - **dist**: A `git subtree` branch existing only in the **Github** repository and containing only the currently deployable `dist/` directory. Used to `git pull` the latest build to the test server.
 
+To ensure the `master` branch is always deployable always work in the `develop` branch (for minor changes) or feature branches for developing new features.
+
+#### Git workflow for new features
+
 Features branches are managed by the **[git-flow](https://jeffkreeftmeijer.com/git-flow/)** workflow.
+
+```sh
+git checkout develop                    # If not already the current branch
+git flow feature start FEATURE_NAME     # Create and checkout the feature branch
+
+...                                     # Make changes, add, commit, etc
+
+git flow feature finish FEATURE_NAME    # Merge feature branch into develop,
+                                        # checkout develop branch and delete
+                                        # feature branch
+```
+
+**git-flow** manages release branches and hotfix branches in a similar way, managing merges with `develop` and `master` where appropriate. See the [**git-flow** documentation](https://jeffkreeftmeijer.com/git-flow/) for further information.
+
 
 ### Top-level file structure
 
@@ -159,4 +181,21 @@ app/                                    # Source code folder
 	- **macros/**: Nunjucks macros called by other template files.
 	- **modules/**: Larger template partials built from components which can be included in the page templates (for instance the page header and footer sections).
 	- **partials/**: Other template partials which can be included in the page templates (for instance the `<head>` and `<script>` sections common to every page.)
-	- **swatches/**: Non-component template partials to illustrate the brand fonts and colours in th epattern library.
+	- **swatches/**: Non-component template partials to illustrate the brand fonts and colours in the pattern library.
+
+## Appendices
+
+### TODO
+
+1. Complete design work as required, including developing any new components needed by the designs.
+2. Rename directories and files called _volunteer_ to something more descriptive.
+3. Add further code optimisations - primarily minimising Javascript and styesheet files for the production environment.
+4. Where possible, replace Javascript library code in the `scripts/vendor` directory with **NodeJS** packages.
+5. Refactor the Javascript code by moving comonent-specific functions from `main.js` into the `templates/components/COMPONENT_NAME` directory.
+
+### Lessons learned
+
+For future projects:
+
+1. Look into using **Webpack**  as a complete replacement for **Gulp** as it handles much of the Javascript optimisation without configuration, and is increasingly capable for handling other tasks, such as SASS compilation.
+2. Look into using the VueJS framework as it brings much of the required functionality (templating, optimisation, build, etc) out of the box.
