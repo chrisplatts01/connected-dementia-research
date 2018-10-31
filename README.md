@@ -191,7 +191,7 @@ app/                                    # Source code folder
 2. Rename directories and files called _volunteer_ to something more descriptive.
 3. Add further code optimisations - primarily minimising Javascript and styesheet files for the production environment.
 4. Where possible, replace Javascript library code in the `scripts/vendor` directory with **NodeJS** packages.
-5. Refactor the Javascript code by moving comonent-specific functions from `main.js` into the `templates/components/COMPONENT_NAME` directory.
+5. Refactor the Javascript code by moving component-specific functions from `main.js` into the `templates/components/COMPONENT_NAME` directory.
 
 ### Lessons learned
 
