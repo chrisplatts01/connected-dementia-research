@@ -3,12 +3,12 @@
 - [Introduction](#introduction)
 - [Technologies used in the project](#technologies-used-in-the-project)
 - [Installation](#installation)
-  - [Prerequisites](#prerequisites)
-  - [Setting up the project](#setting-up-the-project)
+	- [Prerequisites](#prerequisites)
+	- [Setting up the project](#setting-up-the-project)
 - [Project structure](#project-structure)
-  - [Git repository](#git-repository)
-  - [Top-level file structure](#top-level-file-structure)
-  - [Source code directory file structure](#source-code-directory-file-structure)
+	- [Git repository](#git-repository)
+	- [Top-level file structure](#top-level-file-structure)
+	- [Source code directory file structure](#source-code-directory-file-structure)
 
 ## Introduction
 
@@ -141,3 +141,22 @@ app/                                    # Source code folder
         pattern-library-layout.njk      # Pattern library layout file
         volunteer-layout.njk            # Web application layout file
 ```
+
+- **data/**: JSON files that contain content to populate the Nunjucks templates.
+- **fonts/**: Fonts installed in addition to the standard system fonts in the form of `.oft`, `.ttf`, `.woff`, `.woff2`, and `.svg` files to provide compatibilty with the majority of browsers. The build process copies this directory directly to the `dist/` directory.
+- **images/**: Image assets in the preferred formats of `.svg` and `.png` files. The build process copies this directory directly to the `dist/` directory.
+	- **favicons/**: Favicon files in formats compatible with various devices.
+- **pages/**: Nunjucks page templates. The build process compiles these to form the HTML pages in the `dist/` directory.
+	-  **pattern-library/**: Pages that illustrate examples and code for every component, module and swatch.
+	-  **volunteer/**: The web application page designs. _(This should be renamed to something more descriptive or, alternatively, each section of the application should be in a separate directory - for instance '`volunteer/`', '`dashboard/`', etc.)_
+- **scripts/**: This folder contains the main starting point for the build process which bundles all of the Javascript dependencies into a single file and copies it to the `dist/` directory.
+	- **vendor/**: Javascript libraries aand other dependencies not managed as NodeJS packages.
+- **styles/**: This directory contains the main SASS (SCSS) file which is compiled to the main CSS stylesheet by the build process and copied to the `dist/` directory.
+	- **mixins/**: SASS mixins
+	- **partials**: Other SASS partials
+- **templates/**: Nunjucks layouts, partials and macros called, included or extended by the Nunjucks page templates.
+	- **components/**: Reusable template files (Nunjucks, styles and scripts) defining each component type.
+	- **macros/**: Nunjucks macros called by other template files.
+	- **modules/**: Larger template partials built from components which can be included in the page templates (for instance the page header and footer sections).
+	- **partials/**: Other template partials which can be included in the page templates (for instance the `<head>` and `<script>` sections common to every page.)
+	- **swatches/**: Non-component template partials to illustrate the brand fonts and colours in th epattern library.
