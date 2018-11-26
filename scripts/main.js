@@ -353,6 +353,7 @@ var maskedDateField = (function () {
  */
 var datePickerField = (function () {
 	var $datePicker = jquery__WEBPACK_IMPORTED_MODULE_0___default()('[data-toggle="datepicker"]')
+	$datePicker.mask('00/00/0000')
 	$datePicker.datepicker({
 		autoHide: true,
 		language: 'en-GB',
