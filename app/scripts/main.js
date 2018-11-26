@@ -103,10 +103,10 @@ var fileUpload = (function () {
 			})
 		}
 
-		uppy.on('complete', result => {
-			console.log('successful files:', result.successful)
-			console.log('failed files:', result.failed)
-		})
+		// uppy.on('complete', result => {
+		// 	console.log('successful files:', result.successful)
+		// 	console.log('failed files:', result.failed)
+		// })
 	})
 })()
 
