@@ -241,6 +241,7 @@ var maskedDateField = (function () {
  */
 var datePickerField = (function () {
 	var $datePicker = $('[data-toggle="datepicker"]')
+	$datePicker.mask('00/00/0000')
 	$datePicker.datepicker({
 		autoHide: true,
 		language: 'en-GB',
